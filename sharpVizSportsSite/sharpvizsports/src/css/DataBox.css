@@ -1,0 +1,194 @@
+.data-box-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.data-box-header {
+  margin-bottom: 10px;
+}
+
+.data-box-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.data-box-subtitle {
+  font-size: 14px;
+  color: #555;
+}
+
+.data-box-options {
+  margin-bottom: 10px;
+}
+
+.data-box-scrollable {
+  max-height: 350px; /* Restrict height to make it scrollable */
+  overflow-y: auto; /* Enable vertical scrolling */
+  border: 1px solid #ddd; /* Border around the scrollable area */
+}
+
+.data-box-table {
+  width: 100%;
+  border-collapse: collapse; /* Ensure cells share borders */
+}
+
+.data-box-table th,
+.data-box-table td {
+  border: 1px solid #ddd; /* Ensure gridlines are visible */
+  padding: 6px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.data-box-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+  position: sticky; /* Keep header fixed */
+  top: 0;
+  z-index: 1;
+}
+
+.data-box-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.data-box-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.toggle-button {
+  padding: 6px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.toggle-button:hover {
+  background-color: #0056b3;
+}
+
+.graph-view {
+  margin-top: 20px;
+}
+
+.graph-options {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.graph-options label {
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.generate-button {
+  padding: 6px 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.generate-button:hover {
+  background-color: #218838;
+}
+
+.graph-view canvas {
+  max-width: 100%;
+  height: auto;
+}
+.graph-container {
+  width: 100%; /* Full width */
+  max-width: 900px; /* Limit max width for large screens */
+  height: 500px; /* Fixed height for consistent graph size */
+  margin: 0 auto; /* Center the graph */
+}
+/* Add this to your DataBox.css file */
+
+/* Adjust the container to ensure a constant height */
+.data-box-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to the top */
+  height: 600px; /* Matches the height we set earlier */
+}
+
+/* Ensure the scrollable table fills the remaining height */
+.data-box-scrollable {
+  flex: 1; /* Allow the table to take up remaining space */
+  overflow-y: auto; /* Enable vertical scrolling if needed */
+}
+
+/* Table styling */
+.data-box-table {
+  width: 100%; /* Ensure the table takes up the full width */
+  border-collapse: collapse;
+}
+
+.data-box-table th,
+.data-box-table td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd; /* Add a subtle border */
+}
+
+.data-box-table th {
+  background-color: #f4f4f4; /* Light gray background for headers */
+  font-weight: bold;
+}
+
+.data-box-table tbody tr:nth-child(even) {
+  background-color: #fafafa; /* Subtle row striping */
+}
+/* Adjust the container to ensure a constant height */
+.data-box-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to the top */
+  height: 600px; /* Matches the height we set earlier */
+}
+
+/* Ensure the scrollable table fills the available height */
+.data-box-scrollable {
+  flex: 1; /* Allow the table to take up remaining space */
+  overflow-y: auto; /* Enable vertical scrolling if needed */
+  max-height: calc(100% - 20px); /* Ensure it doesn't exceed the container height */
+  margin: 0; /* Remove additional margin */
+  padding: 0; /* Remove additional padding */
+}
+
+/* Table styling */
+.data-box-table {
+  width: 100%; /* Ensure the table takes up the full width */
+  height: 100%; /* Make the table stretch to fill the container */
+  border-collapse: collapse;
+}
+
+.data-box-table th,
+.data-box-table td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd; /* Add a subtle border */
+}
+
+.data-box-table th {
+  background-color: #f4f4f4; /* Light gray background for headers */
+  font-weight: bold;
+}
+
+.data-box-table tbody tr:nth-child(even) {
+  background-color: #fafafa; /* Subtle row striping */
+}
+
+/* Additional adjustment for table rows */
+.data-box-table tbody tr {
+  height: 30px; /* Adjust row height to balance the table size */
+}

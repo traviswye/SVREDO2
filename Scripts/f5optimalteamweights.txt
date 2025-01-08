@@ -1,0 +1,66 @@
+hometeamOptimalWeights ={
+	"Diamondbacks": {'AB_R': 1.5, 'AB_H': 1.5, 'PA_HR': 0, 'AB_SB': 0.05, 'SB_SB_CS': 0.1, 'PA_BB': 1.5, 'AB_SO': 1, 'SOW': 0, 'BA': 1, 'OBP': 0, 'SLG': 0, 'OPS': 0, 'PA_TB': 0, 'AB_GDP': 0.1, 'BAbip': 1, 'tOPSPlus': 1, 'sOPSPlus': 0.5},
+    "Braves": {'AB_R': 1.5, 'AB_H': 0.5, 'PA_HR': 1.5, 'AB_SB': 0.01, 'SB_SB_CS': 1, 'PA_BB': 1.5, 'AB_SO': 1, 'SOW': 0.5, 'BA': 1.5, 'OBP': 1.5, 'SLG': 0.5, 'OPS': 1, 'PA_TB': 0.5, 'AB_GDP': 1, 'BAbip': 1, 'tOPSPlus': 0.5, 'sOPSPlus': 0},
+    "Orioles": {'AB_R': 1, 'AB_H': 1, 'PA_HR': 0, 'AB_SB': 0.01, 'SB_SB_CS': 0.5, 'PA_BB': 0.5, 'AB_SO': 0.5, 'SOW': 0.1, 'BA': 0.5, 'OBP': 1.5, 'SLG': 1.5, 'OPS': 0, 'PA_TB': 1.5, 'AB_GDP': 0.1, 'BAbip': 1, 'tOPSPlus': 0.5, 'sOPSPlus': 1},
+    "Red Sox": {'AB_R': 1, 'AB_H': 1.5, 'PA_HR': 0.5, 'AB_SB': 0, 'SB_SB_CS': 0.5, 'PA_BB': 1, 'AB_SO': 0.5, 'SOW': 0.5, 'BA': 0.5, 'OBP': 1, 'SLG': 1.5, 'OPS': 0, 'PA_TB': 1, 'AB_GDP': 1, 'BAbip': 1.5, 'tOPSPlus': 0, 'sOPSPlus': 0.5},
+    "Cubs": {'AB_R': 0.5, 'AB_H': 0.5, 'PA_HR': 0.5, 'AB_SB': 0.05, 'SB_SB_CS': 0.1, 'PA_BB': 0, 'AB_SO': 0.5, 'SOW': 1, 'BA': 0, 'OBP': 1.5, 'SLG': 0.5, 'OPS': 1.5, 'PA_TB': 0, 'AB_GDP': 1, 'BAbip': 0, 'tOPSPlus': 0, 'sOPSPlus': 0.5},
+    "Guardians": {'AB_R': 1.5, 'AB_H': 0.5, 'PA_HR': 0, 'AB_SB': 0.05, 'SB_SB_CS': 0.5, 'PA_BB': 1.5, 'AB_SO': 0.5, 'SOW': 0, 'BA': 0, 'OBP': 0, 'SLG': 1.5, 'OPS': 0, 'PA_TB': 1.5, 'AB_GDP': 0.1, 'BAbip': 1.5, 'tOPSPlus': 1.5, 'sOPSPlus': 0.5},
+    "White Sox": {},
+    "Reds": {},
+    "Rockies": {},
+    "Tigers": {'AB_R': 1.5, 'AB_H': 0.5, 'PA_HR': 0.5, 'AB_SB': 0.01, 'SB_SB_CS': 0.5, 'PA_BB': 1.5, 'AB_SO': 0.1, 'SOW': 0, 'BA': 1, 'OBP': 1.5, 'SLG': 0.5, 'OPS': 1, 'PA_TB': 1, 'AB_GDP': 0.5, 'BAbip': 1, 'tOPSPlus': 0.5, 'sOPSPlus': 0.5},
+    "Astros": {'AB_R': 0.5, 'AB_H': 0, 'PA_HR': 1.5, 'AB_SB': 0.01, 'SB_SB_CS': 0.1, 'PA_BB': 0.5, 'AB_SO': 1, 'SOW': 0.1, 'BA': 1.5, 'OBP': 1, 'SLG': 0.5, 'OPS': 0, 'PA_TB': 0, 'AB_GDP': 0.1, 'BAbip': 1.5, 'tOPSPlus': 1, 'sOPSPlus': 1},
+    "Royals": {'AB_R': 1, 'AB_H': 0.5, 'PA_HR': 0.5, 'AB_SB': 0.05, 'SB_SB_CS': 0.1, 'PA_BB': 1.5, 'AB_SO': 0.5, 'SOW': 1, 'BA': 1, 'OBP': 1.5, 'SLG': 0.5, 'OPS': 1.5, 'PA_TB': 0.5, 'AB_GDP': 0.1, 'BAbip': 1, 'tOPSPlus': 0.5, 'sOPSPlus': 0.5},
+    "Angels": {},
+    "Dodgers": {},
+    "Marlins": {},
+    "Brewers": {},
+    "Twins": {},
+    "Mets": {},
+    "Yankees": {},
+    "Athletics": {},
+    "Phillies": {},
+    "Pirates": {},
+    "Padres": {},
+    "Giants": {},
+    "Mariners": {},
+    "Cardinals": {},
+    "Rays": {},
+    "Rangers": {},
+    "Blue Jays": {},
+    "Nationals": {}
+}
+
+
+hometeamOptimalWeights ={
+	"Diamondbacks": Total Wins: 40, Total Losses: 14, Total Pushes: 14
+    "Braves":  //Total Wins: 35, Total Losses: 13, Total Pushes: 9
+    "Orioles": //Total Wins: 40, Total Losses: 19, Total Pushes: 6,
+    "Red Sox": // Total Wins: 34, Total Losses: 23, Total Pushes: 7,
+    "Cubs": {}, //Total Wins: 26, Total Losses: 23, Total Pushes: 9
+    "Guardians": {}, //Total Wins: 28, Total Losses: 17, Total Pushes: 4
+    "White Sox": {},
+    "Reds": {},
+    "Rockies": {},
+    "Tigers": Total Wins: 35, Total Losses: 20, Total Pushes: 9,
+    "Astros": Total Wins: 33, Total Losses: 20, Total Pushes: 6,
+    "Royals": Total Wins: 31, Total Losses: 22, Total Pushes: 10,
+    "Angels": {},
+    "Dodgers": {},
+    "Marlins": {},
+    "Brewers": {},
+    "Twins": {},
+    "Mets": {},
+    "Yankees": {},
+    "Athletics": {},
+    "Phillies": {},
+    "Pirates": {},
+    "Padres": {},
+    "Giants": {},
+    "Mariners": {},
+    "Cardinals": {},
+    "Rays": {},
+    "Rangers": {},
+    "Blue Jays": {},
+    "Nationals": {}
+}

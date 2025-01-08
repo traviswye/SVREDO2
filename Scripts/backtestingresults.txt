@@ -1,0 +1,441 @@
+//50 advantage
+
+Team: Arizona Diamondbacks
+Total games with SP advantage: 48
+Dog Wins: 7, Dog Losses: 4
+Fav Wins: 28, Fav Losses: 9
+Total Wins: 35, Total Losses: 13
+Dog Better: 425
+Fav Better: 1033.8598709990897
+Disadvantaged Wins: 26, Disadvantaged Losses: 37
+Disadvantaged Dog Wins: 17, Disadvantaged Dog Losses: 26
+Disadvantaged Fav Wins: 9, Disadvantaged Fav Losses: 11
+Disadvantaged Dog Better: -375
+Disadvantaged Fav Better: -395.53401698635366
+
+//100 adv in pitcher adv
+Team: Arizona Diamondbacks
+Total games with SP advantage: 36
+Dog Wins: 5, Dog Losses: 3
+Fav Wins: 22, Fav Losses: 6
+Total Wins: 27, Total Losses: 9
+Dog Better: 280
+Fav Better: 935.4084622016784
+Disadvantaged Wins: 21, Disadvantaged Losses: 27
+Disadvantaged Dog Wins: 14, Disadvantaged Dog Losses: 19
+Disadvantaged Fav Wins: 7, Disadvantaged Fav Losses: 8
+Disadvantaged Dog Better: -52
+Disadvantaged Fav Better: -258.50829760769307
+
+// any advantage
+Team: Arizona Diamondbacks
+Total games with SP advantage: 63
+Dog Wins: 11, Dog Losses: 5
+Fav Wins: 34, Fav Losses: 13
+Total Wins: 45, Total Losses: 18
+Dog Better: 806
+Fav Better: 1089.5140001976247
+Disadvantaged Wins: 34, Disadvantaged Losses: 46
+Disadvantaged Dog Wins: 21, Disadvantaged Dog Losses: 31
+Disadvantaged Fav Wins: 13, Disadvantaged Fav Losses: 15
+Disadvantaged Dog Better: -433
+Disadvantaged Fav Better: -484.8157959022751
+
+
+
+
+ALL TEAMS IN POOL
+//any advantage
+Cumulative Results for All Teams:
+Total games with SP advantage: 1652
+Dog Wins: 195, Dog Losses: 164
+Fav Wins: 791, Fav Losses: 502
+Total Wins: 986, Total Losses: 666
+Dog Better: 6749
+Fav Better: 3179.8055387467207
+Disadvantaged Wins: 621, Disadvantaged Losses: 709
+Disadvantaged Dog Wins: 274, Disadvantaged Dog Losses: 374
+Disadvantaged Fav Wins: 347, Disadvantaged Fav Losses: 335
+Disadvantaged Dog Better: -2537
+Disadvantaged Fav Better: -6711.150165760375
+
+
+
+All teams... MUST BE 100 ADV to bet fav.. bet all dogs
+Cumulative Results for All Teams:
+Total games with SP advantage: 1247
+Dog Wins: 195, Dog Losses: 164
+Fav Wins: 558, Fav Losses: 330
+Total Wins: 753, Total Losses: 494
+Dog Better: 6749
+Fav Better: 3679.2358023312745
+Disadvantaged Wins: 455, Disadvantaged Losses: 575
+Disadvantaged Dog Wins: 274, Disadvantaged Dog Losses: 374
+Disadvantaged Fav Wins: 181, Disadvantaged Fav Losses: 201
+Disadvantaged Dog Better: -2537
+Disadvantaged Fav Better: -5863.230105106434
+
+
+
+All teams... MUST BE 250 ADV to bet fav.. bet all dogs
+Cumulative Results for All Teams:
+Total games with SP advantage: 869
+Dog Wins: 195, Dog Losses: 164
+Fav Wins: 331, Fav Losses: 179
+Total Wins: 526, Total Losses: 343
+Dog Better: 6749
+Fav Better: 2853.63497566338
+Disadvantaged Wins: 356, Disadvantaged Losses: 467
+Disadvantaged Dog Wins: 274, Disadvantaged Dog Losses: 374
+Disadvantaged Fav Wins: 82, Disadvantaged Fav Losses: 93
+Disadvantaged Dog Better: -2537
+Disadvantaged Fav Better: -2875.6163009693537
+
+
+
+
+All teams... MUST BE 250 ADV to bet fav.. bet all dogs
+Cumulative Results for All Teams:
+Total games with SP advantage: 732
+Dog Wins: 195, Dog Losses: 164
+Fav Wins: 248, Fav Losses: 125
+Total Wins: 443, Total Losses: 289
+Dog Better: 6749
+Fav Better: 2767.6787217402843
+Disadvantaged Wins: 327, Disadvantaged Losses: 441
+Disadvantaged Dog Wins: 274, Disadvantaged Dog Losses: 374
+Disadvantaged Fav Wins: 53, Disadvantaged Fav Losses: 67
+Disadvantaged Dog Better: -2537
+Disadvantaged Fav Better: -2542.0482400435462
+
+
+All teams... MUST BE 100 ADV to bet fav.. bet all dogs...skip games  more expensive than -200
+Cumulative Results for All Teams:
+Total games with SP advantage: 1090
+Dog Wins: 195, Dog Losses: 164
+Fav Wins: 443, Fav Losses: 288
+Total Wins: 638, Total Losses: 452
+Dog Better: 6749
+Fav Better: 3119.9212950057035
+Disadvantaged Wins: 445, Disadvantaged Losses: 570
+Disadvantaged Dog Wins: 274, Disadvantaged Dog Losses: 374
+Disadvantaged Fav Wins: 171, Disadvantaged Fav Losses: 196
+Disadvantaged Dog Better: -2537
+Disadvantaged Fav Better: -5811.576453458411
+
+All teams... MUST BE 50 ADV to bet fav.. bet all dogs...skip games  more expensive than -200
+Cumulative Results for All Teams:
+Total games with SP advantage: 1290
+Dog Wins: 195, Dog Losses: 164
+Fav Wins: 559, Fav Losses: 372
+Total Wins: 754, Total Losses: 536
+Dog Better: 6749
+Fav Better: 3572.8970840176917
+Disadvantaged Wins: 522, Disadvantaged Losses: 633
+Disadvantaged Dog Wins: 274, Disadvantaged Dog Losses: 374
+Disadvantaged Fav Wins: 248, Disadvantaged Fav Losses: 259
+Disadvantaged Dog Better: -2537
+Disadvantaged Fav Better: -6063.230409362147
+
+
+All teams... MUST BE 1+ ADV to bet fav.. bet all dogs...skip games  more expensive than -200
+Cumulative Results for All Teams:
+Total games with SP advantage: 1456
+Dog Wins: 195, Dog Losses: 164
+Fav Wins: 653, Fav Losses: 444
+Total Wins: 848, Total Losses: 608
+Dog Better: 6749
+Fav Better: 3265.8767408858666
+Disadvantaged Wins: 602, Disadvantaged Losses: 699
+Disadvantaged Dog Wins: 274, Disadvantaged Dog Losses: 374
+Disadvantaged Fav Wins: 328, Disadvantaged Fav Losses: 325
+Disadvantaged Dog Better: -2537
+Disadvantaged Fav Better: -6548.15744275385
+
+All teams... MUST BE 50 ADV to bet fav.. bet all dogs...skip games  more expensive than -250
+
+Cumulative Results for All Teams:
+Total games with SP advantage: 1413
+Dog Wins: 195, Dog Losses: 164
+Fav Wins: 644, Fav Losses: 410
+Total Wins: 839, Total Losses: 574
+Dog Better: 6749
+Fav Better: 3575.0864641861435
+Disadvantaged Wins: 533, Disadvantaged Losses: 640
+Disadvantaged Dog Wins: 274, Disadvantaged Dog Losses: 374
+Disadvantaged Fav Wins: 259, Disadvantaged Fav Losses: 266
+Disadvantaged Dog Better: -2537
+Disadvantaged Fav Better: -6257.442708277438
+
+
+
+All teams... MUST BE 150 ADV to bet fav.. bet all dogs...skip games  more expensive than -250
+Cumulative Results for All Teams:
+Total games with SP advantage: 1014
+Dog Wins: 195, Dog Losses: 164
+Fav Wins: 414, Fav Losses: 241
+Total Wins: 609, Total Losses: 405
+Dog Better: 6749
+Fav Better: 3516.2419045416673
+Disadvantaged Wins: 396, Disadvantaged Losses: 518
+Disadvantaged Dog Wins: 274, Disadvantaged Dog Losses: 374
+Disadvantaged Fav Wins: 122, Disadvantaged Fav Losses: 144
+Disadvantaged Dog Better: -2537
+Disadvantaged Fav Better: -4839.601820617474
+
+
+
+
+
+150-250
+
+Cumulative Results for All Teams:
+Total games with SP advantage: 405
+Dog Wins: 47, Dog Losses: 34
+Fav Wins: 198, Fav Losses: 126
+Total Wins: 245, Total Losses: 160
+Dog Better: 2157
+Fav Better: 850.4891213148103
+Disadvantaged Wins: 138, Disadvantaged Losses: 167
+Disadvantaged Dog Wins: 69, Disadvantaged Dog Losses: 89
+Disadvantaged Fav Wins: 69, Disadvantaged Fav Losses: 78
+Disadvantaged Dog Better: -37
+Disadvantaged Fav Better: -2397.5535805739273
+
+
+0-100
+Cumulative Results for All Teams:
+Total games with SP advantage: 551
+Dog Wins: 77, Dog Losses: 69 - 53%
+Fav Wins: 233, Fav Losses: 172 - 57%
+Total Wins: 310, Total Losses: 241 -56%
+Dog Better: 2230
+Fav Better: -499.4302635845533
+Disadvantaged Wins: 262, Disadvantaged Losses: 250
+Disadvantaged Dog Wins: 96, Disadvantaged Dog Losses: 116
+Disadvantaged Fav Wins: 166, Disadvantaged Fav Losses: 134
+Disadvantaged Dog Better: 110
+Disadvantaged Fav Better: -847.9200606539425
+
+
+50-100
+Cumulative Results for All Teams:
+Total games with SP advantage: 288
+Dog Wins: 31, Dog Losses: 33
+Fav Wins: 129, Fav Losses: 95
+Total Wins: 160, Total Losses: 128
+Dog Better: 360
+Fav Better: -106.53341191264296
+Disadvantaged Wins: 135, Disadvantaged Losses: 125
+Disadvantaged Dog Wins: 53, Disadvantaged Dog Losses: 58
+Disadvantaged Fav Wins: 82, Disadvantaged Fav Losses: 67
+Disadvantaged Dog Better: 812
+Disadvantaged Fav Better: -446.6198125979089
+
+75-100
+Cumulative Results for All Teams:
+Total games with SP advantage: 141
+Dog Wins: 17, Dog Losses: 11
+Fav Wins: 57, Fav Losses: 56
+Total Wins: 74, Total Losses: 67
+Dog Better: 872
+Fav Better: -1375.8928128352873
+Disadvantaged Wins: 74, Disadvantaged Losses: 68
+Disadvantaged Dog Wins: 34, Disadvantaged Dog Losses: 25
+Disadvantaged Fav Wins: 40, Disadvantaged Fav Losses: 43
+Disadvantaged Dog Better: 1870
+Disadvantaged Fav Better: -1224.3725657905156
+
+
+100-200
+Cumulative Results for All Teams:
+Total games with SP advantage: 496
+Dog Wins: 68, Dog Losses: 50 -  57%
+Fav Wins: 227, Fav Losses: 151  60%
+Total Wins: 295, Total Losses: 201 59%
+Dog Better: 2967
+Fav Better: 825.6008266678949
+Disadvantaged Wins: 178, Disadvantaged Losses: 225
+Disadvantaged Dog Wins: 79, Disadvantaged Dog Losses: 117
+Disadvantaged Fav Wins: 99, Disadvantaged Fav Losses: 108
+Disadvantaged Dog Better: -1534
+Disadvantaged Fav Better: -2987.6138041370796
+
+
+
+200-300
+Cumulative Results for All Teams:
+Total games with SP advantage: 319
+Dog Wins: 34, Dog Losses: 26 - 57%
+Fav Wins: 164, Fav Losses: 95 - 61%
+Total Wins: 198, Total Losses: 121 - 62%
+Dog Better: 1469
+Fav Better: 843.9453896625237
+Disadvantaged Wins: 106, Disadvantaged Losses: 120
+Disadvantaged Dog Wins: 54, Disadvantaged Dog Losses: 67
+Disadvantaged Fav Wins: 52, Disadvantaged Fav Losses: 53
+Disadvantaged Dog Better: 307
+Disadvantaged Fav Better: -1246.423659038719
+
+300-400
+Cumulative Results for All Teams:
+Total games with SP advantage: 148
+Dog Wins: 9, Dog Losses: 10 - 45%
+Fav Wins: 82, Fav Losses: 47 - 64%
+Total Wins: 91, Total Losses: 57  61.5%
+Dog Better: 110
+Fav Better: 591.0218729861092
+Disadvantaged Wins: 40, Disadvantaged Losses: 61
+Disadvantaged Dog Wins: 26, Disadvantaged Dog Losses: 37
+Disadvantaged Fav Wins: 14, Disadvantaged Fav Losses: 24
+Disadvantaged Dog Better: -376
+Disadvantaged Fav Better: -1258.2919597681164
+
+400+
+Cumulative Results for All Teams:
+Total games with SP advantage: 138
+Dog Wins: 7, Dog Losses: 9 - 43%
+Fav Wins: 85, Fav Losses: 37 - 70%
+Total Wins: 92, Total Losses: 46  66%
+Dog Better: -27
+Fav Better: 1418.6677130147475
+Disadvantaged Wins: 35, Disadvantaged Losses: 53
+Disadvantaged Dog Wins: 19, Disadvantaged Dog Losses: 37
+Disadvantaged Fav Wins: 16, Disadvantaged Fav Losses: 16
+Disadvantaged Dog Better: -1044
+Disadvantaged Fav Better: -370.900682162518
+
+400+ cap -200 odds
+Cumulative Results for All Teams:
+Total games with SP advantage: 98
+Dog Wins: 7, Dog Losses: 9
+Fav Wins: 54, Fav Losses: 28
+Total Wins: 61, Total Losses: 37
+Dog Better: -27
+Fav Better: 1115.7481109650605
+Disadvantaged Wins: 34, Disadvantaged Losses: 53
+Disadvantaged Dog Wins: 19, Disadvantaged Dog Losses: 37
+Disadvantaged Fav Wins: 15, Disadvantaged Fav Losses: 16
+Disadvantaged Dog Better: -1044
+Disadvantaged Fav Better: -414.9535455986414
+
+
+
+
+100+
+
+Cumulative Results for All Teams:
+Total games with SP advantage: 1092
+Dog Wins: 118, Dog Losses: 95
+Fav Wins: 552, Fav Losses: 327
+Total Wins: 670, Total Losses: 422
+Dog Better: 4519
+Fav Better: 3557.7631177920207
+Disadvantaged Wins: 358, Disadvantaged Losses: 459
+Disadvantaged Dog Wins: 177, Disadvantaged Dog Losses: 258
+Disadvantaged Fav Wins: 181, Disadvantaged Fav Losses: 201
+Disadvantaged Dog Better: -2765
+Disadvantaged Fav Better: -5863.230105106434
+
+100+ nothing  over -275
+Cumulative Results for All Teams:
+Total games with SP advantage: 1063
+Dog Wins: 118, Dog Losses: 95
+Fav Wins: 531, Fav Losses: 319
+Total Wins: 649, Total Losses: 414
+Dog Better: 4519
+Fav Better: 3690.478039819666
+Disadvantaged Wins: 358, Disadvantaged Losses: 459
+Disadvantaged Dog Wins: 177, Disadvantaged Dog Losses: 258
+Disadvantaged Fav Wins: 181, Disadvantaged Fav Losses: 201
+Disadvantaged Dog Better: -2765
+Disadvantaged Fav Better: -5863.230105106434
+
+100+ nothing over -240
+Cumulative Results for All Teams:
+Total games with SP advantage: 1044
+Dog Wins: 118, Dog Losses: 95
+Fav Wins: 516, Fav Losses: 315
+Total Wins: 634, Total Losses: 410
+Dog Better: 4519
+Fav Better: 3523.5752916684337
+Disadvantaged Wins: 357, Disadvantaged Losses: 459
+Disadvantaged Dog Wins: 177, Disadvantaged Dog Losses: 258
+Disadvantaged Fav Wins: 180, Disadvantaged Fav Losses: 201
+Disadvantaged Dog Better: -2765
+Disadvantaged Fav Better: -5900.130474110124
+
+
+100+ nothing over -215
+Cumulative Results for All Teams:
+Total games with SP advantage: 972
+Dog Wins: 118, Dog Losses: 95
+Fav Wins: 464, Fav Losses: 295
+Total Wins: 582, Total Losses: 390
+Dog Better: 4519
+Fav Better: 3296.080066272625
+Disadvantaged Wins: 352, Disadvantaged Losses: 457
+Disadvantaged Dog Wins: 177, Disadvantaged Dog Losses: 258
+Disadvantaged Fav Wins: 175, Disadvantaged Fav Losses: 199
+Disadvantaged Dog Better: -2765
+Disadvantaged Fav Better: -5918.312934175784
+
+100+ nothing over -235
+Cumulative Results for All Teams:
+Total games with SP advantage: 1017
+Dog Wins: 118, Dog Losses: 95
+Fav Wins: 495, Fav Losses: 309
+Total Wins: 613, Total Losses: 404
+Dog Better: 4519
+Fav Better: 3261.2846277230765
+Disadvantaged Wins: 356, Disadvantaged Losses: 457
+Disadvantaged Dog Wins: 177, Disadvantaged Dog Losses: 258
+Disadvantaged Fav Wins: 179, Disadvantaged Fav Losses: 199
+Disadvantaged Dog Better: -2765
+Disadvantaged Fav Better: -5740.780880614189
+
+
+
+Teams with Pitching Advantage and their Scores:
+Pirates: 139.90
+
+
+Royals: 60.57
+
+
+Reds: 90.05
+Astros: 24.54
+
+
+
+
+5-6 ML
+Guardians: 218.90
+Cubs: 432.09
+Giants: 168.77
+Mariners: 400.25
+Angels: 166.04
+Blue Jays: 167.02
+Rangers: 501.51
+Tigers: 191.86
+Phillies: 228.28
+Braves: 239.97
+Orioles: 117.65
+
+f5 win
+Guardians: 218.90 
+Giants: 168.77
+Mariners: 400.25
+Blue Jays: 167.02
+Tigers: 191.86
+Phillies: 228.28
+Orioles: 117.65
+
+f5L
+Angels: 166.04
+Rangers: 501.51
+Braves: 239.97
+
+f5P
+Cubs: 432.09
+

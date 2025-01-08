@@ -1,0 +1,54 @@
+CREATE PROCEDURE ArchiveAndResetTeamRecSplits
+AS
+BEGIN
+    -- Start a transaction
+    BEGIN TRANSACTION;
+
+    BEGIN TRY
+        -- Archive current data
+        INSERT INTO [NRFI].[dbo].[TeamRecSplitsArchive]
+        SELECT *, YEAR(GETDATE()) AS Year
+        FROM [NRFI].[dbo].[TeamRecSplits];
+
+        -- Reset the current table
+        UPDATE [NRFI].[dbo].[TeamRecSplits]
+        SET 
+            [Wins] = 0,
+            [Losses] = 0,
+            [WinPercentage] = 0,
+            [L10] = NULL,
+            [L20] = NULL,
+            [L30] = NULL,
+            [RunsScored] = 0,
+            [RunsAgainst] = 0,
+            [Diff] = 0,
+            [ExpectedRecord] = NULL,
+            [HomeRec] = NULL,
+            [AwayRec] = NULL,
+            [Xtra] = NULL,
+            [1Run] = NULL,
+            [Day] = NULL,
+            [Night] = NULL,
+            [Grass] = NULL,
+            [Turf] = NULL,
+            [East] = NULL,
+            [Central] = NULL,
+            [West] = NULL,
+            [Inter] = NULL,
+            [vs500+] = NULL,
+            [vsRHP] = NULL,
+            [vsLHP] = NULL,
+            [DateLastModified] = GETDATE(),
+            [GB] = NULL,
+            [WCGB] = NULL,
+            [Streak] = NULL;
+
+        -- Commit the transaction
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        -- Rollback transaction on error
+        ROLLBACK TRANSACTION;
+        THROW;
+    END CATCH
+END;

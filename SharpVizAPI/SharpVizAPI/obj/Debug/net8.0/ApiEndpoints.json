@@ -1,0 +1,4618 @@
+[
+  {
+    "ContainingType": "SharpVizAPI.Controllers.BJmodelingController",
+    "Method": "CalculateBsR",
+    "RelativePath": "api/BJmodeling/calculateBaseRuns",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefid",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "split",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.BJmodelingController",
+    "Method": "CalculateBasicRC",
+    "RelativePath": "api/BJmodeling/calculateBasicRC",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefid",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "split",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.BJmodelingController",
+    "Method": "CalculateRCBase24",
+    "RelativePath": "api/BJmodeling/calculateRCBase24",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefid",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "split",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.BJmodelingController",
+    "Method": "CalculateTechRC",
+    "RelativePath": "api/BJmodeling/calculateTechRC",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefid",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "split",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.BJmodelingController",
+    "Method": "NormalizeStat",
+    "RelativePath": "api/BJmodeling/normalizeStat",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefid",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "methodFlag",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.BJmodelingController",
+    "Method": "GetPythagWinProbability",
+    "RelativePath": "api/BJmodeling/pythagWinProbability",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "teamName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "date",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.BJmodelingController",
+    "Method": "GetRawWinProbability",
+    "RelativePath": "api/BJmodeling/rawWinProbability",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "teamName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "date",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.BlendingController",
+    "Method": "Compare2SP",
+    "RelativePath": "api/Blending/compare2sp",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pitchera",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pitcherb",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.BlendingController",
+    "Method": "Compare2SPCustom",
+    "RelativePath": "api/Blending/compare2spCustom",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pitcheraId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pitcherbId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "AB_R",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "AB_H",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "PA_HR",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "AB_SB",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "SB_SB_CS",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "PA_BB",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "AB_SO",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "SOW",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "BA",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "OBP",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "SLG",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "OPS",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "PA_TB",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "AB_GDP",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "BAbip",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "tOPSPlus",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "sOPSPlus",
+        "Type": "System.Double",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.BlendingController",
+    "Method": "GetDefaultWeights",
+    "RelativePath": "api/Blending/defaultWeights",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.BlendingController",
+    "Method": "GetStartingPitcherAdvantage",
+    "RelativePath": "api/Blending/startingPitcherAdvantage",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "date",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.BlendingController",
+    "Method": "GetPitchersBlendingResults",
+    "RelativePath": "api/Blending/todaysSPHistoryVsRecency",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "date",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.BullpenUsageController",
+    "Method": "GetBullpenUsage",
+    "RelativePath": "api/BullpenUsage",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.BullpenUsage, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.BullpenUsageController",
+    "Method": "PostBullpenUsage",
+    "RelativePath": "api/BullpenUsage",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bullpenUsage",
+        "Type": "SharpVizAPI.Models.BullpenUsage",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.BullpenUsage",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.BullpenUsageController",
+    "Method": "GetBullpenUsage",
+    "RelativePath": "api/BullpenUsage/{bbrefid}/{teamGameNumber}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefid",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "teamGameNumber",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.BullpenUsage",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.BullpenUsageController",
+    "Method": "PutBullpenUsage",
+    "RelativePath": "api/BullpenUsage/{bbrefid}/{teamGameNumber}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefid",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "teamGameNumber",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "bullpenUsage",
+        "Type": "SharpVizAPI.Models.BullpenUsage",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.BullpenUsageController",
+    "Method": "DeleteBullpenUsage",
+    "RelativePath": "api/BullpenUsage/{bbrefid}/{teamGameNumber}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefid",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "teamGameNumber",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.ClassificationController",
+    "Method": "ClassificationByAllFactors",
+    "RelativePath": "api/Classification/classificationByAllFactors",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "date",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.ClassificationController",
+    "Method": "ClassificationByPitchingAdv",
+    "RelativePath": "api/Classification/classificationByPitchingAdv",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "date",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EvaluationController",
+    "Method": "EvaluateNRFI",
+    "RelativePath": "api/Evaluation/evaluateNRFI/{date}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "date",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EvaluationController",
+    "Method": "EvaluateNRFI1st",
+    "RelativePath": "api/Evaluation/evaluateNRFI1st/{date}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "date",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EvaluationController",
+    "Method": "EvaluateWithBaseState",
+    "RelativePath": "api/Evaluation/evaluateWithBaseState/{date}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "date",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.GameOddsController",
+    "Method": "GetAllGameOdds",
+    "RelativePath": "api/GameOdds",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.GameOdds, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.GameOddsController",
+    "Method": "PostGameOdds",
+    "RelativePath": "api/GameOdds",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "gameOdds",
+        "Type": "SharpVizAPI.Models.GameOdds",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.GameOdds",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.GameOddsController",
+    "Method": "GetGameOdds",
+    "RelativePath": "api/GameOdds/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.GameOdds",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.GameOddsController",
+    "Method": "PutGameOdds",
+    "RelativePath": "api/GameOdds/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "gameOdds",
+        "Type": "SharpVizAPI.Models.GameOdds",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.GameOddsController",
+    "Method": "DeleteGameOdds",
+    "RelativePath": "api/GameOdds/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.GameOddsController",
+    "Method": "GetGameOddsByDate",
+    "RelativePath": "api/GameOdds/date/{date}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "date",
+        "Type": "System.DateTime",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.GameOdds, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "GamePreviewsController",
+    "Method": "CreateGamePreview",
+    "RelativePath": "api/GamePreviews",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "gamePreviewDto",
+        "Type": "GamePreviewDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GamePreviewsController",
+    "Method": "GetGamePreviewsByDate",
+    "RelativePath": "api/GamePreviews/{date}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "date",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GamePreviewsController",
+    "Method": "GetStartingPitchers",
+    "RelativePath": "api/GamePreviews/startingL7Pitchers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.GameResultsController",
+    "Method": "GetAllGameResults",
+    "RelativePath": "api/GameResults",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.GameResults, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.GameResultsController",
+    "Method": "PostGameResults",
+    "RelativePath": "api/GameResults",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "gameResults",
+        "Type": "SharpVizAPI.Models.GameResults",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.GameResults",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.GameResultsController",
+    "Method": "GetGameResults",
+    "RelativePath": "api/GameResults/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.GameResults",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.GameResultsController",
+    "Method": "PutGameResults",
+    "RelativePath": "api/GameResults/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "gameResults",
+        "Type": "SharpVizAPI.Models.GameResults",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.GameResultsController",
+    "Method": "DeleteGameResults",
+    "RelativePath": "api/GameResults/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.GameResultsController",
+    "Method": "GetGameResultsByHomeTeam",
+    "RelativePath": "api/GameResults/hometeam/{homeTeam}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "homeTeam",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.GameResults, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.GameResultsWithOddsController",
+    "Method": "GetGameResultsWithOdds",
+    "RelativePath": "api/GameResultsWithOdds",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.GameResultsWithOdds, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.GameResultsWithOddsController",
+    "Method": "PostGameResultsWithOdds",
+    "RelativePath": "api/GameResultsWithOdds",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "gameResult",
+        "Type": "SharpVizAPI.Models.GameResultsWithOdds",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.GameResultsWithOdds",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.GameResultsWithOddsController",
+    "Method": "GetGameResultsWithOdds",
+    "RelativePath": "api/GameResultsWithOdds/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.GameResultsWithOdds",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.GameResultsWithOddsController",
+    "Method": "PutGameResultsWithOdds",
+    "RelativePath": "api/GameResultsWithOdds/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "gameResult",
+        "Type": "SharpVizAPI.Models.GameResultsWithOdds",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.GameResultsWithOddsController",
+    "Method": "DeleteGameResultsWithOdds",
+    "RelativePath": "api/GameResultsWithOdds/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.GameResultsWithOddsController",
+    "Method": "GetGameResultsByTeam",
+    "RelativePath": "api/GameResultsWithOdds/team",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "teamName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.GameResultsWithOdds, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.HitterLast7Controller",
+    "Method": "PostHitterLast7",
+    "RelativePath": "api/HitterLast7",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "hitterLast7",
+        "Type": "SharpVizAPI.Models.HitterLast7",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.HitterLast7",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.HitterLast7Controller",
+    "Method": "GetHitterLast7",
+    "RelativePath": "api/HitterLast7/{bbrefId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.HitterLast7",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.HitterLast7Controller",
+    "Method": "PutHitterLast7",
+    "RelativePath": "api/HitterLast7/{bbrefId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "hitterLast7",
+        "Type": "SharpVizAPI.Models.HitterLast7",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.HitterLast7Controller",
+    "Method": "DeleteHitterLast7",
+    "RelativePath": "api/HitterLast7/{bbrefId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.HitterLast7Controller",
+    "Method": "GetOutperformingHitters",
+    "RelativePath": "api/HitterLast7/outperformers/{date}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "date",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.HittersController",
+    "Method": "PostHitter",
+    "RelativePath": "api/Hitters",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "hitter",
+        "Type": "SharpVizAPI.Models.Hitter",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.Hitter",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.HittersController",
+    "Method": "GetHitter",
+    "RelativePath": "api/Hitters/{bbrefId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.Hitter",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.HittersController",
+    "Method": "PutHitter",
+    "RelativePath": "api/Hitters/{bbrefId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "hitter",
+        "Type": "SharpVizAPI.Models.Hitter",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.HittersTrailingGamelogController",
+    "Method": "GetTrailingGamelogs",
+    "RelativePath": "api/HittersTrailingGamelog",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefid",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.HittersTrailingGamelogController",
+    "Method": "AddTrailingGamelog",
+    "RelativePath": "api/HittersTrailingGamelog",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "gamelog",
+        "Type": "SharpVizAPI.Models.HittersTrailingGamelog",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.HittersTrailingGamelogController",
+    "Method": "UpdateTrailingGamelog",
+    "RelativePath": "api/HittersTrailingGamelog/{bbrefid}/{date}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefid",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "date",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedGamelog",
+        "Type": "SharpVizAPI.Models.HittersTrailingGamelog",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.HittersTrailingGamelogController",
+    "Method": "DeleteTrailingGamelog",
+    "RelativePath": "api/HittersTrailingGamelog/{bbrefid}/{date}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefid",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "date",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.HittersTrailingGamelogController",
+    "Method": "GetMostRecentTrailingGamelog",
+    "RelativePath": "api/HittersTrailingGamelog/mostRecent",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefid",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HitterTempTrackingController",
+    "Method": "PostHitterTemperature",
+    "RelativePath": "api/HitterTempTracking",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "hitterTempDto",
+        "Type": "SharpVizAPI.Models.HitterTempTracking",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HitterTempTrackingController",
+    "Method": "GetHitterTemperature",
+    "RelativePath": "api/HitterTempTracking/{bbrefid}/{year}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefid",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.HitterTempTracking",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "HitterTempTrackingController",
+    "Method": "UpdateTemps",
+    "RelativePath": "api/HitterTempTracking/updateTemps",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "targetDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.HitterVsPitcherController",
+    "Method": "GetAllHitterVsPitchers",
+    "RelativePath": "api/HitterVsPitcher",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.HitterVsPitcher, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.HitterVsPitcherController",
+    "Method": "CreateHitterVsPitcher",
+    "RelativePath": "api/HitterVsPitcher",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "hitterVsPitcher",
+        "Type": "SharpVizAPI.Models.HitterVsPitcher",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.HitterVsPitcher",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.HitterVsPitcherController",
+    "Method": "GetHitterVsPitcher",
+    "RelativePath": "api/HitterVsPitcher/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.HitterVsPitcher",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.HitterVsPitcherController",
+    "Method": "UpdateHitterVsPitcher",
+    "RelativePath": "api/HitterVsPitcher/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "hitterVsPitcher",
+        "Type": "SharpVizAPI.Models.HitterVsPitcher",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.HitterVsPitcherController",
+    "Method": "DeleteHitterVsPitcher",
+    "RelativePath": "api/HitterVsPitcher/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.HitterVsPitcherController",
+    "Method": "GetAllRecordsByDate",
+    "RelativePath": "api/HitterVsPitcher/allRecordsByDate/{date}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "date",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.HitterVsPitcher, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.HitterVsPitcherController",
+    "Method": "GetHitterVsPitchersByGamePreviewID",
+    "RelativePath": "api/HitterVsPitcher/game/{gamePreviewId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "gamePreviewId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.HitterVsPitcher, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.HitterVsPitcherController",
+    "Method": "GetHitterVsPitchersByDate",
+    "RelativePath": "api/HitterVsPitcher/LineupView/{date}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "date",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.HitterVsPitcherController",
+    "Method": "GetHitterVsPitchersByPitcher",
+    "RelativePath": "api/HitterVsPitcher/pitcher/{pitcher}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pitcher",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.HitterVsPitcher, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.InjuryController",
+    "Method": "PostInjury",
+    "RelativePath": "api/Injury",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "injury",
+        "Type": "SharpVizAPI.Models.Injury",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.Injury",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.InjuryController",
+    "Method": "GetInjuryByPlayer",
+    "RelativePath": "api/Injury/{bbrefId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.Injury, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.InjuryController",
+    "Method": "PutInjury",
+    "RelativePath": "api/Injury/{bbrefId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "injury",
+        "Type": "SharpVizAPI.Models.Injury",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.InjuryController",
+    "Method": "DeleteInjury",
+    "RelativePath": "api/Injury/{bbrefId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.InjuryController",
+    "Method": "GetInjuriesByDate",
+    "RelativePath": "api/Injury/date/{date}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "date",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.Injury, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.InjuryController",
+    "Method": "GetInjurySummary",
+    "RelativePath": "api/Injury/summary",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "date",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.LineupsController",
+    "Method": "GetLineups",
+    "RelativePath": "api/Lineups",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.LineupsController",
+    "Method": "PostLineup",
+    "RelativePath": "api/Lineups",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lineup",
+        "Type": "SharpVizAPI.Models.Lineup",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.LineupsController",
+    "Method": "GetLineup",
+    "RelativePath": "api/Lineups/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.LineupsController",
+    "Method": "CreateActualLineup",
+    "RelativePath": "api/Lineups/Actual",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "actualLineup",
+        "Type": "SharpVizAPI.Models.ActualLineup",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.LineupsController",
+    "Method": "GetActualLineupsByDate",
+    "RelativePath": "api/Lineups/Actual/{date}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "date",
+        "Type": "System.DateTime",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.LineupsController",
+    "Method": "UpdateFetchedLogs",
+    "RelativePath": "api/Lineups/Actual/{id}/FetchedLogs",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.LineupsController",
+    "Method": "FetchAndStoreActualLineups",
+    "RelativePath": "api/Lineups/fetchActualLineups",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.LineupsController",
+    "Method": "GetLast10LineupsByTeam",
+    "RelativePath": "api/Lineups/last10/{team}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "team",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.LineupsController",
+    "Method": "CreateLineupPrediction",
+    "RelativePath": "api/Lineups/Predictions",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lineupPrediction",
+        "Type": "SharpVizAPI.Models.LineupPrediction",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.LineupsController",
+    "Method": "GetLineupPrediction",
+    "RelativePath": "api/Lineups/Predictions/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.LineupsController",
+    "Method": "GetLineupPredictionsByDate",
+    "RelativePath": "api/Lineups/Predictions/date/{date}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "date",
+        "Type": "System.DateTime",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.LineupsController",
+    "Method": "PredictLineup",
+    "RelativePath": "api/Lineups/predictLineup/{team}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "team",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "recentGames",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "weightRecent",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "throwHand",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.LineupsController",
+    "Method": "GetLineupsByTeam",
+    "RelativePath": "api/Lineups/team/{team}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "team",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_BallparksController",
+    "Method": "GetBallparks",
+    "RelativePath": "api/ML_Ballparks",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.MLmodels.ML_Ballparks, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_BallparksController",
+    "Method": "PostBallpark",
+    "RelativePath": "api/ML_Ballparks",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ballpark",
+        "Type": "SharpVizAPI.Models.MLmodels.ML_Ballparks",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.MLmodels.ML_Ballparks",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_BallparksController",
+    "Method": "GetBallpark",
+    "RelativePath": "api/ML_Ballparks/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.MLmodels.ML_Ballparks",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_BallparksController",
+    "Method": "PutBallpark",
+    "RelativePath": "api/ML_Ballparks/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "ballpark",
+        "Type": "SharpVizAPI.Models.MLmodels.ML_Ballparks",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_BallparksController",
+    "Method": "DeleteBallpark",
+    "RelativePath": "api/ML_Ballparks/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.MLmodels.ML_Ballparks",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_BoxScoresController",
+    "Method": "GetBoxScores",
+    "RelativePath": "api/ML_BoxScores",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.MLmodels.ML_BoxScores, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_BoxScoresController",
+    "Method": "PostBoxScore",
+    "RelativePath": "api/ML_BoxScores",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "boxScore",
+        "Type": "SharpVizAPI.Models.MLmodels.ML_BoxScores",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.MLmodels.ML_BoxScores",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_BoxScoresController",
+    "Method": "GetBoxScore",
+    "RelativePath": "api/ML_BoxScores/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.MLmodels.ML_BoxScores",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_BoxScoresController",
+    "Method": "PutBoxScore",
+    "RelativePath": "api/ML_BoxScores/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "boxScore",
+        "Type": "SharpVizAPI.Models.MLmodels.ML_BoxScores",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_BoxScoresController",
+    "Method": "DeleteBoxScore",
+    "RelativePath": "api/ML_BoxScores/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.MLmodels.ML_BoxScores",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_GamesController",
+    "Method": "GetGames",
+    "RelativePath": "api/ML_Games",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.MLmodels.ML_Games, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_GamesController",
+    "Method": "PostGame",
+    "RelativePath": "api/ML_Games",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "game",
+        "Type": "SharpVizAPI.Models.MLmodels.ML_Games",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.MLmodels.ML_Games",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_GamesController",
+    "Method": "GetGame",
+    "RelativePath": "api/ML_Games/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.MLmodels.ML_Games",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_GamesController",
+    "Method": "PutGame",
+    "RelativePath": "api/ML_Games/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "game",
+        "Type": "SharpVizAPI.Models.MLmodels.ML_Games",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_GamesController",
+    "Method": "DeleteGame",
+    "RelativePath": "api/ML_Games/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.MLmodels.ML_Games",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_LineupsController",
+    "Method": "GetLineups",
+    "RelativePath": "api/ML_Lineups",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.MLmodels.ML_Lineups, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_LineupsController",
+    "Method": "PostLineup",
+    "RelativePath": "api/ML_Lineups",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lineup",
+        "Type": "SharpVizAPI.Models.MLmodels.ML_Lineups",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.MLmodels.ML_Lineups",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_LineupsController",
+    "Method": "GetLineup",
+    "RelativePath": "api/ML_Lineups/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.MLmodels.ML_Lineups",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_LineupsController",
+    "Method": "PutLineup",
+    "RelativePath": "api/ML_Lineups/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "lineup",
+        "Type": "SharpVizAPI.Models.MLmodels.ML_Lineups",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_LineupsController",
+    "Method": "DeleteLineup",
+    "RelativePath": "api/ML_Lineups/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.MLmodels.ML_Lineups",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_PitchingStatsController",
+    "Method": "GetPitchingStats",
+    "RelativePath": "api/ML_PitchingStats",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.MLmodels.ML_PitchingStats, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_PitchingStatsController",
+    "Method": "PostPitchingStat",
+    "RelativePath": "api/ML_PitchingStats",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pitchingStat",
+        "Type": "SharpVizAPI.Models.MLmodels.ML_PitchingStats",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.MLmodels.ML_PitchingStats",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_PitchingStatsController",
+    "Method": "GetPitchingStat",
+    "RelativePath": "api/ML_PitchingStats/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.MLmodels.ML_PitchingStats",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_PitchingStatsController",
+    "Method": "PutPitchingStat",
+    "RelativePath": "api/ML_PitchingStats/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "pitchingStat",
+        "Type": "SharpVizAPI.Models.MLmodels.ML_PitchingStats",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_PitchingStatsController",
+    "Method": "DeletePitchingStat",
+    "RelativePath": "api/ML_PitchingStats/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.MLmodels.ML_PitchingStats",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_PlayersController",
+    "Method": "GetPlayers",
+    "RelativePath": "api/ML_Players",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.MLmodels.ML_Players, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_PlayersController",
+    "Method": "PostPlayer",
+    "RelativePath": "api/ML_Players",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "player",
+        "Type": "SharpVizAPI.Models.MLmodels.ML_Players",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.MLmodels.ML_Players",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_PlayersController",
+    "Method": "GetPlayer",
+    "RelativePath": "api/ML_Players/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.MLmodels.ML_Players",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_PlayersController",
+    "Method": "PutPlayer",
+    "RelativePath": "api/ML_Players/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "player",
+        "Type": "SharpVizAPI.Models.MLmodels.ML_Players",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_PlayersController",
+    "Method": "DeletePlayer",
+    "RelativePath": "api/ML_Players/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.MLmodels.ML_Players",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_WeatherController",
+    "Method": "GetWeather",
+    "RelativePath": "api/ML_Weather",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.MLmodels.ML_Weather, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_WeatherController",
+    "Method": "PostWeather",
+    "RelativePath": "api/ML_Weather",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "weather",
+        "Type": "SharpVizAPI.Models.MLmodels.ML_Weather",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.MLmodels.ML_Weather",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_WeatherController",
+    "Method": "GetWeather",
+    "RelativePath": "api/ML_Weather/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.MLmodels.ML_Weather",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_WeatherController",
+    "Method": "PutWeather",
+    "RelativePath": "api/ML_Weather/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "weather",
+        "Type": "SharpVizAPI.Models.MLmodels.ML_Weather",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLmodel.ML_WeatherController",
+    "Method": "DeleteWeather",
+    "RelativePath": "api/ML_Weather/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.MLmodels.ML_Weather",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLBPlayerController",
+    "Method": "PostMLBplayer",
+    "RelativePath": "api/MLBPlayer",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "player",
+        "Type": "SharpVizAPI.Models.MLBplayer",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.MLBplayer",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLBPlayerController",
+    "Method": "GetMLBplayer",
+    "RelativePath": "api/MLBPlayer/{bbrefId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.MLBplayer",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLBPlayerController",
+    "Method": "PutMLBplayer",
+    "RelativePath": "api/MLBPlayer/{bbrefId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "player",
+        "Type": "SharpVizAPI.Models.MLBplayer",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLBPlayerController",
+    "Method": "DeleteMLBplayer",
+    "RelativePath": "api/MLBPlayer/{bbrefId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLBPlayerController",
+    "Method": "GetByFullNameAndTeam",
+    "RelativePath": "api/MLBPlayer/search",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "fullName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "team",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.MLBplayer, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.MLBPlayerController",
+    "Method": "GetByInitialAndLastName",
+    "RelativePath": "api/MLBPlayer/searchAbr",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "firstInitial",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "lastName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "team",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.MLBplayer",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NRFIRecords2024Controller",
+    "Method": "CreateNRFIRecord",
+    "RelativePath": "api/NRFIRecords2024",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nrfiRecord",
+        "Type": "SharpVizAPI.Models.NRFIRecord2024",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NRFIRecords2024Controller",
+    "Method": "UpdateNRFIRecord",
+    "RelativePath": "api/NRFIRecords2024/{team}/{year}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "team",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedNRFIRecord",
+        "Type": "SharpVizAPI.Models.NRFIRecord2024",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NRFIRecords2024Controller",
+    "Method": "GetNRFIRecordsByYear",
+    "RelativePath": "api/NRFIRecords2024/{year}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NRFIRecords2024Controller",
+    "Method": "CreateNRFIRecords",
+    "RelativePath": "api/NRFIRecords2024/batch",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nrfiRecords",
+        "Type": "System.Collections.Generic.List\u00601[[SharpVizAPI.Models.NRFIRecord2024, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ParkFactorsController",
+    "Method": "GetAllParkFactors",
+    "RelativePath": "api/ParkFactors",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.ParkFactor, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ParkFactorsController",
+    "Method": "CreateParkFactor",
+    "RelativePath": "api/ParkFactors",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "parkFactor",
+        "Type": "SharpVizAPI.Models.ParkFactor",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ParkFactorsController",
+    "Method": "UpdateParkFactor",
+    "RelativePath": "api/ParkFactors/{team}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "team",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedParkFactor",
+        "Type": "SharpVizAPI.Models.ParkFactor",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ParkFactorsController",
+    "Method": "GetParkFactorByVenue",
+    "RelativePath": "api/ParkFactors/{venue}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "venue",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.ParkFactor",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ParkFactorsController",
+    "Method": "CreateParkFactors",
+    "RelativePath": "api/ParkFactors/batch",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "parkFactors",
+        "Type": "System.Collections.Generic.List\u00601[[SharpVizAPI.Models.ParkFactor, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ParkFactorsController",
+    "Method": "GetParkFactor",
+    "RelativePath": "api/ParkFactors/getParkFactor",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "teamAbbreviation",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ParkFactorsController",
+    "Method": "NormalizeParkFactors",
+    "RelativePath": "api/ParkFactors/normalize",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "ParkFactorsController\u002BNormalizeRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ParkFactorsController",
+    "Method": "AdjustValueByParkFactor",
+    "RelativePath": "api/ParkFactors/normToNextPark",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "value",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "teamAbbreviation",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Pitcher1stInningController",
+    "Method": "CreatePitcher1stInning",
+    "RelativePath": "api/Pitcher1stInning",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pitcher1stInning",
+        "Type": "SharpVizAPI.Models.Pitcher1stInning",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Pitcher1stInningController",
+    "Method": "GetPitcher1stInning",
+    "RelativePath": "api/Pitcher1stInning/{bbrefID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefID",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Pitcher1stInningController",
+    "Method": "UpdatePitcher1stInning",
+    "RelativePath": "api/Pitcher1stInning/{bbrefID}/{year}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefID",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "pitcher1stInning",
+        "Type": "SharpVizAPI.Models.Pitcher1stInning",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Pitcher1stInningController",
+    "Method": "DeletePitcher1stInning",
+    "RelativePath": "api/Pitcher1stInning/{bbrefID}/{year}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefID",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Pitcher1stInningController",
+    "Method": "GetPitcher1stInning",
+    "RelativePath": "api/Pitcher1stInning/{bbrefID}/{year}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefID",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.PitcherByInningStatsController",
+    "Method": "PostPitcherByInningStats",
+    "RelativePath": "api/PitcherByInningStats",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "stats",
+        "Type": "SharpVizAPI.Models.PitcherByInningStats",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.PitcherByInningStats",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.PitcherByInningStatsController",
+    "Method": "GetPitcherStatsByBbrefId",
+    "RelativePath": "api/PitcherByInningStats/{bbrefId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.PitcherByInningStats, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.PitcherByInningStatsController",
+    "Method": "GetPitcherByInningStats",
+    "RelativePath": "api/PitcherByInningStats/{bbrefId}/{inning}/{year}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "inning",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.PitcherByInningStats",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.PitcherByInningStatsController",
+    "Method": "PutPitcherByInningStats",
+    "RelativePath": "api/PitcherByInningStats/{bbrefId}/{inning}/{year}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "inning",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "stats",
+        "Type": "SharpVizAPI.Models.PitcherByInningStats",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.PitcherHomeAwaySplitsController",
+    "Method": "GetPitcherHomeAwaySplits",
+    "RelativePath": "api/PitcherHomeAwaySplits",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.PitcherHomeAwaySplits, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.PitcherHomeAwaySplitsController",
+    "Method": "PostPitcherHomeAwaySplit",
+    "RelativePath": "api/PitcherHomeAwaySplits",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pitcherSplit",
+        "Type": "SharpVizAPI.Models.PitcherHomeAwaySplits",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.PitcherHomeAwaySplits",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.PitcherHomeAwaySplitsController",
+    "Method": "GetPitcherHomeAwaySplit",
+    "RelativePath": "api/PitcherHomeAwaySplits/{bbrefID}/{year}/{split}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefID",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "split",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.PitcherHomeAwaySplits",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.PitcherHomeAwaySplitsController",
+    "Method": "PutPitcherHomeAwaySplit",
+    "RelativePath": "api/PitcherHomeAwaySplits/{bbrefID}/{year}/{split}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefID",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "split",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "pitcherSplit",
+        "Type": "SharpVizAPI.Models.PitcherHomeAwaySplits",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.PitcherHomeAwaySplitsController",
+    "Method": "DeletePitcherHomeAwaySplit",
+    "RelativePath": "api/PitcherHomeAwaySplits/{bbrefID}/{year}/{split}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefID",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "split",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.PitcherPlatoonAndTrackRecordController",
+    "Method": "GetPitcherPlatoonAndTrackRecords",
+    "RelativePath": "api/PitcherPlatoonAndTrackRecord",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.PitcherPlatoonAndTrackRecord, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.PitcherPlatoonAndTrackRecordController",
+    "Method": "PostPitcherPlatoonAndTrackRecord",
+    "RelativePath": "api/PitcherPlatoonAndTrackRecord",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "record",
+        "Type": "SharpVizAPI.Models.PitcherPlatoonAndTrackRecord",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.PitcherPlatoonAndTrackRecord",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.PitcherPlatoonAndTrackRecordController",
+    "Method": "GetPitcherPlatoonAndTrackRecordsByBbrefIDAndYear",
+    "RelativePath": "api/PitcherPlatoonAndTrackRecord/{bbrefID}/{year}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefID",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.PitcherPlatoonAndTrackRecord, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.PitcherPlatoonAndTrackRecordController",
+    "Method": "GetPitcherPlatoonAndTrackRecord",
+    "RelativePath": "api/PitcherPlatoonAndTrackRecord/{bbrefID}/{year}/{split}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefID",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "split",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.PitcherPlatoonAndTrackRecord",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.PitcherPlatoonAndTrackRecordController",
+    "Method": "PutPitcherPlatoonAndTrackRecord",
+    "RelativePath": "api/PitcherPlatoonAndTrackRecord/{bbrefID}/{year}/{split}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefID",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "split",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "record",
+        "Type": "SharpVizAPI.Models.PitcherPlatoonAndTrackRecord",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.PitcherPlatoonAndTrackRecordController",
+    "Method": "DeletePitcherPlatoonAndTrackRecord",
+    "RelativePath": "api/PitcherPlatoonAndTrackRecord/{bbrefID}/{year}/{split}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefID",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "split",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PitchersController",
+    "Method": "CreatePitcher",
+    "RelativePath": "api/Pitchers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pitcher",
+        "Type": "SharpVizAPI.Models.Pitcher",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PitchersController",
+    "Method": "UpdatePitcher",
+    "RelativePath": "api/Pitchers/{bbrefID}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefID",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "pitcher",
+        "Type": "SharpVizAPI.Models.Pitcher",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PitchersController",
+    "Method": "GetPitcher",
+    "RelativePath": "api/Pitchers/{bbrefID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefID",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PitchersController",
+    "Method": "DeletePitcher",
+    "RelativePath": "api/Pitchers/{bbrefID}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefID",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PitchersController",
+    "Method": "CreateBasicPitcher",
+    "RelativePath": "api/Pitchers/Basic",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pitcherDto",
+        "Type": "PitchersController\u002BCreatePitcherDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PitchersController",
+    "Method": "GetPitcherExists",
+    "RelativePath": "api/Pitchers/exists/{bbrefID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefID",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.PitchingAverageController",
+    "Method": "GetAll",
+    "RelativePath": "api/PitchingAverage",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.PitchingAverageController",
+    "Method": "GetByYear",
+    "RelativePath": "api/PitchingAverage/{year}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.PropsController",
+    "Method": "GetSBProps",
+    "RelativePath": "api/Props/SBProps",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "date",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.PropsController",
+    "Method": "GetStrikeoutProjections",
+    "RelativePath": "api/Props/StrikeoutProjections",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "date",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TeamRecSplitsController",
+    "Method": "GetTeamRecSplits",
+    "RelativePath": "api/TeamRecSplits",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TeamRecSplitsController",
+    "Method": "PostTeamRecSplit",
+    "RelativePath": "api/TeamRecSplits",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "teamRecSplits",
+        "Type": "SharpVizAPI.Models.TeamRecSplits",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TeamRecSplitsController",
+    "Method": "GetTeamRecSplit",
+    "RelativePath": "api/TeamRecSplits/{team}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "team",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TeamRecSplitsController",
+    "Method": "PutTeamRecSplit",
+    "RelativePath": "api/TeamRecSplits/{team}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "team",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "teamRecSplits",
+        "Type": "SharpVizAPI.Models.TeamRecSplits",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TeamRecSplitsController",
+    "Method": "DeleteTeamRecSplit",
+    "RelativePath": "api/TeamRecSplits/{team}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "team",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TeamRecSplitsController",
+    "Method": "UpdatePrimaryStats",
+    "RelativePath": "api/TeamRecSplits/updatePrimaryStats/{team}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "team",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedData",
+        "Type": "SharpVizAPI.Models.TeamRecSplits",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TeamRecSplitsController",
+    "Method": "UpdateSecondaryStats",
+    "RelativePath": "api/TeamRecSplits/updateSecondaryStats/{team}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "team",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedData",
+        "Type": "SharpVizAPI.Models.TeamRecSplits",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TeamRecSplitsArchiveController",
+    "Method": "GetArchivedTeamRecSplits",
+    "RelativePath": "api/TeamRecSplitsArchive/{year}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.TeamRecSplitsArchive, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TeamRecSplitsArchiveController",
+    "Method": "GetTeamRecSplitForYear",
+    "RelativePath": "api/TeamRecSplitsArchive/{year}/{team}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "team",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.TeamRecSplitsArchive",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TeamSplitsController",
+    "Method": "GetTeamSplits",
+    "RelativePath": "api/TeamSplits",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.TeamSplits, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TeamSplitsController",
+    "Method": "CreateTeamSplit",
+    "RelativePath": "api/TeamSplits",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "teamSplits",
+        "Type": "SharpVizAPI.Models.TeamSplits",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.TeamSplits",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TeamSplitsController",
+    "Method": "GetTeamSplit",
+    "RelativePath": "api/TeamSplits/{team}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "team",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.TeamSplits",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TeamSplitsController",
+    "Method": "UpdateTeamSplit",
+    "RelativePath": "api/TeamSplits/{team}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "team",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "teamSplits",
+        "Type": "SharpVizAPI.Models.TeamSplits",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TeamSplitsController",
+    "Method": "DeleteTeamSplit",
+    "RelativePath": "api/TeamSplits/{team}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "team",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TeamTemperatureTrackingController",
+    "Method": "GetTeamTemperatureTrackings",
+    "RelativePath": "api/TeamTemperatureTracking",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.TeamTemperatureTracking, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TeamTemperatureTrackingController",
+    "Method": "PostTeamTemperatureTracking",
+    "RelativePath": "api/TeamTemperatureTracking",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tracking",
+        "Type": "SharpVizAPI.Models.TeamTemperatureTracking",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.TeamTemperatureTracking",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TeamTemperatureTrackingController",
+    "Method": "GetTeamTemperatureTrackingByTeamAndYear",
+    "RelativePath": "api/TeamTemperatureTracking/{team}/{year}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "team",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.TeamTemperatureTracking, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TeamTemperatureTrackingController",
+    "Method": "GetTeamTemperatureTracking",
+    "RelativePath": "api/TeamTemperatureTracking/{team}/{year}/{date}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "team",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "date",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.TeamTemperatureTracking",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TeamTemperatureTrackingController",
+    "Method": "PutTeamTemperatureTracking",
+    "RelativePath": "api/TeamTemperatureTracking/{team}/{year}/{date}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "team",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "date",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "tracking",
+        "Type": "SharpVizAPI.Models.TeamTemperatureTracking",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TeamTemperatureTrackingController",
+    "Method": "DeleteTeamTemperatureTracking",
+    "RelativePath": "api/TeamTemperatureTracking/{team}/{year}/{date}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "team",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "date",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TeamTemperatureTrackingController",
+    "Method": "GetLatestEntriesForEachTeam",
+    "RelativePath": "api/TeamTemperatureTracking/latest-teams/{year}/{useGameNumber}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "useGameNumber",
+        "Type": "System.Boolean",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.Models.TeamTemperatureTracking, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TeamTemperatureTrackingController",
+    "Method": "GetLatestTeamTemperatureTracking",
+    "RelativePath": "api/TeamTemperatureTracking/latest/{team}/{year}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "team",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizAPI.Models.TeamTemperatureTracking",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TeamTotalBattingTrackingController",
+    "Method": "GetAll",
+    "RelativePath": "api/TeamTotalBattingTracking",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TeamTotalBattingTrackingController",
+    "Method": "Add",
+    "RelativePath": "api/TeamTotalBattingTracking",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "record",
+        "Type": "SharpVizAPI.Models.TeamTotalBattingTracking",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TeamTotalBattingTrackingController",
+    "Method": "GetByYearAndTeam",
+    "RelativePath": "api/TeamTotalBattingTracking/{year}/{teamName}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "teamName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TeamTotalBattingTrackingController",
+    "Method": "Delete",
+    "RelativePath": "api/TeamTotalBattingTracking/{year}/{teamName}/{dateAdded}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "teamName",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "dateAdded",
+        "Type": "System.DateTime",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TeamTotalPitchingTrackingController",
+    "Method": "GetAll",
+    "RelativePath": "api/TeamTotalPitchingTracking",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TeamTotalPitchingTrackingController",
+    "Method": "Add",
+    "RelativePath": "api/TeamTotalPitchingTracking",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "record",
+        "Type": "SharpVizAPI.Models.TeamTotalPitchingTracking",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TeamTotalPitchingTrackingController",
+    "Method": "GetByYearAndTeam",
+    "RelativePath": "api/TeamTotalPitchingTracking/{year}/{teamName}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "teamName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TeamTotalPitchingTrackingController",
+    "Method": "Delete",
+    "RelativePath": "api/TeamTotalPitchingTracking/{year}/{teamName}/{dateAdded}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "teamName",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "dateAdded",
+        "Type": "System.DateTime",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TrailingGameLogSplitsController",
+    "Method": "GetTrailingGameLogSplits",
+    "RelativePath": "api/TrailingGameLogSplits",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefid",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "split",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TrailingGameLogSplitsController",
+    "Method": "AddTrailingGameLogSplit",
+    "RelativePath": "api/TrailingGameLogSplits",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "split",
+        "Type": "SharpVizAPI.Models.TrailingGameLogSplit",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TrailingGameLogSplitsController",
+    "Method": "UpdateTrailingGameLogSplit",
+    "RelativePath": "api/TrailingGameLogSplits/{bbrefid}/{split}/{dateUpdated}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefid",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "split",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "dateUpdated",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedSplit",
+        "Type": "SharpVizAPI.Models.TrailingGameLogSplit",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TrailingGameLogSplitsController",
+    "Method": "DeleteTrailingGameLogSplit",
+    "RelativePath": "api/TrailingGameLogSplits/{bbrefid}/{split}/{dateUpdated}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefid",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "split",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "dateUpdated",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TrailingGameLogSplitsController",
+    "Method": "GetMostRecentTrailingGameLogSplit",
+    "RelativePath": "api/TrailingGameLogSplits/mostRecent",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bbrefid",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "split",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.WeatherForecastController",
+    "Method": "Get",
+    "RelativePath": "WeatherForecast",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizAPI.WeatherForecast, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetWeatherForecast"
+  }
+]

@@ -1,0 +1,121 @@
+-- Update ParkFactors table to add Zipcode and RoofType
+
+UPDATE ParkFactors
+SET Zipcode = '45202', RoofType = 'Open Air'
+WHERE Team = 'Reds';
+
+UPDATE ParkFactors
+SET Zipcode = '90012', RoofType = 'Open Air'
+WHERE Team = 'Dodgers';
+
+UPDATE ParkFactors
+SET Zipcode = '76011', RoofType = 'Retractable'
+WHERE Team = 'Rangers';
+
+UPDATE ParkFactors
+SET Zipcode = '92806', RoofType = 'Open Air'
+WHERE Team = 'Angels';
+
+UPDATE ParkFactors
+SET Zipcode = '10451', RoofType = 'Open Air'
+WHERE Team = 'Yankees';
+
+UPDATE ParkFactors
+SET Zipcode = '19148', RoofType = 'Open Air'
+WHERE Team = 'Phillies';
+
+UPDATE ParkFactors
+SET Zipcode = '53214', RoofType = 'Retractable'
+WHERE Team = 'Brewers';
+
+UPDATE ParkFactors
+SET Zipcode = '30339', RoofType = 'Open Air'
+WHERE Team = 'Braves';
+
+UPDATE ParkFactors
+SET Zipcode = '80205', RoofType = 'Open Air'
+WHERE Team = 'Rockies';
+
+UPDATE ParkFactors
+SET Zipcode = 'M5V1J1', RoofType = 'Retractable'
+WHERE Team = 'Blue Jays';
+
+UPDATE ParkFactors
+SET Zipcode = '77002', RoofType = 'Retractable'
+WHERE Team = 'Astros';
+
+UPDATE ParkFactors
+SET Zipcode = '55403', RoofType = 'Open Air'
+WHERE Team = 'Twins';
+
+UPDATE ParkFactors
+SET Zipcode = '20003', RoofType = 'Open Air'
+WHERE Team = 'Nationals';
+
+UPDATE ParkFactors
+SET Zipcode = '60616', RoofType = 'Open Air'
+WHERE Team = 'White Sox';
+
+UPDATE ParkFactors
+SET Zipcode = '02215', RoofType = 'Open Air'
+WHERE Team = 'Red Sox';
+
+UPDATE ParkFactors
+SET Zipcode = '33705', RoofType = 'Dome'
+WHERE Team = 'Rays';
+
+UPDATE ParkFactors
+SET Zipcode = '98134', RoofType = 'Retractable'
+WHERE Team = 'Mariners';
+
+UPDATE ParkFactors
+SET Zipcode = '92101', RoofType = 'Open Air'
+WHERE Team = 'Padres';
+
+UPDATE ParkFactors
+SET Zipcode = '60613', RoofType = 'Open Air'
+WHERE Team = 'Cubs';
+
+UPDATE ParkFactors
+SET Zipcode = '63102', RoofType = 'Open Air'
+WHERE Team = 'Cardinals';
+
+UPDATE ParkFactors
+SET Zipcode = '21201', RoofType = 'Open Air'
+WHERE Team = 'Orioles';
+
+UPDATE ParkFactors
+SET Zipcode = '11368', RoofType = 'Open Air'
+WHERE Team = 'Mets';
+
+UPDATE ParkFactors
+SET Zipcode = '33125', RoofType = 'Retractable'
+WHERE Team = 'Marlins';
+
+UPDATE ParkFactors
+SET Zipcode = '64129', RoofType = 'Open Air'
+WHERE Team = 'Royals';
+
+UPDATE ParkFactors
+SET Zipcode = '48201', RoofType = 'Open Air'
+WHERE Team = 'Tigers';
+
+UPDATE ParkFactors
+SET Zipcode = '85004', RoofType = 'Retractable'
+WHERE Team = 'D-backs';
+
+UPDATE ParkFactors
+SET Zipcode = '15212', RoofType = 'Open Air'
+WHERE Team = 'Pirates';
+
+UPDATE ParkFactors
+SET Zipcode = '44115', RoofType = 'Open Air'
+WHERE Team = 'Guardians';
+
+UPDATE ParkFactors
+SET Zipcode = '94621', RoofType = 'Open Air'
+WHERE Team = 'Athletics';
+
+UPDATE ParkFactors
+SET Zipcode = '94107', RoofType = 'Open Air'
+WHERE Team = 'Giants';

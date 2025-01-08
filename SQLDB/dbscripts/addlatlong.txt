@@ -1,0 +1,66 @@
+UPDATE ParkFactors SET Latitude = 43.6414, Longitude = -79.3894 WHERE Team = 'Blue Jays'; -- Rogers Centre
+UPDATE ParkFactors SET Latitude = 33.8908, Longitude = -84.4670 WHERE Team = 'Braves'; -- Truist Park
+UPDATE ParkFactors SET Latitude = 42.3391, Longitude = -83.0487 WHERE Team = 'Tigers'; -- Comerica Park
+UPDATE ParkFactors SET Latitude = 33.8003, Longitude = -117.8827 WHERE Team = 'Angels';
+UPDATE ParkFactors SET Latitude = 33.4455, Longitude = -112.0667 WHERE Team = 'Diamondbacks';
+UPDATE ParkFactors SET Latitude = 34.0739, Longitude = -118.2400 WHERE Team = 'Dodgers';
+UPDATE ParkFactors SET Latitude = 41.9484, Longitude = -87.6553 WHERE Team = 'Cubs';
+UPDATE ParkFactors SET Latitude = 41.8299, Longitude = -87.6338 WHERE Team = 'White Sox';
+UPDATE ParkFactors SET Latitude = 39.7559, Longitude = -105.0187 WHERE Team = 'Rockies';
+UPDATE ParkFactors SET Latitude = 41.3780, Longitude = -83.5400 WHERE Team = 'Guardians';
+UPDATE ParkFactors SET Latitude = 39.0972, Longitude = -94.5887 WHERE Team = 'Royals';
+UPDATE ParkFactors SET Latitude = 34.0737, Longitude = -118.2398 WHERE Team = 'Dodgers';
+UPDATE ParkFactors SET Latitude = 25.7781, Longitude = -80.2200 WHERE Team = 'Marlins';
+UPDATE ParkFactors SET Latitude = 43.0280, Longitude = -87.9711 WHERE Team = 'Brewers';
+UPDATE ParkFactors SET Latitude = 44.9817, Longitude = -93.2777 WHERE Team = 'Twins';
+UPDATE ParkFactors SET Latitude = 40.8296, Longitude = -73.9262 WHERE Team = 'Yankees';
+UPDATE ParkFactors SET Latitude = 40.7571, Longitude = -73.8458 WHERE Team = 'Mets';
+UPDATE ParkFactors SET Latitude = 39.2821, Longitude = -76.6219 WHERE Team = 'Orioles';
+UPDATE ParkFactors SET Latitude = 32.7518, Longitude = -97.0829 WHERE Team = 'Rangers';
+UPDATE ParkFactors SET Latitude = 39.7516, Longitude = -104.9942 WHERE Team = 'Rockies';
+UPDATE ParkFactors SET Latitude = 39.9057, Longitude = -75.1665 WHERE Team = 'Phillies';
+UPDATE ParkFactors SET Latitude = 40.4469, Longitude = -80.0057 WHERE Team = 'Pirates';
+UPDATE ParkFactors SET Latitude = 32.7073, Longitude = -117.1565 WHERE Team = 'Padres';
+UPDATE ParkFactors SET Latitude = 47.5913, Longitude = -122.3325 WHERE Team = 'Mariners';
+UPDATE ParkFactors SET Latitude = 38.8726, Longitude = -77.0074 WHERE Team = 'Nationals';
+UPDATE ParkFactors SET Latitude = 29.7569, Longitude = -95.3555 WHERE Team = 'Astros';
+UPDATE ParkFactors SET Latitude = 37.7783, Longitude = -122.3894 WHERE Team = 'Giants';
+UPDATE ParkFactors SET Latitude = 37.7516, Longitude = -122.2005 WHERE Team = 'Athletics';
+UPDATE ParkFactors SET Latitude = 39.0973, Longitude = -84.5085 WHERE Team = 'Reds';
+UPDATE ParkFactors SET Latitude = 34.0522, Longitude = -118.2437 WHERE Team = 'Angels';
+UPDATE ParkFactors SET Latitude = 42.3467, Longitude = -71.0972 WHERE Team = 'Red Sox';
+UPDATE ParkFactors SET Latitude = 38.6237, Longitude = -90.1928 WHERE Team = 'Cardinals';
+UPDATE ParkFactors SET Latitude = 27.7686, Longitude = -82.6537 WHERE Team = 'Rays';
+UPDATE ParkFactors SET Latitude = 45.5833, Longitude = -122.6020 WHERE Team = 'Mariners';
+
+
+  UPDATE ParkFactors SET Direction = 26.0 WHERE Team = 'Diamondbacks';
+UPDATE ParkFactors SET Direction = 103.0 WHERE Team = 'Braves';
+UPDATE ParkFactors SET Direction = 75.0 WHERE Team = 'Orioles';
+UPDATE ParkFactors SET Direction = 37.0 WHERE Team = 'Red Sox';
+UPDATE ParkFactors SET Direction = 90.0 WHERE Team = 'Cubs';
+UPDATE ParkFactors SET Direction = 105.0 WHERE Team = 'White Sox';
+UPDATE ParkFactors SET Direction = 80.0 WHERE Team = 'Reds';
+UPDATE ParkFactors SET Direction = 45.0 WHERE Team = 'Guardians';
+UPDATE ParkFactors SET Direction = 112.0 WHERE Team = 'Rockies';
+UPDATE ParkFactors SET Direction = 75.0 WHERE Team = 'Tigers';
+UPDATE ParkFactors SET Direction = 28.0 WHERE Team = 'Astros';
+UPDATE ParkFactors SET Direction = 66.0 WHERE Team = 'Royals';
+UPDATE ParkFactors SET Direction = 45.0 WHERE Team = 'Angels';
+UPDATE ParkFactors SET Direction = 70.0 WHERE Team = 'Dodgers';
+UPDATE ParkFactors SET Direction = 135.0 WHERE Team = 'Marlins';
+UPDATE ParkFactors SET Direction = 90.0 WHERE Team = 'Brewers';
+UPDATE ParkFactors SET Direction = 74.0 WHERE Team = 'Twins';
+UPDATE ParkFactors SET Direction = 62.0 WHERE Team = 'Yankees';
+UPDATE ParkFactors SET Direction = 122.0 WHERE Team = 'Mets';
+UPDATE ParkFactors SET Direction = 71.0 WHERE Team = 'Athletics';
+UPDATE ParkFactors SET Direction = 90.0 WHERE Team = 'Phillies';
+UPDATE ParkFactors SET Direction = 73.0 WHERE Team = 'Pirates';
+UPDATE ParkFactors SET Direction = 95.0 WHERE Team = 'Padres';
+UPDATE ParkFactors SET Direction = 25.0 WHERE Team = 'Giants';
+UPDATE ParkFactors SET Direction = 50.0 WHERE Team = 'Mariners';
+UPDATE ParkFactors SET Direction = 40.0 WHERE Team = 'Cardinals';
+UPDATE ParkFactors SET Direction = 86.0 WHERE Team = 'Rays';
+UPDATE ParkFactors SET Direction = 45.0 WHERE Team = 'Rangers';
+UPDATE ParkFactors SET Direction = 348.0 WHERE Team = 'Blue Jays';
+UPDATE ParkFactors SET Direction = 84.0 WHERE Team = 'Nationals';

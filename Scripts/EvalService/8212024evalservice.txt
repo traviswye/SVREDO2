@@ -1,0 +1,456 @@
+using SharpVizAPI.Data;
+using SharpVizAPI.Models;
+using SharpVizAPI.Controllers;
+using SharpVizAPI.Services;
+
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Net.Http;
+using SharpVizAPI.DTO;
+
+public class EvaluationService
+{
+    private readonly NrfidbContext _context;
+    private readonly HttpClient _httpClient;
+    private readonly ILogger<EvaluationService> _logger;
+    private const double SingleRunValue = 0.47;
+    private const double TripleRunValue = 1.051;
+    private const double DoubleRunValue = 0.776;
+    private const double HomeRunValue = 1.377;
+    private const double WalkRunValue = 0.222;
+    private const double StrikeoutRunValue = -0.25;
+    private const double flyoutRunValue = -0.097;
+    private const double groundOutRunValue = -0.15;
+
+
+
+
+    public EvaluationService(NrfidbContext context, ILogger<EvaluationService> logger, HttpClient httpClient)
+    {
+        _context = context;
+        _httpClient = httpClient;
+        _logger = logger;
+    }
+    public async Task<object> Calculate1stInningRunExpectancy(string date)
+    {
+        _logger.LogInformation("Calculating 1st Inning Run Expectancy...");
+
+        var gamePreviews = await _context.GamePreviews
+            .Where(g => g.Date.Date == DateTime.Parse(date).Date)
+            .ToListAsync();
+
+        if (gamePreviews == null || gamePreviews.Count == 0)
+        {
+            _logger.LogInformation("No game previews found.");
+            return null;
+        }
+
+        var results = new List<object>();
+
+        foreach (var game in gamePreviews)
+        {
+            _logger.LogInformation($"Processing game: {game.HomeTeam} vs {game.AwayTeam}");
+
+            // Get the lineups (Actual or Predicted based on null check) for both home and away teams
+            var homeLineup = await GetLineupForTeam(game.Id, game.HomeTeam, true);
+            var awayLineup = await GetLineupForTeam(game.Id, game.AwayTeam, false);
+
+            // Check if lineups were fetched successfully
+            if (homeLineup.Lineup == null || awayLineup.Lineup == null)
+            {
+                _logger.LogInformation($"Failed to retrieve lineups for {game.HomeTeam} vs {game.AwayTeam}");
+                continue;
+            }
+
+            _logger.LogInformation("Fetched lineups.");
+
+            // Fetch pitcher stats
+            var homePitcherStats = await _context.Pitchers
+                .Where(p => p.BbrefId == game.HomePitcher || game.HomePitcher == "Unannounced")
+                .FirstOrDefaultAsync();
+
+            if (homePitcherStats == null)
+            {
+                _logger.LogInformation($"Home pitcher {game.HomePitcher} does not have stats... using average starter stats.");
+                homePitcherStats = await _context.Pitchers
+                    .Where(p => p.BbrefId == "Unannounced")
+                    .FirstOrDefaultAsync();
+            }
+
+            var awayPitcherStats = await _context.Pitchers
+                .Where(p => p.BbrefId == game.AwayPitcher || game.AwayPitcher == "Unannounced")
+                .FirstOrDefaultAsync();
+
+            if (awayPitcherStats == null)
+            {
+                _logger.LogInformation($"Away pitcher {game.AwayPitcher} does not have stats... using average starter stats.");
+                awayPitcherStats = await _context.Pitchers
+                    .Where(p => p.BbrefId == "Unannounced")
+                    .FirstOrDefaultAsync();
+            }
+
+            _logger.LogInformation("Fetched season pitcher stats.");
+
+            var homePitcherFirstInningStats = await _context.Pitcher1stInnings
+                .Where(p => p.BbrefId == game.HomePitcher || game.HomePitcher == "Unannounced")
+                .FirstOrDefaultAsync();
+
+            if (homePitcherFirstInningStats == null)
+            {
+                _logger.LogInformation($"Home pitcher {game.HomePitcher} does not have first inning stats... using average first inning stats.");
+                homePitcherFirstInningStats = await _context.Pitcher1stInnings
+                    .Where(p => p.BbrefId == "Unannounced")
+                    .FirstOrDefaultAsync();
+            }
+
+            var awayPitcherFirstInningStats = await _context.Pitcher1stInnings
+                .Where(p => p.BbrefId == game.AwayPitcher || game.AwayPitcher == "Unannounced")
+                .FirstOrDefaultAsync();
+
+            if (awayPitcherFirstInningStats == null)
+            {
+                _logger.LogInformation($"Away pitcher {game.AwayPitcher} does not have first inning stats... using average first inning stats.");
+                awayPitcherFirstInningStats = await _context.Pitcher1stInnings
+                    .Where(p => p.BbrefId == "Unannounced")
+                    .FirstOrDefaultAsync();
+            }
+
+            _logger.LogInformation("Fetched first inning pitcher stats.");
+
+            // Get hitters' stats based on the lineups
+            var (homeHittersStats, homeMissingHitters) = await GetHittersStatsForLineup(homeLineup.Lineup);
+            var (awayHittersStats, awayMissingHitters) = await GetHittersStatsForLineup(awayLineup.Lineup);
+
+            _logger.LogInformation("Fetched hitter stats.");
+
+            // Calculate expected runs
+            var expectedRuns = CalculateExpectedRuns(homePitcherFirstInningStats, awayPitcherFirstInningStats, homeHittersStats, awayHittersStats);
+
+            _logger.LogInformation($"Expected runs for {game.HomeTeam} vs {game.AwayTeam}: {expectedRuns}");
+
+            var gameData = new
+            {
+                game.Time,
+                game.HomeTeam,
+                game.AwayTeam,
+                game.Venue,
+                HomeLineup = homeLineup.Lineup,
+                AwayLineup = awayLineup.Lineup,
+                IsHomeLineupActual = homeLineup.IsActual,
+                IsAwayLineupActual = awayLineup.IsActual,
+                HomePitcher = new { Stats = homePitcherStats, FirstInningStats = homePitcherFirstInningStats },
+                AwayPitcher = new { Stats = awayPitcherStats, FirstInningStats = awayPitcherFirstInningStats },
+                ExpectedRuns = expectedRuns,
+                HomeMissingHitters = homeMissingHitters,
+                AwayMissingHitters = awayMissingHitters
+            };
+
+            results.Add(gameData);
+        }
+
+        return results;
+    }
+
+    private async Task<(object Lineup, bool IsActual)> GetLineupForTeam(int gameId, string team, bool isHomeTeam)
+    {
+        // Retrieve the actual lineup first
+        var actualLineup = await _context.ActualLineups
+            .Where(l => l.GamePreviewId == gameId && l.Team == team) // Ensure team matching
+            .Select(l => new
+            {
+                Batting1st = l.Batting1st ?? string.Empty,
+                Batting2nd = l.Batting2nd ?? string.Empty,
+                Batting3rd = l.Batting3rd ?? string.Empty,
+                Batting4th = l.Batting4th ?? string.Empty,
+                Batting5th = l.Batting5th ?? string.Empty,
+                Batting6th = l.Batting6th ?? string.Empty
+            })
+            .FirstOrDefaultAsync();
+
+        if (actualLineup != null && !HasNullInFirstSixBatters(actualLineup))
+        {
+            return (actualLineup, true);  // True indicates it's an actual lineup
+        }
+
+        // Retrieve the predicted lineup if actual lineup is not found or incomplete
+        var predictedLineup = await _context.LineupPredictions
+            .Where(l => l.GamePreviewId == gameId && l.Team == team) // Ensure team matching
+            .Select(l => new
+            {
+                Batting1st = l.Batting1st ?? string.Empty,
+                Batting2nd = l.Batting2nd ?? string.Empty,
+                Batting3rd = l.Batting3rd ?? string.Empty,
+                Batting4th = l.Batting4th ?? string.Empty,
+                Batting5th = l.Batting5th ?? string.Empty,
+                Batting6th = l.Batting6th ?? string.Empty
+            })
+            .FirstOrDefaultAsync();
+
+        return (predictedLineup, false);  // False indicates it's a predicted lineup
+    }
+
+
+    private bool HasNullInFirstSixBatters(object lineup)
+    {
+        // Adjust this method to work with the anonymous type representing the lineup
+        var lineupDict = lineup as dynamic;
+        return string.IsNullOrEmpty(lineupDict.Batting1st) ||
+               string.IsNullOrEmpty(lineupDict.Batting2nd) ||
+               string.IsNullOrEmpty(lineupDict.Batting3rd) ||
+               string.IsNullOrEmpty(lineupDict.Batting4th) ||
+               string.IsNullOrEmpty(lineupDict.Batting5th) ||
+               string.IsNullOrEmpty(lineupDict.Batting6th);
+    }
+    private async Task<(List<HitterStatsDto>, List<string>)> GetHittersStatsForLineup(object lineup)
+    {
+        var hittersStats = new List<HitterStatsDto>();
+        var missingHitters = new List<string>();
+
+        var lineupType = lineup.GetType();
+        var lineupPositions = new List<string> { "Batting1st", "Batting2nd", "Batting3rd", "Batting4th", "Batting5th", "Batting6th" };
+
+        foreach (var position in lineupPositions)
+        {
+            var hitterId = (string)lineupType.GetProperty(position)?.GetValue(lineup);
+            if (!string.IsNullOrEmpty(hitterId))
+            {
+                _logger.LogInformation($"Fetching hitter stats for {hitterId}");
+                var response = await _httpClient.GetAsync($"https://localhost:44346/api/Hitters/{hitterId}");
+                if (response.IsSuccessStatusCode)
+                {
+                    var hitter = await response.Content.ReadFromJsonAsync<Hitter>();
+                    if (hitter != null)
+                    {
+                        // Calculate the WalkPercentage and KPercentage
+                        double walkPercentage = hitter.PA > 0 ? (double)hitter.BB / hitter.PA : 0;
+                        double kPercentage = hitter.PA > 0 ? (double)hitter.SO / hitter.PA : 0;
+
+                        // Map the Hitter data to HitterStatsDto
+                        var hitterStatsDto = new HitterStatsDto
+                        {
+                            bbrefId = hitter.bbrefId,
+                            OBP = hitter.OBP,
+                            SLG = hitter.SLG,
+                            KPercentage = kPercentage,
+                            BBPercentage = walkPercentage
+                        };
+
+                        hittersStats.Add(hitterStatsDto);
+                    }
+                }
+                else
+                {
+                    _logger.LogInformation($"Failed to retrieve stats for hitter: {hitterId}");
+                    missingHitters.Add(hitterId);
+                }
+            }
+        }
+
+        return (hittersStats, missingHitters);
+    }
+
+
+
+
+
+
+    private List<string> ConvertLineupToList(object lineup)
+    {
+        // Convert lineup to a list of bbrefIds based on its type
+        // You'll need to implement this based on the actual structure of ActualLineup and PredictedLineup
+        // Example:
+        if (lineup is ActualLineup actual)
+        {
+            return new List<string>
+            {
+                actual.Batting1st,
+                actual.Batting2nd,
+                actual.Batting3rd,
+                actual.Batting4th,
+                actual.Batting5th,
+                actual.Batting6th
+            };
+        }
+        if (lineup is LineupPrediction predicted)
+        {
+            return new List<string>
+            {
+                predicted.Batting1st,
+                predicted.Batting2nd,
+                predicted.Batting3rd,
+                predicted.Batting4th,
+                predicted.Batting5th,
+                predicted.Batting6th
+            };
+        }
+
+        return new List<string>();
+    }
+    private double CalculateProbability(double hitterStat, double pitcherStat)
+    {
+        return (hitterStat + pitcherStat) / 2.0;
+    }
+    private readonly double[,] runExpectancyMatrix = new double[8, 3]
+{
+    { 0.476, 0.254, 0.097 },  // Bases empty
+    { 0.865, 0.508, 0.205 },  // Runner on 1st
+    { 1.073, 0.667, 0.308 },  // Runner on 2nd
+    { 1.272, 0.974, 0.377 },  // Runner on 3rd
+    { 1.435, 0.902, 0.440 },  // Runners on 1st and 2nd
+    { 1.753, 1.147, 0.500 },  // Runners on 1st and 3rd
+    { 2.005, 1.390, 0.548 },  // Runners on 2nd and 3rd
+    { 2.367, 1.508, 0.767 }   // Bases loaded
+};
+
+    private double GetRunExpectancy(int baseState, int outs)
+    {
+        return runExpectancyMatrix[baseState, outs];
+    }
+
+    private int UpdateBaseStateForSingle(int baseState)
+    {
+        // Implement logic for updating baseState when a single occurs
+        // Example:
+        switch (baseState)
+        {
+            case 0: // Bases empty
+                return 1; // Runner on 1st
+            case 1: // Runner on 1st
+                return 4; // Runners on 1st and 2nd
+            case 2: // Runner on 2nd
+                return 6; // Runners on 1st and 3rd
+            case 3: // Runner on 3rd
+                return 5; // Runners on 1st and 3rd
+            case 4: // Runners on 1st and 2nd
+                return 7; // Bases loaded
+            case 5: // Runners on 1st and 3rd
+                return 7; // Bases loaded
+            case 6: // Runners on 2nd and 3rd
+                return 7; // Bases loaded
+            case 7: // Bases loaded
+                return 7; // Bases remain loaded
+            default:
+                return baseState; // Default case
+        }
+    }
+
+    private int UpdateBaseStateForDouble(int baseState)
+    {
+        // Implement logic for updating baseState when a double occurs
+        // Example:
+        switch (baseState)
+        {
+            case 0: // Bases empty
+                return 2; // Runner on 2nd
+            case 1: // Runner on 1st
+                return 6; // Runners on 2nd and 3rd
+            case 2: // Runner on 2nd
+                return 2; // Runner on 2nd (Runner on 2nd scores)
+            case 3: // Runner on 3rd
+                return 2; // Runner on 2nd (Runner on 3rd scores)
+            case 4: // Runners on 1st and 2nd
+                return 6; // Runners on 2nd and 3rd
+            case 5: // Runners on 1st and 3rd
+                return 6; // Runners on 2nd and 3rd
+            case 6: // Runners on 2nd and 3rd
+                return 6; // Runners stay on 2nd and 3rd
+            case 7: // Bases loaded
+                return 6; // Runners on 2nd and 3rd (Runner on 3rd scores)
+            default:
+                return baseState; // Default case
+        }
+    }
+
+    private int UpdateBaseState(int baseState, int eventType)
+    {
+        // eventType: 0 = Walk, 1 = Single, 2 = Double, etc.
+        // This is a simple update logic. You can expand this based on the complexity of your base state tracking.
+
+        switch (eventType)
+        {
+            case 0: // Walk
+                return baseState == 7 ? 7 : baseState + 1; // If bases loaded, stays loaded
+            case 1: // Single
+                    // Add logic to update base state on single
+                return UpdateBaseStateForSingle(baseState);
+            case 2: // Double
+                    // Add logic to update base state on double
+                return UpdateBaseStateForDouble(baseState);
+                // Add more cases for other hits
+        }
+        return baseState; // Default to current base state
+    }
+
+
+
+    private double CalculateExpectedRunsForHitter(HitterStatsDto hitterStats, Pitcher1stInning pitcherStats, int outs)
+    {
+        // Calculate probabilities using HitterStatsDto properties
+        double P_K = CalculateProbability(hitterStats.KPercentage, pitcherStats.SO / pitcherStats.PA);
+        double P_BB = CalculateProbability(hitterStats.BBPercentage, pitcherStats.BB / pitcherStats.PA);
+        double P_H = CalculateProbability(hitterStats.BA, pitcherStats.BA) * (1 - P_K);
+        double P_XBH = CalculateProbability(hitterStats.SLG, pitcherStats.SLG);
+        double P_OUT = 1 - P_H - P_BB;  // Probability of an out
+
+        // Adjust the run values based on the outs
+        double singleRunValue = SingleRunValue * GetRunExpectancy(0, outs);
+        double doubleRunValue = DoubleRunValue * GetRunExpectancy(0, outs);
+        double walkRunValue = WalkRunValue * GetRunExpectancy(0, outs);
+        double strikeoutRunValue = StrikeoutRunValue * GetRunExpectancy(0, outs);
+        double flyoutRunValueAdjusted = flyoutRunValue * GetRunExpectancy(0, outs);
+        double groundOutRunValueAdjusted = groundOutRunValue * GetRunExpectancy(0, outs);
+
+        // Calculate expected runs for the hitter
+        double expectedRuns =
+            P_H * singleRunValue +
+            P_XBH * doubleRunValue +
+            P_BB * walkRunValue +
+            P_K * strikeoutRunValue +
+            P_OUT * (flyoutRunValueAdjusted + groundOutRunValueAdjusted);
+
+        return expectedRuns;
+    }
+
+
+
+
+
+    private double AdjustForFactors(double totalExpectedRuns, double ballparkFactor, double handednessFactor, double weatherFactor)
+    {
+        return totalExpectedRuns * ballparkFactor * handednessFactor * weatherFactor;
+    }
+
+    private double CalculateExpectedRuns(Pitcher1stInning homePitcherStats, Pitcher1stInning awayPitcherStats, List<HitterStatsDto> homeHittersStats, List<HitterStatsDto> awayHittersStats)
+    {
+        double totalExpectedRuns = 0.0;
+        int outs = 0;
+
+        // Calculate expected runs for the home team
+        foreach (var hitterStats in homeHittersStats)
+        {
+            totalExpectedRuns += CalculateExpectedRunsForHitter(hitterStats, awayPitcherStats, outs);
+            outs = (outs + 1) % 3; // Increment outs, reset to 0 after 3 outs
+        }
+
+        outs = 0; // Reset for the away team
+
+        // Calculate expected runs for the away team
+        foreach (var hitterStats in awayHittersStats)
+        {
+            totalExpectedRuns += CalculateExpectedRunsForHitter(hitterStats, homePitcherStats, outs);
+            outs = (outs + 1) % 3; // Increment outs, reset to 0 after 3 outs
+        }
+
+        // Adjust for external factors (if needed)
+        double ballparkFactor = 1.0; // Example value
+        double handednessFactor = 1.0; // Example value
+        double weatherFactor = 1.0; // Example value
+
+        return AdjustForFactors(totalExpectedRuns, ballparkFactor, handednessFactor, weatherFactor);
+    }
+
+
+
+}

@@ -1,0 +1,1482 @@
+current weights: no skip if sub 5 games on record... Only if we dont have record for season stats...
+
+Team: Arizona Diamondbacks
+Total games with SP advantage: 53
+Dog Wins: 8, Dog Losses: 5
+Fav Wins: 30, Fav Losses: 10
+Total Wins: 38, Total Losses: 15
+Dog Better: 438
+Fav Better: 1056.7571999793029
+Disadvantaged Wins: 41, Disadvantaged Losses: 49
+Disadvantaged Dog Wins: 24, Disadvantaged Dog Losses: 31
+Disadvantaged Fav Wins: 17, Disadvantaged Fav Losses: 18
+Disadvantaged Dog Better: -65
+Disadvantaged Fav Better: -452.0589956839532
+
+Skipping game: 2024-05-23 - Atlanta Braves. Reason: No relevant stats.
+
+Team: Atlanta Braves
+Total games with SP advantage: 91
+Dog Wins: 4, Dog Losses: 9
+Fav Wins: 47, Fav Losses: 31
+Total Wins: 51, Total Losses: 40
+Dog Better: -466
+Fav Better: -364.47557113573816
+Disadvantaged Wins: 26, Disadvantaged Losses: 25
+Disadvantaged Dog Wins: 3, Disadvantaged Dog Losses: 5
+Disadvantaged Fav Wins: 23, Disadvantaged Fav Losses: 20
+Disadvantaged Dog Better: -130
+Disadvantaged Fav Better: -297.04170511145077
+
+
+Team: Baltimore Orioles
+Total games with SP advantage: 74
+Dog Wins: 3, Dog Losses: 3
+Fav Wins: 42, Fav Losses: 26
+Total Wins: 45, Total Losses: 29
+Dog Better: 30
+Fav Better: 150.67829459443823
+Disadvantaged Wins: 37, Disadvantaged Losses: 33
+Disadvantaged Dog Wins: 9, Disadvantaged Dog Losses: 8
+Disadvantaged Fav Wins: 28, Disadvantaged Fav Losses: 25
+Disadvantaged Dog Better: 344
+Disadvantaged Fav Better: -290.49024926030995
+
+Skipping game: 2024-09-08 - Boston Red Sox. Reason: No relevant stats.
+
+Team: Boston Red Sox
+Total games with SP advantage: 71
+Dog Wins: 11, Dog Losses: 11
+Fav Wins: 26, Fav Losses: 23
+Total Wins: 37, Total Losses: 34
+Dog Better: 137
+Fav Better: -395.019459813515
+Disadvantaged Wins: 35, Disadvantaged Losses: 36
+Disadvantaged Dog Wins: 19, Disadvantaged Dog Losses: 19
+Disadvantaged Fav Wins: 16, Disadvantaged Fav Losses: 17
+Disadvantaged Dog Better: 490
+Disadvantaged Fav Better: -517.818708898693
+
+Skipping game: 2024-05-23 - Chicago Cubs. Reason: No relevant stats.
+Skipping game: 2024-08-25 - Chicago Cubs. Reason: No relevant stats.
+
+Team: Chicago Cubs
+Total games with SP advantage: 84
+Dog Wins: 19, Dog Losses: 10
+Fav Wins: 29, Fav Losses: 26
+Total Wins: 48, Total Losses: 36
+Dog Better: 1440
+Fav Better: -549.5915934038516
+Disadvantaged Wins: 25, Disadvantaged Losses: 32
+Disadvantaged Dog Wins: 12, Disadvantaged Dog Losses: 23
+Disadvantaged Fav Wins: 13, Disadvantaged Fav Losses: 9
+Disadvantaged Dog Better: -750
+Disadvantaged Fav Better: 60.54274691597575
+
+Skipping game: 2024-07-28 - Cleveland Guardians. Reason: No relevant stats.
+
+Team: Cleveland Guardians
+Total games with SP advantage: 51
+Dog Wins: 7, Dog Losses: 3
+Fav Wins: 27, Fav Losses: 14
+Total Wins: 34, Total Losses: 17
+Dog Better: 574
+Fav Better: 577.2844479090729
+Disadvantaged Wins: 46, Disadvantaged Losses: 45
+Disadvantaged Dog Wins: 14, Disadvantaged Dog Losses: 24
+Disadvantaged Fav Wins: 32, Disadvantaged Fav Losses: 21
+Disadvantaged Dog Better: -630
+Disadvantaged Fav Better: 427.4271038049603
+
+Skipping game: 2024-09-02 - Houston Astros. Reason: No relevant stats.
+Skipping game: 2024-09-05 - Houston Astros. Reason: No relevant stats.
+
+Team: Houston Astros
+Total games with SP advantage: 74
+Dog Wins: 6, Dog Losses: 4
+Fav Wins: 45, Fav Losses: 19
+Total Wins: 51, Total Losses: 23
+Dog Better: 268
+Fav Better: 1108.852325294975
+Disadvantaged Wins: 26, Disadvantaged Losses: 41
+Disadvantaged Dog Wins: 9, Disadvantaged Dog Losses: 12
+Disadvantaged Fav Wins: 17, Disadvantaged Fav Losses: 29
+Disadvantaged Dog Better: -104
+Disadvantaged Fav Better: -1702.3727312656988
+
+Skipping game: 2024-08-21 - Kansas City Royals. Reason: No relevant stats.
+
+Team: Kansas City Royals
+Total games with SP advantage: 98
+Dog Wins: 15, Dog Losses: 20
+Fav Wins: 41, Fav Losses: 22
+Total Wins: 56, Total Losses: 42
+Dog Better: -264
+Fav Better: 635.2552436811488
+Disadvantaged Wins: 22, Disadvantaged Losses: 23
+Disadvantaged Dog Wins: 17, Disadvantaged Dog Losses: 16
+Disadvantaged Fav Wins: 5, Disadvantaged Fav Losses: 7
+Disadvantaged Dog Better: 542
+Disadvantaged Fav Better: -272.1486480665762
+
+Skipping game: 2024-07-14 - Los Angeles Dodgers. Reason: No relevant stats.
+
+Team: Los Angeles Dodgers
+Total games with SP advantage: 79
+Dog Wins: 1, Dog Losses: 2
+Fav Wins: 48, Fav Losses: 28
+Total Wins: 49, Total Losses: 30
+Dog Better: -80
+Fav Better: -19.508701327853146
+Disadvantaged Wins: 37, Disadvantaged Losses: 26
+Disadvantaged Dog Wins: 3, Disadvantaged Dog Losses: 7
+Disadvantaged Fav Wins: 34, Disadvantaged Fav Losses: 19
+Disadvantaged Dog Better: -330
+Disadvantaged Fav Better: 455.62173296461526
+
+Skipping game: 2024-06-17 - Milwaukee Brewers. Reason: No relevant stats.
+Skipping game: 2024-08-30 - Milwaukee Brewers. Reason: No relevant stats.
+Skipping game: 2024-09-01 - Milwaukee Brewers. Reason: No relevant stats.
+
+Team: Milwaukee Brewers
+Total games with SP advantage: 81
+Dog Wins: 11, Dog Losses: 11
+Fav Wins: 36, Fav Losses: 23
+Total Wins: 47, Total Losses: 34
+Dog Better: 232
+Fav Better: 192.8836216386195
+Disadvantaged Wins: 34, Disadvantaged Losses: 25
+Disadvantaged Dog Wins: 18, Disadvantaged Dog Losses: 11
+Disadvantaged Fav Wins: 16, Disadvantaged Fav Losses: 14
+Disadvantaged Dog Better: 1140
+Disadvantaged Fav Better: -21.21823375228024
+
+Skipping game: 2024-09-04 - Minnesota Twins. Reason: No relevant stats.
+
+Team: Minnesota Twins
+Total games with SP advantage: 92
+Dog Wins: 10, Dog Losses: 10
+Fav Wins: 46, Fav Losses: 26
+Total Wins: 56, Total Losses: 36
+Dog Better: 172
+Fav Better: 284.8616294619754
+Disadvantaged Wins: 20, Disadvantaged Losses: 30
+Disadvantaged Dog Wins: 5, Disadvantaged Dog Losses: 16
+Disadvantaged Fav Wins: 15, Disadvantaged Fav Losses: 14
+Disadvantaged Dog Better: -1035
+Disadvantaged Fav Better: -170.23757946955322
+
+Skipping game: 2024-09-08 - New York Mets. Reason: No relevant stats.
+
+Team: New York Mets
+Total games with SP advantage: 81
+Dog Wins: 12, Dog Losses: 9
+Fav Wins: 39, Fav Losses: 21
+Total Wins: 51, Total Losses: 30
+Dog Better: 589
+Fav Better: 781.501340317392
+Disadvantaged Wins: 27, Disadvantaged Losses: 34
+Disadvantaged Dog Wins: 11, Disadvantaged Dog Losses: 17
+Disadvantaged Fav Wins: 16, Disadvantaged Fav Losses: 17
+Disadvantaged Dog Better: -218
+Disadvantaged Fav Better: -446.7710699789511
+
+Skipping game: 2024-08-14 - New York Yankees. Reason: No relevant stats.
+
+Team: New York Yankees
+Total games with SP advantage: 77
+Dog Wins: 4, Dog Losses: 2
+Fav Wins: 42, Fav Losses: 29
+Total Wins: 46, Total Losses: 31
+Dog Better: 270
+Fav Better: -189.76808576164046
+Disadvantaged Wins: 35, Disadvantaged Losses: 30
+Disadvantaged Dog Wins: 13, Disadvantaged Dog Losses: 4
+Disadvantaged Fav Wins: 22, Disadvantaged Fav Losses: 26
+Disadvantaged Dog Better: 1075
+Disadvantaged Fav Better: -1095.0779211051872
+
+Skipping game: 2024-07-28 - Philadelphia Phillies. Reason: No relevant stats.
+Skipping game: 2024-09-05 - Philadelphia Phillies. Reason: No relevant stats.
+Skipping game: 2024-09-08 - Philadelphia Phillies. Reason: No relevant stats.
+
+Team: Philadelphia Phillies
+Total games with SP advantage: 96
+Dog Wins: 2, Dog Losses: 7
+Fav Wins: 54, Fav Losses: 33
+Total Wins: 56, Total Losses: 40
+Dog Better: -483
+Fav Better: -118.75556364515982
+Disadvantaged Wins: 28, Disadvantaged Losses: 16
+Disadvantaged Dog Wins: 9, Disadvantaged Dog Losses: 9
+Disadvantaged Fav Wins: 19, Disadvantaged Fav Losses: 7
+Disadvantaged Dog Better: 162
+Disadvantaged Fav Better: 721.4911550347446
+
+
+Team: San Diego Padres
+Total games with SP advantage: 81
+Dog Wins: 5, Dog Losses: 7
+Fav Wins: 45, Fav Losses: 24
+Total Wins: 50, Total Losses: 31
+Dog Better: -123
+Fav Better: 722.2347019882745
+Disadvantaged Wins: 31, Disadvantaged Losses: 33
+Disadvantaged Dog Wins: 20, Disadvantaged Dog Losses: 14
+Disadvantaged Fav Wins: 11, Disadvantaged Fav Losses: 19
+Disadvantaged Dog Better: 1249
+Disadvantaged Fav Better: -1016.5053655140473
+
+Skipping game: 2024-08-30 - San Francisco Giants. Reason: No relevant stats.
+
+Team: San Francisco Giants
+Total games with SP advantage: 68
+Dog Wins: 9, Dog Losses: 9
+Fav Wins: 31, Fav Losses: 19
+Total Wins: 40, Total Losses: 28
+Dog Better: 152
+Fav Better: 191.26948097075854
+Disadvantaged Wins: 30, Disadvantaged Losses: 45
+Disadvantaged Dog Wins: 16, Disadvantaged Dog Losses: 24
+Disadvantaged Fav Wins: 14, Disadvantaged Fav Losses: 21
+Disadvantaged Dog Better: -298
+Disadvantaged Fav Better: -968.7224469642526
+
+Skipping game: 2024-08-30 - Seattle Mariners. Reason: No relevant stats.
+Skipping game: 2024-09-01 - Seattle Mariners. Reason: No relevant stats.
+Skipping game: 2024-09-03 - Seattle Mariners. Reason: No relevant stats.
+
+Team: Seattle Mariners
+Total games with SP advantage: 116
+Dog Wins: 14, Dog Losses: 16
+Fav Wins: 48, Fav Losses: 38
+Total Wins: 62, Total Losses: 54
+Dog Better: 109
+Fav Better: -338.8796576559901
+Disadvantaged Wins: 10, Disadvantaged Losses: 15
+Disadvantaged Dog Wins: 3, Disadvantaged Dog Losses: 6
+Disadvantaged Fav Wins: 7, Disadvantaged Fav Losses: 9
+Disadvantaged Dog Better: -225
+Disadvantaged Fav Better: -362.7721371289006
+
+
+Team: St. Louis Cardinals
+Total games with SP advantage: 56
+Dog Wins: 10, Dog Losses: 7
+Fav Wins: 18, Fav Losses: 21
+Total Wins: 28, Total Losses: 28
+Dog Better: 451
+Fav Better: -785.9533135464078
+Disadvantaged Wins: 44, Disadvantaged Losses: 43
+Disadvantaged Dog Wins: 29, Disadvantaged Dog Losses: 29
+Disadvantaged Fav Wins: 15, Disadvantaged Fav Losses: 14
+Disadvantaged Dog Better: 766
+Disadvantaged Fav Better: -148.91158083042978
+
+Skipping game: 2024-09-04 - Tampa Bay Rays. Reason: No relevant stats.
+
+Team: Tampa Bay Rays
+Total games with SP advantage: 64
+Dog Wins: 10, Dog Losses: 6
+Fav Wins: 25, Fav Losses: 23
+Total Wins: 35, Total Losses: 29
+Dog Better: 545
+Fav Better: -377.1352367940951
+Disadvantaged Wins: 35, Disadvantaged Losses: 43
+Disadvantaged Dog Wins: 18, Disadvantaged Dog Losses: 30
+Disadvantaged Fav Wins: 17, Disadvantaged Fav Losses: 13
+Disadvantaged Dog Better: -604
+Disadvantaged Fav Better: 153.68553282028432
+
+Skipping game: 2024-09-06 - Texas Rangers. Reason: No relevant stats.
+Skipping game: 2024-09-08 - Texas Rangers. Reason: No relevant stats.
+
+Team: Texas Rangers
+Total games with SP advantage: 80
+Dog Wins: 9, Dog Losses: 14
+Fav Wins: 34, Fav Losses: 23
+Total Wins: 43, Total Losses: 37
+Dog Better: -167
+Fav Better: 111.39378119026657
+Disadvantaged Wins: 26, Disadvantaged Losses: 36
+Disadvantaged Dog Wins: 11, Disadvantaged Dog Losses: 22
+Disadvantaged Fav Wins: 15, Disadvantaged Fav Losses: 14
+Disadvantaged Dog Better: -906
+Disadvantaged Fav Better: -256.2851396755111
+
+Skipping game: 2024-07-14 - Detroit Tigers. Reason: No relevant stats.
+Skipping game: 2024-08-26 - Detroit Tigers. Reason: No relevant stats.
+Skipping game: 2024-08-27 - Detroit Tigers. Reason: No relevant stats.
+Skipping game: 2024-09-08 - Detroit Tigers. Reason: No relevant stats.
+
+Team: Detroit Tigers
+Total games with SP advantage: 90
+Dog Wins: 20, Dog Losses: 21
+Fav Wins: 29, Fav Losses: 20
+Total Wins: 49, Total Losses: 41
+Dog Better: 276
+Fav Better: 163.02437946148848
+Disadvantaged Wins: 20, Disadvantaged Losses: 30
+Disadvantaged Dog Wins: 16, Disadvantaged Dog Losses: 25
+Disadvantaged Fav Wins: 4, Disadvantaged Fav Losses: 5
+Disadvantaged Dog Better: -361
+Disadvantaged Fav Better: -168.58964925190088
+
+
+Cumulative Results for All Teams:
+Total games with SP advantage: 1657
+Dog Wins: 190, Dog Losses: 186
+Fav Wins: 782, Fav Losses: 499
+Total Wins: 972, Total Losses: 685
+Dog Better: 4100
+Fav Better: 2836.909263403462
+Disadvantaged Wins: 635, Disadvantaged Losses: 690
+Disadvantaged Dog Wins: 279, Disadvantaged Dog Losses: 352
+Disadvantaged Fav Wins: 356, Disadvantaged Fav Losses: 338
+Disadvantaged Dog Better: 112
+Disadvantaged Fav Better: -6368.253890417116
+
+
+Failed Comparisons:
+Date: 2024-08-19, Team: Arizona Diamondbacks, Pitcher: pfaadbr01, Opposing Pitcher: adam oller, Status Code: 404
+Date: 2024-05-23, Team: Atlanta Braves, Pitcher: aj smith shawver, Opposing Pitcher: brownbe02, Status Code: 404
+Date: 2024-09-08, Team: Boston Red Sox, Pitcher: richard fitts, Opposing Pitcher: flexech01, Status Code: 404
+Date: 2024-05-23, Team: Chicago Cubs, Pitcher: brownbe02, Opposing Pitcher: aj smith shawver, Status Code: 404
+Date: 2024-08-25, Team: Chicago Cubs, Pitcher: assadja01, Opposing Pitcher: adam oller, Status Code: 404
+Date: 2024-07-28, Team: Cleveland Guardians, Pitcher: cantijo01, Opposing Pitcher: allarko01, Status Code: 500
+Date: 2024-09-02, Team: Houston Astros, Pitcher: verlaju01, Opposing Pitcher: julian aguiar, Status Code: 404
+Date: 2024-09-05, Team: Houston Astros, Pitcher: brownhu01, Opposing Pitcher: rhett lowder, Status Code: 404
+Date: 2024-08-21, Team: Kansas City Royals, Pitcher: lorenmi01, Opposing Pitcher: johnny cueto, Status Code: 404
+Date: 2024-07-14, Team: Los Angeles Dodgers, Pitcher: brent honeywell, Opposing Pitcher: briesbe01, Status Code: 404
+Date: 2024-06-17, Team: Milwaukee Brewers, Pitcher: rodrica02, Opposing Pitcher: plesaza01, Status Code: 500
+Date: 2024-08-30, Team: Milwaukee Brewers, Pitcher: halldl01, Opposing Pitcher: rhett lowder, Status Code: 404
+Date: 2024-09-01, Team: Milwaukee Brewers, Pitcher: myersto01, Opposing Pitcher: brandon williamson, Status Code: 404
+Date: 2024-09-04, Team: Minnesota Twins, Pitcher: henriro01, Opposing Pitcher: sulseco01, Status Code: 500
+Date: 2024-09-08, Team: New York Mets, Pitcher: severlu01, Opposing Pitcher: julian aguiar, Status Code: 404
+Date: 2024-08-14, Team: New York Yankees, Pitcher: warrewi01, Opposing Pitcher: martida03, Status Code: 500
+Date: 2024-07-28, Team: Philadelphia Phillies, Pitcher: allarko01, Opposing Pitcher: cantijo01, Status Code: 500
+Date: 2024-09-05, Team: Philadelphia Phillies, Pitcher: suarera01, Opposing Pitcher: adam oller, Status Code: 404
+Date: 2024-09-08, Team: Philadelphia Phillies, Pitcher: seth johnson, Opposing Pitcher: cabreed02, Status Code: 404
+Date: 2024-08-30, Team: San Francisco Giants, Pitcher: snellbl01, Opposing Pitcher: adam oller, Status Code: 404
+Date: 2024-08-30, Team: Seattle Mariners, Pitcher: kirbyge01, Opposing Pitcher: samuel aldegheri, Status Code: 404
+Date: 2024-09-01, Team: Seattle Mariners, Pitcher: millebr04, Opposing Pitcher: caden dana, Status Code: 404
+Date: 2024-09-03, Team: Seattle Mariners, Pitcher: castilu02, Opposing Pitcher: j.t. ginn, Status Code: 404
+Date: 2024-09-04, Team: Tampa Bay Rays, Pitcher: sulseco01, Opposing Pitcher: henriro01, Status Code: 500
+Date: 2024-09-06, Team: Texas Rangers, Pitcher: garabge01, Opposing Pitcher: samuel aldegheri, Status Code: 404
+Date: 2024-09-08, Team: Texas Rangers, Pitcher: heanean01, Opposing Pitcher: caden dana, Status Code: 404
+Date: 2024-07-14, Team: Detroit Tigers, Pitcher: briesbe01, Opposing Pitcher: brent honeywell, Status Code: 404
+Date: 2024-08-26, Team: Detroit Tigers, Pitcher: ty madden, Opposing Pitcher: martida03, Status Code: 404
+Date: 2024-08-27, Team: Detroit Tigers, Pitcher: hurtebr01, Opposing Pitcher: johnny cueto, Status Code: 404
+Date: 2024-09-08, Team: Detroit Tigers, Pitcher: briesbe01, Opposing Pitcher: j.t. ginn, Status Code: 404
+
+
+
+
+
+
+OPTIMIZED WEIGHTS FROM ARIZONA RESULTS:Slightly worst....
+Best Weights: {'AB_R': 0.5, 'AB_H': 0.5, 'PA_HR': 1.5, 'AB_SB': 0.01, 'SB_SB_CS': 0, 'PA_BB': 0, 'AB_SO': 1, 'SOW': 0.5, 'BA': 0.5, 'OBP': 0, 'SLG': 0.5, 'OPS': 0, 'PA_TB': 0.5, 'AB_GDP': 0.5, 'BAbip': 0.5, 'tOPSPlus': 0.5, 'sOPSPlus': 0}
+
+
+
+Team: Arizona Diamondbacks
+Total games with SP advantage: 62
+Dog Wins: 10, Dog Losses: 5
+Fav Wins: 33, Fav Losses: 14
+Total Wins: 43, Total Losses: 19
+Dog Better: 660
+Fav Better: 898.6553799894051
+Disadvantaged Wins: 36, Disadvantaged Losses: 45
+Disadvantaged Dog Wins: 22, Disadvantaged Dog Losses: 31
+Disadvantaged Fav Wins: 14, Disadvantaged Fav Losses: 14
+Disadvantaged Dog Better: -287
+Disadvantaged Fav Better: -293.9571756940553
+
+Skipping game: 2024-05-23 - Atlanta Braves. Reason: No relevant stats.
+
+Team: Atlanta Braves
+Total games with SP advantage: 91
+Dog Wins: 3, Dog Losses: 8
+Fav Wins: 51, Fav Losses: 29
+Total Wins: 54, Total Losses: 37
+Dog Better: -482
+Fav Better: 76.2565674299068
+Disadvantaged Wins: 23, Disadvantaged Losses: 28
+Disadvantaged Dog Wins: 4, Disadvantaged Dog Losses: 6
+Disadvantaged Fav Wins: 19, Disadvantaged Fav Losses: 22
+Disadvantaged Dog Better: -114
+Disadvantaged Fav Better: -737.7738436770958
+
+
+Team: Baltimore Orioles
+Total games with SP advantage: 82
+Dog Wins: 4, Dog Losses: 4
+Fav Wins: 45, Fav Losses: 29
+Total Wins: 49, Total Losses: 33
+Dog Better: 44
+Fav Better: 93.8093027154926
+Disadvantaged Wins: 33, Disadvantaged Losses: 29
+Disadvantaged Dog Wins: 8, Disadvantaged Dog Losses: 7
+Disadvantaged Fav Wins: 25, Disadvantaged Fav Losses: 22
+Disadvantaged Dog Better: 330
+Disadvantaged Fav Better: -233.62125738136422
+
+Skipping game: 2024-09-08 - Boston Red Sox. Reason: No relevant stats.
+
+Team: Boston Red Sox
+Total games with SP advantage: 66
+Dog Wins: 10, Dog Losses: 10
+Fav Wins: 24, Fav Losses: 22
+Total Wins: 34, Total Losses: 32
+Dog Better: 132
+Fav Better: -478.74588922752474
+Disadvantaged Wins: 38, Disadvantaged Losses: 38
+Disadvantaged Dog Wins: 20, Disadvantaged Dog Losses: 20
+Disadvantaged Fav Wins: 18, Disadvantaged Fav Losses: 18
+Disadvantaged Dog Better: 495
+Disadvantaged Fav Better: -434.09227948468356
+
+Skipping game: 2024-05-23 - Chicago Cubs. Reason: No relevant stats.
+Skipping game: 2024-08-25 - Chicago Cubs. Reason: No relevant stats.
+
+Team: Chicago Cubs
+Total games with SP advantage: 83
+Dog Wins: 18, Dog Losses: 10
+Fav Wins: 28, Fav Losses: 27
+Total Wins: 46, Total Losses: 37
+Dog Better: 1262
+Fav Better: -749.5915934038518
+Disadvantaged Wins: 27, Disadvantaged Losses: 31
+Disadvantaged Dog Wins: 13, Disadvantaged Dog Losses: 23
+Disadvantaged Fav Wins: 14, Disadvantaged Fav Losses: 8
+Disadvantaged Dog Better: -572
+Disadvantaged Fav Better: 260.5427469159758
+
+Skipping game: 2024-07-28 - Cleveland Guardians. Reason: No relevant stats.
+
+Team: Cleveland Guardians
+Total games with SP advantage: 46
+Dog Wins: 8, Dog Losses: 6
+Fav Wins: 19, Fav Losses: 13
+Total Wins: 27, Total Losses: 19
+Dog Better: 376
+Fav Better: 39.83314580110125
+Disadvantaged Wins: 53, Disadvantaged Losses: 43
+Disadvantaged Dog Wins: 13, Disadvantaged Dog Losses: 21
+Disadvantaged Fav Wins: 40, Disadvantaged Fav Losses: 22
+Disadvantaged Dog Better: -432
+Disadvantaged Fav Better: 964.8784059129325
+
+Skipping game: 2024-09-02 - Houston Astros. Reason: No relevant stats.
+Skipping game: 2024-09-05 - Houston Astros. Reason: No relevant stats.
+
+Team: Houston Astros
+Total games with SP advantage: 89
+Dog Wins: 9, Dog Losses: 5
+Fav Wins: 49, Fav Losses: 26
+Total Wins: 58, Total Losses: 31
+Dog Better: 526
+Fav Better: 662.2353308915601
+Disadvantaged Wins: 19, Disadvantaged Losses: 33
+Disadvantaged Dog Wins: 6, Disadvantaged Dog Losses: 11
+Disadvantaged Fav Wins: 13, Disadvantaged Fav Losses: 22
+Disadvantaged Dog Better: -362
+Disadvantaged Fav Better: -1255.7557368622838
+
+Skipping game: 2024-08-21 - Kansas City Royals. Reason: No relevant stats.
+
+Team: Kansas City Royals
+Total games with SP advantage: 92
+Dog Wins: 11, Dog Losses: 17
+Fav Wins: 41, Fav Losses: 23
+Total Wins: 52, Total Losses: 40
+Dog Better: -452
+Fav Better: 535.2552436811487
+Disadvantaged Wins: 26, Disadvantaged Losses: 25
+Disadvantaged Dog Wins: 21, Disadvantaged Dog Losses: 19
+Disadvantaged Fav Wins: 5, Disadvantaged Fav Losses: 6
+Disadvantaged Dog Better: 730
+Disadvantaged Fav Better: -172.1486480665762
+
+Skipping game: 2024-07-14 - Los Angeles Dodgers. Reason: No relevant stats.
+
+Team: Los Angeles Dodgers
+Total games with SP advantage: 74
+Dog Wins: 1, Dog Losses: 1
+Fav Wins: 45, Fav Losses: 27
+Total Wins: 46, Total Losses: 28
+Dog Better: 20
+Fav Better: -56.30919048666705
+Disadvantaged Wins: 40, Disadvantaged Losses: 28
+Disadvantaged Dog Wins: 3, Disadvantaged Dog Losses: 8
+Disadvantaged Fav Wins: 37, Disadvantaged Fav Losses: 20
+Disadvantaged Dog Better: -430
+Disadvantaged Fav Better: 492.4222221234293
+
+Skipping game: 2024-06-17 - Milwaukee Brewers. Reason: No relevant stats.
+Skipping game: 2024-08-30 - Milwaukee Brewers. Reason: No relevant stats.
+Skipping game: 2024-09-01 - Milwaukee Brewers. Reason: No relevant stats.
+
+Team: Milwaukee Brewers
+Total games with SP advantage: 70
+Dog Wins: 8, Dog Losses: 10
+Fav Wins: 31, Fav Losses: 21
+Total Wins: 39, Total Losses: 31
+Dog Better: -63
+Fav Better: 49.20320291810032
+Disadvantaged Wins: 42, Disadvantaged Losses: 28
+Disadvantaged Dog Wins: 21, Disadvantaged Dog Losses: 12
+Disadvantaged Fav Wins: 21, Disadvantaged Fav Losses: 16
+Disadvantaged Dog Better: 1435
+Disadvantaged Fav Better: 122.46218496823889
+
+Skipping game: 2024-09-04 - Minnesota Twins. Reason: No relevant stats.
+
+Team: Minnesota Twins
+Total games with SP advantage: 84
+Dog Wins: 10, Dog Losses: 9
+Fav Wins: 42, Fav Losses: 23
+Total Wins: 52, Total Losses: 32
+Dog Better: 272
+Fav Better: 336.88763525955073
+Disadvantaged Wins: 24, Disadvantaged Losses: 34
+Disadvantaged Dog Wins: 5, Disadvantaged Dog Losses: 17
+Disadvantaged Fav Wins: 19, Disadvantaged Fav Losses: 17
+Disadvantaged Dog Better: -1135
+Disadvantaged Fav Better: -222.26358526712852
+
+Skipping game: 2024-09-08 - New York Mets. Reason: No relevant stats.
+
+Team: New York Mets
+Total games with SP advantage: 73
+Dog Wins: 11, Dog Losses: 8
+Fav Wins: 37, Fav Losses: 17
+Total Wins: 48, Total Losses: 25
+Dog Better: 585
+Fav Better: 1000.189774169208
+Disadvantaged Wins: 30, Disadvantaged Losses: 39
+Disadvantaged Dog Wins: 12, Disadvantaged Dog Losses: 18
+Disadvantaged Fav Wins: 18, Disadvantaged Fav Losses: 21
+Disadvantaged Dog Better: -214
+Disadvantaged Fav Better: -665.4595038307671
+
+Skipping game: 2024-08-14 - New York Yankees. Reason: No relevant stats.
+
+Team: New York Yankees
+Total games with SP advantage: 77
+Dog Wins: 7, Dog Losses: 2
+Fav Wins: 41, Fav Losses: 27
+Total Wins: 48, Total Losses: 29
+Dog Better: 612
+Fav Better: -148.01895385327498
+Disadvantaged Wins: 33, Disadvantaged Losses: 32
+Disadvantaged Dog Wins: 10, Disadvantaged Dog Losses: 4
+Disadvantaged Fav Wins: 23, Disadvantaged Fav Losses: 28
+Disadvantaged Dog Better: 733
+Disadvantaged Fav Better: -1136.8270530135526
+
+Skipping game: 2024-07-28 - Philadelphia Phillies. Reason: No relevant stats.
+Skipping game: 2024-09-05 - Philadelphia Phillies. Reason: No relevant stats.
+Skipping game: 2024-09-08 - Philadelphia Phillies. Reason: No relevant stats.
+
+Team: Philadelphia Phillies
+Total games with SP advantage: 95
+Dog Wins: 2, Dog Losses: 6
+Fav Wins: 55, Fav Losses: 32
+Total Wins: 57, Total Losses: 38
+Dog Better: -392
+Fav Better: 90.58907511124374
+Disadvantaged Wins: 27, Disadvantaged Losses: 18
+Disadvantaged Dog Wins: 9, Disadvantaged Dog Losses: 10
+Disadvantaged Fav Wins: 18, Disadvantaged Fav Losses: 8
+Disadvantaged Dog Better: 71
+Disadvantaged Fav Better: 512.1465162783411
+
+
+Team: San Diego Padres
+Total games with SP advantage: 77
+Dog Wins: 5, Dog Losses: 7
+Fav Wins: 44, Fav Losses: 21
+Total Wins: 49, Total Losses: 28
+Dog Better: -123
+Fav Better: 911.3270910806636
+Disadvantaged Wins: 32, Disadvantaged Losses: 36
+Disadvantaged Dog Wins: 20, Disadvantaged Dog Losses: 14
+Disadvantaged Fav Wins: 12, Disadvantaged Fav Losses: 22
+Disadvantaged Dog Better: 1249
+Disadvantaged Fav Better: -1205.597754606436
+
+Skipping game: 2024-08-30 - San Francisco Giants. Reason: No relevant stats.
+
+Team: San Francisco Giants
+Total games with SP advantage: 80
+Dog Wins: 10, Dog Losses: 13
+Fav Wins: 33, Fav Losses: 24
+Total Wins: 43, Total Losses: 37
+Dog Better: -175
+Fav Better: -200.1623724736795
+Disadvantaged Wins: 27, Disadvantaged Losses: 36
+Disadvantaged Dog Wins: 15, Disadvantaged Dog Losses: 20
+Disadvantaged Fav Wins: 12, Disadvantaged Fav Losses: 16
+Disadvantaged Dog Better: 29
+Disadvantaged Fav Better: -577.2905935198146
+
+Skipping game: 2024-08-30 - Seattle Mariners. Reason: No relevant stats.
+Skipping game: 2024-09-01 - Seattle Mariners. Reason: No relevant stats.
+Skipping game: 2024-09-03 - Seattle Mariners. Reason: No relevant stats.
+
+Team: Seattle Mariners
+Total games with SP advantage: 105
+Dog Wins: 10, Dog Losses: 15
+Fav Wins: 45, Fav Losses: 35
+Total Wins: 55, Total Losses: 50
+Dog Better: -279
+Fav Better: -300.1826652094299
+Disadvantaged Wins: 17, Disadvantaged Losses: 19
+Disadvantaged Dog Wins: 7, Disadvantaged Dog Losses: 7
+Disadvantaged Fav Wins: 10, Disadvantaged Fav Losses: 12
+Disadvantaged Dog Better: 163
+Disadvantaged Fav Better: -401.46912957546095
+
+
+Team: St. Louis Cardinals
+Total games with SP advantage: 58
+Dog Wins: 11, Dog Losses: 7
+Fav Wins: 19, Fav Losses: 21
+Total Wins: 30, Total Losses: 28
+Dog Better: 574
+Fav Better: -726.4273391268163
+Disadvantaged Wins: 42, Disadvantaged Losses: 43
+Disadvantaged Dog Wins: 28, Disadvantaged Dog Losses: 29
+Disadvantaged Fav Wins: 14, Disadvantaged Fav Losses: 14
+Disadvantaged Dog Better: 643
+Disadvantaged Fav Better: -208.43755525002126
+
+Skipping game: 2024-09-04 - Tampa Bay Rays. Reason: No relevant stats.
+
+Team: Tampa Bay Rays
+Total games with SP advantage: 60
+Dog Wins: 10, Dog Losses: 4
+Fav Wins: 26, Fav Losses: 20
+Total Wins: 36, Total Losses: 24
+Dog Better: 728
+Fav Better: -14.394908195506886
+Disadvantaged Wins: 34, Disadvantaged Losses: 48
+Disadvantaged Dog Wins: 18, Disadvantaged Dog Losses: 32
+Disadvantaged Fav Wins: 16, Disadvantaged Fav Losses: 16
+Disadvantaged Dog Better: -787
+Disadvantaged Fav Better: -209.0547957783038
+
+Skipping game: 2024-09-06 - Texas Rangers. Reason: No relevant stats.
+Skipping game: 2024-09-08 - Texas Rangers. Reason: No relevant stats.
+
+Team: Texas Rangers
+Total games with SP advantage: 78
+Dog Wins: 8, Dog Losses: 16
+Fav Wins: 32, Fav Losses: 22
+Total Wins: 40, Total Losses: 38
+Dog Better: -516
+Fav Better: 84.41967096304323
+Disadvantaged Wins: 29, Disadvantaged Losses: 35
+Disadvantaged Dog Wins: 12, Disadvantaged Dog Losses: 20
+Disadvantaged Fav Wins: 17, Disadvantaged Fav Losses: 15
+Disadvantaged Dog Better: -557
+Disadvantaged Fav Better: -229.31102944828785
+
+Skipping game: 2024-07-14 - Detroit Tigers. Reason: No relevant stats.
+Skipping game: 2024-08-26 - Detroit Tigers. Reason: No relevant stats.
+Skipping game: 2024-08-27 - Detroit Tigers. Reason: No relevant stats.
+Skipping game: 2024-09-08 - Detroit Tigers. Reason: No relevant stats.
+
+Team: Detroit Tigers
+Total games with SP advantage: 94
+Dog Wins: 21, Dog Losses: 24
+Fav Wins: 29, Fav Losses: 20
+Total Wins: 50, Total Losses: 44
+Dog Better: 74
+Fav Better: 163.02437946148848
+Disadvantaged Wins: 19, Disadvantaged Losses: 27
+Disadvantaged Dog Wins: 15, Disadvantaged Dog Losses: 22
+Disadvantaged Fav Wins: 4, Disadvantaged Fav Losses: 5
+Disadvantaged Dog Better: -159
+Disadvantaged Fav Better: -168.58964925190088
+
+
+Cumulative Results for All Teams:
+Total games with SP advantage: 1636
+Dog Wins: 187, Dog Losses: 187
+Fav Wins: 769, Fav Losses: 493
+Total Wins: 956, Total Losses: 680
+Dog Better: 3383
+Fav Better: 2267.8528874951617
+Disadvantaged Wins: 651, Disadvantaged Losses: 695
+Disadvantaged Dog Wins: 282, Disadvantaged Dog Losses: 351
+Disadvantaged Fav Wins: 369, Disadvantaged Fav Losses: 344
+Disadvantaged Dog Better: 829
+Disadvantaged Fav Better: -5799.197514508814
+
+
+Failed Comparisons:
+Date: 2024-08-19, Team: Arizona Diamondbacks, Pitcher: pfaadbr01, Opposing Pitcher: adam oller, Status Code: 404
+Date: 2024-05-23, Team: Atlanta Braves, Pitcher: aj smith shawver, Opposing Pitcher: brownbe02, Status Code: 404
+Date: 2024-09-08, Team: Boston Red Sox, Pitcher: richard fitts, Opposing Pitcher: flexech01, Status Code: 404
+Date: 2024-05-23, Team: Chicago Cubs, Pitcher: brownbe02, Opposing Pitcher: aj smith shawver, Status Code: 404
+Date: 2024-08-25, Team: Chicago Cubs, Pitcher: assadja01, Opposing Pitcher: adam oller, Status Code: 404
+Date: 2024-07-28, Team: Cleveland Guardians, Pitcher: cantijo01, Opposing Pitcher: allarko01, Status Code: 500
+Date: 2024-09-02, Team: Houston Astros, Pitcher: verlaju01, Opposing Pitcher: julian aguiar, Status Code: 404
+Date: 2024-09-05, Team: Houston Astros, Pitcher: brownhu01, Opposing Pitcher: rhett lowder, Status Code: 404
+Date: 2024-08-21, Team: Kansas City Royals, Pitcher: lorenmi01, Opposing Pitcher: johnny cueto, Status Code: 404
+Date: 2024-07-14, Team: Los Angeles Dodgers, Pitcher: brent honeywell, Opposing Pitcher: briesbe01, Status Code: 404
+Date: 2024-06-17, Team: Milwaukee Brewers, Pitcher: rodrica02, Opposing Pitcher: plesaza01, Status Code: 500
+Date: 2024-08-30, Team: Milwaukee Brewers, Pitcher: halldl01, Opposing Pitcher: rhett lowder, Status Code: 404
+Date: 2024-09-01, Team: Milwaukee Brewers, Pitcher: myersto01, Opposing Pitcher: brandon williamson, Status Code: 404
+Date: 2024-09-04, Team: Minnesota Twins, Pitcher: henriro01, Opposing Pitcher: sulseco01, Status Code: 500
+Date: 2024-09-08, Team: New York Mets, Pitcher: severlu01, Opposing Pitcher: julian aguiar, Status Code: 404
+Date: 2024-08-14, Team: New York Yankees, Pitcher: warrewi01, Opposing Pitcher: martida03, Status Code: 500
+Date: 2024-07-28, Team: Philadelphia Phillies, Pitcher: allarko01, Opposing Pitcher: cantijo01, Status Code: 500
+Date: 2024-09-05, Team: Philadelphia Phillies, Pitcher: suarera01, Opposing Pitcher: adam oller, Status Code: 404
+Date: 2024-09-08, Team: Philadelphia Phillies, Pitcher: seth johnson, Opposing Pitcher: cabreed02, Status Code: 404
+Date: 2024-08-30, Team: San Francisco Giants, Pitcher: snellbl01, Opposing Pitcher: adam oller, Status Code: 404
+Date: 2024-08-30, Team: Seattle Mariners, Pitcher: kirbyge01, Opposing Pitcher: samuel aldegheri, Status Code: 404
+Date: 2024-09-01, Team: Seattle Mariners, Pitcher: millebr04, Opposing Pitcher: caden dana, Status Code: 404
+Date: 2024-09-03, Team: Seattle Mariners, Pitcher: castilu02, Opposing Pitcher: j.t. ginn, Status Code: 404
+Date: 2024-09-04, Team: Tampa Bay Rays, Pitcher: sulseco01, Opposing Pitcher: henriro01, Status Code: 500
+Date: 2024-09-06, Team: Texas Rangers, Pitcher: garabge01, Opposing Pitcher: samuel aldegheri, Status Code: 404
+Date: 2024-09-08, Team: Texas Rangers, Pitcher: heanean01, Opposing Pitcher: caden dana, Status Code: 404
+Date: 2024-07-14, Team: Detroit Tigers, Pitcher: briesbe01, Opposing Pitcher: brent honeywell, Status Code: 404
+Date: 2024-08-26, Team: Detroit Tigers, Pitcher: ty madden, Opposing Pitcher: martida03, Status Code: 404
+Date: 2024-08-27, Team: Detroit Tigers, Pitcher: hurtebr01, Opposing Pitcher: johnny cueto, Status Code: 404
+Date: 2024-09-08, Team: Detroit Tigers, Pitcher: briesbe01, Opposing Pitcher: j.t. ginn, Status Code: 404
+
+
+
+
+
+
+
+
+THIRD SET OF WEIGHTS.....Opitimized for ARZ... This is current highest! 
+Best Weights: {'AB_R': 0.5, 'AB_H': 0.5, 'PA_HR': 1.5, 'AB_SB': 0.1, 'SB_SB_CS': 0.5, 'PA_BB': 1.5, 'AB_SO': 0.1, 'SOW': 1, 'BA': 0.5, 'OBP': 1, 'SLG': 0.5, 'OPS': 1, 'PA_TB': 0.5, 'AB_GDP': 0.5, 'BAbip': 0.5, 'tOPSPlus': 1.5, 'sOPSPlus': 0.5}
+
+
+Team: Arizona Diamondbacks
+Total games with SP advantage: 63
+Dog Wins: 11, Dog Losses: 5
+Fav Wins: 34, Fav Losses: 13
+Total Wins: 45, Total Losses: 18
+Dog Better: 806
+Fav Better: 1089.5140001976247
+Disadvantaged Wins: 34, Disadvantaged Losses: 46
+Disadvantaged Dog Wins: 21, Disadvantaged Dog Losses: 31
+Disadvantaged Fav Wins: 13, Disadvantaged Fav Losses: 15
+Disadvantaged Dog Better: -433
+Disadvantaged Fav Better: -484.8157959022751
+
+Skipping game: 2024-05-23 - Atlanta Braves. Reason: No relevant stats.
+
+Team: Atlanta Braves
+Total games with SP advantage: 88
+Dog Wins: 3, Dog Losses: 7
+Fav Wins: 49, Fav Losses: 29
+Total Wins: 52, Total Losses: 36
+Dog Better: -373
+Fav Better: -6.817913478080527
+Disadvantaged Wins: 25, Disadvantaged Losses: 29
+Disadvantaged Dog Wins: 4, Disadvantaged Dog Losses: 7
+Disadvantaged Fav Wins: 21, Disadvantaged Fav Losses: 22
+Disadvantaged Dog Better: -223
+Disadvantaged Fav Better: -654.6993627691086
+
+
+Team: Baltimore Orioles
+Total games with SP advantage: 82
+Dog Wins: 3, Dog Losses: 3
+Fav Wins: 49, Fav Losses: 27
+Total Wins: 52, Total Losses: 30
+Dog Better: 30
+Fav Better: 578.5733322083806
+Disadvantaged Wins: 30, Disadvantaged Losses: 32
+Disadvantaged Dog Wins: 9, Disadvantaged Dog Losses: 8
+Disadvantaged Fav Wins: 21, Disadvantaged Fav Losses: 24
+Disadvantaged Dog Better: 344
+Disadvantaged Fav Better: -718.3852868742522
+
+Skipping game: 2024-09-08 - Boston Red Sox. Reason: No relevant stats.
+
+Team: Boston Red Sox
+Total games with SP advantage: 69
+Dog Wins: 10, Dog Losses: 11
+Fav Wins: 26, Fav Losses: 22
+Total Wins: 36, Total Losses: 33
+Dog Better: 36
+Fav Better: -327.9492844070318
+Disadvantaged Wins: 36, Disadvantaged Losses: 37
+Disadvantaged Dog Wins: 20, Disadvantaged Dog Losses: 19
+Disadvantaged Fav Wins: 16, Disadvantaged Fav Losses: 18
+Disadvantaged Dog Better: 591
+Disadvantaged Fav Better: -584.8888843051764
+
+Skipping game: 2024-05-23 - Chicago Cubs. Reason: No relevant stats.
+Skipping game: 2024-08-25 - Chicago Cubs. Reason: No relevant stats.
+
+Team: Chicago Cubs
+Total games with SP advantage: 91
+Dog Wins: 19, Dog Losses: 10
+Fav Wins: 33, Fav Losses: 29
+Total Wins: 52, Total Losses: 39
+Dog Better: 1440
+Fav Better: -568.751553626185
+Disadvantaged Wins: 21, Disadvantaged Losses: 29
+Disadvantaged Dog Wins: 12, Disadvantaged Dog Losses: 23
+Disadvantaged Fav Wins: 9, Disadvantaged Fav Losses: 6
+Disadvantaged Dog Better: -750
+Disadvantaged Fav Better: 79.7027071383092
+
+Skipping game: 2024-07-28 - Cleveland Guardians. Reason: No relevant stats.
+
+Team: Cleveland Guardians
+Total games with SP advantage: 56
+Dog Wins: 8, Dog Losses: 2
+Fav Wins: 30, Fav Losses: 16
+Total Wins: 38, Total Losses: 18
+Dog Better: 777
+Fav Better: 560.472954103511
+Disadvantaged Wins: 42, Disadvantaged Losses: 44
+Disadvantaged Dog Wins: 13, Disadvantaged Dog Losses: 25
+Disadvantaged Fav Wins: 29, Disadvantaged Fav Losses: 19
+Disadvantaged Dog Better: -833
+Disadvantaged Fav Better: 444.2385976105223
+
+Skipping game: 2024-09-02 - Houston Astros. Reason: No relevant stats.
+Skipping game: 2024-09-05 - Houston Astros. Reason: No relevant stats.
+
+Team: Houston Astros
+Total games with SP advantage: 62
+Dog Wins: 4, Dog Losses: 1
+Fav Wins: 40, Fav Losses: 17
+Total Wins: 44, Total Losses: 18
+Dog Better: 337
+Fav Better: 943.6161198753355
+Disadvantaged Wins: 33, Disadvantaged Losses: 46
+Disadvantaged Dog Wins: 11, Disadvantaged Dog Losses: 15
+Disadvantaged Fav Wins: 22, Disadvantaged Fav Losses: 31
+Disadvantaged Dog Better: -173
+Disadvantaged Fav Better: -1537.1365258460592
+
+Skipping game: 2024-08-21 - Kansas City Royals. Reason: No relevant stats.
+
+Team: Kansas City Royals
+Total games with SP advantage: 99
+Dog Wins: 16, Dog Losses: 18
+Fav Wins: 41, Fav Losses: 24
+Total Wins: 57, Total Losses: 42
+Dog Better: -6
+Fav Better: 423.08631025237287
+Disadvantaged Wins: 21, Disadvantaged Losses: 23
+Disadvantaged Dog Wins: 16, Disadvantaged Dog Losses: 18
+Disadvantaged Fav Wins: 5, Disadvantaged Fav Losses: 5
+Disadvantaged Dog Better: 284
+Disadvantaged Fav Better: -59.97971463780026
+
+Skipping game: 2024-07-14 - Los Angeles Dodgers. Reason: No relevant stats.
+
+Team: Los Angeles Dodgers
+Total games with SP advantage: 80
+Dog Wins: 2, Dog Losses: 2
+Fav Wins: 50, Fav Losses: 26
+Total Wins: 52, Total Losses: 28
+Dog Better: 23
+Fav Better: 328.68056132429956
+Disadvantaged Wins: 34, Disadvantaged Losses: 28
+Disadvantaged Dog Wins: 2, Disadvantaged Dog Losses: 7
+Disadvantaged Fav Wins: 32, Disadvantaged Fav Losses: 21
+Disadvantaged Dog Better: -433
+Disadvantaged Fav Better: 107.43247031246256
+
+Skipping game: 2024-06-17 - Milwaukee Brewers. Reason: No relevant stats.
+Skipping game: 2024-08-30 - Milwaukee Brewers. Reason: No relevant stats.
+Skipping game: 2024-09-01 - Milwaukee Brewers. Reason: No relevant stats.
+
+Team: Milwaukee Brewers
+Total games with SP advantage: 73
+Dog Wins: 11, Dog Losses: 8
+Fav Wins: 34, Fav Losses: 20
+Total Wins: 45, Total Losses: 28
+Dog Better: 532
+Fav Better: 362.41965654087653
+Disadvantaged Wins: 36, Disadvantaged Losses: 31
+Disadvantaged Dog Wins: 18, Disadvantaged Dog Losses: 14
+Disadvantaged Fav Wins: 18, Disadvantaged Fav Losses: 17
+Disadvantaged Dog Better: 840
+Disadvantaged Fav Better: -190.75426865453713
+
+Skipping game: 2024-09-04 - Minnesota Twins. Reason: No relevant stats.
+
+Team: Minnesota Twins
+Total games with SP advantage: 96
+Dog Wins: 10, Dog Losses: 11
+Fav Wins: 48, Fav Losses: 27
+Total Wins: 58, Total Losses: 38
+Dog Better: 62
+Fav Better: 318.9784321891665
+Disadvantaged Wins: 18, Disadvantaged Losses: 28
+Disadvantaged Dog Wins: 5, Disadvantaged Dog Losses: 15
+Disadvantaged Fav Wins: 13, Disadvantaged Fav Losses: 13
+Disadvantaged Dog Better: -925
+Disadvantaged Fav Better: -204.35438219674438
+
+Skipping game: 2024-09-08 - New York Mets. Reason: No relevant stats.
+
+Team: New York Mets
+Total games with SP advantage: 69
+Dog Wins: 11, Dog Losses: 5
+Fav Wins: 34, Fav Losses: 19
+Total Wins: 45, Total Losses: 24
+Dog Better: 866
+Fav Better: 569.0075373192727
+Disadvantaged Wins: 33, Disadvantaged Losses: 40
+Disadvantaged Dog Wins: 12, Disadvantaged Dog Losses: 21
+Disadvantaged Fav Wins: 21, Disadvantaged Fav Losses: 19
+Disadvantaged Dog Better: -495
+Disadvantaged Fav Better: -234.27726698083183
+
+Skipping game: 2024-08-14 - New York Yankees. Reason: No relevant stats.
+
+Team: New York Yankees
+Total games with SP advantage: 71
+Dog Wins: 4, Dog Losses: 2
+Fav Wins: 35, Fav Losses: 30
+Total Wins: 39, Total Losses: 32
+Dog Better: 267
+Fav Better: -816.5392384579416
+Disadvantaged Wins: 42, Disadvantaged Losses: 29
+Disadvantaged Dog Wins: 13, Disadvantaged Dog Losses: 4
+Disadvantaged Fav Wins: 29, Disadvantaged Fav Losses: 25
+Disadvantaged Dog Better: 1078
+Disadvantaged Fav Better: -468.306768408886
+
+Skipping game: 2024-07-28 - Philadelphia Phillies. Reason: No relevant stats.
+Skipping game: 2024-09-05 - Philadelphia Phillies. Reason: No relevant stats.
+Skipping game: 2024-09-08 - Philadelphia Phillies. Reason: No relevant stats.
+
+Team: Philadelphia Phillies
+Total games with SP advantage: 100
+Dog Wins: 3, Dog Losses: 7
+Fav Wins: 58, Fav Losses: 32
+Total Wins: 61, Total Losses: 39
+Dog Better: -377
+Fav Better: 290.0762803283278
+Disadvantaged Wins: 23, Disadvantaged Losses: 17
+Disadvantaged Dog Wins: 8, Disadvantaged Dog Losses: 9
+Disadvantaged Fav Wins: 15, Disadvantaged Fav Losses: 8
+Disadvantaged Dog Better: 56
+Disadvantaged Fav Better: 312.65931106125686
+
+
+Team: San Diego Padres
+Total games with SP advantage: 76
+Dog Wins: 5, Dog Losses: 6
+Fav Wins: 42, Fav Losses: 23
+Total Wins: 47, Total Losses: 29
+Dog Better: -23
+Fav Better: 597.8305235851632
+Disadvantaged Wins: 34, Disadvantaged Losses: 35
+Disadvantaged Dog Wins: 20, Disadvantaged Dog Losses: 15
+Disadvantaged Fav Wins: 14, Disadvantaged Fav Losses: 20
+Disadvantaged Dog Better: 1149
+Disadvantaged Fav Better: -892.101187110936
+
+Skipping game: 2024-08-30 - San Francisco Giants. Reason: No relevant stats.
+
+Team: San Francisco Giants
+Total games with SP advantage: 66
+Dog Wins: 10, Dog Losses: 7
+Fav Wins: 29, Fav Losses: 20
+Total Wins: 39, Total Losses: 27
+Dog Better: 439
+Fav Better: -12.251901298146208
+Disadvantaged Wins: 31, Disadvantaged Losses: 46
+Disadvantaged Dog Wins: 15, Disadvantaged Dog Losses: 26
+Disadvantaged Fav Wins: 16, Disadvantaged Fav Losses: 20
+Disadvantaged Dog Better: -585
+Disadvantaged Fav Better: -765.2010646953479
+
+Skipping game: 2024-08-30 - Seattle Mariners. Reason: No relevant stats.
+Skipping game: 2024-09-01 - Seattle Mariners. Reason: No relevant stats.
+Skipping game: 2024-09-03 - Seattle Mariners. Reason: No relevant stats.
+
+Team: Seattle Mariners
+Total games with SP advantage: 121
+Dog Wins: 14, Dog Losses: 16
+Fav Wins: 51, Fav Losses: 40
+Total Wins: 65, Total Losses: 56
+Dog Better: 109
+Fav Better: -312.3311435134911
+Disadvantaged Wins: 7, Disadvantaged Losses: 13
+Disadvantaged Dog Wins: 3, Disadvantaged Dog Losses: 6
+Disadvantaged Fav Wins: 4, Disadvantaged Fav Losses: 7
+Disadvantaged Dog Better: -225
+Disadvantaged Fav Better: -389.3206512713997
+
+
+Team: St. Louis Cardinals
+Total games with SP advantage: 58
+Dog Wins: 13, Dog Losses: 7
+Fav Wins: 18, Fav Losses: 20
+Total Wins: 31, Total Losses: 27
+Dog Better: 796
+Fav Better: -649.1552492254077
+Disadvantaged Wins: 41, Disadvantaged Losses: 44
+Disadvantaged Dog Wins: 26, Disadvantaged Dog Losses: 29
+Disadvantaged Fav Wins: 15, Disadvantaged Fav Losses: 15
+Disadvantaged Dog Better: 421
+Disadvantaged Fav Better: -285.70964515142987
+
+Skipping game: 2024-09-04 - Tampa Bay Rays. Reason: No relevant stats.
+
+Team: Tampa Bay Rays
+Total games with SP advantage: 59
+Dog Wins: 8, Dog Losses: 4
+Fav Wins: 25, Fav Losses: 22
+Total Wins: 33, Total Losses: 26
+Dog Better: 507
+Fav Better: -300.5555592280763
+Disadvantaged Wins: 37, Disadvantaged Losses: 46
+Disadvantaged Dog Wins: 20, Disadvantaged Dog Losses: 32
+Disadvantaged Fav Wins: 17, Disadvantaged Fav Losses: 14
+Disadvantaged Dog Better: -566
+Disadvantaged Fav Better: 77.10585525426565
+
+Skipping game: 2024-09-06 - Texas Rangers. Reason: No relevant stats.
+Skipping game: 2024-09-08 - Texas Rangers. Reason: No relevant stats.
+
+Team: Texas Rangers
+Total games with SP advantage: 81
+Dog Wins: 10, Dog Losses: 13
+Fav Wins: 33, Fav Losses: 25
+Total Wins: 43, Total Losses: 38
+Dog Better: -7
+Fav Better: -176.60234342663716
+Disadvantaged Wins: 26, Disadvantaged Losses: 35
+Disadvantaged Dog Wins: 10, Disadvantaged Dog Losses: 23
+Disadvantaged Fav Wins: 16, Disadvantaged Fav Losses: 12
+Disadvantaged Dog Better: -1066
+Disadvantaged Fav Better: 31.71098494139258
+
+Skipping game: 2024-07-14 - Detroit Tigers. Reason: No relevant stats.
+Skipping game: 2024-08-26 - Detroit Tigers. Reason: No relevant stats.
+Skipping game: 2024-08-27 - Detroit Tigers. Reason: No relevant stats.
+Skipping game: 2024-09-08 - Detroit Tigers. Reason: No relevant stats.
+
+Team: Detroit Tigers
+Total games with SP advantage: 93
+Dog Wins: 21, Dog Losses: 22
+Fav Wins: 30, Fav Losses: 20
+Total Wins: 51, Total Losses: 42
+Dog Better: 337
+Fav Better: 243.02437946148848
+Disadvantaged Wins: 18, Disadvantaged Losses: 29
+Disadvantaged Dog Wins: 15, Disadvantaged Dog Losses: 24
+Disadvantaged Fav Wins: 3, Disadvantaged Fav Losses: 5
+Disadvantaged Dog Better: -422
+Disadvantaged Fav Better: -248.58964925190088
+
+
+Cumulative Results for All Teams:
+Total games with SP advantage: 1653
+Dog Wins: 196, Dog Losses: 167
+Fav Wins: 789, Fav Losses: 501
+Total Wins: 985, Total Losses: 668
+Dog Better: 6578
+Fav Better: 3134.325900724822
+Disadvantaged Wins: 622, Disadvantaged Losses: 707
+Disadvantaged Dog Wins: 273, Disadvantaged Dog Losses: 371
+Disadvantaged Fav Wins: 349, Disadvantaged Fav Losses: 336
+Disadvantaged Dog Better: -2366
+Disadvantaged Fav Better: -6665.670527738475
+
+
+
+
+
+
+
+Team: Arizona Diamondbacks
+Total games with SP advantage: 63
+Dog Wins: 11, Dog Losses: 5
+Fav Wins: 34, Fav Losses: 13
+Total Wins: 45, Total Losses: 18
+Dog Better: 806
+Fav Better: 1089.5140001976247
+Disadvantaged Wins: 34, Disadvantaged Losses: 46
+Disadvantaged Dog Wins: 21, Disadvantaged Dog Losses: 31
+Disadvantaged Fav Wins: 13, Disadvantaged Fav Losses: 15
+Disadvantaged Dog Better: -433
+Disadvantaged Fav Better: -484.8157959022751
+
+Skipping game: 2024-05-23 - Atlanta Braves. Reason: No relevant stats.
+
+Team: Atlanta Braves
+Total games with SP advantage: 88
+Dog Wins: 3, Dog Losses: 7
+Fav Wins: 49, Fav Losses: 29
+Total Wins: 52, Total Losses: 36
+Dog Better: -373
+Fav Better: -6.817913478080527
+Disadvantaged Wins: 25, Disadvantaged Losses: 29
+Disadvantaged Dog Wins: 4, Disadvantaged Dog Losses: 7
+Disadvantaged Fav Wins: 21, Disadvantaged Fav Losses: 22
+Disadvantaged Dog Better: -223
+Disadvantaged Fav Better: -654.6993627691086
+
+
+Team: Baltimore Orioles
+Total games with SP advantage: 80
+Dog Wins: 3, Dog Losses: 3
+Fav Wins: 47, Fav Losses: 27
+Total Wins: 50, Total Losses: 30
+Dog Better: 30
+Fav Better: 459.15667728376457
+Disadvantaged Wins: 32, Disadvantaged Losses: 32
+Disadvantaged Dog Wins: 9, Disadvantaged Dog Losses: 8
+Disadvantaged Fav Wins: 23, Disadvantaged Fav Losses: 24
+Disadvantaged Dog Better: 344
+Disadvantaged Fav Better: -598.9686319496361
+
+Skipping game: 2024-09-08 - Boston Red Sox. Reason: No relevant stats.
+
+Team: Boston Red Sox
+Total games with SP advantage: 70
+Dog Wins: 10, Dog Losses: 12
+Fav Wins: 26, Fav Losses: 22
+Total Wins: 36, Total Losses: 34
+Dog Better: -64
+Fav Better: -327.9492844070318
+Disadvantaged Wins: 36, Disadvantaged Losses: 36
+Disadvantaged Dog Wins: 20, Disadvantaged Dog Losses: 18
+Disadvantaged Fav Wins: 16, Disadvantaged Fav Losses: 18
+Disadvantaged Dog Better: 691
+Disadvantaged Fav Better: -584.8888843051764
+
+Skipping game: 2024-05-23 - Chicago Cubs. Reason: No relevant stats.
+Skipping game: 2024-08-25 - Chicago Cubs. Reason: No relevant stats.
+
+Team: Chicago Cubs
+Total games with SP advantage: 90
+Dog Wins: 19, Dog Losses: 10
+Fav Wins: 33, Fav Losses: 28
+Total Wins: 52, Total Losses: 38
+Dog Better: 1440
+Fav Better: -468.7515536261849
+Disadvantaged Wins: 21, Disadvantaged Losses: 30
+Disadvantaged Dog Wins: 12, Disadvantaged Dog Losses: 23
+Disadvantaged Fav Wins: 9, Disadvantaged Fav Losses: 7
+Disadvantaged Dog Better: -750
+Disadvantaged Fav Better: -20.29729286169082
+
+Skipping game: 2024-07-28 - Cleveland Guardians. Reason: No relevant stats.
+
+Team: Cleveland Guardians
+Total games with SP advantage: 56
+Dog Wins: 8, Dog Losses: 2
+Fav Wins: 30, Fav Losses: 16
+Total Wins: 38, Total Losses: 18
+Dog Better: 777
+Fav Better: 560.472954103511
+Disadvantaged Wins: 42, Disadvantaged Losses: 44
+Disadvantaged Dog Wins: 13, Disadvantaged Dog Losses: 25
+Disadvantaged Fav Wins: 29, Disadvantaged Fav Losses: 19
+Disadvantaged Dog Better: -833
+Disadvantaged Fav Better: 444.2385976105223
+
+Skipping game: 2024-09-02 - Houston Astros. Reason: No relevant stats.
+Skipping game: 2024-09-05 - Houston Astros. Reason: No relevant stats.
+
+Team: Houston Astros
+Total games with SP advantage: 62
+Dog Wins: 4, Dog Losses: 1
+Fav Wins: 40, Fav Losses: 17
+Total Wins: 44, Total Losses: 18
+Dog Better: 337
+Fav Better: 943.6161198753355
+Disadvantaged Wins: 33, Disadvantaged Losses: 46
+Disadvantaged Dog Wins: 11, Disadvantaged Dog Losses: 15
+Disadvantaged Fav Wins: 22, Disadvantaged Fav Losses: 31
+Disadvantaged Dog Better: -173
+Disadvantaged Fav Better: -1537.1365258460592
+
+Skipping game: 2024-08-21 - Kansas City Royals. Reason: No relevant stats.
+
+Team: Kansas City Royals
+Total games with SP advantage: 96
+Dog Wins: 16, Dog Losses: 15
+Fav Wins: 41, Fav Losses: 24
+Total Wins: 57, Total Losses: 39
+Dog Better: 294
+Fav Better: 423.08631025237287
+Disadvantaged Wins: 21, Disadvantaged Losses: 26
+Disadvantaged Dog Wins: 16, Disadvantaged Dog Losses: 21
+Disadvantaged Fav Wins: 5, Disadvantaged Fav Losses: 5
+Disadvantaged Dog Better: -16
+Disadvantaged Fav Better: -59.97971463780026
+
+Skipping game: 2024-07-14 - Los Angeles Dodgers. Reason: No relevant stats.
+
+Team: Los Angeles Dodgers
+Total games with SP advantage: 80
+Dog Wins: 2, Dog Losses: 2
+Fav Wins: 50, Fav Losses: 26
+Total Wins: 52, Total Losses: 28
+Dog Better: 23
+Fav Better: 328.68056132429956
+Disadvantaged Wins: 34, Disadvantaged Losses: 28
+Disadvantaged Dog Wins: 2, Disadvantaged Dog Losses: 7
+Disadvantaged Fav Wins: 32, Disadvantaged Fav Losses: 21
+Disadvantaged Dog Better: -433
+Disadvantaged Fav Better: 107.43247031246256
+
+Skipping game: 2024-06-17 - Milwaukee Brewers. Reason: No relevant stats.
+Skipping game: 2024-08-30 - Milwaukee Brewers. Reason: No relevant stats.
+Skipping game: 2024-09-01 - Milwaukee Brewers. Reason: No relevant stats.
+
+Team: Milwaukee Brewers
+Total games with SP advantage: 72
+Dog Wins: 10, Dog Losses: 8
+Fav Wins: 34, Fav Losses: 20
+Total Wins: 44, Total Losses: 28
+Dog Better: 403
+Fav Better: 362.41965654087653
+Disadvantaged Wins: 37, Disadvantaged Losses: 31
+Disadvantaged Dog Wins: 19, Disadvantaged Dog Losses: 14
+Disadvantaged Fav Wins: 18, Disadvantaged Fav Losses: 17
+Disadvantaged Dog Better: 969
+Disadvantaged Fav Better: -190.75426865453713
+
+Skipping game: 2024-09-04 - Minnesota Twins. Reason: No relevant stats.
+
+Team: Minnesota Twins
+Total games with SP advantage: 96
+Dog Wins: 10, Dog Losses: 10
+Fav Wins: 49, Fav Losses: 27
+Total Wins: 59, Total Losses: 37
+Dog Better: 162
+Fav Better: 382.67269970509005
+Disadvantaged Wins: 17, Disadvantaged Losses: 29
+Disadvantaged Dog Wins: 5, Disadvantaged Dog Losses: 16
+Disadvantaged Fav Wins: 12, Disadvantaged Fav Losses: 13
+Disadvantaged Dog Better: -1025
+Disadvantaged Fav Better: -268.04864971266795
+
+Skipping game: 2024-09-08 - New York Mets. Reason: No relevant stats.
+
+Team: New York Mets
+Total games with SP advantage: 70
+Dog Wins: 11, Dog Losses: 5
+Fav Wins: 34, Fav Losses: 20
+Total Wins: 45, Total Losses: 25
+Dog Better: 866
+Fav Better: 469.0075373192729
+Disadvantaged Wins: 33, Disadvantaged Losses: 39
+Disadvantaged Dog Wins: 12, Disadvantaged Dog Losses: 21
+Disadvantaged Fav Wins: 21, Disadvantaged Fav Losses: 18
+Disadvantaged Dog Better: -495
+Disadvantaged Fav Better: -134.27726698083183
+
+Skipping game: 2024-08-14 - New York Yankees. Reason: No relevant stats.
+
+Team: New York Yankees
+Total games with SP advantage: 73
+Dog Wins: 4, Dog Losses: 2
+Fav Wins: 36, Fav Losses: 31
+Total Wins: 40, Total Losses: 33
+Dog Better: 267
+Fav Better: -875.0454625243317
+Disadvantaged Wins: 41, Disadvantaged Losses: 28
+Disadvantaged Dog Wins: 13, Disadvantaged Dog Losses: 4
+Disadvantaged Fav Wins: 28, Disadvantaged Fav Losses: 24
+Disadvantaged Dog Better: 1078
+Disadvantaged Fav Better: -409.800544342496
+
+Skipping game: 2024-07-28 - Philadelphia Phillies. Reason: No relevant stats.
+Skipping game: 2024-09-05 - Philadelphia Phillies. Reason: No relevant stats.
+Skipping game: 2024-09-08 - Philadelphia Phillies. Reason: No relevant stats.
+
+Team: Philadelphia Phillies
+Total games with SP advantage: 100
+Dog Wins: 3, Dog Losses: 7
+Fav Wins: 58, Fav Losses: 32
+Total Wins: 61, Total Losses: 39
+Dog Better: -377
+Fav Better: 290.0762803283278
+Disadvantaged Wins: 23, Disadvantaged Losses: 17
+Disadvantaged Dog Wins: 8, Disadvantaged Dog Losses: 9
+Disadvantaged Fav Wins: 15, Disadvantaged Fav Losses: 8
+Disadvantaged Dog Better: 56
+Disadvantaged Fav Better: 312.65931106125686
+
+
+Team: San Diego Padres
+Total games with SP advantage: 76
+Dog Wins: 5, Dog Losses: 6
+Fav Wins: 42, Fav Losses: 23
+Total Wins: 47, Total Losses: 29
+Dog Better: -23
+Fav Better: 597.8305235851632
+Disadvantaged Wins: 34, Disadvantaged Losses: 35
+Disadvantaged Dog Wins: 20, Disadvantaged Dog Losses: 15
+Disadvantaged Fav Wins: 14, Disadvantaged Fav Losses: 20
+Disadvantaged Dog Better: 1149
+Disadvantaged Fav Better: -892.101187110936
+
+Skipping game: 2024-08-30 - San Francisco Giants. Reason: No relevant stats.
+
+Team: San Francisco Giants
+Total games with SP advantage: 66
+Dog Wins: 10, Dog Losses: 7
+Fav Wins: 29, Fav Losses: 20
+Total Wins: 39, Total Losses: 27
+Dog Better: 439
+Fav Better: -12.251901298146208
+Disadvantaged Wins: 31, Disadvantaged Losses: 46
+Disadvantaged Dog Wins: 15, Disadvantaged Dog Losses: 26
+Disadvantaged Fav Wins: 16, Disadvantaged Fav Losses: 20
+Disadvantaged Dog Better: -585
+Disadvantaged Fav Better: -765.2010646953479
+
+Skipping game: 2024-08-30 - Seattle Mariners. Reason: No relevant stats.
+Skipping game: 2024-09-01 - Seattle Mariners. Reason: No relevant stats.
+Skipping game: 2024-09-03 - Seattle Mariners. Reason: No relevant stats.
+
+Team: Seattle Mariners
+Total games with SP advantage: 121
+Dog Wins: 14, Dog Losses: 16
+Fav Wins: 51, Fav Losses: 40
+Total Wins: 65, Total Losses: 56
+Dog Better: 109
+Fav Better: -312.3311435134911
+Disadvantaged Wins: 7, Disadvantaged Losses: 13
+Disadvantaged Dog Wins: 3, Disadvantaged Dog Losses: 6
+Disadvantaged Fav Wins: 4, Disadvantaged Fav Losses: 7
+Disadvantaged Dog Better: -225
+Disadvantaged Fav Better: -389.3206512713997
+
+
+Team: St. Louis Cardinals
+Total games with SP advantage: 58
+Dog Wins: 13, Dog Losses: 7
+Fav Wins: 18, Fav Losses: 20
+Total Wins: 31, Total Losses: 27
+Dog Better: 796
+Fav Better: -649.1552492254077
+Disadvantaged Wins: 41, Disadvantaged Losses: 44
+Disadvantaged Dog Wins: 26, Disadvantaged Dog Losses: 29
+Disadvantaged Fav Wins: 15, Disadvantaged Fav Losses: 15
+Disadvantaged Dog Better: 421
+Disadvantaged Fav Better: -285.70964515142987
+
+Skipping game: 2024-09-04 - Tampa Bay Rays. Reason: No relevant stats.
+
+Team: Tampa Bay Rays
+Total games with SP advantage: 60
+Dog Wins: 8, Dog Losses: 4
+Fav Wins: 26, Fav Losses: 22
+Total Wins: 34, Total Losses: 26
+Dog Better: 507
+Fav Better: -211.269844942362
+Disadvantaged Wins: 36, Disadvantaged Losses: 46
+Disadvantaged Dog Wins: 20, Disadvantaged Dog Losses: 32
+Disadvantaged Fav Wins: 16, Disadvantaged Fav Losses: 14
+Disadvantaged Dog Better: -566
+Disadvantaged Fav Better: -12.179859031448643
+
+Skipping game: 2024-09-06 - Texas Rangers. Reason: No relevant stats.
+Skipping game: 2024-09-08 - Texas Rangers. Reason: No relevant stats.
+
+Team: Texas Rangers
+Total games with SP advantage: 82
+Dog Wins: 10, Dog Losses: 13
+Fav Wins: 34, Fav Losses: 25
+Total Wins: 44, Total Losses: 38
+Dog Better: -7
+Fav Better: -106.17980821536959
+Disadvantaged Wins: 25, Disadvantaged Losses: 35
+Disadvantaged Dog Wins: 10, Disadvantaged Dog Losses: 23
+Disadvantaged Fav Wins: 15, Disadvantaged Fav Losses: 12
+Disadvantaged Dog Better: -1066
+Disadvantaged Fav Better: -38.71155026987505
+
+Skipping game: 2024-07-14 - Detroit Tigers. Reason: No relevant stats.
+Skipping game: 2024-08-26 - Detroit Tigers. Reason: No relevant stats.
+Skipping game: 2024-08-27 - Detroit Tigers. Reason: No relevant stats.
+Skipping game: 2024-09-08 - Detroit Tigers. Reason: No relevant stats.
+
+Team: Detroit Tigers
+Total games with SP advantage: 93
+Dog Wins: 21, Dog Losses: 22
+Fav Wins: 30, Fav Losses: 20
+Total Wins: 51, Total Losses: 42
+Dog Better: 337
+Fav Better: 243.02437946148848
+Disadvantaged Wins: 18, Disadvantaged Losses: 29
+Disadvantaged Dog Wins: 15, Disadvantaged Dog Losses: 24
+Disadvantaged Fav Wins: 3, Disadvantaged Fav Losses: 5
+Disadvantaged Dog Better: -422
+Disadvantaged Fav Better: -248.58964925190088
+
+
+Cumulative Results for All Teams:
+Total games with SP advantage: 1652
+Dog Wins: 195, Dog Losses: 164
+Fav Wins: 791, Fav Losses: 502
+Total Wins: 986, Total Losses: 666
+Dog Better: 6749
+Fav Better: 3179.8055387467207
+Disadvantaged Wins: 621, Disadvantaged Losses: 709
+Disadvantaged Dog Wins: 274, Disadvantaged Dog Losses: 374
+Disadvantaged Fav Wins: 347, Disadvantaged Fav Losses: 335
+Disadvantaged Dog Better: -2537
+Disadvantaged Fav Better: -6711.150165760375
+
+
+Failed Comparisons:
+Date: 2024-08-19, Team: Arizona Diamondbacks, Pitcher: pfaadbr01, Opposing Pitcher: adam oller, Status Code: 404
+Date: 2024-05-23, Team: Atlanta Braves, Pitcher: aj smith shawver, Opposing Pitcher: brownbe02, Status Code: 404
+Date: 2024-09-08, Team: Boston Red Sox, Pitcher: richard fitts, Opposing Pitcher: flexech01, Status Code: 404
+Date: 2024-05-23, Team: Chicago Cubs, Pitcher: brownbe02, Opposing Pitcher: aj smith shawver, Status Code: 404
+Date: 2024-08-25, Team: Chicago Cubs, Pitcher: assadja01, Opposing Pitcher: adam oller, Status Code: 404
+Date: 2024-07-28, Team: Cleveland Guardians, Pitcher: cantijo01, Opposing Pitcher: allarko01, Status Code: 500
+Date: 2024-09-02, Team: Houston Astros, Pitcher: verlaju01, Opposing Pitcher: julian aguiar, Status Code: 404
+Date: 2024-09-05, Team: Houston Astros, Pitcher: brownhu01, Opposing Pitcher: rhett lowder, Status Code: 404
+Date: 2024-08-21, Team: Kansas City Royals, Pitcher: lorenmi01, Opposing Pitcher: johnny cueto, Status Code: 404
+Date: 2024-07-14, Team: Los Angeles Dodgers, Pitcher: brent honeywell, Opposing Pitcher: briesbe01, Status Code: 404
+Date: 2024-06-17, Team: Milwaukee Brewers, Pitcher: rodrica02, Opposing Pitcher: plesaza01, Status Code: 500
+Date: 2024-08-30, Team: Milwaukee Brewers, Pitcher: halldl01, Opposing Pitcher: rhett lowder, Status Code: 404
+Date: 2024-09-01, Team: Milwaukee Brewers, Pitcher: myersto01, Opposing Pitcher: brandon williamson, Status Code: 404
+Date: 2024-09-04, Team: Minnesota Twins, Pitcher: henriro01, Opposing Pitcher: sulseco01, Status Code: 500
+Date: 2024-09-08, Team: New York Mets, Pitcher: severlu01, Opposing Pitcher: julian aguiar, Status Code: 404
+Date: 2024-08-14, Team: New York Yankees, Pitcher: warrewi01, Opposing Pitcher: martida03, Status Code: 500
+Date: 2024-07-28, Team: Philadelphia Phillies, Pitcher: allarko01, Opposing Pitcher: cantijo01, Status Code: 500
+Date: 2024-09-05, Team: Philadelphia Phillies, Pitcher: suarera01, Opposing Pitcher: adam oller, Status Code: 404
+Date: 2024-09-08, Team: Philadelphia Phillies, Pitcher: seth johnson, Opposing Pitcher: cabreed02, Status Code: 404
+Date: 2024-08-30, Team: San Francisco Giants, Pitcher: snellbl01, Opposing Pitcher: adam oller, Status Code: 404
+Date: 2024-08-30, Team: Seattle Mariners, Pitcher: kirbyge01, Opposing Pitcher: samuel aldegheri, Status Code: 404
+Date: 2024-09-01, Team: Seattle Mariners, Pitcher: millebr04, Opposing Pitcher: caden dana, Status Code: 404
+Date: 2024-09-03, Team: Seattle Mariners, Pitcher: castilu02, Opposing Pitcher: j.t. ginn, Status Code: 404
+Date: 2024-09-04, Team: Tampa Bay Rays, Pitcher: sulseco01, Opposing Pitcher: henriro01, Status Code: 500
+Date: 2024-09-06, Team: Texas Rangers, Pitcher: garabge01, Opposing Pitcher: samuel aldegheri, Status Code: 404
+Date: 2024-09-08, Team: Texas Rangers, Pitcher: heanean01, Opposing Pitcher: caden dana, Status Code: 404
+Date: 2024-07-14, Team: Detroit Tigers, Pitcher: briesbe01, Opposing Pitcher: brent honeywell, Status Code: 404
+Date: 2024-08-26, Team: Detroit Tigers, Pitcher: ty madden, Opposing Pitcher: martida03, Status Code: 404
+Date: 2024-08-27, Team: Detroit Tigers, Pitcher: hurtebr01, Opposing Pitcher: johnny cueto, Status Code: 404
+Date: 2024-09-08, Team: Detroit Tigers, Pitcher: briesbe01, Opposing Pitcher: j.t. ginn, Status Code: 404
+
+
+
+
+
+
+
+
+
+
+

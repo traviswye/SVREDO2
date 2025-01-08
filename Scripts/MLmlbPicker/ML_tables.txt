@@ -1,0 +1,131 @@
+
+
+
+
+CREATE TABLE ML_Ballparks (
+    BallparkID INT PRIMARY KEY IDENTITY(1,1),
+    Name VARCHAR(100) NOT NULL,
+    Location VARCHAR(100) NOT NULL,
+    Capacity INT NOT NULL,
+    FieldDimensions NVARCHAR(MAX), -- JSON or individual columns for dimensions
+    Altitude INT NOT NULL,
+    ParkFactors NVARCHAR(MAX) -- JSON or individual columns for park factors
+);
+
+
+CREATE TABLE ML_Teams (
+    TeamID INT PRIMARY KEY IDENTITY(1,1),
+    TeamName VARCHAR(100) NOT NULL,
+    Abbreviation VARCHAR(10) NOT NULL,
+    Wins INT DEFAULT 0,
+    Losses INT DEFAULT 0,
+    Ties INT DEFAULT 0 -- If ties are applicable
+);
+
+
+
+CREATE TABLE ML_Players (
+    PlayerID INT PRIMARY KEY IDENTITY(1,1),
+    Name VARCHAR(100) NOT NULL,
+    TeamID INT NOT NULL,
+    Position VARCHAR(10) NOT NULL,
+    SeasonStats NVARCHAR(MAX), -- Use JSON or individual columns for specific stats
+    CumulativeStats NVARCHAR(MAX), -- JSON or individual columns for cumulative stats
+    FOREIGN KEY (TeamID) REFERENCES ML_Teams(TeamID)
+);
+
+CREATE TABLE ML_Games (
+    GameID INT PRIMARY KEY IDENTITY(1,1),
+    Date DATE NOT NULL,
+    HomeTeamID INT NOT NULL,
+    AwayTeamID INT NOT NULL,
+    BallparkID INT NOT NULL,
+    HomeTeamScore INT NOT NULL,
+    AwayTeamScore INT NOT NULL,
+    -- WeatherID INT, -- Temporarily omit the foreign key
+    Result VARCHAR(10) NOT NULL, -- 'HomeWin' or 'AwayWin'
+    ExtraInnings BIT NOT NULL, -- 0 = Regular innings, 1 = Extra innings
+    FOREIGN KEY (HomeTeamID) REFERENCES ML_Teams(TeamID),
+    FOREIGN KEY (AwayTeamID) REFERENCES ML_Teams(TeamID),
+    FOREIGN KEY (BallparkID) REFERENCES ML_Ballparks(BallparkID)
+);
+
+
+CREATE TABLE ML_Weather (
+    WeatherID INT PRIMARY KEY IDENTITY(1,1),
+    GameID INT NOT NULL,
+    Temperature FLOAT NOT NULL,
+    Humidity FLOAT NOT NULL,
+    WindSpeed FLOAT NOT NULL,
+    WindDirection VARCHAR(10) NOT NULL, -- Or degrees (e.g., 90, 180)
+    Precipitation FLOAT DEFAULT 0, -- Amount of rain or 0 if no rain
+    --FOREIGN KEY (GameID) REFERENCES ML_Games(GameID)
+);
+
+CREATE TABLE ML_Lineups (
+    LineupID INT PRIMARY KEY IDENTITY(1,1),
+    GameID INT NOT NULL,
+    TeamID INT NOT NULL,
+    PlayerID INT NOT NULL,
+    BattingOrder INT NOT NULL CHECK (BattingOrder BETWEEN 1 AND 9),
+    Position VARCHAR(10) NOT NULL,
+    FOREIGN KEY (GameID) REFERENCES ML_Games(GameID),
+    FOREIGN KEY (TeamID) REFERENCES ML_Teams(TeamID),
+    FOREIGN KEY (PlayerID) REFERENCES ML_Players(PlayerID)
+);
+
+
+CREATE TABLE ML_PitchingStats (
+    PitchingID INT PRIMARY KEY IDENTITY(1,1),
+    GameID INT NOT NULL,
+    PlayerID INT NOT NULL,
+    TeamID INT NOT NULL,
+    InningsPitched FLOAT NOT NULL,
+    EarnedRuns INT NOT NULL,
+    Strikeouts INT NOT NULL,
+    Walks INT NOT NULL,
+    HitsAllowed INT NOT NULL,
+    HomeRunsAllowed INT NOT NULL,
+    PitchingRole VARCHAR(10) NOT NULL, -- 'Starting' or 'Relief'
+    FOREIGN KEY (GameID) REFERENCES ML_Games(GameID),
+    FOREIGN KEY (PlayerID) REFERENCES ML_Players(PlayerID),
+    FOREIGN KEY (TeamID) REFERENCES ML_Teams(TeamID)
+);
+
+
+
+
+
+
+
+CREATE TABLE ML_BoxScores (
+    BoxScoreID INT PRIMARY KEY IDENTITY(1,1),
+    GameID INT NOT NULL,
+    PlayerID INT NOT NULL,
+    EventType VARCHAR(50) NOT NULL, -- e.g., 'Single', 'Double', 'Home Run', etc.
+    Outcome NVARCHAR(MAX), -- JSON or detailed outcome
+    Inning INT NOT NULL,
+    PitchCount INT NOT NULL,
+    ScoreBeforeEvent INT NOT NULL,
+    ScoreAfterEvent INT NOT NULL,
+    FOREIGN KEY (GameID) REFERENCES ML_Games(GameID),
+    FOREIGN KEY (PlayerID) REFERENCES ML_Players(PlayerID)
+);
+
+
+
+
+
+
+ALTER TABLE ML_Games
+ADD WeatherID INT;
+
+
+ALTER TABLE ML_Games
+ADD CONSTRAINT FK_ML_Games_Weather
+FOREIGN KEY (WeatherID) REFERENCES ML_Weather(WeatherID);
+
+
+
+ALTER TABLE ML_Weather
+ADD FOREIGN KEY (GameID) REFERENCES ML_Games(GameID);

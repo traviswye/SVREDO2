@@ -1,0 +1,312 @@
+[
+    {
+        "Team": "Team",
+        "NRFIRecord": "NRFI Record",
+        "Home": "Home",
+        "Away": "Road",
+        "RunsPerFirst": "Per Game",
+        "LastGame": "Last Game",
+        "RunsAtHome": "Home",
+        "RunsAtAway": "Away"
+    },
+    {
+        "Team": "Angels",
+        "NRFIRecord": "77-66",
+        "Home": "36-36",
+        "Away": "41-30",
+        "RunsPerFirst": "0.39",
+        "LastGame": "0",
+        "RunsAtHome": "0.49",
+        "RunsAtAway": "0.30"
+    },
+    {
+        "Team": "Astros",
+        "NRFIRecord": "77-66",
+        "Home": "39-32",
+        "Away": "38-34",
+        "RunsPerFirst": "0.47",
+        "LastGame": "0",
+        "RunsAtHome": "0.59",
+        "RunsAtAway": "0.35"
+    },
+    {
+        "Team": "Athletics",
+        "NRFIRecord": "71-73",
+        "Home": "39-36",
+        "Away": "32-37",
+        "RunsPerFirst": "0.45",
+        "LastGame": "0",
+        "RunsAtHome": "0.40",
+        "RunsAtAway": "0.51"
+    },
+    {
+        "Team": "Blue Jays",
+        "NRFIRecord": "78-66",
+        "Home": "36-33",
+        "Away": "42-33",
+        "RunsPerFirst": "0.60",
+        "LastGame": "0",
+        "RunsAtHome": "0.78",
+        "RunsAtAway": "0.44"
+    },
+    {
+        "Team": "Braves",
+        "NRFIRecord": "79-64",
+        "Home": "30-40",
+        "Away": "49-24",
+        "RunsPerFirst": "0.55",
+        "LastGame": "0",
+        "RunsAtHome": "0.70",
+        "RunsAtAway": "0.40"
+    },
+    {
+        "Team": "Brewers",
+        "NRFIRecord": "74-69",
+        "Home": "34-37",
+        "Away": "40-32",
+        "RunsPerFirst": "0.49",
+        "LastGame": "1",
+        "RunsAtHome": "0.62",
+        "RunsAtAway": "0.36"
+    },
+    {
+        "Team": "Cardinals",
+        "NRFIRecord": "84-59",
+        "Home": "42-29",
+        "Away": "42-30",
+        "RunsPerFirst": "0.48",
+        "LastGame": "0",
+        "RunsAtHome": "0.53",
+        "RunsAtAway": "0.42"
+    },
+    {
+        "Team": "Cubs",
+        "NRFIRecord": "87-56",
+        "Home": "44-27",
+        "Away": "43-29",
+        "RunsPerFirst": "0.47",
+        "LastGame": "2",
+        "RunsAtHome": "0.56",
+        "RunsAtAway": "0.38"
+    },
+    {
+        "Team": "Diamondbacks",
+        "NRFIRecord": "75-69",
+        "Home": "38-32",
+        "Away": "37-37",
+        "RunsPerFirst": "0.72",
+        "LastGame": "0",
+        "RunsAtHome": "0.74",
+        "RunsAtAway": "0.70"
+    },
+    {
+        "Team": "Dodgers",
+        "NRFIRecord": "68-75",
+        "Home": "34-38",
+        "Away": "34-37",
+        "RunsPerFirst": "0.66",
+        "LastGame": "0",
+        "RunsAtHome": "0.75",
+        "RunsAtAway": "0.57"
+    },
+    {
+        "Team": "Giants",
+        "NRFIRecord": "79-65",
+        "Home": "40-32",
+        "Away": "39-33",
+        "RunsPerFirst": "0.39",
+        "LastGame": "0",
+        "RunsAtHome": "0.42",
+        "RunsAtAway": "0.36"
+    },
+    {
+        "Team": "Guardians",
+        "NRFIRecord": "75-68",
+        "Home": "35-33",
+        "Away": "40-35",
+        "RunsPerFirst": "0.45",
+        "LastGame": "0",
+        "RunsAtHome": "0.54",
+        "RunsAtAway": "0.37"
+    },
+    {
+        "Team": "Mariners",
+        "NRFIRecord": "81-63",
+        "Home": "47-22",
+        "Away": "34-41",
+        "RunsPerFirst": "0.59",
+        "LastGame": "5",
+        "RunsAtHome": "0.33",
+        "RunsAtAway": "0.83"
+    },
+    {
+        "Team": "Marlins",
+        "NRFIRecord": "67-76",
+        "Home": "33-42",
+        "Away": "34-34",
+        "RunsPerFirst": "0.57",
+        "LastGame": "2",
+        "RunsAtHome": "0.67",
+        "RunsAtAway": "0.47"
+    },
+    {
+        "Team": "Mets",
+        "NRFIRecord": "88-55",
+        "Home": "49-25",
+        "Away": "39-30",
+        "RunsPerFirst": "0.42",
+        "LastGame": "0",
+        "RunsAtHome": "0.40",
+        "RunsAtAway": "0.44"
+    },
+    {
+        "Team": "Nationals",
+        "NRFIRecord": "86-57",
+        "Home": "43-26",
+        "Away": "43-31",
+        "RunsPerFirst": "0.38",
+        "LastGame": "1",
+        "RunsAtHome": "0.45",
+        "RunsAtAway": "0.31"
+    },
+    {
+        "Team": "Orioles",
+        "NRFIRecord": "80-64",
+        "Home": "37-38",
+        "Away": "43-26",
+        "RunsPerFirst": "0.53",
+        "LastGame": "0",
+        "RunsAtHome": "0.65",
+        "RunsAtAway": "0.41"
+    },
+    {
+        "Team": "Padres",
+        "NRFIRecord": "70-75",
+        "Home": "37-38",
+        "Away": "33-37",
+        "RunsPerFirst": "0.59",
+        "LastGame": "0",
+        "RunsAtHome": "0.50",
+        "RunsAtAway": "0.69"
+    },
+    {
+        "Team": "Phillies",
+        "NRFIRecord": "71-72",
+        "Home": "37-35",
+        "Away": "34-37",
+        "RunsPerFirst": "0.65",
+        "LastGame": "0",
+        "RunsAtHome": "0.66",
+        "RunsAtAway": "0.64"
+    },
+    {
+        "Team": "Pirates",
+        "NRFIRecord": "84-59",
+        "Home": "39-33",
+        "Away": "45-26",
+        "RunsPerFirst": "0.38",
+        "LastGame": "4",
+        "RunsAtHome": "0.44",
+        "RunsAtAway": "0.31"
+    },
+    {
+        "Team": "Rangers",
+        "NRFIRecord": "70-74",
+        "Home": "41-34",
+        "Away": "29-40",
+        "RunsPerFirst": "0.51",
+        "LastGame": "3",
+        "RunsAtHome": "0.52",
+        "RunsAtAway": "0.51"
+    },
+    {
+        "Team": "Rays",
+        "NRFIRecord": "75-68",
+        "Home": "43-32",
+        "Away": "32-36",
+        "RunsPerFirst": "0.47",
+        "LastGame": "0",
+        "RunsAtHome": "0.39",
+        "RunsAtAway": "0.56"
+    },
+    {
+        "Team": "Red Sox",
+        "NRFIRecord": "68-75",
+        "Home": "34-38",
+        "Away": "34-37",
+        "RunsPerFirst": "0.57",
+        "LastGame": "0",
+        "RunsAtHome": "0.68",
+        "RunsAtAway": "0.46"
+    },
+    {
+        "Team": "Reds",
+        "NRFIRecord": "81-63",
+        "Home": "46-29",
+        "Away": "35-34",
+        "RunsPerFirst": "0.48",
+        "LastGame": "0",
+        "RunsAtHome": "0.49",
+        "RunsAtAway": "0.46"
+    },
+    {
+        "Team": "Rockies",
+        "NRFIRecord": "67-77",
+        "Home": "29-40",
+        "Away": "38-37",
+        "RunsPerFirst": "0.48",
+        "LastGame": "0",
+        "RunsAtHome": "0.61",
+        "RunsAtAway": "0.36"
+    },
+    {
+        "Team": "Royals",
+        "NRFIRecord": "84-60",
+        "Home": "39-36",
+        "Away": "45-24",
+        "RunsPerFirst": "0.45",
+        "LastGame": "0",
+        "RunsAtHome": "0.57",
+        "RunsAtAway": "0.32"
+    },
+    {
+        "Team": "Tigers",
+        "NRFIRecord": "72-72",
+        "Home": "32-37",
+        "Away": "40-35",
+        "RunsPerFirst": "0.42",
+        "LastGame": "0",
+        "RunsAtHome": "0.46",
+        "RunsAtAway": "0.37"
+    },
+    {
+        "Team": "Twins",
+        "NRFIRecord": "72-71",
+        "Home": "32-37",
+        "Away": "40-34",
+        "RunsPerFirst": "0.48",
+        "LastGame": "0",
+        "RunsAtHome": "0.61",
+        "RunsAtAway": "0.36"
+    },
+    {
+        "Team": "White Sox",
+        "NRFIRecord": "79-65",
+        "Home": "41-31",
+        "Away": "38-34",
+        "RunsPerFirst": "0.35",
+        "LastGame": "0",
+        "RunsAtHome": "0.33",
+        "RunsAtAway": "0.36"
+    },
+    {
+        "Team": "Yankees",
+        "NRFIRecord": "65-78",
+        "Home": "36-32",
+        "Away": "29-46",
+        "RunsPerFirst": "0.69",
+        "LastGame": "0",
+        "RunsAtHome": "0.69",
+        "RunsAtAway": "0.69"
+    }
+]

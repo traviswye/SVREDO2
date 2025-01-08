@@ -1,0 +1,70 @@
+
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Jesus Sanchez' WHERE bbrefId LIKE '%sanchje02%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Victor Scott' WHERE bbrefId LIKE '%scottvi01%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Ramon Laureano' WHERE bbrefId LIKE '%laurera01%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Jose Ramirez' WHERE bbrefId LIKE '%ramirjo01%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Teoscar Hernandez' WHERE bbrefId LIKE '%hernate01%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Ramon Urias' WHERE bbrefId LIKE '%uriasra01%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Luis Arraez' WHERE bbrefId LIKE '%arraelu01%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Luis Garcia' WHERE bbrefId LIKE '%garcilu04%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Kike Hernandez' WHERE bbrefId LIKE '%hernaen02%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Noelvi Marte' WHERE bbrefId LIKE '%marteno01%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Jose Caballero' WHERE bbrefId LIKE '%cabaljo01%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Gary Sanchez' WHERE bbrefId LIKE '%sanchga02%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Jeremy Pena' WHERE bbrefId LIKE '%penaje02%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Andres Chaparro' WHERE bbrefId LIKE '%chapaan01%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Andy Ibanez' WHERE bbrefId LIKE '%ibanean01%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Vidal Brujan' WHERE bbrefId LIKE '%brujavi01%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Yandy Diaz' WHERE bbrefId LIKE '%diazya01%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Otto Lopez' WHERE bbrefId LIKE '%lopezot01%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Andres Gimenez' WHERE bbrefId LIKE '%gimenan01%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Jose Fermin' WHERE bbrefId LIKE '%fermijo01%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Adolis Garcia' WHERE bbrefId LIKE '%garciad02%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Jose Herrera' WHERE bbrefId LIKE '%herrejo04%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Jose Miranda' WHERE bbrefId LIKE '%miranjo01%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Isiah Kiner-Falefa' WHERE bbrefId LIKE '%kineris01%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Leo Jimenez' WHERE bbrefId LIKE '%jimenle01%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Romy Gonzalez' WHERE bbrefId LIKE '%gonzaro01%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Mauricio Dubon' WHERE bbrefId LIKE '%dubonma01%';
+  UPDATE [NRFI].[dbo].[MLBplayers] SET FullName = 'Victor Robles' WHERE bbrefId LIKE '%roblevi01%';
+
+
+
+
+
+UPDATE [NRFI].[dbo].[MLBplayers] SET CurrentTeam = 'MIA' WHERE FullName LIKE '%Connor Norby%';
+UPDATE [NRFI].[dbo].[MLBplayers] SET CurrentTeam = 'HOU' WHERE FullName LIKE '%Ben Gamel%';
+UPDATE [NRFI].[dbo].[MLBplayers] SET CurrentTeam = 'ARI' WHERE FullName LIKE '%Luis Guillorme%';
+UPDATE [NRFI].[dbo].[MLBplayers] SET CurrentTeam = 'SEA' WHERE FullName LIKE '%Victor Robles%';
+UPDATE [NRFI].[dbo].[MLBplayers] SET CurrentTeam = 'ATL' WHERE FullName LIKE '%Gio Urshela%';
+UPDATE [NRFI].[dbo].[MLBplayers] SET CurrentTeam = 'CIN' WHERE FullName LIKE '%Amed Rosario%';
+
+UPDATE [NRFI].[dbo].[MLBplayers] SET CurrentTeam = 'SDP' WHERE FullName LIKE '%Mason McCoy%';bbrefid = mccoy-000mas
+UPDATE [NRFI].[dbo].[MLBplayers] SET CurrentTeam = 'STL' WHERE FullName LIKE '%Luken Baker%'; bakerlu01
+UPDATE [NRFI].[dbo].[MLBplayers] SET CurrentTeam = 'WSN' WHERE FullName LIKE '%Dylan Crews%';crewsdy01
+UPDATE [NRFI].[dbo].[MLBplayers] SET CurrentTeam = 'HOU' WHERE FullName LIKE '%Shay Whitcomb%';whitcsh01
+UPDATE [NRFI].[dbo].[MLBplayers] SET CurrentTeam = 'MIA' WHERE FullName LIKE '%Griffin Conine%';coningr01
+UPDATE [NRFI].[dbo].[MLBplayers] SET CurrentTeam = 'LAD' WHERE FullName LIKE '%Tommy Edman%'; edmanto01
+UPDATE [NRFI].[dbo].[MLBplayers] SET CurrentTeam = 'PIT' WHERE FullName LIKE '%Billy McKinney%';mckinbi01
+
+
+INSERT INTO [NRFI].[dbo].[MLBplayers] ([bbrefId], [FullName], [CurrentTeam])
+VALUES ('mccoy-000mas', 'Mason McCoy', 'SDP');
+
+INSERT INTO [NRFI].[dbo].[MLBplayers] ([bbrefId], [FullName], [CurrentTeam])
+VALUES ('bakerlu01', 'Luken Baker', 'STL');
+
+INSERT INTO [NRFI].[dbo].[MLBplayers] ([bbrefId], [FullName], [CurrentTeam])
+VALUES ('crewsdy01', 'Dylan Crews', 'WSN');
+
+INSERT INTO [NRFI].[dbo].[MLBplayers] ([bbrefId], [FullName], [CurrentTeam])
+VALUES ('whitcsh01', 'Shay Whitcomb', 'HOU');
+
+INSERT INTO [NRFI].[dbo].[MLBplayers] ([bbrefId], [FullName], [CurrentTeam])
+VALUES ('coningr01', 'Griffin Conine', 'MIA');
+
+INSERT INTO [NRFI].[dbo].[MLBplayers] ([bbrefId], [FullName], [CurrentTeam])
+VALUES ('edmanto01', 'Tommy Edman', 'LAD');
+
+INSERT INTO [NRFI].[dbo].[MLBplayers] ([bbrefId], [FullName], [CurrentTeam])
+VALUES ('mckinbi01', 'Billy McKinney', 'PIT');

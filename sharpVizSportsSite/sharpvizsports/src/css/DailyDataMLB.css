@@ -1,0 +1,36 @@
+.daily-data-mlb {
+    display: flex;
+  }
+  
+  .content {
+    margin-left: 220px; /* Matches sidebar width */
+    padding: 20px;
+    width: 100%;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 20px;
+  }
+  .content {
+    padding: 20px;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    grid-gap: 20px; /* Space between boxes */
+    align-items: start; /* Align content to the top */
+  }
+  
+  .data-box-container {
+    height: 600px; /* Ensure consistent height for all DataBoxes */
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+  }
+  

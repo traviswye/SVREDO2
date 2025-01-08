@@ -1,0 +1,348 @@
+Sorry for no emails last few days. Have had person stuff going on and have been working on NFL dfs and backtesting data for mlb 
+
+(Can ctrl F these terms below to get to start of each one)
+GAME SUMMARIES
+OG NRFI MODEL
+NRFI SIMULATION MODELDFS STUFFLINEUP TRENDSSP MATCHUPS
+SB PROP BEST BETSSTRIKEOUT PROP
+MONEY LINE PICK MODEL - Added back testing info
+------------------------------------------------------------------------------------------------------------------------------
+GAME SUMMARIES
+
+White Sox vs Guardians
+White Sox pitcher: shustja01
+Guardians pitcher: cantijo01
+Combined 1st Inning Runs on Avg: 0.70
+Home Pitchers FIP: 4.81
+Away Pitchers FIP: 7.2
+Home Pitcher ERA 1st Inning: 3.86
+Away Pitcher ERA 1st Inning: 9
+Combined Pitchers FIP: 6.005
+Combined ERA 1st Inning: 6.43
+Combined HR/9: 2.0
+Venue: Guaranteed Rate Field
+Park Factor Rating: 99
+Park HR Rating: 101
+Roof Type: Open Air
+Temperature: 76.4°F
+Humidity: 37%
+Chance of Rain at Game Start: 0%
+Chance of Rain First 2 Hours: 0%
+Total Rain First 2 Hours: 0 in
+Wind Speed: 5.3mph
+Wind Gusts: 11.4mph
+Wind: Blowing out to left
+
+
+Pirates vs Marlins
+Pirates pitcher: skenepa01
+Marlins pitcher: bellova01
+Combined 1st Inning Runs on Avg: 0.91
+Home Pitchers FIP: 2.75
+Away Pitchers FIP: 5.45
+Home Pitcher ERA 1st Inning: 2.37
+Away Pitcher ERA 1st Inning: 3
+Combined Pitchers FIP: 4.1
+Combined ERA 1st Inning: 2.685
+Combined HR/9: 1.25
+Venue: PNC Park
+Park Factor Rating: 100
+Park HR Rating: 82
+Roof Type: Open Air
+Temperature: 75.3°F
+Humidity: 29%
+Chance of Rain at Game Start: 0%
+Chance of Rain First 2 Hours: 0%
+Total Rain First 2 Hours: 0 in
+Wind Speed: 7.9mph
+Wind Gusts: 13mph
+Wind: Blowing out to left-center
+
+
+Twins vs Angels
+Twins pitcher: festada01
+Angels pitcher: detmere01
+Combined 1st Inning Runs on Avg: 0.91
+Home Pitchers FIP: 3.81
+Away Pitchers FIP: 4.09
+Home Pitcher ERA 1st Inning: 0.93
+Away Pitcher ERA 1st Inning: 0
+Combined Pitchers FIP: 3.95
+Combined ERA 1st Inning: 0.465
+Combined HR/9: 1.4
+Venue: Target Field
+Park Factor Rating: 100
+Park HR Rating: 103
+Roof Type: Open Air
+Temperature: 78.8°F
+Humidity: 46%
+Chance of Rain at Game Start: 0%
+Chance of Rain First 2 Hours: 0%
+Total Rain First 2 Hours: 0 in
+Wind Speed: 6.9mph
+Wind Gusts: 13.2mph
+Wind: Crosswind from right to left
+
+
+Yankees vs Royals
+Yankees pitcher: rodonca01
+Royals pitcher: singebr01
+Combined 1st Inning Runs on Avg: 1.01
+Home Pitchers FIP: 4.3
+Away Pitchers FIP: 3.6
+Home Pitcher ERA 1st Inning: 7.39
+Away Pitcher ERA 1st Inning: 1.61
+Combined Pitchers FIP: 3.95
+Combined ERA 1st Inning: 4.5
+Combined HR/9: 1.2
+Venue: Yankee Stadium
+Park Factor Rating: 98
+Park HR Rating: 115
+Roof Type: Open Air
+Temperature: 71.6°F
+Humidity: 39%
+Chance of Rain at Game Start: 0%
+Chance of Rain First 2 Hours: 0%
+Total Rain First 2 Hours: 0 in
+Wind Speed: 4.5mph
+Wind Gusts: 12.5mph
+Wind: Blowing out to left-center
+
+
+Red Sox vs Orioles
+Red Sox pitcher: bellobr01
+Orioles pitcher: povicca01
+Combined 1st Inning Runs on Avg: 1.09
+Home Pitchers FIP: 4.33
+Away Pitchers FIP: 5.03
+Home Pitcher ERA 1st Inning: 4.85
+Away Pitcher ERA 1st Inning: 5.25
+Combined Pitchers FIP: 4.68
+Combined ERA 1st Inning: 5.05
+Combined HR/9: 1.2999999999999998
+Venue: Fenway Park
+Park Factor Rating: 108
+Park HR Rating: 100
+Roof Type: Open Air
+Temperature: 69.9°F
+Humidity: 42%
+Chance of Rain at Game Start: 0%
+Chance of Rain First 2 Hours: 1%
+Total Rain First 2 Hours: 0 in
+Wind Speed: 4.5mph
+Wind Gusts: 8.9mph
+Wind: Blowing out to right-center
+
+
+Dodgers vs Cubs
+Dodgers pitcher: buehlwa01
+Cubs pitcher: hendrky01
+Combined 1st Inning Runs on Avg: 1.13
+Home Pitchers FIP: 5.98
+Away Pitchers FIP: 5.22
+Home Pitcher ERA 1st Inning: 8.25
+Away Pitcher ERA 1st Inning: 1.8
+Combined Pitchers FIP: 5.6
+Combined ERA 1st Inning: 5.025
+Combined HR/9: 1.9500000000000002
+Venue: Dodger Stadium
+Park Factor Rating: 100
+Park HR Rating: 121
+Roof Type: Open Air
+Temperature: 93.6°F
+Humidity: 16%
+Chance of Rain at Game Start: 0%
+Chance of Rain First 2 Hours: 0%
+Total Rain First 2 Hours: 0 in
+Wind Speed: 3.4mph
+Wind Gusts: 11mph
+Wind: Blowing out to right
+
+
+Braves vs Reds
+Braves pitcher: mortoch02
+Reds pitcher: martini01
+Combined 1st Inning Runs on Avg: 1.16
+Home Pitchers FIP: 4.54
+Away Pitchers FIP: 3.58
+Home Pitcher ERA 1st Inning: 5.19
+Away Pitcher ERA 1st Inning: 2.92
+Combined Pitchers FIP: 4.0600000000000005
+Combined ERA 1st Inning: 4.055
+Combined HR/9: 1.15
+Venue: Truist Park
+Park Factor Rating: 101
+Park HR Rating: 111
+Roof Type: Open Air
+Temperature: 83.3°F
+Humidity: 37%
+Chance of Rain at Game Start: 0%
+Chance of Rain First 2 Hours: 0%
+Total Rain First 2 Hours: 0 in
+Wind Speed: 2.8mph
+Wind Gusts: 3.1mph
+Wind: Crosswind from left to right
+
+
+Blue Jays vs Mets
+Blue Jays pitcher: burrry01
+Mets pitcher: megilty01
+Combined 1st Inning Runs on Avg: 1.22
+Home Pitchers FIP: 3.51
+Away Pitchers FIP: 3.78
+Home Pitcher ERA 1st Inning: 0
+Away Pitcher ERA 1st Inning: 6.55
+Combined Pitchers FIP: 3.6449999999999996
+Combined ERA 1st Inning: 3.275
+Combined HR/9: 1.05
+Venue: Rogers Centre
+Park Factor Rating: 101
+Park HR Rating: 105
+Roof Type: Retractable
+Temperature: 64.1°F
+Humidity: 94%
+Chance of Rain at Game Start: 35%
+Chance of Rain First 2 Hours: 35%
+Total Rain First 2 Hours: 0 in
+Wind Speed: 0.9mph
+Wind Gusts: 11.2mph
+Wind: Blowing in from right-center
+
+
+Phillies vs Rays
+Phillies pitcher: sanchcr01
+Rays pitcher: sulseco01
+Combined 1st Inning Runs on Avg: 1.22
+Home Pitchers FIP: 2.87
+Away Pitchers FIP: 4.89
+Home Pitcher ERA 1st Inning: 2.33
+Away Pitcher ERA 1st Inning: 0
+Combined Pitchers FIP: 3.88
+Combined ERA 1st Inning: 1.165
+Combined HR/9: 1.2
+Venue: Citizens Bank Park
+Park Factor Rating: 101
+Park HR Rating: 114
+Roof Type: Open Air
+Temperature: 74.6°F
+Humidity: 33%
+Chance of Rain at Game Start: 0%
+Chance of Rain First 2 Hours: 0%
+Total Rain First 2 Hours: 0 in
+Wind Speed: 6.5mph
+Wind Gusts: 12.5mph
+Wind: Blowing out to right-center
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------
+OG NRFI MODEL -  This basically takes 1-6 of every lineup and runs season long hitter numbers against a blend of pitchers 1st inning stats, pitchers LHB or RHB splits, and pitchers home/away splits per if the hitter is a lefty or righty and where the game is being played... The model then takes the probabilities of each outcome and adds it. Then it adds them all for top 6 hitters in the lineup. If we dont have an actual lineup posted yet the lineup used is from our lineup prediction service. This basically takes the run exp of each of those 6 hitters and add them together... for example shohei might count as .21898 expected runs for a pitcher while kike hernandez might only be worth .0345324... All of these are added up for both teams and then we use the number to calc probability of one of the teams to score (team a +team b) - (team a*team b)...
+
+I find this model is higher on the % chance of YRFI number but if you are willing to take anything under like 60% chance and pair this with our pitchers trends have seen some good results.
+
+Reds vs Braves
+Probability of YRFI (%): 0.6056106869380933
+Home Lineup Actual: True
+Away Lineup Actual: True
+
+Rays vs Phillies
+Probability of YRFI (%): 0.5369920511222442
+Home Lineup Actual: True
+Away Lineup Actual: True
+
+Marlins vs Pirates
+Probability of YRFI (%): 0.571284754782655
+Home Lineup Actual: True
+Away Lineup Actual: True
+
+Royals vs Yankees
+Probability of YRFI (%): 0.6581062425400943
+Home Lineup Actual: True
+Away Lineup Actual: True
+
+Mets vs Blue Jays
+Probability of YRFI (%): 0.6145152727651917
+Home Lineup Actual: True
+Away Lineup Actual: True
+
+Orioles vs Red Sox
+Probability of YRFI (%): 0.6975268974603798
+Home Lineup Actual: True
+Away Lineup Actual: True
+
+Guardians vs White Sox
+Probability of YRFI (%): 0.7230390335433703
+Home Lineup Actual: True
+Away Lineup Actual: True
+
+Angels vs Twins
+Probability of YRFI (%): 0.4747639287120415
+Home Lineup Actual: False
+Away Lineup Actual: True
+
+Cubs vs Dodgers
+Probability of YRFI (%): 0.7194977830597304
+Home Lineup Actual: False
+Away Lineup Actual: False
+
+
+Games sorted by Probability of YRFI (%):
+
+Guardians vs White Sox                 0.7230390335433703
+Cubs vs Dodgers                   0.7194977830597304
+Orioles vs Red Sox                   0.6975268974603798
+Royals vs Yankees                   0.6581062425400943
+Mets vs Blue Jays                 0.6145152727651917
+Reds vs Braves                    0.6056106869380933
+Marlins vs Pirates                   0.571284754782655
+Rays vs Phillies                  0.5369920511222442
+Angels vs Twins                     0.4747639287120415
+
+------------------------------------------------------------------------------------------------------------------------------
+NRFI SIMULATION MODEL - This model basically takes similar stats from lineups and pitchers however it runs a simulation on the first inning of each game 1000x and counts how many times each team scored in the first inning then uses that for the probability of each team and finds the probability that one of them score... Again pair this with SP trends.
+
+
+
+------------------------------------------------------------------------------------------------------------------------------
+DFS STUFF - Looks at every player who's team plays today and gets the stats of every hitter for their season totals and the hitters stats in the last 7 days... This attempts to find trends if a hitter is outpreforming his season stats. The number to the left of the players is the % increase or decrease his last 7 days worth of stats are in comparison to his season numbers, specifically its looking at AVG, OBP, SLG, OPS - requires a hitter to have 15 AB in the last 7 days I believe is the threshold. Its basically a composite score of sBA+, sOBP+, sSLG+, sOPS+ except its using 0 as the +/- threshold rather than 100. KEY TO REMEMBER: this outperformance % is relative to the hitters own self...The better the season the hitter is having the harder it is for that players outpreformance score to be super high. So its possible that altuve at -5% could still be better than +13%  Zack Gelof. The idea behind the +/- is that we need to find VALUE in dfs. 
+
+
+------------------------------------------------------------------------------------------------------------------------------
+SP MATCHUPS - HOT/COLD trend: Looks at pitchers season stats and compares them to the pitchers last28 days stats, essentially is creating a sOVA+, sBIPBA+, sOBP+, sSLG+ against their own baseline and then coming to a conclusion if the pitcher is outpreforming their year stats and is essentially "hot" right now, same goes for "cold". Matchups: looks at SP season stats and last28 days worth of stats.. it blends these stats with a 60% weight on season long. 40% weight on their last 28 days. This gets us a number of stats and then we compare them and calculate them to the opposing starting pitcher relative to each other. There diff stats/data points we compare between the two pitchers that are weighted below. Open to input to what these weights should be but so far this sorta passes the eye test to me today.
+
+weights:
+        {"AB/R", 1},
+        {"AB/H", 1},
+        {"PA/HR", 1},
+        {"AB/SB", .01},
+        {"SB/SB+CS", 0.5},// Lower is better
+        {"PA/BB", 1},
+        {"AB/SO", 0.5},// Lower is better
+        {"SOW", 0.5},
+        {"BA", 1},  // Lower is better
+        {"OBP", 1}, // Lower is better
+        {"SLG", 1}, // Lower is better
+        {"OPS", 1}, // Lower is better
+        {"PA/TB", 1},
+        {"AB/GDP", 0.5},
+        {"BAbip", 1}, // Lower is better
+        {"tOPSPlus", 1},
+        {"sOPSPlus", 1}
+
+
+
+------------------------------------------------------------------------------------------------------------------------------
+SP MATCHUPS
+
+
+------------------------------------------------------------------------------------------------------------------------------
+SB PROP BEST BETS- There is a lot to be said if a pitcher should be held responsible for stolen bases or if the catcher is responsible. Argument is pretty strong that base stealing success is more dependent on the pitcher than catcher when every mlb catcher is between 1.8to 1.95 pop time, but pitchers delivery to home plate can vary at a much larger range to where he can actually give his catcher the chance to throw out the runner, or if hes slow enough, the best catcher in the league still wont have a chance. This SB prop picker basically looks through the pitchers for today, finds the ones that have given up the most stolen bases as well as CS% and then goes to the lineup (or predicted lineup) and finds the top base stealers in the lineup.. There is no pretty print of output yet but the way I like to play this is if one pitcher gives up successful SB at a high number or rate and the lineup has multiple good basestealers, I will take at least 2 of the base stealers in the lineup that are most likely to be successful and bet equal units on both. General SB prop odds are +200-+350 so if just one of the two base stealers is successful it will pay for both bets and profit. 
+
+------------------------------------------------------------------------------------------------------------------------------
+STRIKEOUT PROP MODEL- Assumes starter completes 6 innings of work 
+
+
+------------------------------------------------------------------------------------------------------------------------------
+MONEY LINE PICK MODEL - Attempts to only pick ML bets where the team has the pitching advantage. This is nuanced and while pitcher advantage is calculated with a blend of stats from recent vs the pitchers full season numbers, it does not currently factor in if the starter is trending down. Pair these with SP trends.
+

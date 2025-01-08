@@ -74,7 +74,8 @@ useEffect(() => {
     }
     setView(view === "table" ? "graph" : "table");
   };
-  
+    // Log received data to ensure it's being passed properly
+    console.log("Data received by DataBox:", data);
 
   const handleSort = (key) => {
     const direction =
@@ -132,14 +133,15 @@ useEffect(() => {
       console.error("Error fetching graph data:", error);
     }
   };
-  
 
   return (
     <div className="data-box-container">
       {/* Title and Subtitle */}
       <div className="data-box-header">
+        <div>
         <div className="data-box-title">{title}</div>
         <div className="data-box-subtitle">{subtitle}</div>
+        </div>
       </div>
 
       {/* Toggle Button */}

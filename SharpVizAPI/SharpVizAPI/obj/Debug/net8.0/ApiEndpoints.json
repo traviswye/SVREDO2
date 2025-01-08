@@ -1333,6 +1333,22 @@
   },
   {
     "ContainingType": "HitterTempTrackingController",
+    "Method": "GetHitterTempsLast7Days",
+    "RelativePath": "api/HitterTempTracking/last7Days",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "targetDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HitterTempTrackingController",
     "Method": "UpdateTemps",
     "RelativePath": "api/HitterTempTracking/updateTemps",
     "HttpMethod": "GET",
@@ -4571,6 +4587,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizAPI.Controllers.TrailingGameLogSplitsController",
+    "Method": "GetLast7GRecords",
+    "RelativePath": "api/TrailingGameLogSplits/last7G",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

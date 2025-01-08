@@ -3639,11 +3639,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\OWM2\\CodeRoot\\SharpViz\\SVredo\\SharpVizAPI\\SharpVizAPI\\SharpVizAPI.csproj",
+      "projectUniqueName": "C:\\Users\\OWM2\\CodeRoot\\SharpViz\\SVREDO2\\SVREDO2\\SharpVizAPI\\SharpVizAPI\\SharpVizAPI.csproj",
       "projectName": "SharpVizAPI",
-      "projectPath": "C:\\Users\\OWM2\\CodeRoot\\SharpViz\\SVredo\\SharpVizAPI\\SharpVizAPI\\SharpVizAPI.csproj",
+      "projectPath": "C:\\Users\\OWM2\\CodeRoot\\SharpViz\\SVREDO2\\SVREDO2\\SharpVizAPI\\SharpVizAPI\\SharpVizAPI.csproj",
       "packagesPath": "C:\\Users\\OWM2\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\OWM2\\CodeRoot\\SharpViz\\SVredo\\SharpVizAPI\\SharpVizAPI\\obj\\",
+      "outputPath": "C:\\Users\\OWM2\\CodeRoot\\SharpViz\\SVREDO2\\SVREDO2\\SharpVizAPI\\SharpVizAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

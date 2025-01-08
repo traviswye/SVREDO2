@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2AKLjmrw0zk=",
+  "dgSpecHash": "b9fSzN53kk4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\OWM2\\CodeRoot\\SharpViz\\SVredo\\SharpVizAPI\\SharpVizAPI\\SharpVizAPI.csproj",
+  "projectFilePath": "C:\\Users\\OWM2\\CodeRoot\\SharpViz\\SVREDO2\\SVREDO2\\SharpVizAPI\\SharpVizAPI\\SharpVizAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\OWM2\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\OWM2\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

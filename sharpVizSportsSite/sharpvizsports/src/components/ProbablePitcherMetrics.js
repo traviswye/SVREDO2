@@ -147,8 +147,10 @@ const ProbablePitcherMetrics = ({ title, subtitle, date }) => {
   return (
     <div className="data-box-container">
       <div className="data-box-header">
+        <div>
         <div className="data-box-title">{title}</div>
         <div className="data-box-subtitle">{subtitle}</div>
+        </div>
       </div>
       <div className="data-box-scrollable">
         <table className="data-box-table">

@@ -165,5 +165,29 @@ namespace SharpVizAPI.Controllers
 
             return NoContent();
         }
+        // GET: api/TrailingGameLogSplits/last7G
+        [HttpGet("last7G")]
+        public async Task<IActionResult> GetLast7GRecords()
+        {
+            try
+            {
+                var records = await _context.TrailingGameLogSplits
+                    .Where(t => t.Split == "Last7G")
+                    .ToListAsync();
+
+                if (records == null || !records.Any())
+                {
+                    return NotFound("No records found with the Split column set to 'Last7G'.");
+                }
+
+                return Ok(records);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "An error occurred while fetching records.", error = ex.Message });
+            }
+        }
+
+
     }
 }

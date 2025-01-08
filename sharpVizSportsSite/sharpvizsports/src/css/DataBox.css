@@ -6,10 +6,20 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+  justify-content: flex-start; /* Align content to the top */
+  height: 600px; /* Set a constant height */
 }
 
 .data-box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align items to the top */
   margin-bottom: 10px;
+}
+
+.data-box-title-container {
+  display: flex;
+  flex-direction: column; /* Stack the title and subtitle vertically */
 }
 
 .data-box-title {
@@ -20,58 +30,83 @@
 
 .data-box-subtitle {
   font-size: 14px;
-  color: #555;
+  color: #555; 
+
+  margin-right: auto;
 }
 
-.data-box-options {
-  margin-bottom: 10px;
+.search-bar-container {
+  margin-left: auto;
+}
+
+.search-bar {
+  padding: 5px 10px;
+  font-size: 14px;
 }
 
 .data-box-scrollable {
-  max-height: 350px; /* Restrict height to make it scrollable */
-  overflow-y: auto; /* Enable vertical scrolling */
-  border: 1px solid #ddd; /* Border around the scrollable area */
+  flex: 1; /* Allow the table to take up remaining space */
+  overflow-y: auto; /* Enable vertical scrolling if needed */
+  border: 1px solid #ddd; /* Add border around scrollable area */
+  max-height: calc(100% - 20px); /* Ensure it doesn't exceed the container height */
 }
 
 .data-box-table {
   width: 100%;
   border-collapse: collapse; /* Ensure cells share borders */
+  table-layout: auto; /* Prevent stretching */
 }
 
 .data-box-table th,
 .data-box-table td {
-  border: 1px solid #ddd; /* Ensure gridlines are visible */
-  padding: 6px;
+  padding: 8px;
   text-align: left;
+  border: 1px solid #ddd; /* Ensure gridlines are visible */
   font-size: 14px;
 }
 
 .data-box-table th {
-  background-color: #f4f4f4;
+  background-color: #f4f4f4; /* Light gray background for headers */
   font-weight: bold;
-  position: sticky; /* Keep header fixed */
+  position: sticky; /* Keep header fixed during scroll */
   top: 0;
   z-index: 1;
 }
 
-.data-box-table tr:nth-child(even) {
-  background-color: #f9f9f9;
+.data-box-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9; /* Subtle row striping */
 }
 
-.data-box-table tr:hover {
-  background-color: #f1f1f1;
+.data-box-table tbody tr:hover {
+  background-color: #f1f1f1; /* Highlight row on hover */
 }
 
-.toggle-button {
+.data-box-table tbody tr {
+  height: auto; /* Ensure rows adjust to content */
+}
+
+.toggle-button,
+.generate-button {
   padding: 6px 12px;
-  background-color: #007bff;
   color: white;
   border: none;
   cursor: pointer;
 }
 
+.toggle-button {
+  background-color: #007bff;
+}
+
 .toggle-button:hover {
   background-color: #0056b3;
+}
+
+.generate-button {
+  background-color: #28a745;
+}
+
+.generate-button:hover {
+  background-color: #218838;
 }
 
 .graph-view {
@@ -89,106 +124,41 @@
   margin-right: 10px;
 }
 
-.generate-button {
-  padding: 6px 12px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.generate-button:hover {
-  background-color: #218838;
-}
-
-.graph-view canvas {
-  max-width: 100%;
-  height: auto;
-}
 .graph-container {
   width: 100%; /* Full width */
   max-width: 900px; /* Limit max width for large screens */
   height: 500px; /* Fixed height for consistent graph size */
   margin: 0 auto; /* Center the graph */
 }
-/* Add this to your DataBox.css file */
 
-/* Adjust the container to ensure a constant height */
-.data-box-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* Align content to the top */
-  height: 600px; /* Matches the height we set earlier */
+.graph-view canvas {
+  max-width: 100%;
+  height: auto;
 }
 
-/* Ensure the scrollable table fills the remaining height */
-.data-box-scrollable {
-  flex: 1; /* Allow the table to take up remaining space */
-  overflow-y: auto; /* Enable vertical scrolling if needed */
+.search-wrapper {
+  position: relative;
+  display: inline-block;
 }
 
-/* Table styling */
-.data-box-table {
-  width: 100%; /* Ensure the table takes up the full width */
-  border-collapse: collapse;
+.search-bar {
+  padding: 5px 10px;
+  font-size: 14px;
+  width: 200px;
 }
 
-.data-box-table th,
-.data-box-table td {
-  padding: 8px;
-  text-align: left;
-  border: 1px solid #ddd; /* Add a subtle border */
+.clear-button {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  font-size: 16px;
 }
 
-.data-box-table th {
-  background-color: #f4f4f4; /* Light gray background for headers */
-  font-weight: bold;
-}
-
-.data-box-table tbody tr:nth-child(even) {
-  background-color: #fafafa; /* Subtle row striping */
-}
-/* Adjust the container to ensure a constant height */
-.data-box-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* Align content to the top */
-  height: 600px; /* Matches the height we set earlier */
-}
-
-/* Ensure the scrollable table fills the available height */
-.data-box-scrollable {
-  flex: 1; /* Allow the table to take up remaining space */
-  overflow-y: auto; /* Enable vertical scrolling if needed */
-  max-height: calc(100% - 20px); /* Ensure it doesn't exceed the container height */
-  margin: 0; /* Remove additional margin */
-  padding: 0; /* Remove additional padding */
-}
-
-/* Table styling */
-.data-box-table {
-  width: 100%; /* Ensure the table takes up the full width */
-  height: 100%; /* Make the table stretch to fill the container */
-  border-collapse: collapse;
-}
-
-.data-box-table th,
-.data-box-table td {
-  padding: 8px;
-  text-align: left;
-  border: 1px solid #ddd; /* Add a subtle border */
-}
-
-.data-box-table th {
-  background-color: #f4f4f4; /* Light gray background for headers */
-  font-weight: bold;
-}
-
-.data-box-table tbody tr:nth-child(even) {
-  background-color: #fafafa; /* Subtle row striping */
-}
-
-/* Additional adjustment for table rows */
-.data-box-table tbody tr {
-  height: 30px; /* Adjust row height to balance the table size */
+.clear-button:hover {
+  color: #555;
 }

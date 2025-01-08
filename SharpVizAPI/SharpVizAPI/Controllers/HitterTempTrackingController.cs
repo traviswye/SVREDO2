@@ -76,4 +76,37 @@ public class HitterTempTrackingController : ControllerBase
 
         return CreatedAtAction(nameof(GetHitterTemperature), new { bbrefid = hitterTemp.BbrefId, year = hitterTemp.Year }, hitterTemp);
     }
+
+    [HttpGet("last7Days")]
+    public async Task<IActionResult> GetHitterTempsLast7Days([FromQuery] DateTime? targetDate)
+    {
+        if (!targetDate.HasValue)
+        {
+            return BadRequest(new { message = "Please provide a valid target date." });
+        }
+
+        try
+        {
+            // Calculate the range for the last 7 days
+            DateTime startDate = targetDate.Value.AddDays(-7);
+            DateTime endDate = targetDate.Value;
+
+            // Query the database for records within the date range
+            var hitterTemps = await _context.HitterTempTracking
+                .Where(h => h.Date >= startDate && h.Date <= endDate)
+                .ToListAsync();
+
+            if (hitterTemps == null || !hitterTemps.Any())
+            {
+                return NotFound(new { message = "No records found for the given date range." });
+            }
+
+            return Ok(hitterTemps);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { message = "An error occurred while fetching hitter temperatures.", error = ex.Message });
+        }
+    }
+
 }

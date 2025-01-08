@@ -2,6 +2,7 @@ import React from "react";
 import Sidebar from "../../components/SideBar";
 import DataBox from "../../components/DataBox";
 import ProbablePitcherMetrics from "../../components/ProbablePitcherMetrics"; // New component
+import HitterTempTracking from "../../components/HitterTempTracking";
 import "../../css/DailyDataMLB.css";
 
 const DailyDataMLB = () => {
@@ -74,14 +75,12 @@ const DailyDataMLB = () => {
             subtitle="Metrics for probable starting pitchers"
             date="24-09-29" // Use today's date dynamically if needed
           />
-          <DataBox
+          <HitterTempTracking
             title="Hitter Temperatures"
-            subtitle="Hitter Temperatures and SharpViz Overperformance Metrics"
-            headers={teamTempHeaders}
-            keyHeaders={teamTempKeyHeaders}
-            apiUrl="https://localhost:44346/api/TeamStandings"
-            toggleEnabled={false}
+            subtitle="Hitter Temperatures Over last 7 games, last 7 games splits"
+            date="2024-09-30" // Replace with a dynamic date for production
           />
+
         </div>
       </div>
     </div>

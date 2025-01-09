@@ -1,0 +1,115 @@
+/* Container for the game cards */
+.games-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Ensure only 5 cards per row */
+  gap: 20px; /* Add spacing between cards */
+  justify-content: center; /* Center-align cards */
+  padding: 15px;
+}
+
+/* Individual game card styling */
+.game-card {
+  width: 100%; /* Fit within the grid cell */
+  padding: 15px; /* Maintain consistent padding */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Spread out content evenly */
+}
+
+.game-card:hover {
+  transform: scale(1.03); /* Slight zoom effect on hover */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); /* Enhanced hover shadow */
+}
+
+/* Game header section */
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+/* Rain probability styling */
+.rain-prob {
+  color: #d9534f; /* Bright red for visibility */
+  font-weight: bold;
+  font-size: 1em;
+}
+
+/* Game details */
+.game-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.3em; /* Larger title font */
+}
+
+.game-card p {
+  margin: 6px 0;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+/* Pitchers section */
+.pitchers {
+  margin-top: 10px;
+}
+
+.pitcher {
+  margin-bottom: 5px;
+}
+
+.pitcher p {
+  margin: 0;
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+.pitcher a {
+  text-decoration: none;
+  color: #007bff; /* Blue for links */
+  font-weight: bold;
+}
+
+.pitcher a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustment */
+@media screen and (max-width: 1200px) {
+  .games-list {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adapt for smaller screens */
+  }
+}
+.date-picker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.date-picker button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.date-picker button:hover {
+  background-color: #0056b3;
+}
+
+.date-picker input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 1em;
+}

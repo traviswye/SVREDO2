@@ -129,6 +129,49 @@ public class PitchersController : ControllerBase
         return NoContent();
     }
 
+    [HttpGet("pitchersByDate/{date}")]
+    public async Task<IActionResult> GetPitchersByDate(string date)
+    {
+        // Validate the date format
+        if (!DateTime.TryParseExact(date, "yy-MM-dd", null, System.Globalization.DateTimeStyles.None, out var parsedDate))
+        {
+            return BadRequest("Invalid date format. Please use 'yy-MM-dd'.");
+        }
+
+        // Get all HomePitcher IDs for the given date
+        var homePitchers = await _context.GamePreviews
+                                         .Where(gp => gp.Date == parsedDate)
+                                         .Select(gp => gp.HomePitcher)
+                                         .ToListAsync();
+
+        // Get all AwayPitcher IDs for the given date
+        var awayPitchers = await _context.GamePreviews
+                                         .Where(gp => gp.Date == parsedDate)
+                                         .Select(gp => gp.AwayPitcher)
+                                         .ToListAsync();
+
+        // Combine and remove duplicates
+        var pitcherIds = homePitchers.Concat(awayPitchers).Distinct().ToList();
+
+        if (!pitcherIds.Any())
+        {
+            return NotFound("No pitchers found for the specified date.");
+        }
+
+        // Query the Pitchers table for all the retrieved pitcher IDs
+        var pitchers = await _context.Pitchers
+                                      .Where(p => pitcherIds.Contains(p.BbrefId))
+                                      .ToListAsync();
+
+        if (!pitchers.Any())
+        {
+            return NotFound("No pitcher data found for the specified IDs.");
+        }
+
+        return Ok(pitchers);
+    }
+
+
     public class CreatePitcherDto
     {
         public string BbrefId { get; set; }

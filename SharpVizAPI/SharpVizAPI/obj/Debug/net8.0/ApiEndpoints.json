@@ -3773,6 +3773,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "PitchersController",
+    "Method": "GetPitchersByDate",
+    "RelativePath": "api/Pitchers/pitchersByDate/{date}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "date",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SharpVizAPI.Controllers.PitchingAverageController",
     "Method": "GetAll",
     "RelativePath": "api/PitchingAverage",

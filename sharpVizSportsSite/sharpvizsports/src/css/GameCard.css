@@ -1,0 +1,88 @@
+/* Container for the game cards */
+.games-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr)); /* Wider game cards */
+  gap: 20px; /* Add spacing between cards */
+  justify-content: center; /* Center-align cards */
+  padding: 15px;
+}
+
+/* Individual game card styling */
+.game-card {
+  width: 100%; /* Fit within the grid cell */
+  padding: 15px; /* Keep padding consistent */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Slight shadow */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Keep elements spaced evenly */
+}
+
+.game-card:hover {
+  transform: scale(1.03); /* Slightly larger hover effect */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); /* Enhanced hover shadow */
+}
+
+/* Header section */
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+/* Rain probability */
+.rain-prob {
+  color: #d9534f; /* Distinct red for visibility */
+  font-weight: bold;
+  font-size: 1em;
+}
+
+/* Venue and temperature */
+.game-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.3em; /* Larger game title */
+}
+
+.game-card p {
+  margin: 6px 0;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+/* Pitchers section */
+.pitchers {
+  margin-top: 10px;
+}
+
+.pitcher {
+  margin-bottom: 5px;
+}
+
+.pitcher p {
+  margin: 0;
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+.pitcher a {
+  text-decoration: none;
+  color: #007bff; /* Link color */
+  font-weight: bold;
+}
+
+.pitcher a:hover {
+  text-decoration: underline;
+}
+
+/* Adjust for larger screens */
+@media screen and (min-width: 1200px) {
+  .games-list {
+    grid-template-columns: repeat(auto-fill, minmax(600px, 1fr)); /* Maintain consistent card width */
+  }
+}

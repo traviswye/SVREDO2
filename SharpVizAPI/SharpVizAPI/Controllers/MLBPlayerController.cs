@@ -103,7 +103,32 @@ namespace SharpVizAPI.Controllers
             // Step 6: If no players match after team filtering, return not found
             return NotFound("Player not found with the specified first initial, last name, and team.");
         }
+        [HttpPost("batch")]
+        public async Task<ActionResult<Dictionary<string, string>>> GetPlayerFullNames([FromBody] List<string> bbrefIds)
+        {
+            if (bbrefIds == null || !bbrefIds.Any())
+            {
+                return BadRequest("No player IDs provided.");
+            }
 
+            // Fetch players whose bbrefIds are in the provided list
+            var players = await _context.MLBplayers
+                .Where(p => bbrefIds.Contains(p.bbrefId))
+                .Select(p => new { p.bbrefId, p.FullName })
+                .ToListAsync();
+
+            // Convert the result into a dictionary of bbrefId to FullName
+            var result = players.ToDictionary(p => p.bbrefId, p => p.FullName);
+
+            return Ok(result);
+        }
+        // New endpoint to get all rows
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllPlayers()
+        {
+            var players = await _context.MLBplayers.ToListAsync();
+            return Ok(players);
+        }
 
         [HttpPut("{bbrefId}")]
         public async Task<IActionResult> PutMLBplayer(string bbrefId, MLBplayer player)

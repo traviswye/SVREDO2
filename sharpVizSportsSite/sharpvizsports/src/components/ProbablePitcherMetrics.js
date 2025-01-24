@@ -69,10 +69,30 @@ const ProbablePitcherMetrics = ({ title, subtitle, date }) => {
           fetch(`https://localhost:44346/api/GamePreviews/${date}`),
           fetch(`https://localhost:44346/api/Blending/todaysSPHistoryVsRecency?date=20${date}`),
         ]);
-
+  
         const gamePreviews = await gamePreviewsResponse.json();
         const pitcherTrends = await pitcherTrendsResponse.json();
-
+  
+        // Collect all bbrefId's
+        const bbrefIds = [
+          ...new Set(
+            gamePreviews.flatMap((game) => [game.homePitcher, game.awayPitcher])
+          ),
+        ];
+  
+        // Make a batch request for full names
+        const playerNamesResponse = await fetch(
+          `https://localhost:44346/api/mlbplayer/batch`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(bbrefIds),
+          }
+        );
+        const playerNames = await playerNamesResponse.json(); // Should return a dictionary { bbrefId: fullName }
+  
         // Create a lookup for pitcher trends
         const trendsLookup = pitcherTrends.reduce((acc, trend) => {
           const hasMessage = trend.message && trend.message.trim();
@@ -81,37 +101,36 @@ const ProbablePitcherMetrics = ({ title, subtitle, date }) => {
             : { performanceStatus: "Unknown", message: "No data available" };
           return acc;
         }, {});
-
+  
         // Merge data
         const mergedData = gamePreviews.map((game) => {
-            const homePitcherTrend = trendsLookup[game.homePitcher] || {
-              performanceStatus: "N/A",
-              message: "No data available",
-            };
-            const awayPitcherTrend = trendsLookup[game.awayPitcher] || {
-              performanceStatus: "N/A",
-              message: "No data available",
-            };
-          
-            return {
-              date: formatDate(game.date),
-              time: game.time,
-              homeTeam: game.homeTeam,
-              awayTeam: game.awayTeam,
-              venue: game.venue,
-              homePitcher: game.homePitcher,
-              homePitcherMessage: homePitcherTrend.message,
-              homePitcherStatus: extractStatus(homePitcherTrend.message),
-              awayPitcher: game.awayPitcher,
-              awayPitcherMessage: awayPitcherTrend.message,
-              awayPitcherStatus: extractStatus(awayPitcherTrend.message),
-              homePercentage: extractPercentage(homePitcherTrend.message),
-              awayPercentage: extractPercentage(awayPitcherTrend.message),
-              previewLink: game.previewLink, // Add the preview link here
-            };
-          });
-          
-
+          const homePitcherTrend = trendsLookup[game.homePitcher] || {
+            performanceStatus: "N/A",
+            message: "No data available",
+          };
+          const awayPitcherTrend = trendsLookup[game.awayPitcher] || {
+            performanceStatus: "N/A",
+            message: "No data available",
+          };
+  
+          return {
+            date: formatDate(game.date),
+            time: game.time,
+            homeTeam: game.homeTeam,
+            awayTeam: game.awayTeam,
+            venue: game.venue,
+            homePitcher: playerNames[game.homePitcher] || game.homePitcher, // Use full name if available
+            homePitcherMessage: homePitcherTrend.message,
+            homePitcherStatus: extractStatus(homePitcherTrend.message),
+            awayPitcher: playerNames[game.awayPitcher] || game.awayPitcher, // Use full name if available
+            awayPitcherMessage: awayPitcherTrend.message,
+            awayPitcherStatus: extractStatus(awayPitcherTrend.message),
+            homePercentage: extractPercentage(homePitcherTrend.message),
+            awayPercentage: extractPercentage(awayPitcherTrend.message),
+            previewLink: game.previewLink, // Add the preview link here
+          };
+        });
+  
         setData(mergedData);
       } catch (error) {
         setError("Failed to fetch data.");
@@ -120,9 +139,9 @@ const ProbablePitcherMetrics = ({ title, subtitle, date }) => {
         setLoading(false);
       }
     };
-
+  
     fetchData();
-  }, [date]);
+  }, [date]);  
 
   const handleSort = (key) => {
     const direction = sortConfig.key === key && sortConfig.direction === "asc" ? "desc" : "asc";

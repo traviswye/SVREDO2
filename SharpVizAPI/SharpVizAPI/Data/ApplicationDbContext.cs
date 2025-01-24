@@ -63,7 +63,7 @@ namespace SharpVizAPI.Data
         public DbSet<TeamTotalBattingTracking> TeamTotalBattingTracking { get; set; }
         public DbSet<TeamTotalPitchingTracking> TeamTotalPitchingTracking { get; set; }
 
-
+        public DbSet<PlayerLookup> PlayerLookup { get; set; }
         public NrfidbContext(DbContextOptions<NrfidbContext> options)
             : base(options)
         {
@@ -141,7 +141,8 @@ namespace SharpVizAPI.Data
             modelBuilder.Entity<HitterTempTracking>()
                 .HasKey(ht => new { ht.BbrefId, ht.Year, ht.Date }); // Composite Primary Key
 
-
+            modelBuilder.Entity<PlayerLookup>()
+                .HasKey(pl => new { pl.BbrefId, pl.BsID });
 
 
             // GameResults Entity

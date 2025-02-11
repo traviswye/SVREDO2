@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SharpVizApi.Models;
 using SharpVizAPI.Models;
 using SharpVizAPI.Models.MLmodels; // Directly import the GamePreview class
 // Directly import the GamePreview class
@@ -45,6 +46,7 @@ namespace SharpVizAPI.Data
         public DbSet<HitterTempTracking> HitterTempTracking { get; set; }
 
         public DbSet<BullpenUsage> BullpenUsage { get; set; }
+        public DbSet<DKPlayerPool> DKPlayerPools { get; set; }
 
         //ML model
 
@@ -64,6 +66,8 @@ namespace SharpVizAPI.Data
         public DbSet<TeamTotalPitchingTracking> TeamTotalPitchingTracking { get; set; }
 
         public DbSet<PlayerLookup> PlayerLookup { get; set; }
+        public DbSet<DKPoolsMap> DKPoolsMaps { get; set; }
+        
         public NrfidbContext(DbContextOptions<NrfidbContext> options)
             : base(options)
         {

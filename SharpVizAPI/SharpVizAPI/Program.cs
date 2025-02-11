@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SharpVizAPI.Models; // Directly import the GamePreview class
 using SharpVizAPI.Data; // Directly import the GamePreview class
 using SharpVizAPI.Services;
+using SharpVizApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,6 +42,7 @@ builder.Services.AddScoped<NormalizationService>();
 builder.Services.AddScoped<BlendingService>();
 builder.Services.AddScoped<IClassificationService, ClassificationService>();
 builder.Services.AddScoped<BJmodelingService>();
+builder.Services.AddScoped<IDfsOptimizationService, DfsOptimizationService>();
 
 var app = builder.Build();
 

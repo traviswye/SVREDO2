@@ -28,7 +28,9 @@ namespace SharpVizApi.Services
             {
                 // Get all players for the draft group
                 var playersQuery = _context.DKPlayerPools
-                    .Where(p => p.DraftGroupId == request.DraftGroupId);
+                    .Where(p => p.DraftGroupId == request.DraftGroupId && p.Status != "OUT");
+
+                _logger.LogInformation("Automatically excluding players with OUT status");
 
                 // Apply watchlist filter if provided
                 if (request.UserWatchlist != null && request.UserWatchlist.Any())

@@ -46,6 +46,8 @@ namespace SharpVizApi.Models
 
         [StringLength(10)]
         public string OppRank { get; set; }
+        [StringLength(20)]
+        public string Status { get; set; }
 
         [Required]
         public DateTime DateAdded { get; set; }
@@ -73,5 +75,6 @@ namespace SharpVizApi.Models
         public string Team { get; set; }
         public decimal? DKppg { get; set; }
         public string OppRank { get; set; }
+        public string Status { get; set; }
     }
 }

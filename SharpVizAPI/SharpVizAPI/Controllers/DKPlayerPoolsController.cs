@@ -69,6 +69,7 @@ namespace SharpVizApi.Controllers
                     Team = p.Team,
                     DKppg = p.DKppg,
                     OppRank = p.OppRank,
+                    Status = p.Status,
                     DateAdded = DateTime.UtcNow
                 }).ToList();
 

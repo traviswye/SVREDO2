@@ -137,12 +137,16 @@ def process_draftables(draftables_data):
             except (ValueError, TypeError):
                 return 0.0
 
+        # Print for debugging
+        print(f"Processing player {player.get('displayName')} - Status: {player['status']}")  # Direct access since we know it exists
+
         # Create processed player object
         processed_player = {
             'fullName': player.get('displayName', ''),
             'playerDkId': player_dk_id,
             'position': player.get('position', ''),
             'salary': player.get('salary', 0),
+            'status': player['status'],  # Direct access since we know it exists
             'gameId': player.get('competition', {}).get('competitionId', 0),
             'game': player.get('competition', {}).get('name', ''),
             'gameStart': utc_time,
@@ -154,7 +158,6 @@ def process_draftables(draftables_data):
         processed_players[player_dk_id] = processed_player
     
     return list(processed_players.values())
-
 def post_to_api(draftgroup_id, players):
     url = "https://localhost:44346/api/DKPlayerPools/batch"
     headers = {
@@ -281,3 +284,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+

@@ -31,6 +31,7 @@ namespace SharpVizApi.Models
 
         [Required]
         public DateTime DateAdded { get; set; }
+        public int? TotalGames { get; set; }
     }
 
     // DTO for creating new pool map entry
@@ -50,5 +51,6 @@ namespace SharpVizApi.Models
 
         [Required]
         public string GameType { get; set; }
+        public int? TotalGames { get; set; }
     }
 }

@@ -43,6 +43,7 @@ builder.Services.AddScoped<BlendingService>();
 builder.Services.AddScoped<IClassificationService, ClassificationService>();
 builder.Services.AddScoped<BJmodelingService>();
 builder.Services.AddScoped<IDfsOptimizationService, DfsOptimizationService>();
+builder.Services.AddScoped<IMLBStrategyService, MLBStrategyService>();
 
 var app = builder.Build();
 

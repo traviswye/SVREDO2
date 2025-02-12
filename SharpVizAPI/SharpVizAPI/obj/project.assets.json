@@ -3633,19 +3633,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\travis.wye\\.nuget\\packages\\": {}
+    "C:\\Users\\OWM2\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\buns\\tw\\SVREDO2\\SharpVizAPI\\SharpVizAPI\\SharpVizAPI.csproj",
+      "projectUniqueName": "C:\\Users\\OWM2\\CodeRoot\\SharpViz\\SVREDO2\\SVREDO2\\SharpVizAPI\\SharpVizAPI\\SharpVizAPI.csproj",
       "projectName": "SharpVizAPI",
-      "projectPath": "C:\\buns\\tw\\SVREDO2\\SharpVizAPI\\SharpVizAPI\\SharpVizAPI.csproj",
-      "packagesPath": "C:\\Users\\travis.wye\\.nuget\\packages\\",
-      "outputPath": "C:\\buns\\tw\\SVREDO2\\SharpVizAPI\\SharpVizAPI\\obj\\",
+      "projectPath": "C:\\Users\\OWM2\\CodeRoot\\SharpViz\\SVREDO2\\SVREDO2\\SharpVizAPI\\SharpVizAPI\\SharpVizAPI.csproj",
+      "packagesPath": "C:\\Users\\OWM2\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\OWM2\\CodeRoot\\SharpViz\\SVREDO2\\SVREDO2\\SharpVizAPI\\SharpVizAPI\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\travis.wye\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\OWM2\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3653,6 +3658,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -3724,7 +3730,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

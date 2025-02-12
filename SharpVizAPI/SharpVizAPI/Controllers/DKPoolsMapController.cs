@@ -106,7 +106,6 @@ namespace SharpVizApi.Controllers
                 return StatusCode(500, "An error occurred while processing the request");
             }
         }
-
         // POST: api/DKPoolsMap/batch
         [HttpPost("batch")]
         public async Task<ActionResult<IEnumerable<DKPoolsMap>>> PostPoolBatch(List<DKPoolsMapInput> inputs)
@@ -117,9 +116,18 @@ namespace SharpVizApi.Controllers
 
                 foreach (var input in inputs)
                 {
-                    // Skip if pool already exists
-                    if (await _context.DKPoolsMaps.AnyAsync(p => p.DraftGroupId == input.DraftGroupId))
+                    // Check if pool already exists
+                    var existingPool = await _context.DKPoolsMaps
+                        .FirstOrDefaultAsync(p => p.DraftGroupId == input.DraftGroupId);
+
+                    if (existingPool != null)
                     {
+                        // Update existing pool with new values
+                        existingPool.Sport = input.Sport;
+                        existingPool.Date = input.Date.Date;
+                        existingPool.StartTime = input.StartTime;
+                        existingPool.GameType = input.GameType;
+                        existingPool.TotalGames = input.TotalGames;  // Update TotalGames
                         continue;
                     }
 
@@ -130,6 +138,7 @@ namespace SharpVizApi.Controllers
                         Date = input.Date.Date,
                         StartTime = input.StartTime,
                         GameType = input.GameType,
+                        TotalGames = input.TotalGames,  // Set TotalGames from input
                         DateAdded = DateTime.UtcNow
                     };
 

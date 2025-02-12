@@ -18,6 +18,8 @@ namespace SharpVizApi.Models
         public int? OppRankLimit { get; set; } = null;  // How many of the worst matchups to consider (e.g., 3 means only use bottom 3 ranked matchups)
         public List<int> UserWatchlist { get; set; } = new List<int>();
         public List<int> ExcludePlayers { get; set; } = new List<int>();
+        public List<int>? MustStartPlayers { get; set; }
+        public List<string>? Strategy { get; set; }
     }
 
     public class DfsOptimizationResponse

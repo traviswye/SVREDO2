@@ -45,7 +45,7 @@ namespace SharpVizApi.Models
         public decimal? DKppg { get; set; }
 
         [StringLength(10)]
-        public string OppRank { get; set; }
+        public string? OppRank { get; set; }
         [StringLength(20)]
         public string Status { get; set; }
 

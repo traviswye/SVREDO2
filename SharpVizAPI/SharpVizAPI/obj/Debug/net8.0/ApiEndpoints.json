@@ -497,6 +497,209 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SharpVizApi.Controllers.DfsOptimizationController",
+    "Method": "OptimizeLineup",
+    "RelativePath": "api/DfsOptimization/optimize",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SharpVizApi.Models.DfsOptimizationRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizApi.Models.DfsOptimizationResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizApi.Controllers.DKPlayerPoolsController",
+    "Method": "PostPlayerBatch",
+    "RelativePath": "api/DKPlayerPools/batch",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SharpVizApi.Models.DKPlayerPoolBatchRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SharpVizApi.Controllers.DKPlayerPoolsController",
+    "Method": "GetPlayersByDraftGroup",
+    "RelativePath": "api/DKPlayerPools/draftgroup/{draftGroupId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "draftGroupId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizApi.Models.DKPlayerPool, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizApi.Controllers.DKPoolsMapController",
+    "Method": "PostPool",
+    "RelativePath": "api/DKPoolsMap",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "input",
+        "Type": "SharpVizApi.Models.DKPoolsMapInput",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizApi.Models.DKPoolsMap",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizApi.Controllers.DKPoolsMapController",
+    "Method": "PostPoolBatch",
+    "RelativePath": "api/DKPoolsMap/batch",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inputs",
+        "Type": "System.Collections.Generic.List\u00601[[SharpVizApi.Models.DKPoolsMapInput, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizApi.Models.DKPoolsMap, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizApi.Controllers.DKPoolsMapController",
+    "Method": "GetPoolsByDate",
+    "RelativePath": "api/DKPoolsMap/date/{date}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "date",
+        "Type": "System.DateTime",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizApi.Models.DKPoolsMap, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizApi.Controllers.DKPoolsMapController",
+    "Method": "GetPoolsBySport",
+    "RelativePath": "api/DKPoolsMap/sport/{sport}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sport",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizApi.Models.DKPoolsMap, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizApi.Controllers.DKPoolsMapController",
+    "Method": "GetPoolsBySportAndDate",
+    "RelativePath": "api/DKPoolsMap/sport/{sport}/date/{date}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sport",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "date",
+        "Type": "System.DateTime",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SharpVizApi.Models.DKPoolsMap, SharpVizAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "EvaluationController",
     "Method": "EvaluateNRFI",
     "RelativePath": "api/Evaluation/evaluateNRFI/{date}",
@@ -2944,6 +3147,58 @@
     "ReturnTypes": [
       {
         "Type": "SharpVizAPI.Models.MLBplayer",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizApi.Controllers.MLBStrategyController",
+    "Method": "GetOptimalStrategy",
+    "RelativePath": "api/MLBStrategy/optimal-strategy/{numberOfGames}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "numberOfGames",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SharpVizApi.Services.SlateStrategy",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SharpVizApi.Controllers.MLBStrategyController",
+    "Method": "GetStackRequirements",
+    "RelativePath": "api/MLBStrategy/stack-requirements/{strategy}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "strategy",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[System.ValueTuple\u00602[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

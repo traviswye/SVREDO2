@@ -88,6 +88,21 @@ def fetch_draftables(draftgroup_id):
         print(f"Error fetching draftables for ID {draftgroup_id}: {e}")
         return None
 
+def get_total_games_from_draftables(draftables_data):
+    if not draftables_data or 'draftables' not in draftables_data:
+        return 0
+    
+    # Use a set to track unique game IDs
+    unique_games = set()
+    
+    for player in draftables_data['draftables']:
+        game_id = player.get('competition', {}).get('competitionId')
+        if game_id:
+            unique_games.add(game_id)
+    
+    return len(unique_games)
+
+
 def convert_dk_time_to_est(dk_time):
     return convert_dk_time_to_est_datetime(dk_time).strftime('%Y-%m-%d %I:%M %p EST')
 
@@ -194,6 +209,10 @@ def post_pools_to_map(unique_contests):
         if not draftgroup_id:
             continue
             
+        # Fetch draftables to calculate total games
+        draftables_data = fetch_draftables(draftgroup_id)
+        total_games = get_total_games_from_draftables(draftables_data) if draftables_data else 0
+            
         # Convert the timestamp to datetime for date field
         contest_datetime = convert_dk_time_to_est_datetime(sd)
         
@@ -202,7 +221,8 @@ def post_pools_to_map(unique_contests):
             "draftGroupId": draftgroup_id,
             "date": contest_datetime.strftime('%Y-%m-%d'),
             "startTime": contest['sdstring'],
-            "gameType": "Classic"
+            "gameType": "Classic",
+            "totalGames": total_games  # Add the new field
         }
         pools_data.append(pool_entry)
     

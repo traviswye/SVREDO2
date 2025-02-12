@@ -224,5 +224,178 @@ namespace SharpVizAPI.Controllers
             return Ok(result);
         }
 
+        [HttpGet("dailyPitcherRankings")]
+        public async Task<IActionResult> GetDailyPitcherRankings([FromQuery] string date = null)
+        {
+            DateTime selectedDate;
+            if (!string.IsNullOrEmpty(date) && DateTime.TryParse(date, out selectedDate))
+            {
+                selectedDate = DateTime.Parse(date);
+            }
+            else
+            {
+                selectedDate = DateTime.Today;
+            }
+
+            var rankings = await _blendingService.GetDailyPitcherRankings(selectedDate);
+
+            if (!rankings.Any())
+            {
+                return NotFound($"No pitcher rankings found for {selectedDate:yyyy-MM-dd}");
+            }
+
+            return Ok(rankings);
+        }
+
+        [HttpGet("enhancedDailyPitcherRankings")]
+        public async Task<IActionResult> GetEnhancedDailyPitcherRankings([FromQuery] string date = null)
+        {
+            DateTime selectedDate;
+            if (!string.IsNullOrEmpty(date) && DateTime.TryParse(date, out selectedDate))
+            {
+                selectedDate = DateTime.Parse(date);
+            }
+            else
+            {
+                selectedDate = DateTime.Today;
+            }
+
+            var standardRankings = await _blendingService.GetDailyPitcherRankings(selectedDate);
+            var enhancedRankings = await _blendingService.GetEnhancedDailyPitcherRankings(selectedDate);
+
+            if (!enhancedRankings.Any())
+            {
+                return NotFound($"No enhanced pitcher rankings found for {selectedDate:yyyy-MM-dd}");
+            }
+
+            var comparisonData = new
+            {
+                Date = selectedDate.ToString("yyyy-MM-dd"),
+                StandardRankings = standardRankings,
+                EnhancedRankings = enhancedRankings,
+                Notes = "Enhanced rankings factor in opponent lineup strength, park effects, and weather conditions"
+            };
+
+            return Ok(comparisonData);
+        }
+
+        [HttpGet("lineupStrength")]
+        public async Task<IActionResult> GetLineupStrength([FromQuery] string date = null, [FromQuery] string pitcherId = null)
+        {
+            DateTime selectedDate;
+            if (!string.IsNullOrEmpty(date) && DateTime.TryParse(date, out selectedDate))
+            {
+                selectedDate = DateTime.Parse(date);
+            }
+            else
+            {
+                selectedDate = DateTime.Today;
+            }
+
+            // Get game preview to find teams
+            var gamePreview = await _context.GamePreviews
+                .FirstOrDefaultAsync(g => g.Date.Date == selectedDate.Date &&
+                    (g.HomePitcher == pitcherId || g.AwayPitcher == pitcherId));
+
+            if (gamePreview == null)
+            {
+                return NotFound($"No game found for pitcher {pitcherId} on {selectedDate:yyyy-MM-dd}");
+            }
+
+            bool isHome = gamePreview.HomePitcher == pitcherId;
+            var lineup = await _blendingService.GetLineupForGame(selectedDate, pitcherId, isHome);
+
+            // Get detailed batter stats
+            var batterDetails = new List<object>();
+            var totalLineupOPS = 0.0;
+            var totalRecentOPS = 0.0;
+            var validBatterCount = 0;
+
+            foreach (var batterId in lineup)
+            {
+                var seasonStats = await _context.TrailingGameLogSplits
+                    .Where(t => t.BbrefId == batterId && t.Split == "Season")
+                    .OrderByDescending(t => t.DateUpdated)
+                    .FirstOrDefaultAsync();
+
+                var recentStats = await _context.TrailingGameLogSplits
+                    .Where(t => t.BbrefId == batterId && t.Split == "Last7G")
+                    .OrderByDescending(t => t.DateUpdated)
+                    .FirstOrDefaultAsync();
+
+                if (seasonStats != null)
+                {
+                    validBatterCount++;
+                    totalLineupOPS += seasonStats.OPS;
+                    var recentOPS = recentStats?.OPS ?? seasonStats.OPS;
+                    totalRecentOPS += recentOPS;
+
+                    batterDetails.Add(new
+                    {
+                        BatterId = batterId,
+                        Position = lineup.IndexOf(batterId) + 1,
+                        SeasonStats = new
+                        {
+                            BA = seasonStats.BA,
+                            OBP = seasonStats.OBP,
+                            SLG = seasonStats.SLG,
+                            OPS = seasonStats.OPS,
+                            PA = seasonStats.PA,
+                            AB = seasonStats.AB,
+                            HR = seasonStats.HR,
+                            BB = seasonStats.BB,
+                            SO = seasonStats.SO
+                        },
+                        Last7Stats = recentStats == null ? null : new
+                        {
+                            BA = recentStats.BA,
+                            OBP = recentStats.OBP,
+                            SLG = recentStats.SLG,
+                            OPS = recentStats.OPS,
+                            PA = recentStats.PA,
+                            AB = recentStats.AB,
+                            HR = recentStats.HR,
+                            BB = recentStats.BB,
+                            SO = recentStats.SO
+                        },
+                        WeightedOPS = (seasonStats.OPS * 0.6) + (recentOPS * 0.4),
+                        HasRecentStats = recentStats != null
+                    });
+                }
+            }
+
+            // Get league averages
+            var leagueStats = await _context.TeamTotalBattingTracking
+                .Where(t => t.TeamName == "AL Average" && t.Year == selectedDate.Year)
+                .FirstOrDefaultAsync();
+
+            double leagueAverageOPS = leagueStats?.onbase_plus_slugging.HasValue ?? false ?
+                Convert.ToDouble(leagueStats.onbase_plus_slugging.Value) : 0.720;
+            double avgSeasonOPS = validBatterCount > 0 ? totalLineupOPS / validBatterCount : 0;
+            double avgRecentOPS = validBatterCount > 0 ? totalRecentOPS / validBatterCount : 0;
+            double blendedLineupOPS = (avgSeasonOPS * 0.6) + (avgRecentOPS * 0.4);
+
+            var result = new
+            {
+                Date = selectedDate.ToString("yyyy-MM-dd"),
+                PitcherId = pitcherId,
+                IsHome = isHome,
+                OpposingTeam = isHome ? gamePreview.AwayTeam : gamePreview.HomeTeam,
+                BatterDetails = batterDetails,
+                LineupAverages = new
+                {
+                    SeasonOPS = avgSeasonOPS,
+                    Last7OPS = avgRecentOPS,
+                    BlendedOPS = blendedLineupOPS,
+                    Weight = new { Season = "70%", Recent = "30%" }
+                },
+                LeagueAverageOPS = leagueAverageOPS,
+                ComparedToLeague = ((blendedLineupOPS - leagueAverageOPS) / leagueAverageOPS * 100).ToString("F1") + "%",
+                Warnings = validBatterCount < 9 ? new[] { $"Only found stats for {validBatterCount} out of 9 batters" } : Array.Empty<string>()
+            };
+
+            return Ok(result);
+        }
+
     }
 }

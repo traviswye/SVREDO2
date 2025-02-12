@@ -1357,7 +1357,433 @@ namespace SharpVizAPI.Services
         }
 
 
+        public async Task<List<PitcherRanking>> GetDailyPitcherRankings(DateTime date)
+        {
+            var rankings = new List<PitcherRanking>();
+            var gamePreviews = await _context.GamePreviews
+                                           .Where(g => g.Date.Date == date.Date)
+                                           .ToListAsync();
 
+            if (!gamePreviews.Any())
+            {
+                _logger.LogWarning($"No games found for date {date}");
+                return rankings;
+            }
+
+            // Get all unique pitchers for the day
+            var allPitchers = gamePreviews.SelectMany(g => new[] {
+        new { Id = g.HomePitcher, Team = g.HomeTeam, IsHome = true },
+        new { Id = g.AwayPitcher, Team = g.AwayTeam, IsHome = false }
+    }).Where(p => !string.IsNullOrEmpty(p.Id)).ToList();
+
+            // Get blended stats and trends for all pitchers
+            foreach (var pitcher in allPitchers)
+            {
+                // Get blended stats
+                var (blendedStats, warnings) = await BlendPitcherStatsAsync(pitcher.Id, date.Year);
+
+                // Get trend analysis
+                var trends = await GetBlendingResultsForPitcher(pitcher.Id);
+                var trendAnalysis = trends != null ? AnalyzeTrends(pitcher.Id, trends) : null;
+
+                if (blendedStats != null)
+                {
+                    // Calculate a composite score
+                    double compositeScore = CalculateCompositeScore(blendedStats, trendAnalysis);
+
+                    rankings.Add(new PitcherRanking
+                    {
+                        PitcherId = pitcher.Id,
+                        Team = pitcher.Team,
+                        IsHome = pitcher.IsHome,
+                        BlendedStats = blendedStats,
+                        TrendAnalysis = trendAnalysis,
+                        CompositeScore = compositeScore,
+                        Warnings = warnings
+                    });
+                }
+            }
+
+            // Sort rankings by composite score (higher is better)
+            return rankings.OrderByDescending(r => r.CompositeScore).ToList();
+        }
+
+        private double CalculateCompositeScore(Dictionary<string, double> blendedStats, Dictionary<string, object> trendAnalysis)
+        {
+            if (blendedStats == null) return 0;
+
+            double score = 0;
+
+            // Get sample size weight (maxes out at 1.0 after 10 games)
+            double gamesPlayed = blendedStats.GetValueOrDefault("G", 0);
+            double sampleSizeWeight = Math.Min(gamesPlayed / 10.0, 1.0);
+
+            // Calculate rate stats properly
+            var rateStats = new Dictionary<string, double>
+    {
+        { "K_Rate", blendedStats.GetValueOrDefault("SO", 0) / blendedStats.GetValueOrDefault("PA", 1) },
+        { "BB_Rate", blendedStats.GetValueOrDefault("BB", 0) / blendedStats.GetValueOrDefault("PA", 1) },
+        { "HR_Rate", blendedStats.GetValueOrDefault("HR", 0) / blendedStats.GetValueOrDefault("PA", 1) },
+        { "BA", blendedStats.GetValueOrDefault("BA", 0) },
+        { "OBP", blendedStats.GetValueOrDefault("OBP", 0) },
+        { "SLG", blendedStats.GetValueOrDefault("SLG", 0) },
+        { "tOPSPlus", blendedStats.GetValueOrDefault("tOPSPlus", 100) },
+        { "sOPSPlus", blendedStats.GetValueOrDefault("sOPSPlus", 100) }
+    };
+
+            // League averages/baseline for rate stats
+            var leagueAverages = new Dictionary<string, double>
+    {
+        { "K_Rate", 0.223 },  // 22.3% K-rate
+        { "BB_Rate", 0.084 }, // 8.4% BB-rate
+        { "HR_Rate", 0.032 }, // 3.2% HR-rate
+        { "BA", 0.248 },
+        { "OBP", 0.318 },
+        { "SLG", 0.411 },
+        { "tOPSPlus", 100 },  // 100 is baseline for OPS+ stats
+        { "sOPSPlus", 100 }   // 100 is baseline for OPS+ stats
+    };
+
+            // Calculate weighted score for each component
+            foreach (var stat in rateStats.Keys)
+            {
+                double value = rateStats[stat];
+                double leagueAvg = leagueAverages[stat];
+
+                // Calculate percentage difference from league average
+                double percentDiff = (value - leagueAvg) / leagueAvg;
+
+                // Invert for stats where lower is better (which now includes tOPSPlus and sOPSPlus for pitchers)
+                if (stat is "BA" or "OBP" or "SLG" or "BB_Rate" or "HR_Rate" or "tOPSPlus" or "sOPSPlus")
+                {
+                    percentDiff *= -1;
+                }
+
+                // Weight OPS+ stats more heavily since they're already normalized
+                double statWeight = 1.0;
+                if (stat is "tOPSPlus" or "sOPSPlus")
+                {
+                    statWeight = 1.5;
+                }
+
+                // Apply sample size weight and stat weight
+                percentDiff *= sampleSizeWeight * statWeight;
+
+                score += percentDiff;
+            }
+
+            // Rest of the code remains the same...
+            // Apply trend modifier (weighted by sample size)
+            if (trendAnalysis != null)
+            {
+                var trends = new[] {
+            Convert.ToDouble(trendAnalysis["bA_Trend"]),
+            Convert.ToDouble(trendAnalysis["obP_Trend"]),
+            Convert.ToDouble(trendAnalysis["slG_Trend"]),
+            Convert.ToDouble(trendAnalysis["BAbip_Trend"])
+        };
+
+                double trendScore = trends.Average() * -1; // Negative because lower is better for pitchers
+                score += (trendScore * sampleSizeWeight * 0.3); // Trend counts for 30% of final score
+            }
+
+            return score;
+        
+    }
+
+        public async Task<List<PitcherRanking>> GetEnhancedDailyPitcherRankings(DateTime date)
+        {
+            // Get base rankings first and create deep copies
+            var baseRankings = await GetDailyPitcherRankings(date);
+            var enhancedRankings = baseRankings.Select(r => new PitcherRanking
+            {
+                PitcherId = r.PitcherId,
+                Team = r.Team,
+                IsHome = r.IsHome,
+                BlendedStats = new Dictionary<string, double>(r.BlendedStats),
+                TrendAnalysis = r.TrendAnalysis != null ?
+                    new Dictionary<string, object>(r.TrendAnalysis) : null,
+                CompositeScore = r.CompositeScore,
+                Warnings = new List<string>(r.Warnings ?? new List<string>())
+            }).ToList();
+
+            foreach (var ranking in enhancedRankings)
+            {
+                var warnings = new List<string>();
+
+                var lineup = await GetLineupForGame(date, ranking.PitcherId, ranking.IsHome);
+                var (lineupStrengthValue, lineupWarnings) = await CalculateLineupStrength(lineup, date);
+                warnings.AddRange(lineupWarnings);
+
+                var (parkFactorValue, parkWarnings) = await GetParkAndWeatherEffects(date, ranking.Team, ranking.IsHome);
+                warnings.AddRange(parkWarnings);
+
+                ranking.CompositeScore = AdjustScoreForMatchup(
+                    ranking.CompositeScore,
+                    lineupStrengthValue,
+                    parkFactorValue,
+                    ranking.IsHome,
+                    warnings
+                );
+
+                ranking.Warnings = warnings;
+            }
+
+            return enhancedRankings.OrderByDescending(r => r.CompositeScore).ToList();
+        }
+
+
+        public async Task<List<string>> GetLineupForGame(DateTime date, string pitcherId, bool isHome)
+        {
+            var gamePreview = await _context.GamePreviews
+                .FirstOrDefaultAsync(g => g.Date.Date == date.Date &&
+                    (isHome ? g.HomePitcher == pitcherId : g.AwayPitcher == pitcherId));
+
+            if (gamePreview == null)
+            {
+                return new List<string>();
+            }
+
+            // For a home pitcher, we want the away team's lineup (opponent)
+            // For an away pitcher, we want the home team's lineup (opponent)
+            string teamToFind = isHome ? gamePreview.AwayTeam : gamePreview.HomeTeam;
+            string opponentToFind = isHome ? gamePreview.HomeTeam : gamePreview.AwayTeam;
+
+            // First try to get actual lineup
+            var actualLineup = await _context.ActualLineups
+                .FirstOrDefaultAsync(l => l.Date.Date == date.Date &&
+                                         l.Team == teamToFind &&
+                                         l.Opponent == opponentToFind &&
+                                         l.OpposingSP == pitcherId);
+
+            if (actualLineup != null)
+            {
+                return new List<string>
+        {
+            actualLineup.Batting1st,
+            actualLineup.Batting2nd,
+            actualLineup.Batting3rd,
+            actualLineup.Batting4th,
+            actualLineup.Batting5th,
+            actualLineup.Batting6th,
+            actualLineup.Batting7th,
+            actualLineup.Batting8th,
+            actualLineup.Batting9th
+        };
+            }
+
+            // Fallback to predicted lineup
+            var predictedLineup = await _context.LineupPredictions
+                .FirstOrDefaultAsync(l => l.Date.Date == date.Date &&
+                                         l.Team == teamToFind &&
+                                         l.Opponent == opponentToFind &&
+                                         l.OpposingSP == pitcherId);
+
+            if (predictedLineup != null)
+            {
+                return new List<string>
+        {
+            predictedLineup.Batting1st,
+            predictedLineup.Batting2nd,
+            predictedLineup.Batting3rd,
+            predictedLineup.Batting4th,
+            predictedLineup.Batting5th,
+            predictedLineup.Batting6th,
+            predictedLineup.Batting7th,
+            predictedLineup.Batting8th,
+            predictedLineup.Batting9th
+        };
+            }
+
+            return new List<string>();
+        }
+
+
+        public async Task<(double Strength, List<string> Warnings)> CalculateLineupStrength(List<string> lineup, DateTime date)
+        {
+            double strength = 0;
+            var warnings = new List<string>();
+
+            if (!lineup.Any())
+            {
+                warnings.Add("No lineup data available");
+                return (0, warnings);
+            }
+
+            // Calculate season and recent stats for each batter
+            var totalOPS = 0.0;
+            var recentOPS = 0.0;
+            var batterCount = 0;
+
+            foreach (var batterId in lineup)
+            {
+                // Get season stats
+                var seasonStats = await _context.TrailingGameLogSplits
+                    .Where(t => t.BbrefId == batterId && t.Split == "Season")
+                    .OrderByDescending(t => t.DateUpdated)
+                    .FirstOrDefaultAsync();
+
+                // Get last 7 games stats
+                var recentStats = await _context.TrailingGameLogSplits
+                    .Where(t => t.BbrefId == batterId && t.Split == "Last7G")
+                    .OrderByDescending(t => t.DateUpdated)
+                    .FirstOrDefaultAsync();
+
+                if (seasonStats != null)
+                {
+                    batterCount++;
+                    totalOPS += seasonStats.OPS;
+
+                    if (recentStats != null)
+                    {
+                        // Weight recent performance more heavily
+                        recentOPS += recentStats.OPS;
+                    }
+                    else
+                    {
+                        recentOPS += seasonStats.OPS; // Use season stats if no recent stats
+                        warnings.Add($"No recent stats for {batterId}");
+                    }
+                }
+            }
+
+            if (batterCount == 0)
+            {
+                warnings.Add("No valid batter statistics found");
+                return (0, warnings);
+            }
+
+            // Blend season and recent performance (60/40 weight)
+            var avgSeasonOPS = totalOPS / batterCount;
+            var avgRecentOPS = recentOPS / batterCount;
+            strength = (avgSeasonOPS * 0.6) + (avgRecentOPS * 0.4);
+
+            return (strength, warnings);
+        }
+
+        private async Task<(double ParkFactor, List<string> Warnings)> GetParkAndWeatherEffects(DateTime date, string teamName, bool isHome)
+        {
+            var warnings = new List<string>();
+            // Start with neutral park factor
+            double parkEffect = 100.0; // Start at neutral
+
+            var gamePreview = await _context.GamePreviews
+                .FirstOrDefaultAsync(g => g.Date.Date == date.Date &&
+                    (isHome ? g.HomeTeam == teamName : g.AwayTeam == teamName));
+
+            if (gamePreview == null)
+            {
+                warnings.Add($"No game preview found for {teamName} on {date:yyyy-MM-dd}");
+                return (parkEffect, warnings);
+            }
+
+            var parkFactors = await _context.ParkFactors
+                .Where(p => p.Venue.ToLower() == gamePreview.Venue.ToLower())
+                .FirstOrDefaultAsync();
+
+            if (parkFactors == null)
+            {
+                warnings.Add($"No park factors found for {gamePreview.Venue}");
+                return (parkEffect, warnings);
+            }
+
+            // Use ParkFactorRating directly - it's already normalized to 100
+            parkEffect = parkFactors.ParkFactorRating;
+
+            // Only apply weather adjustments for open-air parks
+            if (parkFactors.RoofType == "Open Air")
+            {
+                // Temperature effects
+                if (gamePreview.Temperature >= 85)
+                {
+                    parkEffect += 5; // Make park 5% more hitter friendly
+                    warnings.Add($"Hot weather adjustment applied: {gamePreview.Temperature}°F");
+                }
+                else if (gamePreview.Temperature <= 50)
+                {
+                    parkEffect -= 5; // Make park 5% more pitcher friendly
+                    warnings.Add($"Cold weather adjustment applied: {gamePreview.Temperature}°F");
+                }
+
+                // Wind effects
+                if (gamePreview.WindSpeed >= 10)
+                {
+                    double relativeWindDirection = gamePreview.RelativeWindDirection;
+                    if (Math.Abs(relativeWindDirection) <= 45)
+                    {
+                        parkEffect += gamePreview.WindSpeed * 0.3; // Slight increase for wind out
+                        warnings.Add($"Wind blowing out adjustment: {gamePreview.WindSpeed} mph");
+                    }
+                    else if (Math.Abs(relativeWindDirection) >= 135)
+                    {
+                        parkEffect -= gamePreview.WindSpeed * 0.3; // Slight decrease for wind in
+                        warnings.Add($"Wind blowing in adjustment: {gamePreview.WindSpeed} mph");
+                    }
+                }
+            }
+
+            return (parkEffect, warnings);
+        }
+
+
+        private double AdjustScoreForMatchup(
+            double baseScore,
+            double lineupStrength,
+            double parkFactor,
+            bool isHome,
+            List<string> warnings)
+        {
+            double adjustedScore = baseScore;
+
+            // Apply lineup strength adjustment
+            double leagueAverageOPS = 0.720;
+            double lineupAdjustment = (leagueAverageOPS - lineupStrength) / leagueAverageOPS;
+            double lineupMultiplier = 1 + (lineupAdjustment * 0.4);
+            adjustedScore *= lineupMultiplier;
+
+            // Always show lineup adjustment if it's not zero
+            double lineupPercentChange = (lineupMultiplier - 1) * 100;
+            if (Math.Abs(lineupPercentChange) > 0.1) // Show if more than 0.1%
+            {
+                warnings.Add($"Lineup adjustment: {lineupPercentChange:F1}% " +
+                    $"({(lineupPercentChange > 0 ? "favorable" : "unfavorable")} matchup)");
+            }
+
+            // Apply park factor
+            double parkAdjustment = (100 - parkFactor) / 100.0;
+            adjustedScore *= (1 + parkAdjustment);
+
+            // Always show park adjustment if it's not zero
+            double parkPercentChange = parkAdjustment * 100;
+            if (Math.Abs(parkPercentChange) > 0.1) // Show if more than 0.1%
+            {
+                warnings.Add($"Park factor adjustment: {parkPercentChange:F1}% " +
+                    $"({(parkPercentChange > 0 ? "favorable" : "unfavorable")} conditions)");
+            }
+
+            // Apply and show home/away adjustment
+            double homeAwayAdjustment = isHome ? 5.0 : -5.0; // Make it explicit
+            adjustedScore *= (1 + (homeAwayAdjustment / 100.0));
+            warnings.Add($"Home/Away adjustment: {homeAwayAdjustment:F1}% " +
+                $"({(isHome ? "favorable" : "unfavorable")} conditions)");
+
+            // Log final adjustment
+            double totalChange = ((adjustedScore / baseScore) - 1) * 100;
+            warnings.Add($"Total adjustment: {totalChange:F1}% from base score of {baseScore:F3}");
+
+            return adjustedScore;
+        }
+
+        public class PitcherRanking
+        {
+            public string PitcherId { get; set; }
+            public string Team { get; set; }
+            public bool IsHome { get; set; }
+            public Dictionary<string, double> BlendedStats { get; set; }
+            public Dictionary<string, object> TrendAnalysis { get; set; }
+            public double CompositeScore { get; set; }
+            public List<string> Warnings { get; set; } = new List<string>();
+        }
 
 
     }

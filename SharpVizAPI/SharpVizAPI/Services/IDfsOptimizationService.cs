@@ -235,9 +235,12 @@ namespace SharpVizApi.Services
         {
             try
             {
+                //dklimit
                 // Get all players for the draft group
                 var playersQuery = _context.DKPlayerPools
-                    .Where(p => p.DraftGroupId == request.DraftGroupId && p.Status != "OUT");
+    .Where(p => p.DraftGroupId == request.DraftGroupId &&
+                p.Status != "OUT" &&
+                p.DKppg >= 5);
 
                 _logger.LogInformation("Automatically excluding players with OUT status");
 

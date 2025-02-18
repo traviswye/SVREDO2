@@ -1,0 +1,102 @@
+/* src/components/common/GamesDisplay/GamesDisplay.css */
+.games-display {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-columns, 5), 1fr);
+    gap: 20px;
+    padding: 15px;
+}
+
+.date-picker-container {
+    margin-bottom: 20px;
+}
+
+/* Base DatePicker styles */
+.date-picker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.date-nav-button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.date-nav-button:hover {
+    background-color: #0056b3;
+}
+
+.date-input {
+    padding: 8px 12px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: #495057;
+}
+
+.date-input:focus {
+    outline: none;
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+}
+
+/* Loading state */
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 1400px) {
+    .games-grid {
+        --grid-columns: 4;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .games-grid {
+        --grid-columns: 3;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .games-grid {
+        --grid-columns: 2;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .games-grid {
+        --grid-columns: 1;
+    }
+
+    .date-picker {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .date-input {
+        width: 100%;
+    }
+}

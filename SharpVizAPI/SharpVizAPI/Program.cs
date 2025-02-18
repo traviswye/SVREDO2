@@ -19,6 +19,10 @@ builder.Services.AddCors(options =>
         builder.WithOrigins("http://localhost:3000") // Allow requests from React app
                .AllowAnyHeader() // Allow any headers
                .AllowAnyMethod(); // Allow any HTTP method
+
+        builder.WithOrigins("http://localhost:3001") // Allow requests from React app
+       .AllowAnyHeader() // Allow any headers
+       .AllowAnyMethod(); // Allow any HTTP method
     });
 });
 
@@ -44,6 +48,7 @@ builder.Services.AddScoped<IClassificationService, ClassificationService>();
 builder.Services.AddScoped<BJmodelingService>();
 builder.Services.AddScoped<IDfsOptimizationService, DfsOptimizationService>();
 builder.Services.AddScoped<IMLBStrategyService, MLBStrategyService>();
+builder.Services.AddScoped<BullpenAnalysisService>(); 
 
 var app = builder.Build();
 

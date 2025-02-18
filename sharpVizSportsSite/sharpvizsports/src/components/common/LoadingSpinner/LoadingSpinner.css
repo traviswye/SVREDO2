@@ -1,0 +1,97 @@
+/* src/components/common/LoadingSpinner/LoadingSpinner.css */
+.spinner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.spinner-container.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 9999;
+}
+
+.spinner {
+    position: relative;
+    display: inline-block;
+}
+
+.spinner-circle {
+    border-radius: 50%;
+    border: 2px solid transparent;
+    animation: spin 1s linear infinite;
+}
+
+/* Sizes */
+.spinner.small .spinner-circle {
+    width: 16px;
+    height: 16px;
+}
+
+.spinner.medium .spinner-circle {
+    width: 32px;
+    height: 32px;
+}
+
+.spinner.large .spinner-circle {
+    width: 48px;
+    height: 48px;
+}
+
+/* Colors */
+.spinner.primary .spinner-circle {
+    border-top-color: #007bff;
+    border-right-color: #007bff;
+}
+
+.spinner.secondary .spinner-circle {
+    border-top-color: #6c757d;
+    border-right-color: #6c757d;
+}
+
+.spinner.success .spinner-circle {
+    border-top-color: #28a745;
+    border-right-color: #28a745;
+}
+
+.spinner-text {
+    color: #666;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Optional: Add a subtle pulse animation to the text */
+.spinner-text {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.6;
+    }
+}

@@ -1785,6 +1785,46 @@ namespace SharpVizAPI.Services
             public List<string> Warnings { get; set; } = new List<string>();
         }
 
+        public class WobaCalculator
+        {
+            // These weights can be adjusted based on the season
+            private static class WobaWeights
+            {
+                public const double BB = 0.55;
+                public const double HBP = 0.57;
+                public const double SINGLE = 0.7;
+                public const double DOUBLE = 1.00;
+                public const double TRIPLE = 1.27;
+                public const double HR = 1.65;
+            }
+
+            public static double CalculateWoba(TrailingGameLogSplit stats)
+            {
+                // Calculate singles from total hits minus extra base hits
+                int singles = stats.H - (stats.HR + stats.Doubles + stats.Triples);
+
+                // Calculate the numerator (weighted events)
+                double weightedEvents =
+                    (stats.BB * WobaWeights.BB) +
+                    (stats.HBP * WobaWeights.HBP) +
+                    (singles * WobaWeights.SINGLE) +
+                    (stats.Doubles * WobaWeights.DOUBLE) +
+                    (stats.Triples * WobaWeights.TRIPLE) +
+                    (stats.HR * WobaWeights.HR);
+
+                // Calculate the denominator (plate appearances)
+                // Note: IBB is included in BB, SF needs to be added separately
+                //int plateAppearances = stats.PA;
+                int AdjPlateApps = stats.AB + stats.BB - stats.IBB + stats.SF + stats.HBP;
+
+                // Guard against division by zero
+                if (AdjPlateApps == 0)
+                    return 0.0;
+
+                return weightedEvents / AdjPlateApps;
+            }
+        }
+
 
     }
 }

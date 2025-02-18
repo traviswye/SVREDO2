@@ -8,6 +8,7 @@ using System.Linq;
 using System.Collections.Generic;
 using SharpVizAPI.Models;
 using SharpVizAPI.Helpers;
+using static SharpVizAPI.Services.BlendingService;
 
 namespace SharpVizAPI.Controllers
 {
@@ -16,12 +17,14 @@ namespace SharpVizAPI.Controllers
     public class BlendingController : ControllerBase
     {
         private readonly BlendingService _blendingService;
+        private readonly BullpenAnalysisService _bullpenService;
         private readonly NrfidbContext _context;
 
-        public BlendingController(BlendingService blendingService, NrfidbContext context)
+        public BlendingController(BlendingService blendingService, BullpenAnalysisService bullpenService, NrfidbContext context)
         {
             _blendingService = blendingService;
             _context = context;
+            _bullpenService = bullpenService;
         }
 
         // This method returns the default weights structure
@@ -432,8 +435,8 @@ namespace SharpVizAPI.Controllers
             double leagueAverageSLG = leagueStats?.slugging_perc.HasValue ?? false ?
                 Convert.ToDouble(leagueStats.slugging_perc.Value) : 0.390;
 
-            // Calculate oOPS using the formula 1.77 * onbase_perc + slugging_perc
-            double leagueAverageOPS = ((1.77 * leagueAverageOBP) + leagueAverageSLG);
+            // Calculate oOPS using the formula 1.6 * onbase_perc + slugging_perc
+            double leagueAverageOPS = ((1.6 * leagueAverageOBP) + leagueAverageSLG);
                 
 
             var gameLineups = new List<GameLineupAnalysis>();
@@ -528,10 +531,10 @@ namespace SharpVizAPI.Controllers
                 {
                     validBatterCount++;
 
-                    // Calculate optimized OPS values (1.77 * OBP + SLG)
-                    double seasonOOPS = (1.77 * seasonStats.OBP) + seasonStats.SLG;
+                    // Calculate optimized OPS values (1.6 * OBP + SLG)
+                    double seasonOOPS = (1.6 * seasonStats.OBP) + seasonStats.SLG;
                     double recentOOPS = recentStats != null ?
-                        (1.77 * recentStats.OBP) + recentStats.SLG :
+                        (1.6 * recentStats.OBP) + recentStats.SLG :
                         seasonOOPS;
 
                     // Add to season totals
@@ -603,7 +606,7 @@ namespace SharpVizAPI.Controllers
             };
         }
 
-        [HttpGet("adjustedRunExpectancy")]
+        [HttpGet("adjustedRunExpectancyF5")]
         public async Task<IActionResult> GetAdjustedRunExpectancy([FromQuery] string date = null)
         {
             DateTime selectedDate;
@@ -638,7 +641,8 @@ namespace SharpVizAPI.Controllers
                 return NotFound("No pitcher rankings available");
             }
 
-            var LEAGUE_AVERAGE_OPS = 0.950; // League average oOPS baseline
+            var LEAGUE_AVERAGE_OPS = 0.886; // League average oOPS baseline
+            const double FIVE_INNING_SCALAR = 5.0 / 9.0;
             var adjustedGames = new List<object>();
 
             foreach (var game in dailyLineupResponse.Games)
@@ -656,8 +660,8 @@ namespace SharpVizAPI.Controllers
                 }
 
                 // Calculate pitcher oOPS
-                double homeOOPS = (1.77 * (double)homePitcher.BlendedStats["OBP"]) + (double)homePitcher.BlendedStats["SLG"];
-                double awayOOPS = (1.77 * (double)awayPitcher.BlendedStats["OBP"]) + (double)awayPitcher.BlendedStats["SLG"];
+                double homeOOPS = (1.6 * (double)homePitcher.BlendedStats["OBP"]) + (double)homePitcher.BlendedStats["SLG"];
+                double awayOOPS = (1.6 * (double)awayPitcher.BlendedStats["OBP"]) + (double)awayPitcher.BlendedStats["SLG"];
 
                 // Adjust runs based on OPPOSING pitcher's oOPS (this is what changes)
                 double homeAdjustedRuns = game.HeadToHead.ExpectedRuns.Team1.ExpectedRuns * (awayOOPS / LEAGUE_AVERAGE_OPS);
@@ -670,56 +674,19 @@ namespace SharpVizAPI.Controllers
                     HomeTeam = new
                     {
                         Team = game.HomeTeam.Team,
-                        OriginalExpectedRuns = game.HeadToHead.ExpectedRuns.Team1.ExpectedRuns,
-                        AdjustedExpectedRuns = homeAdjustedRuns,
-                        HomePitcherOOPS = homeOOPS  // This stays with home team
+                        OriginalExpectedRuns = game.HeadToHead.ExpectedRuns.Team1.ExpectedRuns * FIVE_INNING_SCALAR,  // Scale to 5 innings
+                        AdjustedExpectedRuns = homeAdjustedRuns * FIVE_INNING_SCALAR,  // Scale to 5 innings
+                        HomePitcherOOPS = homeOOPS
                     },
                     AwayTeam = new
                     {
                         Team = game.AwayTeam.Team,
-                        OriginalExpectedRuns = game.HeadToHead.ExpectedRuns.Team2.ExpectedRuns,
-                        AdjustedExpectedRuns = awayAdjustedRuns,
-                        AwayPitcherOOPS = awayOOPS  // This stays with away team
+                        OriginalExpectedRuns = game.HeadToHead.ExpectedRuns.Team2.ExpectedRuns * FIVE_INNING_SCALAR,  // Scale to 5 innings
+                        AdjustedExpectedRuns = awayAdjustedRuns * FIVE_INNING_SCALAR,  // Scale to 5 innings
+                        AwayPitcherOOPS = awayOOPS
                     },
-                    RunDifferential = homeAdjustedRuns - awayAdjustedRuns
+                    RunDifferential = (homeAdjustedRuns - awayAdjustedRuns) * FIVE_INNING_SCALAR  // Scale differential to 5 innings
                 });
-                //// Calculate implied probabilities
-                //double totalAdjustedRuns = homeAdjustedRuns + awayAdjustedRuns;
-                //double homeProbability = homeAdjustedRuns / totalAdjustedRuns;
-                //double awayProbability = awayAdjustedRuns / totalAdjustedRuns;
-
-                //// Convert to American odds
-                //int homeOdds = homeProbability > 0.5
-                //    ? (int)(-100 * (homeProbability / (1 - homeProbability)))
-                //    : (int)(100 * ((1 / homeProbability) - 1));
-                //int awayOdds = awayProbability > 0.5
-                //    ? (int)(-100 * (awayProbability / (1 - awayProbability)))
-                //    : (int)(100 * ((1 / awayProbability) - 1));
-
-                //adjustedGames.Add(new
-                //{
-                //    GameId = game.GameId,
-                //    HomeTeam = new
-                //    {
-                //        Team = game.HomeTeam.Team,
-                //        OriginalExpectedRuns = game.HeadToHead.ExpectedRuns.Team1.ExpectedRuns,
-                //        AdjustedExpectedRuns = homeAdjustedRuns,
-                //        HomePitcherOOPS = homeOOPS,
-                //        ImpliedProbability = homeProbability,
-                //        MoneyLine = homeOdds
-                //    },
-                //    AwayTeam = new
-                //    {
-                //        Team = game.AwayTeam.Team,
-                //        OriginalExpectedRuns = game.HeadToHead.ExpectedRuns.Team2.ExpectedRuns,
-                //        AdjustedExpectedRuns = awayAdjustedRuns,
-                //        AwayPitcherOOPS = awayOOPS,
-                //        ImpliedProbability = awayProbability,
-                //        MoneyLine = awayOdds
-                //    },
-                //    RunDifferential = homeAdjustedRuns - awayAdjustedRuns,
-                //    TotalExpectedRuns = totalAdjustedRuns
-                //});
             }
 
             return Ok(new
@@ -729,6 +696,313 @@ namespace SharpVizAPI.Controllers
                 LeagueAverageOOPS = LEAGUE_AVERAGE_OPS,
                 Games = adjustedGames
             });
+        }
+
+        [HttpGet("adjustedRunExpectancy")]
+        public async Task<IActionResult> GetFullGameAdjustedRunExpectancy([FromQuery] string date = null)
+        {
+            DateTime selectedDate;
+            if (!string.IsNullOrEmpty(date) && DateTime.TryParse(date, out selectedDate))
+            {
+                selectedDate = DateTime.Parse(date);
+            }
+            else
+            {
+                selectedDate = DateTime.Today;
+            }
+
+            // Get lineup strength data
+            var lineupData = await GetDailyLineupStrength(date);
+            if (lineupData is not OkObjectResult okLineupResult)
+            {
+                return NotFound("No lineup data available");
+            }
+            var dailyLineupResponse = (DailyLineupStrengthResponse)okLineupResult.Value;
+
+            // Get pitcher data
+            var pitcherData = await GetEnhancedDailyPitcherRankings(date);
+            if (pitcherData is not OkObjectResult okPitcherResult)
+            {
+                return NotFound("No pitcher data available");
+            }
+
+            var pitcherRankings = ((dynamic)okPitcherResult.Value).EnhancedRankings as IEnumerable<dynamic>;
+            if (pitcherRankings == null)
+            {
+                return NotFound("No pitcher rankings available");
+            }
+
+            var LEAGUE_AVERAGE_OPS = 0.886; // League average oOPS baseline
+            const double STARTER_INNINGS = 5.0 / 9.0;
+            const double BULLPEN_INNINGS = 4.0 / 9.0;
+            var adjustedGames = new List<object>();
+
+            foreach (var game in dailyLineupResponse.Games)
+            {
+                // Find starting pitchers
+                dynamic homePitcher = null;
+                dynamic awayPitcher = null;
+
+                foreach (dynamic pitcher in pitcherRankings)
+                {
+                    if ((string)pitcher.PitcherId == game.HomeTeam.OpposingPitcher)
+                        awayPitcher = pitcher;
+                    if ((string)pitcher.PitcherId == game.AwayTeam.OpposingPitcher)
+                        homePitcher = pitcher;
+                }
+
+                // Get bullpen stats for both teams
+                var homeTeamAbbrev = TeamNameMapper.GetAbbreviation(game.HomeTeam.Team);
+                var awayTeamAbbrev = TeamNameMapper.GetAbbreviation(game.AwayTeam.Team);
+
+                var homeBullpenStats = await _bullpenService.GetBullpenAnalysis(selectedDate.Year, homeTeamAbbrev, selectedDate);
+                var awayBullpenStats = await _bullpenService.GetBullpenAnalysis(selectedDate.Year, awayTeamAbbrev, selectedDate);
+                // Calculate starter oOPS
+                double homeStarterOOPS = (1.6 * (double)homePitcher.BlendedStats["OBP"]) + (double)homePitcher.BlendedStats["SLG"];
+                double awayStarterOOPS = (1.6 * (double)awayPitcher.BlendedStats["OBP"]) + (double)awayPitcher.BlendedStats["SLG"];
+
+                // Calculate adjusted runs for first 5 innings (starters)
+                double homeFirstFive = game.HeadToHead.ExpectedRuns.Team1.ExpectedRuns * (awayStarterOOPS / LEAGUE_AVERAGE_OPS) * STARTER_INNINGS;
+                double awayFirstFive = game.HeadToHead.ExpectedRuns.Team2.ExpectedRuns * (homeStarterOOPS / LEAGUE_AVERAGE_OPS) * STARTER_INNINGS;
+
+                // Calculate adjusted runs for last 4 innings (bullpen)
+                double homeLastFour = game.HeadToHead.ExpectedRuns.Team1.ExpectedRuns * (awayBullpenStats.OOPS / LEAGUE_AVERAGE_OPS) * BULLPEN_INNINGS;
+                double awayLastFour = game.HeadToHead.ExpectedRuns.Team2.ExpectedRuns * (homeBullpenStats.OOPS / LEAGUE_AVERAGE_OPS) * BULLPEN_INNINGS;
+
+                // Combine for full game expectations
+                double homeTotalAdjusted = homeFirstFive + homeLastFour;
+                double awayTotalAdjusted = awayFirstFive + awayLastFour;
+
+                adjustedGames.Add(new
+                {
+                    GameId = game.GameId,
+                    HomeTeam = new
+                    {
+                        Team = game.HomeTeam.Team,
+                        OriginalExpectedRuns = game.HeadToHead.ExpectedRuns.Team1.ExpectedRuns,
+                        AdjustedExpectedRuns = homeTotalAdjusted,
+                        StarterOOPS = homeStarterOOPS,
+                        BullpenOOPS = homeBullpenStats.OOPS
+                    },
+                    AwayTeam = new
+                    {
+                        Team = game.AwayTeam.Team,
+                        OriginalExpectedRuns = game.HeadToHead.ExpectedRuns.Team2.ExpectedRuns,
+                        AdjustedExpectedRuns = awayTotalAdjusted,
+                        StarterOOPS = awayStarterOOPS,
+                        BullpenOOPS = awayBullpenStats.OOPS
+                    },
+                    RunDifferential = homeTotalAdjusted - awayTotalAdjusted
+                });
+            }
+
+            return Ok(new
+            {
+                Date = selectedDate.ToString("yyyy-MM-dd"),
+                GamesAnalyzed = adjustedGames.Count,
+                LeagueAverageOOPS = LEAGUE_AVERAGE_OPS,
+                Games = adjustedGames
+            });
+        }
+
+        [HttpGet("calculateWoba")]
+        public async Task<IActionResult> CalculateWoba([FromQuery] string bbrefId)
+        {
+
+
+            // Get season and recent splits
+            var seasonSplit = await _context.TrailingGameLogSplits
+                .Where(t => t.BbrefId == bbrefId && t.Split == "Season")
+                .OrderByDescending(t => t.DateUpdated)
+                .FirstOrDefaultAsync();
+
+            var last7Split = await _context.TrailingGameLogSplits
+                .Where(t => t.BbrefId == bbrefId && t.Split == "Last7G")
+                .OrderByDescending(t => t.DateUpdated)
+                .FirstOrDefaultAsync();
+
+            if (seasonSplit == null)
+            {
+                return NotFound($"No stats found for player {bbrefId}");
+            }
+
+            // Calculate wOBA for season stats
+            double seasonWoba = WobaCalculator.CalculateWoba(seasonSplit);
+            double? last7Woba = last7Split != null ? WobaCalculator.CalculateWoba(last7Split) : null;
+
+            // Calculate blended wOBA if we have both splits (70/30 weight)
+            double? blendedWoba = last7Split != null ?
+                (seasonWoba * 0.7) + (last7Woba.Value * 0.3) :
+                seasonWoba;
+
+            var result = new
+            {
+                BbrefId = bbrefId,
+                SeasonStats = new
+                {
+                    wOBA = seasonWoba,
+                    PA = seasonSplit.PA,
+                    Singles = seasonSplit.H - (seasonSplit.HR + seasonSplit.Doubles + seasonSplit.Triples),
+                    Doubles = seasonSplit.Doubles,
+                    Triples = seasonSplit.Triples,
+                    HR = seasonSplit.HR,
+                    BB = seasonSplit.BB,
+                    HBP = seasonSplit.HBP,
+                    SF = seasonSplit.SF
+                },
+                Last7Stats = last7Split != null ? new
+                {
+                    wOBA = last7Woba.Value,
+                    PA = last7Split.PA,
+                    Singles = last7Split.H - (last7Split.HR + last7Split.Doubles + last7Split.Triples),
+                    Doubles = last7Split.Doubles,
+                    Triples = last7Split.Triples,
+                    HR = last7Split.HR,
+                    BB = last7Split.BB,
+                    HBP = last7Split.HBP,
+                    SF = last7Split.SF
+                } : null,
+                BlendedWoba = blendedWoba,
+                WeightDistribution = new { Season = "70%", Recent = "30%" }
+            };
+
+            return Ok(result);
+        }
+
+
+        [HttpPost("calculateWobaMultiple")]
+        public async Task<IActionResult> CalculateWobaMultiple([FromBody] List<string> bbrefIds)
+        {
+            if (bbrefIds == null || !bbrefIds.Any())
+            {
+                return BadRequest("No player IDs provided");
+            }
+
+            var results = new List<object>();
+
+            // Get all relevant splits in one query for better performance
+            var seasonSplits = await _context.TrailingGameLogSplits
+                .Where(t => bbrefIds.Contains(t.BbrefId) && t.Split == "Season")
+                .OrderByDescending(t => t.DateUpdated)
+                .ToListAsync();
+
+            var last7Splits = await _context.TrailingGameLogSplits
+                .Where(t => bbrefIds.Contains(t.BbrefId) && t.Split == "Last7G")
+                .OrderByDescending(t => t.DateUpdated)
+                .ToListAsync();
+
+            foreach (var bbrefId in bbrefIds)
+            {
+                var seasonSplit = seasonSplits.FirstOrDefault(s => s.BbrefId == bbrefId);
+                var last7Split = last7Splits.FirstOrDefault(s => s.BbrefId == bbrefId);
+
+                if (seasonSplit == null)
+                {
+                    results.Add(new
+                    {
+                        BbrefId = bbrefId,
+                        Error = $"No stats found for player {bbrefId}"
+                    });
+                    continue;
+                }
+
+                // Calculate wOBA for season stats
+                double seasonWoba = WobaCalculator.CalculateWoba(seasonSplit);
+                double? last7Woba = last7Split != null ? WobaCalculator.CalculateWoba(last7Split) : null;
+
+                // Calculate blended wOBA if we have both splits (70/30 weight)
+                double? blendedWoba = last7Split != null ?
+                    (seasonWoba * 0.7) + (last7Woba.Value * 0.3) :
+                    seasonWoba;
+
+                results.Add(new
+                {
+                    BbrefId = bbrefId,
+                    SeasonStats = new
+                    {
+                        wOBA = seasonWoba,
+                        PA = seasonSplit.PA,
+                        Singles = seasonSplit.H - (seasonSplit.HR + seasonSplit.Doubles + seasonSplit.Triples),
+                        Doubles = seasonSplit.Doubles,
+                        Triples = seasonSplit.Triples,
+                        HR = seasonSplit.HR,
+                        BB = seasonSplit.BB,
+                        HBP = seasonSplit.HBP,
+                        SF = seasonSplit.SF
+                    },
+                    Last7Stats = last7Split != null ? new
+                    {
+                        wOBA = last7Woba.Value,
+                        PA = last7Split.PA,
+                        Singles = last7Split.H - (last7Split.HR + last7Split.Doubles + last7Split.Triples),
+                        Doubles = last7Split.Doubles,
+                        Triples = last7Split.Triples,
+                        HR = last7Split.HR,
+                        BB = last7Split.BB,
+                        HBP = last7Split.HBP,
+                        SF = last7Split.SF
+                    } : null,
+                    BlendedWoba = blendedWoba,
+                    WeightDistribution = new { Season = "70%", Recent = "30%" }
+                });
+            }
+
+            return Ok(new
+            {
+                ProcessedPlayers = results.Count,
+                Results = results
+            });
+        }
+    }
+    public static class TeamNameMapper
+    {
+        private static readonly Dictionary<string, string> FullNameToAbbrev = new Dictionary<string, string>
+    {
+        { "Yankees", "NYY" },
+        { "Red Sox", "BOS" },
+        { "Blue Jays", "TOR" },
+        { "Rays", "TBR" },
+        { "Orioles", "BAL" },
+        { "White Sox", "CHW" },
+        { "Guardians", "CLE" },
+        { "Tigers", "DET" },
+        { "Royals", "KCR" },
+        { "Twins", "MIN" },
+        { "Angels", "LAA" },
+        { "Astros", "HOU" },
+        { "Athletics", "OAK" },
+        { "Mariners", "SEA" },
+        { "Rangers", "TEX" },
+        { "Braves", "ATL" },
+        { "Marlins", "MIA" },
+        { "Mets", "NYM" },
+        { "Phillies", "PHI" },
+        { "Nationals", "WSN" },
+        { "Cubs", "CHC" },
+        { "Reds", "CIN" },
+        { "Brewers", "MIL" },
+        { "Pirates", "PIT" },
+        { "Cardinals", "STL" },
+        { "Diamondbacks", "ARI" },
+        { "Rockies", "COL" },
+        { "Dodgers", "LAD" },
+        { "Padres", "SDP" },
+        { "Giants", "SFG" }
+    };
+
+        public static string GetAbbreviation(string fullName)
+        {
+            // Try to get exact match first
+            if (FullNameToAbbrev.TryGetValue(fullName, out string abbrev))
+                return abbrev;
+
+            // If not found, try removing leading/trailing spaces and try again
+            fullName = fullName.Trim();
+            if (FullNameToAbbrev.TryGetValue(fullName, out abbrev))
+                return abbrev;
+
+            // If still not found, throw an exception with details
+            throw new ArgumentException($"Team name '{fullName}' not found in mapping dictionary.");
         }
     }
 }

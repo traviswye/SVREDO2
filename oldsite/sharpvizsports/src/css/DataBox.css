@@ -1,0 +1,164 @@
+.data-box-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to the top */
+  height: 600px; /* Set a constant height */
+}
+
+.data-box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align items to the top */
+  margin-bottom: 10px;
+}
+
+.data-box-title-container {
+  display: flex;
+  flex-direction: column; /* Stack the title and subtitle vertically */
+}
+
+.data-box-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.data-box-subtitle {
+  font-size: 14px;
+  color: #555; 
+
+  margin-right: auto;
+}
+
+.search-bar-container {
+  margin-left: auto;
+}
+
+.search-bar {
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+.data-box-scrollable {
+  flex: 1; /* Allow the table to take up remaining space */
+  overflow-y: auto; /* Enable vertical scrolling if needed */
+  border: 1px solid #ddd; /* Add border around scrollable area */
+  max-height: calc(100% - 20px); /* Ensure it doesn't exceed the container height */
+}
+
+.data-box-table {
+  width: 100%;
+  border-collapse: collapse; /* Ensure cells share borders */
+  table-layout: auto; /* Prevent stretching */
+}
+
+.data-box-table th,
+.data-box-table td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd; /* Ensure gridlines are visible */
+  font-size: 14px;
+}
+
+.data-box-table th {
+  background-color: #f4f4f4; /* Light gray background for headers */
+  font-weight: bold;
+  position: sticky; /* Keep header fixed during scroll */
+  top: 0;
+  z-index: 1;
+}
+
+.data-box-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9; /* Subtle row striping */
+}
+
+.data-box-table tbody tr:hover {
+  background-color: #f1f1f1; /* Highlight row on hover */
+}
+
+.data-box-table tbody tr {
+  height: auto; /* Ensure rows adjust to content */
+}
+
+.toggle-button,
+.generate-button {
+  padding: 6px 12px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.toggle-button {
+  background-color: #007bff;
+}
+
+.toggle-button:hover {
+  background-color: #0056b3;
+}
+
+.generate-button {
+  background-color: #28a745;
+}
+
+.generate-button:hover {
+  background-color: #218838;
+}
+
+.graph-view {
+  margin-top: 20px;
+}
+
+.graph-options {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.graph-options label {
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.graph-container {
+  width: 100%; /* Full width */
+  max-width: 900px; /* Limit max width for large screens */
+  height: 500px; /* Fixed height for consistent graph size */
+  margin: 0 auto; /* Center the graph */
+}
+
+.graph-view canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.search-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.search-bar {
+  padding: 5px 10px;
+  font-size: 14px;
+  width: 200px;
+}
+
+.clear-button {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  font-size: 16px;
+}
+
+.clear-button:hover {
+  color: #555;
+}

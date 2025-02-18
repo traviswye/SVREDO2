@@ -9,12 +9,18 @@ namespace SharpVizAPI.Helpers
         //    // Formula based on 2024 MLB team data correlation
         //    return (ops * 7) - 0.3;
         //}
+        //public static double ConvertOPSToRunsPerGame(double oops)
+        //{
+        //    // New formula based on 2024 MLB team oOPS correlation
+        //    return (oops * 5.2) + 0.1;
+        //}
+
         public static double ConvertOPSToRunsPerGame(double oops)
         {
-            // New formula based on 2024 MLB team oOPS correlation
-            return (oops * 5.2) + 0.1;
+            // Formula derived from 2023-2024 MLB data:
+            // R/G = 10.3898 × oOPS + -4.9704
+            return (oops * 10.3898) - 4.9704;
         }
-
         public static double CalculateOPSDifferential(double ops1, double ops2)
         {
 

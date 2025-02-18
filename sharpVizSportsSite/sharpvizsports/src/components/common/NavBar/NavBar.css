@@ -1,0 +1,76 @@
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure it stays above other content */
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+  }
+  
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+  }
+  
+  .navbar .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .navbar .dropbtn {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  
+  .navbar .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #444;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    text-align: left;
+    flex-direction: column;
+  }
+  
+  .navbar .dropdown:hover .dropdown-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .navbar .dropdown-content a {
+    padding: 12px 16px;
+    display: block;
+    text-align: left;
+    color: white;
+  }
+  
+  .navbar .dropdown-content a:hover {
+    background-color: #555;
+  }
+  
+  .navbar-right {
+    display: flex;
+  }
+
+
+.navbar {
+  text-decoration: none;
+  color: #007bff; /* Link color */
+  margin-right: 15px;
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  color: #0056b3; /* Hover color */
+}
+
+.content {
+  padding-top: 60px; /* Add padding to avoid content overlap with the sticky navbar */
+}

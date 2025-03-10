@@ -1,0 +1,168 @@
+.lineup-builder {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.lineup-builder h2 {
+    margin: 0 0 15px 0;
+    font-size: 1.3rem;
+    color: #333;
+    padding-bottom: 5px;
+    font-weight: normal;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.salary-status {
+    background: #f9f9f9;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.salary-bar {
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.salary-progress {
+    height: 100%;
+    background: #4CAF50;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.salary-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.salary-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+
+.salary-item span:first-child {
+    color: #666;
+}
+
+.salary-item span:last-child {
+    font-weight: bold;
+    color: #333;
+}
+
+.lineup-table-container {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+.lineup-builder-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.lineup-builder-table th {
+    background-color: #f4f4f4;
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    color: #444;
+    font-size: 0.9rem;
+}
+
+.lineup-builder-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem;
+}
+
+.position-cell {
+    font-weight: bold;
+    color: #444;
+}
+
+.empty-position {
+    background-color: #f9f9f9;
+    color: #999;
+}
+
+.filled-position {
+    background-color: #fff;
+}
+
+.filled-position:hover {
+    background-color: #f5f5f5;
+}
+
+.clear-position-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #dc3545;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    opacity: 0.7;
+}
+
+.clear-position-button:hover {
+    opacity: 1;
+    background-color: #ffebee;
+}
+
+.clear-position-button:disabled {
+    color: #ccc;
+    cursor: not-allowed;
+    background: none;
+}
+
+.lineup-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.reset-lineup-button,
+.export-lineup-button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+.reset-lineup-button {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.reset-lineup-button:hover {
+    background-color: #f5c6cb;
+}
+
+.export-lineup-button {
+    background-color: #007bff;
+    color: white;
+}
+
+.export-lineup-button:hover {
+    background-color: #0069d9;
+}

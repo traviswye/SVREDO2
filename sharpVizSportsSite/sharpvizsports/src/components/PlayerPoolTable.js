@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../css/PlayerPoolTable.css';
 
 const PlayerPoolTable = ({
     draftGroupId,
     sport,
     onAddToWatchList,
     onAddToDraft,
-    onOptimizationResults // New prop
+    onOptimizationResults,
+    prepareOptimizationPayload
 }) => {
     const [players, setPlayers] = useState([]);
     const [activeTab, setActiveTab] = useState('ALL');
     const [positions, setPositions] = useState(['ALL']);
     const [watchList, setWatchList] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [notification, setNotification] = useState(null);
 
-    // Predefined position tabs and optimization configs for different sports
+    // Predefined position tabs for different sports
     const sportPositionTabs = {
         NBA: ['ALL', 'PG', 'SG', 'SF', 'PF', 'C', 'G', 'F', 'UTIL'],
         MLB: ['ALL', 'SP', 'P', 'C', '1B', '2B', '3B', 'SS', 'OF']
@@ -83,6 +88,7 @@ const PlayerPoolTable = ({
     useEffect(() => {
         const fetchPlayers = async () => {
             if (!draftGroupId) return;
+            setLoading(true);
 
             try {
                 const response = await axios.get(`https://localhost:44346/api/DKPlayerPools/draftgroup/${draftGroupId}`);
@@ -95,11 +101,32 @@ const PlayerPoolTable = ({
 
                 setPlayers(enhancedPlayers);
 
+                // Filter the watchList to only include players from the current slate
+                if (watchList.length > 0) {
+                    const currentPlayerIds = new Set(enhancedPlayers.map(player => player.playerDkId));
+                    const originalWatchListLength = watchList.length;
+                    const filteredWatchList = watchList.filter(player => currentPlayerIds.has(player.playerDkId));
+
+                    // Update watchList if players were filtered out
+                    if (filteredWatchList.length !== originalWatchListLength) {
+                        const removedCount = originalWatchListLength - filteredWatchList.length;
+                        setWatchList(filteredWatchList);
+                        setNotification(`${removedCount} player(s) were removed from your watch list because they are not available in the current slate.`);
+
+                        // Clear notification after 5 seconds
+                        setTimeout(() => {
+                            setNotification(null);
+                        }, 5000);
+                    }
+                }
+
                 // Use predefined positions for the specific sport
-                const finalPositions = ['ALL', ...sportPositionTabs[sport]];
+                const finalPositions = sportPositionTabs[sport] || ['ALL'];
                 setPositions(finalPositions);
             } catch (error) {
                 console.error('Error fetching player pool:', error);
+            } finally {
+                setLoading(false);
             }
         };
 
@@ -112,6 +139,10 @@ const PlayerPoolTable = ({
 
         if (!isDuplicate) {
             setWatchList(prevWatchList => [...prevWatchList, player]);
+            // Notify parent component if provided
+            if (onAddToWatchList) {
+                onAddToWatchList(player);
+            }
         }
     };
 
@@ -121,26 +152,59 @@ const PlayerPoolTable = ({
         );
     };
 
+    const toggleWatchList = (player) => {
+        const isDuplicate = watchList.some(p => p.playerDkId === player.playerDkId);
+
+        if (isDuplicate) {
+            // Remove from watchlist
+            removeFromWatchList(player.playerDkId);
+        } else {
+            // Add to watchlist
+            addToWatchList(player);
+        }
+    };
+
     const optimizeWatchList = async () => {
+        // Create a set of player IDs from current player pool for quick lookup
+        const availablePlayerIds = new Set(players.map(player => player.playerDkId));
+
+        // Filter watch list to only include available players for optimization
+        const availablePlayers = watchList.filter(player => availablePlayerIds.has(player.playerDkId));
+
+        if (availablePlayers.length === 0) {
+            alert('No players in your watch list are available in the current slate.');
+            return;
+        }
+
+        setLoading(true);
         try {
-            // Get the configuration for the current sport
-            const sportConfig = sportOptimizationConfigs[sport];
+            // Get the player IDs for the optimization
+            const playerIds = availablePlayers.map(player => player.playerDkId);
 
-            if (!sportConfig) {
-                console.error(`No optimization config for sport: ${sport}`);
-                return;
+            // Use the provided function to prepare the payload if available
+            let optimizationPayload;
+
+            if (prepareOptimizationPayload) {
+                optimizationPayload = prepareOptimizationPayload(playerIds, draftGroupId);
+            } else {
+                // Fallback to default payload if function not provided
+                const sportConfig = sportOptimizationConfigs[sport];
+
+                if (!sportConfig) {
+                    console.error(`No optimization config for sport: ${sport}`);
+                    return;
+                }
+
+                optimizationPayload = {
+                    draftGroupId: draftGroupId,
+                    positions: sportConfig.positions,
+                    salaryCap: sportConfig.salaryCap,
+                    optimizeForDkppg: true,
+                    oppRankLimit: 0,
+                    userWatchlist: playerIds,
+                    mustStartPlayers: []
+                };
             }
-
-            // Prepare the optimization payload
-            const optimizationPayload = {
-                draftGroupId: draftGroupId,
-                positions: sportConfig.positions,
-                salaryCap: sportConfig.salaryCap,
-                optimizeForDkppg: true,
-                oppRankLimit: 0,
-                userWatchlist: watchList.map(player => player.playerDkId),
-                mustStartPlayers: []
-            };
 
             // Make the optimization call
             const response = await axios.post(
@@ -163,12 +227,38 @@ const PlayerPoolTable = ({
             }
         } catch (error) {
             console.error('Optimization error:', error);
+            alert('Error optimizing lineup. Please try again.');
+        } finally {
+            setLoading(false);
         }
     };
+
+    const handleSearch = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
+    const filterPlayers = (players, position = 'ALL', query = '') => {
+        return players.filter(player => {
+            const positionMatch = position === 'ALL' || player.positionGroups.includes(position);
+            const searchMatch = query === '' ||
+                player.fullName.toLowerCase().includes(query.toLowerCase()) ||
+                player.position.toLowerCase().includes(query.toLowerCase()) ||
+                player.game.toLowerCase().includes(query.toLowerCase());
+
+            return positionMatch && searchMatch;
+        });
+    };
+
     const renderPlayerTable = (filterPosition = 'ALL') => {
-        const filteredPlayers = filterPosition === 'ALL'
-            ? players
-            : players.filter(player => player.positionGroups.includes(filterPosition));
+        const filteredPlayers = filterPlayers(players, filterPosition, searchQuery);
+
+        if (loading) {
+            return <div className="loading-indicator">Loading players...</div>;
+        }
+
+        if (filteredPlayers.length === 0) {
+            return <div className="no-players-message">No players found matching your criteria.</div>;
+        }
 
         return (
             <table className="player-pool-table">
@@ -187,19 +277,21 @@ const PlayerPoolTable = ({
                         <tr key={player.id}>
                             <td>{player.fullName}</td>
                             <td>{player.position}</td>
-                            <td>${player.salary}</td>
+                            <td>${player.salary.toLocaleString()}</td>
                             <td>{player.game}</td>
                             <td>{player.dKppg}</td>
                             <td>
                                 <div className="action-buttons">
                                     <button
-                                        onClick={() => addToWatchList(player)}
-                                        title="Add to Watch List"
+                                        onClick={() => toggleWatchList(player)}
+                                        className={`target-button ${watchList.some(p => p.playerDkId === player.playerDkId) ? 'targeted' : ''}`}
+                                        title={watchList.some(p => p.playerDkId === player.playerDkId) ? 'Remove from Watch List' : 'Add to Watch List'}
                                     >
-                                        Target
+                                        {watchList.some(p => p.playerDkId === player.playerDkId) ? 'Targeted' : 'Target'}
                                     </button>
                                     <button
                                         onClick={() => onAddToDraft(player)}
+                                        className="draft-button"
                                         title="Draft to Lineup"
                                     >
                                         Draft
@@ -213,52 +305,120 @@ const PlayerPoolTable = ({
         );
     };
 
+    const renderWatchListTable = () => {
+        // Create a set of player IDs from current player pool for quick lookup
+        const availablePlayerIds = new Set(players.map(player => player.playerDkId));
 
-    const renderWatchListTable = () => (
-        <div>
-            <table className="watch-list-table">
-                <thead>
-                    <tr>
-                        <th>Full Name</th>
-                        <th>Position</th>
-                        <th>Salary</th>
-                        <th>Game</th>
-                        <th>DK PPG</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {watchList.map(player => (
-                        <tr key={player.playerDkId}>
-                            <td>{player.fullName}</td>
-                            <td>{player.position}</td>
-                            <td>${player.salary}</td>
-                            <td>{player.game}</td>
-                            <td>{player.dKppg}</td>
-                            <td>
-                                <button onClick={() => removeFromWatchList(player.playerDkId)}>
-                                    Remove
-                                </button>
-                            </td>
+        // Separate available and unavailable players
+        const availablePlayers = watchList.filter(player => availablePlayerIds.has(player.playerDkId));
+        const unavailablePlayers = watchList.filter(player => !availablePlayerIds.has(player.playerDkId));
+
+        if (watchList.length === 0) {
+            return <div className="no-players-message">Your watch list is empty. Target players to add them here.</div>;
+        }
+
+        return (
+            <div>
+                <table className="watch-list-table">
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Position</th>
+                            <th>Salary</th>
+                            <th>Game</th>
+                            <th>DK PPG</th>
+                            <th>Action</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
-            {watchList.length > 0 && (
-                <div className="optimize-button-container">
-                    <button
-                        onClick={optimizeWatchList}
-                        className="optimize-button"
-                    >
-                        Optimize Lineup
-                    </button>
-                </div>
-            )}
-        </div>
-    );
+                    </thead>
+                    <tbody>
+                        {availablePlayers.map(player => (
+                            <tr key={player.playerDkId}>
+                                <td>{player.fullName}</td>
+                                <td>{player.position}</td>
+                                <td>${player.salary.toLocaleString()}</td>
+                                <td>{player.game}</td>
+                                <td>{player.dKppg}</td>
+                                <td>
+                                    <button
+                                        onClick={() => removeFromWatchList(player.playerDkId)}
+                                        className="remove-button"
+                                    >
+                                        Remove
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
+
+                        {/* Display unavailable players with different styling */}
+                        {unavailablePlayers.length > 0 && (
+                            <>
+                                <tr className="unavailable-header">
+                                    <td colSpan="6">Players Not Available in Current Slate</td>
+                                </tr>
+                                {unavailablePlayers.map(player => (
+                                    <tr key={player.playerDkId} className="unavailable-player">
+                                        <td>{player.fullName}</td>
+                                        <td>{player.position}</td>
+                                        <td>${player.salary.toLocaleString()}</td>
+                                        <td>{player.game}</td>
+                                        <td>{player.dKppg}</td>
+                                        <td>
+                                            <button
+                                                onClick={() => removeFromWatchList(player.playerDkId)}
+                                                className="remove-button"
+                                            >
+                                                Remove
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </>
+                        )}
+                    </tbody>
+                </table>
+                {availablePlayers.length > 0 && (
+                    <div className="optimize-button-container">
+                        <button
+                            onClick={optimizeWatchList}
+                            className="optimize-button"
+                            disabled={loading}
+                        >
+                            {loading ? 'Optimizing...' : 'Optimize Lineup'}
+                        </button>
+                    </div>
+                )}
+            </div>
+        );
+    };
 
     return (
-        <div className="player-pool-container">
+        <div className="player-pool-wrapper">
+            <h2>{sport} Player Pool</h2>
+            {notification && (
+                <div className="notification">
+                    <span>{notification}</span>
+                    <button onClick={() => setNotification(null)}>×</button>
+                </div>
+            )}
+            <div className="player-pool-controls">
+                <div className="search-box">
+                    <input
+                        type="text"
+                        placeholder="Search players, positions, or teams..."
+                        value={searchQuery}
+                        onChange={handleSearch}
+                    />
+                    {searchQuery && (
+                        <button
+                            className="clear-search"
+                            onClick={() => setSearchQuery('')}
+                        >
+                            ×
+                        </button>
+                    )}
+                </div>
+            </div>
+
             <div className="tabs">
                 {positions.map(pos => (
                     <button
@@ -273,9 +433,10 @@ const PlayerPoolTable = ({
                     onClick={() => setActiveTab('watchList')}
                     className={activeTab === 'watchList' ? 'active' : ''}
                 >
-                    Watch List
+                    Watch List {watchList.length > 0 && `(${watchList.length})`}
                 </button>
             </div>
+
             <div className="tab-content">
                 {activeTab === 'watchList'
                     ? renderWatchListTable()

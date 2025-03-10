@@ -56,59 +56,153 @@ namespace SharpVizApi.Services
             DfsOptimizationRequest request,
             Dictionary<string, HashSet<string>> positionMappings)
         {
-            if (request.Strategy == null || request.Strategy.Count != 2)
+            if (request.Strategy == null || request.Strategy.Count == 0)
             {
-                _logger.LogWarning("Invalid strategy teams provided");
+                _logger.LogWarning("No strategy teams provided");
                 return new DfsOptimizationResponse
                 {
                     IsSuccessful = false,
-                    Message = "Strategy requires exactly two teams"
+                    Message = "Strategy requires at least one team"
                 };
             }
 
-            var stackRequirements = await GetStackRequirements(request.DraftGroupId);
-            if (!stackRequirements.HasValue)
+            // Determine the stack configuration to use
+            int primaryStackSize;
+            int secondaryStackSize;
+
+            if (request.Stack != null && request.Stack.Count > 0)
             {
+                string stackStrategy = request.Stack[0];
+                _logger.LogInformation($"Using stack strategy from request: {stackStrategy}");
+
+                if (stackStrategy == "Use suggested stack for this slate")
+                {
+                    // Get number of games for this slate
+                    var poolInfo = await _context.DKPoolsMaps
+                        .FirstOrDefaultAsync(p => p.DraftGroupId == request.DraftGroupId);
+
+                    if (poolInfo?.TotalGames == null)
+                    {
+                        _logger.LogWarning($"No game count found for draft group {request.DraftGroupId}");
+                        return new DfsOptimizationResponse
+                        {
+                            IsSuccessful = false,
+                            Message = "Could not determine optimal stacking strategy - game count not found"
+                        };
+                    }
+
+                    var strategy = _strategyService.GetOptimalStrategy(poolInfo.TotalGames.Value);
+                    _logger.LogInformation($"Optimal strategy for {poolInfo.TotalGames} games: {strategy.RecommendedStrategy}");
+                    _logger.LogInformation($"Strategy reasoning: {strategy.Reasoning}");
+
+                    var requirements = _strategyService.GetStackRequirements(strategy.RecommendedStrategy);
+                    primaryStackSize = requirements[0].StackSize;
+                    secondaryStackSize = requirements[1].StackSize;
+
+                    _logger.LogInformation($"Using suggested stack strategy: {primaryStackSize}-{secondaryStackSize}");
+                }
+                else if (stackStrategy.Contains("-"))
+                {
+                    // Parse the stack strategy, e.g., "3-3", "4-2", etc.
+                    var parts = stackStrategy.Split('-');
+                    if (parts.Length != 2 || !int.TryParse(parts[0], out primaryStackSize) || !int.TryParse(parts[1], out secondaryStackSize))
+                    {
+                        _logger.LogWarning($"Invalid stack strategy format: {stackStrategy}");
+                        return new DfsOptimizationResponse
+                        {
+                            IsSuccessful = false,
+                            Message = "Invalid stack strategy format. Expected format: X-Y (e.g., 3-3, 4-2)"
+                        };
+                    }
+
+                    _logger.LogInformation($"Using specified stack strategy: {primaryStackSize}-{secondaryStackSize}");
+                }
+                else
+                {
+                    _logger.LogWarning($"Unrecognized stack strategy: {stackStrategy}");
+                    return new DfsOptimizationResponse
+                    {
+                        IsSuccessful = false,
+                        Message = "Unrecognized stack strategy"
+                    };
+                }
+            }
+            else
+            {
+                // Fallback to the default stacking configuration
+                var stackRequirements = await GetStackRequirements(request.DraftGroupId);
+                if (!stackRequirements.HasValue)
+                {
+                    return new DfsOptimizationResponse
+                    {
+                        IsSuccessful = false,
+                        Message = "Could not determine optimal stacking strategy"
+                    };
+                }
+
+                primaryStackSize = stackRequirements.Value.PrimaryStackSize;
+                secondaryStackSize = stackRequirements.Value.SecondaryStackSize;
+
+                _logger.LogInformation($"Using default stack strategy: {primaryStackSize}-{secondaryStackSize}");
+            }
+
+            if (request.Strategy.Count < 2 && secondaryStackSize > 0)
+            {
+                _logger.LogWarning("Secondary stack requested but only one team provided");
                 return new DfsOptimizationResponse
                 {
                     IsSuccessful = false,
-                    Message = "Could not determine optimal stacking strategy"
+                    Message = $"Strategy requires two teams for a {primaryStackSize}-{secondaryStackSize} stack"
                 };
             }
 
-            _logger.LogInformation($"Using stack strategy: {stackRequirements.Value.PrimaryStackSize}-{stackRequirements.Value.SecondaryStackSize} " +
-                                 $"with teams {request.Strategy[0]} and {request.Strategy[1]}");
+            // Get the primary team and secondary team (if applicable)
+            string primaryTeam = request.Strategy[0];
+            string secondaryTeam = request.Strategy.Count > 1 ? request.Strategy[1] : null;
 
-            // Try both team combinations
-            var attempt1 = await TryStackCombination(
-                players, request, positionMappings,
-                request.Strategy[0], request.Strategy[1],
-                stackRequirements.Value.PrimaryStackSize,
-                stackRequirements.Value.SecondaryStackSize);
+            _logger.LogInformation($"Using teams: Primary={primaryTeam}, Secondary={secondaryTeam ?? "None"}");
+            _logger.LogInformation($"Using stack sizes: Primary={primaryStackSize}, Secondary={secondaryStackSize}");
 
-            var attempt2 = await TryStackCombination(
-                players, request, positionMappings,
-                request.Strategy[1], request.Strategy[0],
-                stackRequirements.Value.PrimaryStackSize,
-                stackRequirements.Value.SecondaryStackSize);
-
-            // Return the better result
-            if (attempt1.IsSuccessful && (!attempt2.IsSuccessful ||
-                attempt1.Players.Sum(p => p.DKppg ?? 0) > attempt2.Players.Sum(p => p.DKppg ?? 0)))
+            // Try using the specified teams
+            if (secondaryTeam != null)
             {
-                return attempt1;
+                // Try both team combinations
+                var attempt1 = await TryStackCombination(
+                    players, request, positionMappings,
+                    primaryTeam, secondaryTeam,
+                    primaryStackSize, secondaryStackSize);
+
+                var attempt2 = await TryStackCombination(
+                    players, request, positionMappings,
+                    secondaryTeam, primaryTeam,
+                    primaryStackSize, secondaryStackSize);
+
+                // Return the better result
+                if (attempt1.IsSuccessful && (!attempt2.IsSuccessful ||
+                    attempt1.Players.Sum(p => p.DKppg ?? 0) > attempt2.Players.Sum(p => p.DKppg ?? 0)))
+                {
+                    return attempt1;
+                }
+
+                if (attempt2.IsSuccessful)
+                {
+                    return attempt2;
+                }
+
+                return new DfsOptimizationResponse
+                {
+                    IsSuccessful = false,
+                    Message = "Could not create valid lineup with specified stack requirements"
+                };
             }
-
-            if (attempt2.IsSuccessful)
+            else
             {
-                return attempt2;
+                // Only primary team is specified, no secondary stack
+                return await TryStackCombination(
+                    players, request, positionMappings,
+                    primaryTeam, null,
+                    primaryStackSize, 0);
             }
-
-            return new DfsOptimizationResponse
-            {
-                IsSuccessful = false,
-                Message = "Could not create valid lineup with specified stack requirements"
-            };
         }
 
         private async Task<DfsOptimizationResponse> TryStackCombination(
@@ -125,10 +219,15 @@ namespace SharpVizApi.Services
             var positionPlayers = players.Where(p => !p.Position.Contains("SP") && !p.Position.Contains("RP") && !p.Position.Contains("P")).ToList();
 
             var primaryTeamPositionPlayers = positionPlayers.Where(p => p.Team == primaryTeam).ToList();
-            var secondaryTeamPositionPlayers = positionPlayers.Where(p => p.Team == secondaryTeam).ToList();
+            var secondaryTeamPositionPlayers = secondaryTeam != null ?
+                positionPlayers.Where(p => p.Team == secondaryTeam).ToList() :
+                new List<DKPlayerPool>();
 
-            _logger.LogInformation($"Found {primaryTeamPositionPlayers.Count} position players from {primaryTeam} " +
-                                 $"and {secondaryTeamPositionPlayers.Count} position players from {secondaryTeam}");
+            _logger.LogInformation($"Found {primaryTeamPositionPlayers.Count} position players from {primaryTeam}");
+            if (secondaryTeam != null)
+            {
+                _logger.LogInformation($"Found {secondaryTeamPositionPlayers.Count} position players from {secondaryTeam}");
+            }
 
             // Separate must-start players into pitchers and position players
             var mustStartPitchers = new List<int>();
@@ -152,7 +251,7 @@ namespace SharpVizApi.Services
                     mustStartPositionPlayers.Add(mustStartId);
                     if (player.Team == primaryTeam)
                         mustStartPrimaryCount++;
-                    else if (player.Team == secondaryTeam)
+                    else if (secondaryTeam != null && player.Team == secondaryTeam)
                         mustStartSecondaryCount++;
                 }
 
@@ -165,17 +264,29 @@ namespace SharpVizApi.Services
             var remainingPrimaryNeeded = Math.Max(0, primaryStackSize - mustStartPrimaryCount);
             var remainingSecondaryNeeded = Math.Max(0, secondaryStackSize - mustStartSecondaryCount);
 
-            _logger.LogInformation($"After accounting for must-starts, need {remainingPrimaryNeeded} more from {primaryTeam} " +
-                                 $"and {remainingSecondaryNeeded} more from {secondaryTeam}");
-
-            if (primaryTeamPositionPlayers.Count < remainingPrimaryNeeded ||
-                secondaryTeamPositionPlayers.Count < remainingSecondaryNeeded)
+            _logger.LogInformation($"After accounting for must-starts, need {remainingPrimaryNeeded} more from {primaryTeam}");
+            if (secondaryTeam != null)
             {
-                _logger.LogWarning($"Not enough position players available for {primaryStackSize}-{secondaryStackSize} stack after must-starts");
+                _logger.LogInformation($"and {remainingSecondaryNeeded} more from {secondaryTeam}");
+            }
+
+            if (primaryTeamPositionPlayers.Count < remainingPrimaryNeeded)
+            {
+                _logger.LogWarning($"Not enough position players available from {primaryTeam} for stack of size {primaryStackSize}");
                 return new DfsOptimizationResponse
                 {
                     IsSuccessful = false,
-                    Message = $"Not enough position players available for {primaryStackSize}-{secondaryStackSize} stack"
+                    Message = $"Not enough position players available from {primaryTeam} for stack of size {primaryStackSize}"
+                };
+            }
+
+            if (secondaryTeam != null && secondaryTeamPositionPlayers.Count < remainingSecondaryNeeded)
+            {
+                _logger.LogWarning($"Not enough position players available from {secondaryTeam} for stack of size {secondaryStackSize}");
+                return new DfsOptimizationResponse
+                {
+                    IsSuccessful = false,
+                    Message = $"Not enough position players available from {secondaryTeam} for stack of size {secondaryStackSize}"
                 };
             }
 
@@ -207,16 +318,19 @@ namespace SharpVizApi.Services
                 _logger.LogInformation($"Adding primary stack player: {player.FullName} ({player.Position})");
             }
 
-            // Add remaining required players from secondary team
-            var additionalSecondaryPlayers = secondaryTeamPositionPlayers
-                .Where(p => !modifiedRequest.MustStartPlayers.Contains(p.PlayerDkId))
-                .OrderByDescending(p => p.DKppg)
-                .Take(remainingSecondaryNeeded);
-
-            foreach (var player in additionalSecondaryPlayers)
+            // Add remaining required players from secondary team if needed
+            if (secondaryTeam != null && remainingSecondaryNeeded > 0)
             {
-                modifiedRequest.MustStartPlayers.Add(player.PlayerDkId);
-                _logger.LogInformation($"Adding secondary stack player: {player.FullName} ({player.Position})");
+                var additionalSecondaryPlayers = secondaryTeamPositionPlayers
+                    .Where(p => !modifiedRequest.MustStartPlayers.Contains(p.PlayerDkId))
+                    .OrderByDescending(p => p.DKppg)
+                    .Take(remainingSecondaryNeeded);
+
+                foreach (var player in additionalSecondaryPlayers)
+                {
+                    modifiedRequest.MustStartPlayers.Add(player.PlayerDkId);
+                    _logger.LogInformation($"Adding secondary stack player: {player.FullName} ({player.Position})");
+                }
             }
 
             _logger.LogInformation($"Final must-start count: {modifiedRequest.MustStartPlayers.Count} players");
@@ -238,9 +352,9 @@ namespace SharpVizApi.Services
                 //dklimit
                 // Get all players for the draft group
                 var playersQuery = _context.DKPlayerPools
-    .Where(p => p.DraftGroupId == request.DraftGroupId &&
-                p.Status != "OUT" &&
-                p.DKppg >= 5);
+                    .Where(p => p.DraftGroupId == request.DraftGroupId &&
+                                p.Status != "OUT" &&
+                                p.DKppg >= 5);
 
                 _logger.LogInformation("Automatically excluding players with OUT status");
 
@@ -350,15 +464,32 @@ namespace SharpVizApi.Services
                 }
 
                 var positionMappings = new Dictionary<string, HashSet<string>>
-            {
-                { "G", new HashSet<string> { "PG", "SG" } },
-                { "F", new HashSet<string> { "SF", "PF" } },
-                { "UTIL", new HashSet<string> { "PG", "SG", "SF", "PF", "C" } },
-                { "P", new HashSet<string> { "SP", "RP", "P" }  },
-                { "OF", new HashSet<string> { "LF", "CF", "RF" }  }
-            };
+        {
+            { "G", new HashSet<string> { "PG", "SG" } },
+            { "F", new HashSet<string> { "SF", "PF" } },
+            { "UTIL", new HashSet<string> { "PG", "SG", "SF", "PF", "C" } },
+            { "P", new HashSet<string> { "SP", "RP", "P" }  },
+            { "OF", new HashSet<string> { "LF", "CF", "RF" }  }
+        };
 
+                // Log strategy and stack information
                 if (request.Strategy?.Any() == true)
+                {
+                    _logger.LogInformation($"Strategy teams provided: {string.Join(", ", request.Strategy)}");
+                }
+
+                if (request.Stack?.Any() == true)
+                {
+                    _logger.LogInformation($"Stack strategy provided: {string.Join(", ", request.Stack)}");
+                }
+
+                // Determine which optimization strategy to use
+                bool useStrategyOptimization = request.Strategy?.Any() == true;
+                bool useStackOptimization = request.Stack?.Any() == true && request.Stack[0] != "Use suggested stack for this slate";
+
+                _logger.LogInformation($"Optimization approach - Strategy: {useStrategyOptimization}, Stack: {useStackOptimization}");
+
+                if (useStrategyOptimization)
                 {
                     _logger.LogInformation("Starting strategy-based optimization");
                     return await OptimizeWithStrategy(players, request, positionMappings);

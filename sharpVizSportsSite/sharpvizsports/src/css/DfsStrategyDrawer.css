@@ -1,0 +1,273 @@
+.dfs-strategy-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: flex-end;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.drawer-content {
+    width: 80%;
+    max-width: 1000px;
+    height: 100%;
+    background-color: white;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.drawer-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+}
+
+.close-button:hover {
+    color: #333;
+}
+
+.strategy-settings {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.setting-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 200px;
+}
+
+.setting-group label {
+    font-weight: bold;
+    color: #555;
+}
+
+.setting-group select {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white;
+}
+
+.team-selection,
+.pitcher-selection {
+    padding: 20px;
+    flex: 1;
+    overflow: auto;
+}
+
+.team-selection h3,
+.pitcher-selection h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: normal;
+    color: #333;
+}
+
+.team-table-container,
+.pitcher-table-container {
+    overflow-x: auto;
+}
+
+.team-table,
+.pitcher-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.team-table th,
+.team-table td,
+.pitcher-table th,
+.pitcher-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.team-table th,
+.pitcher-table th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+    cursor: pointer;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.team-table th:hover,
+.pitcher-table th:hover {
+    background-color: #e8e8e8;
+}
+
+.team-table tr.selected-team,
+.pitcher-table tr.selected-pitcher {
+    background-color: #e6f7ff;
+}
+
+.team-table tr:hover,
+.pitcher-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Trend indicators */
+.trend-up {
+    color: #52c41a;
+    font-weight: bold;
+}
+
+.trend-down {
+    color: #f5222d;
+    font-weight: bold;
+}
+
+.trend-neutral {
+    color: #faad14;
+    font-weight: bold;
+}
+
+/* Composite score indicators */
+.score-high {
+    color: #52c41a;
+    font-weight: bold;
+}
+
+.score-medium {
+    color: #faad14;
+    font-weight: bold;
+}
+
+.score-low {
+    color: #f5222d;
+    font-weight: bold;
+}
+
+/* Bullpen rank indicators */
+.rank-elite {
+    color: #52c41a;
+    font-weight: bold;
+}
+
+.rank-good {
+    color: #1890ff;
+    font-weight: bold;
+}
+
+.rank-average {
+    color: #faad14;
+    font-weight: bold;
+}
+
+.rank-below-average {
+    color: #fa8c16;
+    font-weight: bold;
+}
+
+.rank-poor {
+    color: #f5222d;
+    font-weight: bold;
+}
+
+.drawer-actions {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    border-top: 1px solid #eaeaea;
+    margin-top: auto;
+}
+
+.cancel-button,
+.save-button,
+.reset-button {
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cancel-button {
+    background-color: #f5f5f5;
+    border: 1px solid #d9d9d9;
+    color: #666;
+}
+
+.save-button {
+    background-color: #1890ff;
+    border: 1px solid #1890ff;
+    color: white;
+}
+
+.reset-button {
+    background-color: #fff2f0;
+    border: 1px solid #ffccc7;
+    color: #ff4d4f;
+    margin-right: auto;
+    /* Push this button to the left */
+}
+
+.cancel-button:hover {
+    background-color: #e8e8e8;
+}
+
+.save-button:hover {
+    background-color: #40a9ff;
+}
+
+.reset-button:hover {
+    background-color: #ffd4d2;
+}
+
+.loading {
+    padding: 30px;
+    text-align: center;
+    color: #999;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .drawer-content {
+        width: 100%;
+    }
+
+    .strategy-settings {
+        flex-direction: column;
+    }
+}

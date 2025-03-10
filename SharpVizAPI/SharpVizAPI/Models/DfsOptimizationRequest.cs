@@ -20,6 +20,8 @@ namespace SharpVizApi.Models
         public List<int> ExcludePlayers { get; set; } = new List<int>();
         public List<int>? MustStartPlayers { get; set; }
         public List<string>? Strategy { get; set; }
+        public List<string>? Stack { get; set; }
+
     }
 
     public class DfsOptimizationResponse

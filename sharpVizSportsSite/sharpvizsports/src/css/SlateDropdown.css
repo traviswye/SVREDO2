@@ -1,0 +1,87 @@
+.slate-dropdown-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.date-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 38px;
+    /* Match height with dropdown */
+}
+
+.date-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    height: 38px;
+    /* Match height with dropdown */
+    box-sizing: border-box;
+}
+
+.date-nav-button {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #555;
+    transition: background-color 0.2s;
+    height: 38px;
+    /* Match height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.date-nav-button:hover {
+    background-color: #e0e0e0;
+}
+
+.slate-selector {
+    width: 100%;
+}
+
+.slate-select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white;
+    cursor: pointer;
+    height: 38px;
+    /* Consistent height */
+    box-sizing: border-box;
+}
+
+.slate-select:disabled {
+    background-color: #f9f9f9;
+    cursor: not-allowed;
+}
+
+@media (min-width: 768px) {
+    .slate-dropdown-container {
+        flex-direction: row;
+        align-items: flex-start;
+        /* Align to top instead of center */
+    }
+
+    .date-selector {
+        width: 280px;
+        /* Fixed width to match the screenshot */
+        margin-right: 10px;
+    }
+
+    .slate-selector {
+        flex: 1;
+    }
+}

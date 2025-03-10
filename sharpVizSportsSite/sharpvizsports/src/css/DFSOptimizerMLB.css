@@ -1,0 +1,186 @@
+.dfs-optimizer {
+    display: flex;
+}
+
+.content {
+    margin-left: 220px;
+    /* Matches sidebar width */
+    padding: 20px;
+    width: calc(100% - 220px);
+    box-sizing: border-box;
+}
+
+.content h1 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+/* Apply box-sizing to all elements */
+.dfs-optimizer *,
+.dfs-optimizer *::before,
+.dfs-optimizer *::after {
+    box-sizing: border-box;
+}
+
+.slate-selector {
+    margin-bottom: 20px;
+}
+
+.strategy-toggle {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.strategy-toggle-button {
+    background-color: #1890ff;
+    border: 1px solid #1890ff;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.strategy-toggle-button .icon {
+    margin-right: 8px;
+}
+
+.strategy-toggle-button:hover {
+    background-color: #e0e0e0;
+}
+
+.strategy-status {
+    margin-left: 15px;
+    padding: 6px 12px;
+    background-color: #e6f7ff;
+    border: 1px solid #91d5ff;
+    border-radius: 4px;
+    color: #1890ff;
+    font-weight: 500;
+}
+
+.optimizer-grid {
+    display: flex;
+    gap: 20px;
+    height: calc(100vh - 200px);
+    /* Adjust height to fill available space */
+    margin-top: 20px;
+}
+
+.player-pool-container {
+    flex: 3;
+    /* Takes up 3/5 of the space */
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.scrollable-player-pool {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.lineup-container {
+    flex: 2;
+    /* Takes up 2/5 of the space */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+/* Additional styles for the player pool table */
+.player-pool-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.player-pool-table th,
+.player-pool-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.player-pool-table th {
+    background-color: #f4f4f4;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.player-pool-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+/* Styles for lineup builder */
+.lineup-builder-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.lineup-builder-table th,
+.lineup-builder-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.lineup-builder-table th {
+    background-color: #f4f4f4;
+}
+
+.totals-row {
+    font-weight: bold;
+    background-color: #f4f4f4;
+}
+
+.clear-button,
+.reset-button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.clear-button {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.reset-button {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .optimizer-grid {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .player-pool-container,
+    .lineup-container {
+        width: 100%;
+    }
+
+    .scrollable-player-pool {
+        max-height: 600px;
+    }
+}

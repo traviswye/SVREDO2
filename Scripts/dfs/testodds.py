@@ -107,3 +107,10 @@ if __name__ == "__main__":
     odds = fetch_and_analyze_games('2024-09-09')
     if odds:
         print_odds(odds)
+
+
+
+
+
+
+

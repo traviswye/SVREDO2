@@ -58,7 +58,10 @@ namespace SharpVizAPI.Data
         public DbSet<ML_Lineups> ML_Lineups { get; set; }
         public DbSet<ML_PitchingStats> ML_PitchingStats { get; set; }
         public DbSet<ML_BoxScores> ML_BoxScores { get; set; }
+        public DbSet<PlayerIDMapping> PlayerIDMappings { get; set; }
+
         public DbSet<TeamTemperatureTracking> TeamTemperatureTrackings { get; set; }
+        
 
         public DbSet<TeamRecSplitsArchive> TeamRecSplitsArchive { get; set; }
 

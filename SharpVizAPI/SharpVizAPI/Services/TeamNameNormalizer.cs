@@ -10,41 +10,41 @@
 
 
                 // City abbreviations
-        { "Atl", "Braves" },
+        //{ "Atl", "Braves" },
         { "ATL", "Braves" },
-        { "Bos", "Red Sox" },
+        //{ "Bos", "Red Sox" },
         { "BOS", "Red Sox" },
         { "NYY", "Yankees" },
-        { "Nyy", "Yankees" },
-        { "NYM", "Mets" },
-        { "ChC", "Cubs" },
+        //{ "Nyy", "Yankees" },
+        //{ "NYM", "Mets" },
+        //{ "ChC", "Cubs" },
         { "CHC", "Cubs" },
-        { "ChW", "White Sox" },
+        //{ "ChW", "White Sox" },
         { "CHW", "White Sox" },
         { "CWS", "White Sox" },
-        { "Cle", "Guardians" },
+        //{ "Cle", "Guardians" },
         { "CLE", "Guardians" },
-        { "Det", "Tigers" },
+        //{ "Det", "Tigers" },
         { "DET", "Tigers" },
-        { "Hou", "Astros" },
+        //{ "Hou", "Astros" },
         { "HOU", "Astros" },
         { "KC", "Royals" },
         { "KCR", "Royals" },
         { "LA", "Dodgers" },
         { "LAD", "Dodgers" },
         { "LAA", "Angels" },
+        //{ "MIA", "Marlins" },
         { "MIA", "Marlins" },
-        { "MIA", "Marlins" },
-        { "Mil", "Brewers" },
+        //{ "Mil", "Brewers" },
         { "MIL", "Brewers" },
-        { "Min", "Twins" },
+        //{ "Min", "Twins" },
         { "MIN", "Twins" },
         { "NYM", "Mets" },
-        { "Oak", "Athletics" },
+        //{ "Oak", "Athletics" },
         { "OAK", "Athletics" },
-        { "Phi", "Phillies" },
+        //{ "Phi", "Phillies" },
         { "PHI", "Phillies" },
-        { "Pit", "Pirates" },
+        //{ "Pit", "Pirates" },
         { "PIT", "Pirates" },
         { "SD", "Padres" },
         { "SDP", "Padres" },
@@ -54,20 +54,23 @@
         { "STL", "Cardinals" },
         { "TB", "Rays" },
         { "TBR", "Rays" },
-        { "Tex", "Rangers" },
+        //{ "Tex", "Rangers" },
         { "TEX", "Rangers" },
-        { "Tor", "Blue Jays" },
+        //{ "Tor", "Blue Jays" },
         { "TOR", "Blue Jays" },
-        { "Was", "Nationals" },
+        //{ "Was", "Nationals" },
         { "WAS", "Nationals" },
         { "WSH", "Nationals" },
     };
 
     public static string NormalizeTeamName(string teamName)
     {
-        if (TeamNameMapping.ContainsKey(teamName))
+        if (string.IsNullOrEmpty(teamName))
+            return teamName;
+
+        if (TeamNameMapping.TryGetValue(teamName, out string normalizedName))
         {
-            return TeamNameMapping[teamName];
+            return normalizedName;
         }
 
         return teamName; // Return the original name if no match is found

@@ -5,7 +5,7 @@ import certifi
 from pprint import pprint
 
 def fetch_contests():
-    url = "https://www.draftkings.com/lobby/getcontests?sport=NBA"
+    url = "https://www.draftkings.com/lobby/getcontests?sport=MLB"
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
     }
@@ -121,11 +121,12 @@ def convert_utc_to_est(utc_time_str):
     est_time = utc_time.astimezone(est_tz)
     return est_time.strftime('%Y-%m-%d %I:%M %p EST')
 
-def process_draftables(draftables_data):
+def process_draftables(draftables_data, sport="MLB"):
     if not draftables_data or 'draftables' not in draftables_data:
         return []
     
     processed_players = {}  # Use dict for O(1) lookup of playerDkId
+    ppg_attribute_id = 219 if sport == "NBA" else 408  # 219 for NBA, 408 for MLB
     
     for player in draftables_data['draftables']:
         player_dk_id = player.get('playerDkId')
@@ -136,7 +137,7 @@ def process_draftables(draftables_data):
             
         # Get DraftStatAttributes values
         dk_ppg = next((attr['value'] for attr in player.get('draftStatAttributes', []) 
-                      if attr['id'] == 219), None)
+                      if attr['id'] == ppg_attribute_id), None)
         opp_rank = next((attr['value'] for attr in player.get('draftStatAttributes', []) 
                         if attr['id'] == -2), None)
         
@@ -217,7 +218,7 @@ def post_pools_to_map(unique_contests):
         contest_datetime = convert_dk_time_to_est_datetime(sd)
         
         pool_entry = {
-            "sport": "NBA",
+            "sport": "MLB",
             "draftGroupId": draftgroup_id,
             "date": contest_datetime.strftime('%Y-%m-%d'),
             "startTime": contest['sdstring'],
@@ -280,7 +281,7 @@ def main():
             
             draftables_data = fetch_draftables(draftgroup_id)
             if draftables_data:
-                processed_players = process_draftables(draftables_data)
+                processed_players = process_draftables(draftables_data, sport="MLB")
                 draftgroup_players[draftgroup_id] = processed_players
     
     # Post each draftgroup's players to the API

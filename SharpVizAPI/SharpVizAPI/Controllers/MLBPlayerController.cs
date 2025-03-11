@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SharpVizAPI.Data;
 using SharpVizAPI.Models;
+using SharpVizAPI.Services;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -68,6 +69,92 @@ namespace SharpVizAPI.Controllers
 
             // Return the filtered list by team (if there are multiple entries for the same player with the same name in different teams)
             return filteredByTeam;
+        }
+        [HttpPost("batchsearch")]
+        public async Task<ActionResult<List<PlayerMappingResult>>> BatchSearch([FromBody] List<PlayerLookupRequest> requests)
+        {
+            if (requests == null || !requests.Any())
+            {
+                return BadRequest("No players provided for lookup");
+            }
+
+            var results = new List<PlayerMappingResult>();
+
+            foreach (var request in requests)
+            {
+                // Normalize team name
+                string normalizedTeam = TeamNameNormalizer.NormalizeTeamName(request.Team);
+
+                // Search for player
+                var player = await _context.MLBplayers
+                    .FirstOrDefaultAsync(p =>
+                        EF.Functions.Like(p.FullName.ToLower(), request.FullName.ToLower()) &&
+                        EF.Functions.Like(p.CurrentTeam.ToLower(), normalizedTeam.ToLower()));
+
+                // Try without team if not found
+                if (player == null)
+                {
+                    player = await _context.MLBplayers
+                        .FirstOrDefaultAsync(p =>
+                            EF.Functions.Like(p.FullName.ToLower(), request.FullName.ToLower()));
+                }
+
+                // Try with fuzzy name matching if still not found
+                if (player == null)
+                {
+                    // Split the name to search for first and last name parts
+                    var nameParts = request.FullName.ToLower().Split(' ');
+                    if (nameParts.Length >= 2)
+                    {
+                        var firstName = nameParts[0];
+                        var lastName = nameParts[nameParts.Length - 1];
+
+                        // Search for players with similar names
+                        var potentialMatches = await _context.MLBplayers
+                            .Where(p =>
+                                EF.Functions.Like(p.FullName.ToLower(), $"%{firstName}%") &&
+                                EF.Functions.Like(p.FullName.ToLower(), $"%{lastName}%"))
+                            .ToListAsync();
+
+                        if (potentialMatches.Count == 1)
+                        {
+                            player = potentialMatches.First();
+                        }
+                        else if (potentialMatches.Count > 1)
+                        {
+                            // Try to find the best match with team
+                            player = potentialMatches.FirstOrDefault(p =>
+                                EF.Functions.Like(p.CurrentTeam.ToLower(), normalizedTeam.ToLower()));
+
+                            // If still no match with team, just take the first one
+                            if (player == null && potentialMatches.Any())
+                            {
+                                player = potentialMatches.First();
+                            }
+                        }
+                    }
+                }
+
+                results.Add(new PlayerMappingResult
+                {
+                    PlayerDkId = request.PlayerDkId,
+                    FullName = request.FullName,
+                    Team = request.Team,
+                    Position = request.Position,
+                    BbrefId = player?.bbrefId,
+                    Found = player != null
+                });
+            }
+
+            return Ok(results);
+        }
+
+        public class PlayerLookupRequest
+        {
+            public int PlayerDkId { get; set; }
+            public string FullName { get; set; }
+            public string Team { get; set; }
+            public string Position { get; set; }
         }
 
         [HttpGet("searchAbr")]

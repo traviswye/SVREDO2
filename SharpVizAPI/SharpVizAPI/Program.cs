@@ -43,6 +43,7 @@ builder.Services.AddScoped<WeatherService>();
 builder.Services.AddScoped<LineupService>();
 builder.Services.AddScoped<EvaluationService>();
 builder.Services.AddScoped<NormalizationService>();
+builder.Services.AddScoped<PlayerIDMappingService>();
 builder.Services.AddScoped<BlendingService>();
 builder.Services.AddScoped<IClassificationService, ClassificationService>();
 builder.Services.AddScoped<BJmodelingService>();

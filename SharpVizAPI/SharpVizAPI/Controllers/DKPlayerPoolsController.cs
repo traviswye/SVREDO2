@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SharpVizApi.Models;
 using SharpVizAPI.Data;
+using SharpVizAPI.Services;
 
 namespace SharpVizApi.Controllers
 {
@@ -11,11 +12,13 @@ namespace SharpVizApi.Controllers
     {
         private readonly NrfidbContext _context;
         private readonly ILogger<DKPlayerPoolsController> _logger;
+        private readonly PlayerIDMappingService _mappingService;
 
-        public DKPlayerPoolsController(NrfidbContext context, ILogger<DKPlayerPoolsController> logger)
+        public DKPlayerPoolsController(NrfidbContext context, ILogger<DKPlayerPoolsController> logger, PlayerIDMappingService mappingService)
         {
             _context = context;
             _logger = logger;
+            _mappingService = mappingService;
         }
 
         // GET: api/DKPlayerPools/draftgroup/{draftGroupId}
@@ -75,6 +78,9 @@ namespace SharpVizApi.Controllers
 
                 await _context.DKPlayerPools.AddRangeAsync(playersToAdd);
                 await _context.SaveChangesAsync();
+
+                // Process player ID mappings
+                await _mappingService.ProcessNewPlayersInDkPoolAsync(playersToAdd);
 
                 _logger.LogInformation($"Successfully updated {playersToAdd.Count} players for draft group {request.DraftGroupId}");
 

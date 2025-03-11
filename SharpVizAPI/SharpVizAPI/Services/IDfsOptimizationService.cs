@@ -288,13 +288,13 @@ namespace SharpVizApi.Services
 
 
         private async Task<DfsOptimizationResponse> TryStackCombination(
-    List<DKPlayerPool> players,
-    DfsOptimizationRequest request,
-    Dictionary<string, HashSet<string>> positionMappings,
-    string primaryTeam,
-    string secondaryTeam,
-    int primaryStackSize,
-    int secondaryStackSize)
+            List<DKPlayerPool> players,
+            DfsOptimizationRequest request,
+            Dictionary<string, HashSet<string>> positionMappings,
+            string primaryTeam,
+            string secondaryTeam,
+            int primaryStackSize,
+            int secondaryStackSize)
         {
             // Log must-start players at entry point
             if (request.MustStartPlayers?.Any() == true)
@@ -408,7 +408,41 @@ namespace SharpVizApi.Services
                 };
             }
 
-            // Start with all must-start players
+            // Create a structure to track how many players we need for each position
+            var neededPositions = new Dictionary<string, int>();
+            foreach (var position in request.Positions)
+            {
+                if (neededPositions.ContainsKey(position))
+                    neededPositions[position]++;
+                else
+                    neededPositions[position] = 1;
+            }
+
+            // Account for must-start players' positions
+            if (request.MustStartPlayers?.Any() == true)
+            {
+                foreach (var mustStartId in request.MustStartPlayers)
+                {
+                    var matchingPlayer = players.FirstOrDefault(p => p.PlayerDkId == mustStartId);
+                    if (matchingPlayer == null) continue;
+
+                    // If it's a pitcher, reduce needed P positions
+                    if (matchingPlayer.Position.Contains("SP") || matchingPlayer.Position.Contains("RP") || matchingPlayer.Position.Contains("P"))
+                    {
+                        if (neededPositions.ContainsKey("P"))
+                            neededPositions["P"] = Math.Max(0, neededPositions["P"] - 1);
+                    }
+                    else
+                    {
+                        // For position players, find their best position match
+                        var bestPosition = FindBestPositionForPlayer(matchingPlayer, neededPositions.Keys.ToList(), positionMappings);
+                        if (bestPosition != null && neededPositions.ContainsKey(bestPosition))
+                            neededPositions[bestPosition] = Math.Max(0, neededPositions[bestPosition] - 1);
+                    }
+                }
+            }
+
+            // Start with must-start players
             var modifiedRequest = new DfsOptimizationRequest
             {
                 DraftGroupId = request.DraftGroupId,
@@ -417,35 +451,66 @@ namespace SharpVizApi.Services
                 OptimizeForDkppg = request.OptimizeForDkppg,
                 UserWatchlist = new List<int>(),
                 ExcludePlayers = request.ExcludePlayers,
-                // Keep ALL original must-start players - don't separate them
                 MustStartPlayers = new List<int>(request.MustStartPlayers ?? new List<int>()),
                 OppRankLimit = request.OppRankLimit
             };
 
-            // Add remaining required players from primary team for stacking
-            var additionalPrimaryPlayers = primaryTeamPositionPlayers
+            // Position-aware selection for primary team stack
+            var primaryTeamAdded = 0;
+            var primaryCandidates = primaryTeamPositionPlayers
                 .Where(p => !modifiedRequest.MustStartPlayers.Contains(p.PlayerDkId))
                 .OrderByDescending(p => p.DKppg)
-                .Take(remainingPrimaryNeeded);
+                .ToList();
 
-            foreach (var player in additionalPrimaryPlayers)
+            // Keep selecting until we've fulfilled the primary stack requirement
+            while (primaryTeamAdded < remainingPrimaryNeeded && primaryCandidates.Any())
             {
-                modifiedRequest.MustStartPlayers.Add(player.PlayerDkId);
-                _logger.LogInformation($"Adding primary stack player: {player.FullName} ({player.Position})");
+                // Find the best player for any remaining position
+                var selectedPlayer = FindBestPlayerForPositions(primaryCandidates, neededPositions, positionMappings);
+
+                if (selectedPlayer == null) break; // No suitable player found
+
+                // Add this player to must-start and update tracking
+                modifiedRequest.MustStartPlayers.Add(selectedPlayer.PlayerDkId);
+                primaryCandidates.Remove(selectedPlayer);
+                primaryTeamAdded++;
+
+                // Update available positions
+                var bestPosition = FindBestPositionForPlayer(selectedPlayer, neededPositions.Keys.ToList(), positionMappings);
+                if (bestPosition != null && neededPositions.ContainsKey(bestPosition))
+                    neededPositions[bestPosition] = Math.Max(0, neededPositions[bestPosition] - 1);
+
+                _logger.LogInformation($"Adding primary stack player: {selectedPlayer.FullName} ({selectedPlayer.Position}) for position {bestPosition}");
             }
 
-            // Add remaining required players from secondary team if needed
+            // Position-aware selection for secondary team stack (if applicable)
             if (secondaryTeam != null && remainingSecondaryNeeded > 0)
             {
-                var additionalSecondaryPlayers = secondaryTeamPositionPlayers
+                var secondaryTeamAdded = 0;
+                var secondaryCandidates = secondaryTeamPositionPlayers
                     .Where(p => !modifiedRequest.MustStartPlayers.Contains(p.PlayerDkId))
                     .OrderByDescending(p => p.DKppg)
-                    .Take(remainingSecondaryNeeded);
+                    .ToList();
 
-                foreach (var player in additionalSecondaryPlayers)
+                // Keep selecting until we've fulfilled the secondary stack requirement
+                while (secondaryTeamAdded < remainingSecondaryNeeded && secondaryCandidates.Any())
                 {
-                    modifiedRequest.MustStartPlayers.Add(player.PlayerDkId);
-                    _logger.LogInformation($"Adding secondary stack player: {player.FullName} ({player.Position})");
+                    // Find the best player for any remaining position
+                    var selectedPlayer = FindBestPlayerForPositions(secondaryCandidates, neededPositions, positionMappings);
+
+                    if (selectedPlayer == null) break; // No suitable player found
+
+                    // Add this player to must-start and update tracking
+                    modifiedRequest.MustStartPlayers.Add(selectedPlayer.PlayerDkId);
+                    secondaryCandidates.Remove(selectedPlayer);
+                    secondaryTeamAdded++;
+
+                    // Update available positions
+                    var bestPosition = FindBestPositionForPlayer(selectedPlayer, neededPositions.Keys.ToList(), positionMappings);
+                    if (bestPosition != null && neededPositions.ContainsKey(bestPosition))
+                        neededPositions[bestPosition] = Math.Max(0, neededPositions[bestPosition] - 1);
+
+                    _logger.LogInformation($"Adding secondary stack player: {selectedPlayer.FullName} ({selectedPlayer.Position}) for position {bestPosition}");
                 }
             }
 
@@ -1269,6 +1334,49 @@ namespace SharpVizApi.Services
                 .OrderBy(p => Math.Abs(p.Salary - targetSalary))
                 .ThenByDescending(p => p.DKppg)
                 .FirstOrDefault();
+        }
+
+        // Helper method to find the best player for the remaining positions
+        // Helper method to find the best player for the remaining positions
+        private DKPlayerPool FindBestPlayerForPositions(
+            List<DKPlayerPool> candidates,
+            Dictionary<string, int> neededPositions,
+            Dictionary<string, HashSet<string>> positionMappings)
+        {
+            // First try to find players who can fill positions with exactly 1 slot left
+            var criticalPositions = neededPositions
+                .Where(kvp => kvp.Value == 1)
+                .Select(kvp => kvp.Key)
+                .ToList();
+
+            if (criticalPositions.Any())
+            {
+                foreach (var position in criticalPositions)
+                {
+                    var eligiblePlayers = candidates
+                        .Where(p => IsPositionMatch(p.Position, position, positionMappings))
+                        .OrderByDescending(p => p.DKppg)
+                        .ToList();
+
+                    if (eligiblePlayers.Any())
+                        return eligiblePlayers.First();
+                }
+            }
+
+            // If no critical positions, just find any player who can fill a needed position
+            foreach (var position in neededPositions.Where(kvp => kvp.Value > 0).Select(kvp => kvp.Key))
+            {
+                var eligiblePlayers = candidates
+                    .Where(p => IsPositionMatch(p.Position, position, positionMappings))
+                    .OrderByDescending(p => p.DKppg)
+                    .ToList();
+
+                if (eligiblePlayers.Any())
+                    return eligiblePlayers.First();
+            }
+
+            // If no eligible players found for specific positions, return the highest DKPPG player
+            return candidates.OrderByDescending(p => p.DKppg).FirstOrDefault();
         }
     }
 }

@@ -93,7 +93,10 @@
 
 .team-table-container,
 .pitcher-table-container {
-    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 300px;
+    /* Adjust based on your needs */
+    position: relative;
 }
 
 .team-table,
@@ -101,6 +104,7 @@
     width: 100%;
     border-collapse: collapse;
     font-size: 14px;
+    position: sticky;
 }
 
 .team-table th,

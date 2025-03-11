@@ -174,7 +174,9 @@ const DfsStrategyDrawer = ({ isOpen, onClose, draftGroupId, sport, onSaveStrateg
                 pitcherMap[pitcher.team] = {
                     pitcherId: pitcher.pitcherId,
                     trend: pitcher.trendAnalysis?.performanceStatus || 'CONSISTENT',
-                    trendPercent: extractTrendPercentage(pitcher.trendAnalysis?.message || '')
+                    trendPercent: extractTrendPercentage(pitcher.trendAnalysis?.message || ''),
+                    compositeScore: pitcher.compositeScore || 0
+
                 };
             });
         }
@@ -264,6 +266,8 @@ const DfsStrategyDrawer = ({ isOpen, onClose, draftGroupId, sport, onSaveStrateg
                         pitcherMap[matchupMap[game.homeTeam.team].opposingTeam]?.trend || 'CONSISTENT' : 'CONSISTENT',
                     opposingSPTrendPercent: matchupMap[game.homeTeam.team]?.opposingTeam ?
                         pitcherMap[matchupMap[game.homeTeam.team].opposingTeam]?.trendPercent || 0 : 0,
+                    opposingSPScore: matchupMap[game.homeTeam.team]?.opposingTeam ?
+                        pitcherMap[matchupMap[game.homeTeam.team].opposingTeam]?.compositeScore || 0 : 0,
                     opposingBullpenRank: matchupMap[game.homeTeam.team]?.bullpenRank || 'Average',
                     parkFactor: homeParkFactor,
                     isHomeTeam: true
@@ -283,6 +287,8 @@ const DfsStrategyDrawer = ({ isOpen, onClose, draftGroupId, sport, onSaveStrateg
                         pitcherMap[matchupMap[game.awayTeam.team].opposingTeam]?.trend || 'CONSISTENT' : 'CONSISTENT',
                     opposingSPTrendPercent: matchupMap[game.awayTeam.team]?.opposingTeam ?
                         pitcherMap[matchupMap[game.awayTeam.team].opposingTeam]?.trendPercent || 0 : 0,
+                    opposingSPScore: matchupMap[game.awayTeam.team]?.opposingTeam ?
+                        pitcherMap[matchupMap[game.awayTeam.team].opposingTeam]?.compositeScore || 0 : 0,
                     opposingBullpenRank: matchupMap[game.awayTeam.team]?.bullpenRank || 'Average',
                     parkFactor: homeParkFactor,
                     isHomeTeam: false
@@ -557,6 +563,7 @@ const DfsStrategyDrawer = ({ isOpen, onClose, draftGroupId, sport, onSaveStrateg
                                             <th onClick={() => handleSort('expectedTotal')}>Expected Total {sortConfig.key === 'expectedTotal' && (sortConfig.direction === 'asc' ? '↑' : '↓')}</th>
                                             <th onClick={() => handleSort('lineupTrend')}>Lineup Trend {sortConfig.key === 'lineupTrend' && (sortConfig.direction === 'asc' ? '↑' : '↓')}</th>
                                             <th onClick={() => handleSort('opposingSP')}>Opposing SP {sortConfig.key === 'opposingSP' && (sortConfig.direction === 'asc' ? '↑' : '↓')}</th>
+                                            <th onClick={() => handleSort('opposingSPScore')}>Opposing SP Score {sortConfig.key === 'opposingSPScore' && (sortConfig.direction === 'asc' ? '↑' : '↓')}</th>
                                             <th onClick={() => handleSort('opposingSPTrend')}>Opposing SP Trend {sortConfig.key === 'opposingSPTrend' && (sortConfig.direction === 'asc' ? '↑' : '↓')}</th>
                                             <th onClick={() => handleSort('opposingBullpenRank')}>Opposing Bullpen {sortConfig.key === 'opposingBullpenRank' && (sortConfig.direction === 'asc' ? '↑' : '↓')}</th>
                                             <th onClick={() => handleSort('parkFactor')}>Park Factor {sortConfig.key === 'parkFactor' && (sortConfig.direction === 'asc' ? '↑' : '↓')}</th>
@@ -571,6 +578,9 @@ const DfsStrategyDrawer = ({ isOpen, onClose, draftGroupId, sport, onSaveStrateg
                                                 <td>{team.expectedTotal.toFixed(1)}</td>
                                                 <td>{renderTrend(team.lineupTrend, 'lineup')}</td>
                                                 <td>{team.opposingSP}</td>
+                                                <td className={team.opposingSPScore > 2 ? 'score-high' : team.opposingSPScore > 1 ? 'score-medium' : 'score-low'}>
+                                                    {team.opposingSPScore.toFixed(2)}
+                                                </td>
                                                 <td>
                                                     {team.opposingSPTrend === 'HOT' ? (
                                                         <span className="trend-up">{team.opposingSPTrendPercent.toFixed(1)}% Hotter</span>

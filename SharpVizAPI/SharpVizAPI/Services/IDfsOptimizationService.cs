@@ -418,7 +418,18 @@ namespace SharpVizApi.Services
                     neededPositions[position] = 1;
             }
 
-            // Account for must-start players' positions
+            _logger.LogInformation($"Required positions: {string.Join(", ", request.Positions)}");
+            _logger.LogInformation($"Needed positions count: {neededPositions.Count}");
+            foreach (var pos in neededPositions)
+            {
+                _logger.LogInformation($"Position {pos.Key}: {pos.Value} needed");
+            }
+
+            // Make sure we're counting correctly
+            int totalPositionsNeeded = neededPositions.Values.Sum();
+            _logger.LogInformation($"Total positions needed: {totalPositionsNeeded}");
+
+            // Account for must-start pitchers
             if (request.MustStartPlayers?.Any() == true)
             {
                 foreach (var mustStartId in request.MustStartPlayers)
@@ -429,18 +440,19 @@ namespace SharpVizApi.Services
                     // If it's a pitcher, reduce needed P positions
                     if (matchingPlayer.Position.Contains("SP") || matchingPlayer.Position.Contains("RP") || matchingPlayer.Position.Contains("P"))
                     {
-                        if (neededPositions.ContainsKey("P"))
-                            neededPositions["P"] = Math.Max(0, neededPositions["P"] - 1);
-                    }
-                    else
-                    {
-                        // For position players, find their best position match
-                        var bestPosition = FindBestPositionForPlayer(matchingPlayer, neededPositions.Keys.ToList(), positionMappings);
-                        if (bestPosition != null && neededPositions.ContainsKey(bestPosition))
-                            neededPositions[bestPosition] = Math.Max(0, neededPositions[bestPosition] - 1);
+                        if (neededPositions.ContainsKey("P") && neededPositions["P"] > 0)
+                        {
+                            neededPositions["P"] = neededPositions["P"] - 1;
+                            _logger.LogInformation($"Accounting for must-start pitcher {matchingPlayer.FullName}, reducing P positions needed");
+                        }
                     }
                 }
             }
+
+            // Track positions filled by each stack
+            var filledPositions = new Dictionary<string, int>();
+            var primaryTeamAdded = 0;
+            var secondaryTeamAdded = 0;
 
             // Start with must-start players
             var modifiedRequest = new DfsOptimizationRequest
@@ -456,7 +468,6 @@ namespace SharpVizApi.Services
             };
 
             // Position-aware selection for primary team stack
-            var primaryTeamAdded = 0;
             var primaryCandidates = primaryTeamPositionPlayers
                 .Where(p => !modifiedRequest.MustStartPlayers.Contains(p.PlayerDkId))
                 .OrderByDescending(p => p.DKppg)
@@ -477,16 +488,24 @@ namespace SharpVizApi.Services
 
                 // Update available positions
                 var bestPosition = FindBestPositionForPlayer(selectedPlayer, neededPositions.Keys.ToList(), positionMappings);
-                if (bestPosition != null && neededPositions.ContainsKey(bestPosition))
-                    neededPositions[bestPosition] = Math.Max(0, neededPositions[bestPosition] - 1);
+                if (bestPosition != null && neededPositions.ContainsKey(bestPosition) && neededPositions[bestPosition] > 0)
+                {
+                    neededPositions[bestPosition] = neededPositions[bestPosition] - 1;
 
-                _logger.LogInformation($"Adding primary stack player: {selectedPlayer.FullName} ({selectedPlayer.Position}) for position {bestPosition}");
+                    // Track which position was filled
+                    if (!filledPositions.ContainsKey(bestPosition))
+                        filledPositions[bestPosition] = 0;
+                    filledPositions[bestPosition]++;
+
+                    _logger.LogInformation($"Adding primary stack player: {selectedPlayer.FullName} ({selectedPlayer.Position}) for position {bestPosition}");
+                }
             }
+
+            _logger.LogInformation($"Added {primaryTeamAdded} players from primary team {primaryTeam}");
 
             // Position-aware selection for secondary team stack (if applicable)
             if (secondaryTeam != null && remainingSecondaryNeeded > 0)
             {
-                var secondaryTeamAdded = 0;
                 var secondaryCandidates = secondaryTeamPositionPlayers
                     .Where(p => !modifiedRequest.MustStartPlayers.Contains(p.PlayerDkId))
                     .OrderByDescending(p => p.DKppg)
@@ -498,7 +517,11 @@ namespace SharpVizApi.Services
                     // Find the best player for any remaining position
                     var selectedPlayer = FindBestPlayerForPositions(secondaryCandidates, neededPositions, positionMappings);
 
-                    if (selectedPlayer == null) break; // No suitable player found
+                    if (selectedPlayer == null)
+                    {
+                        _logger.LogWarning($"No suitable player found for secondary stack after adding {secondaryTeamAdded} players");
+                        break; // No suitable player found
+                    }
 
                     // Add this player to must-start and update tracking
                     modifiedRequest.MustStartPlayers.Add(selectedPlayer.PlayerDkId);
@@ -507,14 +530,180 @@ namespace SharpVizApi.Services
 
                     // Update available positions
                     var bestPosition = FindBestPositionForPlayer(selectedPlayer, neededPositions.Keys.ToList(), positionMappings);
-                    if (bestPosition != null && neededPositions.ContainsKey(bestPosition))
-                        neededPositions[bestPosition] = Math.Max(0, neededPositions[bestPosition] - 1);
+                    if (bestPosition != null && neededPositions.ContainsKey(bestPosition) && neededPositions[bestPosition] > 0)
+                    {
+                        neededPositions[bestPosition] = neededPositions[bestPosition] - 1;
 
-                    _logger.LogInformation($"Adding secondary stack player: {selectedPlayer.FullName} ({selectedPlayer.Position}) for position {bestPosition}");
+                        // Track which position was filled
+                        if (!filledPositions.ContainsKey(bestPosition))
+                            filledPositions[bestPosition] = 0;
+                        filledPositions[bestPosition]++;
+
+                        _logger.LogInformation($"Adding secondary stack player: {selectedPlayer.FullName} ({selectedPlayer.Position}) for position {bestPosition}");
+                    }
                 }
             }
 
+            _logger.LogInformation($"Added {secondaryTeamAdded} players from secondary team {secondaryTeam}");
+
+            // Log the positions we've filled so far and what's still needed
+            _logger.LogInformation("Stack position allocation summary:");
+            foreach (var pos in filledPositions.OrderBy(kv => kv.Key))
+            {
+                _logger.LogInformation($"- Position {pos.Key}: {pos.Value} filled");
+            }
+
+            // Double-check we've added the right number of stack players
+            int totalStackPlayersAdded = primaryTeamAdded + secondaryTeamAdded;
+            int expectedStackPlayers = primaryStackSize + secondaryStackSize;
+
+            if (totalStackPlayersAdded < expectedStackPlayers)
+            {
+                _logger.LogError($"Stack player count mismatch! Expected to add {expectedStackPlayers} stack players, but only added {totalStackPlayersAdded}");
+                _logger.LogError($"Primary team {primaryTeam}: added {primaryTeamAdded} of {primaryStackSize} needed");
+                _logger.LogError($"Secondary team {secondaryTeam}: added {secondaryTeamAdded} of {secondaryStackSize} needed");
+
+                // We should try to add more players to meet the stack requirements
+                int additionalPlayersNeeded = expectedStackPlayers - totalStackPlayersAdded;
+
+                _logger.LogInformation($"Trying to add {additionalPlayersNeeded} more players to meet stack requirements");
+
+                // Try to add more players from the primary team first, then the secondary
+                var additionalPrimaryPlayers = primaryCandidates
+                    .OrderByDescending(p => p.DKppg)
+                    .Take(additionalPlayersNeeded)
+                    .ToList();
+
+                foreach (var player in additionalPrimaryPlayers)
+                {
+                    modifiedRequest.MustStartPlayers.Add(player.PlayerDkId);
+                    additionalPlayersNeeded--;
+
+                    // No need to track positions here, we're just making sure the stack count is correct
+                    _logger.LogInformation($"Adding additional primary stack player: {player.FullName} ({player.Position})");
+
+                    if (additionalPlayersNeeded == 0) break;
+                }
+
+                // If we still need more players, try the secondary team
+                if (additionalPlayersNeeded > 0 && secondaryTeam != null)
+                {
+                    var secondaryCandidates = secondaryTeamPositionPlayers
+                        .Where(p => !modifiedRequest.MustStartPlayers.Contains(p.PlayerDkId))
+                        .OrderByDescending(p => p.DKppg)
+                        .Take(additionalPlayersNeeded)
+                        .ToList();
+
+                    foreach (var player in secondaryCandidates)
+                    {
+                        modifiedRequest.MustStartPlayers.Add(player.PlayerDkId);
+                        additionalPlayersNeeded--;
+
+                        _logger.LogInformation($"Adding additional secondary stack player: {player.FullName} ({player.Position})");
+
+                        if (additionalPlayersNeeded == 0) break;
+                    }
+                }
+            }
+
+            // Now fill any remaining positions with the best available players
+            // Correctly calculate how many positions still need to be filled
+            int remainingPlayerSlotsNeeded = neededPositions.Values.Sum();
+            _logger.LogInformation($"After stacking, need {remainingPlayerSlotsNeeded} more players to complete lineup");
+
+            // Make sure we don't exceed the total lineup size
+            int totalPlayersSelected = modifiedRequest.MustStartPlayers.Count;
+            int maxAdditionalPlayers = request.Positions.Count - totalPlayersSelected;
+
+            if (remainingPlayerSlotsNeeded > maxAdditionalPlayers)
+            {
+                _logger.LogWarning($"Position tracking shows {remainingPlayerSlotsNeeded} positions needed, but we can only add {maxAdditionalPlayers} more players. Adjusting...");
+                remainingPlayerSlotsNeeded = maxAdditionalPlayers;
+            }
+
+            if (remainingPlayerSlotsNeeded > 0)
+            {
+                // Get all available players not already in our lineup
+                var availablePlayers = positionPlayers
+                    .Where(p => !modifiedRequest.MustStartPlayers.Contains(p.PlayerDkId))
+                    .OrderByDescending(p => p.DKppg)
+                    .ToList();
+
+                int additionalPlayersAdded = 0;
+
+                // First, focus on OF positions if we need them
+                if (neededPositions.ContainsKey("OF") && neededPositions["OF"] > 0)
+                {
+                    var availableOutfielders = availablePlayers
+                        .Where(p => IsPositionMatch(p.Position, "OF", positionMappings))
+                        .OrderByDescending(p => p.DKppg)
+                        .ToList();
+
+                    _logger.LogInformation($"Found {availableOutfielders.Count} available outfielders for remaining slots");
+
+                    while (neededPositions["OF"] > 0 && availableOutfielders.Any() && additionalPlayersAdded < remainingPlayerSlotsNeeded)
+                    {
+                        var selectedPlayer = availableOutfielders.First();
+
+                        // Add this player to must-start and update tracking
+                        modifiedRequest.MustStartPlayers.Add(selectedPlayer.PlayerDkId);
+                        availablePlayers.Remove(selectedPlayer);
+                        availableOutfielders.Remove(selectedPlayer);
+                        additionalPlayersAdded++;
+
+                        neededPositions["OF"]--;
+
+                        _logger.LogInformation($"Adding remaining position player: {selectedPlayer.FullName} ({selectedPlayer.Position}) for position OF");
+                    }
+                }
+
+                // Then handle any other positions
+                while (additionalPlayersAdded < remainingPlayerSlotsNeeded && availablePlayers.Any())
+                {
+                    // Find the best player for any remaining position
+                    var selectedPlayer = FindBestPlayerForPositions(availablePlayers, neededPositions, positionMappings);
+
+                    if (selectedPlayer == null) break; // No suitable player found
+
+                    // Add this player to must-start and update tracking
+                    modifiedRequest.MustStartPlayers.Add(selectedPlayer.PlayerDkId);
+                    availablePlayers.Remove(selectedPlayer);
+                    additionalPlayersAdded++;
+
+                    // Update available positions
+                    var bestPosition = FindBestPositionForPlayer(selectedPlayer, neededPositions.Keys.ToList(), positionMappings);
+                    if (bestPosition != null && neededPositions.ContainsKey(bestPosition) && neededPositions[bestPosition] > 0)
+                    {
+                        neededPositions[bestPosition] = neededPositions[bestPosition] - 1;
+                        _logger.LogInformation($"Adding remaining position player: {selectedPlayer.FullName} ({selectedPlayer.Position}) for position {bestPosition}");
+                    }
+                }
+            }
+
+            // Double-check that we haven't exceeded the lineup size
+            if (modifiedRequest.MustStartPlayers.Count > request.Positions.Count)
+            {
+                _logger.LogError($"Too many players selected: {modifiedRequest.MustStartPlayers.Count}, but lineup size is {request.Positions.Count}");
+                return new DfsOptimizationResponse
+                {
+                    IsSuccessful = false,
+                    Message = $"Selection logic error: selected {modifiedRequest.MustStartPlayers.Count} players but lineup size is {request.Positions.Count}"
+                };
+            }
+
+            // Also check if we have the correct number of players
+            if (modifiedRequest.MustStartPlayers.Count < request.Positions.Count)
+            {
+                _logger.LogError($"Not enough players selected: {modifiedRequest.MustStartPlayers.Count}, but lineup size is {request.Positions.Count}");
+                return new DfsOptimizationResponse
+                {
+                    IsSuccessful = false,
+                    Message = $"Selection logic error: selected only {modifiedRequest.MustStartPlayers.Count} players but lineup size is {request.Positions.Count}"
+                };
+            }
+
             _logger.LogInformation($"Final must-start count: {modifiedRequest.MustStartPlayers.Count} players");
+            _logger.LogInformation($"Required lineup size: {request.Positions.Count} players");
 
             // Use existing optimization logic with the modified request
             DfsOptimizationResponse optimizationResult;
@@ -525,6 +714,24 @@ namespace SharpVizApi.Services
             else
             {
                 optimizationResult = await OptimizeForSalary(players, modifiedRequest, positionMappings);
+            }
+
+            // Verify the lineup has the correct number of players
+            if (optimizationResult.IsSuccessful && optimizationResult.Players.Count != request.Positions.Count)
+            {
+                _logger.LogError($"Lineup size mismatch! Expected {request.Positions.Count} players but got {optimizationResult.Players.Count}");
+
+                // Log details about the players in the lineup
+                foreach (var player in optimizationResult.Players)
+                {
+                    _logger.LogInformation($"Player in lineup: {player.FullName} ({player.Position}) - {player.AssignedPosition}");
+                }
+
+                return new DfsOptimizationResponse
+                {
+                    IsSuccessful = false,
+                    Message = $"Failed to create a complete lineup. Expected {request.Positions.Count} players but got {optimizationResult.Players.Count}."
+                };
             }
 
             // Double check that all original must-start players are in the result

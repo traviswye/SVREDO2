@@ -85,18 +85,25 @@ namespace SharpVizAPI.Controllers
                 // Normalize team name
                 string normalizedTeam = TeamNameNormalizer.NormalizeTeamName(request.Team);
 
-                // Search for player
+                // Normalize the full name for comparison
+                var normalizedFullName = request.FullName.Normalize(NormalizationForm.FormD);
+
+                // Search for player using collation instead of Like
                 var player = await _context.MLBplayers
-                    .FirstOrDefaultAsync(p =>
-                        EF.Functions.Like(p.FullName.ToLower(), request.FullName.ToLower()) &&
-                        EF.Functions.Like(p.CurrentTeam.ToLower(), normalizedTeam.ToLower()));
+                    .Where(p =>
+                        EF.Functions.Collate(p.FullName, "Latin1_General_CI_AI") ==
+                        EF.Functions.Collate(normalizedFullName, "Latin1_General_CI_AI") &&
+                        p.CurrentTeam.ToLower() == normalizedTeam.ToLower())
+                    .FirstOrDefaultAsync();
 
                 // Try without team if not found
                 if (player == null)
                 {
                     player = await _context.MLBplayers
-                        .FirstOrDefaultAsync(p =>
-                            EF.Functions.Like(p.FullName.ToLower(), request.FullName.ToLower()));
+                        .Where(p =>
+                            EF.Functions.Collate(p.FullName, "Latin1_General_CI_AI") ==
+                            EF.Functions.Collate(normalizedFullName, "Latin1_General_CI_AI"))
+                        .FirstOrDefaultAsync();
                 }
 
                 // Try with fuzzy name matching if still not found
@@ -109,11 +116,11 @@ namespace SharpVizAPI.Controllers
                         var firstName = nameParts[0];
                         var lastName = nameParts[nameParts.Length - 1];
 
-                        // Search for players with similar names
+                        // Use CONTAINS which translates to DB better than LIKE for this case
                         var potentialMatches = await _context.MLBplayers
                             .Where(p =>
-                                EF.Functions.Like(p.FullName.ToLower(), $"%{firstName}%") &&
-                                EF.Functions.Like(p.FullName.ToLower(), $"%{lastName}%"))
+                                p.FullName.ToLower().Contains(firstName) &&
+                                p.FullName.ToLower().Contains(lastName))
                             .ToListAsync();
 
                         if (potentialMatches.Count == 1)
@@ -124,7 +131,7 @@ namespace SharpVizAPI.Controllers
                         {
                             // Try to find the best match with team
                             player = potentialMatches.FirstOrDefault(p =>
-                                EF.Functions.Like(p.CurrentTeam.ToLower(), normalizedTeam.ToLower()));
+                                p.CurrentTeam.ToLower() == normalizedTeam.ToLower());
 
                             // If still no match with team, just take the first one
                             if (player == null && potentialMatches.Any())
@@ -135,7 +142,7 @@ namespace SharpVizAPI.Controllers
                     }
                 }
 
-                results.Add(new PlayerMappingResult
+                var mappingResult = new PlayerMappingResult
                 {
                     PlayerDkId = request.PlayerDkId,
                     FullName = request.FullName,
@@ -143,8 +150,48 @@ namespace SharpVizAPI.Controllers
                     Position = request.Position,
                     BbrefId = player?.bbrefId,
                     Found = player != null
-                });
+                };
+
+                results.Add(mappingResult);
+
+                // Add mapping to database if player was found
+                if (player != null)
+                {
+                    // Check if mapping already exists
+                    var existingMapping = await _context.PlayerIDMappings
+                        .FirstOrDefaultAsync(m => m.PlayerDkId == request.PlayerDkId);
+
+                    if (existingMapping != null)
+                    {
+                        // Update existing mapping
+                        existingMapping.BbrefId = player.bbrefId;
+                        existingMapping.FullName = request.FullName;
+                        existingMapping.Team = request.Team;
+                        existingMapping.Position = request.Position;
+                        existingMapping.LastUpdated = DateTime.Now;
+                    }
+                    else
+                    {
+                        // Create new mapping
+                        var newMapping = new PlayerIDMapping
+                        {
+                            PlayerDkId = request.PlayerDkId,
+                            BbrefId = player.bbrefId,
+                            FullName = request.FullName,
+                            Team = request.Team,
+                            Position = request.Position,
+                            Year = DateTime.Now.Year,
+                            DateAdded = DateTime.Now,
+                            LastUpdated = DateTime.Now
+                        };
+
+                        await _context.PlayerIDMappings.AddAsync(newMapping);
+                    }
+                }
             }
+
+            // Save all changes at once
+            await _context.SaveChangesAsync();
 
             return Ok(results);
         }

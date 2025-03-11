@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using SharpVizAPI.Data;
 using SharpVizAPI.Models;
 using SharpVizApi.Models;
+using System.Text;
 
 namespace SharpVizAPI.Services
 {
@@ -152,18 +153,21 @@ namespace SharpVizAPI.Services
 
         private async Task<MLBplayer> FindPlayerInDatabase(string fullName, string team)
         {
+            var normalizedTeam = TeamNameNormalizer.NormalizeTeamName(team);
+            var normalizedFullName = fullName.Normalize(NormalizationForm.FormD);
+
             // Try exact match on name and team
             var player = await _context.MLBplayers
                 .FirstOrDefaultAsync(p =>
-                    p.FullName.ToLower() == fullName.ToLower() &&
-                    p.CurrentTeam.ToLower() == team.ToLower());
+                    EF.Functions.Collate(p.FullName, "Latin1_General_CI_AI") == EF.Functions.Collate(normalizedFullName, "Latin1_General_CI_AI") &&
+                    p.CurrentTeam.ToLower() == normalizedTeam.ToLower());
 
             // If not found, try exact match on name only
             if (player == null)
             {
                 player = await _context.MLBplayers
                     .FirstOrDefaultAsync(p =>
-                        p.FullName.ToLower() == fullName.ToLower());
+                        EF.Functions.Collate(p.FullName, "Latin1_General_CI_AI") == EF.Functions.Collate(normalizedFullName, "Latin1_General_CI_AI"));
             }
 
             // If still not found, try partial name matching
@@ -178,8 +182,8 @@ namespace SharpVizAPI.Services
                     // Search for players with similar names
                     var potentialMatches = await _context.MLBplayers
                         .Where(p =>
-                            p.FullName.ToLower().Contains(firstName) &&
-                            p.FullName.ToLower().Contains(lastName))
+                            EF.Functions.Like(p.FullName.ToLower(), $"%{firstName}%") &&
+                            EF.Functions.Like(p.FullName.ToLower(), $"%{lastName}%"))
                         .ToListAsync();
 
                     if (potentialMatches.Count == 1)
@@ -190,7 +194,7 @@ namespace SharpVizAPI.Services
                     {
                         // Try to find the best match with team
                         player = potentialMatches.FirstOrDefault(p =>
-                            p.CurrentTeam.ToLower() == team.ToLower());
+                            EF.Functions.Like(p.CurrentTeam.ToLower(), normalizedTeam.ToLower()));
 
                         // If no match with team, just take the first one
                         if (player == null && potentialMatches.Any())

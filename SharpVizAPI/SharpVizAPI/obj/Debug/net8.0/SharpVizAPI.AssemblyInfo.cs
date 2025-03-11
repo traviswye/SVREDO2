@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SharpVizAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aca296e08845c6834006261b9304c162e87b5c93")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+751f2da8fe03cdadf4fe24db635f685ed15d1dcb")]
 [assembly: System.Reflection.AssemblyProductAttribute("SharpVizAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SharpVizAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

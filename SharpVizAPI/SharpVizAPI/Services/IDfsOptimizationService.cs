@@ -66,6 +66,57 @@ namespace SharpVizApi.Services
                 };
             }
 
+            // Get all players from the selected strategy teams, regardless of watchlist
+            var strategyTeams = request.Strategy.ToList();
+
+            // Get all players from the draft group for these teams
+            var strategyTeamPlayers = await _context.DKPlayerPools
+                .Where(p => p.DraftGroupId == request.DraftGroupId &&
+                       strategyTeams.Contains(p.Team) &&
+                       p.Status != "OUT")
+                .ToListAsync();
+
+            // Add these players to our consideration set if they're not already there
+            int addedPlayers = 0;
+            foreach (var player in strategyTeamPlayers)
+            {
+                if (!players.Any(p => p.PlayerDkId == player.PlayerDkId))
+                {
+                    players.Add(player);
+                    addedPlayers++;
+                }
+            }
+
+            _logger.LogInformation($"Added {addedPlayers} additional players from strategy teams");
+
+            // After adding strategy team players, make sure must-start players are included
+            if (request.MustStartPlayers?.Any() == true)
+            {
+                var mustStartIdsInPlayers = players.Select(p => p.PlayerDkId).ToHashSet();
+
+                // Check if all must-start players are in the player list
+                var missingMustStartIds = request.MustStartPlayers
+                    .Where(id => !mustStartIdsInPlayers.Contains(id))
+                    .ToList();
+
+                if (missingMustStartIds.Any())
+                {
+                    _logger.LogWarning($"Some must-start players aren't in the player pool after adding strategy teams: {string.Join(", ", missingMustStartIds)}");
+
+                    // Get these players directly from the database to ensure they're available
+                    var missingPlayers = await _context.DKPlayerPools
+                        .Where(p => missingMustStartIds.Contains(p.PlayerDkId) &&
+                              p.DraftGroupId == request.DraftGroupId)
+                        .ToListAsync();
+
+                    if (missingPlayers.Any())
+                    {
+                        _logger.LogInformation($"Found {missingPlayers.Count} must-start players directly from database, adding them to player pool");
+                        players.AddRange(missingPlayers);
+                    }
+                }
+            }
+
             // Determine the stack configuration to use
             int primaryStackSize;
             int secondaryStackSize;
@@ -163,17 +214,24 @@ namespace SharpVizApi.Services
             _logger.LogInformation($"Using teams: Primary={primaryTeam}, Secondary={secondaryTeam ?? "None"}");
             _logger.LogInformation($"Using stack sizes: Primary={primaryStackSize}, Secondary={secondaryStackSize}");
 
+            // Create a backup of the original must-start players, to make sure they don't get lost
+            var originalMustStartPlayers = request.MustStartPlayers != null
+                ? new List<int>(request.MustStartPlayers)
+                : new List<int>();
+
             // Try using the specified teams
             if (secondaryTeam != null)
             {
                 // Try both team combinations
+                var request1 = CloneRequestWithOriginalMustStarts(request, originalMustStartPlayers);
                 var attempt1 = await TryStackCombination(
-                    players, request, positionMappings,
+                    players, request1, positionMappings,
                     primaryTeam, secondaryTeam,
                     primaryStackSize, secondaryStackSize);
 
+                var request2 = CloneRequestWithOriginalMustStarts(request, originalMustStartPlayers);
                 var attempt2 = await TryStackCombination(
-                    players, request, positionMappings,
+                    players, request2, positionMappings,
                     secondaryTeam, primaryTeam,
                     primaryStackSize, secondaryStackSize);
 
@@ -198,22 +256,73 @@ namespace SharpVizApi.Services
             else
             {
                 // Only primary team is specified, no secondary stack
+                var clonedRequest = CloneRequestWithOriginalMustStarts(request, originalMustStartPlayers);
                 return await TryStackCombination(
-                    players, request, positionMappings,
+                    players, clonedRequest, positionMappings,
                     primaryTeam, null,
                     primaryStackSize, 0);
             }
         }
 
-        private async Task<DfsOptimizationResponse> TryStackCombination(
-            List<DKPlayerPool> players,
+        // Helper method to clone the request with the original must-start players
+        private DfsOptimizationRequest CloneRequestWithOriginalMustStarts(
             DfsOptimizationRequest request,
-            Dictionary<string, HashSet<string>> positionMappings,
-            string primaryTeam,
-            string secondaryTeam,
-            int primaryStackSize,
-            int secondaryStackSize)
+            List<int> originalMustStartPlayers)
         {
+            return new DfsOptimizationRequest
+            {
+                DraftGroupId = request.DraftGroupId,
+                Positions = request.Positions != null ? new List<string>(request.Positions) : null,
+                SalaryCap = request.SalaryCap,
+                OptimizeForDkppg = request.OptimizeForDkppg,
+                UserWatchlist = request.UserWatchlist != null ? new List<int>(request.UserWatchlist) : null,
+                ExcludePlayers = request.ExcludePlayers != null ? new List<int>(request.ExcludePlayers) : null,
+                MustStartPlayers = new List<int>(originalMustStartPlayers),
+                OppRankLimit = request.OppRankLimit,
+                Strategy = request.Strategy != null ? new List<string>(request.Strategy) : null,
+                Stack = request.Stack != null ? new List<string>(request.Stack) : null
+            };
+        }
+
+
+
+
+        private async Task<DfsOptimizationResponse> TryStackCombination(
+    List<DKPlayerPool> players,
+    DfsOptimizationRequest request,
+    Dictionary<string, HashSet<string>> positionMappings,
+    string primaryTeam,
+    string secondaryTeam,
+    int primaryStackSize,
+    int secondaryStackSize)
+        {
+            // Log must-start players at entry point
+            if (request.MustStartPlayers?.Any() == true)
+            {
+                _logger.LogInformation($"TryStackCombination received {request.MustStartPlayers.Count} must-start players: {string.Join(", ", request.MustStartPlayers)}");
+
+                // Check if they exist in the player pool
+                foreach (var mustStartId in request.MustStartPlayers)
+                {
+                    bool exists = players.Any(p => p.PlayerDkId == mustStartId);
+                    _logger.LogInformation($"Must-start player {mustStartId} exists in player pool: {exists}");
+
+                    if (!exists)
+                    {
+                        // Try to get the player directly from database
+                        var playerDb = await _context.DKPlayerPools
+                            .FirstOrDefaultAsync(p => p.PlayerDkId == mustStartId &&
+                                                    p.DraftGroupId == request.DraftGroupId);
+
+                        if (playerDb != null)
+                        {
+                            _logger.LogInformation($"Adding must-start player {playerDb.FullName} directly from database");
+                            players.Add(playerDb);
+                        }
+                    }
+                }
+            }
+
             // Separate position players from pitchers
             var pitchers = players.Where(p => p.Position.Contains("SP") || p.Position.Contains("RP") || p.Position.Contains("P")).ToList();
             var positionPlayers = players.Where(p => !p.Position.Contains("SP") && !p.Position.Contains("RP") && !p.Position.Contains("P")).ToList();
@@ -239,7 +348,16 @@ namespace SharpVizApi.Services
             {
                 foreach (var mustStartId in request.MustStartPlayers)
                 {
-                    var player = players.First(p => p.PlayerDkId == mustStartId);
+                    // Find the must-start player
+                    var matchingPlayers = players.Where(p => p.PlayerDkId == mustStartId).ToList();
+
+                    if (!matchingPlayers.Any())
+                    {
+                        _logger.LogWarning($"Must-start player with ID {mustStartId} not found in player pool");
+                        continue;
+                    }
+
+                    var player = matchingPlayers.First();
                     _logger.LogInformation($"Must-start player {player.FullName} from team {player.Team} position {player.Position}");
 
                     if (player.Position.Contains("SP") || player.Position.Contains("RP") || player.Position.Contains("P"))
@@ -290,7 +408,7 @@ namespace SharpVizApi.Services
                 };
             }
 
-            // Start with must-start players (both pitchers and position players)
+            // Start with all must-start players
             var modifiedRequest = new DfsOptimizationRequest
             {
                 DraftGroupId = request.DraftGroupId,
@@ -299,14 +417,12 @@ namespace SharpVizApi.Services
                 OptimizeForDkppg = request.OptimizeForDkppg,
                 UserWatchlist = new List<int>(),
                 ExcludePlayers = request.ExcludePlayers,
-                MustStartPlayers = new List<int>(mustStartPitchers), // Start with pitchers
+                // Keep ALL original must-start players - don't separate them
+                MustStartPlayers = new List<int>(request.MustStartPlayers ?? new List<int>()),
                 OppRankLimit = request.OppRankLimit
             };
 
-            // Add must-start position players
-            modifiedRequest.MustStartPlayers.AddRange(mustStartPositionPlayers);
-
-            // Add remaining required players from primary team
+            // Add remaining required players from primary team for stacking
             var additionalPrimaryPlayers = primaryTeamPositionPlayers
                 .Where(p => !modifiedRequest.MustStartPlayers.Contains(p.PlayerDkId))
                 .OrderByDescending(p => p.DKppg)
@@ -336,15 +452,44 @@ namespace SharpVizApi.Services
             _logger.LogInformation($"Final must-start count: {modifiedRequest.MustStartPlayers.Count} players");
 
             // Use existing optimization logic with the modified request
+            DfsOptimizationResponse optimizationResult;
             if (request.OptimizeForDkppg)
             {
-                return await OptimizeForDkppg(players, modifiedRequest, positionMappings);
+                optimizationResult = await OptimizeForDkppg(players, modifiedRequest, positionMappings);
             }
             else
             {
-                return await OptimizeForSalary(players, modifiedRequest, positionMappings);
+                optimizationResult = await OptimizeForSalary(players, modifiedRequest, positionMappings);
             }
+
+            // Double check that all original must-start players are in the result
+            if (optimizationResult.IsSuccessful && request.MustStartPlayers?.Any() == true)
+            {
+                var missingMustStarts = request.MustStartPlayers
+                    .Where(id => !optimizationResult.Players.Any(p => p.PlayerDkId == id))
+                    .ToList();
+
+                if (missingMustStarts.Any())
+                {
+                    _logger.LogError($"Optimization result is missing original must-start players: {string.Join(", ", missingMustStarts)}");
+
+                    // Get details about the missing players
+                    var missingDetails = string.Join(", ", players
+                        .Where(p => missingMustStarts.Contains(p.PlayerDkId))
+                        .Select(p => $"{p.FullName} ({p.Position})"));
+
+                    return new DfsOptimizationResponse
+                    {
+                        IsSuccessful = false,
+                        Message = $"Optimization couldn't include all must-start players. Missing: {missingDetails}"
+                    };
+                }
+            }
+
+            return optimizationResult;
         }
+
+
         public async Task<DfsOptimizationResponse> OptimizeLineup(DfsOptimizationRequest request)
         {
             try
@@ -606,9 +751,69 @@ namespace SharpVizApi.Services
 
             if (request.MustStartPlayers?.Any() == true)
             {
+                // Create a lookup of must-start players for easier access
+                var mustStartPlayersLookup = players
+                    .Where(p => request.MustStartPlayers.Contains(p.PlayerDkId))
+                    .ToDictionary(p => p.PlayerDkId, p => p);
+
+                _logger.LogInformation($"Found {mustStartPlayersLookup.Count} out of {request.MustStartPlayers.Count} must-start players in player pool");
+
+                // First, handle pitchers in must-start list to ensure they're assigned correctly
+                var mustStartPitchers = mustStartPlayersLookup.Values
+                    .Where(p => p.Position.Contains("SP") || p.Position.Contains("RP") || p.Position.Contains("P"))
+                    .ToList();
+
+                foreach (var pitcher in mustStartPitchers)
+                {
+                    _logger.LogInformation($"Processing must-start pitcher: {pitcher.FullName} ({pitcher.Position})");
+
+                    // Find all P positions in the lineup
+                    var pitcherPositions = remainingPositions.Where(p => p == "P").ToList();
+
+                    if (!pitcherPositions.Any())
+                    {
+                        _logger.LogWarning($"No remaining P positions for must-start pitcher {pitcher.FullName}");
+                        return new DfsOptimizationResponse
+                        {
+                            IsSuccessful = false,
+                            Message = $"Cannot fit must-start pitcher {pitcher.FullName} in lineup - no pitcher positions available"
+                        };
+                    }
+
+                    // Assign to first available P position
+                    var positionToAssign = pitcherPositions.First();
+
+                    var optimizedPlayer = new OptimizedPlayer
+                    {
+                        FullName = pitcher.FullName,
+                        PlayerDkId = pitcher.PlayerDkId,
+                        Position = pitcher.Position,
+                        AssignedPosition = positionToAssign,
+                        Salary = pitcher.Salary,
+                        Team = pitcher.Team,
+                        DKppg = pitcher.DKppg
+                    };
+
+                    _logger.LogInformation($"Assigned must-start pitcher {pitcher.FullName} to position {positionToAssign}");
+
+                    mustStartPlayers.Add(optimizedPlayer);
+                    usedPlayerIds.Add(pitcher.PlayerDkId);
+                    currentSalary += pitcher.Salary;
+                    remainingPositions.Remove(positionToAssign);
+                }
+
+                // Now handle non-pitcher must-start players
                 foreach (var mustStartId in request.MustStartPlayers)
                 {
-                    var player = players.First(p => p.PlayerDkId == mustStartId);
+                    // Skip if we already handled this player as a pitcher
+                    if (usedPlayerIds.Contains(mustStartId)) continue;
+
+                    // Skip if player not found
+                    if (!mustStartPlayersLookup.TryGetValue(mustStartId, out var player))
+                    {
+                        _logger.LogWarning($"Must-start player ID {mustStartId} not found in player pool");
+                        continue;
+                    }
 
                     // Find the best position for this must-start player
                     string bestPosition = FindBestPositionForPlayer(player, remainingPositions, positionMappings);
@@ -719,6 +924,42 @@ namespace SharpVizApi.Services
                 };
             }
 
+            // Validate all must-start players are in the final lineup
+            if (request.MustStartPlayers?.Any() == true)
+            {
+                var missingMustStartPlayers = request.MustStartPlayers
+                    .Where(id => !bestLineup.Any(p => p.PlayerDkId == id))
+                    .ToList();
+
+                if (missingMustStartPlayers.Any())
+                {
+                    _logger.LogError($"Final lineup is missing {missingMustStartPlayers.Count} must-start players: {string.Join(", ", missingMustStartPlayers)}");
+
+                    // Get details about the missing players
+                    var missingPlayerDetails = players
+                        .Where(p => missingMustStartPlayers.Contains(p.PlayerDkId))
+                        .Select(p => $"{p.FullName} ({p.Position})")
+                        .ToList();
+
+                    return new DfsOptimizationResponse
+                    {
+                        IsSuccessful = false,
+                        Message = $"Could not create valid lineup including all must-start players. Missing: {string.Join(", ", missingPlayerDetails)}"
+                    };
+                }
+
+                _logger.LogInformation("Successfully included all must-start players in final lineup");
+
+                // Log which must-start players were used
+                foreach (var player in bestLineup)
+                {
+                    if (request.MustStartPlayers.Contains(player.PlayerDkId))
+                    {
+                        _logger.LogInformation($"Must-start player in final lineup: {player.FullName} ({player.AssignedPosition})");
+                    }
+                }
+            }
+
             return new DfsOptimizationResponse
             {
                 IsSuccessful = true,
@@ -801,9 +1042,9 @@ namespace SharpVizApi.Services
             return null;
         }
         private async Task<DfsOptimizationResponse> OptimizeForSalary(
-              List<DKPlayerPool> players,
-              DfsOptimizationRequest request,
-              Dictionary<string, HashSet<string>> positionMappings)
+            List<DKPlayerPool> players,
+            DfsOptimizationRequest request,
+            Dictionary<string, HashSet<string>> positionMappings)
         {
             var optimizedLineup = new List<OptimizedPlayer>();
             var usedPlayerIds = new HashSet<int>();
@@ -813,9 +1054,69 @@ namespace SharpVizApi.Services
             // Handle must-start players first
             if (request.MustStartPlayers?.Any() == true)
             {
+                // Create a lookup of must-start players for easier access
+                var mustStartPlayersLookup = players
+                    .Where(p => request.MustStartPlayers.Contains(p.PlayerDkId))
+                    .ToDictionary(p => p.PlayerDkId, p => p);
+
+                _logger.LogInformation($"Found {mustStartPlayersLookup.Count} out of {request.MustStartPlayers.Count} must-start players in player pool");
+
+                // First, handle pitchers in must-start list to ensure they're assigned correctly
+                var mustStartPitchers = mustStartPlayersLookup.Values
+                    .Where(p => p.Position.Contains("SP") || p.Position.Contains("RP") || p.Position.Contains("P"))
+                    .ToList();
+
+                foreach (var pitcher in mustStartPitchers)
+                {
+                    _logger.LogInformation($"Processing must-start pitcher: {pitcher.FullName} ({pitcher.Position})");
+
+                    // Find all P positions in the lineup
+                    var pitcherPositions = remainingPositions.Where(p => p == "P").ToList();
+
+                    if (!pitcherPositions.Any())
+                    {
+                        _logger.LogWarning($"No remaining P positions for must-start pitcher {pitcher.FullName}");
+                        return new DfsOptimizationResponse
+                        {
+                            IsSuccessful = false,
+                            Message = $"Cannot fit must-start pitcher {pitcher.FullName} in lineup - no pitcher positions available"
+                        };
+                    }
+
+                    // Assign to first available P position
+                    var positionToAssign = pitcherPositions.First();
+
+                    var optimizedPlayer = new OptimizedPlayer
+                    {
+                        FullName = pitcher.FullName,
+                        PlayerDkId = pitcher.PlayerDkId,
+                        Position = pitcher.Position,
+                        AssignedPosition = positionToAssign,
+                        Salary = pitcher.Salary,
+                        Team = pitcher.Team,
+                        DKppg = pitcher.DKppg
+                    };
+
+                    _logger.LogInformation($"Assigned must-start pitcher {pitcher.FullName} to position {positionToAssign}");
+
+                    optimizedLineup.Add(optimizedPlayer);
+                    usedPlayerIds.Add(pitcher.PlayerDkId);
+                    remainingSalary -= pitcher.Salary;
+                    remainingPositions.Remove(positionToAssign);
+                }
+
+                // Now handle non-pitcher must-start players
                 foreach (var mustStartId in request.MustStartPlayers)
                 {
-                    var player = players.First(p => p.PlayerDkId == mustStartId);
+                    // Skip if we already handled this player as a pitcher
+                    if (usedPlayerIds.Contains(mustStartId)) continue;
+
+                    // Skip if player not found
+                    if (!mustStartPlayersLookup.TryGetValue(mustStartId, out var player))
+                    {
+                        _logger.LogWarning($"Must-start player ID {mustStartId} not found in player pool");
+                        continue;
+                    }
 
                     // Find the best position for this must-start player
                     string bestPosition = FindBestPositionForPlayer(player, remainingPositions, positionMappings);
@@ -889,6 +1190,42 @@ namespace SharpVizApi.Services
 
                 usedPlayerIds.Add(selectedPlayer.PlayerDkId);
                 remainingSalary -= selectedPlayer.Salary;
+            }
+
+            // Validate all must-start players are in the final lineup
+            if (request.MustStartPlayers?.Any() == true)
+            {
+                var missingMustStartPlayers = request.MustStartPlayers
+                    .Where(id => !optimizedLineup.Any(p => p.PlayerDkId == id))
+                    .ToList();
+
+                if (missingMustStartPlayers.Any())
+                {
+                    _logger.LogError($"Final lineup is missing {missingMustStartPlayers.Count} must-start players: {string.Join(", ", missingMustStartPlayers)}");
+
+                    // Get details about the missing players
+                    var missingPlayerDetails = players
+                        .Where(p => missingMustStartPlayers.Contains(p.PlayerDkId))
+                        .Select(p => $"{p.FullName} ({p.Position})")
+                        .ToList();
+
+                    return new DfsOptimizationResponse
+                    {
+                        IsSuccessful = false,
+                        Message = $"Could not create valid lineup including all must-start players. Missing: {string.Join(", ", missingPlayerDetails)}"
+                    };
+                }
+
+                _logger.LogInformation("Successfully included all must-start players in final lineup");
+
+                // Log which must-start players were used
+                foreach (var player in optimizedLineup)
+                {
+                    if (request.MustStartPlayers.Contains(player.PlayerDkId))
+                    {
+                        _logger.LogInformation($"Must-start player in final lineup: {player.FullName} ({player.AssignedPosition})");
+                    }
+                }
             }
 
             decimal totalDkppg = optimizedLineup.Sum(p => p.DKppg ?? 0);

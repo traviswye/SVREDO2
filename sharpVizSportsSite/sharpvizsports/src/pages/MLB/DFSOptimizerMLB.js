@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Sidebar from '../../components/SideBar';
 import SlateDropdown from '../../components/SlateDropdown';
 import PlayerPoolTable from '../../components/PlayerPoolTable';
 import LineupBuilder from '../../components/LineupBuilder';
 import DfsStrategyDrawer from '../../components/DfsStrategyDrawer';
+import axios from 'axios';
 import '../../css/DFSOptimizerMLB.css';
 import '../../css/PlayerPoolTable.css';
 import '../../css/LineupBuilder.css';
@@ -16,6 +17,8 @@ const DFSOptimizer = () => {
   const [draftedPlayers, setDraftedPlayers] = useState([]);
   const [isStrategyDrawerOpen, setIsStrategyDrawerOpen] = useState(false);
   const [savedStrategy, setSavedStrategy] = useState(null);
+  // State to track the DK IDs corresponding to selected pitcher BBRef IDs
+  const [selectedPitcherDkIds, setSelectedPitcherDkIds] = useState([]);
 
   const handleAddToWatchList = (player) => {
     const isDuplicate = watchList.some(p => p.playerDkId === player.playerDkId);
@@ -58,19 +61,42 @@ const DFSOptimizer = () => {
     setIsStrategyDrawerOpen(!isStrategyDrawerOpen);
   };
 
-  const handleSaveStrategy = (strategyData) => {
-    setSavedStrategy(strategyData);
-    console.log('Strategy saved:', strategyData);
+  // Function to fetch player DK IDs from the backend when strategy is saved
+  const fetchPlayerDkIds = async (bbrefIds) => {
+    if (!bbrefIds || bbrefIds.length === 0) return [];
+
+    try {
+      const response = await axios.post(
+        'https://localhost:44346/api/PlayerIDMapping/bbrefToDkIds',
+        bbrefIds
+      );
+
+      // The response will contain a dictionary with BBRef IDs as keys and DK IDs as values
+      // Return just the values (DK IDs)
+      return Object.values(response.data);
+    } catch (error) {
+      console.error('Error fetching player DK IDs:', error);
+      return [];
+    }
   };
 
-  // Function to convert pitcherId to DraftKings player ID
-  // This function would need to be implemented based on your data structure
-  // For now, we'll assume we can do a direct lookup or use the ID as is
-  const getPitcherDraftKingsId = (pitcherId) => {
-    // In a real implementation, this might look up the DK ID from a mapping
-    // For now, we'll just ensure it's a number (assuming pitcherId has ID at the end)
-    const numericId = parseInt(pitcherId.replace(/\D/g, ''));
-    return numericId || 0; // Return 0 if no numeric part found
+  const handleSaveStrategy = async (strategyData) => {
+    setSavedStrategy(strategyData);
+    console.log('Strategy saved:', strategyData);
+
+    // If there are selected pitchers, fetch their DK IDs
+    if (strategyData.selectedPitchers && strategyData.selectedPitchers.length > 0) {
+      try {
+        const dkIds = await fetchPlayerDkIds(strategyData.selectedPitchers);
+        console.log('Fetched DK IDs for pitchers:', dkIds);
+        setSelectedPitcherDkIds(dkIds);
+      } catch (error) {
+        console.error('Error fetching pitcher DK IDs:', error);
+        setSelectedPitcherDkIds([]);
+      }
+    } else {
+      setSelectedPitcherDkIds([]);
+    }
   };
 
   return (
@@ -123,15 +149,10 @@ const DFSOptimizer = () => {
                         excludePlayers: []
                       };
 
-                      // Add must-start players if we have selected pitchers
-                      if (savedStrategy?.selectedPitchers && savedStrategy.selectedPitchers.length > 0) {
-                        // Get the DraftKings player IDs for the selected pitchers
-                        const mustStartPitcherIds = savedStrategy.selectedPitchers.map(pitcherId => {
-                          // Find the draft kings ID for this pitcher
-                          return getPitcherDraftKingsId(pitcherId);
-                        }).filter(id => id > 0); // Filter out any that couldn't be mapped
-
-                        basePayload.mustStartPlayers = mustStartPitcherIds;
+                      // Add must-start players using the already fetched DK IDs
+                      if (selectedPitcherDkIds && selectedPitcherDkIds.length > 0) {
+                        console.log('Using pitcher DK IDs in optimization payload:', selectedPitcherDkIds);
+                        basePayload.mustStartPlayers = selectedPitcherDkIds;
                       } else {
                         basePayload.mustStartPlayers = [];
                       }

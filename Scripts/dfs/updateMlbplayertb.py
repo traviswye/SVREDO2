@@ -34,15 +34,18 @@ def extract_name_team(line):
 def search_bbref_id(player_name, team):
     """
     Search DuckDuckGo for the Baseball Reference player URL using a query
-    like "Lucas Giolito BOS site:baseball-reference.com/players" and extract
-    the player id from the first five links that match the expected pattern.
+    like "Matt Canterino MIN site:baseball-reference.com/players" and extract
+    the player id from the candidate links. We check up to the first 25 links.
+    Additionally, we require that the candidate id contains the first five
+    letters of the player's last name.
     """
     query = f"{player_name} {team} site:baseball-reference.com/players"
-    # Use the HTML version of DuckDuckGo
     search_url = f"https://html.duckduckgo.com/html/?q={quote(query)}"
     
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        'User-Agent': ('Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+                       'AppleWebKit/537.36 (KHTML, like Gecko) '
+                       'Chrome/91.0.4472.124 Safari/537.36')
     }
     
     logger.info(f"Searching for: {player_name} ({team})")
@@ -60,28 +63,39 @@ def search_bbref_id(player_name, team):
         links = soup.find_all("a", href=True)
         logger.info(f"Found {len(links)} links in search results")
         
+        # Prepare the expected substring: first 5 letters of the player's last name
+        last_name = player_name.split()[-1]
+        expected_sub = last_name[:5].lower() if len(last_name) >= 5 else last_name.lower()
+        
         # Define a regex pattern for the MLB player URL on baseball-reference.com
         pattern = re.compile(r'baseball-reference\.com/players/[a-z]/([^/]+)\.shtml')
         
-        # Only check the first 5 links in order
-        for link in links[:5]:
+        # Only check up to the first 25 links
+        for link in links[:25]:
             href = link['href']
             if 'baseball-reference.com/players/' in href:
                 logger.info(f"Candidate link: {href}")
                 match = pattern.search(href)
                 if match:
                     bbref_id = match.group(1)
-                    if '000' not in bbref_id:
+                    if '000' in bbref_id:
+                        logger.info(f"Skipping minor league ID: {bbref_id}")
+                        continue
+                    # Check that candidate contains the expected substring
+                    if expected_sub in bbref_id.lower():
                         logger.info(f"Found major league ID: {bbref_id} for {player_name}")
                         return bbref_id
-        
-        logger.warning(f"No Baseball Reference ID found for {player_name} ({team})")
+                    else:
+                        logger.info(f"Candidate ID {bbref_id} does not match expected substring '{expected_sub}' for {player_name}")
+                        
+        logger.warning(f"No valid Baseball Reference ID found for {player_name} ({team})")
         return None
         
     except Exception as e:
         logger.error(f"Error searching for {player_name}: {e}")
         logger.error(f"Exception details: {str(e)}")
         raise SystemExit("Script stopped due to search failure.")
+        
 
 def post_player_to_api(bbref_id, name, team, api_url):
     """Post player info to the API."""

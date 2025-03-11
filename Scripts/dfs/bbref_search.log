@@ -721,3 +721,232 @@
 2025-03-11 13:30:48,654 - INFO - Processing complete!
 2025-03-11 13:30:48,654 - INFO - Summary: 6 added, 56 skipped, 0 errors
 2025-03-11 13:30:48,655 - INFO - Last successful player: Max Kranick (NYM) - kranima01
+2025-03-11 13:57:32,363 - INFO - SSL verification disabled for all requests
+2025-03-11 13:57:32,364 - INFO - Starting to process player list from players.txt
+2025-03-11 13:57:32,364 - INFO - Using API endpoint: https://localhost:44346/api/MLBPlayer
+2025-03-11 13:57:32,365 - INFO - Searching for: Matt Canterino (MIN)
+2025-03-11 13:57:32,365 - INFO - Search URL: https://html.duckduckgo.com/html/?q=Matt%20Canterino%20MIN%20site%3Abaseball-reference.com/players
+2025-03-11 13:57:33,805 - INFO - Found 42 links in search results
+2025-03-11 13:57:33,806 - INFO - Candidate link: https://www.baseball-reference.com/players/s/stewabr01.shtml
+2025-03-11 13:57:33,806 - INFO - Found major league ID: stewabr01 for Matt Canterino
+2025-03-11 13:57:33,808 - INFO - Waiting for 4.5 seconds before next request
+2025-03-11 13:57:39,203 - ERROR - Failed to add Matt Canterino: 409 - {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.10","title":"Conflict","status":409,"traceId":"00-442a1f6a8dc8143380c05274179a9a30-ddc6a0a02fa16861-00"}
+2025-03-11 13:57:39,205 - ERROR - Failed to add to database: Matt Canterino (MIN) with ID stewabr01
+2025-03-11 13:57:40,206 - INFO - Searching for: DaShawn Keirsey Jr. (MIN)
+2025-03-11 13:57:40,207 - INFO - Search URL: https://html.duckduckgo.com/html/?q=DaShawn%20Keirsey%20Jr.%20MIN%20site%3Abaseball-reference.com/players
+2025-03-11 13:57:41,602 - INFO - Found 42 links in search results
+2025-03-11 13:57:41,603 - INFO - Candidate link: https://www.baseball-reference.com/players/k/keirsda01.shtml
+2025-03-11 13:57:41,603 - INFO - Found major league ID: keirsda01 for DaShawn Keirsey Jr.
+2025-03-11 13:57:41,606 - INFO - Waiting for 2.3 seconds before next request
+2025-03-11 13:57:42,375 - INFO - Process interrupted by user. Returning current results.
+2025-03-11 13:57:42,376 - INFO - Processing complete!
+2025-03-11 13:57:42,376 - INFO - Summary: 0 added, 0 skipped, 1 errors
+2025-03-11 13:57:42,376 - INFO - Last successful player: None
+2025-03-11 14:03:45,511 - INFO - SSL verification disabled for all requests
+2025-03-11 14:03:45,511 - INFO - Starting to process player list from players.txt
+2025-03-11 14:03:45,511 - INFO - Using API endpoint: https://localhost:44346/api/MLBPlayer
+2025-03-11 14:03:45,512 - INFO - Searching for: Matt Canterino (MIN)
+2025-03-11 14:03:45,513 - INFO - Search URL: https://html.duckduckgo.com/html/?q=Matt%20Canterino%20MIN%20site%3Abaseball-reference.com/players
+2025-03-11 14:03:46,944 - INFO - Found 42 links in search results
+2025-03-11 14:03:46,944 - INFO - Candidate link: https://www.baseball-reference.com/players/c/cainma01.shtml
+2025-03-11 14:03:46,945 - INFO - Candidate ID cainma01 does not match expected substring 'cante' for Matt Canterino
+2025-03-11 14:03:46,945 - INFO - Candidate link: https://www.baseball-reference.com/players/c/cainma01.shtml
+2025-03-11 14:03:46,945 - INFO - Candidate ID cainma01 does not match expected substring 'cante' for Matt Canterino
+2025-03-11 14:03:46,946 - INFO - Candidate link: https://www.baseball-reference.com/players/c/cainma01.shtml
+2025-03-11 14:03:46,946 - INFO - Candidate ID cainma01 does not match expected substring 'cante' for Matt Canterino
+2025-03-11 14:03:46,946 - INFO - Candidate link: https://www.baseball-reference.com/players/c/cainma01.shtml
+2025-03-11 14:03:46,946 - INFO - Candidate ID cainma01 does not match expected substring 'cante' for Matt Canterino
+2025-03-11 14:03:46,946 - INFO - Candidate link: https://www.baseball-reference.com/players/c/carpema01.shtml
+2025-03-11 14:03:46,947 - INFO - Candidate ID carpema01 does not match expected substring 'cante' for Matt Canterino
+2025-03-11 14:03:46,947 - INFO - Candidate link: https://www.baseball-reference.com/players/c/carpema01.shtml
+2025-03-11 14:03:46,947 - INFO - Candidate ID carpema01 does not match expected substring 'cante' for Matt Canterino
+2025-03-11 14:03:46,947 - INFO - Candidate link: https://www.baseball-reference.com/players/c/carpema01.shtml
+2025-03-11 14:03:46,947 - INFO - Candidate ID carpema01 does not match expected substring 'cante' for Matt Canterino
+2025-03-11 14:03:46,947 - INFO - Candidate link: https://www.baseball-reference.com/players/c/carpema01.shtml
+2025-03-11 14:03:46,948 - INFO - Candidate ID carpema01 does not match expected substring 'cante' for Matt Canterino
+2025-03-11 14:03:46,948 - INFO - Candidate link: https://www.baseball-reference.com/players/w/wallnma01.shtml
+2025-03-11 14:03:46,948 - INFO - Candidate ID wallnma01 does not match expected substring 'cante' for Matt Canterino
+2025-03-11 14:03:46,948 - INFO - Candidate link: https://www.baseball-reference.com/players/w/wallnma01.shtml
+2025-03-11 14:03:46,948 - INFO - Candidate ID wallnma01 does not match expected substring 'cante' for Matt Canterino
+2025-03-11 14:03:46,948 - INFO - Candidate link: https://www.baseball-reference.com/players/w/wallnma01.shtml
+2025-03-11 14:03:46,948 - INFO - Candidate ID wallnma01 does not match expected substring 'cante' for Matt Canterino
+2025-03-11 14:03:46,948 - INFO - Candidate link: https://www.baseball-reference.com/players/w/wallnma01.shtml
+2025-03-11 14:03:46,949 - INFO - Candidate ID wallnma01 does not match expected substring 'cante' for Matt Canterino
+2025-03-11 14:03:46,949 - INFO - Candidate link: https://www.baseball-reference.com/players/s/stewabr01.shtml
+2025-03-11 14:03:46,949 - INFO - Candidate ID stewabr01 does not match expected substring 'cante' for Matt Canterino
+2025-03-11 14:03:46,950 - INFO - Candidate link: https://www.baseball-reference.com/players/s/stewabr01.shtml
+2025-03-11 14:03:46,950 - INFO - Candidate ID stewabr01 does not match expected substring 'cante' for Matt Canterino
+2025-03-11 14:03:46,950 - INFO - Candidate link: https://www.baseball-reference.com/players/s/stewabr01.shtml
+2025-03-11 14:03:46,950 - INFO - Candidate ID stewabr01 does not match expected substring 'cante' for Matt Canterino
+2025-03-11 14:03:46,951 - INFO - Candidate link: https://www.baseball-reference.com/players/s/stewabr01.shtml
+2025-03-11 14:03:46,951 - INFO - Candidate ID stewabr01 does not match expected substring 'cante' for Matt Canterino
+2025-03-11 14:03:46,951 - INFO - Candidate link: https://www.baseball-reference.com/players/m/mclaima01.shtml
+2025-03-11 14:03:46,951 - INFO - Candidate ID mclaima01 does not match expected substring 'cante' for Matt Canterino
+2025-03-11 14:03:46,952 - INFO - Candidate link: https://www.baseball-reference.com/players/m/mclaima01.shtml
+2025-03-11 14:03:46,952 - INFO - Candidate ID mclaima01 does not match expected substring 'cante' for Matt Canterino
+2025-03-11 14:03:46,952 - INFO - Candidate link: https://www.baseball-reference.com/players/m/mclaima01.shtml
+2025-03-11 14:03:46,953 - INFO - Candidate ID mclaima01 does not match expected substring 'cante' for Matt Canterino
+2025-03-11 14:03:46,953 - INFO - Candidate link: https://www.baseball-reference.com/players/m/mclaima01.shtml
+2025-03-11 14:03:46,954 - INFO - Candidate ID mclaima01 does not match expected substring 'cante' for Matt Canterino
+2025-03-11 14:03:46,954 - INFO - Candidate link: https://www.baseball-reference.com/players/l/latosma01.shtml
+2025-03-11 14:03:46,954 - INFO - Candidate ID latosma01 does not match expected substring 'cante' for Matt Canterino
+2025-03-11 14:03:46,954 - INFO - Candidate link: https://www.baseball-reference.com/players/l/latosma01.shtml
+2025-03-11 14:03:46,955 - INFO - Candidate ID latosma01 does not match expected substring 'cante' for Matt Canterino
+2025-03-11 14:03:46,955 - INFO - Candidate link: https://www.baseball-reference.com/players/l/latosma01.shtml
+2025-03-11 14:03:46,955 - INFO - Candidate ID latosma01 does not match expected substring 'cante' for Matt Canterino
+2025-03-11 14:03:46,955 - INFO - Candidate link: https://www.baseball-reference.com/players/l/latosma01.shtml
+2025-03-11 14:03:46,955 - INFO - Candidate ID latosma01 does not match expected substring 'cante' for Matt Canterino
+2025-03-11 14:03:46,955 - WARNING - No valid Baseball Reference ID found for Matt Canterino (MIN)
+2025-03-11 14:03:46,957 - INFO - Waiting for 2.6 seconds before next request
+2025-03-11 14:03:49,593 - WARNING - Line 1: Could not find Baseball Reference ID for 'Matt Canterino (MIN)'
+2025-03-11 14:03:49,593 - INFO - Searching for: DaShawn Keirsey Jr. (MIN)
+2025-03-11 14:03:49,595 - INFO - Search URL: https://html.duckduckgo.com/html/?q=DaShawn%20Keirsey%20Jr.%20MIN%20site%3Abaseball-reference.com/players
+2025-03-11 14:03:51,093 - INFO - Found 42 links in search results
+2025-03-11 14:03:51,093 - INFO - Candidate link: https://www.baseball-reference.com/players/k/keirsda01.shtml
+2025-03-11 14:03:51,094 - INFO - Candidate ID keirsda01 does not match expected substring 'jr.' for DaShawn Keirsey Jr.
+2025-03-11 14:03:51,094 - INFO - Candidate link: https://www.baseball-reference.com/players/k/keirsda01.shtml
+2025-03-11 14:03:51,094 - INFO - Candidate ID keirsda01 does not match expected substring 'jr.' for DaShawn Keirsey Jr.
+2025-03-11 14:03:51,094 - INFO - Candidate link: https://www.baseball-reference.com/players/k/keirsda01.shtml
+2025-03-11 14:03:51,095 - INFO - Candidate ID keirsda01 does not match expected substring 'jr.' for DaShawn Keirsey Jr.
+2025-03-11 14:03:51,095 - INFO - Candidate link: https://www.baseball-reference.com/players/k/keirsda01.shtml
+2025-03-11 14:03:51,095 - INFO - Candidate ID keirsda01 does not match expected substring 'jr.' for DaShawn Keirsey Jr.
+2025-03-11 14:03:51,096 - INFO - Candidate link: https://www.baseball-reference.com/players/news.fcgi?id=keirsda01
+2025-03-11 14:03:51,096 - INFO - Candidate link: https://www.baseball-reference.com/players/news.fcgi?id=keirsda01
+2025-03-11 14:03:51,096 - INFO - Candidate link: https://www.baseball-reference.com/players/news.fcgi?id=keirsda01
+2025-03-11 14:03:51,096 - INFO - Candidate link: https://www.baseball-reference.com/players/news.fcgi?id=keirsda01
+2025-03-11 14:03:51,097 - INFO - Candidate link: https://www.baseball-reference.com/players/news.fcgi?id=keirsda01&rss=1
+2025-03-11 14:03:51,097 - INFO - Candidate link: https://www.baseball-reference.com/players/news.fcgi?id=keirsda01&rss=1
+2025-03-11 14:03:51,097 - INFO - Candidate link: https://www.baseball-reference.com/players/news.fcgi?id=keirsda01&rss=1
+2025-03-11 14:03:51,097 - INFO - Candidate link: https://www.baseball-reference.com/players/news.fcgi?id=keirsda01&rss=1
+2025-03-11 14:03:51,097 - INFO - Candidate link: https://aws.baseball-reference.com/players/b/buxtoby01.shtml
+2025-03-11 14:03:51,097 - INFO - Candidate ID buxtoby01 does not match expected substring 'jr.' for DaShawn Keirsey Jr.
+2025-03-11 14:03:51,097 - INFO - Candidate link: https://aws.baseball-reference.com/players/b/buxtoby01.shtml
+2025-03-11 14:03:51,098 - INFO - Candidate ID buxtoby01 does not match expected substring 'jr.' for DaShawn Keirsey Jr.
+2025-03-11 14:03:51,098 - INFO - Candidate link: https://aws.baseball-reference.com/players/b/buxtoby01.shtml
+2025-03-11 14:03:51,098 - INFO - Candidate ID buxtoby01 does not match expected substring 'jr.' for DaShawn Keirsey Jr.
+2025-03-11 14:03:51,099 - INFO - Candidate link: https://aws.baseball-reference.com/players/b/buxtoby01.shtml
+2025-03-11 14:03:51,099 - INFO - Candidate ID buxtoby01 does not match expected substring 'jr.' for DaShawn Keirsey Jr.
+2025-03-11 14:03:51,099 - INFO - Candidate link: https://www.baseball-reference.com/players/w/woodssi01.shtml
+2025-03-11 14:03:51,099 - INFO - Candidate ID woodssi01 does not match expected substring 'jr.' for DaShawn Keirsey Jr.
+2025-03-11 14:03:51,100 - INFO - Candidate link: https://www.baseball-reference.com/players/w/woodssi01.shtml
+2025-03-11 14:03:51,100 - INFO - Candidate ID woodssi01 does not match expected substring 'jr.' for DaShawn Keirsey Jr.
+2025-03-11 14:03:51,100 - INFO - Candidate link: https://www.baseball-reference.com/players/w/woodssi01.shtml
+2025-03-11 14:03:51,100 - INFO - Candidate ID woodssi01 does not match expected substring 'jr.' for DaShawn Keirsey Jr.
+2025-03-11 14:03:51,100 - INFO - Candidate link: https://www.baseball-reference.com/players/w/woodssi01.shtml
+2025-03-11 14:03:51,100 - INFO - Candidate ID woodssi01 does not match expected substring 'jr.' for DaShawn Keirsey Jr.
+2025-03-11 14:03:51,100 - INFO - Candidate link: https://www.baseball-reference.com/players/f/fundeko01.shtml
+2025-03-11 14:03:51,101 - INFO - Candidate ID fundeko01 does not match expected substring 'jr.' for DaShawn Keirsey Jr.
+2025-03-11 14:03:51,101 - INFO - Candidate link: https://www.baseball-reference.com/players/f/fundeko01.shtml
+2025-03-11 14:03:51,101 - INFO - Candidate ID fundeko01 does not match expected substring 'jr.' for DaShawn Keirsey Jr.
+2025-03-11 14:03:51,101 - INFO - Candidate link: https://www.baseball-reference.com/players/f/fundeko01.shtml
+2025-03-11 14:03:51,102 - INFO - Candidate ID fundeko01 does not match expected substring 'jr.' for DaShawn Keirsey Jr.
+2025-03-11 14:03:51,102 - INFO - Candidate link: https://www.baseball-reference.com/players/f/fundeko01.shtml
+2025-03-11 14:03:51,103 - INFO - Candidate ID fundeko01 does not match expected substring 'jr.' for DaShawn Keirsey Jr.
+2025-03-11 14:03:51,103 - WARNING - No valid Baseball Reference ID found for DaShawn Keirsey Jr. (MIN)
+2025-03-11 14:03:51,106 - INFO - Waiting for 2.9 seconds before next request
+2025-03-11 14:03:53,987 - WARNING - Line 2: Could not find Baseball Reference ID for 'DaShawn Keirsey Jr. (MIN)'
+2025-03-11 14:03:53,987 - INFO - Searching for: Justin Hagenman (NYM)
+2025-03-11 14:03:53,988 - INFO - Search URL: https://html.duckduckgo.com/html/?q=Justin%20Hagenman%20NYM%20site%3Abaseball-reference.com/players
+2025-03-11 14:03:55,289 - INFO - Found 42 links in search results
+2025-03-11 14:03:55,289 - INFO - Candidate link: https://www.baseball-reference.com/players/s/sheffju01.shtml
+2025-03-11 14:03:55,290 - INFO - Candidate ID sheffju01 does not match expected substring 'hagen' for Justin Hagenman
+2025-03-11 14:03:55,290 - INFO - Candidate link: https://www.baseball-reference.com/players/s/sheffju01.shtml
+2025-03-11 14:03:55,290 - INFO - Candidate ID sheffju01 does not match expected substring 'hagen' for Justin Hagenman
+2025-03-11 14:03:55,291 - INFO - Candidate link: https://www.baseball-reference.com/players/s/sheffju01.shtml
+2025-03-11 14:03:55,291 - INFO - Candidate ID sheffju01 does not match expected substring 'hagen' for Justin Hagenman
+2025-03-11 14:03:55,292 - INFO - Candidate link: https://www.baseball-reference.com/players/s/sheffju01.shtml
+2025-03-11 14:03:55,292 - INFO - Candidate ID sheffju01 does not match expected substring 'hagen' for Justin Hagenman
+2025-03-11 14:03:55,292 - INFO - Candidate link: https://www.baseball-reference.com/players/f/familje01.shtml
+2025-03-11 14:03:55,292 - INFO - Candidate ID familje01 does not match expected substring 'hagen' for Justin Hagenman
+2025-03-11 14:03:55,292 - INFO - Candidate link: https://www.baseball-reference.com/players/f/familje01.shtml
+2025-03-11 14:03:55,293 - INFO - Candidate ID familje01 does not match expected substring 'hagen' for Justin Hagenman
+2025-03-11 14:03:55,293 - INFO - Candidate link: https://www.baseball-reference.com/players/f/familje01.shtml
+2025-03-11 14:03:55,293 - INFO - Candidate ID familje01 does not match expected substring 'hagen' for Justin Hagenman
+2025-03-11 14:03:55,293 - INFO - Candidate link: https://www.baseball-reference.com/players/f/familje01.shtml
+2025-03-11 14:03:55,293 - INFO - Candidate ID familje01 does not match expected substring 'hagen' for Justin Hagenman
+2025-03-11 14:03:55,293 - INFO - Candidate link: https://www.baseball-reference.com/players/m/malloju02.shtml
+2025-03-11 14:03:55,293 - INFO - Candidate ID malloju02 does not match expected substring 'hagen' for Justin Hagenman
+2025-03-11 14:03:55,293 - INFO - Candidate link: https://www.baseball-reference.com/players/m/malloju02.shtml
+2025-03-11 14:03:55,293 - INFO - Candidate ID malloju02 does not match expected substring 'hagen' for Justin Hagenman
+2025-03-11 14:03:55,294 - INFO - Candidate link: https://www.baseball-reference.com/players/m/malloju02.shtml
+2025-03-11 14:03:55,294 - INFO - Candidate ID malloju02 does not match expected substring 'hagen' for Justin Hagenman
+2025-03-11 14:03:55,294 - INFO - Candidate link: https://www.baseball-reference.com/players/m/malloju02.shtml
+2025-03-11 14:03:55,294 - INFO - Candidate ID malloju02 does not match expected substring 'hagen' for Justin Hagenman
+2025-03-11 14:03:55,294 - INFO - Candidate link: https://www.baseball-reference.com/players/a/azocajo01.shtml
+2025-03-11 14:03:55,294 - INFO - Candidate ID azocajo01 does not match expected substring 'hagen' for Justin Hagenman
+2025-03-11 14:03:55,295 - INFO - Candidate link: https://www.baseball-reference.com/players/a/azocajo01.shtml
+2025-03-11 14:03:55,295 - INFO - Candidate ID azocajo01 does not match expected substring 'hagen' for Justin Hagenman
+2025-03-11 14:03:55,296 - INFO - Candidate link: https://www.baseball-reference.com/players/a/azocajo01.shtml
+2025-03-11 14:03:55,296 - INFO - Candidate ID azocajo01 does not match expected substring 'hagen' for Justin Hagenman
+2025-03-11 14:03:55,296 - INFO - Candidate link: https://www.baseball-reference.com/players/a/azocajo01.shtml
+2025-03-11 14:03:55,296 - INFO - Candidate ID azocajo01 does not match expected substring 'hagen' for Justin Hagenman
+2025-03-11 14:03:55,297 - INFO - Candidate link: https://www.baseball-reference.com/players/z/zuberty01.shtml
+2025-03-11 14:03:55,297 - INFO - Candidate ID zuberty01 does not match expected substring 'hagen' for Justin Hagenman
+2025-03-11 14:03:55,297 - INFO - Candidate link: https://www.baseball-reference.com/players/z/zuberty01.shtml
+2025-03-11 14:03:55,298 - INFO - Candidate ID zuberty01 does not match expected substring 'hagen' for Justin Hagenman
+2025-03-11 14:03:55,298 - INFO - Candidate link: https://www.baseball-reference.com/players/z/zuberty01.shtml
+2025-03-11 14:03:55,299 - INFO - Candidate ID zuberty01 does not match expected substring 'hagen' for Justin Hagenman
+2025-03-11 14:03:55,299 - INFO - Candidate link: https://www.baseball-reference.com/players/z/zuberty01.shtml
+2025-03-11 14:03:55,300 - INFO - Candidate ID zuberty01 does not match expected substring 'hagen' for Justin Hagenman
+2025-03-11 14:03:55,300 - INFO - Candidate link: https://www.baseball-reference.com/players/u/uptonju01.shtml
+2025-03-11 14:03:55,301 - INFO - Candidate ID uptonju01 does not match expected substring 'hagen' for Justin Hagenman
+2025-03-11 14:03:55,301 - INFO - Candidate link: https://www.baseball-reference.com/players/u/uptonju01.shtml
+2025-03-11 14:03:55,301 - INFO - Candidate ID uptonju01 does not match expected substring 'hagen' for Justin Hagenman
+2025-03-11 14:03:55,302 - INFO - Candidate link: https://www.baseball-reference.com/players/u/uptonju01.shtml
+2025-03-11 14:03:55,302 - INFO - Candidate ID uptonju01 does not match expected substring 'hagen' for Justin Hagenman
+2025-03-11 14:03:55,303 - INFO - Candidate link: https://www.baseball-reference.com/players/u/uptonju01.shtml
+2025-03-11 14:03:55,303 - INFO - Candidate ID uptonju01 does not match expected substring 'hagen' for Justin Hagenman
+2025-03-11 14:03:55,303 - WARNING - No valid Baseball Reference ID found for Justin Hagenman (NYM)
+2025-03-11 14:03:55,306 - INFO - Waiting for 2.9 seconds before next request
+2025-03-11 14:03:58,164 - WARNING - Line 3: Could not find Baseball Reference ID for 'Justin Hagenman (NYM)'
+2025-03-11 14:03:58,164 - INFO - Searching for: Jared Young (NYM)
+2025-03-11 14:03:58,166 - INFO - Search URL: https://html.duckduckgo.com/html/?q=Jared%20Young%20NYM%20site%3Abaseball-reference.com/players
+2025-03-11 14:03:59,742 - INFO - Found 42 links in search results
+2025-03-11 14:03:59,743 - INFO - Candidate link: https://www.baseball-reference.com/players/y/youngja02.shtml
+2025-03-11 14:03:59,743 - INFO - Found major league ID: youngja02 for Jared Young
+2025-03-11 14:03:59,746 - INFO - Waiting for 4.7 seconds before next request
+2025-03-11 14:04:04,985 - INFO - Successfully added Jared Young (youngja02) to database
+2025-03-11 14:04:04,987 - INFO - Added to database: Jared Young (NYM) with ID youngja02
+2025-03-11 14:04:05,989 - INFO - Searching for: Chris Murphy (BOS)
+2025-03-11 14:04:05,989 - INFO - Search URL: https://html.duckduckgo.com/html/?q=Chris%20Murphy%20BOS%20site%3Abaseball-reference.com/players
+2025-03-11 14:04:07,397 - INFO - Found 42 links in search results
+2025-03-11 14:04:07,397 - INFO - Candidate link: https://www.baseball-reference.com/players/m/murphch01.shtml
+2025-03-11 14:04:07,398 - INFO - Found major league ID: murphch01 for Chris Murphy
+2025-03-11 14:04:07,400 - INFO - Waiting for 4.7 seconds before next request
+2025-03-11 14:04:12,751 - INFO - Successfully added Chris Murphy (murphch01) to database
+2025-03-11 14:04:12,753 - INFO - Added to database: Chris Murphy (BOS) with ID murphch01
+2025-03-11 14:04:13,755 - INFO - Searching for: Ronny Mauricio (NYM)
+2025-03-11 14:04:13,755 - INFO - Search URL: https://html.duckduckgo.com/html/?q=Ronny%20Mauricio%20NYM%20site%3Abaseball-reference.com/players
+2025-03-11 14:04:15,197 - INFO - Found 42 links in search results
+2025-03-11 14:04:15,203 - INFO - Candidate link: https://www.baseball-reference.com/players/m/mauriro01.shtml
+2025-03-11 14:04:15,204 - INFO - Found major league ID: mauriro01 for Ronny Mauricio
+2025-03-11 14:04:15,206 - INFO - Waiting for 3.5 seconds before next request
+2025-03-11 14:04:19,383 - INFO - Successfully added Ronny Mauricio (mauriro01) to database
+2025-03-11 14:04:19,386 - INFO - Added to database: Ronny Mauricio (NYM) with ID mauriro01
+2025-03-11 14:04:20,387 - INFO - Searching for: Domingo Gonzalez (ATL)
+2025-03-11 14:04:20,387 - INFO - Search URL: https://html.duckduckgo.com/html/?q=Domingo%20Gonzalez%20ATL%20site%3Abaseball-reference.com/players
+2025-03-11 14:04:21,251 - INFO - Found 1 links in search results
+2025-03-11 14:04:21,252 - WARNING - No valid Baseball Reference ID found for Domingo Gonzalez (ATL)
+2025-03-11 14:04:21,261 - INFO - Waiting for 3.5 seconds before next request
+2025-03-11 14:04:24,750 - WARNING - Line 7: Could not find Baseball Reference ID for 'Domingo Gonzalez (ATL)'
+2025-03-11 14:04:24,751 - INFO - Searching for: Devin Sweet (PHI)
+2025-03-11 14:04:24,751 - INFO - Search URL: https://html.duckduckgo.com/html/?q=Devin%20Sweet%20PHI%20site%3Abaseball-reference.com/players
+2025-03-11 14:04:25,627 - INFO - Found 1 links in search results
+2025-03-11 14:04:25,627 - WARNING - No valid Baseball Reference ID found for Devin Sweet (PHI)
+2025-03-11 14:04:25,631 - INFO - Waiting for 2.1 seconds before next request
+2025-03-11 14:04:27,743 - WARNING - Line 8: Could not find Baseball Reference ID for 'Devin Sweet (PHI)'
+2025-03-11 14:04:27,745 - INFO - Searching for: Diego Cartaya (MIN)
+2025-03-11 14:04:27,745 - INFO - Search URL: https://html.duckduckgo.com/html/?q=Diego%20Cartaya%20MIN%20site%3Abaseball-reference.com/players
+2025-03-11 14:04:28,512 - INFO - Found 1 links in search results
+2025-03-11 14:04:28,513 - WARNING - No valid Baseball Reference ID found for Diego Cartaya (MIN)
+2025-03-11 14:04:28,515 - INFO - Waiting for 3.4 seconds before next request
+2025-03-11 14:04:31,927 - WARNING - Line 9: Could not find Baseball Reference ID for 'Diego Cartaya (MIN)'
+2025-03-11 14:04:31,928 - INFO - Searching for: Christian Cairo (ATL)
+2025-03-11 14:04:31,928 - INFO - Search URL: https://html.duckduckgo.com/html/?q=Christian%20Cairo%20ATL%20site%3Abaseball-reference.com/players
+2025-03-11 14:04:32,622 - INFO - Found 1 links in search results
+2025-03-11 14:04:32,623 - WARNING - No valid Baseball Reference ID found for Christian Cairo (ATL)
+2025-03-11 14:04:32,624 - INFO - Waiting for 4.4 seconds before next request
+2025-03-11 14:04:36,700 - INFO - Process interrupted by user. Returning current results.
+2025-03-11 14:04:36,701 - INFO - Processing complete!
+2025-03-11 14:04:36,701 - INFO - Summary: 3 added, 6 skipped, 0 errors
+2025-03-11 14:04:36,701 - INFO - Last successful player: Ronny Mauricio (NYM) - mauriro01

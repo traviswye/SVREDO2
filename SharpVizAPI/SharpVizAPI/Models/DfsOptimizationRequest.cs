@@ -36,15 +36,15 @@ public class OptimizedPlayer
     public string OptimalPosition { get; set; } // Added property for stack tracking
 }
 
-// Update the DfsOptimizationResponse class to include stack information
-public class DfsOptimizationResponse
-{
-    public bool IsSuccessful { get; set; }
-    public List<OptimizedPlayer> Players { get; set; }
-    public int TotalSalary { get; set; }
-    public string Message { get; set; }
-    public Dictionary<string, object> StackInfo { get; set; } // Added property for stack information
-    public Dictionary<string, int> TeamBreakdown { get; set; } // Added property for team breakdown
-}
+    // Update the DfsOptimizationResponse class to include stack information
+    public class DfsOptimizationResponse
+    {
+        public bool IsSuccessful { get; set; }
+        public List<OptimizedPlayer> Players { get; set; }
+        public int TotalSalary { get; set; }
+        public string Message { get; set; }
+        public Dictionary<string, object> StackInfo { get; set; } // Added property for stack information
+        public Dictionary<string, int> TeamBreakdown { get; set; } // Added property for team breakdown
+    }
 
 }

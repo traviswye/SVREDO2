@@ -28,6 +28,8 @@ namespace SharpVizApi.Services.Optimization
         public List<OptimizedPlayer> Players { get; set; } = new List<OptimizedPlayer>();
         public int TotalSalary { get; set; }
         public decimal TotalValue { get; set; } // Value according to the optimization criterion
+        public Dictionary<string, object> StackInfo { get; set; } = new Dictionary<string, object>(); // Added for stack info
+        public Dictionary<string, int> TeamBreakdown { get; set; } = new Dictionary<string, int>(); // Added for team breakdown
     }
 
     // Interface for all lineup optimizers

@@ -48,7 +48,9 @@ namespace SharpVizAPI.Services
                     IsSuccessful = result.IsSuccessful,
                     Message = result.Message,
                     Players = result.Players,
-                    TotalSalary = result.TotalSalary
+                    TotalSalary = result.TotalSalary,
+                    StackInfo = result.StackInfo,
+                    TeamBreakdown = result.TeamBreakdown
                 };
             }
             catch (Exception ex)

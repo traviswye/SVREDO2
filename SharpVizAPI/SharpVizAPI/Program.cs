@@ -4,6 +4,7 @@ using SharpVizAPI.Models; // Directly import the GamePreview class
 using SharpVizAPI.Data; // Directly import the GamePreview class
 using SharpVizAPI.Services;
 using SharpVizApi.Services;
+using SharpVizApi.Services.Optimization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,12 +45,22 @@ builder.Services.AddScoped<LineupService>();
 builder.Services.AddScoped<EvaluationService>();
 builder.Services.AddScoped<NormalizationService>();
 builder.Services.AddScoped<PlayerIDMappingService>();
+
+
+
 builder.Services.AddScoped<BlendingService>();
 builder.Services.AddScoped<IClassificationService, ClassificationService>();
 builder.Services.AddScoped<BJmodelingService>();
-builder.Services.AddScoped<IDfsOptimizationService, DfsOptimizationService>();
+//builder.Services.AddScoped<IDfsOptimizationServiceOLD, DfsOptimizationService>();
 builder.Services.AddScoped<IMLBStrategyService, MLBStrategyService>();
-builder.Services.AddScoped<BullpenAnalysisService>(); 
+builder.Services.AddScoped<BullpenAnalysisService>();
+
+
+builder.Services.AddScoped<MLBLineupOptimizer>();
+//builder.Services.AddScoped<NBALineupOptimizer>();
+//builder.Services.AddScoped<NFLLineupOptimizer>();
+builder.Services.AddScoped<LineupOptimizerFactory>();
+builder.Services.AddScoped<IDfsOptimizationService, DfsOptimizationService>();
 
 var app = builder.Build();
 

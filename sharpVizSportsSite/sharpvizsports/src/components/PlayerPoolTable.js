@@ -21,7 +21,7 @@ const PlayerPoolTable = ({
     // Predefined position tabs for different sports
     const sportPositionTabs = {
         NBA: ['ALL', 'PG', 'SG', 'SF', 'PF', 'C', 'G', 'F', 'UTIL'],
-        MLB: ['ALL', 'SP', 'P', 'C', '1B', '2B', '3B', 'SS', 'OF']
+        MLB: ['ALL', 'SP', 'RP', 'C', '1B', '2B', '3B', 'SS', 'OF']
     };
 
     const sportOptimizationConfigs = {
@@ -53,7 +53,7 @@ const PlayerPoolTable = ({
             MLB: {
                 positionGroups: {
                     SP: ['SP', 'P'],
-                    P: ['P'],
+                    P: ['RP'],
                     C: ['C'],
                     '1B': ['1B'],
                     '2B': ['2B'],

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SharpVizApi.Models;
-using SharpVizApi.Services;
+using SharpVizApi.Services.Optimization;
+using SharpVizAPI.Services;
 
 namespace SharpVizApi.Controllers
 {

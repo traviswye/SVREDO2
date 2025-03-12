@@ -19,12 +19,16 @@ const DFSOptimizer = () => {
   const [savedStrategy, setSavedStrategy] = useState(null);
   // State to track the DK IDs corresponding to selected pitcher BBRef IDs
   const [selectedPitcherDkIds, setSelectedPitcherDkIds] = useState([]);
+  const [allPlayers, setAllPlayers] = useState([]);
 
   const handleAddToWatchList = (player) => {
     const isDuplicate = watchList.some(p => p.playerDkId === player.playerDkId);
     if (!isDuplicate) {
       setWatchList(prevWatchList => [...prevWatchList, player]);
     }
+  };
+  const handlePlayersLoaded = (playerData) => {
+    setAllPlayers(playerData);
   };
 
   const handleAddToDraft = (player) => {
@@ -46,8 +50,19 @@ const DFSOptimizer = () => {
         };
         return (positionOrder[a.optimalPosition] || 99) - (positionOrder[b.optimalPosition] || 99);
       });
+      // Find full player data from original player pool if game info is missing
+      const playersWithFullData = sortedPlayers.map(player => {
+        // If game property is missing, try to find it from the player pool
+        if (!player.game) {
+          const fullPlayerData = allPlayers.find(p => p.playerDkId === player.playerDkId);
+          if (fullPlayerData) {
+            return { ...player, game: fullPlayerData.game };
+          }
+        }
+        return player;
+      });
 
-      setDraftedPlayers(sortedPlayers);
+      setDraftedPlayers(playersWithFullData);
     }
   };
 
@@ -135,6 +150,8 @@ const DFSOptimizer = () => {
                     onAddToWatchList={handleAddToWatchList}
                     onAddToDraft={handleAddToDraft}
                     onOptimizationResults={handleOptimizationResults}
+                    onPlayersLoaded={handlePlayersLoaded}
+                    draftedPlayers={draftedPlayers}
                     prepareOptimizationPayload={(watchlistIds, draftGroupId) => {
                       // Default payload structure
                       const basePayload = {

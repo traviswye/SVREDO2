@@ -8,7 +8,9 @@ const PlayerPoolTable = ({
     onAddToWatchList,
     onAddToDraft,
     onOptimizationResults,
-    prepareOptimizationPayload
+    prepareOptimizationPayload,
+    onPlayersLoaded,
+    draftedPlayers
 }) => {
     const [players, setPlayers] = useState([]);
     const [activeTab, setActiveTab] = useState('ALL');
@@ -17,6 +19,7 @@ const PlayerPoolTable = ({
     const [searchQuery, setSearchQuery] = useState('');
     const [loading, setLoading] = useState(false);
     const [notification, setNotification] = useState(null);
+    const [draftedPlayerIds, setDraftedPlayerIds] = useState(new Set());
 
     // Predefined position tabs for different sports
     const sportPositionTabs = {
@@ -52,8 +55,9 @@ const PlayerPoolTable = ({
             },
             MLB: {
                 positionGroups: {
-                    SP: ['SP', 'P'],
-                    P: ['RP'],
+                    SP: ['SP'],
+                    RP: ['RP'],
+                    P: ['SP', 'RP'],
                     C: ['C'],
                     '1B': ['1B'],
                     '2B': ['2B'],
@@ -68,8 +72,13 @@ const PlayerPoolTable = ({
         const mapping = positionMappings[sport]?.positionGroups;
         if (!mapping) return [];
 
-        // Split player positions if they have multiple (e.g., 'PG/SF')
+        // Split player positions if they have multiple (e.g., 'SP/RP')
         const playerPositionArray = playerPositions.split('/');
+
+        // For debugging - log player positions for RP players
+        if (playerPositionArray.includes('RP')) {
+            console.log("Found RP player:", playerPositions, playerPositionArray);
+        }
 
         // Find all position groups this player belongs to
         const playerPositionGroups = Object.keys(mapping).filter(group => {
@@ -82,8 +91,22 @@ const PlayerPoolTable = ({
             );
         });
 
+        // More debugging for RP players
+        if (playerPositionArray.includes('RP')) {
+            console.log("RP player groups:", playerPositionGroups);
+        }
+
         return playerPositionGroups;
     };
+
+
+    useEffect(() => {
+        // This prop would need to be passed from the parent component
+        if (draftedPlayers) {
+            const draftedIds = new Set(draftedPlayers.map(player => player.playerDkId));
+            setDraftedPlayerIds(draftedIds);
+        }
+    }, [draftedPlayers]);
 
     useEffect(() => {
         const fetchPlayers = async () => {
@@ -100,6 +123,9 @@ const PlayerPoolTable = ({
                 }));
 
                 setPlayers(enhancedPlayers);
+                if (onPlayersLoaded) {
+                    onPlayersLoaded(enhancedPlayers);
+                }
 
                 // Filter the watchList to only include players from the current slate
                 if (watchList.length > 0) {
@@ -142,6 +168,18 @@ const PlayerPoolTable = ({
             // Notify parent component if provided
             if (onAddToWatchList) {
                 onAddToWatchList(player);
+            }
+        }
+    };
+    const handleAddToDraft = (player) => {
+        // Only draft if not already drafted
+        if (!draftedPlayerIds.has(player.playerDkId)) {
+            // Update the local tracking set
+            setDraftedPlayerIds(prev => new Set([...prev, player.playerDkId]));
+
+            // Notify parent component
+            if (onAddToDraft) {
+                onAddToDraft(player);
             }
         }
     };
@@ -293,8 +331,9 @@ const PlayerPoolTable = ({
                                         onClick={() => onAddToDraft(player)}
                                         className="draft-button"
                                         title="Draft to Lineup"
+                                        disabled={draftedPlayerIds.has(player.playerDkId)}
                                     >
-                                        Draft
+                                        {draftedPlayerIds.has(player.playerDkId) ? 'Drafted' : 'Draft'}
                                     </button>
                                 </div>
                             </td>

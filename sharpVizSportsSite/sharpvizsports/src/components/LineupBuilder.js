@@ -20,7 +20,8 @@ const LineupBuilder = ({ sport, draftedPlayers, onResetLineup }) => {
             UTIL: ['PG', 'SG', 'SF', 'PF', 'C']
         },
         MLB: {
-            // MLB specific mappings if needed
+            // MLB specific mappings for composite positions
+            P: ['SP', 'RP']  // Both SP and RP can fill P slots
         }
     };
 
@@ -51,6 +52,7 @@ const LineupBuilder = ({ sport, draftedPlayers, onResetLineup }) => {
         })));
     }, [sport]);
 
+    // In LineupBuilder.js, update the useEffect
     useEffect(() => {
         const emptyLineup = getPositionsForSport(sport).map(pos => ({
             position: pos,
@@ -60,11 +62,13 @@ const LineupBuilder = ({ sport, draftedPlayers, onResetLineup }) => {
         if (draftedPlayers.length > 0) {
             const updatedLineup = [...emptyLineup];
             draftedPlayers.forEach(player => {
-                // Use assignedPosition from optimization response
-                const optimalPosition = player.assignedPosition || player.optimalPosition || player.position.split('/')[0];
+                // Split the position string to get all positions the player can play
+                const playerPositions = player.position.split('/');
+                // Use assignedPosition from optimization response if available
+                const optimalPosition = player.assignedPosition || player.optimalPosition || playerPositions[0];
                 let placed = false;
 
-                // First try to place in optimal position
+                // First try to place in optimal/assigned position
                 for (let i = 0; i < updatedLineup.length; i++) {
                     if (!updatedLineup[i].player && updatedLineup[i].position === optimalPosition) {
                         updatedLineup[i].player = player;
@@ -73,32 +77,67 @@ const LineupBuilder = ({ sport, draftedPlayers, onResetLineup }) => {
                     }
                 }
 
-                // If not placed, check composite positions (G, F, UTIL)
+                // If not placed, try all positions the player can play
+                if (!placed) {
+                    for (const pos of playerPositions) {
+                        for (let i = 0; i < updatedLineup.length; i++) {
+                            if (!updatedLineup[i].player && updatedLineup[i].position === pos) {
+                                updatedLineup[i].player = player;
+                                placed = true;
+                                break;
+                            }
+                        }
+                        if (placed) break;
+                    }
+                }
+
+                // In MLB, handle special positions like P for pitchers (SP/RP)
+                if (!placed && sport === 'MLB') {
+                    if ((playerPositions.includes('SP') || playerPositions.includes('RP')) &&
+                        updatedLineup.some(slot => !slot.player && slot.position === 'P')) {
+                        // Find first empty P slot
+                        const emptyPSlot = updatedLineup.findIndex(slot => !slot.player && slot.position === 'P');
+                        if (emptyPSlot !== -1) {
+                            updatedLineup[emptyPSlot].player = player;
+                            placed = true;
+                        }
+                    }
+                }
+
+                // For MLB, handle OF positions specially
+                if (!placed && sport === 'MLB' && playerPositions.includes('OF')) {
+                    const emptyOFSlot = updatedLineup.findIndex(slot => !slot.player && slot.position === 'OF');
+                    if (emptyOFSlot !== -1) {
+                        updatedLineup[emptyOFSlot].player = player;
+                        placed = true;
+                    }
+                }
+
+                // If still not placed, check composite positions (G, F, UTIL)
                 if (!placed) {
                     for (let i = 0; i < updatedLineup.length; i++) {
                         if (!updatedLineup[i].player) {
                             const lineupPos = updatedLineup[i].position;
-                            const playerPositions = player.position.split('/');
 
                             // Check if player can fill G position
-                            if (lineupPos === 'G' && playerPositions.some(pos =>
-                                positionMappings[sport]?.G?.includes(pos))) {
+                            if (lineupPos === 'G' &&
+                                playerPositions.some(pos => positionMappings[sport]?.G?.includes(pos))) {
                                 updatedLineup[i].player = player;
                                 placed = true;
                                 break;
                             }
 
                             // Check if player can fill F position
-                            if (lineupPos === 'F' && playerPositions.some(pos =>
-                                positionMappings[sport]?.F?.includes(pos))) {
+                            if (lineupPos === 'F' &&
+                                playerPositions.some(pos => positionMappings[sport]?.F?.includes(pos))) {
                                 updatedLineup[i].player = player;
                                 placed = true;
                                 break;
                             }
 
                             // Check if player can fill UTIL position
-                            if (lineupPos === 'UTIL' && playerPositions.some(pos =>
-                                positionMappings[sport]?.UTIL?.includes(pos))) {
+                            if (lineupPos === 'UTIL' &&
+                                playerPositions.some(pos => positionMappings[sport]?.UTIL?.includes(pos))) {
                                 updatedLineup[i].player = player;
                                 placed = true;
                                 break;
@@ -113,7 +152,7 @@ const LineupBuilder = ({ sport, draftedPlayers, onResetLineup }) => {
             // If there are no drafted players, set an empty lineup
             setLineup(emptyLineup);
         }
-    }, [draftedPlayers, sport]);
+    }, [draftedPlayers, sport, positionMappings]);
 
     useEffect(() => {
         // Calculate totals when lineup changes

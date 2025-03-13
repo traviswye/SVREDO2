@@ -7,6 +7,7 @@ const SlateDropdown = ({ onSlateSelect }) => {
     const [selectedSlate, setSelectedSlate] = useState(null);
     const [selectedDate, setSelectedDate] = useState(formatDate(new Date()));
     const [loading, setLoading] = useState(false);
+    const [displayDate, setDisplayDate] = useState(selectedDate); // Add separate state for the displayed date
 
     // Format date as YYYY-MM-DD
     function formatDate(date) {
@@ -16,31 +17,57 @@ const SlateDropdown = ({ onSlateSelect }) => {
         return `${year}-${month}-${day}`;
     }
 
+    // Parse a date string safely
+    function parseDate(dateString) {
+        // Create a date at noon to avoid timezone issues
+        const parts = dateString.split('-');
+        if (parts.length !== 3) return new Date(); // Default to today if format is wrong
+
+        return new Date(
+            parseInt(parts[0], 10),
+            parseInt(parts[1], 10) - 1, // Month is 0-indexed in JS
+            parseInt(parts[2], 10),
+            12, 0, 0 // Noon to avoid DST issues
+        );
+    }
+
     useEffect(() => {
-        const fetchSlates = async () => {
-            setLoading(true);
-            try {
-                const response = await axios.get(`https://localhost:44346/api/DKPoolsMap/date/${selectedDate}`);
-                const formattedSlates = response.data.map(slate => ({
-                    ...slate,
-                    displayText: `${slate.sport} - ${slate.startTime} - ${slate.totalGames} Games`
-                }));
-                setSlates(formattedSlates);
-
-                // If there are slates and none is selected, select the first one
-                if (formattedSlates.length > 0 && !selectedSlate) {
-                    setSelectedSlate(formattedSlates[0]);
-                    onSlateSelect(formattedSlates[0]);
-                }
-            } catch (error) {
-                console.error('Error fetching slates:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
         fetchSlates();
-    }, [selectedDate, onSlateSelect]);
+    }, [selectedDate]);
+
+    const fetchSlates = async () => {
+        setLoading(true);
+        try {
+            console.log(`Fetching slates for date: ${selectedDate}`);
+            const response = await axios.get(`https://localhost:44346/api/DKPoolsMap/date/${selectedDate}`);
+
+            const formattedSlates = response.data.map(slate => ({
+                ...slate,
+                displayText: `${slate.sport} - ${slate.startTime} - ${slate.totalGames || 0} Games`
+            }));
+
+            setSlates(formattedSlates);
+
+            // If there are slates and none is selected, select the first one
+            if (formattedSlates.length > 0 && !selectedSlate) {
+                setSelectedSlate(formattedSlates[0]);
+                onSlateSelect(formattedSlates[0]);
+            } else if (formattedSlates.length === 0) {
+                // Clear selection if no slates available
+                setSelectedSlate(null);
+                onSlateSelect(null);
+            }
+
+            // Update the display date to match the selected date
+            setDisplayDate(selectedDate);
+        } catch (error) {
+            console.error('Error fetching slates:', error);
+            // Still update display date even if there's an error
+            setDisplayDate(selectedDate);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     const handleSlateChange = (event) => {
         const selectedId = event.target.value;
@@ -50,16 +77,22 @@ const SlateDropdown = ({ onSlateSelect }) => {
     };
 
     const handleDateChange = (event) => {
-        setSelectedDate(event.target.value);
-        setSelectedSlate(null); // Reset selected slate when date changes
+        const newDate = event.target.value;
+        console.log(`Date changed from input: ${selectedDate} -> ${newDate}`);
+        setSelectedDate(newDate);
+        setSelectedSlate(null);
         onSlateSelect(null);
     };
 
     // Adjust date by days (positive or negative)
     const adjustDate = (days) => {
-        const currentDate = new Date(selectedDate);
+        const currentDate = parseDate(selectedDate);
         currentDate.setDate(currentDate.getDate() + days);
-        setSelectedDate(formatDate(currentDate));
+        const newDate = formatDate(currentDate);
+
+        console.log(`Date adjusted by ${days} days: ${selectedDate} -> ${newDate}`);
+
+        setSelectedDate(newDate);
         setSelectedSlate(null);
         onSlateSelect(null);
     };
@@ -76,7 +109,7 @@ const SlateDropdown = ({ onSlateSelect }) => {
                 </button>
                 <input
                     type="date"
-                    value={selectedDate}
+                    value={displayDate} // Use displayDate for the input
                     onChange={handleDateChange}
                     className="date-input"
                 />

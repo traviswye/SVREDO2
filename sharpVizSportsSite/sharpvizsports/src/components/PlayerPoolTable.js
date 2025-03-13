@@ -21,6 +21,12 @@ const PlayerPoolTable = ({
     const [notification, setNotification] = useState(null);
     const [draftedPlayerIds, setDraftedPlayerIds] = useState(new Set());
 
+    // Initialize with salary as default sort column (descending)
+    const [sortConfig, setSortConfig] = useState({
+        key: 'salary',
+        direction: 'desc'
+    });
+
     // Predefined position tabs for different sports
     const sportPositionTabs = {
         NBA: ['ALL', 'PG', 'SG', 'SF', 'PF', 'C', 'G', 'F', 'UTIL'],
@@ -37,6 +43,9 @@ const PlayerPoolTable = ({
             salaryCap: 50000
         }
     };
+
+    // Define which columns should default to descending order when first clicked
+    const descendingByDefault = ['salary', 'dKppg'];
 
     // Utility function to map positions
     const getPositionCategories = (sport, playerPositions) => {
@@ -75,11 +84,6 @@ const PlayerPoolTable = ({
         // Split player positions if they have multiple (e.g., 'SP/RP')
         const playerPositionArray = playerPositions.split('/');
 
-        // For debugging - log player positions for RP players
-        if (playerPositionArray.includes('RP')) {
-            console.log("Found RP player:", playerPositions, playerPositionArray);
-        }
-
         // Find all position groups this player belongs to
         const playerPositionGroups = Object.keys(mapping).filter(group => {
             // UTIL/ALL is always included
@@ -91,14 +95,8 @@ const PlayerPoolTable = ({
             );
         });
 
-        // More debugging for RP players
-        if (playerPositionArray.includes('RP')) {
-            console.log("RP player groups:", playerPositionGroups);
-        }
-
         return playerPositionGroups;
     };
-
 
     useEffect(() => {
         // This prop would need to be passed from the parent component
@@ -171,6 +169,7 @@ const PlayerPoolTable = ({
             }
         }
     };
+
     const handleAddToDraft = (player) => {
         // Only draft if not already drafted
         if (!draftedPlayerIds.has(player.playerDkId)) {
@@ -275,6 +274,71 @@ const PlayerPoolTable = ({
         setSearchQuery(e.target.value);
     };
 
+    // Sort function for table - MODIFIED to default to DESC for numeric columns
+    const requestSort = (key) => {
+        let direction;
+
+        if (sortConfig.key === key) {
+            // If already sorting by this column, toggle direction
+            direction = sortConfig.direction === 'asc' ? 'desc' : 'asc';
+        } else {
+            // For new column, check if it should default to descending
+            direction = descendingByDefault.includes(key) ? 'desc' : 'asc';
+        }
+
+        setSortConfig({ key, direction });
+    };
+
+    // Function to sort the data with secondary sorting by DKPPG
+    const sortedData = (data) => {
+        if (!data || data.length === 0) return [];
+
+        return [...data].sort((a, b) => {
+            // Primary sort by selected column
+            if (sortConfig.key) {
+                // Handle different data types appropriately
+                if (sortConfig.key === 'salary' || sortConfig.key === 'dKppg') {
+                    // Numeric comparison
+                    if (a[sortConfig.key] < b[sortConfig.key]) {
+                        return sortConfig.direction === 'asc' ? -1 : 1;
+                    }
+                    if (a[sortConfig.key] > b[sortConfig.key]) {
+                        return sortConfig.direction === 'asc' ? 1 : -1;
+                    }
+
+                    // If primary sort values are equal, use DKPPG as secondary sort (always descending)
+                    if (sortConfig.key !== 'dKppg') {
+                        // FIXED: Sort by DKPPG in descending order for secondary sort
+                        return (b.dKppg || 0) - (a.dKppg || 0);
+                    }
+
+                    return 0;
+                } else {
+                    // String comparison
+                    const aValue = a[sortConfig.key]?.toString().toLowerCase() || '';
+                    const bValue = b[sortConfig.key]?.toString().toLowerCase() || '';
+
+                    if (aValue < bValue) {
+                        return sortConfig.direction === 'asc' ? -1 : 1;
+                    }
+                    if (aValue > bValue) {
+                        return sortConfig.direction === 'asc' ? 1 : -1;
+                    }
+
+                    // FIXED: Sort by DKPPG in descending order for secondary sort
+                    return (b.dKppg || 0) - (a.dKppg || 0);
+                }
+            }
+            return 0;
+        });
+    };
+
+    // Get the sort direction indicator
+    const getSortDirectionIndicator = (key) => {
+        if (sortConfig.key !== key) return '';
+        return sortConfig.direction === 'asc' ? ' ↑' : ' ↓';
+    };
+
     const filterPlayers = (players, position = 'ALL', query = '') => {
         return players.filter(player => {
             const positionMatch = position === 'ALL' || player.positionGroups.includes(position);
@@ -289,12 +353,13 @@ const PlayerPoolTable = ({
 
     const renderPlayerTable = (filterPosition = 'ALL') => {
         const filteredPlayers = filterPlayers(players, filterPosition, searchQuery);
+        const sortedPlayers = sortedData(filteredPlayers);
 
         if (loading) {
             return <div className="loading-indicator">Loading players...</div>;
         }
 
-        if (filteredPlayers.length === 0) {
+        if (sortedPlayers.length === 0) {
             return <div className="no-players-message">No players found matching your criteria.</div>;
         }
 
@@ -302,16 +367,26 @@ const PlayerPoolTable = ({
             <table className="player-pool-table">
                 <thead>
                     <tr>
-                        <th>Full Name</th>
-                        <th>Position</th>
-                        <th>Salary</th>
-                        <th>Game</th>
-                        <th>DK PPG</th>
+                        <th onClick={() => requestSort('fullName')}>
+                            Full Name{getSortDirectionIndicator('fullName')}
+                        </th>
+                        <th onClick={() => requestSort('position')}>
+                            Position{getSortDirectionIndicator('position')}
+                        </th>
+                        <th onClick={() => requestSort('salary')}>
+                            Salary{getSortDirectionIndicator('salary')}
+                        </th>
+                        <th onClick={() => requestSort('game')}>
+                            Game{getSortDirectionIndicator('game')}
+                        </th>
+                        <th onClick={() => requestSort('dKppg')}>
+                            DK PPG{getSortDirectionIndicator('dKppg')}
+                        </th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {filteredPlayers.map(player => (
+                    {sortedPlayers.map(player => (
                         <tr key={player.id}>
                             <td>{player.fullName}</td>
                             <td>{player.position}</td>
@@ -328,7 +403,7 @@ const PlayerPoolTable = ({
                                         {watchList.some(p => p.playerDkId === player.playerDkId) ? 'Targeted' : 'Target'}
                                     </button>
                                     <button
-                                        onClick={() => onAddToDraft(player)}
+                                        onClick={() => handleAddToDraft(player)}
                                         className="draft-button"
                                         title="Draft to Lineup"
                                         disabled={draftedPlayerIds.has(player.playerDkId)}
@@ -352,6 +427,10 @@ const PlayerPoolTable = ({
         const availablePlayers = watchList.filter(player => availablePlayerIds.has(player.playerDkId));
         const unavailablePlayers = watchList.filter(player => !availablePlayerIds.has(player.playerDkId));
 
+        // Sort the watchlist using the same sorting logic
+        const sortedAvailablePlayers = sortedData(availablePlayers);
+        const sortedUnavailablePlayers = sortedData(unavailablePlayers);
+
         if (watchList.length === 0) {
             return <div className="no-players-message">Your watch list is empty. Target players to add them here.</div>;
         }
@@ -361,16 +440,26 @@ const PlayerPoolTable = ({
                 <table className="watch-list-table">
                     <thead>
                         <tr>
-                            <th>Full Name</th>
-                            <th>Position</th>
-                            <th>Salary</th>
-                            <th>Game</th>
-                            <th>DK PPG</th>
-                            <th>Action</th>
+                            <th onClick={() => requestSort('fullName')}>
+                                Full Name{getSortDirectionIndicator('fullName')}
+                            </th>
+                            <th onClick={() => requestSort('position')}>
+                                Position{getSortDirectionIndicator('position')}
+                            </th>
+                            <th onClick={() => requestSort('salary')}>
+                                Salary{getSortDirectionIndicator('salary')}
+                            </th>
+                            <th onClick={() => requestSort('game')}>
+                                Game{getSortDirectionIndicator('game')}
+                            </th>
+                            <th onClick={() => requestSort('dKppg')}>
+                                DK PPG{getSortDirectionIndicator('dKppg')}
+                            </th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {availablePlayers.map(player => (
+                        {sortedAvailablePlayers.map(player => (
                             <tr key={player.playerDkId}>
                                 <td>{player.fullName}</td>
                                 <td>{player.position}</td>
@@ -378,23 +467,33 @@ const PlayerPoolTable = ({
                                 <td>{player.game}</td>
                                 <td>{player.dKppg}</td>
                                 <td>
-                                    <button
-                                        onClick={() => removeFromWatchList(player.playerDkId)}
-                                        className="remove-button"
-                                    >
-                                        Remove
-                                    </button>
+                                    <div className="action-buttons">
+                                        <button
+                                            onClick={() => removeFromWatchList(player.playerDkId)}
+                                            className="remove-button"
+                                        >
+                                            Remove
+                                        </button>
+                                        {/* Add Draft button to watchlist */}
+                                        <button
+                                            onClick={() => handleAddToDraft(player)}
+                                            className="draft-button"
+                                            disabled={draftedPlayerIds.has(player.playerDkId)}
+                                        >
+                                            {draftedPlayerIds.has(player.playerDkId) ? 'Drafted' : 'Draft'}
+                                        </button>
+                                    </div>
                                 </td>
                             </tr>
                         ))}
 
                         {/* Display unavailable players with different styling */}
-                        {unavailablePlayers.length > 0 && (
+                        {sortedUnavailablePlayers.length > 0 && (
                             <>
                                 <tr className="unavailable-header">
                                     <td colSpan="6">Players Not Available in Current Slate</td>
                                 </tr>
-                                {unavailablePlayers.map(player => (
+                                {sortedUnavailablePlayers.map(player => (
                                     <tr key={player.playerDkId} className="unavailable-player">
                                         <td>{player.fullName}</td>
                                         <td>{player.position}</td>
@@ -415,7 +514,7 @@ const PlayerPoolTable = ({
                         )}
                     </tbody>
                 </table>
-                {availablePlayers.length > 0 && (
+                {sortedAvailablePlayers.length > 0 && (
                     <div className="optimize-button-container">
                         <button
                             onClick={optimizeWatchList}

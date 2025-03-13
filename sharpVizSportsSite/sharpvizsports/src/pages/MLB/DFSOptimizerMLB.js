@@ -6,20 +6,26 @@ import LineupBuilder from '../../components/LineupBuilder';
 import DfsStrategyDrawer from '../../components/DfsStrategyDrawer';
 import axios from 'axios';
 import '../../css/DFSOptimizerMLB.css';
-import '../../css/PlayerPoolTable.css';
-import '../../css/LineupBuilder.css';
-import '../../css/SlateDropdown.css';
-import '../../css/DfsStrategyDrawer.css';
 
 const DFSOptimizer = () => {
+  // State management
   const [selectedSlate, setSelectedSlate] = useState(null);
   const [watchList, setWatchList] = useState([]);
   const [draftedPlayers, setDraftedPlayers] = useState([]);
   const [isStrategyDrawerOpen, setIsStrategyDrawerOpen] = useState(false);
   const [savedStrategy, setSavedStrategy] = useState(null);
-  // State to track the DK IDs corresponding to selected pitcher BBRef IDs
   const [selectedPitcherDkIds, setSelectedPitcherDkIds] = useState([]);
   const [allPlayers, setAllPlayers] = useState([]);
+  const [dateChanged, setDateChanged] = useState(false);
+
+  const handleSlateSelect = (slate) => {
+    console.log("Selected slate:", slate);
+    setSelectedSlate(slate);
+    if (!slate) {
+      // Clear drafted players when changing dates/slates
+      setDraftedPlayers([]);
+    }
+  };
 
   const handleAddToWatchList = (player) => {
     const isDuplicate = watchList.some(p => p.playerDkId === player.playerDkId);
@@ -27,6 +33,7 @@ const DFSOptimizer = () => {
       setWatchList(prevWatchList => [...prevWatchList, player]);
     }
   };
+
   const handlePlayersLoaded = (playerData) => {
     setAllPlayers(playerData);
   };
@@ -46,10 +53,10 @@ const DFSOptimizer = () => {
       const sortedPlayers = [...results.players].sort((a, b) => {
         const positionOrder = {
           P: 1, C: 2, '1B': 3, '2B': 4, '3B': 5, 'SS': 6, 'OF': 7,
-          PG: 1, SG: 2, SF: 3, PF: 4, C: 5, G: 6, F: 7, UTIL: 8
         };
         return (positionOrder[a.optimalPosition] || 99) - (positionOrder[b.optimalPosition] || 99);
       });
+
       // Find full player data from original player pool if game info is missing
       const playersWithFullData = sortedPlayers.map(player => {
         // If game property is missing, try to find it from the player pool
@@ -87,7 +94,6 @@ const DFSOptimizer = () => {
       );
 
       // The response will contain a dictionary with BBRef IDs as keys and DK IDs as values
-      // Return just the values (DK IDs)
       return Object.values(response.data);
     } catch (error) {
       console.error('Error fetching player DK IDs:', error);
@@ -114,12 +120,47 @@ const DFSOptimizer = () => {
     }
   };
 
+  // Prepare the optimization payload with proper configuration
+  const prepareOptimizationPayload = (watchlistIds, draftGroupId) => {
+    // Default payload structure
+    const basePayload = {
+      draftGroupId: draftGroupId,
+      positions: ["P", "P", "C", "1B", "2B", "3B", "SS", "OF", "OF", "OF"],
+      salaryCap: 50000,
+      optimizeForDkppg: true,
+      optimizationMetric: "DKPPG",
+      oppRankLimit: 0,
+      userWatchlist: watchlistIds,
+      excludePlayers: []
+    };
+
+    // Add must-start players using the already fetched DK IDs
+    if (selectedPitcherDkIds && selectedPitcherDkIds.length > 0) {
+      console.log('Using pitcher DK IDs in optimization payload:', selectedPitcherDkIds);
+      basePayload.mustStartPlayers = selectedPitcherDkIds;
+    } else {
+      basePayload.mustStartPlayers = [];
+    }
+
+    // If we have tournament strategy settings, enhance the payload
+    if (savedStrategy && savedStrategy.contestType === 'Tournament') {
+      return {
+        ...basePayload,
+        strategy: savedStrategy.selectedTeams,
+        stack: [savedStrategy.stackStrategy]
+      };
+    }
+
+    // Otherwise return the default payload for Cash games
+    return basePayload;
+  };
+
   return (
     <div className="dfs-optimizer">
       <Sidebar />
       <div className="content">
         <h1>{selectedSlate?.sport || 'MLB'} Optimizer</h1>
-        <SlateDropdown onSlateSelect={setSelectedSlate} />
+        <SlateDropdown onSlateSelect={handleSlateSelect} />
 
         {selectedSlate && (
           <>
@@ -152,41 +193,7 @@ const DFSOptimizer = () => {
                     onOptimizationResults={handleOptimizationResults}
                     onPlayersLoaded={handlePlayersLoaded}
                     draftedPlayers={draftedPlayers}
-                    prepareOptimizationPayload={(watchlistIds, draftGroupId) => {
-                      // Default payload structure
-                      const basePayload = {
-                        draftGroupId: draftGroupId,
-                        positions: (selectedSlate?.sport === 'MLB') ?
-                          ["P", "P", "C", "1B", "2B", "3B", "SS", "OF", "OF", "OF"] :
-                          ["C", "PF", "SF", "SG", "PG", "G", "F", "UTIL"],
-                        salaryCap: 50000,
-                        optimizeForDkppg: true,
-                        optimizationMetric: "DKPPG",
-                        oppRankLimit: 0,
-                        userWatchlist: watchlistIds,
-                        excludePlayers: []
-                      };
-
-                      // Add must-start players using the already fetched DK IDs
-                      if (selectedPitcherDkIds && selectedPitcherDkIds.length > 0) {
-                        console.log('Using pitcher DK IDs in optimization payload:', selectedPitcherDkIds);
-                        basePayload.mustStartPlayers = selectedPitcherDkIds;
-                      } else {
-                        basePayload.mustStartPlayers = [];
-                      }
-
-                      // If we have tournament strategy settings, enhance the payload
-                      if (savedStrategy && savedStrategy.contestType === 'Tournament') {
-                        return {
-                          ...basePayload,
-                          strategy: savedStrategy.selectedTeams,
-                          stack: [savedStrategy.stackStrategy]
-                        };
-                      }
-
-                      // Otherwise return the default payload for Cash games
-                      return basePayload;
-                    }}
+                    prepareOptimizationPayload={prepareOptimizationPayload}
                   />
                 </div>
               </div>

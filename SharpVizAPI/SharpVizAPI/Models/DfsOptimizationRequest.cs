@@ -15,6 +15,7 @@ namespace SharpVizApi.Models
 
         // Optional flags
         public bool OptimizeForDkppg { get; set; } = false;
+        public string OptimizationMetric { get; set; } = "DKPPG"; // Default to DKPPG, could be "OOPS" etc.
         public int? OppRankLimit { get; set; } = null;  // How many of the worst matchups to consider (e.g., 3 means only use bottom 3 ranked matchups)
         public List<int> UserWatchlist { get; set; } = new List<int>();
         public List<int> ExcludePlayers { get; set; } = new List<int>();

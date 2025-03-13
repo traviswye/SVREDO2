@@ -62,6 +62,8 @@ builder.Services.AddScoped<MLBLineupOptimizer>();
 builder.Services.AddScoped<LineupOptimizerFactory>();
 builder.Services.AddScoped<IDfsOptimizationService, DfsOptimizationService>();
 
+builder.Services.AddScoped<PlayerIDMappingService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

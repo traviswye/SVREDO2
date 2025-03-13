@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using SharpVizAPI.Data;
+using SharpVizAPI.Models;
+using SharpVizAPI.Services;
 using SharpVizApi.Models;
 using SharpVizApi.Services.Optimization;
 
@@ -22,15 +24,18 @@ namespace SharpVizApi.Services.Optimization
         private readonly NrfidbContext _context;
         private readonly ILogger<MLBLineupOptimizer> _logger;
         private readonly IMLBStrategyService _strategyService;
+        private readonly PlayerIDMappingService _playerIDMappingService;
 
         public MLBLineupOptimizer(
             NrfidbContext context,
             ILogger<MLBLineupOptimizer> logger,
-            IMLBStrategyService strategyService)
+            IMLBStrategyService strategyService,
+            PlayerIDMappingService playerIDMappingService)
         {
             _context = context;
             _logger = logger;
             _strategyService = strategyService;
+            _playerIDMappingService = playerIDMappingService;
         }
 
         protected override async Task<OptimizationResult> OptimizeLineupInternal(OptimizationParameters parameters)
@@ -420,21 +425,23 @@ namespace SharpVizApi.Services.Optimization
 
             // Get the initial player pool
             var players = await query.ToListAsync();
+            _logger.LogInformation($"Initial player pool size from draft group: {players.Count}");
 
-            // If strategy teams are specified, add all hitters from those teams
+            // If strategy teams are specified, get additional players if needed
             if (mlbParams.StrategyTeams != null && mlbParams.StrategyTeams.Any())
             {
-                _logger.LogInformation($"Adding players from strategy teams: {string.Join(", ", mlbParams.StrategyTeams)}");
+                _logger.LogInformation($"Processing strategy teams: {string.Join(", ", mlbParams.StrategyTeams)}");
 
-                // Get all position players (non-pitchers) from the strategy teams
+                // First, make sure we have all players from these teams in the draft group
                 var strategyTeamPlayers = await _context.DKPlayerPools
                     .Where(p => p.DraftGroupId == parameters.DraftGroupId &&
-                          mlbParams.StrategyTeams.Contains(p.Team) &&
-                          p.Status != "OUT" &&
-                          !p.Position.Contains("P")) // Exclude pitchers
+                            mlbParams.StrategyTeams.Contains(p.Team) &&
+                            p.Status != "OUT")
                     .ToListAsync();
 
-                // Add them to the player pool if they're not already there
+                _logger.LogInformation($"Found {strategyTeamPlayers.Count} total players from strategy teams in draft group");
+
+                // Add any missing players to our pool
                 foreach (var player in strategyTeamPlayers)
                 {
                     if (!players.Any(p => p.PlayerDkId == player.PlayerDkId))
@@ -442,10 +449,289 @@ namespace SharpVizApi.Services.Optimization
                         players.Add(player);
                     }
                 }
+
+                // Now try to filter down to actual/predicted lineups for each team
+                foreach (var team in mlbParams.StrategyTeams)
+                {
+                    // Get today's date for lineup lookup
+                    var today = DateTime.Now.Date;
+
+                    // Get all current players for this team
+                    var teamPlayers = players
+                        .Where(p => p.Team == team)
+                        .ToList();
+
+                    _logger.LogInformation($"Found {teamPlayers.Count} players for team {team} in draft group");
+
+                    if (teamPlayers.Count == 0)
+                    {
+                        _logger.LogWarning($"No players found for team {team} in draft group {parameters.DraftGroupId}");
+                        continue; // Skip this team if no players are found
+                    }
+
+                    // Try to find actual lineup players first
+                    var actualLineupPlayers = await GetActualLineupPlayerPool(team, today, parameters.DraftGroupId);
+
+                    if (actualLineupPlayers.Any())
+                    {
+                        _logger.LogInformation($"Found actual lineup for {team} with {actualLineupPlayers.Count} players");
+
+                        // Remove all existing non-pitcher players for this team
+                        players.RemoveAll(p => p.Team == team && !p.Position.Contains("P"));
+
+                        // Add the actual lineup players
+                        players.AddRange(actualLineupPlayers);
+                    }
+                    else
+                    {
+                        // Try to get projected lineup players
+                        var projectedLineupPlayers = await GetPredictedLineupPlayerPool(team, today, parameters.DraftGroupId);
+
+                        if (projectedLineupPlayers.Any())
+                        {
+                            _logger.LogInformation($"Found projected lineup for {team} with {projectedLineupPlayers.Count} players");
+
+                            // Remove all existing non-pitcher players for this team
+                            players.RemoveAll(p => p.Team == team && !p.Position.Contains("P"));
+
+                            // Add the projected lineup players
+                            players.AddRange(projectedLineupPlayers);
+                        }
+                        else
+                        {
+                            // Try to get recent lineups (last 3 days)
+                            var recentLineupPlayers = await GetRecentLineupPlayerPool(team, today, 3, parameters.DraftGroupId);
+
+                            if (recentLineupPlayers.Any())
+                            {
+                                _logger.LogInformation($"Found recent lineups for {team} with {recentLineupPlayers.Count} players");
+
+                                // Remove all existing non-pitcher players for this team
+                                players.RemoveAll(p => p.Team == team && !p.Position.Contains("P"));
+
+                                // Add the recent lineup players
+                                players.AddRange(recentLineupPlayers);
+                            }
+                            else
+                            {
+                                _logger.LogInformation($"No lineup data found for {team}, using original player pool");
+                                // Keep the original players for this team (already in the players list)
+                            }
+                        }
+                    }
+                }
             }
 
-            _logger.LogInformation($"Total player pool size: {players.Count}");
+            _logger.LogInformation($"Final player pool size after lineup filtering: {players.Count}");
             return players;
+        }
+
+
+        private async Task<List<DKPlayerPool>> GetActualLineupPlayerPool(string team, DateTime date, int draftGroupId)
+        {
+            try
+            {
+                // Find actual lineup for this team and date
+                var actualLineup = await _context.ActualLineups
+                    .FirstOrDefaultAsync(l => l.Team == team && l.Date.Date == date.Date);
+
+                if (actualLineup == null)
+                {
+                    _logger.LogInformation($"No actual lineup found for {team} on {date.ToShortDateString()}");
+                    return new List<DKPlayerPool>();
+                }
+
+                // Extract unique bbrefIds from batting positions
+                var bbrefIds = new List<string> {
+                    actualLineup.Batting1st,
+                    actualLineup.Batting2nd,
+                    actualLineup.Batting3rd,
+                    actualLineup.Batting4th,
+                    actualLineup.Batting5th,
+                    actualLineup.Batting6th,
+                    actualLineup.Batting7th,
+                    actualLineup.Batting8th,
+                    actualLineup.Batting9th
+                }.Where(id => !string.IsNullOrEmpty(id)).Distinct().ToList();
+
+                _logger.LogInformation($"Found {bbrefIds.Count} unique BBRef IDs in actual lineup for {team}");
+
+                // Convert bbrefIds to DKPlayerIds
+                var dkPlayerIds = await GetDkPlayerIdsFromBbrefIds(bbrefIds);
+
+                if (dkPlayerIds.Count == 0)
+                {
+                    _logger.LogWarning($"Could not find any DK Player IDs for BBRef IDs: {string.Join(", ", bbrefIds)}");
+                    return new List<DKPlayerPool>();
+                }
+
+                _logger.LogInformation($"Mapped to {dkPlayerIds.Count} DK Player IDs");
+
+                // Return players from draft group with these DK IDs
+                var lineupPlayers = await _context.DKPlayerPools
+                    .Where(p => p.DraftGroupId == draftGroupId &&
+                           dkPlayerIds.Contains(p.PlayerDkId) &&
+                           p.Team == team)
+                    .ToListAsync();
+
+                _logger.LogInformation($"Found {lineupPlayers.Count} players in draft group matching actual lineup");
+                return lineupPlayers;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error getting actual lineup player pool for {team} on {date.ToShortDateString()}");
+                return new List<DKPlayerPool>();
+            }
+        }
+
+        private async Task<List<DKPlayerPool>> GetPredictedLineupPlayerPool(string team, DateTime date, int draftGroupId)
+        {
+            try
+            {
+                // Find predicted lineup for this team and date
+                var predictedLineup = await _context.LineupPredictions
+                    .FirstOrDefaultAsync(l => l.Team == team && l.Date.Date == date.Date);
+
+                if (predictedLineup == null)
+                {
+                    _logger.LogInformation($"No predicted lineup found for {team} on {date.ToShortDateString()}");
+                    return new List<DKPlayerPool>();
+                }
+
+                // Extract unique bbrefIds from batting positions
+                var bbrefIds = new List<string> {
+                    predictedLineup.Batting1st,
+                    predictedLineup.Batting2nd,
+                    predictedLineup.Batting3rd,
+                    predictedLineup.Batting4th,
+                    predictedLineup.Batting5th,
+                    predictedLineup.Batting6th,
+                    predictedLineup.Batting7th,
+                    predictedLineup.Batting8th,
+                    predictedLineup.Batting9th
+                }.Where(id => !string.IsNullOrEmpty(id)).Distinct().ToList();
+
+                _logger.LogInformation($"Found {bbrefIds.Count} unique BBRef IDs in predicted lineup for {team}");
+
+                // Convert bbrefIds to DKPlayerIds
+                var dkPlayerIds = await GetDkPlayerIdsFromBbrefIds(bbrefIds);
+
+                if (dkPlayerIds.Count == 0)
+                {
+                    _logger.LogWarning($"Could not find any DK Player IDs for BBRef IDs: {string.Join(", ", bbrefIds)}");
+                    return new List<DKPlayerPool>();
+                }
+
+                _logger.LogInformation($"Mapped to {dkPlayerIds.Count} DK Player IDs");
+
+                // Return players from draft group with these DK IDs
+                var lineupPlayers = await _context.DKPlayerPools
+                    .Where(p => p.DraftGroupId == draftGroupId &&
+                           dkPlayerIds.Contains(p.PlayerDkId) &&
+                           p.Team == team)
+                    .ToListAsync();
+
+                _logger.LogInformation($"Found {lineupPlayers.Count} players in draft group matching predicted lineup");
+                return lineupPlayers;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error getting predicted lineup player pool for {team} on {date.ToShortDateString()}");
+                return new List<DKPlayerPool>();
+            }
+        }
+
+        private async Task<List<DKPlayerPool>> GetRecentLineupPlayerPool(string team, DateTime date, int dayCount, int draftGroupId)
+        {
+            try
+            {
+                var startDate = date.AddDays(-dayCount);
+
+                // Find recent predicted lineups for this team
+                var recentLineups = await _context.LineupPredictions
+                    .Where(l => l.Team == team && l.Date >= startDate && l.Date < date)
+                    .ToListAsync();
+
+                if (!recentLineups.Any())
+                {
+                    _logger.LogInformation($"No recent predicted lineups found for {team} in the last {dayCount} days");
+                    return new List<DKPlayerPool>();
+                }
+
+                _logger.LogInformation($"Found {recentLineups.Count} recent predicted lineups for {team}");
+
+                // Collect all unique BBRef IDs from recent lineups
+                var bbrefIds = new HashSet<string>();
+
+                foreach (var lineup in recentLineups)
+                {
+                    var lineupBbrefIds = new List<string> {
+                        lineup.Batting1st,
+                        lineup.Batting2nd,
+                        lineup.Batting3rd,
+                        lineup.Batting4th,
+                        lineup.Batting5th,
+                        lineup.Batting6th,
+                        lineup.Batting7th,
+                        lineup.Batting8th,
+                        lineup.Batting9th
+                    }.Where(id => !string.IsNullOrEmpty(id));
+
+                    foreach (var id in lineupBbrefIds)
+                    {
+                        bbrefIds.Add(id);
+                    }
+                }
+
+                _logger.LogInformation($"Found {bbrefIds.Count} unique BBRef IDs in recent lineups for {team}");
+
+                // Convert bbrefIds to DKPlayerIds
+                var dkPlayerIds = await GetDkPlayerIdsFromBbrefIds(bbrefIds.ToList());
+
+                if (dkPlayerIds.Count == 0)
+                {
+                    _logger.LogWarning($"Could not find any DK Player IDs for BBRef IDs from recent lineups");
+                    return new List<DKPlayerPool>();
+                }
+
+                _logger.LogInformation($"Mapped to {dkPlayerIds.Count} DK Player IDs");
+
+                // Return players from draft group with these DK IDs
+                var lineupPlayers = await _context.DKPlayerPools
+                    .Where(p => p.DraftGroupId == draftGroupId &&
+                           dkPlayerIds.Contains(p.PlayerDkId) &&
+                           p.Team == team)
+                    .ToListAsync();
+
+                _logger.LogInformation($"Found {lineupPlayers.Count} players in draft group matching recent lineups");
+                return lineupPlayers;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error getting recent lineup player pool for {team} on {date.ToShortDateString()}");
+                return new List<DKPlayerPool>();
+            }
+        }
+
+        private async Task<List<int>> GetDkPlayerIdsFromBbrefIds(List<string> bbrefIds)
+        {
+            if (bbrefIds == null || !bbrefIds.Any())
+                return new List<int>();
+
+            try
+            {
+                // Use the mapping service to get DK player IDs
+                var mappings = await _context.PlayerIDMappings
+                    .Where(m => bbrefIds.Contains(m.BbrefId))
+                    .ToListAsync();
+
+                return mappings.Select(m => m.PlayerDkId).ToList();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error mapping BBRef IDs to DK Player IDs: {string.Join(", ", bbrefIds)}");
+                return new List<int>();
+            }
         }
 
         private async Task<(List<MustStartResult> MustStart, List<string> RemainingPositions, int RemainingSalary)>
@@ -1016,6 +1302,11 @@ namespace SharpVizApi.Services.Optimization
             switch (optimizationCriterion.ToUpperInvariant())
             {
                 case "DKPPG":
+                    return player.DKppg ?? 0;
+
+                case "OOPS":
+                    // In the future, this would use a more sophisticated calculation
+                    // For now, use a placeholder based on DKppg - just an example
                     return player.DKppg ?? 0;
 
                 case "SALARY":

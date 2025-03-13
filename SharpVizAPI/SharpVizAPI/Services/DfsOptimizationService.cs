@@ -81,7 +81,8 @@ namespace SharpVizAPI.Services
                 UserWatchlist = request.UserWatchlist,
                 ExcludePlayers = request.ExcludePlayers,
                 MustStartPlayers = request.MustStartPlayers ?? new List<int>(),
-                OptimizationCriterion = request.OptimizeForDkppg ? "DKPPG" : "Salary"
+                // Use the new OptimizationMetric parameter
+                OptimizationCriterion = request.OptimizationMetric ?? "DKPPG"
             };
 
             // Add sport-specific parameters

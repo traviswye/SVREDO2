@@ -161,6 +161,7 @@ const DFSOptimizer = () => {
                           ["C", "PF", "SF", "SG", "PG", "G", "F", "UTIL"],
                         salaryCap: 50000,
                         optimizeForDkppg: true,
+                        optimizationMetric: "DKPPG",
                         oppRankLimit: 0,
                         userWatchlist: watchlistIds,
                         excludePlayers: []

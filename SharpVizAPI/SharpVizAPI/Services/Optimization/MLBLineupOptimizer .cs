@@ -476,11 +476,25 @@ namespace SharpVizApi.Services.Optimization
                     {
                         _logger.LogInformation($"Found actual lineup for {team} with {actualLineupPlayers.Count} players");
 
-                        // Remove all existing non-pitcher players for this team
-                        players.RemoveAll(p => p.Team == team && !p.Position.Contains("P"));
+                        // Create a set of DK player IDs from the actual lineup for fast lookup
+                        var actualLineupPlayerIds = new HashSet<int>(
+                            actualLineupPlayers.Select(p => p.PlayerDkId)
+                        );
 
-                        // Add the actual lineup players
-                        players.AddRange(actualLineupPlayers);
+                        // Remove ALL players from this team except those in the actual lineup
+                        players.RemoveAll(p => p.Team == team && !actualLineupPlayerIds.Contains(p.PlayerDkId));
+
+                        // Add the actual lineup players (though they should already be in the list now)
+                        // This is a safeguard in case some were missing
+                        foreach (var player in actualLineupPlayers)
+                        {
+                            if (!players.Any(p => p.PlayerDkId == player.PlayerDkId))
+                            {
+                                players.Add(player);
+                            }
+                        }
+
+                        _logger.LogInformation($"After filtering: {players.Count(p => p.Team == team)} players remain for team {team}");
                     }
                     else
                     {
@@ -491,11 +505,24 @@ namespace SharpVizApi.Services.Optimization
                         {
                             _logger.LogInformation($"Found projected lineup for {team} with {projectedLineupPlayers.Count} players");
 
-                            // Remove all existing non-pitcher players for this team
-                            players.RemoveAll(p => p.Team == team && !p.Position.Contains("P"));
+                            // Create a set of DK player IDs from the projected lineup for fast lookup
+                            var projectedLineupPlayerIds = new HashSet<int>(
+                                projectedLineupPlayers.Select(p => p.PlayerDkId)
+                            );
+
+                            // Remove ALL players from this team except those in the projected lineup
+                            players.RemoveAll(p => p.Team == team && !projectedLineupPlayerIds.Contains(p.PlayerDkId));
 
                             // Add the projected lineup players
-                            players.AddRange(projectedLineupPlayers);
+                            foreach (var player in projectedLineupPlayers)
+                            {
+                                if (!players.Any(p => p.PlayerDkId == player.PlayerDkId))
+                                {
+                                    players.Add(player);
+                                }
+                            }
+
+                            _logger.LogInformation($"After filtering: {players.Count(p => p.Team == team)} players remain for team {team}");
                         }
                         else
                         {
@@ -506,11 +533,24 @@ namespace SharpVizApi.Services.Optimization
                             {
                                 _logger.LogInformation($"Found recent lineups for {team} with {recentLineupPlayers.Count} players");
 
-                                // Remove all existing non-pitcher players for this team
-                                players.RemoveAll(p => p.Team == team && !p.Position.Contains("P"));
+                                // Create a set of DK player IDs from the recent lineups for fast lookup
+                                var recentLineupPlayerIds = new HashSet<int>(
+                                    recentLineupPlayers.Select(p => p.PlayerDkId)
+                                );
+
+                                // Remove ALL players from this team except those in recent lineups
+                                players.RemoveAll(p => p.Team == team && !recentLineupPlayerIds.Contains(p.PlayerDkId));
 
                                 // Add the recent lineup players
-                                players.AddRange(recentLineupPlayers);
+                                foreach (var player in recentLineupPlayers)
+                                {
+                                    if (!players.Any(p => p.PlayerDkId == player.PlayerDkId))
+                                    {
+                                        players.Add(player);
+                                    }
+                                }
+
+                                _logger.LogInformation($"After filtering: {players.Count(p => p.Team == team)} players remain for team {team}");
                             }
                             else
                             {
@@ -531,30 +571,36 @@ namespace SharpVizApi.Services.Optimization
         {
             try
             {
-                // Find actual lineup for this team and date
+                // Normalize team name to full name using the TeamNameNormalizer
+                string fullTeamName = TeamNameNormalizer.NormalizeTeamName(team);
+
+                _logger.LogInformation($"Looking for actual lineup with team={fullTeamName} on date={date.Date}");
+
+                // Find actual lineup using the normalized full team name
                 var actualLineup = await _context.ActualLineups
-                    .FirstOrDefaultAsync(l => l.Team == team && l.Date.Date == date.Date);
+                    .FirstOrDefaultAsync(l => l.Team == fullTeamName && l.Date.Date == date.Date);
 
                 if (actualLineup == null)
                 {
-                    _logger.LogInformation($"No actual lineup found for {team} on {date.ToShortDateString()}");
+                    _logger.LogInformation($"No actual lineup found for {fullTeamName} on {date.ToShortDateString()}");
                     return new List<DKPlayerPool>();
                 }
 
+                // Rest of your method remains the same
                 // Extract unique bbrefIds from batting positions
                 var bbrefIds = new List<string> {
-                    actualLineup.Batting1st,
-                    actualLineup.Batting2nd,
-                    actualLineup.Batting3rd,
-                    actualLineup.Batting4th,
-                    actualLineup.Batting5th,
-                    actualLineup.Batting6th,
-                    actualLineup.Batting7th,
-                    actualLineup.Batting8th,
-                    actualLineup.Batting9th
-                }.Where(id => !string.IsNullOrEmpty(id)).Distinct().ToList();
+            actualLineup.Batting1st,
+            actualLineup.Batting2nd,
+            actualLineup.Batting3rd,
+            actualLineup.Batting4th,
+            actualLineup.Batting5th,
+            actualLineup.Batting6th,
+            actualLineup.Batting7th,
+            actualLineup.Batting8th,
+            actualLineup.Batting9th
+        }.Where(id => !string.IsNullOrEmpty(id)).Distinct().ToList();
 
-                _logger.LogInformation($"Found {bbrefIds.Count} unique BBRef IDs in actual lineup for {team}");
+                _logger.LogInformation($"Found {bbrefIds.Count} unique BBRef IDs in actual lineup for {fullTeamName}");
 
                 // Convert bbrefIds to DKPlayerIds
                 var dkPlayerIds = await GetDkPlayerIdsFromBbrefIds(bbrefIds);
@@ -567,11 +613,11 @@ namespace SharpVizApi.Services.Optimization
 
                 _logger.LogInformation($"Mapped to {dkPlayerIds.Count} DK Player IDs");
 
-                // Return players from draft group with these DK IDs
+                // Return players from draft group with these DK IDs - use original team abbrev here
                 var lineupPlayers = await _context.DKPlayerPools
                     .Where(p => p.DraftGroupId == draftGroupId &&
                            dkPlayerIds.Contains(p.PlayerDkId) &&
-                           p.Team == team)
+                           p.Team == team) // Use original team abbreviation
                     .ToListAsync();
 
                 _logger.LogInformation($"Found {lineupPlayers.Count} players in draft group matching actual lineup");
@@ -588,9 +634,14 @@ namespace SharpVizApi.Services.Optimization
         {
             try
             {
-                // Find predicted lineup for this team and date
+                // Normalize team name to full name for lookup in LineupPredictions
+                string fullTeamName = TeamNameNormalizer.NormalizeTeamName(team);
+
+                _logger.LogInformation($"Looking for predicted lineup with team={fullTeamName} on date={date.Date}");
+
+                // Find predicted lineup using the normalized full team name
                 var predictedLineup = await _context.LineupPredictions
-                    .FirstOrDefaultAsync(l => l.Team == team && l.Date.Date == date.Date);
+                    .FirstOrDefaultAsync(l => l.Team == fullTeamName && l.Date.Date == date.Date);
 
                 if (predictedLineup == null)
                 {
@@ -600,18 +651,18 @@ namespace SharpVizApi.Services.Optimization
 
                 // Extract unique bbrefIds from batting positions
                 var bbrefIds = new List<string> {
-                    predictedLineup.Batting1st,
-                    predictedLineup.Batting2nd,
-                    predictedLineup.Batting3rd,
-                    predictedLineup.Batting4th,
-                    predictedLineup.Batting5th,
-                    predictedLineup.Batting6th,
-                    predictedLineup.Batting7th,
-                    predictedLineup.Batting8th,
-                    predictedLineup.Batting9th
-                }.Where(id => !string.IsNullOrEmpty(id)).Distinct().ToList();
+            predictedLineup.Batting1st,
+            predictedLineup.Batting2nd,
+            predictedLineup.Batting3rd,
+            predictedLineup.Batting4th,
+            predictedLineup.Batting5th,
+            predictedLineup.Batting6th,
+            predictedLineup.Batting7th,
+            predictedLineup.Batting8th,
+            predictedLineup.Batting9th
+        }.Where(id => !string.IsNullOrEmpty(id)).Distinct().ToList();
 
-                _logger.LogInformation($"Found {bbrefIds.Count} unique BBRef IDs in predicted lineup for {team}");
+                _logger.LogInformation($"Found {bbrefIds.Count} unique BBRef IDs in predicted lineup for {fullTeamName}");
 
                 // Convert bbrefIds to DKPlayerIds
                 var dkPlayerIds = await GetDkPlayerIdsFromBbrefIds(bbrefIds);
@@ -624,11 +675,11 @@ namespace SharpVizApi.Services.Optimization
 
                 _logger.LogInformation($"Mapped to {dkPlayerIds.Count} DK Player IDs");
 
-                // Return players from draft group with these DK IDs
+                // Return players from draft group with these DK IDs - use original team abbrev here
                 var lineupPlayers = await _context.DKPlayerPools
                     .Where(p => p.DraftGroupId == draftGroupId &&
                            dkPlayerIds.Contains(p.PlayerDkId) &&
-                           p.Team == team)
+                           p.Team == team) // Use original team abbreviation
                     .ToListAsync();
 
                 _logger.LogInformation($"Found {lineupPlayers.Count} players in draft group matching predicted lineup");
@@ -647,9 +698,14 @@ namespace SharpVizApi.Services.Optimization
             {
                 var startDate = date.AddDays(-dayCount);
 
+                // Normalize team name to full name for lookup in LineupPredictions
+                string fullTeamName = TeamNameNormalizer.NormalizeTeamName(team);
+
+                _logger.LogInformation($"Looking for recent lineups with team={fullTeamName} between {startDate.Date} and {date.Date}");
+
                 // Find recent predicted lineups for this team
                 var recentLineups = await _context.LineupPredictions
-                    .Where(l => l.Team == team && l.Date >= startDate && l.Date < date)
+                    .Where(l => l.Team == fullTeamName && l.Date >= startDate && l.Date < date)
                     .ToListAsync();
 
                 if (!recentLineups.Any())
@@ -658,7 +714,7 @@ namespace SharpVizApi.Services.Optimization
                     return new List<DKPlayerPool>();
                 }
 
-                _logger.LogInformation($"Found {recentLineups.Count} recent predicted lineups for {team}");
+                _logger.LogInformation($"Found {recentLineups.Count} recent predicted lineups for {fullTeamName}");
 
                 // Collect all unique BBRef IDs from recent lineups
                 var bbrefIds = new HashSet<string>();
@@ -666,16 +722,16 @@ namespace SharpVizApi.Services.Optimization
                 foreach (var lineup in recentLineups)
                 {
                     var lineupBbrefIds = new List<string> {
-                        lineup.Batting1st,
-                        lineup.Batting2nd,
-                        lineup.Batting3rd,
-                        lineup.Batting4th,
-                        lineup.Batting5th,
-                        lineup.Batting6th,
-                        lineup.Batting7th,
-                        lineup.Batting8th,
-                        lineup.Batting9th
-                    }.Where(id => !string.IsNullOrEmpty(id));
+                lineup.Batting1st,
+                lineup.Batting2nd,
+                lineup.Batting3rd,
+                lineup.Batting4th,
+                lineup.Batting5th,
+                lineup.Batting6th,
+                lineup.Batting7th,
+                lineup.Batting8th,
+                lineup.Batting9th
+            }.Where(id => !string.IsNullOrEmpty(id));
 
                     foreach (var id in lineupBbrefIds)
                     {
@@ -683,7 +739,7 @@ namespace SharpVizApi.Services.Optimization
                     }
                 }
 
-                _logger.LogInformation($"Found {bbrefIds.Count} unique BBRef IDs in recent lineups for {team}");
+                _logger.LogInformation($"Found {bbrefIds.Count} unique BBRef IDs in recent lineups for {fullTeamName}");
 
                 // Convert bbrefIds to DKPlayerIds
                 var dkPlayerIds = await GetDkPlayerIdsFromBbrefIds(bbrefIds.ToList());
@@ -696,11 +752,11 @@ namespace SharpVizApi.Services.Optimization
 
                 _logger.LogInformation($"Mapped to {dkPlayerIds.Count} DK Player IDs");
 
-                // Return players from draft group with these DK IDs
+                // Return players from draft group with these DK IDs - use original team abbrev here
                 var lineupPlayers = await _context.DKPlayerPools
                     .Where(p => p.DraftGroupId == draftGroupId &&
                            dkPlayerIds.Contains(p.PlayerDkId) &&
-                           p.Team == team)
+                           p.Team == team) // Use original team abbreviation
                     .ToListAsync();
 
                 _logger.LogInformation($"Found {lineupPlayers.Count} players in draft group matching recent lineups");

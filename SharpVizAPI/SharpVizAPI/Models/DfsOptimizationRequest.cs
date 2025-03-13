@@ -21,22 +21,21 @@ namespace SharpVizApi.Models
         public List<int>? MustStartPlayers { get; set; }
         public List<string>? Strategy { get; set; }
         public List<string>? Stack { get; set; }
-
     }
 
-public class OptimizedPlayer
-{
-    public string FullName { get; set; }
-    public int PlayerDkId { get; set; }
-    public string Position { get; set; }
-    public string AssignedPosition { get; set; }
-    public int Salary { get; set; }
-    public string Team { get; set; }
-    public decimal? DKppg { get; set; }
-    public string OptimalPosition { get; set; } // Added property for stack tracking
-}
+    public class OptimizedPlayer
+    {
+        public string FullName { get; set; }
+        public int PlayerDkId { get; set; }
+        public string Position { get; set; }
+        public string AssignedPosition { get; set; }
+        public int Salary { get; set; }
+        public string Team { get; set; }
+        public decimal? DKppg { get; set; }
+        public string OptimalPosition { get; set; } // Added property for stack tracking
+    }
 
-    // Update the DfsOptimizationResponse class to include stack information
+    // Updated DfsOptimizationResponse class to include stack information
     public class DfsOptimizationResponse
     {
         public bool IsSuccessful { get; set; }
@@ -46,5 +45,4 @@ public class OptimizedPlayer
         public Dictionary<string, object> StackInfo { get; set; } // Added property for stack information
         public Dictionary<string, int> TeamBreakdown { get; set; } // Added property for team breakdown
     }
-
 }

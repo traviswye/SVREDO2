@@ -79,64 +79,78 @@ namespace SharpVizApi.Services.Optimization
                     };
                 }
 
-                // 4. Apply stacking strategy if applicable
-                var stackingResult = await ApplyStackingStrategy(
-                    players, parameters, mlbParams, remainingPositions, mustStartPlayers);
+                // 4. Determine the stacking strategy
+                var stackDefinition = await DetermineStackStrategy(parameters, mlbParams);
 
-                if (!stackingResult.IsSuccessful)
+                // If we have a valid stacking strategy, try both arrangements
+                if (stackDefinition.IsValid &&
+                    mlbParams.StrategyTeams != null &&
+                    mlbParams.StrategyTeams.Count >= 2)
                 {
-                    // Convert the stacking result to an optimization result
+                    // Create two versions of the stacking arrangements
+                    var normalArrangement = new StackArrangement
+                    {
+                        PrimaryTeam = mlbParams.StrategyTeams[0],
+                        SecondaryTeam = mlbParams.StrategyTeams[1],
+                        PrimarySize = stackDefinition.PrimarySize,
+                        SecondarySize = stackDefinition.SecondarySize
+                    };
+
+                    var reversedArrangement = new StackArrangement
+                    {
+                        PrimaryTeam = mlbParams.StrategyTeams[1],
+                        SecondaryTeam = mlbParams.StrategyTeams[0],
+                        PrimarySize = stackDefinition.PrimarySize,
+                        SecondarySize = stackDefinition.SecondarySize
+                    };
+
+                    // Try both arrangements and choose the best one
+                    var normalLineup = await OptimizeWithStackArrangement(
+                        players,
+                        normalArrangement,
+                        mustStartPlayers,
+                        remainingPositions,
+                        remainingSalary,
+                        parameters);
+
+                    var reversedLineup = await OptimizeWithStackArrangement(
+                        players,
+                        reversedArrangement,
+                        mustStartPlayers,
+                        remainingPositions,
+                        remainingSalary,
+                        parameters);
+
+                    // Choose the best lineup based on projected points
+                    var bestLineup = ChooseBestLineup(normalLineup, reversedLineup, parameters.OptimizationCriterion);
+
+                    // Include stack info in the response
+                    var stackInfo = CreateStackInfo(
+                        bestLineup == normalLineup ? normalArrangement : reversedArrangement,
+                        stackDefinition.Reasoning);
+
+                    // Create team breakdown
+                    var teamBreakdown = bestLineup.Players
+                        .GroupBy(p => p.Team)
+                        .ToDictionary(g => g.Key, g => g.Count());
+
                     return new OptimizationResult
                     {
-                        IsSuccessful = false,
-                        Message = stackingResult.Message,
-                        Players = new List<OptimizedPlayer>()
+                        IsSuccessful = bestLineup.IsSuccessful,
+                        Message = bestLineup.Message,
+                        Players = bestLineup.Players,
+                        TotalSalary = bestLineup.TotalSalary,
+                        TotalValue = bestLineup.TotalValue,
+                        StackInfo = stackInfo,
+                        TeamBreakdown = teamBreakdown
                     };
                 }
-
-                // 5. Optimize the lineup using the knapsack approach
-                var lineup = await OptimizeLineupUsingKnapsack(
-                    players,
-                    remainingPositions,
-                    remainingSalary,
-                    parameters.OptimizationCriterion,
-                    mustStartPlayers.Select(p => p.Player).ToList(),
-                    stackingResult.RequiredPlayers);
-
-                // Calculate team breakdown
-                var teamBreakdown = lineup
-                    .Where(p => !p.Position.Contains("P")) // Exclude pitchers from the count
-                    .GroupBy(p => p.Team)
-                    .ToDictionary(g => g.Key, g => g.Count());
-
-                // 6. Construct the final result with stack information
-                var result = new OptimizationResult
+                else
                 {
-                    IsSuccessful = true,
-                    Players = lineup,
-                    TotalSalary = lineup.Sum(p => p.Salary),
-                    TotalValue = lineup.Sum(p => GetPlayerValue(p, parameters.OptimizationCriterion)),
-                    Message = "Lineup successfully optimized",
-                    TeamBreakdown = teamBreakdown
-                };
-
-                // Add stack info if stacking was used
-                if (!string.IsNullOrEmpty(stackingResult.UsedStackStrategy))
-                {
-                    result.StackInfo = new Dictionary<string, object>
-            {
-                { "Strategy", stackingResult.UsedStackStrategy },
-                { "Reasoning", stackingResult.StackReasoning },
-                { "Teams", new Dictionary<string, object>
-                    {
-                        { "Primary", new { Team = stackingResult.PrimaryTeam, StackSize = stackingResult.PrimaryStackSize } },
-                        { "Secondary", new { Team = stackingResult.SecondaryTeam, StackSize = stackingResult.SecondaryStackSize } }
-                    }
+                    // No valid stacking strategy or not enough teams, proceed with standard optimization
+                    return await OptimizeWithoutStacking(
+                        players, mustStartPlayers, remainingPositions, remainingSalary, parameters);
                 }
-            };
-                }
-
-                return result;
             }
             catch (Exception ex)
             {
@@ -149,6 +163,241 @@ namespace SharpVizApi.Services.Optimization
             }
         }
 
+        private OptimizationResult ChooseBestLineup(
+            OptimizationResult lineup1,
+            OptimizationResult lineup2,
+            string optimizationCriterion)
+        {
+            // If either lineup failed, return the successful one
+            if (!lineup1.IsSuccessful) return lineup2;
+            if (!lineup2.IsSuccessful) return lineup1;
+
+            // Calculate total value for each lineup based on optimization criterion
+            decimal lineup1Value = lineup1.Players.Sum(p => GetPlayerValue(p, optimizationCriterion));
+            decimal lineup2Value = lineup2.Players.Sum(p => GetPlayerValue(p, optimizationCriterion));
+
+            // Return the lineup with the higher value
+            return lineup1Value >= lineup2Value ? lineup1 : lineup2;
+        }
+
+        private Dictionary<string, object> CreateStackInfo(StackArrangement arrangement, string reasoning)
+        {
+            return new Dictionary<string, object>
+            {
+                { "Strategy", $"{arrangement.PrimarySize}-{arrangement.SecondarySize}" },
+                { "Reasoning", reasoning },
+                { "Teams", new Dictionary<string, object>
+                    {
+                        { "Primary", new Dictionary<string, object>
+                            {
+                                { "team", arrangement.PrimaryTeam },
+                                { "stackSize", arrangement.PrimarySize }
+                            }
+                        },
+                        { "Secondary", new Dictionary<string, object>
+                            {
+                                { "team", arrangement.SecondaryTeam },
+                                { "stackSize", arrangement.SecondarySize }
+                            }
+                        }
+                    }
+                }
+            };
+        }
+
+        private async Task<OptimizationResult> OptimizeWithoutStacking(
+            List<DKPlayerPool> players,
+            List<MustStartResult> mustStartPlayers,
+            List<string> remainingPositions,
+            int remainingSalary,
+            OptimizationParameters parameters)
+        {
+            // 5. Optimize the lineup using the knapsack approach
+            var lineup = await OptimizeLineupUsingKnapsack(
+                players,
+                remainingPositions,
+                remainingSalary,
+                parameters.OptimizationCriterion,
+                mustStartPlayers.Select(p => p.Player).ToList(),
+                new List<RequiredPlayer>());
+
+            // 6. Construct the final result
+            return new OptimizationResult
+            {
+                IsSuccessful = true,
+                Players = lineup,
+                TotalSalary = lineup.Sum(p => p.Salary),
+                TotalValue = lineup.Sum(p => GetPlayerValue(p, parameters.OptimizationCriterion)),
+                Message = "Lineup successfully optimized"
+            };
+        }
+
+        private async Task<OptimizationResult> OptimizeWithStackArrangement(
+            List<DKPlayerPool> players,
+            StackArrangement arrangement,
+            List<MustStartResult> mustStartPlayers,
+            List<string> remainingPositions,
+            int remainingSalary,
+            OptimizationParameters parameters)
+        {
+            try
+            {
+                // Count how many players from each team are already must-starts
+                int primaryMustStarts = mustStartPlayers.Count(m => !m.IsError && m.Player.Team == arrangement.PrimaryTeam && !m.Player.Position.Contains("P"));
+                int secondaryMustStarts = mustStartPlayers.Count(m => !m.IsError && m.Player.Team == arrangement.SecondaryTeam && !m.Player.Position.Contains("P"));
+
+                // Adjust required stack sizes based on must-starts (without exceeding)
+                int primaryNeeded = Math.Min(arrangement.PrimarySize - primaryMustStarts, arrangement.PrimarySize);
+                primaryNeeded = Math.Max(0, primaryNeeded); // Ensure it's not negative
+
+                int secondaryNeeded = Math.Min(arrangement.SecondarySize - secondaryMustStarts, arrangement.SecondarySize);
+                secondaryNeeded = Math.Max(0, secondaryNeeded); // Ensure it's not negative
+
+                // Check if we have enough players for the strategy
+                var primaryTeamPlayers = players
+                    .Where(p => p.Team == arrangement.PrimaryTeam &&
+                           !p.Position.Contains("P") && // Exclude pitchers
+                           !mustStartPlayers.Any(m => !m.IsError && m.Player.PlayerDkId == p.PlayerDkId))
+                    .ToList();
+
+                if (primaryTeamPlayers.Count < primaryNeeded)
+                {
+                    return new OptimizationResult
+                    {
+                        IsSuccessful = false,
+                        Message = $"Not enough position players available from {arrangement.PrimaryTeam} for stack of size {arrangement.PrimarySize}"
+                    };
+                }
+
+                var secondaryTeamPlayers = players
+                    .Where(p => p.Team == arrangement.SecondaryTeam &&
+                              !p.Position.Contains("P") && // Exclude pitchers
+                              !mustStartPlayers.Any(m => !m.IsError && m.Player.PlayerDkId == p.PlayerDkId))
+                          .ToList();
+
+                if (secondaryTeamPlayers.Count < secondaryNeeded)
+                {
+                    return new OptimizationResult
+                    {
+                        IsSuccessful = false,
+                        Message = $"Not enough position players available from {arrangement.SecondaryTeam} for stack of size {arrangement.SecondarySize}"
+                    };
+                }
+
+                // Create required players constraints
+                var requiredPlayers = new List<RequiredPlayer>();
+
+                // Only add team as constraint if we need more players from it
+                if (primaryNeeded > 0)
+                {
+                    requiredPlayers.Add(new RequiredPlayer
+                    {
+                        Team = arrangement.PrimaryTeam,
+                        Position = "STACK", // Special marker to indicate this is a stacking requirement
+                        Count = primaryNeeded, // Exact number needed
+                        IsExactCount = true  // This is now an exact count constraint, not a minimum
+                    });
+                }
+
+                if (secondaryNeeded > 0)
+                {
+                    requiredPlayers.Add(new RequiredPlayer
+                    {
+                        Team = arrangement.SecondaryTeam,
+                        Position = "STACK", // Special marker to indicate this is a stacking requirement
+                        Count = secondaryNeeded, // Exact number needed
+                        IsExactCount = true  // This is now an exact count constraint, not a minimum
+                    });
+                }
+
+                // Optimize the lineup using the updated constraints
+                var lineup = await OptimizeLineupUsingKnapsack(
+                    players,
+                    remainingPositions,
+                    remainingSalary,
+                    parameters.OptimizationCriterion,
+                    mustStartPlayers.Select(p => p.Player).ToList(),
+                    requiredPlayers);
+
+                // Return the optimized result
+                var totalValue = lineup.Sum(p => GetPlayerValue(p, parameters.OptimizationCriterion));
+
+                return new OptimizationResult
+                {
+                    IsSuccessful = true,
+                    Players = lineup,
+                    TotalSalary = lineup.Sum(p => p.Salary),
+                    TotalValue = totalValue,
+                    Message = "Lineup successfully optimized with stack"
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error optimizing with stack arrangement {arrangement.PrimaryTeam}-{arrangement.SecondaryTeam}");
+                return new OptimizationResult
+                {
+                    IsSuccessful = false,
+                    Message = $"Error optimizing with stack: {ex.Message}"
+                };
+            }
+        }
+
+        private async Task<StackDefinition> DetermineStackStrategy(OptimizationParameters parameters, MLBParameters mlbParams)
+        {
+            if (string.IsNullOrEmpty(mlbParams.StackStrategy) || mlbParams.StrategyTeams == null || !mlbParams.StrategyTeams.Any())
+            {
+                return new StackDefinition { IsValid = false };
+            }
+
+            // Parse the stack strategy
+            int primaryStackSize = 0;
+            int secondaryStackSize = 0;
+            string reasoning = string.Empty;
+
+            if (mlbParams.StackStrategy == "Use suggested stack for this slate")
+            {
+                // Get the optimal strategy from the service
+                var draftGroupInfo = await _context.DKPoolsMaps.FirstOrDefaultAsync(p => p.DraftGroupId == parameters.DraftGroupId);
+
+                if (draftGroupInfo?.TotalGames == null)
+                {
+                    return new StackDefinition { IsValid = false };
+                }
+
+                var strategy = _strategyService.GetOptimalStrategy(draftGroupInfo.TotalGames.Value);
+                var stackRequirements = _strategyService.GetStackRequirements(strategy.RecommendedStrategy);
+
+                primaryStackSize = stackRequirements[0].StackSize;
+                secondaryStackSize = stackRequirements[1].StackSize;
+                reasoning = strategy.Reasoning;
+
+                _logger.LogInformation($"Using suggested stack strategy: {primaryStackSize}-{secondaryStackSize}");
+            }
+            else if (mlbParams.StackStrategy.Contains("-"))
+            {
+                // Parse the user-specified strategy (e.g., "5-2")
+                var parts = mlbParams.StackStrategy.Split('-');
+                if (parts.Length != 2 || !int.TryParse(parts[0], out primaryStackSize) || !int.TryParse(parts[1], out secondaryStackSize))
+                {
+                    return new StackDefinition { IsValid = false };
+                }
+
+                reasoning = $"For a custom stack, using {primaryStackSize} players from one team and {secondaryStackSize} from another team.";
+                _logger.LogInformation($"Using user-specified stack strategy: {primaryStackSize}-{secondaryStackSize}");
+            }
+            else
+            {
+                return new StackDefinition { IsValid = false };
+            }
+
+            return new StackDefinition
+            {
+                IsValid = true,
+                PrimarySize = primaryStackSize,
+                SecondarySize = secondaryStackSize,
+                Reasoning = reasoning
+            };
+        }
 
         // Helper methods to implement
         private async Task<List<DKPlayerPool>> GetPlayerPool(OptimizationParameters parameters, MLBParameters mlbParams)
@@ -283,7 +532,8 @@ namespace SharpVizApi.Services.Optimization
                     AssignedPosition = positionToUse,
                     Salary = player.Salary,
                     Team = player.Team,
-                    DKppg = player.DKppg
+                    DKppg = player.DKppg,
+                    OptimalPosition = positionToUse // Set the optimal position
                 };
 
                 // Add to results, update remaining positions and salary
@@ -320,177 +570,6 @@ namespace SharpVizApi.Services.Optimization
             return null; // No matching position found
         }
 
-
-        private async Task<StackingResult> ApplyStackingStrategy(
-            List<DKPlayerPool> players,
-            OptimizationParameters parameters,
-            MLBParameters mlbParams,
-            List<string> remainingPositions,
-            List<MustStartResult> mustStartPlayers)
-        {
-            // If no strategy teams or no stacking requested, return empty result
-            if (mlbParams.StrategyTeams == null || !mlbParams.StrategyTeams.Any() ||
-                string.IsNullOrEmpty(mlbParams.StackStrategy))
-            {
-                return new StackingResult
-                {
-                    IsSuccessful = true,
-                    RequiredPlayers = new List<RequiredPlayer>()
-                };
-            }
-
-            // Parse the stack strategy
-            int primaryStackSize = 0;
-            int secondaryStackSize = 0;
-
-            // Determine which stack was used (for user feedback)
-            string usedStackStrategy = mlbParams.StackStrategy;
-            string stackReasoning = "";
-
-            if (mlbParams.StackStrategy == "Use suggested stack for this slate")
-            {
-                // Get the optimal strategy from the service
-                var draftGroupInfo = await _context.DKPoolsMaps.FirstOrDefaultAsync(p => p.DraftGroupId == parameters.DraftGroupId);
-
-                if (draftGroupInfo?.TotalGames == null)
-                {
-                    return new StackingResult
-                    {
-                        IsSuccessful = false,
-                        Message = "Could not determine optimal stacking strategy - game count not found"
-                    };
-                }
-
-                var strategy = _strategyService.GetOptimalStrategy(draftGroupInfo.TotalGames.Value);
-                usedStackStrategy = strategy.RecommendedStrategy;
-                stackReasoning = strategy.Reasoning;
-
-                var stackRequirements = _strategyService.GetStackRequirements(strategy.RecommendedStrategy);
-
-                primaryStackSize = stackRequirements[0].StackSize;
-                secondaryStackSize = stackRequirements[1].StackSize;
-
-                _logger.LogInformation($"Using suggested stack strategy: {primaryStackSize}-{secondaryStackSize}");
-            }
-            else if (mlbParams.StackStrategy.Contains("-"))
-            {
-                // Parse the user-specified strategy (e.g., "5-2")
-                var parts = mlbParams.StackStrategy.Split('-');
-                if (parts.Length != 2 || !int.TryParse(parts[0], out primaryStackSize) || !int.TryParse(parts[1], out secondaryStackSize))
-                {
-                    return new StackingResult
-                    {
-                        IsSuccessful = false,
-                        Message = $"Invalid stack strategy format: {mlbParams.StackStrategy}"
-                    };
-                }
-
-                _logger.LogInformation($"Using user-specified stack strategy: {primaryStackSize}-{secondaryStackSize}");
-            }
-            else
-            {
-                return new StackingResult
-                {
-                    IsSuccessful = false,
-                    Message = $"Unrecognized stack strategy: {mlbParams.StackStrategy}"
-                };
-            }
-
-            // Ensure we have enough teams for the strategy
-            if (mlbParams.StrategyTeams.Count < (secondaryStackSize > 0 ? 2 : 1))
-            {
-                return new StackingResult
-                {
-                    IsSuccessful = false,
-                    Message = $"Strategy requires {(secondaryStackSize > 0 ? 2 : 1)} teams for a {primaryStackSize}-{secondaryStackSize} stack"
-                };
-            }
-
-            // Get the primary and secondary teams
-            string primaryTeam = mlbParams.StrategyTeams[0];
-            string secondaryTeam = mlbParams.StrategyTeams.Count > 1 ? mlbParams.StrategyTeams[1] : null;
-
-            // Count how many players from each team are already must-starts
-            int primaryMustStarts = mustStartPlayers.Count(m => !m.IsError && m.Player.Team == primaryTeam && !m.Player.Position.Contains("P"));
-            int secondaryMustStarts = secondaryTeam != null ?
-                mustStartPlayers.Count(m => !m.IsError && m.Player.Team == secondaryTeam && !m.Player.Position.Contains("P")) : 0;
-
-            // Adjust required stack sizes based on must-starts
-            int primaryNeeded = Math.Max(0, primaryStackSize - primaryMustStarts);
-            int secondaryNeeded = Math.Max(0, secondaryStackSize - secondaryMustStarts);
-
-            // Check if we have enough players for the strategy
-            var primaryTeamPlayers = players
-                .Where(p => p.Team == primaryTeam &&
-                       !p.Position.Contains("P") && // Exclude pitchers
-                       !mustStartPlayers.Any(m => !m.IsError && m.Player.PlayerDkId == p.PlayerDkId))
-                .ToList();
-
-            if (primaryTeamPlayers.Count < primaryNeeded)
-            {
-                return new StackingResult
-                {
-                    IsSuccessful = false,
-                    Message = $"Not enough position players available from {primaryTeam} for stack of size {primaryStackSize}"
-                };
-            }
-
-            var secondaryTeamPlayers = secondaryTeam != null ?
-                players.Where(p => p.Team == secondaryTeam &&
-                          !p.Position.Contains("P") && // Exclude pitchers
-                          !mustStartPlayers.Any(m => !m.IsError && m.Player.PlayerDkId == p.PlayerDkId))
-                      .ToList() :
-                new List<DKPlayerPool>();
-
-            if (secondaryTeam != null && secondaryTeamPlayers.Count < secondaryNeeded)
-            {
-                return new StackingResult
-                {
-                    IsSuccessful = false,
-                    Message = $"Not enough position players available from {secondaryTeam} for stack of size {secondaryStackSize}"
-                };
-            }
-
-            // Create required players list - THIS IS THE KEY CHANGE
-            var requiredPlayers = new List<RequiredPlayer>();
-
-            // Add requirements for primary team - THIS IS THE KEY CHANGE
-            for (int i = 0; i < primaryNeeded; i++)
-            {
-                requiredPlayers.Add(new RequiredPlayer
-                {
-                    Team = primaryTeam,
-                    Position = "STACK"
-                });
-            }
-
-            // Add requirements for secondary team - THIS IS THE KEY CHANGE
-            for (int i = 0; i < secondaryNeeded; i++)
-            {
-                requiredPlayers.Add(new RequiredPlayer
-                {
-                    Team = secondaryTeam,
-                    Position = "STACK"
-                });
-            }
-
-            _logger.LogInformation($"Created {requiredPlayers.Count} required player slots: " +
-                $"{requiredPlayers.Count(rp => rp.Team == primaryTeam)} for {primaryTeam}, " +
-                $"{requiredPlayers.Count(rp => rp.Team == secondaryTeam)} for {secondaryTeam}");
-
-            return new StackingResult
-            {
-                IsSuccessful = true,
-                RequiredPlayers = requiredPlayers,
-                UsedStackStrategy = usedStackStrategy,
-                StackReasoning = stackReasoning,
-                PrimaryTeam = primaryTeam,
-                PrimaryStackSize = primaryStackSize,
-                SecondaryTeam = secondaryTeam,
-                SecondaryStackSize = secondaryStackSize
-            };
-        }
-
         private async Task<List<OptimizedPlayer>> OptimizeLineupUsingKnapsack(
             List<DKPlayerPool> players,
             List<string> positions,
@@ -499,329 +578,279 @@ namespace SharpVizApi.Services.Optimization
             List<OptimizedPlayer> mustStartPlayers,
             List<RequiredPlayer> requiredPlayers)
         {
-            _logger.LogInformation("Starting lineup optimization with strict stacking constraints");
-
             // Start with the must-start players
             var lineup = new List<OptimizedPlayer>(mustStartPlayers);
 
-            // Extract stack requirements
-            string primaryTeam = null;
-            string secondaryTeam = null;
-            int primaryStackSize = 0;
-            int secondaryStackSize = 0;
+            // Calculate the remaining players needed for each position
+            var positionCounts = positions.GroupBy(p => p)
+                                         .ToDictionary(g => g.Key, g => g.Count());
 
-            // Group the required players by team to get stack requirements
-            var stacksByTeam = requiredPlayers
+            // Subtract positions used by must-start players
+            foreach (var player in mustStartPlayers)
+            {
+                if (positionCounts.ContainsKey(player.AssignedPosition))
+                {
+                    positionCounts[player.AssignedPosition]--;
+                }
+            }
+
+            // Remove positions that are already filled
+            positionCounts = positionCounts.Where(kv => kv.Value > 0)
+                                          .ToDictionary(kv => kv.Key, kv => kv.Value);
+
+            // Get stacking requirements
+            var stackRequirements = requiredPlayers
                 .Where(p => p.Position == "STACK")
                 .GroupBy(p => p.Team)
+                .ToDictionary(g => g.Key, g => g.First());
+
+            // Create tracking for each team to ensure we don't exceed the exact count limits
+            var teamCounts = mustStartPlayers
+                .Where(p => !p.Position.Contains("P")) // Only consider non-pitchers for stacking
+                .GroupBy(p => p.Team)
                 .ToDictionary(g => g.Key, g => g.Count());
-
-            if (stacksByTeam.Count >= 1)
-            {
-                var primary = stacksByTeam.OrderByDescending(kv => kv.Value).First();
-                primaryTeam = primary.Key;
-                primaryStackSize = primary.Value;
-            }
-
-            if (stacksByTeam.Count >= 2)
-            {
-                var secondary = stacksByTeam.OrderByDescending(kv => kv.Value).Skip(1).First();
-                secondaryTeam = secondary.Key;
-                secondaryStackSize = secondary.Value;
-            }
-
-            _logger.LogInformation($"Stack requirements - Primary: {primaryTeam} ({primaryStackSize}), Secondary: {secondaryTeam} ({secondaryStackSize})");
 
             // Create a list of players we've already used
             var usedPlayerIds = mustStartPlayers.Select(p => p.PlayerDkId).ToHashSet();
 
-            // Track how many non-pitcher players we have from each team in the lineup
-            var teamCounts = mustStartPlayers
-                .Where(p => !p.Position.Contains("P")) // Exclude pitchers from stack counts
-                .GroupBy(p => p.Team)
-                .ToDictionary(g => g.Key, g => g.Count());
-
-            // Initialize team counts for stacking teams
-            if (primaryTeam != null && !teamCounts.ContainsKey(primaryTeam))
+            // Organize available players by position
+            var availablePlayersByPosition = new Dictionary<string, List<DKPlayerPool>>();
+            foreach (var position in positionCounts.Keys)
             {
-                teamCounts[primaryTeam] = 0;
+                availablePlayersByPosition[position] = players
+                    .Where(p => IsEligibleForPosition(p, position) &&
+                           !usedPlayerIds.Contains(p.PlayerDkId))
+                    .ToList();
             }
 
-            if (secondaryTeam != null && !teamCounts.ContainsKey(secondaryTeam))
+            // First, let's try to fill stacking requirements with exactly the right number of players
+            foreach (var stackReq in stackRequirements.Values)
             {
-                teamCounts[secondaryTeam] = 0;
-            }
+                string team = stackReq.Team;
+                int exactCount = stackReq.Count;
+                bool isExactCount = stackReq.IsExactCount;
 
-            // Create position tracking
-            var remainingPositions = new Dictionary<string, int>();
-            foreach (var pos in positions)
-            {
-                if (!remainingPositions.ContainsKey(pos))
+                // Initialize team count if it doesn't exist
+                if (!teamCounts.ContainsKey(team))
                 {
-                    remainingPositions[pos] = 0;
+                    teamCounts[team] = 0;
                 }
-                remainingPositions[pos]++;
-            }
 
-            // Remove positions used by must-start players
-            foreach (var player in mustStartPlayers)
-            {
-                if (remainingPositions.ContainsKey(player.AssignedPosition))
+                // Calculate how many more players we need from this team
+                int playersNeeded = exactCount;
+
+                // Skip if we already have enough or too many players from this team
+                if (teamCounts[team] >= exactCount && isExactCount)
                 {
-                    remainingPositions[player.AssignedPosition]--;
-                    if (remainingPositions[player.AssignedPosition] <= 0)
-                    {
-                        remainingPositions.Remove(player.AssignedPosition);
-                    }
+                    continue;
                 }
-            }
 
-            _logger.LogInformation($"Remaining positions: {string.Join(", ", remainingPositions.Select(kv => $"{kv.Key}: {kv.Value}"))}");
+                // Adjust if we already have some players from this team
+                playersNeeded -= teamCounts[team];
 
-            // Get available primary and secondary team players
-            var availablePrimaryPlayers = primaryTeam != null ?
-                players.Where(p => p.Team == primaryTeam &&
-                             !p.Position.Contains("P") && // Exclude pitchers
-                             !usedPlayerIds.Contains(p.PlayerDkId))
-                      .ToList() :
-                new List<DKPlayerPool>();
+                // Get available players from this team
+                var teamPlayers = players
+                    .Where(p => p.Team == team &&
+                          !p.Position.Contains("P") && // Exclude pitchers
+                          !usedPlayerIds.Contains(p.PlayerDkId))
+                    .OrderByDescending(p => GetPlayerValue(new OptimizedPlayer { DKppg = p.DKppg }, optimizationCriterion))
+                    .ToList();
 
-            var availableSecondaryPlayers = secondaryTeam != null ?
-                players.Where(p => p.Team == secondaryTeam &&
-                             !p.Position.Contains("P") && // Exclude pitchers
-                             !usedPlayerIds.Contains(p.PlayerDkId))
-                      .ToList() :
-                new List<DKPlayerPool>();
-
-            _logger.LogInformation($"Available primary team players: {availablePrimaryPlayers.Count}");
-            _logger.LogInformation($"Available secondary team players: {availableSecondaryPlayers.Count}");
-
-            // Sort players by DKPPG within each team
-            availablePrimaryPlayers = availablePrimaryPlayers
-                .OrderByDescending(p => p.DKppg ?? 0)
-                .ToList();
-
-            availableSecondaryPlayers = availableSecondaryPlayers
-                .OrderByDescending(p => p.DKppg ?? 0)
-                .ToList();
-
-            // Function to try to add a player from a specific team to a specific position
-            bool TryAddPlayerToPosition(string position, List<DKPlayerPool> teamPlayers, ref int remainingSalary)
-            {
-                foreach (var player in teamPlayers)
+                // Try to fill positions with players from this team
+                int playersAdded = 0;
+                foreach (var position in positionCounts.Keys.ToList())
                 {
-                    if (IsEligibleForPosition(player, position) && player.Salary <= remainingSalary && !usedPlayerIds.Contains(player.PlayerDkId))
+                    // Skip if we've already added enough players from this team
+                    if (playersAdded >= playersNeeded) break;
+
+                    // Find eligible players for this position
+                    var eligiblePlayers = teamPlayers
+                        .Where(p => IsEligibleForPosition(p, position))
+                        .ToList();
+
+                    if (eligiblePlayers.Any() && positionCounts[position] > 0)
                     {
-                        // Add player to lineup
+                        // Take the best player for this position
+                        var selectedPlayer = eligiblePlayers.First();
+
+                        // Add to lineup
                         lineup.Add(new OptimizedPlayer
                         {
-                            FullName = player.FullName,
-                            PlayerDkId = player.PlayerDkId,
-                            Position = player.Position,
+                            FullName = selectedPlayer.FullName,
+                            PlayerDkId = selectedPlayer.PlayerDkId,
+                            Position = selectedPlayer.Position,
                             AssignedPosition = position,
-                            Salary = player.Salary,
-                            Team = player.Team,
-                            DKppg = player.DKppg
+                            Salary = selectedPlayer.Salary,
+                            Team = selectedPlayer.Team,
+                            DKppg = selectedPlayer.DKppg,
+                            OptimalPosition = position // Set the optimal position
                         });
 
                         // Update tracking
-                        usedPlayerIds.Add(player.PlayerDkId);
-                        remainingSalary -= player.Salary;
-
-                        // Update team count
-                        if (!teamCounts.ContainsKey(player.Team))
+                        usedPlayerIds.Add(selectedPlayer.PlayerDkId);
+                        positionCounts[position]--;
+                        if (positionCounts[position] == 0)
                         {
-                            teamCounts[player.Team] = 0;
+                            positionCounts.Remove(position);
                         }
-                        teamCounts[player.Team]++;
+                        playersAdded++;
+                        teamCounts[team]++;
 
-                        _logger.LogInformation($"Added {player.FullName} ({player.Team}) to position {position}");
+                        // Update remaining salary
+                        salaryCap -= selectedPlayer.Salary;
 
-                        return true;
+                        // Remove this player from consideration
+                        teamPlayers.Remove(selectedPlayer);
                     }
                 }
-
-                return false;
             }
 
-            // Step 1: First pass - try to add players from primary team
-            int targetPrimary = primaryStackSize;
-            int currentPrimary = teamCounts.GetValueOrDefault(primaryTeam, 0);
-            int neededPrimary = Math.Max(0, targetPrimary - currentPrimary);
-
-            _logger.LogInformation($"Need {neededPrimary} more players from primary team {primaryTeam}");
-
-            if (neededPrimary > 0)
+            // Now, fill remaining positions with the best available players that don't violate stack constraints
+            while (positionCounts.Any())
             {
-                // Try to add players from primary team to each position
-                foreach (var posEntry in remainingPositions.ToList())
+                // Calculate the value-to-salary ratio for each player in each remaining position
+                var bestPositionPlayer = new KeyValuePair<string, DKPlayerPool>(null, null);
+                double bestRatio = 0;
+
+                foreach (var positionEntry in positionCounts)
                 {
-                    string position = posEntry.Key;
-                    int count = posEntry.Value;
+                    string position = positionEntry.Key;
+                    var eligiblePlayers = availablePlayersByPosition[position]
+                        .Where(p => !usedPlayerIds.Contains(p.PlayerDkId) && p.Salary <= salaryCap)
+                        .ToList();
 
-                    for (int i = 0; i < count; i++)
+                    // Filter out players that would exceed exact stack count constraints
+                    eligiblePlayers = eligiblePlayers.Where(p =>
+                        !stackRequirements.ContainsKey(p.Team) ||
+                        !stackRequirements[p.Team].IsExactCount ||
+                        (teamCounts.ContainsKey(p.Team) ? teamCounts[p.Team] : 0) < stackRequirements[p.Team].Count
+                    ).ToList();
+
+                    foreach (var player in eligiblePlayers)
                     {
-                        if (teamCounts.GetValueOrDefault(primaryTeam, 0) >= targetPrimary)
+                        // Check if this player helps fulfill any remaining stack requirements
+                        bool helpsStacking = stackRequirements.ContainsKey(player.Team) &&
+                                            !stackRequirements[player.Team].IsExactCount &&
+                                            (teamCounts.ContainsKey(player.Team) ? teamCounts[player.Team] : 0) < stackRequirements[player.Team].Count;
+
+                        // Also check if adding this player would exceed max stack size for a team
+                        bool exceedsStackLimit = stackRequirements.ContainsKey(player.Team) &&
+                                                stackRequirements[player.Team].IsExactCount &&
+                                                (teamCounts.ContainsKey(player.Team) ? teamCounts[player.Team] : 0) >= stackRequirements[player.Team].Count;
+
+                        // Skip this player if it would exceed the stack limit
+                        if (exceedsStackLimit)
                         {
-                            break; // We've met our target
+                            continue;
                         }
 
-                        if (TryAddPlayerToPosition(position, availablePrimaryPlayers, ref salaryCap))
+                        // Calculate value - use a bonus for stack-helping players
+                        decimal value = GetPlayerValue(new OptimizedPlayer { DKppg = player.DKppg }, optimizationCriterion);
+                        if (helpsStacking)
                         {
-                            // Decrement remaining positions
-                            remainingPositions[position]--;
-                            if (remainingPositions[position] <= 0)
-                            {
-                                remainingPositions.Remove(position);
-                            }
+                            value *= 1.5m; // 50% bonus for helping with stack
                         }
-                    }
 
-                    if (teamCounts.GetValueOrDefault(primaryTeam, 0) >= targetPrimary)
-                    {
-                        break; // We've met our target
+                        // Calculate ratio
+                        double ratio = (double)(value / player.Salary);
+
+                        if (ratio > bestRatio)
+                        {
+                            bestRatio = ratio;
+                            bestPositionPlayer = new KeyValuePair<string, DKPlayerPool>(position, player);
+                        }
                     }
                 }
-            }
 
-            _logger.LogInformation($"After primary team fill: {teamCounts.GetValueOrDefault(primaryTeam, 0)}/{targetPrimary} from {primaryTeam}");
-
-            // Step 2: Second pass - try to add players from secondary team
-            int targetSecondary = secondaryStackSize;
-            int currentSecondary = teamCounts.GetValueOrDefault(secondaryTeam, 0);
-            int neededSecondary = Math.Max(0, targetSecondary - currentSecondary);
-
-            _logger.LogInformation($"Need {neededSecondary} more players from secondary team {secondaryTeam}");
-
-            if (neededSecondary > 0)
-            {
-                // Try to add players from secondary team to each position
-                foreach (var posEntry in remainingPositions.ToList())
+                // If we couldn't find a player for any position, break
+                if (bestPositionPlayer.Key == null)
                 {
-                    string position = posEntry.Key;
-                    int count = posEntry.Value;
-
-                    for (int i = 0; i < count; i++)
-                    {
-                        if (teamCounts.GetValueOrDefault(secondaryTeam, 0) >= targetSecondary)
-                        {
-                            break; // We've met our target
-                        }
-
-                        if (TryAddPlayerToPosition(position, availableSecondaryPlayers, ref salaryCap))
-                        {
-                            // Decrement remaining positions
-                            remainingPositions[position]--;
-                            if (remainingPositions[position] <= 0)
-                            {
-                                remainingPositions.Remove(position);
-                            }
-                        }
-                    }
-
-                    if (teamCounts.GetValueOrDefault(secondaryTeam, 0) >= targetSecondary)
-                    {
-                        break; // We've met our target
-                    }
+                    _logger.LogWarning("Could not find valid player for any remaining position within salary cap");
+                    break;
                 }
+
+                // Add the best player to the lineup
+                string selectedPosition = bestPositionPlayer.Key;
+                DKPlayerPool selectedPlayer = bestPositionPlayer.Value;
+
+                lineup.Add(new OptimizedPlayer
+                {
+                    FullName = selectedPlayer.FullName,
+                    PlayerDkId = selectedPlayer.PlayerDkId,
+                    Position = selectedPlayer.Position,
+                    AssignedPosition = selectedPosition,
+                    Salary = selectedPlayer.Salary,
+                    Team = selectedPlayer.Team,
+                    DKppg = selectedPlayer.DKppg,
+                    OptimalPosition = selectedPosition // Set the optimal position
+                });
+
+                // Update tracking
+                usedPlayerIds.Add(selectedPlayer.PlayerDkId);
+                positionCounts[selectedPosition]--;
+                if (positionCounts[selectedPosition] == 0)
+                {
+                    positionCounts.Remove(selectedPosition);
+                }
+
+                // Update team counts
+                if (!teamCounts.ContainsKey(selectedPlayer.Team))
+                {
+                    teamCounts[selectedPlayer.Team] = 0;
+                }
+                teamCounts[selectedPlayer.Team]++;
+
+                // Update remaining salary
+                salaryCap -= selectedPlayer.Salary;
             }
 
-            _logger.LogInformation($"After secondary team fill: {teamCounts.GetValueOrDefault(secondaryTeam, 0)}/{targetSecondary} from {secondaryTeam}");
-
-            // Step 3: If we haven't met stack requirements yet, check if we need to swap positions
-            if (teamCounts.GetValueOrDefault(primaryTeam, 0) < targetPrimary ||
-                teamCounts.GetValueOrDefault(secondaryTeam, 0) < targetSecondary)
+            // Check if we successfully filled all positions
+            if (positionCounts.Any())
             {
-                _logger.LogWarning("Could not meet stack requirements with direct assignment. Trying position swapping...");
+                _logger.LogWarning($"Could not fill all positions: {string.Join(", ", positionCounts.Select(kv => $"{kv.Key}: {kv.Value}"))}");
 
-                // TODO: Implement a position swapping algorithm if needed
-                // This would involve removing players from the lineup and trying different combinations
-            }
-
-            // Step 4: Fill remaining positions with best players
-            _logger.LogInformation($"Filling remaining positions: {string.Join(", ", remainingPositions.Select(kv => $"{kv.Key}: {kv.Value}"))}");
-
-            foreach (var posEntry in remainingPositions.ToList())
-            {
-                string position = posEntry.Key;
-                int count = posEntry.Value;
-
-                // Find eligible players for this position
-                var eligiblePlayers = players
-                    .Where(p => IsEligibleForPosition(p, position) &&
-                           !usedPlayerIds.Contains(p.PlayerDkId) &&
-                           p.Salary <= salaryCap)
-                    .OrderByDescending(p => p.DKppg ?? 0)
+                // Try a fallback approach - try to maximize DKppg without position constraints
+                // This ensures we return a valid lineup even if it doesn't meet all constraints
+                var remainingSalary = salaryCap;
+                var remainingPlayers = players
+                    .Where(p => !usedPlayerIds.Contains(p.PlayerDkId))
+                    .OrderByDescending(p => p.DKppg)
                     .ToList();
 
-                for (int i = 0; i < count; i++)
+                foreach (var position in positionCounts.Keys.ToList())
                 {
-                    if (eligiblePlayers.Count == 0)
+                    for (int i = 0; i < positionCounts[position]; i++)
                     {
-                        _logger.LogWarning($"No eligible players left for position {position}");
-                        break;
+                        // Find the best player who can play this position
+                        var bestPlayer = remainingPlayers
+                            .Where(p => IsEligibleForPosition(p, position) && p.Salary <= remainingSalary)
+                            .OrderByDescending(p => p.DKppg)
+                            .FirstOrDefault();
+
+                        if (bestPlayer != null)
+                        {
+                            lineup.Add(new OptimizedPlayer
+                            {
+                                FullName = bestPlayer.FullName,
+                                PlayerDkId = bestPlayer.PlayerDkId,
+                                Position = bestPlayer.Position,
+                                AssignedPosition = position,
+                                Salary = bestPlayer.Salary,
+                                Team = bestPlayer.Team,
+                                DKppg = bestPlayer.DKppg,
+                                OptimalPosition = position // Set the optimal position
+                            });
+
+                            remainingSalary -= bestPlayer.Salary;
+                            remainingPlayers.Remove(bestPlayer);
+                        }
                     }
-
-                    var bestPlayer = eligiblePlayers.First();
-
-                    // Add player to lineup
-                    lineup.Add(new OptimizedPlayer
-                    {
-                        FullName = bestPlayer.FullName,
-                        PlayerDkId = bestPlayer.PlayerDkId,
-                        Position = bestPlayer.Position,
-                        AssignedPosition = position,
-                        Salary = bestPlayer.Salary,
-                        Team = bestPlayer.Team,
-                        DKppg = bestPlayer.DKppg
-                    });
-
-                    // Update tracking
-                    usedPlayerIds.Add(bestPlayer.PlayerDkId);
-                    salaryCap -= bestPlayer.Salary;
-
-                    // Update team count
-                    if (!teamCounts.ContainsKey(bestPlayer.Team))
-                    {
-                        teamCounts[bestPlayer.Team] = 0;
-                    }
-                    if (!bestPlayer.Position.Contains("P")) // Don't count pitchers
-                    {
-                        teamCounts[bestPlayer.Team]++;
-                    }
-
-                    _logger.LogInformation($"Added {bestPlayer.FullName} ({bestPlayer.Team}) to position {position}");
-
-                    // Remove the player from eligible list
-                    eligiblePlayers.Remove(bestPlayer);
                 }
-
-                // Update remaining positions
-                remainingPositions.Remove(position);
             }
 
-            // Log final team counts
-            _logger.LogInformation("Final team breakdown:");
-            foreach (var team in teamCounts.Keys)
-            {
-                _logger.LogInformation($"{team}: {teamCounts[team]} players");
-            }
-
-            // Check if we met stacking requirements
-            if (teamCounts.GetValueOrDefault(primaryTeam, 0) < targetPrimary)
-            {
-                _logger.LogWarning($"Could not fully meet primary stack requirement for {primaryTeam}: {teamCounts.GetValueOrDefault(primaryTeam, 0)}/{targetPrimary}");
-            }
-
-            if (teamCounts.GetValueOrDefault(secondaryTeam, 0) < targetSecondary)
-            {
-                _logger.LogWarning($"Could not fully meet secondary stack requirement for {secondaryTeam}: {teamCounts.GetValueOrDefault(secondaryTeam, 0)}/{targetSecondary}");
-            }
-
-            // Return the sorted lineup
+            // Sort lineup by position order for better presentation
             return SortLineupByPositionOrder(lineup);
         }
-
 
         // Helper method to find the best player for a position while prioritizing stack requirements
         private PlayerPositionMatch FindBestPlayerForPositionWithStackPriority(
@@ -926,6 +955,7 @@ namespace SharpVizApi.Services.Optimization
             public string Position { get; set; }
             public double Score { get; set; }
         }
+
         private bool IsEligibleForPosition(DKPlayerPool player, string position)
         {
             // Log the check for debugging
@@ -958,23 +988,21 @@ namespace SharpVizApi.Services.Optimization
         {
             // Define the order of positions for display
             var positionOrder = new Dictionary<string, int>
-    {
-        { "P", 1 },
-        { "C", 2 },
-        { "1B", 3 },
-        { "2B", 4 },
-        { "3B", 5 },
-        { "SS", 6 },
-        { "OF", 7 }
-    };
+            {
+                { "P", 1 },
+                { "C", 2 },
+                { "1B", 3 },
+                { "2B", 4 },
+                { "3B", 5 },
+                { "SS", 6 },
+                { "OF", 7 }
+            };
 
             return lineup
                 .OrderBy(p => positionOrder.ContainsKey(p.AssignedPosition) ?
                              positionOrder[p.AssignedPosition] : 100)
                 .ToList();
         }
-
-
 
         private decimal GetPlayerValue(OptimizedPlayer player, string optimizationCriterion)
         {
@@ -1018,17 +1046,20 @@ namespace SharpVizApi.Services.Optimization
         public string ErrorMessage { get; set; }
     }
 
-    public class StackingResult
+    public class StackDefinition
     {
-        public bool IsSuccessful { get; set; }
-        public string Message { get; set; }
-        public List<RequiredPlayer> RequiredPlayers { get; set; } = new List<RequiredPlayer>();
-        public string UsedStackStrategy { get; set; }
-        public string StackReasoning { get; set; }
+        public bool IsValid { get; set; }
+        public int PrimarySize { get; set; }
+        public int SecondarySize { get; set; }
+        public string Reasoning { get; set; }
+    }
+
+    public class StackArrangement
+    {
         public string PrimaryTeam { get; set; }
-        public int PrimaryStackSize { get; set; }
         public string SecondaryTeam { get; set; }
-        public int SecondaryStackSize { get; set; }
+        public int PrimarySize { get; set; }
+        public int SecondarySize { get; set; }
     }
 
     public class RequiredPlayer
@@ -1036,5 +1067,7 @@ namespace SharpVizApi.Services.Optimization
         public int PlayerId { get; set; }
         public string Team { get; set; }
         public string Position { get; set; }
+        public int Count { get; set; } = 1;
+        public bool IsExactCount { get; set; } = false;
     }
 }

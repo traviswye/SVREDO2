@@ -96,6 +96,5 @@ namespace SharpVizAPI.Services
 
             return parameters;
         }
-
     }
 }

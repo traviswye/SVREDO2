@@ -339,12 +339,31 @@ const PlayerPoolTable = ({
         return sortConfig.direction === 'asc' ? ' ↑' : ' ↓';
     };
 
+    // Helper function to render player status
+    const renderStatus = (status) => {
+        if (!status || status === 'None') return null;
+
+        // Only show status when it's OUT or GTD
+        if (status === 'OUT') {
+            return <span className="status-out">{status}</span>;
+        } else if (status === 'GTD') {
+            return <span className="status-gtd">{status}</span>;
+        } else if (status === 'GTD') {
+            return <span className="status-gtd">{status}</span>;
+        } else if (status === 'GTD') {
+            return <span className="status-gtd">{status}</span>;
+        }
+
+        return null;
+    };
+
     const filterPlayers = (players, position = 'ALL', query = '') => {
         return players.filter(player => {
             const positionMatch = position === 'ALL' || player.positionGroups.includes(position);
             const searchMatch = query === '' ||
                 player.fullName.toLowerCase().includes(query.toLowerCase()) ||
                 player.position.toLowerCase().includes(query.toLowerCase()) ||
+                (player.status && player.status.toLowerCase().includes(query.toLowerCase())) ||
                 player.game.toLowerCase().includes(query.toLowerCase());
 
             return positionMatch && searchMatch;
@@ -373,6 +392,9 @@ const PlayerPoolTable = ({
                         <th onClick={() => requestSort('position')}>
                             Position{getSortDirectionIndicator('position')}
                         </th>
+                        <th onClick={() => requestSort('status')}>
+                            Status{getSortDirectionIndicator('status')}
+                        </th>
                         <th onClick={() => requestSort('salary')}>
                             Salary{getSortDirectionIndicator('salary')}
                         </th>
@@ -387,9 +409,10 @@ const PlayerPoolTable = ({
                 </thead>
                 <tbody>
                     {sortedPlayers.map(player => (
-                        <tr key={player.id}>
+                        <tr key={player.id} className={player.status === 'OUT' ? 'player-out' : ''}>
                             <td>{player.fullName}</td>
                             <td>{player.position}</td>
+                            <td>{renderStatus(player.status)}</td>
                             <td>${player.salary.toLocaleString()}</td>
                             <td>{player.game}</td>
                             <td>{player.dKppg}</td>
@@ -406,7 +429,7 @@ const PlayerPoolTable = ({
                                         onClick={() => handleAddToDraft(player)}
                                         className="draft-button"
                                         title="Draft to Lineup"
-                                        disabled={draftedPlayerIds.has(player.playerDkId)}
+                                        disabled={draftedPlayerIds.has(player.playerDkId) || player.status === 'OUT'}
                                     >
                                         {draftedPlayerIds.has(player.playerDkId) ? 'Drafted' : 'Draft'}
                                     </button>
@@ -446,6 +469,9 @@ const PlayerPoolTable = ({
                             <th onClick={() => requestSort('position')}>
                                 Position{getSortDirectionIndicator('position')}
                             </th>
+                            <th onClick={() => requestSort('status')}>
+                                Status{getSortDirectionIndicator('status')}
+                            </th>
                             <th onClick={() => requestSort('salary')}>
                                 Salary{getSortDirectionIndicator('salary')}
                             </th>
@@ -460,9 +486,10 @@ const PlayerPoolTable = ({
                     </thead>
                     <tbody>
                         {sortedAvailablePlayers.map(player => (
-                            <tr key={player.playerDkId}>
+                            <tr key={player.playerDkId} className={player.status === 'OUT' ? 'player-out' : ''}>
                                 <td>{player.fullName}</td>
                                 <td>{player.position}</td>
+                                <td>{renderStatus(player.status)}</td>
                                 <td>${player.salary.toLocaleString()}</td>
                                 <td>{player.game}</td>
                                 <td>{player.dKppg}</td>
@@ -478,7 +505,7 @@ const PlayerPoolTable = ({
                                         <button
                                             onClick={() => handleAddToDraft(player)}
                                             className="draft-button"
-                                            disabled={draftedPlayerIds.has(player.playerDkId)}
+                                            disabled={draftedPlayerIds.has(player.playerDkId) || player.status === 'OUT'}
                                         >
                                             {draftedPlayerIds.has(player.playerDkId) ? 'Drafted' : 'Draft'}
                                         </button>
@@ -491,12 +518,13 @@ const PlayerPoolTable = ({
                         {sortedUnavailablePlayers.length > 0 && (
                             <>
                                 <tr className="unavailable-header">
-                                    <td colSpan="6">Players Not Available in Current Slate</td>
+                                    <td colSpan="7">Players Not Available in Current Slate</td>
                                 </tr>
                                 {sortedUnavailablePlayers.map(player => (
                                     <tr key={player.playerDkId} className="unavailable-player">
                                         <td>{player.fullName}</td>
                                         <td>{player.position}</td>
+                                        <td>{renderStatus(player.status)}</td>
                                         <td>${player.salary.toLocaleString()}</td>
                                         <td>{player.game}</td>
                                         <td>{player.dKppg}</td>

@@ -349,9 +349,9 @@ const PlayerPoolTable = ({
         } else if (status === 'GTD') {
             return <span className="status-gtd">{status}</span>;
         } else if (status === 'GTD') {
-            return <span className="status-gtd">{status}</span>;
+            return <span className="status-il">{status}</span>;
         } else if (status === 'GTD') {
-            return <span className="status-gtd">{status}</span>;
+            return <span className="status-dtd">{status}</span>;
         }
 
         return null;

@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/ExpandedTeamRecords.css";
+import "../css/ExpandTeamRecords.css";
 
 const ExpandedTeamRecords = ({ homeTeam, awayTeam, homeTeamRecord, awayTeamRecord }) => {
     // Set up record fields to be shown in the table

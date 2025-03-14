@@ -24,5 +24,7 @@ namespace SharpVizAPI.Controllers
             var result = await _bullpenService.GetBullpenAnalysis(year, team, parsedDate);
             return Ok(result);
         }
+
+
     }
 }

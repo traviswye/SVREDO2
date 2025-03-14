@@ -82,6 +82,81 @@ public class PitchersController : ControllerBase
         return Ok(existingPitcher);
     }
 
+    // GET: api/Pitchers/bullpens
+    [HttpGet("bullpens")]
+    public async Task<IActionResult> GetBullpenPitchers([FromQuery] int year, [FromQuery] string team)
+    {
+        if (string.IsNullOrEmpty(team))
+        {
+            return BadRequest("Team is required.");
+        }
+
+        try
+        {
+            // Get all pitchers for the team and year where G > GS (indicating relief/bullpen appearances)
+            var bullpenPitchers = await _context.Pitchers
+                .Where(p => p.Team == team && p.Year == year && p.G > p.GS)
+                .ToListAsync();
+
+            if (bullpenPitchers == null || !bullpenPitchers.Any())
+            {
+                return NotFound($"No bullpen pitchers found for team {team} in year {year}.");
+            }
+
+            // Calculate aggregate bullpen stats
+            double totalIP = bullpenPitchers.Sum(p => p.IP);
+            int totalER = bullpenPitchers.Sum(p => p.ER);
+            int totalH = bullpenPitchers.Sum(p => p.H);
+            int totalBB = bullpenPitchers.Sum(p => p.BB);
+            int totalSO = bullpenPitchers.Sum(p => p.SO);
+            int totalHR = bullpenPitchers.Sum(p => p.HR);
+
+            // Calculate derived statistics
+            double era = totalIP > 0 ? (totalER / totalIP) * 9.0 : 0;
+            double whip = totalIP > 0 ? (totalH + totalBB) / totalIP : 0;
+            double k9 = totalIP > 0 ? (totalSO / totalIP) * 9.0 : 0;
+            double bb9 = totalIP > 0 ? (totalBB / totalIP) * 9.0 : 0;
+            double hr9 = totalIP > 0 ? (totalHR / totalIP) * 9.0 : 0;
+
+            // FIP calculation: ((13*HR) + (3*BB) - (2*K)) / IP + constant
+            // The constant is typically around 3.2
+            double fip = totalIP > 0 ? ((13 * totalHR) + (3 * totalBB) - (2 * totalSO)) / totalIP + 3.2 : 0;
+
+            var bullpenStats = new
+            {
+                Team = team,
+                Year = year,
+                PitcherCount = bullpenPitchers.Count,
+                TotalIP = totalIP,
+                TotalER = totalER,
+                Era = era,
+                Whip = whip,
+                K9 = k9,
+                BB9 = bb9,
+                HR9 = hr9,
+                Fip = fip,
+                // No OPS in the model, so we'll leave it out
+                // Get last 5 most recently used bullpen pitchers
+                LastUsed = bullpenPitchers
+                    .OrderByDescending(p => p.DateModified)
+                    .Take(5)
+                    .Select(p => new
+                    {
+                        Name = p.BbrefId,
+                        IP = p.IP,
+                        // Calculate days rest based on current date and DateModified
+                        DaysRest = (DateTime.Now - p.DateModified).Days
+                    })
+                    .ToList()
+            };
+
+            return Ok(bullpenStats);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
+    }
     // GET: api/Pitchers/{bbrefID}
     [HttpGet("{bbrefID}")]
     public async Task<IActionResult> GetPitcher(string bbrefID)

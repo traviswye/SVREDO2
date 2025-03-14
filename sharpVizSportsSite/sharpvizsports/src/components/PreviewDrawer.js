@@ -3,6 +3,8 @@ import "../css/PreviewDrawer.css";
 import LineupGrid from "./LineupGrid";
 import HitterVsPitcherTable from "./HitterVsPitcherTable";
 import { processHvpData } from "./HvpitcherDataService";
+import ExpandedTeamRecords from "./ExpandTeamRecords";
+import BullpenStats from "./BullpenStats";
 
 const PreviewDrawer = ({ game, teamRecords, lineups, predictedLineups, parkFactors, onClose }) => {
   const [activeTab, setActiveTab] = useState("details");
@@ -374,12 +376,31 @@ const PreviewDrawer = ({ game, teamRecords, lineups, predictedLineups, parkFacto
             </div>
           )}
 
-          {/* Team Stats Tab - Keep existing code */}
+          {/* Team Stats Tab */}
           {activeTab === 'stats' && (
             <div className="tab-panel stats-panel">
-              <section className="team-stats-section">
-                <h3 className="section-title">Team Statistics</h3>
-                <p className="coming-soon">Detailed team statistics coming soon.</p>
+              <section className="team-records-section">
+                <h3 className="section-title">Team Records</h3>
+                <ExpandedTeamRecords
+                  homeTeam={game.homeTeam}
+                  awayTeam={game.awayTeam}
+                  homeTeamRecord={homeTeamRecord}
+                  awayTeamRecord={awayTeamRecord}
+                />
+              </section>
+
+              <section className="bullpen-stats-section">
+                <h3 className="section-title">Bullpen Statistics</h3>
+                <div className="bullpen-comparisons">
+                  <BullpenStats
+                    team={game.awayTeamAbbreviation}
+                    year={new Date().getFullYear()}
+                  />
+                  <BullpenStats
+                    team={game.homeTeamAbbreviation}
+                    year={new Date().getFullYear()}
+                  />
+                </div>
               </section>
             </div>
           )}

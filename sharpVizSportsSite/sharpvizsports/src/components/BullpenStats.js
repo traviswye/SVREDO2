@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../css/BullpenStats.css";
+import "../css/BullpenTeamStats.css";
 import axios from "axios";
 
 const BullpenStats = ({ team, year }) => {
@@ -13,15 +13,12 @@ const BullpenStats = ({ team, year }) => {
 
             setLoading(true);
             try {
-                // Format current date in YYYY-MM-DD format for the API
-                const today = new Date().toISOString().split("T")[0];
-
-                // Call the API to get bullpen stats
-                const response = await axios.get(`https://localhost:44346/api/Bullpen`, {
+                // Use the new Pitchers/bullpens endpoint
+                const response = await axios.get(`https://localhost:44346/api/Pitchers/bullpens`, {
                     params: {
                         team: team,
-                        year: year || new Date().getFullYear(),
-                        date: today
+                        // year: '2024'
+                        year: year || new Date().getFullYear()
                     }
                 });
 
@@ -64,7 +61,7 @@ const BullpenStats = ({ team, year }) => {
                 </div>
                 <div className="bullpen-metric">
                     <span className="metric-label">IP:</span>
-                    <span className="metric-value">{bullpenData.ip?.toFixed(1) || "N/A"}</span>
+                    <span className="metric-value">{bullpenData.totalIP?.toFixed(1) || "N/A"}</span>
                 </div>
                 <div className="bullpen-metric">
                     <span className="metric-label">K/9:</span>
@@ -72,20 +69,17 @@ const BullpenStats = ({ team, year }) => {
                 </div>
                 <div className="bullpen-metric">
                     <span className="metric-label">BB/9:</span>
-                    <span className="metric-value">{bullpenData.bb9?.toFixed(2) || "N/A"}</span>
+                    <span className="metric-value">{bullpenData.bB9?.toFixed(2) || "N/A"}</span>
                 </div>
                 <div className="bullpen-metric">
                     <span className="metric-label">HR/9:</span>
-                    <span className="metric-value">{bullpenData.hr9?.toFixed(2) || "N/A"}</span>
+                    <span className="metric-value">{bullpenData.hR9?.toFixed(2) || "N/A"}</span>
                 </div>
                 <div className="bullpen-metric">
                     <span className="metric-label">FIP:</span>
                     <span className="metric-value">{bullpenData.fip?.toFixed(2) || "N/A"}</span>
                 </div>
-                <div className="bullpen-metric">
-                    <span className="metric-label">OPS:</span>
-                    <span className="metric-value">{bullpenData.ops?.toFixed(3) || "N/A"}</span>
-                </div>
+                {/* Removed OPS since it's not in the model */}
             </div>
 
             {bullpenData.lastUsed && (

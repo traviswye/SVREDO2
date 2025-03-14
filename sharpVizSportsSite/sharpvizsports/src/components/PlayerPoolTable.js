@@ -20,6 +20,7 @@ const PlayerPoolTable = ({
     const [loading, setLoading] = useState(false);
     const [notification, setNotification] = useState(null);
     const [draftedPlayerIds, setDraftedPlayerIds] = useState(new Set());
+    const [ignorePlayerStatus, setIgnorePlayerStatus] = useState(false);
 
     // Initialize with salary as default sort column (descending)
     const [sortConfig, setSortConfig] = useState({
@@ -239,7 +240,8 @@ const PlayerPoolTable = ({
                     optimizeForDkppg: true,
                     oppRankLimit: 0,
                     userWatchlist: playerIds,
-                    mustStartPlayers: []
+                    mustStartPlayers: [],
+                    ignorePlayerStatus: ignorePlayerStatus
                 };
             }
 
@@ -348,9 +350,9 @@ const PlayerPoolTable = ({
             return <span className="status-out">{status}</span>;
         } else if (status === 'GTD') {
             return <span className="status-gtd">{status}</span>;
-        } else if (status === 'GTD') {
+        } else if (status === 'IL') {
             return <span className="status-il">{status}</span>;
-        } else if (status === 'GTD') {
+        } else if (status === 'DTD') {
             return <span className="status-dtd">{status}</span>;
         }
 
@@ -582,6 +584,16 @@ const PlayerPoolTable = ({
                             ×
                         </button>
                     )}
+                </div>
+                <div className="options-container">
+                    <label className="status-option">
+                        <input
+                            type="checkbox"
+                            checked={ignorePlayerStatus}
+                            onChange={() => setIgnorePlayerStatus(!ignorePlayerStatus)}
+                        />
+                        Include players with "OUT" status in optimization
+                    </label>
                 </div>
             </div>
 

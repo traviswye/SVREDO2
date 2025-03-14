@@ -38,6 +38,7 @@ namespace SharpVizAPI.Services
 
                 // 3. Map request to optimization parameters
                 var parameters = MapRequestToParameters(request, sport);
+                parameters.IgnorePlayerStatus = request.IgnorePlayerStatus;
 
                 // 4. Run the optimization
                 var result = await optimizer.OptimizeLineup(parameters);

@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import '../css/LineupBuilder.css';
 
+
+
 const LineupBuilder = ({ sport, draftedPlayers, onResetLineup }) => {
+    const [optimizationErrors, setOptimizationErrors] = useState([]);
     const getPositionsForSport = (sport) => {
         const sportPositions = {
             NBA: ['PG', 'SG', 'SF', 'PF', 'C', 'G', 'F', 'UTIL'],
@@ -197,6 +200,22 @@ const LineupBuilder = ({ sport, draftedPlayers, onResetLineup }) => {
         }
     };
 
+    const renderOptimizationErrors = () => {
+        if (optimizationErrors && optimizationErrors.length > 0) {
+            return (
+                <div className="optimization-errors">
+                    <h3>Optimization Issues:</h3>
+                    <ul>
+                        {optimizationErrors.map((error, index) => (
+                            <li key={index} className="error-message">{error}</li>
+                        ))}
+                    </ul>
+                </div>
+            );
+        }
+        return null;
+    };
+
     const renderSalaryStatus = () => {
         const maxSalary = 50000; // Default salary cap
         const remainingSalary = maxSalary - totalSalary;
@@ -274,6 +293,7 @@ const LineupBuilder = ({ sport, draftedPlayers, onResetLineup }) => {
         <div className="lineup-builder">
             <h2>{sport} Lineup</h2>
             {renderSalaryStatus()}
+            {renderOptimizationErrors()}
             <div className="lineup-table-container">
                 {renderLineupTable()}
             </div>

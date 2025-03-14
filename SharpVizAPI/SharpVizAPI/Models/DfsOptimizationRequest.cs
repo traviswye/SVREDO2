@@ -22,6 +22,7 @@ namespace SharpVizApi.Models
         public List<int>? MustStartPlayers { get; set; }
         public List<string>? Strategy { get; set; }
         public List<string>? Stack { get; set; }
+        public bool IgnorePlayerStatus { get; set; } = false; // Default to false
     }
 
     public class OptimizedPlayer
@@ -43,7 +44,8 @@ namespace SharpVizApi.Models
         public List<OptimizedPlayer> Players { get; set; }
         public int TotalSalary { get; set; }
         public string Message { get; set; }
-        public Dictionary<string, object> StackInfo { get; set; } // Added property for stack information
-        public Dictionary<string, int> TeamBreakdown { get; set; } // Added property for team breakdown
+        public Dictionary<string, object> StackInfo { get; set; }
+        public Dictionary<string, int> TeamBreakdown { get; set; }
+        public List<string> ErrorDetails { get; set; } = new List<string>();
     }
 }

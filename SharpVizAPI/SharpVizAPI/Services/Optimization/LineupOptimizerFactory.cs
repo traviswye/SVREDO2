@@ -15,6 +15,7 @@ namespace SharpVizApi.Services.Optimization
         public List<int> ExcludePlayers { get; set; } = new List<int>();
         public List<int> MustStartPlayers { get; set; } = new List<int>();
         public string OptimizationCriterion { get; set; } = "DKPPG"; // Default optimization criterion
+        public bool IgnorePlayerStatus { get; set; } = false; // Add this property
 
         // Sport-specific parameters
         public object SportSpecificParameters { get; set; }
@@ -30,6 +31,7 @@ namespace SharpVizApi.Services.Optimization
         public decimal TotalValue { get; set; } // Value according to the optimization criterion
         public Dictionary<string, object> StackInfo { get; set; } // Added for stack info
         public Dictionary<string, int> TeamBreakdown { get; set; } // Added for team breakdown
+        public List<string> ErrorDetails { get; set; } = new List<string>();  // Add this property
     }
 
     // Interface for all lineup optimizers

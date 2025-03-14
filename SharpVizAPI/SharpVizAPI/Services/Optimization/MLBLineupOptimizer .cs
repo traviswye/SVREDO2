@@ -218,7 +218,7 @@ namespace SharpVizApi.Services.Optimization
             OptimizationParameters parameters)
         {
             // 5. Optimize the lineup using the knapsack approach
-            var lineup = await OptimizeLineupUsingKnapsack(
+            var result = await OptimizeLineupUsingKnapsack(
                 players,
                 remainingPositions,
                 remainingSalary,
@@ -226,14 +226,26 @@ namespace SharpVizApi.Services.Optimization
                 mustStartPlayers.Select(p => p.Player).ToList(),
                 new List<RequiredPlayer>());
 
+            var stackInfo = new Dictionary<string, object>(); // This was missing
+
+            // Create team breakdown
+            var teamBreakdown = result.Lineup
+                .GroupBy(p => p.Team)
+                .ToDictionary(g => g.Key, g => g.Count());
+
             // 6. Construct the final result
             return new OptimizationResult
             {
                 IsSuccessful = true,
-                Players = lineup,
-                TotalSalary = lineup.Sum(p => p.Salary),
-                TotalValue = lineup.Sum(p => GetPlayerValue(p, parameters.OptimizationCriterion)),
-                Message = "Lineup successfully optimized"
+                Players = result.Lineup,
+                TotalSalary = result.Lineup.Sum(p => p.Salary),
+                TotalValue = result.Lineup.Sum(p => GetPlayerValue(p, parameters.OptimizationCriterion)),
+                Message = result.ErrorDetails.Any()
+                    ? $"Lineup created but with issues: {string.Join("; ", result.ErrorDetails)}"
+                    : "Lineup successfully optimized",
+                StackInfo = stackInfo,
+                TeamBreakdown = teamBreakdown,
+                ErrorDetails = result.ErrorDetails
             };
         }
 
@@ -316,24 +328,36 @@ namespace SharpVizApi.Services.Optimization
                 }
 
                 // Optimize the lineup using the updated constraints
-                var lineup = await OptimizeLineupUsingKnapsack(
+                var result = await OptimizeLineupUsingKnapsack(
                     players,
                     remainingPositions,
                     remainingSalary,
                     parameters.OptimizationCriterion,
                     mustStartPlayers.Select(p => p.Player).ToList(),
-                    requiredPlayers);
+                    new List<RequiredPlayer>());
 
                 // Return the optimized result
-                var totalValue = lineup.Sum(p => GetPlayerValue(p, parameters.OptimizationCriterion));
+                var totalValue = result.Lineup.Sum(p => GetPlayerValue(p, parameters.OptimizationCriterion));
+
+                var stackInfo = new Dictionary<string, object>(); // This was missing
+
+                // Create team breakdown
+                var teamBreakdown = result.Lineup
+                    .GroupBy(p => p.Team)
+                    .ToDictionary(g => g.Key, g => g.Count());
 
                 return new OptimizationResult
                 {
                     IsSuccessful = true,
-                    Players = lineup,
-                    TotalSalary = lineup.Sum(p => p.Salary),
-                    TotalValue = totalValue,
-                    Message = "Lineup successfully optimized with stack"
+                    Players = result.Lineup,
+                    TotalSalary = result.Lineup.Sum(p => p.Salary),
+                    TotalValue = result.Lineup.Sum(p => GetPlayerValue(p, parameters.OptimizationCriterion)),
+                    Message = result.ErrorDetails.Any()
+                        ? $"Lineup created but with issues: {string.Join("; ", result.ErrorDetails)}"
+                        : "Lineup successfully optimized",
+                    StackInfo = stackInfo,
+                    TeamBreakdown = teamBreakdown,
+                    ErrorDetails = result.ErrorDetails
                 };
             }
             catch (Exception ex)
@@ -405,11 +429,17 @@ namespace SharpVizApi.Services.Optimization
         }
 
         // Helper methods to implement
-        private async Task<List<DKPlayerPool>> GetPlayerPool(OptimizationParameters parameters, MLBParameters mlbParams)
+        private async Task<List<DKPlayerPool>> GetPlayerPool(OptimizationParameters parameters, MLBParameters mlbParams, bool ignorePlayerStatus = false)
         {
             // Start with a query for all players in the draft group
             var query = _context.DKPlayerPools
-                .Where(p => p.DraftGroupId == parameters.DraftGroupId && p.Status != "OUT");
+                .Where(p => p.DraftGroupId == parameters.DraftGroupId);
+
+            // Only filter out "OUT" players if we're not ignoring status
+            if (!ignorePlayerStatus)
+            {
+                query = query.Where(p => p.Status != "OUT");
+            }
 
             // Apply watchlist filter if provided
             if (parameters.UserWatchlist != null && parameters.UserWatchlist.Any())
@@ -912,7 +942,7 @@ namespace SharpVizApi.Services.Optimization
             return null; // No matching position found
         }
 
-        private async Task<List<OptimizedPlayer>> OptimizeLineupUsingKnapsack(
+        private async Task<OptimizationKnapsackResult> OptimizeLineupUsingKnapsack(
             List<DKPlayerPool> players,
             List<string> positions,
             int salaryCap,
@@ -922,6 +952,7 @@ namespace SharpVizApi.Services.Optimization
         {
             // Start with the must-start players
             var lineup = new List<OptimizedPlayer>(mustStartPlayers);
+            var missingPositionDetails = new List<string>();
 
             // Calculate the remaining players needed for each position
             var positionCounts = positions.GroupBy(p => p)
@@ -1149,7 +1180,8 @@ namespace SharpVizApi.Services.Optimization
             // Check if we successfully filled all positions
             if (positionCounts.Any())
             {
-                _logger.LogWarning($"Could not fill all positions: {string.Join(", ", positionCounts.Select(kv => $"{kv.Key}: {kv.Value}"))}");
+                var missingPositions = string.Join(", ", positionCounts.Select(kv => $"{kv.Key}: {kv.Value}"));
+                _logger.LogWarning($"Could not fill all positions: {missingPositions}");
 
                 // Try a fallback approach - try to maximize DKppg without position constraints
                 // This ensures we return a valid lineup even if it doesn't meet all constraints
@@ -1159,8 +1191,33 @@ namespace SharpVizApi.Services.Optimization
                     .OrderByDescending(p => p.DKppg)
                     .ToList();
 
+                //var missingPositionDetails = new List<string>();
+
                 foreach (var position in positionCounts.Keys.ToList())
                 {
+                    // Check if we have any eligible players for this position at all (even "OUT" ones)
+                    var allEligiblePlayers = players
+                        .Where(p => IsEligibleForPosition(p, position) && !usedPlayerIds.Contains(p.PlayerDkId))
+                        .ToList();
+
+                    var eligibleActivePlayers = allEligiblePlayers
+                        .Where(p => p.Status != "OUT")
+                        .ToList();
+
+                    if (allEligiblePlayers.Count == 0)
+                    {
+                        missingPositionDetails.Add($"No {position} players available in the player pool");
+                    }
+                    else if (eligibleActivePlayers.Count == 0 && allEligiblePlayers.Any(p => p.Status == "OUT"))
+                    {
+                        // We have players but they're all OUT
+                        var outPlayerNames = string.Join(", ", allEligiblePlayers
+                            .Where(p => p.Status == "OUT")
+                            .Select(p => p.FullName));
+
+                        missingPositionDetails.Add($"All {position} players are marked as OUT: {outPlayerNames}");
+                    }
+                    //  fallback approach
                     for (int i = 0; i < positionCounts[position]; i++)
                     {
                         // Find the best player who can play this position
@@ -1188,10 +1245,19 @@ namespace SharpVizApi.Services.Optimization
                         }
                     }
                 }
+                return new OptimizationKnapsackResult
+                {
+                    Lineup = SortLineupByPositionOrder(lineup),
+                    ErrorDetails = missingPositionDetails
+                };
             }
 
             // Sort lineup by position order for better presentation
-            return SortLineupByPositionOrder(lineup);
+            return new OptimizationKnapsackResult
+            {
+                Lineup = SortLineupByPositionOrder(lineup),
+                ErrorDetails = new List<string>()
+            };
         }
 
         // Helper method to find the best player for a position while prioritizing stack requirements
@@ -1416,5 +1482,10 @@ namespace SharpVizApi.Services.Optimization
         public string Position { get; set; }
         public int Count { get; set; } = 1;
         public bool IsExactCount { get; set; } = false;
+    }
+    public class OptimizationKnapsackResult
+    {
+        public List<OptimizedPlayer> Lineup { get; set; } = new List<OptimizedPlayer>();
+        public List<string> ErrorDetails { get; set; } = new List<string>();
     }
 }

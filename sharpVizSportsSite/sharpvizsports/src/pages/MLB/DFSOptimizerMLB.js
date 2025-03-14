@@ -69,6 +69,11 @@ const DFSOptimizer = () => {
         return player;
       });
 
+      // Add error details to the first player (if any)
+      if (results.errorDetails && results.errorDetails.length > 0 && playersWithFullData.length > 0) {
+        playersWithFullData[0].errorDetails = results.errorDetails;
+      }
+
       setDraftedPlayers(playersWithFullData);
     }
   };
@@ -131,7 +136,8 @@ const DFSOptimizer = () => {
       optimizationMetric: "DKPPG",
       oppRankLimit: 0,
       userWatchlist: watchlistIds,
-      excludePlayers: []
+      excludePlayers: [],
+      ignorePlayerStatus: false // Add this line, default to false
     };
 
     // Add must-start players using the already fetched DK IDs

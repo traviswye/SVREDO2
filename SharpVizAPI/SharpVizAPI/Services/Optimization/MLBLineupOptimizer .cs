@@ -334,7 +334,7 @@ namespace SharpVizApi.Services.Optimization
                     remainingSalary,
                     parameters.OptimizationCriterion,
                     mustStartPlayers.Select(p => p.Player).ToList(),
-                    new List<RequiredPlayer>());
+                    requiredPlayers);
 
                 // Return the optimized result
                 var totalValue = result.Lineup.Sum(p => GetPlayerValue(p, parameters.OptimizationCriterion));

@@ -55,7 +55,7 @@ namespace SharpVizApi.Services.Optimization
                 }
 
                 // 2. Get players from the draft group
-                var players = await GetPlayerPool(parameters, mlbParams);
+                var players = await GetPlayerPool(parameters, mlbParams, parameters.IgnorePlayerStatus);
 
                 if (!players.Any())
                 {

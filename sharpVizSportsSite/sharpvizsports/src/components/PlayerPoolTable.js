@@ -223,7 +223,11 @@ const PlayerPoolTable = ({
             let optimizationPayload;
 
             if (prepareOptimizationPayload) {
+                // Get base payload from parent component
                 optimizationPayload = prepareOptimizationPayload(playerIds, draftGroupId);
+
+                // IMPORTANT: Override the ignorePlayerStatus with our local state value
+                optimizationPayload.ignorePlayerStatus = ignorePlayerStatus;
             } else {
                 // Fallback to default payload if function not provided
                 const sportConfig = sportOptimizationConfigs[sport];
@@ -241,9 +245,11 @@ const PlayerPoolTable = ({
                     oppRankLimit: 0,
                     userWatchlist: playerIds,
                     mustStartPlayers: [],
-                    ignorePlayerStatus: ignorePlayerStatus
+                    ignorePlayerStatus: ignorePlayerStatus // Make sure to include the state value here
                 };
             }
+
+            console.log('Optimization payload:', optimizationPayload);
 
             // Make the optimization call
             const response = await axios.post(
@@ -260,33 +266,33 @@ const PlayerPoolTable = ({
             // Handle the optimization response
             console.log('Optimization Results:', response.data);
 
-            // Pass the optimization results to the parent component
+            // Extract any error messages
+            let optimizationErrors = [];
+
+            // Check for error message
+            if (response.data.message && response.data.message.includes("issues")) {
+                optimizationErrors.push(response.data.message);
+            }
+
+            // Check for error details
+            if (response.data.errorDetails && response.data.errorDetails.length > 0) {
+                optimizationErrors.push(...response.data.errorDetails);
+            }
+
+            // If we have players and errors, attach errors to the first player
+            if (response.data.players && response.data.players.length > 0 && optimizationErrors.length > 0) {
+                response.data.players[0].optimizationErrors = optimizationErrors;
+            }
+
+            // Pass the modified optimization results
             if (onOptimizationResults) {
                 onOptimizationResults(response.data);
             }
-            if (response.data.message && response.data.message.includes("issues")) {
-                // Extract error message from the response
-                setNotification(response.data.message);
 
-                // Still pass the optimization results to the parent component
-                if (onOptimizationResults) {
-                    onOptimizationResults(response.data);
-                }
-            } else if (response.data.errorDetails && response.data.errorDetails.length > 0) {
-                // If there are explicit error details, show those
-                setNotification(response.data.errorDetails.join("; "));
-
-                if (onOptimizationResults) {
-                    onOptimizationResults(response.data);
-                }
-            } else {
-                // No errors, just pass the optimization results
-                console.log('Optimization Results:', response.data);
-
-                if (onOptimizationResults) {
-                    onOptimizationResults(response.data);
-                }
-            }
+            // // Display notification if needed on playerpooltable component
+            // if (optimizationErrors.length > 0) {
+            //     setNotification(optimizationErrors.join("; "));
+            // }
         } catch (error) {
             console.error('Optimization error:', error);
             alert('Error optimizing lineup. Please try again.');
@@ -585,12 +591,13 @@ const PlayerPoolTable = ({
     return (
         <div className="player-pool-wrapper">
             <h2>{sport} Player Pool</h2>
-            {notification && (
+            {/* this is for if we want errors displayed in playerpooltable component */}
+            {/* {notification && (
                 <div className="notification">
                     <span>{notification}</span>
                     <button onClick={() => setNotification(null)}>×</button>
                 </div>
-            )}
+            )} */}
             <div className="player-pool-controls">
                 <div className="search-box">
                     <input
@@ -608,16 +615,20 @@ const PlayerPoolTable = ({
                         </button>
                     )}
                 </div>
-                <div className="options-container">
-                    <label className="status-option">
-                        <input
-                            type="checkbox"
-                            checked={ignorePlayerStatus}
-                            onChange={() => setIgnorePlayerStatus(!ignorePlayerStatus)}
-                        />
-                        Include players with "OUT" status in optimization
-                    </label>
-                </div>
+
+                {/* Only show the checkbox when in the watchList tab */}
+                {activeTab === 'watchList' && (
+                    <div className="options-container">
+                        <label className="status-option">
+                            <input
+                                type="checkbox"
+                                checked={ignorePlayerStatus}
+                                onChange={() => setIgnorePlayerStatus(!ignorePlayerStatus)}
+                            />
+                            Include players with "OUT" status in optimization
+                        </label>
+                    </div>
+                )}
             </div>
 
             <div className="tabs">

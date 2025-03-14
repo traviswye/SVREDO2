@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../css/LineupBuilder.css';
 
-
-
 const LineupBuilder = ({ sport, draftedPlayers, onResetLineup }) => {
-    const [optimizationErrors, setOptimizationErrors] = useState([]);
     const getPositionsForSport = (sport) => {
         const sportPositions = {
             NBA: ['PG', 'SG', 'SF', 'PF', 'C', 'G', 'F', 'UTIL'],
@@ -15,19 +12,16 @@ const LineupBuilder = ({ sport, draftedPlayers, onResetLineup }) => {
 
     const positionMappings = {
         NBA: {
-            // Primary positions that can fill G slot
             G: ['PG', 'SG'],
-            // Primary positions that can fill F slot
             F: ['SF', 'PF'],
-            // All positions that can fill UTIL
             UTIL: ['PG', 'SG', 'SF', 'PF', 'C']
         },
         MLB: {
-            // MLB specific mappings for composite positions
-            P: ['SP', 'RP']  // Both SP and RP can fill P slots
+            P: ['SP', 'RP']
         }
     };
 
+    // Initialize lineup state with empty slots for the selected sport
     const [lineup, setLineup] = useState(() => {
         const positions = getPositionsForSport(sport);
         return positions.map(pos => ({
@@ -36,53 +30,43 @@ const LineupBuilder = ({ sport, draftedPlayers, onResetLineup }) => {
         }));
     });
 
+    // State for financial stats
     const [totalSalary, setTotalSalary] = useState(0);
     const [averagePPG, setAveragePPG] = useState(0);
-    const [errorMessage, setErrorMessage] = useState(null);
 
+    // State for error messages - simplified to a single array
+    const [optimizationErrors, setOptimizationErrors] = useState([]);
 
+    // Reset lineup when sport changes
     useEffect(() => {
-        // Reset lineup when sport changes
         setLineup(getPositionsForSport(sport).map(pos => ({
             position: pos,
             player: null
         })));
     }, [sport]);
 
-    useEffect(() => {
-        // Reset lineup when sport changes
-        setLineup(getPositionsForSport(sport).map(pos => ({
-            position: pos,
-            player: null
-        })));
-    }, [sport]);
-
-    // In LineupBuilder.js, update the useEffect
+    // Process drafted players into the lineup
     useEffect(() => {
         const emptyLineup = getPositionsForSport(sport).map(pos => ({
             position: pos,
             player: null
         }));
 
+        // Clear optimization errors
+        setOptimizationErrors([]);
+
         if (draftedPlayers.length > 0) {
-            const newErrors = [];
-            // Check first player for errorDetails array
-            if (draftedPlayers[0] && draftedPlayers[0].errorDetails && draftedPlayers[0].errorDetails.length > 0) {
-                newErrors.push(...draftedPlayers[0].errorDetails);
+            // Check for optimization errors in the first player
+            const firstPlayer = draftedPlayers[0];
+            if (firstPlayer && firstPlayer.optimizationErrors) {
+                setOptimizationErrors(firstPlayer.optimizationErrors);
             }
 
-            // Also check for error message in the first player
-            if (draftedPlayers[0] && draftedPlayers[0].message && draftedPlayers[0].message.includes("issues")) {
-                newErrors.push(draftedPlayers[0].message);
-            }
-
-            setOptimizationErrors(newErrors);
-
+            // Process players into lineup
             const updatedLineup = [...emptyLineup];
             draftedPlayers.forEach(player => {
-                // Split the position string to get all positions the player can play
+                // Your existing player placement logic...
                 const playerPositions = player.position.split('/');
-                // Use assignedPosition from optimization response if available
                 const optimalPosition = player.assignedPosition || player.optimalPosition || playerPositions[0];
                 let placed = false;
 
@@ -109,35 +93,35 @@ const LineupBuilder = ({ sport, draftedPlayers, onResetLineup }) => {
                     }
                 }
 
-                // In MLB, handle special positions like P for pitchers (SP/RP)
+                // Special handling for MLB positions
                 if (!placed && sport === 'MLB') {
+                    // Handle pitcher placement
                     if ((playerPositions.includes('SP') || playerPositions.includes('RP')) &&
                         updatedLineup.some(slot => !slot.player && slot.position === 'P')) {
-                        // Find first empty P slot
                         const emptyPSlot = updatedLineup.findIndex(slot => !slot.player && slot.position === 'P');
                         if (emptyPSlot !== -1) {
                             updatedLineup[emptyPSlot].player = player;
                             placed = true;
                         }
                     }
-                }
 
-                // For MLB, handle OF positions specially
-                if (!placed && sport === 'MLB' && playerPositions.includes('OF')) {
-                    const emptyOFSlot = updatedLineup.findIndex(slot => !slot.player && slot.position === 'OF');
-                    if (emptyOFSlot !== -1) {
-                        updatedLineup[emptyOFSlot].player = player;
-                        placed = true;
+                    // Handle outfielder placement
+                    if (!placed && playerPositions.includes('OF')) {
+                        const emptyOFSlot = updatedLineup.findIndex(slot => !slot.player && slot.position === 'OF');
+                        if (emptyOFSlot !== -1) {
+                            updatedLineup[emptyOFSlot].player = player;
+                            placed = true;
+                        }
                     }
                 }
 
-                // If still not placed, check composite positions (G, F, UTIL)
+                // Check composite positions
                 if (!placed) {
                     for (let i = 0; i < updatedLineup.length; i++) {
                         if (!updatedLineup[i].player) {
                             const lineupPos = updatedLineup[i].position;
 
-                            // Check if player can fill G position
+                            // Check each special position type
                             if (lineupPos === 'G' &&
                                 playerPositions.some(pos => positionMappings[sport]?.G?.includes(pos))) {
                                 updatedLineup[i].player = player;
@@ -145,7 +129,6 @@ const LineupBuilder = ({ sport, draftedPlayers, onResetLineup }) => {
                                 break;
                             }
 
-                            // Check if player can fill F position
                             if (lineupPos === 'F' &&
                                 playerPositions.some(pos => positionMappings[sport]?.F?.includes(pos))) {
                                 updatedLineup[i].player = player;
@@ -153,7 +136,6 @@ const LineupBuilder = ({ sport, draftedPlayers, onResetLineup }) => {
                                 break;
                             }
 
-                            // Check if player can fill UTIL position
                             if (lineupPos === 'UTIL' &&
                                 playerPositions.some(pos => positionMappings[sport]?.UTIL?.includes(pos))) {
                                 updatedLineup[i].player = player;
@@ -169,17 +151,17 @@ const LineupBuilder = ({ sport, draftedPlayers, onResetLineup }) => {
         } else {
             // If there are no drafted players, set an empty lineup
             setLineup(emptyLineup);
-            setOptimizationErrors([]);
         }
     }, [draftedPlayers, sport, positionMappings]);
 
+    // Calculate financial totals when lineup changes
     useEffect(() => {
-        // Calculate totals when lineup changes
         const totals = calculateTotals();
         setTotalSalary(totals.salary);
         setAveragePPG(totals.dkppg);
     }, [lineup]);
 
+    // Calculate salary and points totals
     const calculateTotals = () => {
         const filledPositions = lineup.filter(row => row.player);
         const totalSalary = filledPositions.reduce((sum, row) => sum + (row.player?.salary || 0), 0);
@@ -191,22 +173,20 @@ const LineupBuilder = ({ sport, draftedPlayers, onResetLineup }) => {
         };
     };
 
+    // Handle removing a player from a position
     const clearPosition = (positionIndex) => {
-        // Get the player being removed
         const playerToRemove = lineup[positionIndex].player;
 
         if (playerToRemove) {
-            // Create a new array of drafted players without the one being removed
+            // Inform parent component about the change
             if (onResetLineup) {
-                // Inform parent component about the change
                 const updatedDraftedPlayers = draftedPlayers.filter(
                     p => p.playerDkId !== playerToRemove.playerDkId
                 );
-                // This will trigger a re-render with the updated props
                 onResetLineup(updatedDraftedPlayers);
             }
 
-            // Update the lineup
+            // Update local lineup
             const updatedLineup = [...lineup];
             updatedLineup[positionIndex] = {
                 ...updatedLineup[positionIndex],
@@ -216,8 +196,9 @@ const LineupBuilder = ({ sport, draftedPlayers, onResetLineup }) => {
         }
     };
 
+    // Render error messages
     const renderOptimizationErrors = () => {
-        if (optimizationErrors && optimizationErrors.length > 0) {
+        if (optimizationErrors.length > 0) {
             return (
                 <div className="optimization-errors">
                     <h3>Optimization Issues:</h3>
@@ -232,8 +213,9 @@ const LineupBuilder = ({ sport, draftedPlayers, onResetLineup }) => {
         return null;
     };
 
+    // Render salary and stats summary
     const renderSalaryStatus = () => {
-        const maxSalary = 50000; // Default salary cap
+        const maxSalary = 50000;
         const remainingSalary = maxSalary - totalSalary;
         const filledPositions = lineup.filter(row => row.player).length;
         const totalPositions = lineup.length;
@@ -268,6 +250,7 @@ const LineupBuilder = ({ sport, draftedPlayers, onResetLineup }) => {
         );
     };
 
+    // Render the lineup table
     const renderLineupTable = () => {
         return (
             <table className="lineup-builder-table">
@@ -316,12 +299,9 @@ const LineupBuilder = ({ sport, draftedPlayers, onResetLineup }) => {
             <div className="lineup-actions">
                 <button
                     onClick={() => {
-                        // Call the parent's reset function
                         if (onResetLineup) {
-                            onResetLineup();
+                            onResetLineup([]);
                         }
-
-                        // Reset the local lineup display
                         setLineup(getPositionsForSport(sport).map(pos => ({
                             position: pos,
                             player: null

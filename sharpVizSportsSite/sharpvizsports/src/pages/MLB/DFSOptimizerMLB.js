@@ -69,12 +69,29 @@ const DFSOptimizer = () => {
         return player;
       });
 
-      // Add error details to the first player (if any)
-      if (results.errorDetails && results.errorDetails.length > 0 && playersWithFullData.length > 0) {
-        playersWithFullData[0].errorDetails = results.errorDetails;
+      // If there are error messages or details, add them to a new property
+      const errorMessages = [];
+
+      // Check for error message in the response
+      if (results.message && results.message.includes("issues")) {
+        errorMessages.push(results.message);
       }
 
-      setDraftedPlayers(playersWithFullData);
+      // Add error details if they exist
+      if (results.errorDetails && results.errorDetails.length > 0) {
+        errorMessages.push(...results.errorDetails);
+      }
+
+      // Create a new array with error information
+      const playersWithErrors = playersWithFullData.map((player, index) => {
+        // Only add errors to the first player
+        if (index === 0 && errorMessages.length > 0) {
+          return { ...player, optimizationErrors: errorMessages };
+        }
+        return player;
+      });
+
+      setDraftedPlayers(playersWithErrors);
     }
   };
 

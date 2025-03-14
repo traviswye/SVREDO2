@@ -1,0 +1,94 @@
+.hvp-section {
+    margin-bottom: 30px;
+}
+
+.hvp-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 15px 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e0e0e0;
+    color: #333;
+}
+
+.hvp-table-container {
+    overflow-x: auto;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.hvp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.hvp-header-cell {
+    background-color: #f1f3f4;
+    padding: 12px 10px;
+    text-align: left;
+    font-weight: 600;
+    color: #5f6368;
+    border-bottom: 2px solid #e0e0e0;
+    white-space: nowrap;
+}
+
+.hvp-row:hover {
+    background-color: #f8f9fa;
+}
+
+.hvp-hitter-cell {
+    text-align: left;
+    font-weight: 500;
+    padding: 10px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.hvp-stat-cell {
+    padding: 10px;
+    border-bottom: 1px solid #eaeaea;
+    text-align: center;
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+}
+
+.hvp-player-link {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+.hvp-player-link:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+.hvp-no-data {
+    padding: 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    color: #666;
+    font-style: italic;
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+}
+
+/* Last row should not have a border */
+.hvp-row:last-child .hvp-hitter-cell,
+.hvp-row:last-child .hvp-stat-cell {
+    border-bottom: none;
+}
+
+@media screen and (max-width: 768px) {
+    .hvp-table {
+        font-size: 13px;
+    }
+
+    .hvp-header-cell,
+    .hvp-stat-cell,
+    .hvp-hitter-cell {
+        padding: 8px 6px;
+    }
+}

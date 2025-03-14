@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "../css/PreviewDrawer.css";
 import LineupGrid from "./LineupGrid";
+import HitterVsPitcherTable from "./HitterVsPitcherTable";
+import { processHvpData } from "./HvpitcherDataService";
 
 const PreviewDrawer = ({ game, teamRecords, lineups, predictedLineups, parkFactors, onClose }) => {
   const [activeTab, setActiveTab] = useState("details");
   const [pitchers, setPitchers] = useState({});
-  const [hitterVsPitcher, setHitterVsPitcher] = useState([]);
+  const [hvpData, setHvpData] = useState({
+    homeHittersVsAwayPitcher: [],
+    awayHittersVsHomePitcher: []
+  });
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -30,11 +35,14 @@ const PreviewDrawer = ({ game, teamRecords, lineups, predictedLineups, parkFacto
           setPitchers(pitchersMap);
         }
 
-        // Fetch hitter vs pitcher data
-        const hvpResponse = await fetch(`https://localhost:44346/api/HitterVsPitcher/LineupView/${apiDate}`);
+        // Fetch hitter vs pitcher data using our new endpoint format
+        const hvpResponse = await fetch(`https://localhost:44346/api/HitterVsPitcher/allRecordsByDate/${apiDate}`);
         if (hvpResponse.ok) {
           const hvpData = await hvpResponse.json();
-          setHitterVsPitcher(hvpData);
+
+          // Process the data using our new service
+          const processedData = processHvpData(hvpData, game.homePitcher, game.awayPitcher);
+          setHvpData(processedData);
         }
       } catch (error) {
         console.error("Error fetching pitcher data:", error);
@@ -58,19 +66,6 @@ const PreviewDrawer = ({ game, teamRecords, lineups, predictedLineups, parkFacto
   // Get pitcher objects
   const homePitcher = pitchers[game.homePitcher] || null;
   const awayPitcher = pitchers[game.awayPitcher] || null;
-
-  // Get hitter vs pitcher data
-  const getHitterVsPitcherStats = (gameId, pitcherId) => {
-    if (!hitterVsPitcher || !hitterVsPitcher.length) return [];
-
-    const gameHvp = hitterVsPitcher.find(item =>
-      item.game && item.game.id === gameId && item.game.pitcher === pitcherId);
-
-    return gameHvp?.game?.hitters || [];
-  };
-
-  const homeHittersVsAwayPitcher = getHitterVsPitcherStats(game.id, game.awayPitcher);
-  const awayHittersVsHomePitcher = getHitterVsPitcherStats(game.id, game.homePitcher);
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
@@ -114,8 +109,10 @@ const PreviewDrawer = ({ game, teamRecords, lineups, predictedLineups, parkFacto
         </div>
 
         <div className="drawer-content">
+          {/* Game Details Tab - Keep existing code */}
           {activeTab === 'details' && (
             <div className="tab-panel details-panel">
+              {/* Existing game details code... */}
               <section className="game-basics-section">
                 <h3 className="section-title">Game Details</h3>
                 <div className="info-grid">
@@ -229,6 +226,7 @@ const PreviewDrawer = ({ game, teamRecords, lineups, predictedLineups, parkFacto
             </div>
           )}
 
+          {/* Lineups Tab - Keep existing code */}
           {activeTab === 'lineups' && (
             <div className="tab-panel lineups-panel">
               <h3 className="section-title">Lineups</h3>
@@ -244,6 +242,7 @@ const PreviewDrawer = ({ game, teamRecords, lineups, predictedLineups, parkFacto
             </div>
           )}
 
+          {/* Matchups Tab - Using our new HitterVsPitcherTable component */}
           {activeTab === 'matchups' && (
             <div className="tab-panel matchups-panel">
               <section className="pitching-matchup-section">
@@ -293,22 +292,6 @@ const PreviewDrawer = ({ game, teamRecords, lineups, predictedLineups, parkFacto
                               <span className="stat-label">BB:</span>
                               <span className="stat-value">{awayPitcher.bb || "0"}</span>
                             </div>
-                            <div className="pitcher-stat">
-                              <span className="stat-label">SO/9:</span>
-                              <span className="stat-value">{awayPitcher.sO9?.toFixed(1) || "0.0"}</span>
-                            </div>
-                            <div className="pitcher-stat">
-                              <span className="stat-label">BB/9:</span>
-                              <span className="stat-value">{awayPitcher.bB9?.toFixed(1) || "0.0"}</span>
-                            </div>
-                            <div className="pitcher-stat">
-                              <span className="stat-label">ERA+:</span>
-                              <span className="stat-value">{awayPitcher.eraPlus || "100"}</span>
-                            </div>
-                            <div className="pitcher-stat">
-                              <span className="stat-label">FIP:</span>
-                              <span className="stat-value">{awayPitcher.fip?.toFixed(2) || "0.00"}</span>
-                            </div>
                           </div>
                         ) : (
                           <p className="no-data-message">Pitcher data not available</p>
@@ -352,22 +335,6 @@ const PreviewDrawer = ({ game, teamRecords, lineups, predictedLineups, parkFacto
                               <span className="stat-label">BB:</span>
                               <span className="stat-value">{homePitcher.bb || "0"}</span>
                             </div>
-                            <div className="pitcher-stat">
-                              <span className="stat-label">SO/9:</span>
-                              <span className="stat-value">{homePitcher.sO9?.toFixed(1) || "0.0"}</span>
-                            </div>
-                            <div className="pitcher-stat">
-                              <span className="stat-label">BB/9:</span>
-                              <span className="stat-value">{homePitcher.bB9?.toFixed(1) || "0.0"}</span>
-                            </div>
-                            <div className="pitcher-stat">
-                              <span className="stat-label">ERA+:</span>
-                              <span className="stat-value">{homePitcher.eraPlus || "100"}</span>
-                            </div>
-                            <div className="pitcher-stat">
-                              <span className="stat-label">FIP:</span>
-                              <span className="stat-value">{homePitcher.fip?.toFixed(2) || "0.00"}</span>
-                            </div>
                           </div>
                         ) : (
                           <p className="no-data-message">Pitcher data not available</p>
@@ -375,98 +342,23 @@ const PreviewDrawer = ({ game, teamRecords, lineups, predictedLineups, parkFacto
                       </div>
                     </div>
 
+                    {/* Here we use our new HitterVsPitcherTable component */}
                     <div className="matchup-history">
-                      <h3 className="section-title">{game.homeTeam} Hitters vs. {game.awayTeam} Pitcher</h3>
-                      <div className="hvp-table-container">
-                        {homeHittersVsAwayPitcher.length > 0 ? (
-                          <table className="hvp-table">
-                            <thead>
-                              <tr>
-                                <th>Hitter</th>
-                                <th>PA</th>
-                                <th>H</th>
-                                <th>HR</th>
-                                <th>RBI</th>
-                                <th>BB</th>
-                                <th>SO</th>
-                                <th>BA</th>
-                                <th>OBP</th>
-                                <th>SLG</th>
-                                <th>OPS</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {homeHittersVsAwayPitcher.map((hvp, index) => (
-                                <tr key={`home-${index}`}>
-                                  <td className="hitter-cell">
-                                    <a href={hvp.matchupURL || "#"} target="_blank" rel="noopener noreferrer">
-                                      {hvp.hitter}
-                                    </a>
-                                  </td>
-                                  <td>{hvp.pa}</td>
-                                  <td>{hvp.hits}</td>
-                                  <td>{hvp.hr}</td>
-                                  <td>{hvp.rbi}</td>
-                                  <td>{hvp.bb}</td>
-                                  <td>{hvp.so}</td>
-                                  <td>{hvp.ba?.toFixed(3) || ".000"}</td>
-                                  <td>{hvp.obp?.toFixed(3) || ".000"}</td>
-                                  <td>{hvp.slg?.toFixed(3) || ".000"}</td>
-                                  <td>{hvp.ops?.toFixed(3) || ".000"}</td>
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        ) : (
-                          <p className="no-data-message">No matchup history available</p>
-                        )}
-                      </div>
+                      {/* Home hitters vs Away pitcher */}
+                      <HitterVsPitcherTable
+                        data={hvpData.homeHittersVsAwayPitcher}
+                        teamName={game.homeTeam}
+                        opposingTeamName={game.awayTeam}
+                        opposingPitcherId={game.awayPitcher}
+                      />
 
-                      <h3 className="section-title">{game.awayTeam} Hitters vs. {game.homeTeam} Pitcher</h3>
-                      <div className="hvp-table-container">
-                        {awayHittersVsHomePitcher.length > 0 ? (
-                          <table className="hvp-table">
-                            <thead>
-                              <tr>
-                                <th>Hitter</th>
-                                <th>PA</th>
-                                <th>H</th>
-                                <th>HR</th>
-                                <th>RBI</th>
-                                <th>BB</th>
-                                <th>SO</th>
-                                <th>BA</th>
-                                <th>OBP</th>
-                                <th>SLG</th>
-                                <th>OPS</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {awayHittersVsHomePitcher.map((hvp, index) => (
-                                <tr key={`away-${index}`}>
-                                  <td className="hitter-cell">
-                                    <a href={hvp.matchupURL || "#"} target="_blank" rel="noopener noreferrer">
-                                      {hvp.hitter}
-                                    </a>
-                                  </td>
-                                  <td>{hvp.pa}</td>
-                                  <td>{hvp.hits}</td>
-                                  <td>{hvp.hr}</td>
-                                  <td>{hvp.rbi}</td>
-                                  <td>{hvp.bb}</td>
-                                  <td>{hvp.so}</td>
-                                  <td>{hvp.ba?.toFixed(3) || ".000"}</td>
-                                  <td>{hvp.obp?.toFixed(3) || ".000"}</td>
-                                  <td>{hvp.slg?.toFixed(3) || ".000"}</td>
-                                  <td>{hvp.ops?.toFixed(3) || ".000"}</td>
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        ) : (
-                          <p className="no-data-message">No matchup history available</p>
-                        )}
-                      </div>
+                      {/* Away hitters vs Home pitcher */}
+                      <HitterVsPitcherTable
+                        data={hvpData.awayHittersVsHomePitcher}
+                        teamName={game.awayTeam}
+                        opposingTeamName={game.homeTeam}
+                        opposingPitcherId={game.homePitcher}
+                      />
                     </div>
                   </>
                 )}
@@ -474,6 +366,7 @@ const PreviewDrawer = ({ game, teamRecords, lineups, predictedLineups, parkFacto
             </div>
           )}
 
+          {/* Team Stats Tab - Keep existing code */}
           {activeTab === 'stats' && (
             <div className="tab-panel stats-panel">
               <section className="team-stats-section">
@@ -487,9 +380,9 @@ const PreviewDrawer = ({ game, teamRecords, lineups, predictedLineups, parkFacto
     </div>
   );
 };
-
 // Helper Functions
 const getTeamRecord = (teamName, teamRecords) => {
+  if (!teamRecords || !Array.isArray(teamRecords)) return null;
   return teamRecords.find((record) => record.team === teamName) || null;
 };
 

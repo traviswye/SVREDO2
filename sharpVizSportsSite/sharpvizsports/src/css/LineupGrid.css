@@ -172,4 +172,120 @@
   .stats-cell {
     display: none;
   }
+
+  /* Add these to your LineupGrid.css file */
+
+  .stats-toggle {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .toggle-button {
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    transition: all 0.2s;
+  }
+
+  .toggle-button:hover {
+    background-color: #e9ecef;
+  }
+
+  .toggle-button.active {
+    background-color: #0c2340;
+    color: white;
+    border-color: #0c2340;
+  }
+
+  .stat-cell {
+    text-align: center;
+    font-family: monospace;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  /* Style for the stats type tag */
+  .last7-tag,
+  .season-tag {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 8px;
+  }
+
+  .last7-tag {
+    background-color: #e6f7ff;
+    color: #0077cc;
+  }
+
+  .season-tag {
+    background-color: #f0f4c3;
+    color: #827717;
+  }
+
+  /* Add to your LineupGrid.css file */
+
+  .stats-toggle {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .toggle-button {
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    transition: all 0.2s;
+  }
+
+  .toggle-button:hover {
+    background-color: #e9ecef;
+  }
+
+  .toggle-button.active {
+    background-color: #0c2340;
+    color: white;
+    border-color: #0c2340;
+  }
+
+  .stat-cell {
+    text-align: center;
+    font-family: monospace;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  /* Style for the stats type tag */
+  .last7-tag,
+  .season-tag {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 8px;
+  }
+
+  .last7-tag {
+    background-color: #e6f7ff;
+    color: #0077cc;
+  }
+
+  .season-tag {
+    background-color: #f0f4c3;
+    color: #827717;
+  }
 }

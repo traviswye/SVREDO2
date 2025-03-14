@@ -62,6 +62,49 @@ namespace SharpVizAPI.Controllers
             return Ok(mostRecentSplit);
         }
 
+        // POST: api/TrailingGameLogSplits/batch
+        [HttpPost("batch")]
+        public async Task<IActionResult> GetBatchTrailingGameLogSplits([FromBody] BatchSplitRequest request)
+        {
+            if (request == null || request.BbrefIds == null || !request.BbrefIds.Any())
+            {
+                return BadRequest("BBRef IDs and split type are required.");
+            }
+
+            // Validate the split type
+            if (string.IsNullOrEmpty(request.Split) ||
+                (request.Split != "Last7G" && request.Split != "Season"))
+            {
+                return BadRequest("Split must be either 'Last7G' or 'Season'.");
+            }
+
+            try
+            {
+                var splits = await _context.TrailingGameLogSplits
+                    .Where(t => request.BbrefIds.Contains(t.BbrefId) && t.Split == request.Split)
+                    .ToListAsync();
+
+                // Create a dictionary with BBRef ID as the key for easier lookup on the frontend
+                var resultDict = splits.GroupBy(s => s.BbrefId)
+                    .ToDictionary(
+                        g => g.Key,
+                        g => g.OrderByDescending(s => s.DateUpdated).FirstOrDefault()
+                    );
+
+                return Ok(resultDict);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "An error occurred while fetching batch records.", error = ex.Message });
+            }
+        }
+
+        public class BatchSplitRequest
+        {
+            public List<string> BbrefIds { get; set; }
+            public string Split { get; set; }
+        }
+
         // POST: api/TrailingGameLogSplits
         [HttpPost]
         public async Task<IActionResult> AddTrailingGameLogSplit([FromBody] TrailingGameLogSplit split)

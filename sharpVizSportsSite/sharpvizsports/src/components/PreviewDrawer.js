@@ -187,23 +187,14 @@ const PreviewDrawer = ({ game, teamRecords, lineups, predictedLineups, parkFacto
 
           {activeTab === 'lineups' && (
             <div className="tab-panel lineups-panel">
+              <h3 className="section-title">Lineups</h3>
               <div className="lineups-container">
                 <div className="lineup-section">
-                  <h3 className="section-title">Away Lineup</h3>
-                  {awayTeamLineup ? (
-                    <LineupGrid teamName={game.awayTeam} lineup={awayTeamLineup} />
-                  ) : (
-                    <p className="no-data-message">No lineup available for {game.awayTeam}.</p>
-                  )}
+                  <LineupGrid teamName={game.awayTeam} lineup={awayTeamLineup} />
                 </div>
 
                 <div className="lineup-section">
-                  <h3 className="section-title">Home Lineup</h3>
-                  {homeTeamLineup ? (
-                    <LineupGrid teamName={game.homeTeam} lineup={homeTeamLineup} />
-                  ) : (
-                    <p className="no-data-message">No lineup available for {game.homeTeam}.</p>
-                  )}
+                  <LineupGrid teamName={game.homeTeam} lineup={homeTeamLineup} />
                 </div>
               </div>
             </div>

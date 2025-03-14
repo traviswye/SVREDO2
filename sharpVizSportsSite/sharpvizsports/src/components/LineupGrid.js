@@ -7,104 +7,71 @@ const LineupGrid = ({ teamName, lineup }) => {
   const [statsType, setStatsType] = useState("Last7G");
   const [loading, setLoading] = useState(false);
 
-  // Helper to get player ID from lineup based on position
-  const getPlayerIdForPosition = (position) => {
-    if (!lineup) return null;
+  // Helper function to extract player IDs consistently regardless of property naming convention
+  const extractPlayerIds = () => {
+    if (!lineup) return [];
 
-    // Try different possible property naming conventions
-    const possibleKeys = [
-      `batting${position}st`,      // batting1st, batting2st, etc.
-      `Batting${position}st`,      // Batting1st, Batting2st, etc.
-    ];
+    const playerIds = [];
+    const positions = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-    // Special case conversions for proper ordinal suffixes
-    if (position === 2) {
-      possibleKeys.push(`batting${position}nd`, `Batting${position}nd`);
-    } else if (position === 3) {
-      possibleKeys.push(`batting${position}rd`, `Batting${position}rd`);
-    } else if (position >= 4) {
-      possibleKeys.push(`batting${position}th`, `Batting${position}th`);
-    }
+    // Check various naming patterns
+    positions.forEach(pos => {
+      // Check all possible key formats
+      const possibleKeys = [
+        `batting${pos}st`,
+        `batting${pos}nd`,
+        `batting${pos}rd`,
+        `batting${pos}th`,
+        `Batting${pos}st`,
+        `Batting${pos}nd`,
+        `Batting${pos}rd`,
+        `Batting${pos}th`,
+        // Add exact match format
+        `Batting${pos === 1 ? '1st' : pos === 2 ? '2nd' : pos === 3 ? '3rd' : pos + 'th'}`
+      ];
 
-    // Try all possible keys
-    for (const key of possibleKeys) {
-      if (lineup[key] && lineup[key] !== "N/A") {
-        return lineup[key];
+      // Try each key until we find a match
+      for (const key of possibleKeys) {
+        if (lineup[key] && lineup[key] !== "N/A") {
+          playerIds.push(lineup[key]);
+          break; // Found a match, move to next position
+        }
       }
-    }
+    });
 
-    return null;
+    console.log(`Extracted ${playerIds.length} player IDs from ${teamName} lineup:`, playerIds);
+    return playerIds;
   };
 
   // Check if the lineup has any valid players
   const hasAnyPlayers = () => {
-    if (!lineup) return false;
+    return extractPlayerIds().length > 0;
+  };
 
-    for (let i = 1; i <= 9; i++) {
-      if (getPlayerIdForPosition(i)) {
-        return true;
-      }
-    }
-
+  // Determine if this is a predicted lineup
+  const isPredicted = () => {
+    // Check various properties that might indicate if this is a predicted lineup
+    if (lineup.source === "predicted") return true;
+    if (lineup.isPredicted) return true;
+    if (lineup.Date && !lineup.Result) return true; // Likely a prediction if it has a date but no result
     return false;
   };
 
   useEffect(() => {
     if (!lineup) return;
 
-    // Create a stable reference for playerIds
-    const getPlayerIds = () => {
-      const ids = [];
-
-      // Check the structure of the lineup object and extract player IDs correctly
-      // Method 1: Check for batting1st, batting2st, etc. format
-      if (lineup.batting1st) {
-        for (let i = 1; i <= 9; i++) {
-          const playerId = lineup[`batting${i}st`];
-          if (playerId && playerId !== "N/A") {
-            ids.push(playerId);
-          }
-        }
-      }
-      // Method 2: Check for Batting1st, Batting2nd, etc. format (camelCase with "nd", "rd", "th")
-      else if (lineup.Batting1st) {
-        const positions = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th"];
-        positions.forEach(pos => {
-          const key = `Batting${pos}`;
-          if (lineup[key] && lineup[key] !== "N/A") {
-            ids.push(lineup[key]);
-          }
-        });
-      }
-      // Method 3: Just log and look for any property that might contain player IDs
-      else {
-        console.log("Lineup structure:", Object.keys(lineup));
-        // Try to find any property that might contain a player ID
-        Object.keys(lineup).forEach(key => {
-          if (key.toLowerCase().includes('batting') && lineup[key] && lineup[key] !== "N/A") {
-            console.log(`Found player ID in key ${key}:`, lineup[key]);
-            ids.push(lineup[key]);
-          }
-        });
-      }
-
-      console.log("Collected player IDs:", ids);
-      return ids;
-    };
-
     const fetchStats = async () => {
       setLoading(true);
-      const playerIds = getPlayerIds();
+      const playerIds = extractPlayerIds();
 
-      // Only fetch if we have player IDs
       if (playerIds.length === 0) {
-        console.log("No player IDs found in lineup object:", lineup);
+        console.log(`No player IDs found in ${teamName} lineup:`, lineup);
         setLoading(false);
         return;
       }
 
       try {
-        console.log("Fetching stats for players:", playerIds);
+        console.log(`Fetching ${statsType} stats for ${teamName} players:`, playerIds);
         const response = await axios.post(
           `https://localhost:44346/api/TrailingGameLogSplits/batch`,
           {
@@ -113,11 +80,15 @@ const LineupGrid = ({ teamName, lineup }) => {
           }
         );
 
-        console.log("API Response:", response.data);
-        setPlayerStats(response.data || {});
+        if (response.data) {
+          console.log(`Received stats for ${teamName} players:`, response.data);
+          setPlayerStats(response.data);
+        } else {
+          console.warn(`No stats returned for ${teamName} players`);
+          setPlayerStats({});
+        }
       } catch (error) {
-        console.error("Error fetching player stats:", error);
-        // Set empty object to prevent undefined errors
+        console.error(`Error fetching ${teamName} player stats:`, error);
         setPlayerStats({});
       } finally {
         setLoading(false);
@@ -125,13 +96,34 @@ const LineupGrid = ({ teamName, lineup }) => {
     };
 
     fetchStats();
+  }, [statsType, lineup, teamName]);
 
-    // Cleanup function to prevent state updates if component unmounts
-    return () => {
-      // This empty cleanup function helps React know this effect can be cleaned up
-    };
-    // Use a deep comparison for lineup object
-  }, [statsType, JSON.stringify(lineup)]);
+  // Get player ID for a specific batting order position
+  const getPlayerIdForPosition = (position) => {
+    if (!lineup) return null;
+
+    // Try different formats based on position number
+    const possibleKeys = [];
+
+    if (position === 1) {
+      possibleKeys.push("batting1st", "Batting1st");
+    } else if (position === 2) {
+      possibleKeys.push("batting2nd", "Batting2nd");
+    } else if (position === 3) {
+      possibleKeys.push("batting3rd", "Batting3rd");
+    } else {
+      possibleKeys.push(`batting${position}th`, `Batting${position}th`);
+    }
+
+    // Try all variations to find a match
+    for (const key of possibleKeys) {
+      if (lineup[key] && lineup[key] !== "N/A") {
+        return lineup[key];
+      }
+    }
+
+    return null;
+  };
 
   const getBbRefURL = (playerId) => {
     if (!playerId || playerId === "N/A") return "#";
@@ -148,10 +140,6 @@ const LineupGrid = ({ teamName, lineup }) => {
     return value;
   };
 
-  const toggleStatsType = () => {
-    setStatsType(prev => prev === "Last7G" ? "Season" : "Last7G");
-  };
-
   if (!lineup || !hasAnyPlayers()) {
     return <p className="empty-lineup">No lineup available for {teamName}</p>;
   }
@@ -159,8 +147,7 @@ const LineupGrid = ({ teamName, lineup }) => {
   // Render function for player rows
   const renderPlayer = (position) => {
     const playerId = getPlayerIdForPosition(position);
-    // Safely access stats with optional chaining
-    const stats = playerId && playerStats ? playerStats[playerId] : null;
+    const stats = playerId && playerStats[playerId];
 
     return (
       <tr key={position} className={playerId ? "" : "empty-slot"}>
@@ -179,52 +166,57 @@ const LineupGrid = ({ teamName, lineup }) => {
             <span className="tbd-player">TBD</span>
           )}
         </td>
-        <td className="stat-cell">{stats ? formatStat(stats.BA) : "-"}</td>
-        <td className="stat-cell">{stats ? formatStat(stats.HR, 0) : "-"}</td>
-        <td className="stat-cell">{stats ? formatStat(stats.OPS) : "-"}</td>
-        <td className="stat-cell">{stats ? formatStat(stats.PA, 0) : "-"}</td>
+        <td className="stat-cell">{stats ? formatStat(stats.ba) : "-"}</td>
+        <td className="stat-cell">{stats ? formatStat(stats.hr, 0) : "-"}</td>
+        <td className="stat-cell">{stats ? formatStat(stats.ops) : "-"}</td>
+        <td className="stat-cell">{stats ? formatStat(stats.pa, 0) : "-"}</td>
       </tr>
     );
   };
 
   return (
     <div className="lineup-grid">
-      <div className="stats-toggle">
-        <button
-          className={`toggle-button ${statsType === "Last7G" ? "active" : ""}`}
-          onClick={toggleStatsType}
-        >
-          {loading ? "Loading..." : statsType === "Last7G" ? "Last 7 Games" : "Season Stats"}
-        </button>
+      <div className="lineup-header">
+        <h3 className="team-name">{teamName}</h3>
+        <div className="lineup-status">
+          <span className={isPredicted() ? "predicted-badge" : "confirmed-badge"}>
+            {isPredicted() ? "Projected" : "Confirmed"}
+          </span>
+        </div>
       </div>
 
-      <table className="lineup-table">
-        <thead>
-          <tr>
-            <th className="order-column">#</th>
-            <th className="player-column">Player</th>
-            <th className="stats-column">AVG</th>
-            <th className="stats-column">HR</th>
-            <th className="stats-column">OPS</th>
-            <th className="stats-column">PA</th>
-          </tr>
-        </thead>
-        <tbody>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(position => renderPlayer(position))}
-        </tbody>
-      </table>
+      <div className="stats-tabs">
+        <button
+          className={`tab-button ${statsType === "Last7G" ? "active" : ""}`}
+          onClick={() => setStatsType("Last7G")}
+        >
+          Last 7 Games
+        </button>
+        <button
+          className={`tab-button ${statsType === "Season" ? "active" : ""}`}
+          onClick={() => setStatsType("Season")}
+        >
+          Season Stats
+        </button>
+        {loading && <span className="loading-indicator">Loading...</span>}
+      </div>
 
-      <div className="lineup-source">
-        <div className={statsType === "Last7G" ? "last7-tag" : "season-tag"}>
-          {statsType === "Last7G" ? "Last 7 Games" : "Season"} Stats
-        </div>
-        {lineup.source ? (
-          <div className={lineup.source === "predicted" ? "predicted-tag" : "confirmed-tag"}>
-            {lineup.source === "predicted" ? "Predicted" : "Confirmed"} Lineup
-          </div>
-        ) : (
-          <div className="predicted-tag">Lineup</div>
-        )}
+      <div className="lineup-table-container">
+        <table className="lineup-table">
+          <thead>
+            <tr>
+              <th className="order-column">#</th>
+              <th className="player-column">Player</th>
+              <th className="stats-column">AVG</th>
+              <th className="stats-column">HR</th>
+              <th className="stats-column">OPS</th>
+              <th className="stats-column">PA</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(position => renderPlayer(position))}
+          </tbody>
+        </table>
       </div>
     </div>
   );

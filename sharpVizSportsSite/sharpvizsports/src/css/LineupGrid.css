@@ -1,30 +1,121 @@
 /* Lineup grid container */
 .lineup-grid {
   width: 100%;
-  padding: 10px 0;
+  padding: 5px 0 15px 0;
+  background-color: #fafafa;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  margin-bottom: 10px;
+}
+
+/* Lineup header with team name and status */
+.lineup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.team-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0c2340;
+  margin: 0;
+}
+
+.lineup-status {
+  display: flex;
+  align-items: center;
+}
+
+.predicted-badge,
+.confirmed-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.predicted-badge {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+}
+
+.confirmed-badge {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+/* Stats tabs styling */
+.stats-tabs {
+  display: flex;
+  padding: 10px 15px;
+  border-bottom: 1px solid #eaeaea;
   position: relative;
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  padding: 8px 15px;
+  margin-right: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.tab-button:hover {
+  background-color: #f0f0f0;
+  color: #0c2340;
+}
+
+.tab-button.active {
+  background-color: #0c2340;
+  color: white;
+}
+
+.loading-indicator {
+  margin-left: 15px;
+  font-size: 14px;
+  color: #666;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+}
+
+/* Table container to control scrolling if needed */
+.lineup-table-container {
+  padding: 0 15px;
+  overflow-x: auto;
 }
 
 /* Lineup table */
 .lineup-table {
   width: 100%;
   border-collapse: collapse;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
 }
 
 /* Table header */
 .lineup-table thead {
-  background-color: #0c2340;
-  color: white;
+  background-color: #f4f4f4;
 }
 
 .lineup-table th {
-  padding: 12px;
+  padding: 10px;
   text-align: left;
   font-weight: 600;
   font-size: 14px;
+  color: #444;
+  border-bottom: 2px solid #eaeaea;
+  white-space: nowrap;
 }
 
 .order-column {
@@ -37,7 +128,8 @@
 }
 
 .stats-column {
-  width: 120px;
+  width: 70px;
+  text-align: center;
 }
 
 /* Table body */
@@ -47,16 +139,16 @@
   transition: background-color 0.2s;
 }
 
-.lineup-table tbody tr:hover {
-  background-color: #f5f9ff;
-}
-
 .lineup-table tbody tr:last-child {
   border-bottom: none;
 }
 
+.lineup-table tbody tr:hover {
+  background-color: #f5f9ff;
+}
+
 .lineup-table td {
-  padding: 12px;
+  padding: 10px;
   font-size: 14px;
 }
 
@@ -91,29 +183,10 @@
 }
 
 /* Stats cell */
-.stats-cell {
-  padding: 8px 12px;
-}
-
-.stat-row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 4px;
-  font-size: 13px;
-}
-
-.stat-row:last-child {
-  margin-bottom: 0;
-}
-
-.stat-label {
-  font-weight: 600;
-  color: #555;
-}
-
-.stat-value {
-  font-weight: 500;
-  color: #333;
+.stat-cell {
+  text-align: center;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
 }
 
 /* Empty slot */
@@ -129,31 +202,8 @@
   border-radius: 8px;
   color: #666;
   font-style: italic;
-}
-
-/* Lineup source tag */
-.lineup-source {
-  margin-top: 10px;
-  text-align: right;
-}
-
-.predicted-tag,
-.confirmed-tag {
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.predicted-tag {
-  background-color: #fff3cd;
-  color: #856404;
-}
-
-.confirmed-tag {
-  background-color: #d4edda;
-  color: #155724;
+  margin: 15px;
+  border: 1px dashed #ddd;
 }
 
 /* Responsive adjustments */
@@ -166,126 +216,15 @@
   }
 
   .stats-column {
-    display: none;
+    width: 60px;
   }
 
-  .stats-cell {
-    display: none;
+  .lineup-header {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  /* Add these to your LineupGrid.css file */
-
-  .stats-toggle {
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .toggle-button {
-    background-color: #f8f9fa;
-    border: 1px solid #e0e0e0;
-    padding: 6px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 600;
-    color: #555;
-    transition: all 0.2s;
-  }
-
-  .toggle-button:hover {
-    background-color: #e9ecef;
-  }
-
-  .toggle-button.active {
-    background-color: #0c2340;
-    color: white;
-    border-color: #0c2340;
-  }
-
-  .stat-cell {
-    text-align: center;
-    font-family: monospace;
-    font-size: 14px;
-    font-weight: 500;
-  }
-
-  /* Style for the stats type tag */
-  .last7-tag,
-  .season-tag {
-    display: inline-block;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: 600;
-    margin-right: 8px;
-  }
-
-  .last7-tag {
-    background-color: #e6f7ff;
-    color: #0077cc;
-  }
-
-  .season-tag {
-    background-color: #f0f4c3;
-    color: #827717;
-  }
-
-  /* Add to your LineupGrid.css file */
-
-  .stats-toggle {
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .toggle-button {
-    background-color: #f8f9fa;
-    border: 1px solid #e0e0e0;
-    padding: 6px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 600;
-    color: #555;
-    transition: all 0.2s;
-  }
-
-  .toggle-button:hover {
-    background-color: #e9ecef;
-  }
-
-  .toggle-button.active {
-    background-color: #0c2340;
-    color: white;
-    border-color: #0c2340;
-  }
-
-  .stat-cell {
-    text-align: center;
-    font-family: monospace;
-    font-size: 14px;
-    font-weight: 500;
-  }
-
-  /* Style for the stats type tag */
-  .last7-tag,
-  .season-tag {
-    display: inline-block;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: 600;
-    margin-right: 8px;
-  }
-
-  .last7-tag {
-    background-color: #e6f7ff;
-    color: #0077cc;
-  }
-
-  .season-tag {
-    background-color: #f0f4c3;
-    color: #827717;
+  .lineup-status {
+    margin-top: 5px;
   }
 }

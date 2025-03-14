@@ -14,6 +14,90 @@
   animation: fadeIn 0.3s ease;
 }
 
+/* External link styling */
+.preview-link {
+  margin-top: 15px;
+}
+
+.bbref-link {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #0c2340;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.bbref-link:hover {
+  background-color: #0056b3;
+}
+
+/* No data/coming soon messages */
+.no-data-message,
+.coming-soon {
+  padding: 16px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  color: #666;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 1024px) {
+  .preview-drawer {
+    width: 70%;
+    max-width: none;
+  }
+
+  .team-records {
+    grid-template-columns: 1fr;
+  }
+
+  .pitchers-comparison {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .preview-drawer {
+    width: 85%;
+  }
+
+  .drawer-tabs {
+    padding: 0 10px;
+  }
+
+  .tab-button {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+
+  .lineups-container {
+    grid-template-columns: 1fr;
+  }
+
+  .pitcher-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .preview-drawer {
+    width: 100%;
+  }
+
+  .info-grid,
+  .team-records,
+  .park-factors-grid,
+  .lineups-container {
+    grid-template-columns: 1fr;
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -262,78 +346,182 @@ section {
   overflow: hidden;
 }
 
-/* External link styling */
-.preview-link {
-  margin-top: 15px;
+/* Pitching Matchup Section */
+.pitchers-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 25px;
 }
 
-.bbref-link {
-  display: inline-block;
-  padding: 8px 16px;
-  background-color: #0c2340;
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
-  font-weight: 600;
-  font-size: 14px;
-  transition: background-color 0.2s;
-}
-
-.bbref-link:hover {
-  background-color: #0056b3;
-}
-
-/* No data/coming soon messages */
-.no-data-message,
-.coming-soon {
-  padding: 16px;
+.pitcher-card {
   background-color: #f8f9fa;
   border-radius: 8px;
-  color: #666;
+  padding: 16px;
+  border-left: 4px solid #1a73e8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.pitcher-name {
+  display: flex;
+  align-items: center;
+  margin: 0 0 15px 0;
+  font-size: 18px;
+  color: #333;
+  gap: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.pitcher-name a {
+  color: #1a73e8;
+  text-decoration: none;
+  font-weight: 600;
+  flex: 1;
+}
+
+.pitcher-name a:hover {
+  text-decoration: underline;
+}
+
+.team-abbr {
+  display: inline-block;
+  padding: 3px 6px;
+  background-color: #0c2340;
+  color: white;
+  font-size: 12px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.throws-info {
+  display: inline-block;
+  padding: 3px 8px;
+  background-color: #f1f3f4;
+  border: 1px solid #dadce0;
+  color: #5f6368;
+  font-size: 12px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.pitcher-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.pitcher-stat {
+  display: flex;
+  flex-direction: column;
+  padding: 6px 8px;
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #eaeaea;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #5f6368;
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 16px;
+  color: #202124;
+  font-weight: 500;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+}
+
+/* Hitter vs Pitcher tables */
+.matchup-history {
+  margin-top: 30px;
+}
+
+.hvp-table-container {
+  overflow-x: auto;
+  margin-bottom: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.hvp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.hvp-table th {
+  background-color: #f1f3f4;
+  padding: 12px 10px;
+  text-align: left;
+  font-weight: 600;
+  color: #5f6368;
+  border-bottom: 2px solid #e0e0e0;
+  white-space: nowrap;
+}
+
+.hvp-table td {
+  padding: 10px;
+  border-bottom: 1px solid #eaeaea;
   text-align: center;
-  font-style: italic;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
 }
 
-/* Responsive adjustments */
-@media screen and (max-width: 1024px) {
-  .preview-drawer {
-    width: 70%;
-    max-width: none;
-  }
-
-  .team-records {
-    grid-template-columns: 1fr;
-  }
+.hvp-table tr:last-child td {
+  border-bottom: none;
 }
 
-@media screen and (max-width: 768px) {
-  .preview-drawer {
-    width: 85%;
-  }
-
-  .drawer-tabs {
-    padding: 0 10px;
-  }
-
-  .tab-button {
-    padding: 12px 15px;
-    font-size: 14px;
-  }
-
-  .lineups-container {
-    grid-template-columns: 1fr;
-  }
+.hvp-table tr:hover {
+  background-color: #f8f9fa;
 }
 
-@media screen and (max-width: 480px) {
-  .preview-drawer {
-    width: 100%;
+.hvp-table .hitter-cell {
+  text-align: left;
+  font-weight: 500;
+}
+
+.hvp-table .hitter-cell a {
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+.hvp-table .hitter-cell a:hover {
+  text-decoration: underline;
+}
+
+/* Loading spinner */
+.loading-spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 4px solid #1a73e8;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
 
-  .info-grid,
-  .team-records,
-  .park-factors-grid,
-  .lineups-container {
-    grid-template-columns: 1fr;
+  100% {
+    transform: rotate(360deg);
   }
 }

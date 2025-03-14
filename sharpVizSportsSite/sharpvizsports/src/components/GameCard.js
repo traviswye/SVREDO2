@@ -51,17 +51,8 @@ const GameCard = ({ game, homePitcher, awayPitcher, onClick }) => {
   // Format the game date/time
   const formatGameTime = (timeString) => {
     if (!timeString) return "TBD";
-
-    // Convert 24-hour format to 12-hour with AM/PM
-    const timeParts = timeString.split(":");
-    if (timeParts.length !== 2) return timeString;
-
-    const hour = parseInt(timeParts[0], 10);
-    const minute = timeParts[1];
-    const period = hour >= 12 ? "PM" : "AM";
-    const hour12 = hour % 12 || 12;
-
-    return `${hour12}:${minute} ${period}`;
+    // Just return the time as-is since it already has AM/PM
+    return timeString;
   };
 
   return (

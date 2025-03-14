@@ -169,6 +169,7 @@ const LineupBuilder = ({ sport, draftedPlayers, onResetLineup }) => {
         } else {
             // If there are no drafted players, set an empty lineup
             setLineup(emptyLineup);
+            setOptimizationErrors([]);
         }
     }, [draftedPlayers, sport, positionMappings]);
 

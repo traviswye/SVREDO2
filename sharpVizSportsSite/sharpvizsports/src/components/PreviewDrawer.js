@@ -13,6 +13,7 @@ const PreviewDrawer = ({ game, teamRecords, lineups, predictedLineups, parkFacto
   });
   const [loading, setLoading] = useState(false);
 
+
   useEffect(() => {
     const fetchPitcherData = async () => {
       if (!game) return;
@@ -23,6 +24,10 @@ const PreviewDrawer = ({ game, teamRecords, lineups, predictedLineups, parkFacto
         const apiDate = dateParts.length === 3
           ? `${dateParts[0].slice(-2)}-${dateParts[1]}-${dateParts[2]}`
           : "24-09-13"; // Fallback date if game.date is not properly formatted
+
+        console.log("Fetching data for date:", apiDate);
+        console.log("Home pitcher:", game.homePitcher);
+        console.log("Away pitcher:", game.awayPitcher);
 
         // Fetch pitcher data
         const pitchersResponse = await fetch(`https://localhost:44346/api/Pitchers/pitchersByDate/${apiDate}`);
@@ -39,10 +44,14 @@ const PreviewDrawer = ({ game, teamRecords, lineups, predictedLineups, parkFacto
         const hvpResponse = await fetch(`https://localhost:44346/api/HitterVsPitcher/allRecordsByDate/${apiDate}`);
         if (hvpResponse.ok) {
           const hvpData = await hvpResponse.json();
+          console.log("HVP data received:", hvpData.length, "matchups");
 
           // Process the data using our new service
           const processedData = processHvpData(hvpData, game.homePitcher, game.awayPitcher);
+          console.log("Processed HVP data:", processedData);
           setHvpData(processedData);
+        } else {
+          console.error("Error fetching HVP data, status:", hvpResponse.status);
         }
       } catch (error) {
         console.error("Error fetching pitcher data:", error);
@@ -53,7 +62,6 @@ const PreviewDrawer = ({ game, teamRecords, lineups, predictedLineups, parkFacto
 
     fetchPitcherData();
   }, [game]);
-
   if (!game) return null;
 
   // Extract relevant data using helper functions

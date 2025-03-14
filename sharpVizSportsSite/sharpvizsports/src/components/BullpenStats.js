@@ -1,0 +1,109 @@
+import React, { useState, useEffect } from "react";
+import "../css/BullpenStats.css";
+import axios from "axios";
+
+const BullpenStats = ({ team, year }) => {
+    const [bullpenData, setBullpenData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchBullpenData = async () => {
+            if (!team) return;
+
+            setLoading(true);
+            try {
+                // Format current date in YYYY-MM-DD format for the API
+                const today = new Date().toISOString().split("T")[0];
+
+                // Call the API to get bullpen stats
+                const response = await axios.get(`https://localhost:44346/api/Bullpen`, {
+                    params: {
+                        team: team,
+                        year: year || new Date().getFullYear(),
+                        date: today
+                    }
+                });
+
+                setBullpenData(response.data);
+            } catch (err) {
+                console.error(`Error fetching bullpen data for ${team}:`, err);
+                setError(`Unable to load bullpen data for ${team}`);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchBullpenData();
+    }, [team, year]);
+
+    if (loading) {
+        return <div className="bullpen-loading">Loading bullpen data...</div>;
+    }
+
+    if (error) {
+        return <div className="bullpen-error">{error}</div>;
+    }
+
+    if (!bullpenData) {
+        return <div className="bullpen-no-data">No bullpen data available for {team}.</div>;
+    }
+
+    return (
+        <div className="bullpen-container">
+            <h4 className="bullpen-team-name">{team} Bullpen</h4>
+
+            <div className="bullpen-metrics">
+                <div className="bullpen-metric">
+                    <span className="metric-label">ERA:</span>
+                    <span className="metric-value">{bullpenData.era?.toFixed(2) || "N/A"}</span>
+                </div>
+                <div className="bullpen-metric">
+                    <span className="metric-label">WHIP:</span>
+                    <span className="metric-value">{bullpenData.whip?.toFixed(2) || "N/A"}</span>
+                </div>
+                <div className="bullpen-metric">
+                    <span className="metric-label">IP:</span>
+                    <span className="metric-value">{bullpenData.ip?.toFixed(1) || "N/A"}</span>
+                </div>
+                <div className="bullpen-metric">
+                    <span className="metric-label">K/9:</span>
+                    <span className="metric-value">{bullpenData.k9?.toFixed(2) || "N/A"}</span>
+                </div>
+                <div className="bullpen-metric">
+                    <span className="metric-label">BB/9:</span>
+                    <span className="metric-value">{bullpenData.bb9?.toFixed(2) || "N/A"}</span>
+                </div>
+                <div className="bullpen-metric">
+                    <span className="metric-label">HR/9:</span>
+                    <span className="metric-value">{bullpenData.hr9?.toFixed(2) || "N/A"}</span>
+                </div>
+                <div className="bullpen-metric">
+                    <span className="metric-label">FIP:</span>
+                    <span className="metric-value">{bullpenData.fip?.toFixed(2) || "N/A"}</span>
+                </div>
+                <div className="bullpen-metric">
+                    <span className="metric-label">OPS:</span>
+                    <span className="metric-value">{bullpenData.ops?.toFixed(3) || "N/A"}</span>
+                </div>
+            </div>
+
+            {bullpenData.lastUsed && (
+                <div className="bullpen-usage">
+                    <h5>Recent Usage</h5>
+                    <div className="usage-details">
+                        {bullpenData.lastUsed.map((pitcher, index) => (
+                            <div key={index} className="pitcher-usage">
+                                <span className="pitcher-name">{pitcher.name}</span>
+                                <span className="pitcher-days">{pitcher.daysRest} days rest</span>
+                                <span className="pitcher-ip">{pitcher.ip} IP</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default BullpenStats;

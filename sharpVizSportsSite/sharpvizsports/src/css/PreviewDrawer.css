@@ -525,3 +525,26 @@ section {
     transform: rotate(360deg);
   }
 }
+
+/* Team Stats Tab */
+.stats-panel {
+  padding: 15px;
+}
+
+.team-records-section,
+.bullpen-stats-section {
+  margin-bottom: 30px;
+}
+
+.bullpen-comparisons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .bullpen-comparisons {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}

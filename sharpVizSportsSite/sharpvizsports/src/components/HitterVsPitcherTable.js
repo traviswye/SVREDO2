@@ -1,7 +1,16 @@
 import React from "react";
 import "../css/HitterVsPitcherTable.css";
 
-const HitterVsPitcherTable = ({ data, teamName, opposingTeamName, opposingPitcherId }) => {
+const HitterVsPitcherTable = ({ data, teamName, opposingTeamName, opposingPitcherId, isLoading }) => {
+    // If loading, show loading state
+    if (isLoading) {
+        return (
+            <div className="hvp-loading">
+                <p>Loading matchup data...</p>
+            </div>
+        );
+    }
+
     // If no data or no hitters, show message
     if (!data || !Array.isArray(data) || data.length === 0) {
         return (
@@ -22,7 +31,7 @@ const HitterVsPitcherTable = ({ data, teamName, opposingTeamName, opposingPitche
     return (
         <div className="hvp-section">
             <h3 className="hvp-title">
-                {teamName} Hitters vs. {opposingTeamName} Pitcher
+                {teamName} Hitters vs. {opposingPitcherId}
             </h3>
             <div className="hvp-table-container">
                 <table className="hvp-table">

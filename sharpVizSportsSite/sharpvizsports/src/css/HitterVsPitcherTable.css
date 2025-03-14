@@ -92,3 +92,20 @@
         padding: 8px 6px;
     }
 }
+
+.hvp-no-data,
+.hvp-loading {
+    padding: 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    color: #666;
+    font-style: italic;
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+}
+
+.hvp-loading {
+    background-color: #f0f7ff;
+    color: #0056b3;
+}

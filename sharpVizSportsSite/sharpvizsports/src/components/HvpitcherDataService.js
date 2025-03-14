@@ -1,9 +1,4 @@
 /**
- * HvpDataService.js
- * Service to handle parsing and processing Hitter vs Pitcher data
- */
-
-/**
  * Process the raw API response from hitter vs pitcher endpoint
  * @param {Array} apiResponse - The raw response from the API
  * @param {string} homePitcherId - The ID of the home pitcher
@@ -22,45 +17,52 @@ export const processHvpData = (apiResponse, homePitcherId, awayPitcherId) => {
         return result;
     }
 
-    // Loop through all game entries
-    apiResponse.forEach(item => {
-        if (!item.game || !item.game.pitcher || !item.game.hitters) return;
+    // The API returns a flat array of matchups, each with a pitcher and hitter
+    // We need to filter by pitcher ID and organize them
 
-        // Find data related to our pitchers
-        if (item.game.pitcher === awayPitcherId) {
-            // This represents home hitters vs away pitcher
-            result.homeHittersVsAwayPitcher = item.game.hitters.map(h => ({
-                hitter: h.hitter,
-                pa: h.stats.pa,
-                h: h.stats.h, // we keep both h and hits for compatibility
-                hits: h.stats.h,
-                hr: h.stats.hr,
-                rbi: h.stats.rbi,
-                bb: h.stats.bb,
-                so: h.stats.so,
-                ba: h.stats.ba,
-                obp: h.stats.obp,
-                slg: h.stats.slg,
-                ops: h.stats.ops
-            }));
-        } else if (item.game.pitcher === homePitcherId) {
-            // This represents away hitters vs home pitcher
-            result.awayHittersVsHomePitcher = item.game.hitters.map(h => ({
-                hitter: h.hitter,
-                pa: h.stats.pa,
-                h: h.stats.h,
-                hits: h.stats.h, // we keep both for compatibility
-                hr: h.stats.hr,
-                rbi: h.stats.rbi,
-                bb: h.stats.bb,
-                so: h.stats.so,
-                ba: h.stats.ba,
-                obp: h.stats.obp,
-                slg: h.stats.slg,
-                ops: h.stats.ops
-            }));
-        }
-    });
+    // Get all matchups for away pitcher (these will be home hitters vs away pitcher)
+    const homeHitterMatchups = apiResponse.filter(item =>
+        item.pitcher === awayPitcherId
+    );
+
+    // Get all matchups for home pitcher (these will be away hitters vs home pitcher)
+    const awayHitterMatchups = apiResponse.filter(item =>
+        item.pitcher === homePitcherId
+    );
+
+    // Transform into expected format
+    result.homeHittersVsAwayPitcher = homeHitterMatchups.map(item => ({
+        hitter: item.hitter,
+        pa: item.pa,
+        h: item.hits, // Map to both for compatibility
+        hits: item.hits,
+        hr: item.hr,
+        rbi: item.rbi,
+        bb: item.bb,
+        so: item.so,
+        ba: item.ba,
+        obp: item.obp,
+        slg: item.slg,
+        ops: item.ops
+    }));
+
+    result.awayHittersVsHomePitcher = awayHitterMatchups.map(item => ({
+        hitter: item.hitter,
+        pa: item.pa,
+        h: item.hits, // Map to both for compatibility
+        hits: item.hits,
+        hr: item.hr,
+        rbi: item.rbi,
+        bb: item.bb,
+        so: item.so,
+        ba: item.ba,
+        obp: item.obp,
+        slg: item.slg,
+        ops: item.ops
+    }));
+
+    console.log(`Found ${result.homeHittersVsAwayPitcher.length} home hitters vs ${awayPitcherId}`);
+    console.log(`Found ${result.awayHittersVsHomePitcher.length} away hitters vs ${homePitcherId}`);
 
     return result;
 };

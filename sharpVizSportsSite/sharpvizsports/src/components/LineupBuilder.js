@@ -38,6 +38,8 @@ const LineupBuilder = ({ sport, draftedPlayers, onResetLineup }) => {
 
     const [totalSalary, setTotalSalary] = useState(0);
     const [averagePPG, setAveragePPG] = useState(0);
+    const [errorMessage, setErrorMessage] = useState(null);
+
 
     useEffect(() => {
         // Reset lineup when sport changes
@@ -63,6 +65,19 @@ const LineupBuilder = ({ sport, draftedPlayers, onResetLineup }) => {
         }));
 
         if (draftedPlayers.length > 0) {
+            const newErrors = [];
+            // Check first player for errorDetails array
+            if (draftedPlayers[0] && draftedPlayers[0].errorDetails && draftedPlayers[0].errorDetails.length > 0) {
+                newErrors.push(...draftedPlayers[0].errorDetails);
+            }
+
+            // Also check for error message in the first player
+            if (draftedPlayers[0] && draftedPlayers[0].message && draftedPlayers[0].message.includes("issues")) {
+                newErrors.push(draftedPlayers[0].message);
+            }
+
+            setOptimizationErrors(newErrors);
+
             const updatedLineup = [...emptyLineup];
             draftedPlayers.forEach(player => {
                 // Split the position string to get all positions the player can play

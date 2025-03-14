@@ -264,6 +264,29 @@ const PlayerPoolTable = ({
             if (onOptimizationResults) {
                 onOptimizationResults(response.data);
             }
+            if (response.data.message && response.data.message.includes("issues")) {
+                // Extract error message from the response
+                setNotification(response.data.message);
+
+                // Still pass the optimization results to the parent component
+                if (onOptimizationResults) {
+                    onOptimizationResults(response.data);
+                }
+            } else if (response.data.errorDetails && response.data.errorDetails.length > 0) {
+                // If there are explicit error details, show those
+                setNotification(response.data.errorDetails.join("; "));
+
+                if (onOptimizationResults) {
+                    onOptimizationResults(response.data);
+                }
+            } else {
+                // No errors, just pass the optimization results
+                console.log('Optimization Results:', response.data);
+
+                if (onOptimizationResults) {
+                    onOptimizationResults(response.data);
+                }
+            }
         } catch (error) {
             console.error('Optimization error:', error);
             alert('Error optimizing lineup. Please try again.');

@@ -1,88 +1,217 @@
-/* Container for the game cards */
-.games-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr)); /* Wider game cards */
-  gap: 20px; /* Add spacing between cards */
-  justify-content: center; /* Center-align cards */
-  padding: 15px;
-}
-
-/* Individual game card styling */
+/* Game card container */
 .game-card {
-  width: 100%; /* Fit within the grid cell */
-  padding: 15px; /* Keep padding consistent */
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Slight shadow */
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-sizing: border-box;
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Keep elements spaced evenly */
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+  height: 100%;
+  min-height: 300px;
 }
 
 .game-card:hover {
-  transform: scale(1.03); /* Slightly larger hover effect */
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); /* Enhanced hover shadow */
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
-/* Header section */
-.game-header {
+/* Card header with time and rain info */
+.card-header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
-  font-weight: bold;
-  font-size: 1.1em;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #eee;
 }
 
-/* Rain probability */
-.rain-prob {
-  color: #d9534f; /* Distinct red for visibility */
-  font-weight: bold;
-  font-size: 1em;
+.game-time {
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
 }
 
-/* Venue and temperature */
-.game-card h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.3em; /* Larger game title */
+.rain-indicator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
 }
 
-.game-card p {
-  margin: 6px 0;
-  font-size: 1em;
-  line-height: 1.4;
+.rain-icon {
+  font-size: 12px;
+}
+
+/* Matchup header */
+.matchup-header {
+  padding: 12px 16px;
+  background-color: #023e8a;
+  color: white;
+}
+
+.matchup-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Venue and weather info */
+.venue-info {
+  padding: 16px;
+  background-color: #f0f7ff;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.venue-name {
+  font-weight: 600;
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.weather-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #555;
+}
+
+.temperature,
+.wind-info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.weather-icon {
+  font-size: 12px;
 }
 
 /* Pitchers section */
-.pitchers {
-  margin-top: 10px;
+.pitchers-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background-color: white;
 }
 
-.pitcher {
-  margin-bottom: 5px;
+.away-pitcher,
+.home-pitcher {
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  transition: background-color 0.2s ease;
 }
 
-.pitcher p {
-  margin: 0;
-  font-size: 1em;
-  line-height: 1.5;
+.away-pitcher:hover,
+.home-pitcher:hover {
+  background-color: #e9ecef;
 }
 
-.pitcher a {
+.pitcher-vs {
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  color: #777;
+  margin: 5px 0;
+}
+
+.pitcher-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+}
+
+.team-abbr {
+  font-weight: 700;
+  font-size: 16px;
+  color: #333;
+  min-width: 40px;
+}
+
+.pitcher-name {
   text-decoration: none;
-  color: #007bff; /* Link color */
-  font-weight: bold;
+  color: #0077cc;
+  font-weight: 600;
+  transition: color 0.2s;
 }
 
-.pitcher a:hover {
+.pitcher-name:hover {
+  color: #005fa3;
   text-decoration: underline;
 }
 
-/* Adjust for larger screens */
-@media screen and (min-width: 1200px) {
-  .games-list {
-    grid-template-columns: repeat(auto-fill, minmax(600px, 1fr)); /* Maintain consistent card width */
+.pitcher-hand {
+  color: #555;
+  background-color: #e9ecef;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.pitcher-record,
+.pitcher-era {
+  font-size: 14px;
+  color: #555;
+}
+
+.stat-label {
+  font-weight: 500;
+  color: #777;
+}
+
+.unannounced .pitcher-status {
+  color: #888;
+  font-style: italic;
+}
+
+/* Card footer */
+.card-footer {
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #eee;
+}
+
+.view-details-btn {
+  background-color: transparent;
+  color: #0077cc;
+  border: 1px solid #0077cc;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.view-details-btn:hover {
+  background-color: #0077cc;
+  color: white;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 600px) {
+  .matchup-header h3 {
+    font-size: 16px;
+  }
+
+  .pitcher-info {
+    font-size: 14px;
+  }
+
+  .team-abbr {
+    font-size: 15px;
   }
 }

@@ -1,115 +1,165 @@
-/* Container for the game cards */
-.games-list {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* Ensure only 5 cards per row */
-  gap: 20px; /* Add spacing between cards */
-  justify-content: center; /* Center-align cards */
-  padding: 15px;
-}
-
-/* Individual game card styling */
-.game-card {
-  width: 100%; /* Fit within the grid cell */
-  padding: 15px; /* Maintain consistent padding */
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-sizing: border-box;
+/* Container for the entire games display area */
+.games-display {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Spread out content evenly */
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-.game-card:hover {
-  transform: scale(1.03); /* Slight zoom effect on hover */
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); /* Enhanced hover shadow */
-}
-
-/* Game header section */
-.game-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  font-weight: bold;
-  font-size: 1.1em;
-}
-
-/* Rain probability styling */
-.rain-prob {
-  color: #d9534f; /* Bright red for visibility */
-  font-weight: bold;
-  font-size: 1em;
-}
-
-/* Game details */
-.game-card h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.3em; /* Larger title font */
-}
-
-.game-card p {
-  margin: 6px 0;
-  font-size: 1em;
-  line-height: 1.4;
-}
-
-/* Pitchers section */
-.pitchers {
-  margin-top: 10px;
-}
-
-.pitcher {
-  margin-bottom: 5px;
-}
-
-.pitcher p {
-  margin: 0;
-  font-size: 1em;
-  line-height: 1.5;
-}
-
-.pitcher a {
-  text-decoration: none;
-  color: #007bff; /* Blue for links */
-  font-weight: bold;
-}
-
-.pitcher a:hover {
-  text-decoration: underline;
-}
-
-/* Responsive adjustment */
-@media screen and (max-width: 1200px) {
-  .games-list {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adapt for smaller screens */
-  }
-}
-.date-picker {
+/* Date picker container styles */
+.date-picker-container {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 16px;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0 30px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
-.date-picker button {
-  background-color: #007bff;
-  color: white;
+/* Date navigation button styles */
+.date-nav-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #0077cc;
   border: none;
-  border-radius: 4px;
-  padding: 8px 12px;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 1em;
+  transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-.date-picker button:hover {
-  background-color: #0056b3;
+.date-nav-button:hover {
+  background-color: #0066b3;
 }
 
-.date-picker input {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 8px;
-  font-size: 1em;
+.date-nav-button:active {
+  transform: scale(0.98);
+}
+
+/* Date input field styling */
+.date-input {
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  width: 200px;
+  text-align: center;
+  color: #333;
+  background-color: #fff;
+  transition: border-color 0.2s;
+}
+
+.date-input:hover {
+  border-color: #aaa;
+}
+
+.date-input:focus {
+  border-color: #0077cc;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 119, 204, 0.2);
+}
+
+/* Container for the game cards grid */
+.games-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+}
+
+/* Loading and error message styles */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  width: 100%;
+}
+
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 4px solid #0077cc;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-message,
+.error-message,
+.no-games-message {
+  font-size: 16px;
+  color: #666;
+  text-align: center;
+  padding: 30px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.error-message {
+  color: #d32f2f;
+  background-color: #ffebee;
+  border-left: 4px solid #d32f2f;
+}
+
+.no-games-message {
+  color: #555;
+  background-color: #f5f5f5;
+  border-left: 4px solid #aaa;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .games-display {
+    padding: 0 10px;
+  }
+
+  .date-picker-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .date-input {
+    width: 100%;
+  }
+
+  .date-nav-button {
+    width: 100%;
+  }
+
+  .games-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+  .games-list {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
 }

@@ -1,23 +1,38 @@
 import React, { useState, useEffect } from "react";
 import GameCard from "./GameCard";
-import PreviewDrawer from "./PreviewDrawer"; // Import the new PreviewDrawer component
+import PreviewDrawer from "./PreviewDrawer";
 import "../css/GamesDisplay.css";
 
-const formatDate = (date) => {
-  const year = date.getFullYear();
-  const month = (date.getMonth() + 1).toString().padStart(2, "0");
-  const day = date.getDate().toString().padStart(2, "0");
-  return `${year}-${month}-${day}`;
-};
-
 const GamesDisplay = ({ initialDate }) => {
+  // Format date as YYYY-MM-DD
+  const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+
+  // Format date as YY-MM-DD for API calls
+  const formatDateForApi = (dateString) => {
+    // Extract the last two digits of the year for API calls
+    const parts = dateString.split('-');
+    if (parts.length === 3) {
+      const shortYear = parts[0].slice(-2); // Get last 2 digits of year
+      return `${shortYear}-${parts[1]}-${parts[2]}`;
+    }
+    return dateString;
+  };
+
   const [games, setGames] = useState([]);
   const [pitchers, setPitchers] = useState({});
   const [teamRecords, setTeamRecords] = useState({});
   const [lineups, setLineups] = useState({});
   const [predictedLineups, setPredictedLineups] = useState({});
-  const [ParkFactorRecords, setParkFactorRecords] = useState({});
+  const [parkFactorRecords, setParkFactorRecords] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
+  // Initialize selectedDate with current date if no initialDate provided
   const [selectedDate, setSelectedDate] = useState(
     initialDate ? formatDate(new Date(initialDate)) : formatDate(new Date())
   );
@@ -25,9 +40,22 @@ const GamesDisplay = ({ initialDate }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
-    console.log("Selected Date (Displayed):", selectedDate);
-    fetchData(selectedDate);
-    fetchStaticData(selectedDate);
+    console.log("Selected Date for display:", selectedDate);
+    const fetchAllData = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        await fetchData(selectedDate);
+        await fetchStaticData(selectedDate);
+      } catch (err) {
+        console.error("Error fetching data:", err);
+        setError("Failed to load game data. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAllData();
   }, [selectedDate]);
 
   const teamAbbreviations = {
@@ -67,12 +95,17 @@ const GamesDisplay = ({ initialDate }) => {
 
   const fetchData = async (date) => {
     try {
-      const shortDate = date.substring(2); // Convert to 'YY-MM-DD'
-      console.log("Fetching data for:", shortDate);
+      const shortDate = formatDateForApi(date); // Convert to 'YY-MM-DD'
+      console.log("Fetching game data for:", shortDate);
 
       const gamesResponse = await fetch(
         `https://localhost:44346/api/GamePreviews/${shortDate}`
       );
+
+      if (!gamesResponse.ok) {
+        throw new Error(`Games API responded with status: ${gamesResponse.status}`);
+      }
+
       const gamesData = await gamesResponse.json();
 
       const uniqueGames = Array.from(
@@ -90,6 +123,13 @@ const GamesDisplay = ({ initialDate }) => {
       const pitchersResponse = await fetch(
         `https://localhost:44346/api/Pitchers/pitchersByDate/${shortDate}`
       );
+
+      if (!pitchersResponse.ok) {
+        console.warn(`Pitchers API responded with status: ${pitchersResponse.status}`);
+        setPitchers({});
+        return;
+      }
+
       const pitchersData = await pitchersResponse.json();
 
       const pitchersMap = pitchersData.reduce((map, pitcher) => {
@@ -101,7 +141,10 @@ const GamesDisplay = ({ initialDate }) => {
 
       setPitchers(pitchersMap);
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error("Error fetching game data:", error);
+      setError("Failed to load games. Please try again later.");
+      setGames([]);
+      setPitchers({});
     }
   };
 
@@ -114,36 +157,47 @@ const GamesDisplay = ({ initialDate }) => {
       const teamRecordsData = await teamRecordsResponse.json();
       setTeamRecords(teamRecordsData);
 
-      // Fetch Team Records
+      // Fetch Park Factors
       const parkFactorsResponse = await fetch("https://localhost:44346/api/ParkFactors");
       const parkFactorsData = await parkFactorsResponse.json();
       setParkFactorRecords(parkFactorsData);
 
       // Fetch Actual Lineups
       const lineupsResponse = await fetch(`https://localhost:44346/api/Lineups/Actual/${date}`);
-      const lineupsData = await lineupsResponse.json();
-      setLineups(lineupsData);
+      if (lineupsResponse.ok) {
+        const lineupsData = await lineupsResponse.json();
+        setLineups(lineupsData);
+      } else {
+        console.warn("No actual lineups found for the selected date");
+        setLineups({});
+      }
 
       // Fetch Predicted Lineups
       const predictedLineupsResponse = await fetch(
         `https://localhost:44346/api/Lineups/Predictions/date/${date}`
       );
-      const predictedLineupsData = await predictedLineupsResponse.json();
-      setPredictedLineups(predictedLineupsData);
+      if (predictedLineupsResponse.ok) {
+        const predictedLineupsData = await predictedLineupsResponse.json();
+        setPredictedLineups(predictedLineupsData);
+      } else {
+        console.warn("No predicted lineups found for the selected date");
+        setPredictedLineups({});
+      }
     } catch (error) {
       console.error("Error fetching static data:", error);
+      setError("Failed to load supporting data. Some information may be missing.");
     }
   };
 
   const handleDateChange = (e) => {
     const inputDate = e.target.value;
-    console.log("Date Selected from Input (Raw):", inputDate);
+    console.log("Date Selected from Input:", inputDate);
     setSelectedDate(inputDate);
   };
 
   const incrementDate = (days) => {
     setSelectedDate((prevDate) => {
-      const parsedDate = new Date(`${prevDate}T00:00:00`);
+      const parsedDate = new Date(`${prevDate}T12:00:00`); // Use noon to avoid timezone issues
       parsedDate.setDate(parsedDate.getDate() + days);
       return formatDate(parsedDate);
     });
@@ -160,6 +214,18 @@ const GamesDisplay = ({ initialDate }) => {
   };
 
   const renderGameCards = () => {
+    if (loading) {
+      return <div className="loading-message">Loading games data...</div>;
+    }
+
+    if (error) {
+      return <div className="error-message">{error}</div>;
+    }
+
+    if (games.length === 0) {
+      return <div className="no-games-message">No games scheduled for this date.</div>;
+    }
+
     return games.map((game) => {
       const homePitcher = pitchers[game.homePitcher];
       const awayPitcher = pitchers[game.awayPitcher];
@@ -178,20 +244,40 @@ const GamesDisplay = ({ initialDate }) => {
 
   return (
     <div className="games-display">
-      <div className="date-picker">
-        <button onClick={() => incrementDate(-1)}>&lt; Prev</button>
+      <div className="date-picker-container">
+        <button
+          onClick={() => incrementDate(-1)}
+          className="date-nav-button prev-button"
+        >
+          &lt; Previous Day
+        </button>
         <input
           type="date"
           value={selectedDate}
           onChange={handleDateChange}
+          className="date-input"
         />
-        <button onClick={() => incrementDate(1)}>Next &gt;</button>
+        <button
+          onClick={() => incrementDate(1)}
+          className="date-nav-button next-button"
+        >
+          Next Day &gt;
+        </button>
       </div>
-      <div className="games-list">{renderGameCards()}</div>
+
+      {loading ? (
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>Loading games...</p>
+        </div>
+      ) : (
+        <div className="games-list">{renderGameCards()}</div>
+      )}
+
       {drawerOpen && (
         <PreviewDrawer
           game={selectedGame}
-          parkFactors={ParkFactorRecords}
+          parkFactors={parkFactorRecords}
           teamRecords={teamRecords}
           lineups={lineups}
           predictedLineups={predictedLineups}

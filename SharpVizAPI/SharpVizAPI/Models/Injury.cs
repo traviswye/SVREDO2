@@ -14,5 +14,7 @@ namespace SharpVizAPI.Models
 
         [Required]
         public DateTime Date { get; set; } // Use "Date" instead of "InjuryDate"
+
+        public int Year { get; set; }
     }
 }

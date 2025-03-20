@@ -21,16 +21,32 @@ namespace SharpVizAPI.Controllers
 
         // GET: api/TrailingGameLogSplits
         [HttpGet]
-        public async Task<IActionResult> GetTrailingGameLogSplits([FromQuery] string bbrefid, [FromQuery] string split)
+        public async Task<IActionResult> GetTrailingGameLogSplits(
+            [FromQuery] string bbrefid,
+            [FromQuery] string split,
+            [FromQuery] int? year = null)
         {
             if (string.IsNullOrEmpty(bbrefid) || string.IsNullOrEmpty(split))
             {
                 return BadRequest("bbrefid and split are required.");
             }
 
-            var splits = await _context.TrailingGameLogSplits
-                .Where(t => t.BbrefId == bbrefid && t.Split == split)
-                .ToListAsync();
+            var query = _context.TrailingGameLogSplits
+                .Where(t => t.BbrefId == bbrefid && t.Split == split);
+
+            // Apply year filter if provided
+            if (year.HasValue)
+            {
+                query = query.Where(t => t.Year == year.Value);
+            }
+            else
+            {
+                // If no year is specified, default to the current year
+                int currentYear = System.DateTime.Now.Year;
+                query = query.Where(t => t.Year == currentYear);
+            }
+
+            var splits = await query.ToListAsync();
 
             if (splits == null || !splits.Any())
             {
@@ -42,15 +58,32 @@ namespace SharpVizAPI.Controllers
 
         // GET: api/TrailingGameLogSplits/mostRecent
         [HttpGet("mostRecent")]
-        public async Task<IActionResult> GetMostRecentTrailingGameLogSplit([FromQuery] string bbrefid, [FromQuery] string split)
+        public async Task<IActionResult> GetMostRecentTrailingGameLogSplit(
+            [FromQuery] string bbrefid,
+            [FromQuery] string split,
+            [FromQuery] int? year = null)
         {
             if (string.IsNullOrEmpty(bbrefid) || string.IsNullOrEmpty(split))
             {
                 return BadRequest("bbrefid and split are required.");
             }
 
-            var mostRecentSplit = await _context.TrailingGameLogSplits
-                .Where(t => t.BbrefId == bbrefid && t.Split == split)
+            var query = _context.TrailingGameLogSplits
+                .Where(t => t.BbrefId == bbrefid && t.Split == split);
+
+            // Apply year filter if provided
+            if (year.HasValue)
+            {
+                query = query.Where(t => t.Year == year.Value);
+            }
+            else
+            {
+                // If no year is specified, default to the current year
+                int currentYear = System.DateTime.Now.Year;
+                query = query.Where(t => t.Year == currentYear);
+            }
+
+            var mostRecentSplit = await query
                 .OrderByDescending(t => t.DateUpdated)
                 .FirstOrDefaultAsync();
 
@@ -80,9 +113,22 @@ namespace SharpVizAPI.Controllers
 
             try
             {
-                var splits = await _context.TrailingGameLogSplits
-                    .Where(t => request.BbrefIds.Contains(t.BbrefId) && t.Split == request.Split)
-                    .ToListAsync();
+                var query = _context.TrailingGameLogSplits
+                    .Where(t => request.BbrefIds.Contains(t.BbrefId) && t.Split == request.Split);
+
+                // Apply year filter if provided
+                if (request.Year.HasValue)
+                {
+                    query = query.Where(t => t.Year == request.Year.Value);
+                }
+                else
+                {
+                    // If no year is specified, default to the current year
+                    int currentYear = System.DateTime.Now.Year;
+                    query = query.Where(t => t.Year == currentYear);
+                }
+
+                var splits = await query.ToListAsync();
 
                 // Create a dictionary with BBRef ID as the key for easier lookup on the frontend
                 var resultDict = splits.GroupBy(s => s.BbrefId)
@@ -103,6 +149,7 @@ namespace SharpVizAPI.Controllers
         {
             public List<string> BbrefIds { get; set; }
             public string Split { get; set; }
+            public int? Year { get; set; }
         }
 
         // POST: api/TrailingGameLogSplits
@@ -114,36 +161,60 @@ namespace SharpVizAPI.Controllers
                 return BadRequest("Invalid split data.");
             }
 
+            // Make sure Year is set, default to current year if not
+            if (split.Year == 0)
+            {
+                split.Year = System.DateTime.Now.Year;
+            }
+
             // Check if a record with the same composite key already exists
             var existingSplit = await _context.TrailingGameLogSplits
-                .FirstOrDefaultAsync(t => t.BbrefId == split.BbrefId && t.Split == split.Split && t.DateUpdated == split.DateUpdated);
+                .FirstOrDefaultAsync(t =>
+                    t.BbrefId == split.BbrefId &&
+                    t.Split == split.Split &&
+                    t.DateUpdated == split.DateUpdated &&
+                    t.Year == split.Year);
 
             if (existingSplit != null)
             {
-                return Conflict("A trailing game log split with the same bbrefid, split, and date already exists.");
+                // Update existing record
+                _context.Entry(existingSplit).CurrentValues.SetValues(split);
+                await _context.SaveChangesAsync();
+                return Ok(existingSplit);
             }
 
             await _context.TrailingGameLogSplits.AddAsync(split);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetTrailingGameLogSplits), new { bbrefid = split.BbrefId, split = split.Split }, split);
+            return CreatedAtAction(nameof(GetTrailingGameLogSplits),
+                new { bbrefid = split.BbrefId, split = split.Split, year = split.Year },
+                split);
         }
 
-        // PUT: api/TrailingGameLogSplits/{bbrefid}/{split}/{dateUpdated}
-        [HttpPut("{bbrefid}/{split}/{dateUpdated}")]
-        public async Task<IActionResult> UpdateTrailingGameLogSplit(string bbrefid, string split, string dateUpdated, [FromBody] TrailingGameLogSplit updatedSplit)
+        // PUT: api/TrailingGameLogSplits/{bbrefid}/{split}/{dateUpdated}/{year}
+        [HttpPut("{bbrefid}/{split}/{dateUpdated}/{year}")]
+        public async Task<IActionResult> UpdateTrailingGameLogSplit(
+            string bbrefid,
+            string split,
+            string dateUpdated,
+            int year,
+            [FromBody] TrailingGameLogSplit updatedSplit)
         {
             if (string.IsNullOrEmpty(bbrefid) || string.IsNullOrEmpty(split) || string.IsNullOrEmpty(dateUpdated))
             {
-                return BadRequest("bbrefid, split, and dateUpdated are required.");
+                return BadRequest("bbrefid, split, dateUpdated, and year are required.");
             }
 
             var existingSplit = await _context.TrailingGameLogSplits
-                .FirstOrDefaultAsync(t => t.BbrefId == bbrefid && t.Split == split && t.DateUpdated.ToString("yyyy-MM-dd") == dateUpdated);
+                .FirstOrDefaultAsync(t =>
+                    t.BbrefId == bbrefid &&
+                    t.Split == split &&
+                    t.DateUpdated.ToString("yyyy-MM-dd") == dateUpdated &&
+                    t.Year == year);
 
             if (existingSplit == null)
             {
-                return NotFound("No trailing game log split found for the given bbrefid, split, and date.");
+                return NotFound("No trailing game log split found for the given bbrefid, split, date, and year.");
             }
 
             // Update the fields with the provided data
@@ -180,27 +251,36 @@ namespace SharpVizAPI.Controllers
             existingSplit.RE24 = updatedSplit.RE24;
             existingSplit.DFSDk = updatedSplit.DFSDk;
             existingSplit.DFSFd = updatedSplit.DFSFd;
+            existingSplit.HomeGames = updatedSplit.HomeGames;
+            existingSplit.AwayGames = updatedSplit.AwayGames;
+            existingSplit.HomeParkFactor = updatedSplit.HomeParkFactor;
+            existingSplit.AwayParkFactorAvg = updatedSplit.AwayParkFactorAvg;
+            existingSplit.Year = updatedSplit.Year;
 
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        // DELETE: api/TrailingGameLogSplits/{bbrefid}/{split}/{dateUpdated}
-        [HttpDelete("{bbrefid}/{split}/{dateUpdated}")]
-        public async Task<IActionResult> DeleteTrailingGameLogSplit(string bbrefid, string split, string dateUpdated)
+        // DELETE: api/TrailingGameLogSplits/{bbrefid}/{split}/{dateUpdated}/{year}
+        [HttpDelete("{bbrefid}/{split}/{dateUpdated}/{year}")]
+        public async Task<IActionResult> DeleteTrailingGameLogSplit(string bbrefid, string split, string dateUpdated, int year)
         {
             if (string.IsNullOrEmpty(bbrefid) || string.IsNullOrEmpty(split) || string.IsNullOrEmpty(dateUpdated))
             {
-                return BadRequest("bbrefid, split, and dateUpdated are required.");
+                return BadRequest("bbrefid, split, dateUpdated, and year are required.");
             }
 
             var existingSplit = await _context.TrailingGameLogSplits
-                .FirstOrDefaultAsync(t => t.BbrefId == bbrefid && t.Split == split && t.DateUpdated.ToString("yyyy-MM-dd") == dateUpdated);
+                .FirstOrDefaultAsync(t =>
+                    t.BbrefId == bbrefid &&
+                    t.Split == split &&
+                    t.DateUpdated.ToString("yyyy-MM-dd") == dateUpdated &&
+                    t.Year == year);
 
             if (existingSplit == null)
             {
-                return NotFound("No trailing game log split found for the given bbrefid, split, and date.");
+                return NotFound("No trailing game log split found for the given bbrefid, split, date, and year.");
             }
 
             _context.TrailingGameLogSplits.Remove(existingSplit);
@@ -208,19 +288,33 @@ namespace SharpVizAPI.Controllers
 
             return NoContent();
         }
+
         // GET: api/TrailingGameLogSplits/last7G
         [HttpGet("last7G")]
-        public async Task<IActionResult> GetLast7GRecords()
+        public async Task<IActionResult> GetLast7GRecords([FromQuery] int? year = null)
         {
             try
             {
-                var records = await _context.TrailingGameLogSplits
-                    .Where(t => t.Split == "Last7G")
-                    .ToListAsync();
+                var query = _context.TrailingGameLogSplits
+                    .Where(t => t.Split == "Last7G");
+
+                // Apply year filter if provided
+                if (year.HasValue)
+                {
+                    query = query.Where(t => t.Year == year.Value);
+                }
+                else
+                {
+                    // If no year is specified, default to the current year
+                    int currentYear = System.DateTime.Now.Year;
+                    query = query.Where(t => t.Year == currentYear);
+                }
+
+                var records = await query.ToListAsync();
 
                 if (records == null || !records.Any())
                 {
-                    return NotFound("No records found with the Split column set to 'Last7G'.");
+                    return NotFound($"No records found with the Split column set to 'Last7G' for year {year ?? System.DateTime.Now.Year}.");
                 }
 
                 return Ok(records);
@@ -231,6 +325,27 @@ namespace SharpVizAPI.Controllers
             }
         }
 
+        // GET: api/TrailingGameLogSplits/year/{year}
+        [HttpGet("year/{year}")]
+        public async Task<IActionResult> GetRecordsByYear(int year)
+        {
+            try
+            {
+                var records = await _context.TrailingGameLogSplits
+                    .Where(t => t.Year == year)
+                    .ToListAsync();
 
+                if (records == null || !records.Any())
+                {
+                    return NotFound($"No records found for year {year}.");
+                }
+
+                return Ok(records);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "An error occurred while fetching records by year.", error = ex.Message });
+            }
+        }
     }
 }

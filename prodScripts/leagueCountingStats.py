@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import datetime
 import urllib3
+import time
 
 # Suppress HTTPS warnings
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -10,8 +11,67 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 API_HITTING_ENDPOINT = "https://localhost:44346/api/TeamTotalBattingTracking"
 API_PITCHING_ENDPOINT = "https://localhost:44346/api/TeamTotalPitchingTracking"
 
+def check_record_exists(team_name, year, endpoint):
+    """Check if a record already exists for the given team and year"""
+    try:
+        url = f"{endpoint}/exists/{year}/{team_name}"
+        response = requests.get(url, verify=False)
+        
+        if response.status_code == 200:
+            data = response.json()
+            return data.get('exists', False)
+        
+        return False
+    except Exception as e:
+        print(f"Error checking if record exists: {e}")
+        return False
+
+def update_or_create_record(row_data, endpoint):
+    """Update an existing record or create a new one based on whether it exists"""
+    team_name = row_data.get('TeamName')
+    year = row_data.get('Year')
+    
+    try:
+        # Check if record exists
+        exists = check_record_exists(team_name, year, endpoint)
+        
+        if exists:
+            # Update existing record
+            put_url = f"{endpoint}/{year}/{team_name}"
+            response = requests.put(put_url, json=row_data, verify=False)
+            
+            if response.status_code in [200, 204]:
+                print(f"Successfully updated data for {team_name} (Year: {year})")
+                return True
+            else:
+                print(f"Failed to update data for {team_name} (Year: {year}): {response.text}")
+                # Try POST if PUT fails
+                post_response = requests.post(endpoint, json=row_data, verify=False)
+                
+                if post_response.status_code == 201:
+                    print(f"Successfully created data for {team_name} (Year: {year}) after PUT failed")
+                    return True
+                else:
+                    print(f"Both PUT and POST failed for {team_name} (Year: {year})")
+                    return False
+        else:
+            # Create new record
+            response = requests.post(endpoint, json=row_data, verify=False)
+            
+            if response.status_code == 201:
+                print(f"Successfully created data for {team_name} (Year: {year})")
+                return True
+            else:
+                print(f"Failed to create data for {team_name} (Year: {year}): {response.text}")
+                return False
+                
+    except Exception as e:
+        print(f"Error while processing data for {team_name} (Year: {year}): {e}")
+        return False
+
 def scrape_batting_data(url, year):
     try:
+        print(f"Requesting URL: {url}")
         response = requests.get(url, verify=False)
         response.raise_for_status()
         soup = BeautifulSoup(response.content, "html.parser")
@@ -51,8 +111,8 @@ def scrape_batting_data(url, year):
             row_data["Year"] = year
             row_data["DateAdded"] = datetime.datetime.now().strftime("%Y-%m-%d")
 
-            print(row_data)
-            post_to_api(row_data, API_HITTING_ENDPOINT)
+            print(f"Processing team batting data: {team_name} for {year}")
+            update_or_create_record(row_data, API_HITTING_ENDPOINT)
 
             data.append(row_data)
 
@@ -64,6 +124,7 @@ def scrape_batting_data(url, year):
 
 def scrape_pitching_data(url, year):
     try:
+        print(f"Requesting URL: {url}")
         response = requests.get(url, verify=False)
         response.raise_for_status()
         soup = BeautifulSoup(response.content, "html.parser")
@@ -147,8 +208,8 @@ def scrape_pitching_data(url, year):
                 if column not in mapped_data:
                     mapped_data[column] = None  # Add missing keys with `None`
 
-            print(mapped_data)
-            post_to_api(mapped_data, API_PITCHING_ENDPOINT)
+            print(f"Processing team pitching data: {team_name} for {year}")
+            update_or_create_record(mapped_data, API_PITCHING_ENDPOINT)
 
             data.append(mapped_data)
 
@@ -157,19 +218,6 @@ def scrape_pitching_data(url, year):
     except Exception as e:
         print(f"Error occurred while scraping {url}: {e}")
         return []
-
-
-
-def post_to_api(row_data, endpoint):
-    try:
-        response = requests.post(endpoint, json=row_data, verify=False)
-        if response.status_code == 201:
-            print(f"Successfully posted data for {row_data['TeamName']} (Year: {row_data['Year']})")
-        else:
-            print(f"Failed to post data for {row_data['TeamName']} (Year: {row_data['Year']}): {response.text}")
-    except Exception as e:
-        print(f"Error while posting data to API: {e}")
-
 
 # URLs to scrape
 hitting_urls = [
@@ -181,14 +229,30 @@ pitching_urls = [
     "https://www.baseball-reference.com/leagues/NL/2025-standard-pitching.shtml"
 ]
 
-# Scrape hitting data
-for url in hitting_urls:
-    year = 2025
-    print(f"Scraping hitting data for {url}...")
-    scrape_batting_data(url, year)
+# Current year
+YEAR = 2025
 
-# Scrape pitching data
-for url in pitching_urls:
-    year = 2025
-    print(f"Scraping pitching data for {url}...")
-    scrape_pitching_data(url, year)
+# Main execution
+def main():
+    print(f"Starting MLB team stats scraper for {YEAR}...")
+    
+    # Scrape hitting data
+    print("\n=== SCRAPING HITTING DATA ===")
+    for url in hitting_urls:
+        print(f"\nProcessing: {url}")
+        scrape_batting_data(url, YEAR)
+        # Be nice to the server
+        time.sleep(2)
+
+    # Scrape pitching data
+    print("\n=== SCRAPING PITCHING DATA ===")
+    for url in pitching_urls:
+        print(f"\nProcessing: {url}")
+        scrape_pitching_data(url, YEAR)
+        # Be nice to the server
+        time.sleep(2)
+        
+    print("\nMLB team stats scraping completed!")
+
+if __name__ == "__main__":
+    main()

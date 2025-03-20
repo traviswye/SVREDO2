@@ -126,6 +126,7 @@ namespace SharpVizAPI.Models
         public int AwayGames { get; set; }
         public double HomeParkFactor { get; set; }
         public double AwayParkFactorAvg { get; set; }
+        public int Year { get; set; }
 
 
         [Key]

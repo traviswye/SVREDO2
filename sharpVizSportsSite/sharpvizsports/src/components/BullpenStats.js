@@ -17,8 +17,8 @@ const BullpenStats = ({ team, year }) => {
                 const response = await axios.get(`https://localhost:44346/api/Pitchers/bullpens`, {
                     params: {
                         team: team,
-                        // year: '2024'
-                        year: year || new Date().getFullYear()
+                        year: '2024'
+                        // year: year || new Date().getFullYear()
                     }
                 });
 

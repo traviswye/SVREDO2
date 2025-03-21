@@ -217,35 +217,259 @@ namespace SharpVizApi.Services.Optimization
             int remainingSalary,
             OptimizationParameters parameters)
         {
-            // 5. Optimize the lineup using the knapsack approach
-            var result = await OptimizeLineupUsingKnapsack(
-                players,
-                remainingPositions,
-                remainingSalary,
-                parameters.OptimizationCriterion,
-                mustStartPlayers.Select(p => p.Player).ToList(),
-                new List<RequiredPlayer>());
+            // Log starting conditions
+            _logger.LogInformation($"Starting optimization with {remainingPositions.Count} positions and {remainingSalary} salary cap");
 
-            var stackInfo = new Dictionary<string, object>(); // This was missing
+            // Create a dictionary tracking how many positions of each type we need to fill
+            var positionCounts = remainingPositions
+                .GroupBy(p => p)
+                .ToDictionary(g => g.Key, g => g.Count());
+
+            // Get players already in the lineup from must-start constraints
+            var lineup = new List<OptimizedPlayer>(mustStartPlayers.Where(p => !p.IsError).Select(p => p.Player));
+            var usedPlayerIds = new HashSet<int>(lineup.Select(p => p.PlayerDkId));
+
+            _logger.LogInformation($"Starting with {lineup.Count} must-start players, {usedPlayerIds.Count} used player IDs");
+
+            // Let's use a knapsack-inspired approach with position constraints
+
+            // 1. First, assign the minimum salary player to each position to ensure we have a valid lineup
+            var minSalaryLineup = new List<OptimizedPlayer>(lineup);
+            var remainingSalaryAfterMin = remainingSalary;
+            var positionsNeeded = new Dictionary<string, int>(positionCounts);
+
+            // First, make sure we have enough players for each position at minimum salary
+            foreach (var posEntry in positionCounts)
+            {
+                string position = posEntry.Key;
+                int count = posEntry.Value;
+
+                // Get the cheapest valid players for this position who aren't used yet
+                var cheapestPlayers = players
+                    .Where(p => IsEligibleForPosition(p, position) &&
+                           !usedPlayerIds.Contains(p.PlayerDkId))
+                    .OrderBy(p => p.Salary)
+                    .Take(count)
+                    .ToList();
+
+                if (cheapestPlayers.Count < count)
+                {
+                    // Not enough players for this position
+                    _logger.LogWarning($"Not enough players for position {position}: needed {count}, found {cheapestPlayers.Count}");
+                    return new OptimizationResult
+                    {
+                        IsSuccessful = false,
+                        Message = $"Not enough players available for position {position}",
+                        ErrorDetails = new List<string> { $"Needed {count} players for {position}, but only found {cheapestPlayers.Count}" }
+                    };
+                }
+
+                // Calculate total minimum cost for this position
+                int minCostForPosition = cheapestPlayers.Sum(p => p.Salary);
+                _logger.LogInformation($"Minimum cost for {count} {position}s: {minCostForPosition}");
+
+                // Update remaining salary
+                remainingSalaryAfterMin -= minCostForPosition;
+            }
+
+            // Check if we have enough salary to fill all positions with minimum salary players
+            if (remainingSalaryAfterMin < 0)
+            {
+                _logger.LogWarning($"Not enough salary to fill all positions: need {-remainingSalaryAfterMin} more");
+                return new OptimizationResult
+                {
+                    IsSuccessful = false,
+                    Message = "Not enough salary to fill all positions with minimum salary players",
+                    ErrorDetails = new List<string> { $"Need {-remainingSalaryAfterMin} more salary" }
+                };
+            }
+
+            // 2. Now that we know it's feasible, use a real optimization approach
+
+            // Create player lists by position, sorted by value per dollar
+            var playersByPosition = new Dictionary<string, List<DKPlayerPool>>();
+            foreach (var position in positionCounts.Keys)
+            {
+                playersByPosition[position] = players
+                    .Where(p => IsEligibleForPosition(p, position) && !usedPlayerIds.Contains(p.PlayerDkId))
+                    .OrderByDescending(p => p.DKppg / p.Salary)  // Value per dollar
+                    .ToList();
+            }
+
+            // Use a dynamic programming approach to maximize value while respecting position constraints
+            // This is a variation of the Multi-Dimensional Knapsack Problem
+
+            // We'll use a greedy approach with local optimization:
+            // 1. Start by filling each position with the cheapest player
+            // 2. Repeatedly upgrade positions based on best value increase per dollar spent
+
+            // First, create a baseline lineup with the cheapest player at each position
+            var baselineLineup = new List<(string position, DKPlayerPool player)>();
+            var baselineCost = 0;
+            var baselineValue = 0.0m;
+
+            foreach (var posEntry in positionCounts)
+            {
+                string position = posEntry.Key;
+                int count = posEntry.Value;
+
+                var cheapestPlayers = playersByPosition[position]
+                    .OrderBy(p => p.Salary)
+                    .Take(count)
+                    .ToList();
+
+                foreach (var player in cheapestPlayers)
+                {
+                    baselineLineup.Add((position, player));
+                    baselineCost += player.Salary;
+                    baselineValue += player.DKppg ?? 0;
+
+                    // Mark this player as used
+                    usedPlayerIds.Add(player.PlayerDkId);
+                }
+            }
+
+            // Remove used players from the player lists
+            foreach (var position in playersByPosition.Keys)
+            {
+                playersByPosition[position] = playersByPosition[position]
+                    .Where(p => !usedPlayerIds.Contains(p.PlayerDkId))
+                    .ToList();
+            }
+
+            // Calculate remaining salary after baseline
+            var remainingBudget = remainingSalary - baselineCost;
+            _logger.LogInformation($"Baseline lineup cost: {baselineCost}, value: {baselineValue}, remaining: {remainingBudget}");
+
+            // Find upgrades until we can't improve anymore or run out of salary
+            bool madeImprovement;
+            do
+            {
+                madeImprovement = false;
+
+                // Keep track of the best upgrade option
+                string bestPosition = null;
+                DKPlayerPool bestUpgradePlayer = null;
+                DKPlayerPool bestDowngradePlayer = null;
+                decimal bestValueIncrease = 0;
+
+                // Try to upgrade each position
+                foreach (var (position, currentPlayer) in baselineLineup)
+                {
+                    // Find possible upgrades for this position
+                    var betterPlayers = playersByPosition[position]
+                        .Where(p => p.DKppg > currentPlayer.DKppg && p.Salary <= currentPlayer.Salary + remainingBudget)
+                        .ToList();
+
+                    foreach (var upgrade in betterPlayers)
+                    {
+                        // Calculate the value increase and cost increase
+                        decimal valueIncrease = (upgrade.DKppg ?? 0) - (currentPlayer.DKppg ?? 0);
+                        int costIncrease = upgrade.Salary - currentPlayer.Salary;
+
+                        // Calculate value per dollar spent on this upgrade
+                        decimal valuePerDollar = costIncrease > 0 ? valueIncrease / costIncrease : valueIncrease * 1000;
+
+                        // If this is the best upgrade so far, remember it
+                        if (valueIncrease > bestValueIncrease)
+                        {
+                            bestPosition = position;
+                            bestUpgradePlayer = upgrade;
+                            bestDowngradePlayer = currentPlayer;
+                            bestValueIncrease = valueIncrease;
+                        }
+                    }
+                }
+
+                // If we found an improvement, apply it
+                if (bestValueIncrease > 0 && bestUpgradePlayer != null && bestDowngradePlayer != null)
+                {
+                    _logger.LogInformation($"Upgrading {bestPosition} from {bestDowngradePlayer.FullName} ({bestDowngradePlayer.DKppg}) to {bestUpgradePlayer.FullName} ({bestUpgradePlayer.DKppg})");
+
+                    // Find and update the player in the lineup
+                    for (int i = 0; i < baselineLineup.Count; i++)
+                    {
+                        if (baselineLineup[i].position == bestPosition && baselineLineup[i].player.PlayerDkId == bestDowngradePlayer.PlayerDkId)
+                        {
+                            baselineLineup[i] = (bestPosition, bestUpgradePlayer);
+                            break;
+                        }
+                    }
+
+                    // Update costs and values
+                    baselineCost += (bestUpgradePlayer.Salary - bestDowngradePlayer.Salary);
+                    baselineValue += bestValueIncrease;
+                    remainingBudget -= (bestUpgradePlayer.Salary - bestDowngradePlayer.Salary);
+
+                    // Mark the players as used/unused
+                    usedPlayerIds.Remove(bestDowngradePlayer.PlayerDkId);
+                    usedPlayerIds.Add(bestUpgradePlayer.PlayerDkId);
+
+                    // Update the player lists
+                    foreach (var position in playersByPosition.Keys)
+                    {
+                        playersByPosition[position] = playersByPosition[position]
+                            .Where(p => !usedPlayerIds.Contains(p.PlayerDkId))
+                            .ToList();
+                    }
+
+                    // Add the downgraded player back to its position list
+                    if (playersByPosition.ContainsKey(bestPosition))
+                    {
+                        playersByPosition[bestPosition].Add(bestDowngradePlayer);
+                        playersByPosition[bestPosition] = playersByPosition[bestPosition]
+                            .OrderByDescending(p => p.DKppg / p.Salary)
+                            .ToList();
+                    }
+
+                    madeImprovement = true;
+                }
+            } while (madeImprovement && remainingBudget > 0);
+
+            // Convert the baseline lineup to the final lineup format
+            var finalLineup = new List<OptimizedPlayer>(lineup); // Start with must-start players
+
+            // Add the optimized players
+            foreach (var (position, player) in baselineLineup)
+            {
+                finalLineup.Add(new OptimizedPlayer
+                {
+                    FullName = player.FullName,
+                    PlayerDkId = player.PlayerDkId,
+                    Position = player.Position,
+                    AssignedPosition = position,
+                    Salary = player.Salary,
+                    Team = player.Team,
+                    DKppg = player.DKppg,
+                    OptimalPosition = position
+                });
+            }
+
+            // Calculate final stats
+            int totalSalary = finalLineup.Sum(p => p.Salary);
+            decimal totalValue = finalLineup.Sum(p => p.DKppg ?? 0);
+            int unusedSalary = parameters.SalaryCap - totalSalary;
+
+            _logger.LogInformation($"Final lineup: {finalLineup.Count} players, {totalSalary} salary, {unusedSalary} unused, {totalValue} total value");
 
             // Create team breakdown
-            var teamBreakdown = result.Lineup
+            var teamBreakdown = finalLineup
                 .GroupBy(p => p.Team)
                 .ToDictionary(g => g.Key, g => g.Count());
 
-            // 6. Construct the final result
+            // Sort the lineup for better presentation
+            var sortedFinalLineup = SortLineupByPositionOrder(finalLineup);
+
             return new OptimizationResult
             {
                 IsSuccessful = true,
-                Players = result.Lineup,
-                TotalSalary = result.Lineup.Sum(p => p.Salary),
-                TotalValue = result.Lineup.Sum(p => GetPlayerValue(p, parameters.OptimizationCriterion)),
-                Message = result.ErrorDetails.Any()
-                    ? $"Lineup created but with issues: {string.Join("; ", result.ErrorDetails)}"
-                    : "Lineup successfully optimized",
-                StackInfo = stackInfo,
+                Players = sortedFinalLineup,
+                TotalSalary = totalSalary,
+                TotalValue = sortedFinalLineup.Sum(p => GetPlayerValue(p, parameters.OptimizationCriterion)),
+                Message = "Lineup successfully optimized",
+                StackInfo = new Dictionary<string, object>(),
                 TeamBreakdown = teamBreakdown,
-                ErrorDetails = result.ErrorDetails
+                ErrorDetails = new List<string>()
             };
         }
 

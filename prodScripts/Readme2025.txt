@@ -82,6 +82,8 @@ Need to replace hittersLast7.py for getLast7bbref.py or potentially keep both.
 
 Need to add leagueCountingStats.py
 
+Need to add getcontestpools.py - dfs dk player pools and contests for the day.
+
 ---------SUNSETTTED? SCRAPPING---------
 scrapehitters.py -- update all hitter batting stats playing today - SUNSET FOR SCRAPETEAMS DELETE IF SCRAPE TEAMS WORKS 
 

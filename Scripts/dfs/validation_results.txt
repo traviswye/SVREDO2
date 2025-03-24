@@ -1,0 +1,126 @@
+=== VALIDATION ISSUES ===
+No structure validation issues found.
+
+=== PLAYER VALIDATION RESULTS ===
+2025
+PHI Lineup
+PHI Bench
+PHI Rotation
+2025
+NYM Lineup
+NYM Bench
+NYM Rotation
+2025
+ATL Lineup
+ATL Bench
+ATL Rotation
+2025
+MIA Lineup
+MIA Bench
+MIA Rotation
+2025
+WSN Lineup
+WSN Bench
+WSN Rotation
+2025
+CHC Lineup
+CHC Bench
+CHC Rotation
+2025
+MIL Lineup
+MIL Bench
+MIL Rotation
+2025
+CIN Lineup
+CIN Bench
+CIN Rotation
+2025
+STL Lineup
+STL Bench
+STL Rotation
+2025
+PIT Lineup
+PIT Bench
+PIT Rotation
+2025
+LAD Lineup
+LAD Bench
+LAD Rotation
+maydu01 - not found
+gonsoto01 - not found
+2025
+ARI Lineup
+ARI Bench
+ARI Rotation
+2025
+SDP Lineup
+SDP Bench
+SDP Rotation
+2025
+SFG Lineup
+SFG Bench
+SFG Rotation
+2025
+COL Lineup
+COL Bench
+COL Rotation
+2025
+NYY Lineup
+NYY Bench
+NYY Rotation
+2025
+BAL Lineup
+BAL Bench
+BAL Rotation
+2025
+BOS Lineup
+BOS Bench
+BOS Rotation
+2025
+TOR Lineup
+TOR Bench
+TOR Rotation
+2025
+TBR Lineup
+TBR Bench
+TBR Rotation
+2025
+CLE Lineup
+CLE Bench
+CLE Rotation
+2025
+KCR Lineup
+KCR Bench
+KCR Rotation
+2025
+MIN Lineup
+MIN Bench
+MIN Rotation
+2025
+DET Lineup
+DET Bench
+DET Rotation
+2025
+CWS Lineup
+CWS Bench
+CWS Rotation
+2025
+OAK Lineup
+OAK Bench
+OAK Rotation
+2025
+HOU Lineup
+HOU Bench
+HOU Rotation
+2025
+SEA Lineup
+SEA Bench
+SEA Rotation
+2025
+LAA Lineup
+LAA Bench
+LAA Rotation
+2025
+TEX Lineup
+TEX Bench
+TEX Rotation

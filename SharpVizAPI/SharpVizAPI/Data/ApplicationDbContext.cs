@@ -70,7 +70,12 @@ namespace SharpVizAPI.Data
 
         public DbSet<PlayerLookup> PlayerLookup { get; set; }
         public DbSet<DKPoolsMap> DKPoolsMaps { get; set; }
+        public DbSet<ProjectedHitterStats> ProjectedHitterStats { get; set; }
+        public DbSet<ProjectedPitcherStats> ProjectedPitcherStats { get; set; }
+        public DbSet<OpeningDayProjectedRotationModel> OpeningDayProjectedRotation { get; set; }
+        public DbSet<OpeningDayProjectedLineupModel> OpeningDayProjectedLineup { get; set; }
         
+
         public NrfidbContext(DbContextOptions<NrfidbContext> options)
             : base(options)
         {
@@ -152,6 +157,14 @@ namespace SharpVizAPI.Data
                 .HasKey(pl => new { pl.BbrefId, pl.BsID });
 
 
+            // Configure composite key for ProjectedHitterStats
+            modelBuilder.Entity<ProjectedHitterStats>()
+                .HasKey(p => new { p.BbrefId, p.Year });
+
+            // Configure composite key for ProjectedPitcherStats
+            modelBuilder.Entity<ProjectedPitcherStats>()
+                .HasKey(p => new { p.BbrefId, p.Year });
+
             // GameResults Entity
             modelBuilder.Entity<GameResults>()
                 .HasKey(gr => gr.Id);  // Primary key
@@ -174,6 +187,21 @@ namespace SharpVizAPI.Data
 
 
             //ML SIDE
+
+            modelBuilder.Entity<OpeningDayProjectedLineupModel>()
+    .ToTable("OpeningDayProjectedLineup", "dbo");
+
+            modelBuilder.Entity<OpeningDayProjectedLineupModel>()
+                .HasIndex(l => new { l.Year, l.Team })
+                .IsUnique();
+
+            // Configure OpeningDayProjectedRotation table
+            modelBuilder.Entity<OpeningDayProjectedRotationModel>()
+                .ToTable("OpeningDayProjectedRotation", "dbo");
+
+            modelBuilder.Entity<OpeningDayProjectedRotationModel>()
+                .HasIndex(r => new { r.Year, r.Team })
+                .IsUnique();
 
 
 

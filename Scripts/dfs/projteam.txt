@@ -1,0 +1,901 @@
+2025
+PHI Lineup
+schwaky01
+turnetr01
+harpebr03
+bohmal01
+keplema01
+realmjt01
+casteni01
+stottbr01
+marshbr02
+
+
+PHI Bench
+sosaed01
+clemeko01
+rojasjo03
+marchra01
+
+
+PHI Rotation
+wheelza01
+luzarje01
+nolaaa01
+sanchcr01
+suarera01
+walketa01
+
+
+2025
+NYM Lineup
+lindofr01
+sotoju01
+alonspe01
+nimmobr01
+vientma01
+winkeje01
+sirijo01
+batybr01
+torrelu01
+
+
+NYM Bench
+mcneije01
+acunajo01
+martest01
+tayloty01
+
+
+NYM Rotation
+holmecl01
+megilty01
+cannigr01
+peterda01
+sengako01
+manaese01
+montafr02
+
+
+
+2025
+ATL Lineup
+profaju01
+rileyau01
+olsonma02
+ozunama01
+harrimi04
+albieoz01
+trompch01
+arciaor01
+kelenja01
+
+
+
+ATL Bench
+murphse01
+allenni02
+delacbr01
+acunaro01
+
+
+ATL Rotation
+salech01
+lopezre01
+schwesp01
+holmegr01
+stridsp01
+smithaj01
+elderbr01
+
+
+2025
+MIA Lineup
+edwarxa01
+myersda01
+coningr01
+bridejo01
+mervima01
+lopezot01
+stoweky01
+forteni01
+hillde01
+
+
+MIA Bench
+norbyco01
+sanojja01
+wagamer01
+almoral01
+
+
+MIA Rotation
+alcansa01
+meyerma01
+quantca01
+gillico01
+bellova01
+weathry01
+cabreed02
+garrebr01
+
+
+2025
+WSN Lineup
+abramcj01
+crewsdy01
+woodja03
+belljo02
+garcilu04
+lowena01
+dejonpa01
+ruizke01
+youngja03
+
+
+WSN Bench
+tenajo01
+callal02
+rosaram01
+adamsri03
+
+
+WSN Rotation
+gorema01
+willitr01
+irvinja01
+parkemi01
+sorokmi01
+
+
+2025
+CHC Lineup
+happia01
+suzukse01
+tuckeky01
+buschmi02
+shawma01
+swansda01
+crowape01
+hoernni01
+amayami01
+
+
+CHC Bench
+kellyca02
+turneju01
+bertijo01
+workmga01
+
+
+CHC Rotation
+steelju01
+taillja01
+imanash01
+boydma01
+reaco01
+assadja01
+
+
+2025
+MIL Lineup
+chourja01
+yelicch01
+contrwi02
+mitchga01
+hoskirh01
+turanbr02
+ortizjo06
+frelisa01
+dunnol01
+
+
+MIL Bench
+haaseer01
+bauerja01
+capravi01
+colliis01
+
+
+MIL Rotation
+peralfr01
+cortene01
+civalaa01
+alexaty01
+quintjo01
+myersto01
+woodrbr01
+
+
+2025
+CIN Lineup
+friedtj01
+mclaima01
+delacel01
+haysau01
+candeje01
+luxga01
+encarch01
+fraleja01
+trevijo01
+
+
+CIN Bench
+stephty01
+espinsa01
+dunnbl01
+steersp01
+
+
+CIN Rotation
+greenhu01
+singebr01
+lodolni01
+martini01
+spierca01
+abbotan01
+
+
+2025
+STL Lineup
+winnma01
+nootbla01
+contrwi01
+arenano01
+donovbr01
+herreiv01
+burleal01
+walkejo02
+scottvi01
+
+
+STL Bench
+pagespe02
+bakerlu01
+gormano01
+sianimi01
+
+
+STL Rotation
+grayso01
+feddeer01
+pallaan01
+mikolmi01
+liberma01
+
+
+2025
+PIT Lineup
+phamth01
+reynobr01
+cruzon01
+mccutan01
+bartjo01
+rodrien01
+gonzani01
+hayeske01
+kineris01
+
+
+PIT Bench
+triolja01
+fraziad01
+hwanbji01
+suwinja01
+
+
+PIT Rotation
+skenepa01
+kellemi03
+heanean01
+falteba01
+mlodzca01
+jonesja09
+oviedjo01
+
+
+2025
+LAD Lineup
+ohtansh01
+bettsmo01
+freemfr01
+hernate01
+muncyma01
+smithwi05
+confomi01
+edmanto01
+pagesan01
+
+
+LAD Bench
+barneau01
+rojasmi02
+tayloch03
+hernaen02
+
+
+LAD Rotation
+snellbl01
+yamamyo01
+sasakro01
+glasnty01
+maydu01
+gonsoto01
+kershcl01
+stonega01
+
+
+2025
+ARI Lineup
+carroco02
+marteke01
+gurrilo01
+naylojo01
+suareeu01
+mccarja02
+morenga01
+smithpa04
+perdoge01
+
+
+ARI Bench
+herrejo04
+hampsga01
+grichra01
+thomaal01
+
+ARI Rotation
+burneco01
+galleza01
+kellyme01
+pfaadbr01
+rodried05
+walstbl01
+montgjo01
+nelsory01
+
+2025
+SDP Lineup
+arraelu01
+tatisfe02
+merrija01
+machama01
+croneja01
+bogaexa01
+sheetga01
+heywaja01
+diazel01
+
+
+
+SDP Bench
+maldoma01
+gourryu01
+iglesjo01
+lockrbr01
+
+
+
+SDP Rotation
+kingmi01
+ceasedy01
+pivetni01
+vasqura02
+hartky01
+waldrma01
+musgrjo01
+darviyu01
+
+
+
+2025
+SFG Lineup
+wadela01
+adamewi01
+leeju01
+chapmma01
+ramoshe02
+bailepa01
+florewi01
+yastrmi01
+fitzgty01
+
+
+SFG Bench
+encarje01
+matoslu02
+villada01
+wiselbr01
+
+
+
+SFG Rotation
+webblo01
+verlaju01
+rayro02
+hicksjo03
+birdsha01
+rouppla01
+harriky01
+
+
+
+2025
+COL Lineup
+doylebr02
+mcmahry01
+tovarez01
+bryankr01
+toglimi01
+beckjo01
+martini02
+freemty01
+stallja01
+
+
+COL Bench
+farmeky01
+goodmhu01
+bouchse01
+hillisa01
+
+
+COL Rotation
+freelky01
+marquge01
+feltnry01
+senzaan01
+blalobr01
+gombeau01
+
+
+2025
+NYY Lineup
+wellsau01
+judgeaa01
+bellico01
+goldspa01
+chishja01
+volpean01
+dominja01
+ricebe01
+cabreos01
+
+
+NYY Bench
+stantmi03
+perazos02
+lemahdj01
+grishtr01
+
+
+NYY Rotation
+rodonca01
+friedma01
+stromma01
+warrewi01
+carraca01
+yarbrry01
+gillu01
+schmicl01
+
+
+2025
+BAL Lineup
+hendegu01
+rutscad01
+westbjo01
+ohearry01
+oneilty01
+mountry01
+mullice01
+uriasra01
+cowseco01
+
+
+BAL Bench
+sanchga02
+laurera01
+hollija01
+kjershe01
+
+
+BAL Rotation
+eflinza01
+mortoch02
+kremede01
+suganto01
+povicca01
+bradiky01
+rodrigr01
+rogertr01
+
+
+
+2025
+BOS Lineup
+duranja01
+deverra01
+bregmal01
+casastr01
+storytr01
+yoshima02
+abreuwi02
+wongco01
+rafaece01
+
+
+BOS Bench
+narvaca01
+gonzaro01
+hamilda03
+refsnro01
+
+
+BOS Rotation
+crochga01
+houckta01
+buehlwa01
+fittsri01
+newcose01
+bellobr01
+crawfku01
+giolilu01
+
+
+2025
+TOR Lineup
+bichebo01
+guerrvl02
+santaan02
+gimenan01
+kirkal01
+springe01
+varshda01
+clemeer01
+lukesna01
+
+
+TOR Bench
+heinety01
+wagnewi01
+schneda03
+strawmy01
+
+
+TOR Rotation
+berrijo01
+gausmke01
+bassich01
+francbo01
+scherma01
+manoaal01
+
+
+
+2025
+TBR Lineup
+diazya01
+lowejo01
+lowebr01
+caminju01
+arandjo01
+janseda01
+morelch01
+wallsta01
+delucjo01
+
+
+TBR Bench
+rortvbe01
+meadcu01
+cabaljo01
+palacri01
+
+
+TBR Rotation
+pepiory01
+bradlta01
+rasmudr01
+bazsh01
+litteza01
+mcclash01
+
+
+2025
+CLE Lineup
+kwanst01
+ramirjo01
+manzaky01
+santaca01
+thomala02
+brennwi02
+naylobo01
+ariasga01
+rocchbr01
+
+
+CLE Bench
+hedgeau01
+noeljh01
+schneda04
+fryda01
+
+
+CLE Rotation
+bibeeta01
+williga01
+ortizlu03
+livelbe01
+allenlo02
+biebesh01
+meansjo01
+
+
+2025
+KCR Lineup
+indiajo01
+wittbo02
+pasquvi01
+perezsa02
+massemi02
+renfrhu01
+melenmj01
+garcima01
+isbelky01
+
+
+KCR Bench
+fermifr01
+loftini01
+blancda02
+canhama01
+
+
+KCR Rotation
+raganco01
+lugose01
+wachami01
+lorenmi01
+bubickr01
+marshal01
+wrighky01
+
+
+2025
+MIN Lineup
+wallnma01
+correca01
+buxtoby01
+larnatr01
+miranjo01
+jeffery01
+castrwi01
+francty01
+julieed01
+
+
+MIN Bench
+vazquch01
+gaspemi01
+baderha01
+lewisro02
+
+
+MIN Rotation
+lopezpa01
+ryanjo04
+oberba01
+woodssi01
+paddach01
+
+
+2025
+DET Lineup
+perezwe01
+greenri03
+torregl01
+carpeke01
+keithco01
+torkesp01
+sweentr01
+baezja01
+rogerja03
+
+
+DET Bench
+dingldi01
+mckinza01
+meadopa01
+vierlma01
+
+
+DET Rotation
+skubata01
+flaheja01
+olsonre01
+mizeca01
+jobeja01
+cobbal01
+maddety01
+urquijo01
+
+
+2025
+CWS Lineup
+vargami01
+roberlu01
+beninan01
+vaughan01
+sosale01
+jankotr01
+taylomi02
+leeko01
+amayaja01
+
+
+CWS Bench
+ramosbr01
+tauchmi01
+slateau01
+thaisma01
+
+
+CWS Rotation
+burkese01
+perezma02
+cannojo02
+martida03
+smithsh01
+thorpdr01
+bushky01
+
+
+2025
+OAK Lineup
+butlela01
+rookebr01
+bledajj01
+langesh01
+soderty01
+urshegi01
+brownse01
+wilsoja01
+muncyma02
+
+
+OAK Bench
+uriaslu01
+andujmi01
+peredjh01
+gelofza01
+
+
+OAK Rotation
+severlu01
+sprinje01
+bidoos01
+searsjp01
+estesjo01
+bassobr01
+medinlu02
+
+
+2025
+HOU Lineup
+altuvjo01
+paredis01
+alvaryo01
+walkech02
+diazya02
+penaje02
+smithca07
+dubonma01
+meyerja02
+
+
+HOU Bench
+mccorch01
+hummeco01
+rodgebr02
+caratvi01
+
+
+HOU Rotation
+valdefr01
+brownhu01
+blancro01
+arrigsp01
+wesneha01
+mcculla02
+javiecr01
+dubinsh01
+francjp01
+
+
+2025
+SEA Lineup
+roblevi01
+rodriju01
+raleica01
+arozara01
+raleylu01
+polanjo01
+tellero01
+blissry01
+crawfjp01
+
+
+SEA Bench
+garvemi01
+solando01
+mastrmi01
+mooredy01
+
+
+SEA Rotation
+gilbelo01
+castilu02
+millebr04
+woobr01
+hancoem01
+kirbyge01
+
+
+2025
+LAA Lineup
+wardta01
+schanno01
+troutmi01
+solerjo01
+ohopplo01
+anderti01
+rengilu01
+adelljo01
+newmake01
+
+
+LAA Bench
+darnatr01
+davisjd01
+netoza01
+moniami01
+
+
+LAA Rotation
+kikucyu01
+soriajo02
+anderty01
+hendrky01
+detmere01
+
+
+2025
+TEX Lineup
+semiema01
+seageco01
+langfwy01
+pederjo01
+garciad02
+jungjo01
+carteev01
+burgeja01
+heimjo01
+
+
+TEX Bench
+higasky01
+smithjo11
+pillake01
+taverle01
+
+
+TEX Rotation
+eovalna01
+mahlety01
+leiteja01
+rockeku01
+degroja01
+grayjo02
+bradfco01
+

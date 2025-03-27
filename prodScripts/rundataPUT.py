@@ -3,6 +3,10 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import json
 from datetime import datetime
+import urllib3
+
+# Disable SSL warnings
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 def fetch_mlb_stats():
     # Current year
@@ -11,7 +15,8 @@ def fetch_mlb_stats():
     url = 'https://sports.betmgm.com/en/blog/mlb/nrfi-yrfi-stats-records-no-runs-first-inning-yes-runs-first-inning-runs-mlb-teams-bm03/'
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
     
-    response = requests.get(url, headers=headers)
+    # Disable SSL verification for all requests
+    response = requests.get(url, headers=headers, verify=False)
     
     if response.status_code == 200:
         soup = BeautifulSoup(response.text, 'html.parser')

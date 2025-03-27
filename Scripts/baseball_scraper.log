@@ -1,0 +1,208 @@
+2025-03-27 10:35:35,910 - INFO - Using ChromeDriver at C:\buns\tw\SVREDO2\Scripts\chromedriver.exe
+2025-03-27 10:35:35,910 - INFO - Starting to scrape baseball-reference.com/previews/ using Selenium
+2025-03-27 10:35:35,911 - INFO - Setting up Chrome WebDriver...
+2025-03-27 10:35:37,685 - INFO - Accessing URL: https://www.baseball-reference.com/previews/
+2025-03-27 10:35:39,768 - INFO - Waiting for page to load (allowing time for Cloudflare challenge)...
+2025-03-27 10:35:52,171 - INFO - Page title: MLB Probable Pitchers for Thursday, March 27, 2025 | Baseball-Reference.com
+2025-03-27 10:35:52,172 - INFO - Successfully loaded page. Looking for game summaries...
+2025-03-27 10:35:52,199 - INFO - Found 15 game summaries
+2025-03-27 10:35:52,213 - INFO - Found date in title: Thursday, March 27, 2025
+2025-03-27 10:35:52,219 - INFO - Using date: 2025-03-27
+2025-03-27 10:35:52,219 - INFO - Processing game summary #1
+2025-03-27 10:35:52,219 - INFO - Extracting game info from game summary #1
+2025-03-27 10:35:52,399 - INFO - Teams:  @ 
+2025-03-27 10:35:52,567 - WARNING - Could not find team code for , using default
+2025-03-27 10:35:52,567 - INFO - Generated preview link for : https://www.baseball-reference.com/previews/2025/202503270.shtml
+2025-03-27 10:35:52,652 - INFO - Game time: Time not available
+2025-03-27 10:35:52,693 - INFO - Found 2 tables in game summary
+2025-03-27 10:35:52,832 - INFO - Team abbreviations found: []
+2025-03-27 10:35:52,832 - INFO - Extracted pitchers - Away: Unannounced, Home: Unannounced
+2025-03-27 10:35:52,833 - INFO - Sending POST request to https://localhost:44346/api/GamePreviews with payload: {'Date': '2025-03-27', 'Time': 'Time not available', 'HomeTeam': '', 'AwayTeam': '', 'HomePitcher': 'Unannounced', 'AwayPitcher': 'Unannounced', 'PreviewLink': 'https://www.baseball-reference.com/previews/2025/202503270.shtml'}
+2025-03-27 10:36:01,305 - INFO - Response status code: 404
+2025-03-27 10:36:01,306 - INFO - Venue not found for the specified home team.
+2025-03-27 10:36:01,306 - ERROR - Failed to post game preview: 404 - Venue not found for the specified home team.
+2025-03-27 10:36:01,310 - INFO - Waiting 2 seconds before processing next game...
+2025-03-27 10:36:03,310 - INFO - Processing game summary #2
+2025-03-27 10:36:03,311 - INFO - Extracting game info from game summary #2
+2025-03-27 10:36:03,456 - INFO - Teams: Brewers @ Yankees
+2025-03-27 10:36:03,666 - INFO - Found preview link: https://www.baseball-reference.com/previews/2025/NYA202503270.shtml
+2025-03-27 10:36:03,718 - INFO - Game time: 3:05PM
+2025-03-27 10:36:03,735 - INFO - Found 1 tables in game summary
+2025-03-27 10:36:03,750 - INFO - Team abbreviations found: []
+2025-03-27 10:36:03,751 - INFO - Extracted pitchers - Away: Unannounced, Home: Unannounced
+2025-03-27 10:36:03,751 - INFO - Sending POST request to https://localhost:44346/api/GamePreviews with payload: {'Date': '2025-03-27', 'Time': '3:05PM', 'HomeTeam': 'Yankees', 'AwayTeam': 'Brewers', 'HomePitcher': 'Unannounced', 'AwayPitcher': 'Unannounced', 'PreviewLink': 'https://www.baseball-reference.com/previews/2025/NYA202503270.shtml'}
+2025-03-27 10:36:23,429 - INFO - Response status code: 200
+2025-03-27 10:36:23,430 - INFO - Response content: {"id":30001,"date":"2025-03-27T00:00:00","time":"3:05PM","homeTeam":"Yankees","awayTeam":"Brewers","...
+2025-03-27 10:36:23,430 - INFO - Successfully posted game preview: Yankees vs Brewers
+2025-03-27 10:36:23,431 - INFO - Waiting 2 seconds before processing next game...
+2025-03-27 10:36:25,432 - INFO - Processing game summary #3
+2025-03-27 10:36:25,432 - INFO - Extracting game info from game summary #3
+2025-03-27 10:36:25,829 - INFO - Teams: Orioles @ Blue Jays
+2025-03-27 10:36:25,945 - INFO - Found preview link: https://www.baseball-reference.com/previews/2025/TOR202503270.shtml
+2025-03-27 10:36:26,015 - INFO - Game time: 3:07PM
+2025-03-27 10:36:26,039 - INFO - Found 1 tables in game summary
+2025-03-27 10:36:26,068 - INFO - Team abbreviations found: []
+2025-03-27 10:36:26,069 - INFO - Extracted pitchers - Away: Unannounced, Home: Unannounced
+2025-03-27 10:36:26,069 - INFO - Sending POST request to https://localhost:44346/api/GamePreviews with payload: {'Date': '2025-03-27', 'Time': '3:07PM', 'HomeTeam': 'Blue Jays', 'AwayTeam': 'Orioles', 'HomePitcher': 'Unannounced', 'AwayPitcher': 'Unannounced', 'PreviewLink': 'https://www.baseball-reference.com/previews/2025/TOR202503270.shtml'}
+2025-03-27 10:36:40,615 - INFO - Response status code: 200
+2025-03-27 10:36:40,616 - INFO - Response content: {"id":30002,"date":"2025-03-27T00:00:00","time":"3:07PM","homeTeam":"Blue Jays","awayTeam":"Orioles"...
+2025-03-27 10:36:40,616 - INFO - Successfully posted game preview: Blue Jays vs Orioles
+2025-03-27 10:36:40,618 - INFO - Waiting 2 seconds before processing next game...
+2025-03-27 10:36:42,619 - INFO - Processing game summary #4
+2025-03-27 10:36:42,619 - INFO - Extracting game info from game summary #4
+2025-03-27 10:36:42,952 - INFO - Teams: Red Sox @ Rangers
+2025-03-27 10:36:43,785 - INFO - Found preview link: https://www.baseball-reference.com/previews/2025/TEX202503270.shtml
+2025-03-27 10:36:43,847 - INFO - Game time: 4:05PM
+2025-03-27 10:36:43,874 - INFO - Found 1 tables in game summary
+2025-03-27 10:36:43,894 - INFO - Team abbreviations found: []
+2025-03-27 10:36:43,895 - INFO - Extracted pitchers - Away: Unannounced, Home: Unannounced
+2025-03-27 10:36:43,895 - INFO - Sending POST request to https://localhost:44346/api/GamePreviews with payload: {'Date': '2025-03-27', 'Time': '4:05PM', 'HomeTeam': 'Rangers', 'AwayTeam': 'Red Sox', 'HomePitcher': 'Unannounced', 'AwayPitcher': 'Unannounced', 'PreviewLink': 'https://www.baseball-reference.com/previews/2025/TEX202503270.shtml'}
+2025-03-27 10:36:57,923 - INFO - Response status code: 200
+2025-03-27 10:36:57,924 - INFO - Response content: {"id":30003,"date":"2025-03-27T00:00:00","time":"4:05PM","homeTeam":"Rangers","awayTeam":"Red Sox","...
+2025-03-27 10:36:57,924 - INFO - Successfully posted game preview: Rangers vs Red Sox
+2025-03-27 10:36:57,928 - INFO - Waiting 2 seconds before processing next game...
+2025-03-27 10:36:59,929 - INFO - Processing game summary #5
+2025-03-27 10:36:59,930 - INFO - Extracting game info from game summary #5
+2025-03-27 10:37:00,105 - INFO - Teams: Phillies @ Nationals
+2025-03-27 10:37:00,173 - INFO - Found preview link: https://www.baseball-reference.com/previews/2025/WAS202503270.shtml
+2025-03-27 10:37:00,240 - INFO - Game time: 4:05PM
+2025-03-27 10:37:00,256 - INFO - Found 1 tables in game summary
+2025-03-27 10:37:00,276 - INFO - Team abbreviations found: []
+2025-03-27 10:37:00,276 - INFO - Extracted pitchers - Away: Unannounced, Home: Unannounced
+2025-03-27 10:37:00,276 - INFO - Sending POST request to https://localhost:44346/api/GamePreviews with payload: {'Date': '2025-03-27', 'Time': '4:05PM', 'HomeTeam': 'Nationals', 'AwayTeam': 'Phillies', 'HomePitcher': 'Unannounced', 'AwayPitcher': 'Unannounced', 'PreviewLink': 'https://www.baseball-reference.com/previews/2025/WAS202503270.shtml'}
+2025-03-27 10:37:14,745 - INFO - Response status code: 200
+2025-03-27 10:37:14,746 - INFO - Response content: {"id":30004,"date":"2025-03-27T00:00:00","time":"4:05PM","homeTeam":"Nationals","awayTeam":"Phillies...
+2025-03-27 10:37:14,746 - INFO - Successfully posted game preview: Nationals vs Phillies
+2025-03-27 10:37:14,750 - INFO - Waiting 2 seconds before processing next game...
+2025-03-27 10:37:16,750 - INFO - Processing game summary #6
+2025-03-27 10:37:16,751 - INFO - Extracting game info from game summary #6
+2025-03-27 10:37:16,960 - INFO - Teams: Angels @ White Sox
+2025-03-27 10:37:17,059 - INFO - Found preview link: https://www.baseball-reference.com/previews/2025/CHA202503270.shtml
+2025-03-27 10:37:17,131 - INFO - Game time: 4:10PM
+2025-03-27 10:37:17,154 - INFO - Found 1 tables in game summary
+2025-03-27 10:37:17,175 - INFO - Team abbreviations found: []
+2025-03-27 10:37:17,176 - INFO - Extracted pitchers - Away: Unannounced, Home: Unannounced
+2025-03-27 10:37:17,176 - INFO - Sending POST request to https://localhost:44346/api/GamePreviews with payload: {'Date': '2025-03-27', 'Time': '4:10PM', 'HomeTeam': 'White Sox', 'AwayTeam': 'Angels', 'HomePitcher': 'Unannounced', 'AwayPitcher': 'Unannounced', 'PreviewLink': 'https://www.baseball-reference.com/previews/2025/CHA202503270.shtml'}
+2025-03-27 10:37:31,229 - INFO - Response status code: 200
+2025-03-27 10:37:31,230 - INFO - Response content: {"id":30005,"date":"2025-03-27T00:00:00","time":"4:10PM","homeTeam":"White Sox","awayTeam":"Angels",...
+2025-03-27 10:37:31,230 - INFO - Successfully posted game preview: White Sox vs Angels
+2025-03-27 10:37:31,233 - INFO - Waiting 2 seconds before processing next game...
+2025-03-27 10:37:33,235 - INFO - Processing game summary #7
+2025-03-27 10:37:33,235 - INFO - Extracting game info from game summary #7
+2025-03-27 10:37:33,380 - INFO - Teams: Giants @ Reds
+2025-03-27 10:37:33,545 - INFO - Found preview link: https://www.baseball-reference.com/previews/2025/CIN202503270.shtml
+2025-03-27 10:37:33,623 - INFO - Game time: 4:10PM
+2025-03-27 10:37:33,650 - INFO - Found 1 tables in game summary
+2025-03-27 10:37:33,676 - INFO - Team abbreviations found: []
+2025-03-27 10:37:33,676 - INFO - Extracted pitchers - Away: Unannounced, Home: Unannounced
+2025-03-27 10:37:33,677 - INFO - Sending POST request to https://localhost:44346/api/GamePreviews with payload: {'Date': '2025-03-27', 'Time': '4:10PM', 'HomeTeam': 'Reds', 'AwayTeam': 'Giants', 'HomePitcher': 'Unannounced', 'AwayPitcher': 'Unannounced', 'PreviewLink': 'https://www.baseball-reference.com/previews/2025/CIN202503270.shtml'}
+2025-03-27 10:37:47,968 - INFO - Response status code: 200
+2025-03-27 10:37:47,968 - INFO - Response content: {"id":30006,"date":"2025-03-27T00:00:00","time":"4:10PM","homeTeam":"Reds","awayTeam":"Giants","venu...
+2025-03-27 10:37:47,969 - INFO - Successfully posted game preview: Reds vs Giants
+2025-03-27 10:37:47,973 - INFO - Waiting 2 seconds before processing next game...
+2025-03-27 10:37:49,974 - INFO - Processing game summary #8
+2025-03-27 10:37:49,975 - INFO - Extracting game info from game summary #8
+2025-03-27 10:37:50,186 - INFO - Teams: Mets @ Astros
+2025-03-27 10:37:50,293 - INFO - Found preview link: https://www.baseball-reference.com/previews/2025/HOU202503270.shtml
+2025-03-27 10:37:50,366 - INFO - Game time: 4:10PM
+2025-03-27 10:37:50,389 - INFO - Found 1 tables in game summary
+2025-03-27 10:37:50,413 - INFO - Team abbreviations found: []
+2025-03-27 10:37:50,414 - INFO - Extracted pitchers - Away: Unannounced, Home: Unannounced
+2025-03-27 10:37:50,414 - INFO - Sending POST request to https://localhost:44346/api/GamePreviews with payload: {'Date': '2025-03-27', 'Time': '4:10PM', 'HomeTeam': 'Astros', 'AwayTeam': 'Mets', 'HomePitcher': 'Unannounced', 'AwayPitcher': 'Unannounced', 'PreviewLink': 'https://www.baseball-reference.com/previews/2025/HOU202503270.shtml'}
+2025-03-27 10:38:05,362 - INFO - Response status code: 200
+2025-03-27 10:38:05,363 - INFO - Response content: {"id":30007,"date":"2025-03-27T00:00:00","time":"4:10PM","homeTeam":"Astros","awayTeam":"Mets","venu...
+2025-03-27 10:38:05,364 - INFO - Successfully posted game preview: Astros vs Mets
+2025-03-27 10:38:05,366 - INFO - Waiting 2 seconds before processing next game...
+2025-03-27 10:38:07,368 - INFO - Processing game summary #9
+2025-03-27 10:38:07,368 - INFO - Extracting game info from game summary #9
+2025-03-27 10:38:07,465 - INFO - Teams: Guardians @ Royals
+2025-03-27 10:38:07,537 - INFO - Found preview link: https://www.baseball-reference.com/previews/2025/KCA202503270.shtml
+2025-03-27 10:38:07,615 - INFO - Game time: 4:10PM
+2025-03-27 10:38:07,629 - INFO - Found 1 tables in game summary
+2025-03-27 10:38:07,647 - INFO - Team abbreviations found: []
+2025-03-27 10:38:07,647 - INFO - Extracted pitchers - Away: Unannounced, Home: Unannounced
+2025-03-27 10:38:07,648 - INFO - Sending POST request to https://localhost:44346/api/GamePreviews with payload: {'Date': '2025-03-27', 'Time': '4:10PM', 'HomeTeam': 'Royals', 'AwayTeam': 'Guardians', 'HomePitcher': 'Unannounced', 'AwayPitcher': 'Unannounced', 'PreviewLink': 'https://www.baseball-reference.com/previews/2025/KCA202503270.shtml'}
+2025-03-27 10:38:21,916 - INFO - Response status code: 200
+2025-03-27 10:38:21,917 - INFO - Response content: {"id":30008,"date":"2025-03-27T00:00:00","time":"4:10PM","homeTeam":"Royals","awayTeam":"Guardians",...
+2025-03-27 10:38:21,917 - INFO - Successfully posted game preview: Royals vs Guardians
+2025-03-27 10:38:21,918 - INFO - Waiting 2 seconds before processing next game...
+2025-03-27 10:38:23,920 - INFO - Processing game summary #10
+2025-03-27 10:38:23,920 - INFO - Extracting game info from game summary #10
+2025-03-27 10:38:24,109 - INFO - Teams: Pirates @ Marlins
+2025-03-27 10:38:24,190 - INFO - Found preview link: https://www.baseball-reference.com/previews/2025/MIA202503270.shtml
+2025-03-27 10:38:24,254 - INFO - Game time: 4:10PM
+2025-03-27 10:38:24,275 - INFO - Found 1 tables in game summary
+2025-03-27 10:38:24,295 - INFO - Team abbreviations found: []
+2025-03-27 10:38:24,296 - INFO - Extracted pitchers - Away: Unannounced, Home: Unannounced
+2025-03-27 10:38:24,296 - INFO - Sending POST request to https://localhost:44346/api/GamePreviews with payload: {'Date': '2025-03-27', 'Time': '4:10PM', 'HomeTeam': 'Marlins', 'AwayTeam': 'Pirates', 'HomePitcher': 'Unannounced', 'AwayPitcher': 'Unannounced', 'PreviewLink': 'https://www.baseball-reference.com/previews/2025/MIA202503270.shtml'}
+2025-03-27 10:38:38,320 - INFO - Response status code: 200
+2025-03-27 10:38:38,320 - INFO - Response content: {"id":30009,"date":"2025-03-27T00:00:00","time":"4:10PM","homeTeam":"Marlins","awayTeam":"Pirates","...
+2025-03-27 10:38:38,321 - INFO - Successfully posted game preview: Marlins vs Pirates
+2025-03-27 10:38:38,323 - INFO - Waiting 2 seconds before processing next game...
+2025-03-27 10:38:40,323 - INFO - Processing game summary #11
+2025-03-27 10:38:40,324 - INFO - Extracting game info from game summary #11
+2025-03-27 10:38:40,849 - INFO - Teams: Braves @ Padres
+2025-03-27 10:38:40,951 - INFO - Found preview link: https://www.baseball-reference.com/previews/2025/SDN202503270.shtml
+2025-03-27 10:38:41,028 - INFO - Game time: 4:10PM
+2025-03-27 10:38:41,055 - INFO - Found 1 tables in game summary
+2025-03-27 10:38:41,079 - INFO - Team abbreviations found: []
+2025-03-27 10:38:41,079 - INFO - Extracted pitchers - Away: Unannounced, Home: Unannounced
+2025-03-27 10:38:41,080 - INFO - Sending POST request to https://localhost:44346/api/GamePreviews with payload: {'Date': '2025-03-27', 'Time': '4:10PM', 'HomeTeam': 'Padres', 'AwayTeam': 'Braves', 'HomePitcher': 'Unannounced', 'AwayPitcher': 'Unannounced', 'PreviewLink': 'https://www.baseball-reference.com/previews/2025/SDN202503270.shtml'}
+2025-03-27 10:38:54,946 - INFO - Response status code: 200
+2025-03-27 10:38:54,947 - INFO - Response content: {"id":30010,"date":"2025-03-27T00:00:00","time":"4:10PM","homeTeam":"Padres","awayTeam":"Braves","ve...
+2025-03-27 10:38:54,947 - INFO - Successfully posted game preview: Padres vs Braves
+2025-03-27 10:38:54,948 - INFO - Waiting 2 seconds before processing next game...
+2025-03-27 10:38:56,949 - INFO - Processing game summary #12
+2025-03-27 10:38:56,949 - INFO - Extracting game info from game summary #12
+2025-03-27 10:38:57,115 - INFO - Teams: Twins @ Cardinals
+2025-03-27 10:38:57,227 - INFO - Found preview link: https://www.baseball-reference.com/previews/2025/SLN202503270.shtml
+2025-03-27 10:38:57,303 - INFO - Game time: 4:15PM
+2025-03-27 10:38:57,318 - INFO - Found 1 tables in game summary
+2025-03-27 10:38:57,342 - INFO - Team abbreviations found: []
+2025-03-27 10:38:57,343 - INFO - Extracted pitchers - Away: Unannounced, Home: Unannounced
+2025-03-27 10:38:57,344 - INFO - Sending POST request to https://localhost:44346/api/GamePreviews with payload: {'Date': '2025-03-27', 'Time': '4:15PM', 'HomeTeam': 'Cardinals', 'AwayTeam': 'Twins', 'HomePitcher': 'Unannounced', 'AwayPitcher': 'Unannounced', 'PreviewLink': 'https://www.baseball-reference.com/previews/2025/SLN202503270.shtml'}
+2025-03-27 10:39:11,379 - INFO - Response status code: 200
+2025-03-27 10:39:11,380 - INFO - Response content: {"id":30011,"date":"2025-03-27T00:00:00","time":"4:15PM","homeTeam":"Cardinals","awayTeam":"Twins","...
+2025-03-27 10:39:11,380 - INFO - Successfully posted game preview: Cardinals vs Twins
+2025-03-27 10:39:11,382 - INFO - Waiting 2 seconds before processing next game...
+2025-03-27 10:39:13,383 - INFO - Processing game summary #13
+2025-03-27 10:39:13,383 - INFO - Extracting game info from game summary #13
+2025-03-27 10:39:14,134 - INFO - Teams: Tigers @ Dodgers
+2025-03-27 10:39:14,533 - INFO - Found preview link: https://www.baseball-reference.com/previews/2025/LAN202503270.shtml
+2025-03-27 10:39:14,644 - INFO - Game time: 7:10PM
+2025-03-27 10:39:14,670 - INFO - Found 1 tables in game summary
+2025-03-27 10:39:14,691 - INFO - Team abbreviations found: []
+2025-03-27 10:39:14,692 - INFO - Extracted pitchers - Away: Unannounced, Home: Unannounced
+2025-03-27 10:39:14,693 - INFO - Sending POST request to https://localhost:44346/api/GamePreviews with payload: {'Date': '2025-03-27', 'Time': '7:10PM', 'HomeTeam': 'Dodgers', 'AwayTeam': 'Tigers', 'HomePitcher': 'Unannounced', 'AwayPitcher': 'Unannounced', 'PreviewLink': 'https://www.baseball-reference.com/previews/2025/LAN202503270.shtml'}
+2025-03-27 10:39:29,243 - INFO - Response status code: 200
+2025-03-27 10:39:29,243 - INFO - Response content: {"id":30012,"date":"2025-03-27T00:00:00","time":"7:10PM","homeTeam":"Dodgers","awayTeam":"Tigers","v...
+2025-03-27 10:39:29,244 - INFO - Successfully posted game preview: Dodgers vs Tigers
+2025-03-27 10:39:29,246 - INFO - Waiting 2 seconds before processing next game...
+2025-03-27 10:39:31,247 - INFO - Processing game summary #14
+2025-03-27 10:39:31,247 - INFO - Extracting game info from game summary #14
+2025-03-27 10:39:31,389 - INFO - Teams: Cubs @ Diamondbacks
+2025-03-27 10:39:31,485 - INFO - Found preview link: https://www.baseball-reference.com/previews/2025/ARI202503270.shtml
+2025-03-27 10:39:31,554 - INFO - Game time: 10:10PM
+2025-03-27 10:39:31,571 - INFO - Found 1 tables in game summary
+2025-03-27 10:39:31,590 - INFO - Team abbreviations found: []
+2025-03-27 10:39:31,590 - INFO - Extracted pitchers - Away: Unannounced, Home: Unannounced
+2025-03-27 10:39:31,591 - INFO - Sending POST request to https://localhost:44346/api/GamePreviews with payload: {'Date': '2025-03-27', 'Time': '10:10PM', 'HomeTeam': 'Diamondbacks', 'AwayTeam': 'Cubs', 'HomePitcher': 'Unannounced', 'AwayPitcher': 'Unannounced', 'PreviewLink': 'https://www.baseball-reference.com/previews/2025/ARI202503270.shtml'}
+2025-03-27 10:39:45,841 - INFO - Response status code: 200
+2025-03-27 10:39:45,841 - INFO - Response content: {"id":30013,"date":"2025-03-27T00:00:00","time":"10:10PM","homeTeam":"Diamondbacks","awayTeam":"Cubs...
+2025-03-27 10:39:45,841 - INFO - Successfully posted game preview: Diamondbacks vs Cubs
+2025-03-27 10:39:45,844 - INFO - Waiting 2 seconds before processing next game...
+2025-03-27 10:39:47,846 - INFO - Processing game summary #15
+2025-03-27 10:39:47,846 - INFO - Extracting game info from game summary #15
+2025-03-27 10:39:48,046 - INFO - Teams:  @ Mariners
+2025-03-27 10:39:48,142 - INFO - Found preview link: https://www.baseball-reference.com/previews/2025/SEA202503270.shtml
+2025-03-27 10:39:48,209 - INFO - Game time: 10:10PM
+2025-03-27 10:39:48,231 - INFO - Found 1 tables in game summary
+2025-03-27 10:39:48,253 - INFO - Team abbreviations found: []
+2025-03-27 10:39:48,253 - INFO - Extracted pitchers - Away: Unannounced, Home: Unannounced
+2025-03-27 10:39:48,254 - INFO - Sending POST request to https://localhost:44346/api/GamePreviews with payload: {'Date': '2025-03-27', 'Time': '10:10PM', 'HomeTeam': 'Mariners', 'AwayTeam': '', 'HomePitcher': 'Unannounced', 'AwayPitcher': 'Unannounced', 'PreviewLink': 'https://www.baseball-reference.com/previews/2025/SEA202503270.shtml'}
+2025-03-27 10:40:02,034 - INFO - Response status code: 200
+2025-03-27 10:40:02,035 - INFO - Response content: {"id":30014,"date":"2025-03-27T00:00:00","time":"10:10PM","homeTeam":"Mariners","awayTeam":"","venue...
+2025-03-27 10:40:02,035 - INFO - Successfully posted game preview: Mariners vs 
+2025-03-27 10:40:02,038 - INFO - Waiting 2 seconds before processing next game...
+2025-03-27 10:40:04,039 - INFO - Successfully scraped and posted 14 out of 15 game previews for 2025-03-27
+2025-03-27 10:40:04,039 - INFO - Closing WebDriver...

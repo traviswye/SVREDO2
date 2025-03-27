@@ -3,19 +3,22 @@ Readme for 2025
 ----------------------------------------------SCRAPPING FLOW----------------------------------------------
 BAT FILE CONTROLS FLOW = dailyScrapes.bat
 
-runDataPut.py - site is still active... need to verify data once we run this but year is considered 
 
-injuryScrape.py - site is still active... year is considered in our script and controller
+(tested - mods needed) runDataPut.py - site is still active... need to verify data once we run this but year is considered 
+	- 3/21/25 site updated and changed the table. Need to rework this script...
 
-getTeamrecsplitPUT.py - site is active but is defaulting to spring training still. Will run once back to season page.
+(tested - modifications needed) injuryScrape.py - site is still active... year is considered in our script and controller
+	- might need to add year to the PK for this table.
+
+(tested working after changes) - getTeamrecsplitPUT.py - site is active but is defaulting to spring training still. Will run once back to season page.
 	- YEAR IS NOT CONSIDERED... we maintain an achieve table where 2024 was copied over to... script will overwrite the data left in prod table.
 
-leagueCountingStats.py - was set to only post it once which i did after season... tried to update controllers and script to potentially put data daily so we can track team offenses and pitching over course of year. needs testing.
+(this is a bbref will need selenium version) leagueCountingStats.py - was set to only post it once which i did after season... tried to update controllers and script to potentially put data daily so we can track team offenses and pitching over course of year. needs testing.
 
 *MOST IMPORTANT DRIVER SCRIPT*
-getGamesSendtoDB.py - need to test for 2025 to see if bbref has changed anything.
+(selenium version is working) getGamesSendtoDB.py - need to test for 2025 to see if bbref has changed anything.
 
-fetchgameodds.py - endpoint still works... currently returns [] as there are no odds for games yet for 3/27.. Will still need testing
+(tested working) fetchgameodds.py - endpoint still works... currently returns [] as there are no odds for games yet for 3/27.. Will still need testing
 
 *SUPER IMPORTANT PLAYER DATA*
 scrapeteams.py - updated payloads to 2025... Needs testing first few days of season. Was potentially broken due to bbref off season changes.

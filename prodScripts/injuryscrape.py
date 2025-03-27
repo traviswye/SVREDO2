@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 import urllib3
 
-# Suppress only the insecure request warning for localhost
+# Suppress all insecure request warnings
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # Dictionary mapping team names to their abbreviations
@@ -97,8 +97,8 @@ def post_injury_data(bbrefId, injury_description, current_team):
 # URL of the page containing the injuries
 url = "https://www.covers.com/sport/baseball/mlb/injuries"
 
-# Send a GET request to the URL
-response = requests.get(url)
+# Send a GET request to the URL with verify=False to ignore SSL certificate verification
+response = requests.get(url, verify=False)
 
 # Parse the HTML content of the page using BeautifulSoup
 soup = BeautifulSoup(response.content, 'html.parser')

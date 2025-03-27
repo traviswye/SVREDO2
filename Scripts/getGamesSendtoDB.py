@@ -70,14 +70,27 @@ logging.basicConfig(level=logging.INFO, filename='app.log', filemode='w',
 
 def download_html(url, path):
     """Download HTML content from a URL and save it to a specified path."""
+    # headers = {
+    #     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.60 Safari/537.36',
+    #     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+    #     'Accept-Language': 'en-US,en;q=0.5',
+    #     'DNT': '1',  # Do Not Track Request Header
+    #     'Connection': 'keep-alive',
+    #     'Upgrade-Insecure-Requests': '1'
+    # }
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.60 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-        'Accept-Language': 'en-US,en;q=0.5',
-        'DNT': '1',  # Do Not Track Request Header
-        'Connection': 'keep-alive',
-        'Upgrade-Insecure-Requests': '1'
-    }
+	    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36',
+	    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+	    'Accept-Language': 'en-US,en;q=0.9',
+	    'Referer': 'https://www.baseball-reference.com/',
+	    'Cache-Control': 'max-age=0',
+	    'Connection': 'keep-alive',
+	    'Upgrade-Insecure-Requests': '1',
+	    'Sec-Fetch-Dest': 'document',
+	    'Sec-Fetch-Mode': 'navigate',
+	    'Sec-Fetch-Site': 'same-origin',
+	    'Sec-Fetch-User': '?1'
+	}
     try:
         response = requests.get(url, headers=headers, verify=False)  # Disable SSL verification
         response.raise_for_status()
@@ -198,7 +211,7 @@ def scrape_parent_url(parent_url):
         logging.error(f"Unexpected error during scraping from {parent_url}: {e}")
 
 # URL to scrape
-parent_url = "https://www.baseball-reference.com/previews/"
+parent_url = "https://www.baseball-reference.com/previews"
 
 # Scrape the parent URL
 scrape_parent_url(parent_url)

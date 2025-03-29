@@ -1,0 +1,95 @@
+2025-03-28 13:37:26,374 - INFO - Using ChromeDriver at C:\buns\tw\SVREDO2\prodScripts\SeleniumVersions\chromedriver.exe
+2025-03-28 13:37:26,374 - INFO - Starting to scrape baseball-reference.com/previews/ using Selenium
+2025-03-28 13:37:26,375 - INFO - Setting up Chrome WebDriver...
+2025-03-28 13:37:28,187 - INFO - Accessing URL: https://www.baseball-reference.com/previews/
+2025-03-28 13:37:32,074 - INFO - Waiting for page to load (allowing time for Cloudflare challenge)...
+2025-03-28 13:37:48,689 - INFO - Page loaded successfully: MLB Probable Pitchers for Friday, March 28, 2025 | Baseball-Reference.com
+2025-03-28 13:37:48,718 - INFO - Found 23 game summaries
+2025-03-28 13:37:48,733 - INFO - Using date: 2025-03-28
+2025-03-28 13:37:48,888 - INFO - Teams:  @ 
+2025-03-28 13:37:48,987 - WARNING - Could not find team code for , using default
+2025-03-28 13:37:49,312 - INFO - Teams:  @ 
+2025-03-28 13:37:49,397 - WARNING - Could not find team code for , using default
+2025-03-28 13:37:49,661 - INFO - Teams:  @ 
+2025-03-28 13:37:49,758 - WARNING - Could not find team code for , using default
+2025-03-28 13:37:50,086 - INFO - Teams:  @ 
+2025-03-28 13:37:50,170 - WARNING - Could not find team code for , using default
+2025-03-28 13:37:50,441 - INFO - Teams:  @ 
+2025-03-28 13:37:50,531 - WARNING - Could not find team code for , using default
+2025-03-28 13:37:50,798 - INFO - Teams:  @ 
+2025-03-28 13:37:50,897 - WARNING - Could not find team code for , using default
+2025-03-28 13:37:51,207 - INFO - Teams:  @ 
+2025-03-28 13:37:51,288 - WARNING - Could not find team code for , using default
+2025-03-28 13:37:51,610 - INFO - Teams:  @ 
+2025-03-28 13:37:51,684 - WARNING - Could not find team code for , using default
+2025-03-28 13:37:51,982 - INFO - Teams:  @ 
+2025-03-28 13:37:52,069 - WARNING - Could not find team code for , using default
+2025-03-28 13:37:52,347 - INFO - Teams:  @ 
+2025-03-28 13:37:52,423 - WARNING - Could not find team code for , using default
+2025-03-28 13:37:52,719 - INFO - Teams:  @ 
+2025-03-28 13:37:52,832 - WARNING - Could not find team code for , using default
+2025-03-28 13:37:53,204 - INFO - Teams:  @ 
+2025-03-28 13:37:53,281 - WARNING - Could not find team code for , using default
+2025-03-28 13:37:53,606 - INFO - Teams:  @ 
+2025-03-28 13:37:53,703 - WARNING - Could not find team code for , using default
+2025-03-28 13:37:54,042 - INFO - Teams:  @ 
+2025-03-28 13:37:54,149 - WARNING - Could not find team code for , using default
+2025-03-28 13:37:54,464 - INFO - Teams: Rockies @ Rays
+2025-03-28 13:37:55,153 - INFO - Teams: Orioles @ Blue Jays
+2025-03-28 13:37:55,685 - INFO - Teams: Pirates @ Marlins
+2025-03-28 13:37:56,201 - INFO - Teams: Red Sox @ Rangers
+2025-03-28 13:37:56,672 - INFO - Teams: Mets @ Astros
+2025-03-28 13:37:57,141 - INFO - Teams: Cubs @ Diamondbacks
+2025-03-28 13:37:58,161 - INFO - Teams: Braves @ Padres
+2025-03-28 13:37:58,720 - INFO - Teams:  @ Mariners
+2025-03-28 13:37:59,213 - INFO - Teams: Tigers @ Dodgers
+2025-03-28 13:37:59,588 - INFO - Extracted information for 23 games
+2025-03-28 13:37:59,591 - INFO - Processing game 1:  @ 
+2025-03-28 13:37:59,592 - INFO - Processing game 2:  @ 
+2025-03-28 13:37:59,594 - INFO - Processing game 3:  @ 
+2025-03-28 13:37:59,595 - INFO - Processing game 4:  @ 
+2025-03-28 13:37:59,596 - INFO - Processing game 5:  @ 
+2025-03-28 13:38:02,505 - ERROR - Failed to post game preview: 404 - Venue not found for the specified home team.
+2025-03-28 13:38:02,507 - INFO - Processing game 6:  @ 
+2025-03-28 13:38:02,560 - ERROR - Failed to post game preview: 404 - Venue not found for the specified home team.
+2025-03-28 13:38:02,562 - INFO - Processing game 7:  @ 
+2025-03-28 13:38:02,669 - ERROR - Failed to post game preview: 404 - Venue not found for the specified home team.
+2025-03-28 13:38:02,671 - INFO - Processing game 8:  @ 
+2025-03-28 13:38:02,799 - ERROR - Failed to post game preview: 404 - Venue not found for the specified home team.
+2025-03-28 13:38:02,800 - INFO - Processing game 9:  @ 
+2025-03-28 13:38:02,906 - ERROR - Failed to post game preview: 404 - Venue not found for the specified home team.
+2025-03-28 13:38:02,910 - INFO - Processing game 10:  @ 
+2025-03-28 13:38:04,768 - ERROR - Failed to post game preview: 404 - Venue not found for the specified home team.
+2025-03-28 13:38:04,770 - INFO - Processing game 11:  @ 
+2025-03-28 13:38:04,924 - ERROR - Failed to post game preview: 404 - Venue not found for the specified home team.
+2025-03-28 13:38:04,929 - INFO - Processing game 12:  @ 
+2025-03-28 13:38:05,139 - ERROR - Failed to post game preview: 404 - Venue not found for the specified home team.
+2025-03-28 13:38:05,144 - INFO - Processing game 13:  @ 
+2025-03-28 13:38:05,355 - ERROR - Failed to post game preview: 404 - Venue not found for the specified home team.
+2025-03-28 13:38:05,357 - INFO - Processing game 14:  @ 
+2025-03-28 13:38:05,514 - ERROR - Failed to post game preview: 404 - Venue not found for the specified home team.
+2025-03-28 13:38:05,516 - INFO - Processing game 15: Rockies @ Rays
+2025-03-28 13:38:07,901 - ERROR - Failed to post game preview: 404 - Venue not found for the specified home team.
+2025-03-28 13:38:07,905 - INFO - Processing game 16: Orioles @ Blue Jays
+2025-03-28 13:38:08,064 - ERROR - Failed to post game preview: 404 - Venue not found for the specified home team.
+2025-03-28 13:38:08,066 - INFO - Processing game 17: Pirates @ Marlins
+2025-03-28 13:38:08,275 - ERROR - Failed to post game preview: 404 - Venue not found for the specified home team.
+2025-03-28 13:38:08,280 - INFO - Processing game 18: Red Sox @ Rangers
+2025-03-28 13:38:08,471 - ERROR - Failed to post game preview: 404 - Venue not found for the specified home team.
+2025-03-28 13:38:08,474 - INFO - Processing game 19: Mets @ Astros
+2025-03-28 13:38:21,301 - INFO - Successfully posted: Rays vs Rockies
+2025-03-28 13:38:21,303 - INFO - Processing game 20: Cubs @ Diamondbacks
+2025-03-28 13:38:23,257 - INFO - Successfully posted: Blue Jays vs Orioles
+2025-03-28 13:38:23,259 - INFO - Processing game 21: Braves @ Padres
+2025-03-28 13:38:24,073 - INFO - Successfully posted: Rangers vs Red Sox
+2025-03-28 13:38:24,074 - INFO - Processing game 22:  @ Mariners
+2025-03-28 13:38:24,148 - INFO - Successfully posted: Marlins vs Pirates
+2025-03-28 13:38:24,149 - INFO - Processing game 23: Tigers @ Dodgers
+2025-03-28 13:38:24,279 - INFO - Successfully posted: Astros vs Mets
+2025-03-28 13:38:34,488 - INFO - Successfully posted: Diamondbacks vs Cubs
+2025-03-28 13:38:36,182 - INFO - Successfully posted: Padres vs Braves
+2025-03-28 13:38:37,465 - INFO - Successfully posted: Mariners vs 
+2025-03-28 13:38:38,163 - INFO - Successfully posted: Dodgers vs Tigers
+2025-03-28 13:38:38,166 - INFO - Successfully posted 9 out of 23 game previews
+2025-03-28 13:38:38,167 - INFO - Closing WebDriver...
+2025-03-28 13:38:42,224 - INFO - Script completed in 75.85 seconds

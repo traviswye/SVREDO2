@@ -84,8 +84,8 @@ const DfsStrategyDrawer = ({ isOpen, onClose, draftGroupId, sport, onSaveStrateg
         setLoading(true);
         try {
             // Step 1: Get today's date in YYYY-MM-DD format for API calls
-            const today = '2024-09-11';
-            // const today = new Date().toISOString().split('T')[0];
+            // const today = '2024-09-11';
+            const today = new Date().toISOString().split('T')[0];
 
             // Step 2: Fetch data from all necessary APIs
             const [

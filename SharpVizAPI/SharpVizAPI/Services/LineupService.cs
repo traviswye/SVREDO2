@@ -210,11 +210,11 @@ namespace SharpVizAPI.Services
         private async Task FetchAndPostLineupForTeamAsync(string teamAbbr)
         {
             // Ensure we use the abbreviation for the URL
-            string url = $"https://www.baseball-reference.com/teams/{GetTeamAbbreviation(teamAbbr)}/2024-batting-orders.shtml";
+            string url = $"https://www.baseball-reference.com/teams/{GetTeamAbbreviation(teamAbbr)}/2025-batting-orders.shtml";
 
             try
             {
-                await Task.Delay(TimeSpan.FromSeconds(5)); //delay 5 seconds to avoid more than 30 requests in 60 seconds
+                await Task.Delay(TimeSpan.FromSeconds(5)); //delay 5 seconds to avoid more than 20 requests in 60 seconds
                 _logger.LogInformation($"Fetching lineup for team {teamAbbr} from {url}.");
 
                 var response = await _httpClient.GetStringAsync(url);
@@ -316,7 +316,8 @@ namespace SharpVizAPI.Services
                         batting6th = battingOrder["6th"],
                         batting7th = battingOrder["7th"],
                         batting8th = battingOrder["8th"],
-                        batting9th = battingOrder["9th"]
+                        batting9th = battingOrder["9th"],
+                        year = date.Year
                     };
 
                     _logger.LogInformation($"Successfully parsed lineup data for team {teamAbbr} for game {gameNumber}: {JsonConvert.SerializeObject(lineupData)}");

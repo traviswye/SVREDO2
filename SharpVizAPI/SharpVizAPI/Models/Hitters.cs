@@ -1,17 +1,25 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SharpVizAPI.Models
 {
     public class Hitter
     {
         [Key]
-        public string bbrefId { get; set; } // Primary Key
+        [Column(Order = 0)]
+        public string bbrefId { get; set; }
+
+        [Key]
+        [Column(Order = 1)]
+        public int Year { get; set; }
+
+        [Key]
+        [Column(Order = 2)]
+        public string Team { get; set; }
 
         public string Name { get; set; }
         public int Age { get; set; }
-        public int Year { get; set; }
-        public string Team { get; set; }
         public string Lg { get; set; }
         public double WAR { get; set; }
         public int G { get; set; }

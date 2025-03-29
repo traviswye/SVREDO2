@@ -24,9 +24,20 @@ public class PitchersController : ControllerBase
             return BadRequest("Invalid data.");
         }
 
-        _context.Pitchers.Add(pitcher);
-        await _context.SaveChangesAsync();
+        // Check if pitcher already exists
+        var existingPitcher = await _context.Pitchers.FindAsync(pitcher.BbrefId, pitcher.Year, pitcher.Team);
+        if (existingPitcher != null)
+        {
+            // Update existing pitcher
+            _context.Entry(existingPitcher).CurrentValues.SetValues(pitcher);
+        }
+        else
+        {
+            // Add new pitcher
+            _context.Pitchers.Add(pitcher);
+        }
 
+        await _context.SaveChangesAsync();
         return Ok(pitcher);
     }
 
@@ -157,11 +168,27 @@ public class PitchersController : ControllerBase
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
-    // GET: api/Pitchers/{bbrefID}
-    [HttpGet("{bbrefID}")]
-    public async Task<IActionResult> GetPitcher(string bbrefID)
+    // GET: api/Pitchers/{bbrefID}/{year}/{team}
+    [HttpGet("{bbrefID}/{year}/{team}")]
+    public async Task<IActionResult> GetPitcher(string bbrefID, int year, string team)
     {
-        var pitcher = await _context.Pitchers.FirstOrDefaultAsync(p => p.BbrefId == bbrefID);
+        var pitcher = await _context.Pitchers.FindAsync(bbrefID, year, team);
+
+        if (pitcher == null)
+        {
+            return NotFound("Pitcher not found.");
+        }
+
+        return Ok(pitcher);
+    }
+
+    [HttpGet("{bbrefID}")]
+    public async Task<IActionResult> GetPitcherByBbrefId(string bbrefID)
+    {
+        var pitcher = await _context.Pitchers
+            .Where(p => p.BbrefId == bbrefID)
+            .OrderByDescending(p => p.Year)
+            .FirstOrDefaultAsync();
 
         if (pitcher == null)
         {
@@ -187,6 +214,35 @@ public class PitchersController : ControllerBase
 
         return Ok(pitcher);
     }
+
+    // PUT: api/Pitchers/{bbrefID}/{year}/{team}
+    [HttpPut("{bbrefID}/{year}/{team}")]
+    public async Task<IActionResult> UpdatePitcher(string bbrefID, int year, string team, [FromBody] Pitcher pitcher)
+    {
+        if (pitcher == null || bbrefID != pitcher.BbrefId || year != pitcher.Year || team != pitcher.Team)
+        {
+            return BadRequest("Invalid data.");
+        }
+
+        var existingPitcher = await _context.Pitchers.FindAsync(bbrefID, year, team);
+        if (existingPitcher == null)
+        {
+            return NotFound("Pitcher not found.");
+        }
+
+        // If the Throws field is not set in the incoming request, keep the existing value
+        if (string.IsNullOrEmpty(pitcher.Throws))
+        {
+            pitcher.Throws = existingPitcher.Throws;
+        }
+
+        // Update the existing pitcher's data with the new values
+        _context.Entry(existingPitcher).CurrentValues.SetValues(pitcher);
+        await _context.SaveChangesAsync();
+
+        return Ok(existingPitcher);
+    }
+
 
     // DELETE: api/Pitchers/{bbrefID}
     [HttpDelete("{bbrefID}")]

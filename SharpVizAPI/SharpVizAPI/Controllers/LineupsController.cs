@@ -86,8 +86,11 @@ namespace SharpVizAPI.Controllers
 
         // GET: api/Lineups/predictLineup/{team}
         [HttpGet("predictLineup/{team}")]
-        public async Task<IActionResult> PredictLineup(string team, int recentGames = 8, int weightRecent = 3, string throwHand = null)
+        public async Task<IActionResult> PredictLineup(string team, int recentGames = 8, int weightRecent = 3, string throwHand = null, int? year = null)
         {
+            // If year is not provided, use current year
+            int targetYear = year ?? DateTime.Now.Year;
+
             // Fetch injury summary from the Injury API
             var injuryResponse = await _httpClient.GetAsync("https://localhost:44346/api/Injury/summary");
             var injuryData = new List<InjurySummary>();
@@ -98,10 +101,11 @@ namespace SharpVizAPI.Controllers
                 injuryData = JsonSerializer.Deserialize<List<InjurySummary>>(jsonString);
             }
 
-            // Retrieve all lineups for the team
+            // Retrieve all lineups for the team, sorted by year (newest first) and game number (newest first)
             var allLineups = await _context.Lineups
                 .Where(l => l.Team == team)
-                .OrderByDescending(l => l.GameNumber)
+                .OrderByDescending(l => l.Year)
+                .ThenByDescending(l => l.GameNumber)
                 .ToListAsync();
 
             if (allLineups == null || allLineups.Count == 0)
@@ -109,12 +113,32 @@ namespace SharpVizAPI.Controllers
                 return NotFound($"No lineups found for team: {team}");
             }
 
+            // Get current year lineups
+            var currentYearLineups = allLineups.Where(l => l.Year == targetYear).ToList();
+
+            // If we don't have enough current year lineups, use previous year's data
+            List<Lineup> lineupPool;
+            int yearWeight = 2; // Weight multiplier for current year lineups
+
+            // If there are fewer than 3 lineups from the current year, include previous year data
+            if (currentYearLineups.Count < 3)
+            {
+                lineupPool = allLineups;
+                // Use all available lineups but make sure to still give priority to current year lineups
+            }
+            else
+            {
+                // We have enough current year lineups, so use only those
+                lineupPool = currentYearLineups;
+            }
+
             // Extract the most recent lineups based on the 'recentGames' parameter
-            var recentLineups = allLineups.Take(recentGames).ToList();
+            // This now respects the year ordering from above
+            var recentLineups = lineupPool.Take(recentGames).ToList();
 
             // Predict lineup for both LHP and RHP
-            var predictedLineupLHP = PredictLineup(recentLineups, allLineups, facingLHP: true, weightRecent, injuryData);
-            var predictedLineupRHP = PredictLineup(recentLineups, allLineups, facingLHP: false, weightRecent, injuryData);
+            var predictedLineupLHP = PredictLineup(recentLineups, lineupPool, facingLHP: true, weightRecent, injuryData, targetYear, yearWeight);
+            var predictedLineupRHP = PredictLineup(recentLineups, lineupPool, facingLHP: false, weightRecent, injuryData, targetYear, yearWeight);
 
             // Check for the 'throwHand' parameter and return the appropriate lineup
             if (!string.IsNullOrEmpty(throwHand))
@@ -160,7 +184,7 @@ namespace SharpVizAPI.Controllers
             return CreatedAtAction(nameof(GetLineup), new { id = lineup.Id }, lineup);
         }
 
-        private Dictionary<string, string> PredictLineup(List<Lineup> recentLineups, List<Lineup> allLineups, bool facingLHP, int weightRecent, List<InjurySummary> injuryData)
+        private Dictionary<string, string> PredictLineup(List<Lineup> recentLineups, List<Lineup> allLineups, bool facingLHP, int weightRecent, List<InjurySummary> injuryData, int targetYear, int yearWeight)
         {
             // Filter lineups by LHP/RHP
             var relevantLineups = allLineups.Where(l => l.LHP == facingLHP).ToList();
@@ -190,12 +214,19 @@ namespace SharpVizAPI.Controllers
             // Add recent lineups with weight
             foreach (var lineup in recentRelevantLineups)
             {
+                // Calculate the weight - giving extra weight to current year lineups
+                int weight = weightRecent;
+                if (lineup.Year == targetYear)
+                {
+                    weight *= yearWeight; // Apply additional weight to current year lineups
+                }
+
                 for (int i = 1; i <= 9; i++)
                 {
                     var battingPosition = GetBattingPosition(lineup, i);
                     if (!string.IsNullOrEmpty(battingPosition))
                     {
-                        battingPositions[$"batting{i}"].AddRange(Enumerable.Repeat(battingPosition, weightRecent));
+                        battingPositions[$"batting{i}"].AddRange(Enumerable.Repeat(battingPosition, weight));
                     }
                 }
             }
@@ -203,12 +234,23 @@ namespace SharpVizAPI.Controllers
             // Add older lineups
             foreach (var lineup in relevantLineups)
             {
+                // Skip if already included in recent lineups
+                if (recentRelevantLineups.Contains(lineup))
+                    continue;
+
+                // Apply year weighting to older lineups too
+                int weight = 1; // Base weight for older lineups
+                if (lineup.Year == targetYear)
+                {
+                    weight = yearWeight; // Give current year lineups more weight
+                }
+
                 for (int i = 1; i <= 9; i++)
                 {
                     var battingPosition = GetBattingPosition(lineup, i);
                     if (!string.IsNullOrEmpty(battingPosition))
                     {
-                        battingPositions[$"batting{i}"].Add(battingPosition);
+                        battingPositions[$"batting{i}"].AddRange(Enumerable.Repeat(battingPosition, weight));
                     }
                 }
             }

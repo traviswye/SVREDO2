@@ -131,7 +131,11 @@ namespace SharpVizAPI.Data
 
             modelBuilder.Entity<PitcherPlatoonAndTrackRecord>()
                 .HasKey(p => new { p.BbrefID, p.Year, p.Split });
-            modelBuilder.Entity<HitterLast7>().ToTable("HitterLast7");
+            modelBuilder.Entity<HitterLast7>()
+    .HasOne<Hitter>()
+    .WithMany()
+    .HasForeignKey(hl => hl.BbrefId)
+    .HasPrincipalKey(h => h.bbrefId);
 
             modelBuilder.Entity<TeamTemperatureTracking>()
                 .ToTable("TeamTemperatureTracking") // Specify the exact table name in the database
@@ -164,6 +168,13 @@ namespace SharpVizAPI.Data
             // Configure composite key for ProjectedPitcherStats
             modelBuilder.Entity<ProjectedPitcherStats>()
                 .HasKey(p => new { p.BbrefId, p.Year });
+
+            modelBuilder.Entity<Hitter>()
+    .HasKey(h => new { h.bbrefId, h.Year, h.Team });
+
+            // Configure composite key for Pitcher
+            modelBuilder.Entity<Pitcher>()
+                .HasKey(p => new { p.BbrefId, p.Year, p.Team });
 
             // GameResults Entity
             modelBuilder.Entity<GameResults>()

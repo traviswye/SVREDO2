@@ -27,6 +27,7 @@ namespace SharpVizAPI.Models
         public string? Batting7th { get; set; }
         public string? Batting8th { get; set; }
         public string? Batting9th { get; set; }
+        public int Year { get; set; }
     }
 
     public class LineupPrediction

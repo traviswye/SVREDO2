@@ -1,11 +1,22 @@
-﻿namespace SharpVizAPI.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace SharpVizAPI.Models
 {
     public class Pitcher
     {
+        [Key]
+        [Column(Order = 0)]
         public string BbrefId { get; set; }
+
+        [Key]
+        [Column(Order = 1)]
         public int Year { get; set; }
-        public int Age { get; set; }
+
+        [Key]
+        [Column(Order = 2)]
         public string Team { get; set; }
+        public int Age { get; set; }
         public string Lg { get; set; }
         public string WL { get; set; }  // Win-Loss record as a string
         public double WLPercentage { get; set; }  // Win-Loss percentage

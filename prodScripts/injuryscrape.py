@@ -28,6 +28,7 @@ team_abbr_dict = {
     "NY Mets": "NYM",
     "NY Yankees": "NYY",
     "Oakland": "OAK",
+    "Oakland": "ATH",
     "Philadelphia": "PHI",
     "Pittsburgh": "PIT",
     "San Diego": "SDP",

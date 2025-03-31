@@ -1,0 +1,58 @@
+flow of runtime....
+
+runDataPut.py - gets nrfi records and Runs per first inning for team (SITE IS NOT UPDATED FOR 2025 YET) should update table 'nrfirecords2024'
+
+getcontestpools.py - gets Draftking data for the day - creates contest pool map and draft groups per contest to 'dkpoolmap' and 'dkplayerpools' table.
+
+yesterdaysresults_cf.py {yy-mm-dd} - gets results for yesterday W/L F5 NRFI winning pitchers and scores
+
+Injuryscrape.py - gets all players on IL from active rosters - sends to table 'Injuries' - excludes these players from lineup prediction service
+
+getteamrecsplitput.py - gets updated team records and splits MLB.com - updates table 'teamrecsplits'
+
+leagueCountingStats_cloud.py - gets team totals for hitting and pitching. Updates 'TeamTotalPitchingTracking' and 'TeamTotalHittingTracking' tables..uses cloudscraper - possible to combine this and getallplayers script
+
+getGamesSendtoDB_cf.py - gets all games and probable pitchers for the day
+	- scrapes bbref/previews/ sends games to db for 'gamePreviews' table. 
+	- triggers weather services for the games and forcasts
+	- triggers lineup predictions - which attempts to go get each team playing's last games lineup and result from bbref and saves to 'Lineups' table
+	- saves lineup predictions to 'PredictedLineup' table
+
+
+fetchgameodds.py - gets odds from a 3rd party endpoint for full game odds. Saves odds in 'GameOdds' table (need to expand to get F5 odds and nrfi odd and prop odds)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+scrapeteams.py - attempts to visit every team's bbref page to scrape hitters and pitchers per team. 
+	- this needs to be evaluated if its worth continuing to do due to CF protections and how many times we have to hit these urls...
+	- the pros on this is that when transactions happen and players are on new teams we wont have to manage splits vs totals
+
+scrapeallplayer_sel.py - this is a replacement but it caused us to change the db schema for hitters and pitchers tables.... only 3 requests to bbref rather than up to 30.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+hittervsPitcher.py - has to use Selenium. saves daily hitter vs pitcher matchups to 'hittervsPitcher' table
+
+bullpenUsage_cf.py - this tracks bullpen usage. this only gets teams playing today and gets the most recent games pitchers... it then saves that data into 'BullpenUsage'
+
+pitchersbulksplit_cf.py - this is all of the pitcher data we need for blending... Given current CF issues this is likely to take a while but it is NEEDED it primarily saves data to 'PitcherPlatoonAndTrackRecord' AND 'PitcherHomeAwaySplits'
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+grabLast7bbref.py manages 'trailinggamelogsplits' table and replaced hittersLast7.py however it is VERY SLOW. Its very important data though... we are going to try to use it still. If it is too slow we will look at using more efficent but less detailed stats from hitterLast7 script...
+
+hittersLast7.py
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+getall9.py - gets every pitcher for every inning... i am not sure if this is still needed or if it is worth it... if it is maybe we add this to pitcherbulksplit script however we should already have pitcher 1st inning data
+
+
+
+
+endpoints that have to be hit daily....
+hitter temp tracking 
+https://localhost:44346/api/HitterTempTracking/updateTemps?targetDate={date}
+team temp tracking
+
+
+actual lineup scraping
+

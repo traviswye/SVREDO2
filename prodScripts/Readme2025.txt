@@ -10,7 +10,7 @@ BAT FILE CONTROLS FLOW = dailyScrapes.bat
 (tested - modifications needed) injuryScrape.py - site is still active... year is considered in our script and controller
 	- might need to add year to the PK for this table.
 
-(tested working after changes) - getTeamrecsplitPUT.py - site is active but is defaulting to spring training still. Will run once back to season page.
+(tested working after changes) - getTeamrecsplitPUT.py - site is active.
 	- YEAR IS NOT CONSIDERED... we maintain an achieve table where 2024 was copied over to... script will overwrite the data left in prod table.
 
 (this is a bbref will need selenium version) leagueCountingStats.py - was set to only post it once which i did after season... tried to update controllers and script to potentially put data daily so we can track team offenses and pitching over course of year. needs testing.

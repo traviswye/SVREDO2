@@ -151,17 +151,17 @@ def get_pitchers_from_game_previews(session, date):
         return []
 
 
-# Main scraping logic for pitchers, now with checks for 2023 totals
+# Main scraping logic for pitchers, now with checks for 2024 totals
 def scrape_and_post_pitcher_data_helper(session, pitcher_id, year):
-    # Check if 2023 totals exist before proceeding with 2024
-    if not pitcher_totals_exists(session, pitcher_id, 2023):
-        print(f"Scraping and posting 2023 totals for pitcher: {pitcher_id}")
+    # Check if 2024 totals exist before proceeding with 2025
+    if not pitcher_totals_exists(session, pitcher_id, 2024):
+        print(f"Scraping and posting 2024 totals for pitcher: {pitcher_id}")
         # Scrape 2023 totals only
         scrape_pitcher_totals_for_year(session, pitcher_id, 2023)
 
-    # Continue with scraping and posting 2024 data
-    print(f"Scraping and posting 2024 data for pitcher: {pitcher_id}")
-    scrape_and_post_pitcher_data(session, pitcher_id, 2024)
+    # Continue with scraping and posting 2025 data
+    print(f"Scraping and posting 2025 data for pitcher: {pitcher_id}")
+    scrape_and_post_pitcher_data(session, pitcher_id, 2025)
 
 
 # Combined scraping function to scrape both first inning and home/away splits data
@@ -203,7 +203,7 @@ def scrape_and_post_pitcher_data(session, pitcher_id, year):
                                     triples = int(row.find(attrs={'data-stat': '3B'}).text or 0)
                                     pitcher_1st_inning_data = {
                                         "bbrefID": pitcher_id,
-                                        "Year": 2024,
+                                        "Year": year,
                                         "G": int(row.find(attrs={'data-stat': 'G'}).text or 0),
                                         "IP": float(row.find(attrs={'data-stat': 'IP'}).text or 0),
                                         "ER": int(row.find(attrs={'data-stat': 'ER'}).text or 0),
@@ -264,7 +264,7 @@ def scrape_and_post_pitcher_data(session, pitcher_id, year):
                                 split_type = row.find('th', {'data-stat': 'split_name'}).text.strip()
                                 home_away_data = {
                                     "bbrefID": pitcher_id,
-                                    "Year": 2024,
+                                    "Year": year,
                                     "Split": split_type,
                                     "G": int(row.find(attrs={'data-stat': 'G'}).text or 0),
                                     "IP": float((int(row.find(attrs={'data-stat': 'PA'}).text or 0) - int(row.find(attrs={'data-stat': 'H'}).text or 0) - int(row.find(attrs={'data-stat': 'BB'}).text or 0)) / 3),
@@ -320,7 +320,7 @@ def scrape_and_post_pitcher_data(session, pitcher_id, year):
                         if tbody:
                             rows = tbody.find_all('tr')
                             split_mapping = {
-                                '2024 Totals': 'Totals',
+                                '2025 Totals': 'Totals',
                                 'Last 7 days': 'last7',
                                 'Last 14 days': 'last14',
                                 'Last 28 days': 'last28'
@@ -331,7 +331,7 @@ def scrape_and_post_pitcher_data(session, pitcher_id, year):
                                     split_type = split_mapping[split_name]
                                     season_totals_data = {
                                         "bbrefID": pitcher_id,
-                                        "Year": 2024,
+                                        "Year": 2025,
                                         "Split": split_type,
                                         "G": int(row.find(attrs={'data-stat': 'G'}).text or 0),
                                         "PA": int(row.find(attrs={'data-stat': 'PA'}).text or 0),
@@ -392,7 +392,7 @@ def scrape_and_post_pitcher_data(session, pitcher_id, year):
                                 split_type = split_mapping[split_name]
                                 platoon_data = {
                                     "bbrefID": pitcher_id,
-                                    "Year": 2024,
+                                    "Year": year,
                                     "Split": split_type,
                                     "G": int(row.find(attrs={'data-stat': 'G'}).text or 0),
                                     "PA": int(row.find(attrs={'data-stat': 'PA'}).text or 0),

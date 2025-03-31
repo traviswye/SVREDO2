@@ -251,7 +251,7 @@ namespace SharpVizAPI.Services
 
                 string dateString = lastRow.SelectSingleNode(".//th")?.InnerText.Split(' ')[1].Split(',')[1];
                 _logger.LogInformation($"Raw date string: {dateString}");
-                var date = DateTime.ParseExact($"2024-{dateString}", "yyyy-M/d", null);  // Convert to DateTime format
+                var date = DateTime.ParseExact($"{DateTime.Now.Year}-{dateString}", "yyyy-M/d", null);  // Convert to DateTime format
 
                 string resultScoreText = lastRow.SelectSingleNode(".//th")?.InnerText;
                 _logger.LogInformation($"Raw result and score text: {resultScoreText}");
@@ -888,6 +888,7 @@ namespace SharpVizAPI.Services
                 { "NYM", "Mets" },
                 { "NYY", "Yankees" },
                 { "OAK", "Athletics" },
+                { "ATH", "Athletics" },
                 { "PHI", "Phillies" },
                 { "PIT", "Pirates" },
                 { "SDP", "Padres" },

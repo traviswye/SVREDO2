@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SharpVizAPI.Data;
 using SharpVizAPI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,6 +23,41 @@ namespace SharpVizAPI.Controllers
             _context = context;
             _logger = logger;
         }
+
+        // Team name to abbreviation conversion dictionary
+        private static readonly Dictionary<string, string> TeamNameToAbbreviation = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+        {
+            { "Diamondbacks", "ARI" },
+            { "Braves", "ATL" },
+            { "Orioles", "BAL" },
+            { "Red Sox", "BOS" },
+            { "Cubs", "CHC" },
+            { "White Sox", "CHW" },
+            { "Reds", "CIN" },
+            { "Guardians", "CLE" },
+            { "Rockies", "COL" },
+            { "Tigers", "DET" },
+            { "Astros", "HOU" },
+            { "Royals", "KCR" },
+            { "Angels", "LAA" },
+            { "Dodgers", "LAD" },
+            { "Marlins", "MIA" },
+            { "Brewers", "MIL" },
+            { "Twins", "MIN" },
+            { "Mets", "NYM" },
+            { "Yankees", "NYY" },
+            { "Athletics", "ATH" },
+            { "Phillies", "PHI" },
+            { "Pirates", "PIT" },
+            { "Padres", "SDP" },
+            { "Mariners", "SEA" },
+            { "Giants", "SFG" },
+            { "Cardinals", "STL" },
+            { "Rays", "TBR" },
+            { "Rangers", "TEX" },
+            { "Blue Jays", "TOR" },
+            { "Nationals", "WAS" }
+        };
 
         // GET: api/Hitters/{bbrefId}/{year}/{team}
         [HttpGet("{bbrefId}/{year}/{team}")]
@@ -57,6 +93,103 @@ namespace SharpVizAPI.Controllers
             }
 
             return hitter;
+        }
+
+        // GET: api/Hitters/todaysHitters/{date}
+        [HttpGet("todaysHitters/{date}")]
+        public async Task<ActionResult<IEnumerable<string>>> GetTodaysHitters(string date)
+        {
+            _logger.LogInformation($"Received GET request for today's hitters with date: {date}");
+
+            // Parse the date from the format yy-MM-dd
+            if (!DateTime.TryParseExact(date, "yy-MM-dd", null, System.Globalization.DateTimeStyles.None, out var parsedDate))
+            {
+                _logger.LogError($"Invalid date format: {date}. Expected format: yy-MM-dd");
+                return BadRequest("Invalid date format. Please use 'yy-MM-dd'.");
+            }
+
+            try
+            {
+                // Get the year from the parsed date
+                int year = parsedDate.Year;
+
+                // Get all HOME teams playing on the specified date from GamePreviews
+                var homeTeams = await _context.GamePreviews
+                    .Where(gp => gp.Date == parsedDate)
+                    .Select(gp => gp.HomeTeam)
+                    .ToListAsync();
+
+                // Get all AWAY teams playing on the specified date from GamePreviews
+                var awayTeams = await _context.GamePreviews
+                    .Where(gp => gp.Date == parsedDate)
+                    .Select(gp => gp.AwayTeam)
+                    .ToListAsync();
+
+                // Combine the lists and remove duplicates
+                var teamsPlayingToday = homeTeams.Concat(awayTeams).Distinct().ToList();
+
+                if (teamsPlayingToday == null || !teamsPlayingToday.Any())
+                {
+                    _logger.LogWarning($"No games found for date: {parsedDate}");
+                    return NotFound($"No games found for date: {parsedDate:yyyy-MM-dd}");
+                }
+
+                _logger.LogInformation($"Found {teamsPlayingToday.Count} teams playing on {parsedDate:yyyy-MM-dd}: {string.Join(", ", teamsPlayingToday)}");
+
+                // Convert full team names to abbreviations
+                var teamAbbreviations = new List<string>();
+                foreach (var team in teamsPlayingToday)
+                {
+                    if (TeamNameToAbbreviation.TryGetValue(team, out string abbreviation))
+                    {
+                        teamAbbreviations.Add(abbreviation);
+                        _logger.LogInformation($"Converted team name '{team}' to abbreviation '{abbreviation}'");
+                    }
+                    else
+                    {
+                        _logger.LogWarning($"Could not find abbreviation for team name: {team}");
+                        // Include the original name in case it's already an abbreviation
+                        teamAbbreviations.Add(team);
+                    }
+                }
+
+                // Log the team abbreviations we're searching for
+                _logger.LogInformation($"Searching for hitters from teams: {string.Join(", ", teamAbbreviations)}");
+
+                // Get all hitters from these teams for the current year
+                var hittersList = await _context.Hitters
+                    .Where(h => teamAbbreviations.Contains(h.Team) && h.Year == year)
+                    .Select(h => h.bbrefId)
+                    .Distinct()
+                    .ToListAsync();
+
+                if (hittersList == null || !hittersList.Any())
+                {
+                    _logger.LogWarning($"No hitters found for teams playing on {parsedDate:yyyy-MM-dd}");
+
+                    // For debugging: check if there are any hitters in the database for the current year
+                    var allHittersCount = await _context.Hitters.Where(h => h.Year == year).CountAsync();
+                    _logger.LogInformation($"Total hitters in database for year {year}: {allHittersCount}");
+
+                    // Also log the teams we're searching for and their actual values in the database
+                    var teamsInDb = await _context.Hitters
+                        .Where(h => h.Year == year)
+                        .Select(h => h.Team)
+                        .Distinct()
+                        .ToListAsync();
+                    _logger.LogInformation($"Teams in database for year {year}: {string.Join(", ", teamsInDb)}");
+
+                    return NotFound($"No hitters found for teams playing on {parsedDate:yyyy-MM-dd}");
+                }
+
+                _logger.LogInformation($"Found {hittersList.Count} unique hitters playing on {parsedDate:yyyy-MM-dd}");
+                return hittersList;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error retrieving hitters for date: {parsedDate:yyyy-MM-dd}");
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
         // POST: api/Hitters

@@ -3969,3 +3969,1384 @@
 2025-03-28 15:41:07,702 - INFO - Successfully updated Pitchers nerishe01/2025/ATL.
 2025-03-28 15:41:07,704 - INFO - Successfully processed 147 pitchers
 2025-03-28 15:41:07,705 - INFO - Scraping completed in 764.93 seconds
+2025-03-29 13:07:07,081 - INFO - Starting Baseball Reference data scraping with enhanced methods
+2025-03-29 13:07:07,081 - INFO - Warming up connection to Baseball Reference...
+2025-03-29 13:07:07,081 - INFO - Attempting to scrape with Selenium...
+2025-03-29 13:07:08,179 - INFO - Navigating to https://www.baseball-reference.com/ with Selenium...
+2025-03-29 13:07:08,911 - INFO - Waiting for Cloudflare to resolve...
+2025-03-29 13:07:08,951 - INFO - Table element found on page, content appears to be loaded
+2025-03-29 13:07:08,965 - INFO - Saved HTML content to selenium_result.html for debugging
+2025-03-29 13:07:11,061 - INFO - Selenium scraping completed successfully
+2025-03-29 13:07:17,491 - INFO - Fetching batting data from https://www.baseball-reference.com/leagues/majors/2025-standard-batting.shtml
+2025-03-29 13:07:17,491 - INFO - Attempting to scrape with Selenium...
+2025-03-29 13:07:18,523 - INFO - Navigating to https://www.baseball-reference.com/leagues/majors/2025-standard-batting.shtml with Selenium...
+2025-03-29 13:07:19,209 - INFO - Waiting for Cloudflare to resolve...
+2025-03-29 13:07:19,416 - INFO - Table element found on page, content appears to be loaded
+2025-03-29 13:07:19,454 - INFO - Saved HTML content to selenium_result.html for debugging
+2025-03-29 13:07:21,528 - INFO - Selenium scraping completed successfully
+2025-03-29 13:07:21,530 - INFO - Saved HTML content to debug_batting.html for debugging
+2025-03-29 13:07:30,098 - INFO - Found table with id 'players_standard_batting' directly in HTML
+2025-03-29 13:07:30,098 - INFO - Found batting table with id: players_standard_batting
+2025-03-29 13:07:30,101 - INFO - Found 339 batting rows to process
+2025-03-29 13:07:30,171 - INFO - Successfully updated Hitters happia01/2025/CHC.
+2025-03-29 13:07:30,206 - INFO - Successfully updated Hitters ohtansh01/2025/LAD.
+2025-03-29 13:07:30,231 - INFO - Successfully updated Hitters tuckeky01/2025/CHC.
+2025-03-29 13:07:30,260 - INFO - Successfully updated Hitters edmanto01/2025/LAD.
+2025-03-29 13:07:30,296 - INFO - Successfully updated Hitters shawma01/2025/CHC.
+2025-03-29 13:07:30,329 - INFO - Successfully updated Hitters suzukse01/2025/CHC.
+2025-03-29 13:07:30,355 - INFO - Successfully updated Hitters hernate01/2025/LAD.
+2025-03-29 13:07:30,380 - INFO - Successfully updated Hitters buschmi02/2025/CHC.
+2025-03-29 13:07:30,415 - INFO - Successfully updated Hitters crowape01/2025/CHC.
+2025-03-29 13:07:30,440 - INFO - Successfully updated Hitters muncyma01/2025/LAD.
+2025-03-29 13:07:30,941 - INFO - Processed 10 hitters so far
+2025-03-29 13:07:30,966 - INFO - Successfully updated Hitters swansda01/2025/CHC.
+2025-03-29 13:07:31,021 - INFO - Successfully updated Hitters pagesan01/2025/LAD.
+2025-03-29 13:07:31,050 - INFO - Successfully updated Hitters smithwi05/2025/LAD.
+2025-03-29 13:07:31,087 - INFO - Successfully updated Hitters confomi01/2025/LAD.
+2025-03-29 13:07:31,116 - INFO - Successfully updated Hitters rojasmi02/2025/LAD.
+2025-03-29 13:07:31,151 - INFO - Successfully updated Hitters carroco02/2025/ARI.
+2025-03-29 13:07:31,178 - INFO - Successfully updated Hitters cruzon01/2025/PIT.
+2025-03-29 13:07:31,205 - INFO - Successfully updated Hitters greenri03/2025/DET.
+2025-03-29 13:07:31,240 - INFO - Successfully updated Hitters gurrilo01/2025/ARI.
+2025-03-29 13:07:31,271 - INFO - Successfully updated Hitters marteke01/2025/ARI.
+2025-03-29 13:07:31,772 - INFO - Processed 20 hitters so far
+2025-03-29 13:07:31,800 - INFO - Successfully updated Hitters phamth01/2025/PIT.
+2025-03-29 13:07:31,836 - INFO - Successfully updated Hitters reynobr01/2025/PIT.
+2025-03-29 13:07:31,874 - INFO - Successfully updated Hitters torkesp01/2025/DET.
+2025-03-29 13:07:31,907 - INFO - Successfully updated Hitters albieoz01/2025/ATL.
+2025-03-29 13:07:31,934 - INFO - Successfully updated Hitters bartjo01/2025/PIT.
+2025-03-29 13:07:31,960 - INFO - Successfully updated Hitters bettsmo01/2025/LAD.
+2025-03-29 13:07:31,986 - INFO - Successfully updated Hitters bichebo01/2025/TOR.
+2025-03-29 13:07:32,011 - INFO - Successfully updated Hitters bledajj01/2025/ATH.
+2025-03-29 13:07:32,059 - INFO - Successfully updated Hitters butlela01/2025/ATH.
+2025-03-29 13:07:32,088 - INFO - Successfully updated Hitters cowseco01/2025/BAL.
+2025-03-29 13:07:32,589 - INFO - Processed 30 hitters so far
+2025-03-29 13:07:32,617 - INFO - Successfully updated Hitters edwarxa01/2025/MIA.
+2025-03-29 13:07:32,642 - INFO - Successfully updated Hitters gimenan01/2025/TOR.
+2025-03-29 13:07:32,670 - INFO - Successfully updated Hitters guerrvl02/2025/TOR.
+2025-03-29 13:07:32,696 - INFO - Successfully updated Hitters hernaen02/2025/LAD.
+2025-03-29 13:07:32,731 - INFO - Successfully updated Hitters hoernni01/2025/CHC.
+2025-03-29 13:07:32,756 - INFO - Successfully updated Hitters lindofr01/2025/NYM.
+2025-03-29 13:07:32,792 - INFO - Successfully updated Hitters mountry01/2025/BAL.
+2025-03-29 13:07:32,833 - INFO - Successfully updated Hitters mullice01/2025/BAL.
+2025-03-29 13:07:32,868 - INFO - Successfully updated Hitters naylojo01/2025/ARI.
+2025-03-29 13:07:32,900 - INFO - Successfully updated Hitters ohearry01/2025/BAL.
+2025-03-29 13:07:33,401 - INFO - Processed 40 hitters so far
+2025-03-29 13:07:33,434 - INFO - Successfully updated Hitters oneilty01/2025/BAL.
+2025-03-29 13:07:33,472 - INFO - Successfully updated Hitters olsonma02/2025/ATL.
+2025-03-29 13:07:33,508 - INFO - Successfully updated Hitters ozunama01/2025/ATL.
+2025-03-29 13:07:33,533 - INFO - Successfully updated Hitters profaju01/2025/ATL.
+2025-03-29 13:07:33,571 - INFO - Successfully updated Hitters rileyau01/2025/ATL.
+2025-03-29 13:07:33,596 - INFO - Successfully updated Hitters rookebr01/2025/ATH.
+2025-03-29 13:07:33,621 - INFO - Successfully updated Hitters rutscad01/2025/BAL.
+2025-03-29 13:07:33,662 - INFO - Successfully updated Hitters santaan02/2025/TOR.
+2025-03-29 13:07:33,698 - INFO - Successfully updated Hitters sotoju01/2025/NYM.
+2025-03-29 13:07:33,728 - INFO - Successfully updated Hitters stoweky01/2025/MIA.
+2025-03-29 13:07:34,229 - INFO - Processed 50 hitters so far
+2025-03-29 13:07:34,262 - INFO - Successfully updated Hitters westbjo01/2025/BAL.
+2025-03-29 13:07:34,298 - INFO - Successfully updated Hitters abreuwi02/2025/BOS.
+2025-03-29 13:07:34,333 - INFO - Successfully updated Hitters alonspe01/2025/NYM.
+2025-03-29 13:07:34,366 - INFO - Successfully updated Hitters altuvjo01/2025/HOU.
+2025-03-29 13:07:34,396 - INFO - Successfully updated Hitters alvaryo01/2025/HOU.
+2025-03-29 13:07:34,421 - INFO - Successfully updated Hitters amayami01/2025/CHC.
+2025-03-29 13:07:34,446 - INFO - Successfully updated Hitters arozara01/2025/SEA.
+2025-03-29 13:07:34,472 - INFO - Successfully updated Hitters arraelu01/2025/SDP.
+2025-03-29 13:07:34,497 - INFO - Successfully updated Hitters baldwdr01/2025/ATL.
+2025-03-29 13:07:34,534 - INFO - Successfully updated Hitters bogaexa01/2025/SDP.
+2025-03-29 13:07:35,035 - INFO - Processed 60 hitters so far
+2025-03-29 13:07:35,073 - INFO - Successfully updated Hitters bregmal01/2025/BOS.
+2025-03-29 13:07:35,100 - INFO - Successfully updated Hitters bridejo01/2025/MIA.
+2025-03-29 13:07:35,158 - INFO - Successfully updated Hitters campbkr01/2025/BOS.
+2025-03-29 13:07:35,207 - INFO - Successfully updated Hitters casastr01/2025/BOS.
+2025-03-29 13:07:35,234 - INFO - Successfully updated Hitters croneja01/2025/SDP.
+2025-03-29 13:07:35,290 - INFO - Successfully updated Hitters deverra01/2025/BOS.
+2025-03-29 13:07:35,347 - INFO - Successfully updated Hitters diazya02/2025/HOU.
+2025-03-29 13:07:35,382 - INFO - Successfully updated Hitters duranja01/2025/BOS.
+2025-03-29 13:07:35,419 - INFO - Successfully updated Hitters freemfr01/2025/LAD.
+2025-03-29 13:07:35,450 - INFO - Successfully updated Hitters garciad02/2025/TEX.
+2025-03-29 13:07:35,951 - INFO - Processed 70 hitters so far
+2025-03-29 13:07:35,984 - INFO - Successfully updated Hitters harrimi04/2025/ATL.
+2025-03-29 13:07:36,009 - INFO - Successfully updated Hitters hayeske01/2025/PIT.
+2025-03-29 13:07:36,035 - INFO - Successfully updated Hitters hillde01/2025/MIA.
+2025-03-29 13:07:36,062 - INFO - Successfully updated Hitters hollija01/2025/BAL.
+2025-03-29 13:07:36,100 - INFO - Successfully updated Hitters keithco01/2025/DET.
+2025-03-29 13:07:36,135 - INFO - Successfully updated Hitters kelenja01/2025/ATL.
+2025-03-29 13:07:36,167 - INFO - Successfully updated Hitters kineris01/2025/PIT.
+2025-03-29 13:07:36,201 - INFO - Successfully updated Hitters kirkal01/2025/TOR.
+2025-03-29 13:07:36,269 - INFO - Successfully updated Hitters langesh01/2025/ATH.
+2025-03-29 13:07:36,297 - INFO - Successfully updated Hitters langfwy01/2025/TEX.
+2025-03-29 13:07:36,798 - INFO - Processed 80 hitters so far
+2025-03-29 13:07:36,831 - INFO - Successfully updated Hitters lopezot01/2025/MIA.
+2025-03-29 13:07:36,862 - INFO - Successfully updated Hitters machama01/2025/SDP.
+2025-03-29 13:07:36,893 - INFO - Successfully updated Hitters mccutan01/2025/PIT.
+2025-03-29 13:07:36,920 - INFO - Successfully updated Hitters merrija01/2025/SDP.
+2025-03-29 13:07:36,956 - INFO - Successfully updated Hitters mervima01/2025/MIA.
+2025-03-29 13:07:36,988 - INFO - Successfully updated Hitters muncyma02/2025/ATH.
+2025-03-29 13:07:37,020 - INFO - Successfully updated Hitters nimmobr01/2025/NYM.
+2025-03-29 13:07:37,046 - INFO - Successfully updated Hitters paredis01/2025/HOU.
+2025-03-29 13:07:37,075 - INFO - Successfully updated Hitters penaje02/2025/HOU.
+2025-03-29 13:07:37,100 - INFO - Successfully updated Hitters perdoge01/2025/ARI.
+2025-03-29 13:07:37,601 - INFO - Processed 90 hitters so far
+2025-03-29 13:07:37,626 - INFO - Successfully updated Hitters rafaece01/2025/BOS.
+2025-03-29 13:07:37,651 - INFO - Successfully updated Hitters raleica01/2025/SEA.
+2025-03-29 13:07:37,677 - INFO - Successfully updated Hitters roblevi01/2025/SEA.
+2025-03-29 13:07:37,706 - INFO - Successfully updated Hitters rodrien01/2025/PIT.
+2025-03-29 13:07:37,741 - INFO - Successfully updated Hitters rodriju01/2025/SEA.
+2025-03-29 13:07:37,777 - INFO - Successfully updated Hitters seageco01/2025/TEX.
+2025-03-29 13:07:37,812 - INFO - Successfully updated Hitters semiema01/2025/TEX.
+2025-03-29 13:07:37,853 - INFO - Successfully updated Hitters soderty01/2025/ATH.
+2025-03-29 13:07:37,890 - INFO - Successfully updated Hitters springe01/2025/TOR.
+2025-03-29 13:07:37,933 - INFO - Successfully updated Hitters storytr01/2025/BOS.
+2025-03-29 13:07:38,434 - INFO - Processed 100 hitters so far
+2025-03-29 13:07:38,461 - INFO - Successfully updated Hitters suareeu01/2025/ARI.
+2025-03-29 13:07:38,488 - INFO - Successfully updated Hitters tatisfe02/2025/SDP.
+2025-03-29 13:07:38,525 - INFO - Successfully updated Hitters tayloty01/2025/NYM.
+2025-03-29 13:07:38,554 - INFO - Successfully updated Hitters torregl01/2025/DET.
+2025-03-29 13:07:38,580 - INFO - Successfully updated Hitters vientma01/2025/NYM.
+2025-03-29 13:07:38,605 - INFO - Successfully updated Hitters walkech02/2025/HOU.
+2025-03-29 13:07:38,631 - INFO - Successfully updated Hitters wongco01/2025/BOS.
+2025-03-29 13:07:38,656 - INFO - Successfully updated Hitters bertijo01/2025/CHC.
+2025-03-29 13:07:38,680 - INFO - Successfully updated Hitters burgeja01/2025/TEX.
+2025-03-29 13:07:38,708 - INFO - Successfully updated Hitters ibanean01/2025/DET.
+2025-03-29 13:07:39,209 - INFO - Processed 110 hitters so far
+2025-03-29 13:07:39,236 - INFO - Successfully updated Hitters jungjo01/2025/TEX.
+2025-03-29 13:07:39,262 - INFO - Successfully updated Hitters kellyca02/2025/CHC.
+2025-03-29 13:07:39,292 - INFO - Successfully updated Hitters mckinza01/2025/DET.
+2025-03-29 13:07:39,327 - INFO - Successfully updated Hitters meyerja02/2025/HOU.
+2025-03-29 13:07:39,362 - INFO - Successfully updated Hitters polanjo01/2025/SEA.
+2025-03-29 13:07:39,391 - INFO - Successfully updated Hitters rodenal01/2025/TOR.
+2025-03-29 13:07:39,435 - INFO - Successfully updated Hitters rodgebr02/2025/HOU.
+2025-03-29 13:07:39,471 - INFO - Successfully updated Hitters smithca07/2025/HOU.
+2025-03-29 13:07:39,505 - INFO - Successfully updated Hitters urshegi01/2025/ATH.
+2025-03-29 13:07:39,530 - INFO - Successfully updated Hitters wilsoja05/2025/ATH.
+2025-03-29 13:07:40,031 - INFO - Processed 120 hitters so far
+2025-03-29 13:07:40,070 - INFO - Successfully updated Hitters crawfjp01/2025/SEA.
+2025-03-29 13:07:40,098 - INFO - Successfully updated Hitters kreidry01/2025/DET.
+2025-03-29 13:07:40,124 - INFO - Successfully updated Hitters margoma01/2025/DET.
+2025-03-29 13:07:40,150 - INFO - Successfully updated Hitters paulegr01/2025/MIA.
+2025-03-29 13:07:40,183 - INFO - Successfully updated Hitters smithpa04/2025/ARI.
+2025-03-29 13:07:40,216 - INFO - Successfully updated Hitters sweentr01/2025/DET.
+2025-03-29 13:07:40,242 - INFO - Successfully updated Hitters wagnewi01/2025/TOR.
+2025-03-29 13:07:40,268 - INFO - Successfully updated Hitters abramcj01/2025/WSN.
+2025-03-29 13:07:40,293 - INFO - Successfully updated Hitters acunajo01/2025/NYM.
+2025-03-29 13:07:40,321 - INFO - Successfully updated Hitters andujmi01/2025/ATH.
+2025-03-29 13:07:40,821 - INFO - Processed 130 hitters so far
+2025-03-29 13:07:40,869 - INFO - Successfully updated Hitters bohmal01/2025/PHI.
+2025-03-29 13:07:40,895 - INFO - Successfully updated Hitters carpeke01/2025/DET.
+2025-03-29 13:07:40,948 - INFO - Successfully updated Hitters casteni01/2025/PHI.
+2025-03-29 13:07:40,988 - INFO - Successfully updated Hitters chourja01/2025/MIL.
+2025-03-29 13:07:41,024 - INFO - Successfully created Hitters dingldi01/2025/DET.
+2025-03-29 13:07:41,052 - INFO - Successfully created Hitters doylebr02/2025/COL.
+2025-03-29 13:07:41,079 - INFO - Successfully updated Hitters fraziad01/2025/PIT.
+2025-03-29 13:07:41,106 - INFO - Successfully updated Hitters friedtj01/2025/CIN.
+2025-03-29 13:07:41,145 - INFO - Successfully updated Hitters harpebr03/2025/PHI.
+2025-03-29 13:07:41,178 - INFO - Successfully updated Hitters heywaja01/2025/SDP.
+2025-03-29 13:07:41,679 - INFO - Processed 140 hitters so far
+2025-03-29 13:07:41,708 - INFO - Successfully updated Hitters indiajo01/2025/KCR.
+2025-03-29 13:07:41,746 - INFO - Successfully updated Hitters keplema01/2025/PHI.
+2025-03-29 13:07:41,771 - INFO - Successfully updated Hitters kwanst01/2025/CLE.
+2025-03-29 13:07:41,796 - INFO - Successfully updated Hitters manzaky01/2025/CLE.
+2025-03-29 13:07:41,832 - INFO - Successfully updated Hitters mclaima01/2025/CIN.
+2025-03-29 13:07:41,858 - INFO - Successfully updated Hitters noeljh01/2025/CLE.
+2025-03-29 13:07:41,884 - INFO - Successfully updated Hitters raleylu01/2025/SEA.
+2025-03-29 13:07:41,915 - INFO - Successfully updated Hitters ramirjo01/2025/CLE.
+2025-03-29 13:07:41,952 - INFO - Successfully updated Hitters realmjt01/2025/PHI.
+2025-03-29 13:07:41,983 - INFO - Successfully updated Hitters santaca01/2025/CLE.
+2025-03-29 13:07:42,484 - INFO - Processed 150 hitters so far
+2025-03-29 13:07:42,523 - INFO - Successfully updated Hitters schwaky01/2025/PHI.
+2025-03-29 13:07:42,593 - INFO - Successfully updated Hitters sheetga01/2025/SDP.
+2025-03-29 13:07:42,619 - INFO - Successfully updated Hitters thomala02/2025/CLE.
+2025-03-29 13:07:42,644 - INFO - Successfully updated Hitters torrelu01/2025/NYM.
+2025-03-29 13:07:42,670 - INFO - Successfully updated Hitters turnetr01/2025/PHI.
+2025-03-29 13:07:42,695 - INFO - Successfully updated Hitters uriasra01/2025/BAL.
+2025-03-29 13:07:42,731 - INFO - Successfully updated Hitters wallnma01/2025/MIN.
+2025-03-29 13:07:42,764 - INFO - Successfully updated Hitters winkeje01/2025/NYM.
+2025-03-29 13:07:42,792 - INFO - Successfully updated Hitters wittbo02/2025/KCR.
+2025-03-29 13:07:42,818 - INFO - Successfully updated Hitters yelicch01/2025/MIL.
+2025-03-29 13:07:43,319 - INFO - Processed 160 hitters so far
+2025-03-29 13:07:43,346 - INFO - Successfully updated Hitters adamewi01/2025/SFG.
+2025-03-29 13:07:43,374 - INFO - Successfully created Hitters allenni02/2025/ATL.
+2025-03-29 13:07:43,399 - INFO - Successfully updated Hitters amayaja01/2025/CHW.
+2025-03-29 13:07:43,425 - INFO - Successfully updated Hitters anderti01/2025/LAA.
+2025-03-29 13:07:43,451 - INFO - Successfully updated Hitters arciaor01/2025/ATL.
+2025-03-29 13:07:43,476 - INFO - Successfully updated Hitters arenano01/2025/STL.
+2025-03-29 13:07:43,501 - INFO - Successfully updated Hitters ariasga01/2025/CLE.
+2025-03-29 13:07:43,534 - INFO - Successfully updated Hitters baderha01/2025/MIN.
+2025-03-29 13:07:43,572 - INFO - Successfully updated Hitters baezja01/2025/DET.
+2025-03-29 13:07:43,609 - INFO - Successfully updated Hitters bailepa01/2025/SFG.
+2025-03-29 13:07:44,110 - INFO - Processed 170 hitters so far
+2025-03-29 13:07:44,138 - INFO - Successfully created Hitters beckjo01/2025/COL.
+2025-03-29 13:07:44,164 - INFO - Successfully updated Hitters belljo02/2025/WSN.
+2025-03-29 13:07:44,189 - INFO - Successfully updated Hitters bellico01/2025/NYY.
+2025-03-29 13:07:44,214 - INFO - Successfully updated Hitters beninan01/2025/CHW.
+2025-03-29 13:07:44,245 - INFO - Successfully updated Hitters blissry01/2025/SEA.
+2025-03-29 13:07:44,280 - INFO - Successfully created Hitters bryankr01/2025/COL.
+2025-03-29 13:07:44,306 - INFO - Successfully updated Hitters burleal01/2025/STL.
+2025-03-29 13:07:44,339 - INFO - Successfully updated Hitters buxtoby01/2025/MIN.
+2025-03-29 13:07:44,374 - INFO - Successfully created Hitters caminju01/2025/TBR.
+2025-03-29 13:07:44,412 - INFO - Successfully updated Hitters candeje01/2025/CIN.
+2025-03-29 13:07:44,913 - INFO - Processed 180 hitters so far
+2025-03-29 13:07:44,939 - INFO - Successfully updated Hitters castrwi01/2025/MIN.
+2025-03-29 13:07:44,964 - INFO - Successfully updated Hitters chapmma01/2025/SFG.
+2025-03-29 13:07:44,990 - INFO - Successfully updated Hitters chishja01/2025/NYY.
+2025-03-29 13:07:45,016 - INFO - Successfully updated Hitters clemeer01/2025/TOR.
+2025-03-29 13:07:45,041 - INFO - Successfully updated Hitters coningr01/2025/MIA.
+2025-03-29 13:07:45,067 - INFO - Successfully updated Hitters contrwi02/2025/MIL.
+2025-03-29 13:07:45,093 - INFO - Successfully updated Hitters contrwi01/2025/STL.
+2025-03-29 13:07:45,129 - INFO - Successfully updated Hitters correca01/2025/MIN.
+2025-03-29 13:07:45,163 - INFO - Successfully updated Hitters crewsdy01/2025/WSN.
+2025-03-29 13:07:45,189 - INFO - Successfully updated Hitters delacel01/2025/CIN.
+2025-03-29 13:07:45,690 - INFO - Processed 190 hitters so far
+2025-03-29 13:07:45,751 - INFO - Successfully updated Hitters dejonpa01/2025/WSN.
+2025-03-29 13:07:45,780 - INFO - Successfully created Hitters diazya01/2025/TBR.
+2025-03-29 13:07:45,806 - INFO - Successfully updated Hitters donovbr01/2025/STL.
+2025-03-29 13:07:45,848 - INFO - Successfully updated Hitters encarch01/2025/CIN.
+2025-03-29 13:07:45,889 - INFO - Successfully created Hitters farmeky01/2025/COL.
+2025-03-29 13:07:45,926 - INFO - Successfully updated Hitters florewi01/2025/SFG.
+2025-03-29 13:07:45,964 - INFO - Successfully updated Hitters forteni01/2025/MIA.
+2025-03-29 13:07:46,006 - INFO - Successfully updated Hitters fraleja01/2025/CIN.
+2025-03-29 13:07:46,032 - INFO - Successfully updated Hitters francty01/2025/MIN.
+2025-03-29 13:07:46,058 - INFO - Successfully updated Hitters frelisa01/2025/MIL.
+2025-03-29 13:07:46,558 - INFO - Processed 200 hitters so far
+2025-03-29 13:07:46,585 - INFO - Successfully updated Hitters garcilu04/2025/WSN.
+2025-03-29 13:07:46,615 - INFO - Successfully created Hitters garvemi01/2025/SEA.
+2025-03-29 13:07:46,641 - INFO - Successfully updated Hitters goldspa01/2025/NYY.
+2025-03-29 13:07:46,670 - INFO - Successfully created Hitters goodmhu01/2025/COL.
+2025-03-29 13:07:46,708 - INFO - Successfully updated Hitters gourryu01/2025/SDP.
+2025-03-29 13:07:46,745 - INFO - Successfully updated Hitters herreiv01/2025/STL.
+2025-03-29 13:07:46,784 - INFO - Successfully created Hitters herrejo04/2025/ARI.
+2025-03-29 13:07:46,812 - INFO - Successfully created Hitters hicksli01/2025/MIA.
+2025-03-29 13:07:46,849 - INFO - Successfully updated Hitters higasky01/2025/TEX.
+2025-03-29 13:07:46,885 - INFO - Successfully updated Hitters hoskirh01/2025/MIL.
+2025-03-29 13:07:47,386 - INFO - Processed 210 hitters so far
+2025-03-29 13:07:47,413 - INFO - Successfully updated Hitters isbelky01/2025/KCR.
+2025-03-29 13:07:47,440 - INFO - Successfully updated Hitters jeffery01/2025/MIN.
+2025-03-29 13:07:47,473 - INFO - Successfully updated Hitters judgeaa01/2025/NYY.
+2025-03-29 13:07:47,510 - INFO - Successfully updated Hitters larnatr01/2025/MIN.
+2025-03-29 13:07:47,539 - INFO - Successfully updated Hitters leeju01/2025/SFG.
+2025-03-29 13:07:47,577 - INFO - Successfully updated Hitters leeko01/2025/CHW.
+2025-03-29 13:07:47,607 - INFO - Successfully created Hitters lowebr01/2025/TBR.
+2025-03-29 13:07:47,634 - INFO - Successfully updated Hitters lowena01/2025/WSN.
+2025-03-29 13:07:47,659 - INFO - Successfully updated Hitters luxga01/2025/CIN.
+2025-03-29 13:07:47,693 - INFO - Successfully updated Hitters maldoma01/2025/SDP.
+2025-03-29 13:07:48,193 - INFO - Processed 220 hitters so far
+2025-03-29 13:07:48,220 - INFO - Successfully updated Hitters marshbr02/2025/PHI.
+2025-03-29 13:07:48,247 - INFO - Successfully updated Hitters martest01/2025/NYM.
+2025-03-29 13:07:48,288 - INFO - Successfully created Hitters martini02/2025/COL.
+2025-03-29 13:07:48,377 - INFO - Successfully updated Hitters massemi02/2025/KCR.
+2025-03-29 13:07:48,405 - INFO - Successfully updated Hitters mccarja02/2025/ARI.
+2025-03-29 13:07:48,434 - INFO - Successfully created Hitters mcmahry01/2025/COL.
+2025-03-29 13:07:48,462 - INFO - Successfully created Hitters meadcu01/2025/TBR.
+2025-03-29 13:07:48,488 - INFO - Successfully updated Hitters miranjo01/2025/MIN.
+2025-03-29 13:07:48,516 - INFO - Successfully updated Hitters morenga01/2025/ARI.
+2025-03-29 13:07:48,551 - INFO - Successfully updated Hitters myersda01/2025/MIA.
+2025-03-29 13:07:49,053 - INFO - Processed 230 hitters so far
+2025-03-29 13:07:49,096 - INFO - Successfully updated Hitters naylobo01/2025/CLE.
+2025-03-29 13:07:49,133 - INFO - Successfully updated Hitters nootbla01/2025/STL.
+2025-03-29 13:07:49,171 - INFO - Successfully updated Hitters ohopplo01/2025/LAA.
+2025-03-29 13:07:49,210 - INFO - Successfully updated Hitters ortizjo06/2025/MIL.
+2025-03-29 13:07:49,248 - INFO - Successfully updated Hitters pasquvi01/2025/KCR.
+2025-03-29 13:07:49,285 - INFO - Successfully updated Hitters pederjo01/2025/TEX.
+2025-03-29 13:07:49,323 - INFO - Successfully updated Hitters perezsa02/2025/KCR.
+2025-03-29 13:07:49,362 - INFO - Successfully updated Hitters pillake01/2025/TEX.
+2025-03-29 13:07:49,400 - INFO - Successfully updated Hitters ramoshe02/2025/SFG.
+2025-03-29 13:07:49,441 - INFO - Successfully updated Hitters renfrhu01/2025/KCR.
+2025-03-29 13:07:49,942 - INFO - Processed 240 hitters so far
+2025-03-29 13:07:49,981 - INFO - Successfully updated Hitters rengilu01/2025/LAA.
+2025-03-29 13:07:50,019 - INFO - Successfully updated Hitters roberlu01/2025/CHW.
+2025-03-29 13:07:50,053 - INFO - Successfully updated Hitters rocchbr01/2025/CLE.
+2025-03-29 13:07:50,093 - INFO - Successfully updated Hitters rogerja03/2025/DET.
+2025-03-29 13:07:50,133 - INFO - Successfully updated Hitters ruizke01/2025/WSN.
+2025-03-29 13:07:50,172 - INFO - Successfully updated Hitters schanno01/2025/LAA.
+2025-03-29 13:07:50,209 - INFO - Successfully updated Hitters scottvi01/2025/STL.
+2025-03-29 13:07:50,253 - INFO - Successfully created Hitters solando01/2025/SEA.
+2025-03-29 13:07:50,290 - INFO - Successfully updated Hitters solerjo01/2025/LAA.
+2025-03-29 13:07:50,329 - INFO - Successfully updated Hitters sosale01/2025/CHW.
+2025-03-29 13:07:50,830 - INFO - Processed 250 hitters so far
+2025-03-29 13:07:50,873 - INFO - Successfully updated Hitters steersp01/2025/CIN.
+2025-03-29 13:07:50,909 - INFO - Successfully updated Hitters stottbr01/2025/PHI.
+2025-03-29 13:07:50,947 - INFO - Successfully updated Hitters tellero01/2025/SEA.
+2025-03-29 13:07:50,987 - INFO - Successfully created Hitters thomaal01/2025/ARI.
+2025-03-29 13:07:51,025 - INFO - Successfully created Hitters toglimi01/2025/COL.
+2025-03-29 13:07:51,069 - INFO - Successfully created Hitters tovarez01/2025/COL.
+2025-03-29 13:07:51,108 - INFO - Successfully updated Hitters troutmi01/2025/LAA.
+2025-03-29 13:07:51,146 - INFO - Successfully updated Hitters turanbr02/2025/MIL.
+2025-03-29 13:07:51,188 - INFO - Successfully updated Hitters vargami01/2025/CHW.
+2025-03-29 13:07:51,228 - INFO - Successfully updated Hitters vaughan01/2025/CHW.
+2025-03-29 13:07:51,730 - INFO - Processed 260 hitters so far
+2025-03-29 13:07:51,772 - INFO - Successfully updated Hitters volpean01/2025/NYY.
+2025-03-29 13:07:51,808 - INFO - Successfully updated Hitters wadela01/2025/SFG.
+2025-03-29 13:07:51,845 - INFO - Successfully updated Hitters walkejo02/2025/STL.
+2025-03-29 13:07:51,890 - INFO - Successfully updated Hitters wardta01/2025/LAA.
+2025-03-29 13:07:51,941 - INFO - Successfully updated Hitters wellsau01/2025/NYY.
+2025-03-29 13:07:51,971 - INFO - Successfully updated Hitters woodja03/2025/WSN.
+2025-03-29 13:07:51,997 - INFO - Successfully updated Hitters yastrmi01/2025/SFG.
+2025-03-29 13:07:52,037 - INFO - Successfully updated Hitters youngja03/2025/WSN.
+2025-03-29 13:07:52,075 - INFO - Successfully updated Hitters adelljo01/2025/LAA.
+2025-03-29 13:07:52,115 - INFO - Successfully created Hitters barneau01/2025/LAD.
+2025-03-29 13:07:52,616 - INFO - Processed 270 hitters so far
+2025-03-29 13:07:52,659 - INFO - Successfully updated Hitters biggica01/2025/KCR.
+2025-03-29 13:07:52,688 - INFO - Successfully created Hitters brownse01/2025/ATH.
+2025-03-29 13:07:52,717 - INFO - Successfully updated Hitters cabreos01/2025/NYY.
+2025-03-29 13:07:52,752 - INFO - Successfully updated Hitters capravi01/2025/MIL.
+2025-03-29 13:07:52,788 - INFO - Successfully created Hitters delucjo01/2025/TBR.
+2025-03-29 13:07:52,826 - INFO - Successfully updated Hitters diazel01/2025/SDP.
+2025-03-29 13:07:52,866 - INFO - Successfully updated Hitters dominja01/2025/NYY.
+2025-03-29 13:07:52,904 - INFO - Successfully updated Hitters fitzgty01/2025/SFG.
+2025-03-29 13:07:52,941 - INFO - Successfully updated Hitters gonzani01/2025/PIT.
+2025-03-29 13:07:52,981 - INFO - Successfully created Hitters heimjo01/2025/TEX.
+2025-03-29 13:07:53,482 - INFO - Processed 280 hitters so far
+2025-03-29 13:07:53,528 - INFO - Successfully created Hitters janseda01/2025/TBR.
+2025-03-29 13:07:53,570 - INFO - Successfully created Hitters lukesna01/2025/TOR.
+2025-03-29 13:07:53,607 - INFO - Successfully updated Hitters mateojo01/2025/BAL.
+2025-03-29 13:07:53,643 - INFO - Successfully updated Hitters ricebe01/2025/NYY.
+2025-03-29 13:07:53,682 - INFO - Successfully updated Hitters slateau01/2025/CHW.
+2025-03-29 13:07:53,720 - INFO - Successfully updated Hitters smithjo11/2025/TEX.
+2025-03-29 13:07:53,760 - INFO - Successfully created Hitters taverle01/2025/TEX.
+2025-03-29 13:07:53,796 - INFO - Successfully updated Hitters taylomi02/2025/CHW.
+2025-03-29 13:07:53,831 - INFO - Successfully updated Hitters trevijo01/2025/CIN.
+2025-03-29 13:07:53,861 - INFO - Successfully created Hitters wallsta01/2025/TBR.
+2025-03-29 13:07:54,361 - INFO - Processed 290 hitters so far
+2025-03-29 13:07:54,392 - INFO - Successfully updated Hitters winnma01/2025/STL.
+2025-03-29 13:07:54,429 - INFO - Successfully created Hitters batybr01/2025/NYM.
+2025-03-29 13:07:54,455 - INFO - Successfully updated Hitters colliis01/2025/MIL.
+2025-03-29 13:07:54,482 - INFO - Successfully updated Hitters garcima01/2025/KCR.
+2025-03-29 13:07:54,507 - INFO - Successfully updated Hitters grichra01/2025/ARI.
+2025-03-29 13:07:54,532 - INFO - Successfully updated Hitters lockrbr01/2025/SDP.
+2025-03-29 13:07:54,560 - INFO - Successfully created Hitters lowejo01/2025/TBR.
+2025-03-29 13:07:54,594 - INFO - Successfully updated Hitters melenmj01/2025/KCR.
+2025-03-29 13:07:54,621 - INFO - Successfully updated Hitters mitchga01/2025/MIL.
+2025-03-29 13:07:54,657 - INFO - Successfully created Hitters mooredy01/2025/SEA.
+2025-03-29 13:07:55,158 - INFO - Processed 300 hitters so far
+2025-03-29 13:07:55,189 - INFO - Successfully created Hitters morelch01/2025/TBR.
+2025-03-29 13:07:55,233 - INFO - Successfully updated Hitters newmake01/2025/LAA.
+2025-03-29 13:07:55,259 - INFO - Successfully updated Hitters turneju01/2025/CHC.
+2025-03-29 13:07:55,286 - INFO - Successfully created Hitters arandjo01/2025/TBR.
+2025-03-29 13:07:55,312 - INFO - Successfully updated Hitters bauerja01/2025/MIL.
+2025-03-29 13:07:55,341 - INFO - Successfully created Hitters cabaljo01/2025/TBR.
+2025-03-29 13:07:55,368 - INFO - Successfully updated Hitters canhama01/2025/KCR.
+2025-03-29 13:07:55,392 - INFO - Successfully updated Hitters grishtr01/2025/NYY.
+2025-03-29 13:07:55,418 - INFO - Successfully updated Hitters hurtuja01/2025/CIN.
+2025-03-29 13:07:55,446 - INFO - Successfully created Hitters mastrmi01/2025/SEA.
+2025-03-29 13:07:55,947 - INFO - Processed 310 hitters so far
+2025-03-29 13:07:55,974 - INFO - Successfully updated Hitters matonni01/2025/CHW.
+2025-03-29 13:07:56,010 - INFO - Successfully updated Hitters mccorch01/2025/HOU.
+2025-03-29 13:07:56,045 - INFO - Successfully created Hitters misneka01/2025/TBR.
+2025-03-29 13:07:56,069 - INFO - Successfully updated Hitters moncayo01/2025/LAA.
+2025-03-29 13:07:56,095 - INFO - Successfully updated Hitters parisky01/2025/LAA.
+2025-03-29 13:07:56,126 - INFO - Successfully created Hitters schneda03/2025/TOR.
+2025-03-29 13:07:56,156 - INFO - Successfully updated Hitters sengeha01/2025/NYM.
+2025-03-29 13:07:56,193 - INFO - Successfully created Hitters uriaslu01/2025/ATH.
+2025-03-29 13:07:56,253 - INFO - Successfully created Hitters wagamer01/2025/MIA.
+2025-03-29 13:07:56,280 - INFO - Successfully updated Hitters blancda02/2025/KCR.
+2025-03-29 13:07:56,781 - INFO - Processed 320 hitters so far
+2025-03-29 13:07:56,820 - INFO - Successfully updated Hitters brujavi01/2025/CHC.
+2025-03-29 13:07:56,855 - INFO - Successfully updated Hitters dunnbl01/2025/CIN.
+2025-03-29 13:07:56,881 - INFO - Successfully updated Hitters fermifr01/2025/KCR.
+2025-03-29 13:07:56,951 - INFO - Successfully updated Hitters hamilda03/2025/BOS.
+2025-03-29 13:07:56,977 - INFO - Successfully updated Hitters jankotr01/2025/CHW.
+2025-03-29 13:07:57,002 - INFO - Successfully updated Hitters keirsda01/2025/MIN.
+2025-03-29 13:07:57,027 - INFO - Successfully updated Hitters kjershe01/2025/BAL.
+2025-03-29 13:07:57,059 - INFO - Successfully created Hitters moniami01/2025/COL.
+2025-03-29 13:07:57,094 - INFO - Successfully updated Hitters pagespe02/2025/STL.
+2025-03-29 13:07:57,120 - INFO - Successfully updated Hitters sanojja01/2025/MIA.
+2025-03-29 13:07:57,621 - INFO - Processed 330 hitters so far
+2025-03-29 13:07:57,647 - INFO - Successfully updated Hitters sianimi01/2025/STL.
+2025-03-29 13:07:57,647 - INFO - Successfully processed 331 hitters
+2025-03-29 13:08:04,358 - INFO - Fetching pitching data from https://www.baseball-reference.com/leagues/majors/2025-standard-pitching.shtml
+2025-03-29 13:08:04,358 - INFO - Attempting to scrape with Selenium...
+2025-03-29 13:08:05,381 - INFO - Navigating to https://www.baseball-reference.com/leagues/majors/2025-standard-pitching.shtml with Selenium...
+2025-03-29 13:08:05,986 - INFO - Waiting for Cloudflare to resolve...
+2025-03-29 13:08:06,298 - INFO - Table element found on page, content appears to be loaded
+2025-03-29 13:08:06,327 - INFO - Saved HTML content to selenium_result.html for debugging
+2025-03-29 13:08:08,410 - INFO - Selenium scraping completed successfully
+2025-03-29 13:08:08,413 - INFO - Saved HTML content to debug_pitching.html for debugging
+2025-03-29 13:08:12,950 - INFO - Found table with id 'players_standard_pitching' directly in HTML
+2025-03-29 13:08:12,951 - INFO - Found pitching table with id: players_standard_pitching
+2025-03-29 13:08:12,955 - INFO - Found 211 pitching rows to process
+2025-03-29 13:08:13,071 - INFO - Successfully updated Pitchers yamamyo01/2025/LAD.
+2025-03-29 13:08:13,109 - INFO - Successfully updated Pitchers steelju01/2025/CHC.
+2025-03-29 13:08:13,133 - INFO - Successfully updated Pitchers gilbelo01/2025/SEA.
+2025-03-29 13:08:13,157 - INFO - Successfully updated Pitchers valdefr01/2025/HOU.
+2025-03-29 13:08:13,183 - ERROR - Failed to create Pitchers brownhu01/2025/HOU. Response: 200 - {"bbrefId":"brownhu01","year":2025,"team":"HOU","age":26,"lg":"AL","wl":"0-1","wlPercentage":0,"era":3,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":6,"h":4,"r":3,"er":2,"hr":1,"bb":3,"ibb":0,"so":7,"hbp":0,"bk":0,"wp":0,"bf":23,"eraPlus":137,"fip":4.16,"whip":1.167,"h9":6,"hR9":1.5,"bB9":4.5,"sO9":10.5,"sow":2.33,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:13,212 - INFO - Successfully updated Pitchers burkese01/2025/CHW.
+2025-03-29 13:08:13,235 - INFO - Successfully updated Pitchers eflinza01/2025/BAL.
+2025-03-29 13:08:13,258 - INFO - Successfully updated Pitchers eovalna01/2025/TEX.
+2025-03-29 13:08:13,281 - ERROR - Failed to create Pitchers freelky01/2025/COL. Response: 200 - {"bbrefId":"freelky01","year":2025,"team":"COL","age":32,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":6,"h":2,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":7,"hbp":0,"bk":0,"wp":0,"bf":20,"eraPlus":0,"fip":0.49,"whip":0.333,"h9":3,"hR9":0,"bB9":0,"sO9":10.5,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"LHP"}
+2025-03-29 13:08:13,304 - ERROR - Failed to create Pitchers gausmke01/2025/TOR. Response: 200 - {"bbrefId":"gausmke01","year":2025,"team":"TOR","age":34,"lg":"AL","wl":"1-0","wlPercentage":1,"era":3,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":6,"h":3,"r":2,"er":2,"hr":1,"bb":1,"ibb":0,"so":4,"hbp":0,"bk":0,"wp":0,"bf":22,"eraPlus":137,"fip":4.16,"whip":0.667,"h9":4.5,"hR9":1.5,"bB9":1.5,"sO9":6,"sow":4,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:13,805 - INFO - Processed 10 pitchers so far
+2025-03-29 13:08:13,841 - INFO - Successfully updated Pitchers gorema01/2025/WSN.
+2025-03-29 13:08:13,877 - ERROR - Failed to create Pitchers kellemi03/2025/PIT. Response: 200 - {"bbrefId":"kellemi03","year":2025,"team":"PIT","age":29,"lg":"NL","wl":"1-0","wlPercentage":1,"era":1.5,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":6,"h":5,"r":1,"er":1,"hr":0,"bb":1,"ibb":0,"so":4,"hbp":0,"bk":0,"wp":0,"bf":23,"eraPlus":296,"fip":1.99,"whip":1,"h9":7.5,"hR9":0,"bB9":1.5,"sO9":6,"sow":4,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:13,914 - INFO - Successfully updated Pitchers kikucyu01/2025/LAA.
+2025-03-29 13:08:13,951 - ERROR - Failed to create Pitchers pepiory01/2025/TBR. Response: 200 - {"bbrefId":"pepiory01","year":2025,"team":"TBR","age":27,"lg":"AL","wl":"0-0","wlPercentage":0,"era":1.5,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":6,"h":6,"r":2,"er":1,"hr":0,"bb":1,"ibb":0,"so":8,"hbp":1,"bk":0,"wp":1,"bf":26,"eraPlus":274,"fip":1.16,"whip":1.167,"h9":9,"hR9":0,"bB9":1.5,"sO9":12,"sow":8,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:13,987 - INFO - Successfully updated Pitchers severlu01/2025/ATH.
+2025-03-29 13:08:14,022 - ERROR - Failed to create Pitchers sprinje01/2025/ATH. Response: 200 - {"bbrefId":"sprinje01","year":2025,"team":"ATH","age":32,"lg":"Unknown","wl":"1-0","wlPercentage":1,"era":0,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":6,"h":3,"r":0,"er":0,"hr":0,"bb":1,"ibb":0,"so":9,"hbp":0,"bk":0,"wp":0,"bf":21,"eraPlus":0,"fip":0.33,"whip":0.667,"h9":4.5,"hR9":0,"bB9":1.5,"sO9":13.5,"sow":9,"dateModified":"2025-03-29T13:07:07.081009","throws":"LHP"}
+2025-03-29 13:08:14,056 - INFO - Successfully updated Pitchers wheelza01/2025/PHI.
+2025-03-29 13:08:14,090 - ERROR - Failed to create Pitchers flaheja01/2025/DET. Response: 200 - {"bbrefId":"flaheja01","year":2025,"team":"DET","age":29,"lg":"AL","wl":"0-0","wlPercentage":0,"era":3.18,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":5.2,"h":3,"r":2,"er":2,"hr":1,"bb":2,"ibb":0,"so":5,"hbp":1,"bk":0,"wp":0,"bf":22,"eraPlus":130,"fip":4.95,"whip":0.882,"h9":4.8,"hR9":1.6,"bB9":3.2,"sO9":7.9,"sow":2.5,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:14,126 - ERROR - Failed to create Pitchers houckta01/2025/BOS. Response: 200 - {"bbrefId":"houckta01","year":2025,"team":"BOS","age":29,"lg":"AL","wl":"0-1","wlPercentage":0,"era":6.35,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":5.2,"h":7,"r":4,"er":4,"hr":2,"bb":3,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":0,"bf":24,"eraPlus":65,"fip":8.3,"whip":1.765,"h9":11.1,"hR9":3.2,"bB9":4.8,"sO9":3.2,"sow":0.67,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:14,161 - ERROR - Failed to create Pitchers kellyme01/2025/ARI. Response: 200 - {"bbrefId":"kellyme01","year":2025,"team":"ARI","age":36,"lg":"NL","wl":"1-0","wlPercentage":1,"era":1.69,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":5.1,"h":3,"r":1,"er":1,"hr":0,"bb":4,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":23,"eraPlus":265,"fip":4.7,"whip":1.313,"h9":5.1,"hR9":0,"bB9":6.8,"sO9":1.7,"sow":0.25,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:14,662 - INFO - Processed 20 pitchers so far
+2025-03-29 13:08:14,697 - INFO - Successfully updated Pitchers rodonca01/2025/NYY.
+2025-03-29 13:08:14,731 - INFO - Successfully updated Pitchers skenepa01/2025/PIT.
+2025-03-29 13:08:14,766 - INFO - Successfully updated Pitchers berrijo01/2025/TOR.
+2025-03-29 13:08:14,801 - ERROR - Failed to create Pitchers castilu02/2025/SEA. Response: 200 - {"bbrefId":"castilu02","year":2025,"team":"SEA","age":32,"lg":"AL","wl":"0-1","wlPercentage":0,"era":3.6,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":5,"h":3,"r":2,"er":2,"hr":1,"bb":2,"ibb":0,"so":4,"hbp":1,"bk":0,"wp":0,"bf":21,"eraPlus":115,"fip":5.63,"whip":1,"h9":5.4,"hR9":1.8,"bB9":3.6,"sO9":7.2,"sow":2,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:14,836 - INFO - Successfully updated Pitchers crochga01/2025/BOS.
+2025-03-29 13:08:14,872 - ERROR - Failed to create Pitchers gillico01/2025/MIA. Response: 200 - {"bbrefId":"gillico01","year":2025,"team":"MIA","age":27,"lg":"NL","wl":"0-1","wlPercentage":0,"era":5.4,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":5,"h":4,"r":4,"er":3,"hr":1,"bb":4,"ibb":0,"so":4,"hbp":0,"bk":0,"wp":0,"bf":24,"eraPlus":83,"fip":6.23,"whip":1.6,"h9":7.2,"hR9":1.8,"bB9":7.2,"sO9":7.2,"sow":1,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:14,907 - INFO - Successfully updated Pitchers grayso01/2025/STL.
+2025-03-29 13:08:14,942 - INFO - Successfully updated Pitchers greenhu01/2025/CIN.
+2025-03-29 13:08:14,976 - ERROR - Failed to create Pitchers leiteja01/2025/TEX. Response: 200 - {"bbrefId":"leiteja01","year":2025,"team":"TEX","age":25,"lg":"AL","wl":"1-0","wlPercentage":1,"era":1.8,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":5,"h":5,"r":1,"er":1,"hr":0,"bb":1,"ibb":0,"so":4,"hbp":0,"bk":0,"wp":0,"bf":20,"eraPlus":231,"fip":1.83,"whip":1.2,"h9":9,"hR9":0,"bB9":1.8,"sO9":7.2,"sow":4,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:15,011 - INFO - Successfully updated Pitchers livelbe01/2025/CLE.
+2025-03-29 13:08:15,512 - INFO - Processed 30 pitchers so far
+2025-03-29 13:08:15,536 - INFO - Successfully updated Pitchers lopezpa01/2025/MIN.
+2025-03-29 13:08:15,567 - ERROR - Failed to create Pitchers lopezre01/2025/ATL. Response: 200 - {"bbrefId":"lopezre01","year":2025,"team":"ATL","age":31,"lg":"NL","wl":"0-0","wlPercentage":0,"era":5.4,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":5,"h":9,"r":3,"er":3,"hr":1,"bb":2,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":25,"eraPlus":83,"fip":6.23,"whip":2.2,"h9":16.2,"hR9":1.8,"bB9":3.6,"sO9":1.8,"sow":0.5,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:15,603 - ERROR - Failed to create Pitchers megilty01/2025/NYM. Response: 200 - {"bbrefId":"megilty01","year":2025,"team":"NYM","age":29,"lg":"NL","wl":"1-0","wlPercentage":1,"era":1.8,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":5,"h":3,"r":1,"er":1,"hr":0,"bb":1,"ibb":0,"so":6,"hbp":0,"bk":0,"wp":1,"bf":19,"eraPlus":249,"fip":1.03,"whip":0.8,"h9":5.4,"hR9":0,"bB9":1.8,"sO9":10.8,"sow":6,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:15,626 - INFO - Successfully updated Pitchers peralfr01/2025/MIL.
+2025-03-29 13:08:15,649 - INFO - Successfully updated Pitchers raganco01/2025/KCR.
+2025-03-29 13:08:15,674 - INFO - Successfully updated Pitchers salech01/2025/ATL.
+2025-03-29 13:08:15,706 - INFO - Successfully updated Pitchers skubata01/2025/DET.
+2025-03-29 13:08:15,740 - INFO - Successfully updated Pitchers snellbl01/2025/LAD.
+2025-03-29 13:08:15,768 - INFO - Successfully updated Pitchers webblo01/2025/SFG.
+2025-03-29 13:08:15,809 - INFO - Successfully updated Pitchers alcansa01/2025/MIA.
+2025-03-29 13:08:16,310 - INFO - Processed 40 pitchers so far
+2025-03-29 13:08:16,345 - INFO - Successfully updated Pitchers holmecl01/2025/NYM.
+2025-03-29 13:08:16,383 - ERROR - Failed to create Pitchers ceasedy01/2025/SDP. Response: 200 - {"bbrefId":"ceasedy01","year":2025,"team":"SDP","age":29,"lg":"NL","wl":"0-0","wlPercentage":0,"era":6.23,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":4.1,"h":4,"r":3,"er":3,"hr":1,"bb":2,"ibb":0,"so":7,"hbp":0,"bk":0,"wp":0,"bf":19,"eraPlus":73,"fip":3.98,"whip":1.385,"h9":8.3,"hR9":2.1,"bB9":4.2,"sO9":14.5,"sow":3.5,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:16,408 - ERROR - Failed to create Pitchers taillja01/2025/CHC. Response: 200 - {"bbrefId":"taillja01","year":2025,"team":"CHC","age":33,"lg":"NL","wl":"0-1","wlPercentage":0,"era":12.46,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":4.1,"h":9,"r":6,"er":6,"hr":2,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":22,"eraPlus":36,"fip":8.37,"whip":2.077,"h9":18.7,"hR9":4.2,"bB9":0,"sO9":2.1,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:16,430 - INFO - Successfully updated Pitchers galleza01/2025/ARI.
+2025-03-29 13:08:16,457 - INFO - Successfully updated Pitchers imanash01/2025/CHC.
+2025-03-29 13:08:16,480 - ERROR - Failed to create Pitchers mortoch02/2025/BAL. Response: 200 - {"bbrefId":"mortoch02","year":2025,"team":"BAL","age":41,"lg":"AL","wl":"0-1","wlPercentage":0,"era":10.8,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":3.1,"h":7,"r":4,"er":4,"hr":0,"bb":1,"ibb":0,"so":3,"hbp":0,"bk":0,"wp":0,"bf":18,"eraPlus":40,"fip":1.93,"whip":2.4,"h9":18.9,"hR9":0,"bB9":2.7,"sO9":8.1,"sow":3,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:16,513 - INFO - Successfully updated Pitchers morgael01/2025/CHC.
+2025-03-29 13:08:16,545 - ERROR - Failed to create Pitchers phillty01/2025/MIA. Response: 200 - {"bbrefId":"phillty01","year":2025,"team":"MIA","age":27,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":3,"h":3,"r":0,"er":0,"hr":0,"bb":1,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":11,"eraPlus":0,"fip":3.16,"whip":1.333,"h9":9,"hR9":0,"bB9":3,"sO9":3,"sow":1,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:16,580 - INFO - Successfully updated Pitchers sasakro01/2025/LAD.
+2025-03-29 13:08:16,616 - INFO - Successfully updated Pitchers scottta01/2025/LAD.
+2025-03-29 13:08:17,117 - INFO - Processed 50 pitchers so far
+2025-03-29 13:08:17,142 - INFO - Successfully updated Pitchers vesiaal01/2025/LAD.
+2025-03-29 13:08:17,166 - INFO - Successfully updated Pitchers brownbe02/2025/CHC.
+2025-03-29 13:08:17,199 - INFO - Successfully updated Pitchers kingmi01/2025/SDP.
+2025-03-29 13:08:17,232 - ERROR - Failed to create Pitchers suareal01/2025/BAL. Response: 200 - {"bbrefId":"suareal01","year":2025,"team":"BAL","age":35,"lg":"AL","wl":"0-0","wlPercentage":0,"era":3.38,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":2.2,"h":5,"r":2,"er":1,"hr":0,"bb":0,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":2,"bf":11,"eraPlus":131,"fip":1.33,"whip":1.875,"h9":16.9,"hR9":0,"bB9":0,"sO9":6.8,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:17,288 - INFO - Successfully updated Pitchers brazohu01/2025/NYM.
+2025-03-29 13:08:17,317 - INFO - Successfully updated Pitchers estraje01/2025/SDP.
+2025-03-29 13:08:17,353 - INFO - Successfully updated Pitchers sandlni01/2025/TOR.
+2025-03-29 13:08:17,379 - INFO - Successfully updated Pitchers adamja01/2025/SDP.
+2025-03-29 13:08:17,402 - INFO - Successfully updated Pitchers bandaan01/2025/LAD.
+2025-03-29 13:08:17,426 - INFO - Successfully updated Pitchers caspabe01/2025/LAD.
+2025-03-29 13:08:17,927 - INFO - Processed 60 pitchers so far
+2025-03-29 13:08:17,954 - INFO - Successfully updated Pitchers ferguca01/2025/PIT.
+2025-03-29 13:08:17,989 - INFO - Successfully updated Pitchers garcilu03/2025/LAD.
+2025-03-29 13:08:18,017 - INFO - Successfully updated Pitchers hodgepo01/2025/CHC.
+2025-03-29 13:08:18,040 - ERROR - Failed to create Pitchers kellebr01/2025/CHC. Response: 200 - {"bbrefId":"kellebr01","year":2025,"team":"CHC","age":29,"lg":"NL","wl":"0-0","wlPercentage":0,"era":9,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":2,"h":4,"r":2,"er":2,"hr":0,"bb":0,"ibb":0,"so":3,"hbp":1,"bk":0,"wp":0,"bf":11,"eraPlus":55,"fip":1.33,"whip":2,"h9":18,"hR9":0,"bB9":0,"sO9":13.5,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:18,065 - INFO - Successfully updated Pitchers knackla01/2025/LAD.
+2025-03-29 13:08:18,106 - INFO - Successfully updated Pitchers leedy01/2025/ATL.
+2025-03-29 13:08:18,143 - ERROR - Failed to create Pitchers millesh01/2025/ARI. Response: 200 - {"bbrefId":"millesh01","year":2025,"team":"ARI","age":34,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":2,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":3,"hbp":0,"bk":0,"wp":0,"bf":7,"eraPlus":0,"fip":-0.17,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":13.5,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:18,167 - INFO - Successfully updated Pitchers pearsna01/2025/CHC.
+2025-03-29 13:08:18,190 - INFO - Successfully updated Pitchers pressry01/2025/CHC.
+2025-03-29 13:08:18,213 - INFO - Successfully updated Pitchers soriage01/2025/MIA.
+2025-03-29 13:08:18,713 - INFO - Processed 70 pitchers so far
+2025-03-29 13:08:18,740 - ERROR - Failed to create Pitchers spencmi01/2025/ATH. Response: 200 - {"bbrefId":"spencmi01","year":2025,"team":"ATH","age":27,"lg":"Unknown","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":2,"h":2,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":0,"bf":8,"eraPlus":0,"fip":0.83,"whip":1,"h9":9,"hR9":0,"bB9":0,"sO9":9,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:18,766 - INFO - Successfully updated Pitchers suarero01/2025/SDP.
+2025-03-29 13:08:18,802 - INFO - Successfully updated Pitchers thielca01/2025/CHC.
+2025-03-29 13:08:18,837 - INFO - Successfully updated Pitchers treinbl01/2025/LAD.
+2025-03-29 13:08:18,868 - INFO - Successfully updated Pitchers whitlga01/2025/BOS.
+2025-03-29 13:08:18,895 - INFO - Successfully updated Pitchers yateski01/2025/LAD.
+2025-03-29 13:08:18,919 - INFO - Successfully updated Pitchers armstsh01/2025/TEX.
+2025-03-29 13:08:18,943 - INFO - Successfully updated Pitchers beeksja02/2025/ARI.
+2025-03-29 13:08:18,973 - INFO - Successfully updated Pitchers jarvibr01/2025/ARI.
+2025-03-29 13:08:19,010 - INFO - Successfully updated Pitchers johnsry01/2025/LAA.
+2025-03-29 13:08:19,511 - INFO - Processed 80 pitchers so far
+2025-03-29 13:08:19,535 - INFO - Successfully updated Pitchers matsuyu01/2025/SDP.
+2025-03-29 13:08:19,561 - ERROR - Failed to create Pitchers morejad01/2025/SDP. Response: 200 - {"bbrefId":"morejad01","year":2025,"team":"SDP","age":26,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1.2,"h":0,"r":0,"er":0,"hr":0,"bb":1,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":6,"eraPlus":0,"fip":3.43,"whip":0.6,"h9":0,"hR9":0,"bB9":5.4,"sO9":5.4,"sow":1,"dateModified":"2025-03-29T13:07:07.081009","throws":"LHP"}
+2025-03-29 13:08:19,597 - INFO - Successfully updated Pitchers nelsory01/2025/ARI.
+2025-03-29 13:08:19,622 - INFO - Successfully updated Pitchers bachala01/2025/MIA.
+2025-03-29 13:08:19,645 - ERROR - Failed to create Pitchers bernabr01/2025/BOS. Response: 200 - {"bbrefId":"bernabr01","year":2025,"team":"BOS","age":33,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":1.1,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":0,"fip":2.83,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":0,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"LHP"}
+2025-03-29 13:08:19,672 - INFO - Successfully updated Pitchers borucry01/2025/PIT.
+2025-03-29 13:08:19,707 - INFO - Successfully updated Pitchers briesbe01/2025/DET.
+2025-03-29 13:08:19,731 - INFO - Successfully updated Pitchers ferrejo01/2025/WSN.
+2025-03-29 13:08:19,753 - ERROR - Failed to create Pitchers holtoty01/2025/DET. Response: 200 - {"bbrefId":"holtoty01","year":2025,"team":"DET","age":29,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1.1,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":0,"fip":1.33,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":6.8,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"LHP"}
+2025-03-29 13:08:19,777 - INFO - Successfully updated Pitchers jackslu01/2025/TEX.
+2025-03-29 13:08:20,278 - INFO - Processed 90 pitchers so far
+2025-03-29 13:08:20,300 - INFO - Successfully updated Pitchers martich02/2025/TEX.
+2025-03-29 13:08:20,323 - ERROR - Failed to create Pitchers vargaca01/2025/SEA. Response: 200 - {"bbrefId":"vargaca01","year":2025,"team":"SEA","age":25,"lg":"AL","wl":"0-0","wlPercentage":0,"era":6.75,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":1.1,"h":3,"r":1,"er":1,"hr":1,"bb":0,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":7,"eraPlus":74,"fip":12.58,"whip":2.25,"h9":20.3,"hR9":6.8,"bB9":0,"sO9":0,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:20,348 - INFO - Successfully updated Pitchers zerpaan01/2025/KCR.
+2025-03-29 13:08:20,380 - INFO - Successfully updated Pitchers abreubr01/2025/HOU.
+2025-03-29 13:08:20,432 - INFO - Successfully updated Pitchers akinke01/2025/BAL.
+2025-03-29 13:08:20,467 - INFO - Successfully updated Pitchers alexaty01/2025/MIL.
+2025-03-29 13:08:20,490 - INFO - Successfully updated Pitchers alvarjo03/2025/PHI.
+2025-03-29 13:08:20,523 - INFO - Successfully updated Pitchers bakerbr01/2025/BAL.
+2025-03-29 13:08:20,557 - INFO - Successfully updated Pitchers barlosc01/2025/CIN.
+2025-03-29 13:08:20,580 - INFO - Successfully updated Pitchers barneja01/2025/TOR.
+2025-03-29 13:08:21,081 - INFO - Processed 100 pitchers so far
+2025-03-29 13:08:21,106 - INFO - Successfully updated Pitchers bednada01/2025/PIT.
+2025-03-29 13:08:21,139 - ERROR - Failed to create Pitchers biggehu01/2025/TBR. Response: 200 - {"bbrefId":"biggehu01","year":2025,"team":"TBR","age":27,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":3,"eraPlus":0,"fip":0.83,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":9,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:21,171 - INFO - Successfully updated Pitchers booseca01/2025/CHW.
+2025-03-29 13:08:21,204 - INFO - Successfully updated Pitchers brasiry01/2025/CHC.
+2025-03-29 13:08:21,236 - INFO - Successfully updated Pitchers brebbjo01/2025/DET.
+2025-03-29 13:08:21,260 - INFO - Successfully updated Pitchers bummeaa01/2025/ATL.
+2025-03-29 13:08:21,289 - INFO - Successfully updated Pitchers chapmar01/2025/BOS.
+2025-03-29 13:08:21,324 - INFO - Successfully updated Pitchers claseem01/2025/CLE.
+2025-03-29 13:08:21,347 - ERROR - Failed to create Pitchers contrlu01/2025/HOU. Response: 200 - {"bbrefId":"contrlu01","year":2025,"team":"HOU","age":29,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":0,"bf":3,"eraPlus":0,"fip":-1.17,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":18,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:21,381 - ERROR - Failed to create Pitchers diazed04/2025/NYM. Response: 200 - {"bbrefId":"diazed04","year":2025,"team":"NYM","age":31,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":1,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":3,"eraPlus":0,"fip":0.83,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":9,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:21,882 - INFO - Processed 110 pitchers so far
+2025-03-29 13:08:21,906 - INFO - Successfully updated Pitchers dominse01/2025/BAL.
+2025-03-29 13:08:21,931 - INFO - Successfully updated Pitchers dreyeja01/2025/LAD.
+2025-03-29 13:08:21,966 - INFO - Successfully updated Pitchers estevca01/2025/KCR.
+2025-03-29 13:08:22,001 - ERROR - Failed to create Pitchers fairbpe01/2025/TBR. Response: 200 - {"bbrefId":"fairbpe01","year":2025,"team":"TBR","age":31,"lg":"AL","wl":"1-0","wlPercentage":1,"era":0,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":2,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":0,"fip":4.83,"whip":2,"h9":0,"hR9":0,"bB9":18,"sO9":18,"sow":1,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:22,025 - INFO - Successfully updated Pitchers ferguty01/2025/ATH.
+2025-03-29 13:08:22,061 - INFO - Successfully updated Pitchers finneky01/2025/WSN.
+2025-03-29 13:08:22,095 - INFO - Successfully updated Pitchers gaddihu01/2025/CLE.
+2025-03-29 13:08:22,124 - ERROR - Failed to create Pitchers garciyi01/2025/TOR. Response: 200 - {"bbrefId":"garciyi01","year":2025,"team":"TOR","age":34,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":3,"eraPlus":0,"fip":0.83,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":9,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:22,148 - ERROR - Failed to create Pitchers garrere01/2025/NYM. Response: 200 - {"bbrefId":"garrere01","year":2025,"team":"NYM","age":32,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":1,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":0,"fip":1.83,"whip":1,"h9":0,"hR9":0,"bB9":9,"sO9":18,"sow":2,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:22,172 - INFO - Successfully updated Pitchers haderjo01/2025/HOU.
+2025-03-29 13:08:22,673 - INFO - Processed 120 pitchers so far
+2025-03-29 13:08:22,697 - INFO - Successfully updated Pitchers hanifbr01/2025/DET.
+2025-03-29 13:08:22,731 - INFO - Successfully updated Pitchers harvehu01/2025/KCR.
+2025-03-29 13:08:22,767 - INFO - Successfully updated Pitchers helslry01/2025/STL.
+2025-03-29 13:08:22,799 - ERROR - Failed to create Pitchers hernada03/2025/ATL. Response: 200 - {"bbrefId":"hernada03","year":2025,"team":"ATL","age":28,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":3,"eraPlus":0,"fip":0.83,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":9,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:22,834 - INFO - Successfully updated Pitchers herriti01/2025/CLE.
+2025-03-29 13:08:22,867 - INFO - Successfully updated Pitchers holdeco01/2025/PIT.
+2025-03-29 13:08:22,901 - INFO - Successfully updated Pitchers holmegr01/2025/ATL.
+2025-03-29 13:08:22,941 - INFO - Successfully updated Pitchers hudsobr01/2025/MIL.
+2025-03-29 13:08:22,977 - INFO - Successfully updated Pitchers jacobal01/2025/SDP.
+2025-03-29 13:08:23,009 - ERROR - Failed to create Pitchers johnspi01/2025/ATL. Response: 200 - {"bbrefId":"johnspi01","year":2025,"team":"ATL","age":34,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":3,"eraPlus":0,"fip":0.83,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":9,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:23,510 - INFO - Processed 130 pitchers so far
+2025-03-29 13:08:23,543 - ERROR - Failed to create Pitchers kahnlto01/2025/DET. Response: 200 - {"bbrefId":"kahnlto01","year":2025,"team":"DET","age":35,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":0,"bf":3,"eraPlus":0,"fip":-1.17,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":18,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:23,575 - INFO - Successfully updated Pitchers kerkeor01/2025/PHI.
+2025-03-29 13:08:23,609 - INFO - Successfully updated Pitchers leitema02/2025/NYY.
+2025-03-29 13:08:23,643 - INFO - Successfully updated Pitchers longsa01/2025/KCR.
+2025-03-29 13:08:23,672 - ERROR - Failed to create Pitchers mantijo01/2025/ARI. Response: 200 - {"bbrefId":"mantijo01","year":2025,"team":"ARI","age":34,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":3,"eraPlus":0,"fip":0.83,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":9,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"LHP"}
+2025-03-29 13:08:23,694 - INFO - Successfully updated Pitchers matonph01/2025/STL.
+2025-03-29 13:08:23,729 - INFO - Successfully updated Pitchers mcfartj01/2025/ATH.
+2025-03-29 13:08:23,752 - INFO - Successfully updated Pitchers merryju01/2025/CHC.
+2025-03-29 13:08:23,777 - INFO - Successfully updated Pitchers milleer01/2025/SFG.
+2025-03-29 13:08:23,814 - ERROR - Failed to create Pitchers minteaj01/2025/NYM. Response: 200 - {"bbrefId":"minteaj01","year":2025,"team":"NYM","age":31,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":1,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":0,"fip":3.83,"whip":1,"h9":0,"hR9":0,"bB9":9,"sO9":9,"sow":1,"dateModified":"2025-03-29T13:07:07.081009","throws":"LHP"}
+2025-03-29 13:08:24,315 - INFO - Processed 140 pitchers so far
+2025-03-29 13:08:24,338 - ERROR - Failed to create Pitchers montgma01/2025/TBR. Response: 200 - {"bbrefId":"montgma01","year":2025,"team":"TBR","age":25,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":1,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":0,"fip":0.83,"whip":1,"h9":9,"hR9":0,"bB9":0,"sO9":9,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"LHP"}
+2025-03-29 13:08:24,373 - INFO - Successfully updated Pitchers munozan01/2025/SEA.
+2025-03-29 13:08:24,398 - INFO - Successfully updated Pitchers murfepe01/2025/CHW.
+2025-03-29 13:08:24,427 - ERROR - Failed to create Pitchers okertst01/2025/HOU. Response: 200 - {"bbrefId":"okertst01","year":2025,"team":"HOU","age":33,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":0,"bf":3,"eraPlus":0,"fip":-1.17,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":18,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"LHP"}
+2025-03-29 13:08:24,458 - INFO - Successfully updated Pitchers paganem01/2025/CIN.
+2025-03-29 13:08:24,485 - ERROR - Failed to create Pitchers perezci01/2025/BAL. Response: 200 - {"bbrefId":"perezci01","year":2025,"team":"BAL","age":29,"lg":"AL","wl":"0-0","wlPercentage":0,"era":18,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":2,"r":2,"er":2,"hr":0,"bb":2,"ibb":0,"so":1,"hbp":0,"bk":1,"wp":0,"bf":7,"eraPlus":30,"fip":6.83,"whip":4,"h9":18,"hR9":0,"bB9":18,"sO9":9,"sow":0.5,"dateModified":"2025-03-29T13:07:07.081009","throws":"LHP"}
+2025-03-29 13:08:24,508 - INFO - Successfully updated Pitchers rodrira02/2025/SFG.
+2025-03-29 13:08:24,541 - INFO - Successfully updated Pitchers rodriya01/2025/TOR.
+2025-03-29 13:08:24,575 - INFO - Successfully updated Pitchers rogerty01/2025/SFG.
+2025-03-29 13:08:24,602 - INFO - Successfully updated Pitchers romanjo03/2025/PHI.
+2025-03-29 13:08:25,103 - INFO - Processed 150 pitchers so far
+2025-03-29 13:08:25,130 - INFO - Successfully updated Pitchers roycrch01/2025/STL.
+2025-03-29 13:08:25,153 - INFO - Successfully updated Pitchers sandsco01/2025/MIN.
+2025-03-29 13:08:25,176 - INFO - Successfully updated Pitchers santito01/2025/CIN.
+2025-03-29 13:08:25,206 - ERROR - Failed to create Pitchers santogr01/2025/SEA. Response: 200 - {"bbrefId":"santogr01","year":2025,"team":"SEA","age":25,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":1,"r":0,"er":0,"hr":0,"bb":1,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":0,"fip":5.83,"whip":2,"h9":9,"hR9":0,"bB9":9,"sO9":0,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:25,241 - ERROR - Failed to create Pitchers sauceta01/2025/SEA. Response: 200 - {"bbrefId":"sauceta01","year":2025,"team":"SEA","age":32,"lg":"AL","wl":"0-0","wlPercentage":0,"era":18,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":4,"r":2,"er":2,"hr":1,"bb":1,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":8,"eraPlus":30,"fip":18.83,"whip":5,"h9":36,"hR9":9,"bB9":9,"sO9":0,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"LHP"}
+2025-03-29 13:08:25,263 - INFO - Successfully updated Pitchers sewalpa01/2025/CLE.
+2025-03-29 13:08:25,286 - INFO - Successfully updated Pitchers slateju01/2025/BOS.
+2025-03-29 13:08:25,310 - INFO - Successfully updated Pitchers smithca06/2025/CLE.
+2025-03-29 13:08:25,333 - ERROR - Failed to create Pitchers sotogr01/2025/BAL. Response: 200 - {"bbrefId":"sotogr01","year":2025,"team":"BAL","age":30,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":3,"hbp":1,"bk":0,"wp":0,"bf":4,"eraPlus":0,"fip":-0.17,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":27,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"LHP"}
+2025-03-29 13:08:25,355 - ERROR - Failed to create Pitchers stanery01/2025/NYM. Response: 200 - {"bbrefId":"stanery01","year":2025,"team":"NYM","age":33,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":1,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":0,"fip":5.83,"whip":1,"h9":0,"hR9":0,"bB9":9,"sO9":0,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:25,856 - INFO - Processed 160 pitchers so far
+2025-03-29 13:08:25,893 - INFO - Successfully updated Pitchers strahma01/2025/PHI.
+2025-03-29 13:08:25,921 - INFO - Successfully updated Pitchers thorntr01/2025/SEA.
+2025-03-29 13:08:25,976 - INFO - Successfully updated Pitchers tinocje01/2025/MIA.
+2025-03-29 13:08:26,035 - INFO - Successfully updated Pitchers varlalo01/2025/MIN.
+2025-03-29 13:08:26,059 - ERROR - Failed to create Pitchers venezan01/2025/MIA. Response: 200 - {"bbrefId":"venezan01","year":2025,"team":"MIA","age":27,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":0,"fip":0.83,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":9,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"LHP"}
+2025-03-29 13:08:26,101 - ERROR - Failed to create Pitchers vestwi01/2025/DET. Response: 200 - {"bbrefId":"vestwi01","year":2025,"team":"DET","age":30,"lg":"AL","wl":"0-0","wlPercentage":0,"era":9,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":1,"r":1,"er":1,"hr":1,"bb":0,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":60,"fip":11.83,"whip":1,"h9":9,"hR9":9,"bB9":0,"sO9":18,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:26,138 - ERROR - Failed to create Pitchers vodnivi01/2025/COL. Response: 200 - {"bbrefId":"vodnivi01","year":2025,"team":"COL","age":25,"lg":"NL","wl":"0-1","wlPercentage":0,"era":9,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":1,"h":1,"r":1,"er":1,"hr":1,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":63,"fip":13.83,"whip":1,"h9":9,"hR9":9,"bB9":0,"sO9":9,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:26,174 - INFO - Successfully updated Pitchers walkery01/2025/SFG.
+2025-03-29 13:08:26,209 - INFO - Successfully updated Pitchers weavelu01/2025/NYY.
+2025-03-29 13:08:26,243 - ERROR - Failed to create Pitchers webbja01/2025/TEX. Response: 200 - {"bbrefId":"webbja01","year":2025,"team":"TEX","age":31,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":3,"eraPlus":0,"fip":2.83,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":0,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:26,744 - INFO - Processed 170 pitchers so far
+2025-03-29 13:08:26,779 - ERROR - Failed to create Pitchers weissgr01/2025/BOS. Response: 200 - {"bbrefId":"weissgr01","year":2025,"team":"BOS","age":30,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":1,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":0,"fip":0.83,"whip":1,"h9":9,"hR9":0,"bB9":0,"sO9":9,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:26,819 - INFO - Successfully updated Pitchers willide03/2025/NYY.
+2025-03-29 13:08:26,843 - INFO - Successfully updated Pitchers youngda02/2025/NYM.
+2025-03-29 13:08:26,872 - ERROR - Failed to create Pitchers bazared01/2025/SEA. Response: 200 - {"bbrefId":"bazared01","year":2025,"team":"SEA","age":29,"lg":"AL","wl":"0-0","wlPercentage":0,"era":27,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":0.2,"h":1,"r":2,"er":2,"hr":0,"bb":1,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":23,"fip":4.33,"whip":3,"h9":13.5,"hR9":0,"bB9":13.5,"sO9":13.5,"sow":1,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:26,896 - ERROR - Failed to create Pitchers chivian01/2025/COL. Response: 200 - {"bbrefId":"chivian01","year":2025,"team":"COL","age":22,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":0.2,"h":1,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":3,"eraPlus":0,"fip":-0.17,"whip":1.5,"h9":13.5,"hR9":0,"bB9":0,"sO9":13.5,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:26,919 - INFO - Successfully updated Pitchers erceglu01/2025/KCR.
+2025-03-29 13:08:26,942 - INFO - Successfully updated Pitchers garciro04/2025/TEX.
+2025-03-29 13:08:26,975 - INFO - Successfully updated Pitchers gibauia01/2025/CIN.
+2025-03-29 13:08:26,998 - INFO - Successfully updated Pitchers hillti01/2025/NYY.
+2025-03-29 13:08:27,027 - INFO - Successfully updated Pitchers jaxgr01/2025/MIN.
+2025-03-29 13:08:27,528 - INFO - Processed 180 pitchers so far
+2025-03-29 13:08:27,562 - INFO - Successfully updated Pitchers koenija01/2025/MIL.
+2025-03-29 13:08:27,594 - INFO - Successfully updated Pitchers leahyky01/2025/STL.
+2025-03-29 13:08:27,628 - INFO - Successfully updated Pitchers leasujo01/2025/CHW.
+2025-03-29 13:08:27,662 - ERROR - Failed to create Pitchers littlbr02/2025/TOR. Response: 200 - {"bbrefId":"littlbr02","year":2025,"team":"TOR","age":28,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":0.2,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":0,"bf":2,"eraPlus":0,"fip":-3.17,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":27,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"LHP"}
+2025-03-29 13:08:27,687 - INFO - Successfully updated Pitchers lovelri01/2025/TOR.
+2025-03-29 13:08:27,711 - ERROR - Failed to create Pitchers milneho01/2025/TEX. Response: 200 - {"bbrefId":"milneho01","year":2025,"team":"TEX","age":34,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":0.2,"h":1,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":3,"eraPlus":0,"fip":-0.17,"whip":1.5,"h9":13.5,"hR9":0,"bB9":0,"sO9":13.5,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"LHP"}
+2025-03-29 13:08:27,733 - INFO - Successfully updated Pitchers pocheco01/2025/WSN.
+2025-03-29 13:08:27,795 - ERROR - Failed to create Pitchers scottta02/2025/HOU. Response: 200 - {"bbrefId":"scottta02","year":2025,"team":"HOU","age":33,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":0.2,"h":1,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":0,"hbp":1,"bk":0,"wp":0,"bf":4,"eraPlus":0,"fip":7.33,"whip":1.5,"h9":13.5,"hR9":0,"bB9":0,"sO9":0,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:27,831 - INFO - Successfully updated Pitchers simslu01/2025/WSN.
+2025-03-29 13:08:27,867 - ERROR - Failed to create Pitchers sternju01/2025/ATH. Response: 200 - {"bbrefId":"sternju01","year":2025,"team":"ATH","age":28,"lg":"Unknown","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":0.2,"h":0,"r":0,"er":0,"hr":0,"bb":2,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":0,"fip":8.83,"whip":3,"h9":0,"hR9":0,"bB9":27,"sO9":13.5,"sow":0.5,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:28,367 - INFO - Processed 190 pitchers so far
+2025-03-29 13:08:28,392 - ERROR - Failed to create Pitchers thompry02/2025/ARI. Response: 200 - {"bbrefId":"thompry02","year":2025,"team":"ARI","age":33,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":0.2,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":2,"eraPlus":0,"fip":2.83,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":0,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:28,417 - ERROR - Failed to create Pitchers churcma01/2025/TEX. Response: 200 - {"bbrefId":"churcma01","year":2025,"team":"TEX","age":24,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":0.1,"h":1,"r":0,"er":0,"hr":0,"bb":1,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":3,"eraPlus":0,"fip":11.83,"whip":6,"h9":27,"hR9":0,"bB9":27,"sO9":0,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:28,441 - INFO - Successfully updated Pitchers clevimi01/2025/CHW.
+2025-03-29 13:08:28,469 - INFO - Successfully updated Pitchers greench03/2025/TOR.
+2025-03-29 13:08:28,493 - ERROR - Failed to create Pitchers kingbr02/2025/HOU. Response: 200 - {"bbrefId":"kingbr02","year":2025,"team":"HOU","age":28,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":0.1,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":1,"eraPlus":0,"fip":2.83,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":0,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"LHP"}
+2025-03-29 13:08:28,517 - INFO - Successfully updated Pitchers kingjo01/2025/STL.
+2025-03-29 13:08:28,541 - ERROR - Failed to create Pitchers kinlety01/2025/COL. Response: 200 - {"bbrefId":"kinlety01","year":2025,"team":"COL","age":34,"lg":"NL","wl":"0-0","wlPercentage":0,"era":54,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":0.1,"h":3,"r":2,"er":2,"hr":0,"bb":1,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":5,"eraPlus":16,"fip":11.83,"whip":12,"h9":81,"hR9":0,"bB9":27,"sO9":0,"sow":0,"dateModified":"2025-03-29T13:07:07.081009","throws":"RHP"}
+2025-03-29 13:08:28,566 - INFO - Successfully updated Pitchers leclejo01/2025/ATH.
+2025-03-29 13:08:28,591 - INFO - Successfully updated Pitchers lopezni01/2025/LAA.
+2025-03-29 13:08:28,624 - INFO - Successfully updated Pitchers mollsa01/2025/CIN.
+2025-03-29 13:08:29,124 - INFO - Processed 200 pitchers so far
+2025-03-29 13:08:29,150 - INFO - Successfully updated Pitchers payamjo01/2025/MIL.
+2025-03-29 13:08:29,189 - INFO - Successfully updated Pitchers peralwa01/2025/SDP.
+2025-03-29 13:08:29,228 - INFO - Successfully updated Pitchers salazed01/2025/WSN.
+2025-03-29 13:08:29,268 - INFO - Successfully updated Pitchers santade01/2025/PIT.
+2025-03-29 13:08:29,307 - INFO - Successfully updated Pitchers topaju01/2025/MIN.
+2025-03-29 13:08:29,347 - INFO - Successfully updated Pitchers nerishe01/2025/ATL.
+2025-03-29 13:08:29,348 - INFO - Successfully processed 206 pitchers
+2025-03-29 13:08:29,348 - INFO - Scraping completed in 82.27 seconds
+2025-03-30 11:25:02,065 - INFO - Starting Baseball Reference data scraping with enhanced methods
+2025-03-30 11:25:02,065 - INFO - Warming up connection to Baseball Reference...
+2025-03-30 11:25:02,065 - INFO - Attempting to scrape with Selenium...
+2025-03-30 11:25:03,206 - INFO - Navigating to https://www.baseball-reference.com/ with Selenium...
+2025-03-30 11:25:25,440 - INFO - Waiting for Cloudflare to resolve...
+2025-03-30 11:25:25,500 - INFO - Table element found on page, content appears to be loaded
+2025-03-30 11:25:25,531 - INFO - Saved HTML content to selenium_result.html for debugging
+2025-03-30 11:25:27,652 - INFO - Selenium scraping completed successfully
+2025-03-30 11:25:30,595 - INFO - Fetching batting data from https://www.baseball-reference.com/leagues/majors/2025-standard-batting.shtml
+2025-03-30 11:25:30,595 - INFO - Attempting to scrape with Selenium...
+2025-03-30 11:25:31,678 - INFO - Navigating to https://www.baseball-reference.com/leagues/majors/2025-standard-batting.shtml with Selenium...
+2025-03-30 11:25:32,367 - INFO - Waiting for Cloudflare to resolve...
+2025-03-30 11:25:32,584 - INFO - Table element found on page, content appears to be loaded
+2025-03-30 11:25:32,644 - INFO - Saved HTML content to selenium_result.html for debugging
+2025-03-30 11:25:34,719 - INFO - Selenium scraping completed successfully
+2025-03-30 11:25:34,722 - INFO - Saved HTML content to debug_batting.html for debugging
+2025-03-30 11:25:43,251 - INFO - Found table with id 'players_standard_batting' directly in HTML
+2025-03-30 11:25:43,252 - INFO - Found batting table with id: players_standard_batting
+2025-03-30 11:25:43,254 - INFO - Found 380 batting rows to process
+2025-03-30 11:25:43,308 - INFO - Successfully updated Hitters happia01/2025/CHC.
+2025-03-30 11:25:43,336 - INFO - Successfully updated Hitters ohtansh01/2025/LAD.
+2025-03-30 11:25:43,363 - INFO - Successfully updated Hitters tuckeky01/2025/CHC.
+2025-03-30 11:25:43,388 - INFO - Successfully updated Hitters suzukse01/2025/CHC.
+2025-03-30 11:25:43,415 - INFO - Successfully updated Hitters edmanto01/2025/LAD.
+2025-03-30 11:25:43,442 - INFO - Successfully updated Hitters hernate01/2025/LAD.
+2025-03-30 11:25:43,479 - INFO - Successfully updated Hitters buschmi02/2025/CHC.
+2025-03-30 11:25:43,514 - INFO - Successfully updated Hitters crowape01/2025/CHC.
+2025-03-30 11:25:43,550 - INFO - Successfully updated Hitters muncyma01/2025/LAD.
+2025-03-30 11:25:43,574 - INFO - Successfully updated Hitters shawma01/2025/CHC.
+2025-03-30 11:25:44,075 - INFO - Processed 10 hitters so far
+2025-03-30 11:25:44,112 - INFO - Successfully updated Hitters swansda01/2025/CHC.
+2025-03-30 11:25:44,141 - INFO - Successfully updated Hitters pagesan01/2025/LAD.
+2025-03-30 11:25:44,168 - INFO - Successfully updated Hitters smithwi05/2025/LAD.
+2025-03-30 11:25:44,195 - INFO - Successfully updated Hitters confomi01/2025/LAD.
+2025-03-30 11:25:44,221 - INFO - Successfully updated Hitters cruzon01/2025/PIT.
+2025-03-30 11:25:44,251 - INFO - Successfully updated Hitters reynobr01/2025/PIT.
+2025-03-30 11:25:44,285 - INFO - Successfully updated Hitters bartjo01/2025/PIT.
+2025-03-30 11:25:44,323 - INFO - Successfully updated Hitters carroco02/2025/ARI.
+2025-03-30 11:25:44,359 - INFO - Successfully updated Hitters edwarxa01/2025/MIA.
+2025-03-30 11:25:44,384 - INFO - Successfully updated Hitters marteke01/2025/ARI.
+2025-03-30 11:25:44,885 - INFO - Processed 20 hitters so far
+2025-03-30 11:25:44,927 - INFO - Successfully updated Hitters bichebo01/2025/TOR.
+2025-03-30 11:25:44,986 - INFO - Successfully updated Hitters bridejo01/2025/MIA.
+2025-03-30 11:25:45,012 - INFO - Successfully updated Hitters butlela01/2025/ATH.
+2025-03-30 11:25:45,039 - INFO - Successfully updated Hitters cowseco01/2025/BAL.
+2025-03-30 11:25:45,074 - INFO - Successfully updated Hitters gimenan01/2025/TOR.
+2025-03-30 11:25:45,105 - INFO - Successfully updated Hitters greenri03/2025/DET.
+2025-03-30 11:25:45,131 - INFO - Successfully updated Hitters guerrvl02/2025/TOR.
+2025-03-30 11:25:45,156 - INFO - Successfully updated Hitters gurrilo01/2025/ARI.
+2025-03-30 11:25:45,186 - INFO - Successfully updated Hitters lopezot01/2025/MIA.
+2025-03-30 11:25:45,212 - INFO - Successfully updated Hitters mullice01/2025/BAL.
+2025-03-30 11:25:45,713 - INFO - Processed 30 hitters so far
+2025-03-30 11:25:45,740 - INFO - Successfully updated Hitters ohearry01/2025/BAL.
+2025-03-30 11:25:45,766 - INFO - Successfully updated Hitters rojasmi02/2025/LAD.
+2025-03-30 11:25:45,793 - INFO - Successfully updated Hitters rookebr01/2025/ATH.
+2025-03-30 11:25:45,827 - INFO - Successfully updated Hitters rutscad01/2025/BAL.
+2025-03-30 11:25:45,865 - INFO - Successfully updated Hitters santaan02/2025/TOR.
+2025-03-30 11:25:45,901 - INFO - Successfully updated Hitters stoweky01/2025/MIA.
+2025-03-30 11:25:45,927 - INFO - Successfully updated Hitters torkesp01/2025/DET.
+2025-03-30 11:25:45,964 - INFO - Successfully updated Hitters westbjo01/2025/BAL.
+2025-03-30 11:25:45,989 - INFO - Successfully updated Hitters albieoz01/2025/ATL.
+2025-03-30 11:25:46,050 - INFO - Successfully updated Hitters bledajj01/2025/ATH.
+2025-03-30 11:25:46,550 - INFO - Processed 40 hitters so far
+2025-03-30 11:25:46,578 - INFO - Successfully updated Hitters bregmal01/2025/BOS.
+2025-03-30 11:25:46,616 - INFO - Successfully updated Hitters casastr01/2025/BOS.
+2025-03-30 11:25:46,655 - INFO - Successfully updated Hitters deverra01/2025/BOS.
+2025-03-30 11:25:46,691 - INFO - Successfully updated Hitters duranja01/2025/BOS.
+2025-03-30 11:25:46,717 - INFO - Successfully updated Hitters hayeske01/2025/PIT.
+2025-03-30 11:25:46,743 - INFO - Successfully updated Hitters hillde01/2025/MIA.
+2025-03-30 11:25:46,775 - INFO - Successfully updated Hitters kineris01/2025/PIT.
+2025-03-30 11:25:46,802 - INFO - Successfully updated Hitters lindofr01/2025/NYM.
+2025-03-30 11:25:46,829 - INFO - Successfully updated Hitters naylojo01/2025/ARI.
+2025-03-30 11:25:46,857 - INFO - Successfully updated Hitters olsonma02/2025/ATL.
+2025-03-30 11:25:47,358 - INFO - Processed 50 hitters so far
+2025-03-30 11:25:47,384 - INFO - Successfully updated Hitters ozunama01/2025/ATL.
+2025-03-30 11:25:47,411 - INFO - Successfully updated Hitters profaju01/2025/ATL.
+2025-03-30 11:25:47,445 - INFO - Successfully updated Hitters rileyau01/2025/ATL.
+2025-03-30 11:25:47,482 - INFO - Successfully updated Hitters roblevi01/2025/SEA.
+2025-03-30 11:25:47,507 - INFO - Successfully updated Hitters rodriju01/2025/SEA.
+2025-03-30 11:25:47,533 - INFO - Successfully updated Hitters sotoju01/2025/NYM.
+2025-03-30 11:25:47,559 - INFO - Successfully updated Hitters alonspe01/2025/NYM.
+2025-03-30 11:25:47,596 - INFO - Successfully updated Hitters altuvjo01/2025/HOU.
+2025-03-30 11:25:47,622 - INFO - Successfully updated Hitters alvaryo01/2025/HOU.
+2025-03-30 11:25:47,649 - INFO - Successfully updated Hitters amayami01/2025/CHC.
+2025-03-30 11:25:48,151 - INFO - Processed 60 hitters so far
+2025-03-30 11:25:48,188 - INFO - Successfully updated Hitters arozara01/2025/SEA.
+2025-03-30 11:25:48,225 - INFO - Successfully updated Hitters arraelu01/2025/SDP.
+2025-03-30 11:25:48,262 - INFO - Successfully updated Hitters baldwdr01/2025/ATL.
+2025-03-30 11:25:48,299 - INFO - Successfully updated Hitters campbkr01/2025/BOS.
+2025-03-30 11:25:48,336 - INFO - Successfully updated Hitters freemfr01/2025/LAD.
+2025-03-30 11:25:48,377 - INFO - Successfully updated Hitters garciad02/2025/TEX.
+2025-03-30 11:25:48,405 - INFO - Successfully updated Hitters harrimi04/2025/ATL.
+2025-03-30 11:25:48,439 - INFO - Successfully updated Hitters hollija01/2025/BAL.
+2025-03-30 11:25:48,477 - INFO - Successfully updated Hitters keithco01/2025/DET.
+2025-03-30 11:25:48,515 - INFO - Successfully updated Hitters kirkal01/2025/TOR.
+2025-03-30 11:25:49,015 - INFO - Processed 70 hitters so far
+2025-03-30 11:25:49,057 - INFO - Successfully updated Hitters langesh01/2025/ATH.
+2025-03-30 11:25:49,092 - INFO - Successfully updated Hitters langfwy01/2025/TEX.
+2025-03-30 11:25:49,118 - INFO - Successfully updated Hitters muncyma02/2025/ATH.
+2025-03-30 11:25:49,144 - INFO - Successfully updated Hitters nimmobr01/2025/NYM.
+2025-03-30 11:25:49,170 - INFO - Successfully updated Hitters paredis01/2025/HOU.
+2025-03-30 11:25:49,197 - INFO - Successfully updated Hitters perdoge01/2025/ARI.
+2025-03-30 11:25:49,230 - INFO - Successfully updated Hitters raleica01/2025/SEA.
+2025-03-30 11:25:49,256 - INFO - Successfully updated Hitters seageco01/2025/TEX.
+2025-03-30 11:25:49,289 - INFO - Successfully updated Hitters semiema01/2025/TEX.
+2025-03-30 11:25:49,324 - INFO - Successfully updated Hitters soderty01/2025/ATH.
+2025-03-30 11:25:49,824 - INFO - Processed 80 hitters so far
+2025-03-30 11:25:49,861 - INFO - Successfully updated Hitters storytr01/2025/BOS.
+2025-03-30 11:25:49,899 - INFO - Successfully updated Hitters suareeu01/2025/ARI.
+2025-03-30 11:25:49,935 - INFO - Successfully updated Hitters tatisfe02/2025/SDP.
+2025-03-30 11:25:49,960 - INFO - Successfully updated Hitters vientma01/2025/NYM.
+2025-03-30 11:25:49,996 - INFO - Successfully updated Hitters walkech02/2025/HOU.
+2025-03-30 11:25:50,023 - INFO - Successfully updated Hitters abreuwi02/2025/BOS.
+2025-03-30 11:25:50,061 - INFO - Successfully updated Hitters bertijo01/2025/CHC.
+2025-03-30 11:25:50,091 - INFO - Successfully updated Hitters bogaexa01/2025/SDP.
+2025-03-30 11:25:50,126 - INFO - Successfully updated Hitters bohmal01/2025/PHI.
+2025-03-30 11:25:50,161 - INFO - Successfully updated Hitters burgeja01/2025/TEX.
+2025-03-30 11:25:50,662 - INFO - Processed 90 hitters so far
+2025-03-30 11:25:50,694 - INFO - Successfully updated Hitters chourja01/2025/MIL.
+2025-03-30 11:25:50,736 - INFO - Successfully updated Hitters croneja01/2025/SDP.
+2025-03-30 11:25:50,774 - INFO - Successfully updated Hitters mckinza01/2025/DET.
+2025-03-30 11:25:50,803 - INFO - Successfully updated Hitters merrija01/2025/SDP.
+2025-03-30 11:25:50,832 - INFO - Successfully updated Hitters penaje02/2025/HOU.
+2025-03-30 11:25:50,868 - INFO - Successfully updated Hitters phamth01/2025/PIT.
+2025-03-30 11:25:50,906 - INFO - Successfully updated Hitters polanjo01/2025/SEA.
+2025-03-30 11:25:50,940 - INFO - Successfully updated Hitters wilsoja05/2025/ATH.
+2025-03-30 11:25:50,966 - INFO - Successfully updated Hitters abramcj01/2025/WSN.
+2025-03-30 11:25:50,992 - INFO - Successfully updated Hitters bellico01/2025/NYY.
+2025-03-30 11:25:51,493 - INFO - Processed 100 hitters so far
+2025-03-30 11:25:51,536 - INFO - Successfully updated Hitters chishja01/2025/NYY.
+2025-03-30 11:25:51,573 - INFO - Successfully updated Hitters crawfjp01/2025/SEA.
+2025-03-30 11:25:51,641 - INFO - Successfully updated Hitters fraziad01/2025/PIT.
+2025-03-30 11:25:51,668 - INFO - Successfully updated Hitters harpebr03/2025/PHI.
+2025-03-30 11:25:51,703 - INFO - Successfully updated Hitters judgeaa01/2025/NYY.
+2025-03-30 11:25:51,790 - INFO - Successfully updated Hitters kelenja01/2025/ATL.
+2025-03-30 11:25:51,817 - INFO - Successfully updated Hitters keplema01/2025/PHI.
+2025-03-30 11:25:51,845 - INFO - Successfully updated Hitters machama01/2025/SDP.
+2025-03-30 11:25:51,881 - INFO - Successfully updated Hitters margoma01/2025/DET.
+2025-03-30 11:25:51,920 - INFO - Successfully updated Hitters myersda01/2025/MIA.
+2025-03-30 11:25:52,421 - INFO - Processed 110 hitters so far
+2025-03-30 11:25:52,450 - INFO - Successfully updated Hitters schwaky01/2025/PHI.
+2025-03-30 11:25:52,481 - INFO - Successfully updated Hitters sweentr01/2025/DET.
+2025-03-30 11:25:52,538 - INFO - Successfully updated Hitters volpean01/2025/NYY.
+2025-03-30 11:25:52,564 - INFO - Successfully updated Hitters andujmi01/2025/ATH.
+2025-03-30 11:25:52,590 - INFO - Successfully updated Hitters arenano01/2025/STL.
+2025-03-30 11:25:52,617 - INFO - Successfully updated Hitters belljo02/2025/WSN.
+2025-03-30 11:25:52,647 - INFO - Successfully updated Hitters bettsmo01/2025/LAD.
+2025-03-30 11:25:52,688 - INFO - Successfully updated Hitters caminju01/2025/TBR.
+2025-03-30 11:25:52,725 - INFO - Successfully updated Hitters carpeke01/2025/DET.
+2025-03-30 11:25:52,767 - INFO - Successfully updated Hitters casteni01/2025/PHI.
+2025-03-30 11:25:53,268 - INFO - Processed 120 hitters so far
+2025-03-30 11:25:53,307 - INFO - Successfully updated Hitters contrwi01/2025/STL.
+2025-03-30 11:25:53,343 - INFO - Successfully updated Hitters crewsdy01/2025/WSN.
+2025-03-30 11:25:53,368 - INFO - Successfully updated Hitters diazya01/2025/TBR.
+2025-03-30 11:25:53,400 - INFO - Successfully updated Hitters donovbr01/2025/STL.
+2025-03-30 11:25:53,442 - INFO - Successfully updated Hitters doylebr02/2025/COL.
+2025-03-30 11:25:53,467 - INFO - Successfully updated Hitters frelisa01/2025/MIL.
+2025-03-30 11:25:53,493 - INFO - Successfully updated Hitters friedtj01/2025/CIN.
+2025-03-30 11:25:53,525 - INFO - Successfully updated Hitters goldspa01/2025/NYY.
+2025-03-30 11:25:53,557 - INFO - Successfully updated Hitters hernaen02/2025/LAD.
+2025-03-30 11:25:53,594 - INFO - Successfully updated Hitters hoernni01/2025/CHC.
+2025-03-30 11:25:54,095 - INFO - Processed 130 hitters so far
+2025-03-30 11:25:54,122 - INFO - Successfully updated Hitters indiajo01/2025/KCR.
+2025-03-30 11:25:54,148 - INFO - Successfully updated Hitters kreidry01/2025/DET.
+2025-03-30 11:25:54,173 - INFO - Successfully updated Hitters kwanst01/2025/CLE.
+2025-03-30 11:25:54,201 - INFO - Successfully updated Hitters lowebr01/2025/TBR.
+2025-03-30 11:25:54,226 - INFO - Successfully updated Hitters lowena01/2025/WSN.
+2025-03-30 11:25:54,251 - INFO - Successfully updated Hitters manzaky01/2025/CLE.
+2025-03-30 11:25:54,277 - INFO - Successfully updated Hitters marshbr02/2025/PHI.
+2025-03-30 11:25:54,303 - INFO - Successfully updated Hitters mccutan01/2025/PIT.
+2025-03-30 11:25:54,330 - INFO - Successfully updated Hitters mclaima01/2025/CIN.
+2025-03-30 11:25:54,367 - INFO - Successfully updated Hitters mountry01/2025/BAL.
+2025-03-30 11:25:54,868 - INFO - Processed 140 hitters so far
+2025-03-30 11:25:54,952 - INFO - Successfully updated Hitters nootbla01/2025/STL.
+2025-03-30 11:25:54,992 - INFO - Successfully updated Hitters oneilty01/2025/BAL.
+2025-03-30 11:25:55,027 - INFO - Successfully updated Hitters ortizjo06/2025/MIL.
+2025-03-30 11:25:55,053 - INFO - Successfully updated Hitters realmjt01/2025/PHI.
+2025-03-30 11:25:55,082 - INFO - Successfully updated Hitters rodrien01/2025/PIT.
+2025-03-30 11:25:55,120 - INFO - Successfully updated Hitters santaca01/2025/CLE.
+2025-03-30 11:25:55,157 - INFO - Successfully updated Hitters springe01/2025/TOR.
+2025-03-30 11:25:55,192 - INFO - Successfully updated Hitters stottbr01/2025/PHI.
+2025-03-30 11:25:55,227 - INFO - Successfully updated Hitters thomala02/2025/CLE.
+2025-03-30 11:25:55,265 - INFO - Successfully updated Hitters turanbr02/2025/MIL.
+2025-03-30 11:25:55,766 - INFO - Processed 150 hitters so far
+2025-03-30 11:25:55,797 - INFO - Successfully updated Hitters uriasra01/2025/BAL.
+2025-03-30 11:25:55,826 - INFO - Successfully updated Hitters wagnewi01/2025/TOR.
+2025-03-30 11:25:55,862 - INFO - Successfully updated Hitters wallnma01/2025/MIN.
+2025-03-30 11:25:55,900 - INFO - Successfully updated Hitters wittbo02/2025/KCR.
+2025-03-30 11:25:55,937 - INFO - Successfully updated Hitters wongco01/2025/BOS.
+2025-03-30 11:25:55,975 - INFO - Successfully updated Hitters woodja03/2025/WSN.
+2025-03-30 11:25:56,001 - INFO - Successfully updated Hitters yelicch01/2025/MIL.
+2025-03-30 11:25:56,026 - INFO - Successfully updated Hitters adamewi01/2025/SFG.
+2025-03-30 11:25:56,052 - INFO - Successfully updated Hitters beninan01/2025/CHW.
+2025-03-30 11:25:56,078 - INFO - Successfully updated Hitters blissry01/2025/SEA.
+2025-03-30 11:25:56,580 - INFO - Processed 160 hitters so far
+2025-03-30 11:25:56,628 - INFO - Successfully updated Hitters bryankr01/2025/COL.
+2025-03-30 11:25:56,654 - INFO - Successfully updated Hitters burleal01/2025/STL.
+2025-03-30 11:25:56,691 - INFO - Successfully updated Hitters buxtoby01/2025/MIN.
+2025-03-30 11:25:56,718 - INFO - Successfully updated Hitters candeje01/2025/CIN.
+2025-03-30 11:25:56,752 - INFO - Successfully updated Hitters chapmma01/2025/SFG.
+2025-03-30 11:25:56,781 - INFO - Successfully updated Hitters clemeer01/2025/TOR.
+2025-03-30 11:25:56,807 - INFO - Successfully updated Hitters contrwi02/2025/MIL.
+2025-03-30 11:25:56,834 - INFO - Successfully updated Hitters correca01/2025/MIN.
+2025-03-30 11:25:56,860 - INFO - Successfully updated Hitters delacel01/2025/CIN.
+2025-03-30 11:25:56,886 - INFO - Successfully updated Hitters diazya02/2025/HOU.
+2025-03-30 11:25:57,387 - INFO - Processed 170 hitters so far
+2025-03-30 11:25:57,413 - INFO - Successfully updated Hitters dominja01/2025/NYY.
+2025-03-30 11:25:57,451 - INFO - Successfully updated Hitters encarch01/2025/CIN.
+2025-03-30 11:25:57,480 - INFO - Successfully updated Hitters florewi01/2025/SFG.
+2025-03-30 11:25:57,507 - INFO - Successfully updated Hitters goodmhu01/2025/COL.
+2025-03-30 11:25:57,543 - INFO - Successfully updated Hitters herreiv01/2025/STL.
+2025-03-30 11:25:57,568 - INFO - Successfully updated Hitters heywaja01/2025/SDP.
+2025-03-30 11:25:57,593 - INFO - Successfully updated Hitters hoskirh01/2025/MIL.
+2025-03-30 11:25:57,618 - INFO - Successfully updated Hitters leeju01/2025/SFG.
+2025-03-30 11:25:57,692 - INFO - Successfully updated Hitters luxga01/2025/CIN.
+2025-03-30 11:25:57,718 - INFO - Successfully updated Hitters massemi02/2025/KCR.
+2025-03-30 11:25:58,218 - INFO - Processed 180 hitters so far
+2025-03-30 11:25:58,245 - INFO - Successfully updated Hitters mccarja02/2025/ARI.
+2025-03-30 11:25:58,275 - INFO - Successfully updated Hitters mcmahry01/2025/COL.
+2025-03-30 11:25:58,304 - INFO - Successfully updated Hitters mervima01/2025/MIA.
+2025-03-30 11:25:58,339 - INFO - Successfully updated Hitters morenga01/2025/ARI.
+2025-03-30 11:25:58,364 - INFO - Successfully updated Hitters ohopplo01/2025/LAA.
+2025-03-30 11:25:58,390 - INFO - Successfully updated Hitters pasquvi01/2025/KCR.
+2025-03-30 11:25:58,422 - INFO - Successfully updated Hitters pederjo01/2025/TEX.
+2025-03-30 11:25:58,457 - INFO - Successfully updated Hitters perezsa02/2025/KCR.
+2025-03-30 11:25:58,482 - INFO - Successfully updated Hitters rafaece01/2025/BOS.
+2025-03-30 11:25:58,510 - INFO - Successfully updated Hitters ramirjo01/2025/CLE.
+2025-03-30 11:25:59,011 - INFO - Processed 190 hitters so far
+2025-03-30 11:25:59,048 - INFO - Successfully updated Hitters ramoshe02/2025/SFG.
+2025-03-30 11:25:59,086 - INFO - Successfully updated Hitters rengilu01/2025/LAA.
+2025-03-30 11:25:59,122 - INFO - Successfully updated Hitters roberlu01/2025/CHW.
+2025-03-30 11:25:59,150 - INFO - Successfully updated Hitters rodenal01/2025/TOR.
+2025-03-30 11:25:59,175 - INFO - Successfully updated Hitters rogerja03/2025/DET.
+2025-03-30 11:25:59,201 - INFO - Successfully updated Hitters schanno01/2025/LAA.
+2025-03-30 11:25:59,226 - INFO - Successfully updated Hitters scottvi01/2025/STL.
+2025-03-30 11:25:59,252 - INFO - Successfully updated Hitters solerjo01/2025/LAA.
+2025-03-30 11:25:59,278 - INFO - Successfully updated Hitters tayloty01/2025/NYM.
+2025-03-30 11:25:59,303 - INFO - Successfully updated Hitters toglimi01/2025/COL.
+2025-03-30 11:25:59,804 - INFO - Processed 200 hitters so far
+2025-03-30 11:25:59,846 - INFO - Successfully updated Hitters torrelu01/2025/NYM.
+2025-03-30 11:25:59,884 - INFO - Successfully updated Hitters torregl01/2025/DET.
+2025-03-30 11:25:59,922 - INFO - Successfully updated Hitters tovarez01/2025/COL.
+2025-03-30 11:25:59,956 - INFO - Successfully updated Hitters troutmi01/2025/LAA.
+2025-03-30 11:25:59,991 - INFO - Successfully updated Hitters vargami01/2025/CHW.
+2025-03-30 11:26:00,030 - INFO - Successfully updated Hitters vaughan01/2025/CHW.
+2025-03-30 11:26:00,077 - INFO - Successfully updated Hitters walkejo02/2025/STL.
+2025-03-30 11:26:00,115 - INFO - Successfully updated Hitters wardta01/2025/LAA.
+2025-03-30 11:26:00,152 - INFO - Successfully updated Hitters wellsau01/2025/NYY.
+2025-03-30 11:26:00,188 - INFO - Successfully updated Hitters youngja03/2025/WSN.
+2025-03-30 11:26:00,690 - INFO - Processed 210 hitters so far
+2025-03-30 11:26:00,717 - INFO - Successfully updated Hitters arciaor01/2025/ATL.
+2025-03-30 11:26:00,757 - INFO - Successfully updated Hitters bailepa01/2025/SFG.
+2025-03-30 11:26:00,782 - INFO - Successfully updated Hitters beckjo01/2025/COL.
+2025-03-30 11:26:00,808 - INFO - Successfully updated Hitters castrwi01/2025/MIN.
+2025-03-30 11:26:00,851 - INFO - Successfully updated Hitters coningr01/2025/MIA.
+2025-03-30 11:26:00,889 - INFO - Successfully updated Hitters dejonpa01/2025/WSN.
+2025-03-30 11:26:00,917 - INFO - Successfully updated Hitters delucjo01/2025/TBR.
+2025-03-30 11:26:00,955 - INFO - Successfully updated Hitters farmeky01/2025/COL.
+2025-03-30 11:26:00,992 - INFO - Successfully updated Hitters forteni01/2025/MIA.
+2025-03-30 11:26:01,018 - INFO - Successfully updated Hitters fraleja01/2025/CIN.
+2025-03-30 11:26:01,519 - INFO - Processed 220 hitters so far
+2025-03-30 11:26:01,550 - INFO - Successfully updated Hitters francty01/2025/MIN.
+2025-03-30 11:26:01,577 - INFO - Successfully updated Hitters ibanean01/2025/DET.
+2025-03-30 11:26:01,605 - INFO - Successfully updated Hitters isbelky01/2025/KCR.
+2025-03-30 11:26:01,646 - INFO - Successfully updated Hitters janseda01/2025/TBR.
+2025-03-30 11:26:01,690 - INFO - Successfully updated Hitters jungjo01/2025/TEX.
+2025-03-30 11:26:01,728 - INFO - Successfully updated Hitters kellyca02/2025/CHC.
+2025-03-30 11:26:01,759 - INFO - Successfully updated Hitters larnatr01/2025/MIN.
+2025-03-30 11:26:01,796 - INFO - Successfully updated Hitters lukesna01/2025/TOR.
+2025-03-30 11:26:01,835 - INFO - Successfully updated Hitters maldoma01/2025/SDP.
+2025-03-30 11:26:01,872 - INFO - Successfully updated Hitters meyerja02/2025/HOU.
+2025-03-30 11:26:02,374 - INFO - Processed 230 hitters so far
+2025-03-30 11:26:02,399 - INFO - Successfully updated Hitters miranjo01/2025/MIN.
+2025-03-30 11:26:02,435 - INFO - Successfully updated Hitters mitchga01/2025/MIL.
+2025-03-30 11:26:02,470 - INFO - Successfully updated Hitters naylobo01/2025/CLE.
+2025-03-30 11:26:02,506 - INFO - Successfully updated Hitters raleylu01/2025/SEA.
+2025-03-30 11:26:02,538 - INFO - Successfully updated Hitters rocchbr01/2025/CLE.
+2025-03-30 11:26:02,572 - INFO - Successfully updated Hitters rodgebr02/2025/HOU.
+2025-03-30 11:26:02,609 - INFO - Successfully updated Hitters ruizke01/2025/WSN.
+2025-03-30 11:26:02,636 - INFO - Successfully updated Hitters sheetga01/2025/SDP.
+2025-03-30 11:26:02,670 - INFO - Successfully updated Hitters smithca07/2025/HOU.
+2025-03-30 11:26:02,696 - INFO - Successfully updated Hitters smithpa04/2025/ARI.
+2025-03-30 11:26:03,197 - INFO - Processed 240 hitters so far
+2025-03-30 11:26:03,224 - INFO - Successfully updated Hitters sosale01/2025/CHW.
+2025-03-30 11:26:03,268 - INFO - Successfully updated Hitters urshegi01/2025/ATH.
+2025-03-30 11:26:03,304 - INFO - Successfully updated Hitters wagamer01/2025/MIA.
+2025-03-30 11:26:03,347 - INFO - Successfully updated Hitters wallsta01/2025/TBR.
+2025-03-30 11:26:03,387 - INFO - Successfully updated Hitters winkeje01/2025/NYM.
+2025-03-30 11:26:03,426 - INFO - Successfully updated Hitters winnma01/2025/STL.
+2025-03-30 11:26:03,464 - INFO - Successfully updated Hitters amayaja01/2025/CHW.
+2025-03-30 11:26:03,502 - INFO - Successfully updated Hitters biggica01/2025/KCR.
+2025-03-30 11:26:03,532 - INFO - Successfully updated Hitters capravi01/2025/MIL.
+2025-03-30 11:26:03,568 - INFO - Successfully updated Hitters dingldi01/2025/DET.
+2025-03-30 11:26:04,069 - INFO - Processed 250 hitters so far
+2025-03-30 11:26:04,097 - INFO - Successfully updated Hitters fitzgty01/2025/SFG.
+2025-03-30 11:26:04,134 - INFO - Successfully updated Hitters garcima01/2025/KCR.
+2025-03-30 11:26:04,173 - INFO - Successfully updated Hitters garvemi01/2025/SEA.
+2025-03-30 11:26:04,213 - INFO - Successfully updated Hitters grishtr01/2025/NYY.
+2025-03-30 11:26:04,254 - INFO - Successfully updated Hitters heimjo01/2025/TEX.
+2025-03-30 11:26:04,292 - INFO - Successfully updated Hitters hicksli01/2025/MIA.
+2025-03-30 11:26:04,330 - INFO - Successfully updated Hitters martini02/2025/COL.
+2025-03-30 11:26:04,367 - INFO - Successfully updated Hitters meadcu01/2025/TBR.
+2025-03-30 11:26:04,404 - INFO - Successfully updated Hitters melenmj01/2025/KCR.
+2025-03-30 11:26:04,444 - INFO - Successfully updated Hitters morelch01/2025/TBR.
+2025-03-30 11:26:04,945 - INFO - Processed 260 hitters so far
+2025-03-30 11:26:04,984 - INFO - Successfully updated Hitters newmake01/2025/LAA.
+2025-03-30 11:26:05,022 - INFO - Successfully updated Hitters paulegr01/2025/MIA.
+2025-03-30 11:26:05,073 - INFO - Successfully created Hitters suwinja01/2025/PIT.
+2025-03-30 11:26:05,112 - INFO - Successfully updated Hitters taverle01/2025/TEX.
+2025-03-30 11:26:05,150 - INFO - Successfully updated Hitters tellero01/2025/SEA.
+2025-03-30 11:26:05,194 - INFO - Successfully updated Hitters trevijo01/2025/CIN.
+2025-03-30 11:26:05,231 - INFO - Successfully updated Hitters acunajo01/2025/NYM.
+2025-03-30 11:26:05,268 - INFO - Successfully updated Hitters adelljo01/2025/LAA.
+2025-03-30 11:26:05,307 - INFO - Successfully updated Hitters ariasga01/2025/CLE.
+2025-03-30 11:26:05,345 - INFO - Successfully updated Hitters batybr01/2025/NYM.
+2025-03-30 11:26:05,846 - INFO - Processed 270 hitters so far
+2025-03-30 11:26:05,887 - INFO - Successfully updated Hitters grichra01/2025/ARI.
+2025-03-30 11:26:05,926 - INFO - Successfully updated Hitters gourryu01/2025/SDP.
+2025-03-30 11:26:05,959 - INFO - Successfully updated Hitters martest01/2025/NYM.
+2025-03-30 11:26:05,988 - INFO - Successfully updated Hitters misneka01/2025/TBR.
+2025-03-30 11:26:06,027 - INFO - Successfully updated Hitters moncayo01/2025/LAA.
+2025-03-30 11:26:06,066 - INFO - Successfully updated Hitters noeljh01/2025/CLE.
+2025-03-30 11:26:06,109 - INFO - Successfully created Hitters rosaram01/2025/WSN.
+2025-03-30 11:26:06,151 - INFO - Successfully created Hitters sosaed01/2025/PHI.
+2025-03-30 11:26:06,189 - INFO - Successfully updated Hitters turnetr01/2025/PHI.
+2025-03-30 11:26:06,223 - INFO - Successfully updated Hitters wadela01/2025/SFG.
+2025-03-30 11:26:06,724 - INFO - Processed 280 hitters so far
+2025-03-30 11:26:06,767 - INFO - Successfully updated Hitters allenni02/2025/ATL.
+2025-03-30 11:26:06,807 - INFO - Successfully updated Hitters anderti01/2025/LAA.
+2025-03-30 11:26:06,847 - INFO - Successfully updated Hitters arandjo01/2025/TBR.
+2025-03-30 11:26:06,884 - INFO - Successfully updated Hitters baderha01/2025/MIN.
+2025-03-30 11:26:06,922 - INFO - Successfully created Hitters baeji01/2025/PIT.
+2025-03-30 11:26:06,958 - INFO - Successfully updated Hitters baezja01/2025/DET.
+2025-03-30 11:26:06,996 - INFO - Successfully updated Hitters brownse01/2025/ATH.
+2025-03-30 11:26:07,036 - INFO - Successfully updated Hitters cabreos01/2025/NYY.
+2025-03-30 11:26:07,075 - INFO - Successfully updated Hitters colliis01/2025/MIL.
+2025-03-30 11:26:07,115 - INFO - Successfully created Hitters duranez01/2025/TEX.
+2025-03-30 11:26:07,616 - INFO - Processed 290 hitters so far
+2025-03-30 11:26:07,656 - INFO - Successfully updated Hitters garcilu04/2025/WSN.
+2025-03-30 11:26:07,684 - INFO - Successfully updated Hitters herrejo04/2025/ARI.
+2025-03-30 11:26:07,725 - INFO - Successfully updated Hitters higasky01/2025/TEX.
+2025-03-30 11:26:07,763 - INFO - Successfully updated Hitters jeffery01/2025/MIN.
+2025-03-30 11:26:07,806 - INFO - Successfully created Hitters jonesno01/2025/CLE.
+2025-03-30 11:26:07,847 - INFO - Successfully updated Hitters kjershe01/2025/BAL.
+2025-03-30 11:26:07,886 - INFO - Successfully updated Hitters leeko01/2025/CHW.
+2025-03-30 11:26:07,922 - INFO - Successfully updated Hitters matonni01/2025/CHW.
+2025-03-30 11:26:07,964 - INFO - Successfully created Hitters matoslu02/2025/SFG.
+2025-03-30 11:26:08,005 - INFO - Successfully updated Hitters mccorch01/2025/HOU.
+2025-03-30 11:26:08,506 - INFO - Processed 300 hitters so far
+2025-03-30 11:26:08,540 - INFO - Successfully updated Hitters mooredy01/2025/SEA.
+2025-03-30 11:26:08,570 - INFO - Successfully created Hitters narvaca01/2025/BOS.
+2025-03-30 11:26:08,596 - INFO - Successfully updated Hitters pillake01/2025/TEX.
+2025-03-30 11:26:08,624 - INFO - Successfully updated Hitters renfrhu01/2025/KCR.
+2025-03-30 11:26:08,662 - INFO - Successfully created Hitters reyespa01/2025/NYY.
+2025-03-30 11:26:08,690 - INFO - Successfully created Hitters sanchga02/2025/BAL.
+2025-03-30 11:26:08,716 - INFO - Successfully updated Hitters schneda03/2025/TOR.
+2025-03-30 11:26:08,741 - INFO - Successfully updated Hitters solando01/2025/SEA.
+2025-03-30 11:26:08,767 - INFO - Successfully updated Hitters steersp01/2025/CIN.
+2025-03-30 11:26:08,792 - INFO - Successfully updated Hitters thomaal01/2025/ARI.
+2025-03-30 11:26:09,294 - INFO - Processed 310 hitters so far
+2025-03-30 11:26:09,333 - INFO - Successfully created Hitters triolja01/2025/PIT.
+2025-03-30 11:26:09,368 - INFO - Successfully updated Hitters uriaslu01/2025/ATH.
+2025-03-30 11:26:09,394 - INFO - Successfully updated Hitters yastrmi01/2025/SFG.
+2025-03-30 11:26:09,422 - INFO - Successfully created Hitters baldwbr01/2025/CHW.
+2025-03-30 11:26:09,453 - INFO - Successfully updated Hitters barneau01/2025/LAD.
+2025-03-30 11:26:09,491 - INFO - Successfully created Hitters caratvi01/2025/HOU.
+2025-03-30 11:26:09,518 - INFO - Successfully created Hitters dezenza01/2025/HOU.
+2025-03-30 11:26:09,543 - INFO - Successfully updated Hitters diazel01/2025/SDP.
+2025-03-30 11:26:09,572 - INFO - Successfully created Hitters dubonma01/2025/HOU.
+2025-03-30 11:26:09,601 - INFO - Successfully created Hitters espinsa01/2025/CIN.
+2025-03-30 11:26:10,101 - INFO - Processed 320 hitters so far
+2025-03-30 11:26:10,131 - INFO - Successfully created Hitters gaspemi01/2025/MIN.
+2025-03-30 11:26:10,157 - INFO - Successfully updated Hitters gonzani01/2025/PIT.
+2025-03-30 11:26:10,183 - INFO - Successfully updated Hitters hamilda03/2025/BOS.
+2025-03-30 11:26:10,210 - INFO - Successfully updated Hitters mateojo01/2025/BAL.
+2025-03-30 11:26:10,243 - INFO - Successfully updated Hitters parisky01/2025/LAA.
+2025-03-30 11:26:10,291 - INFO - Successfully updated Hitters ricebe01/2025/NYY.
+2025-03-30 11:26:10,320 - INFO - Successfully created Hitters schneda04/2025/CLE.
+2025-03-30 11:26:10,351 - INFO - Successfully created Hitters sirijo01/2025/NYM.
+2025-03-30 11:26:10,386 - INFO - Successfully updated Hitters slateau01/2025/CHW.
+2025-03-30 11:26:10,411 - INFO - Successfully updated Hitters smithjo11/2025/TEX.
+2025-03-30 11:26:10,912 - INFO - Processed 330 hitters so far
+2025-03-30 11:26:10,940 - INFO - Successfully updated Hitters taylomi02/2025/CHW.
+2025-03-30 11:26:10,968 - INFO - Successfully created Hitters thaisma01/2025/CHW.
+2025-03-30 11:26:10,996 - INFO - Successfully created Hitters vazquch01/2025/MIN.
+2025-03-30 11:26:11,034 - INFO - Successfully created Hitters adamsri03/2025/WSN.
+2025-03-30 11:26:11,060 - INFO - Successfully updated Hitters bauerja01/2025/MIL.
+2025-03-30 11:26:11,088 - INFO - Successfully created Hitters dunnol01/2025/MIL.
+2025-03-30 11:26:11,115 - INFO - Successfully created Hitters escarjc01/2025/NYY.
+2025-03-30 11:26:11,143 - INFO - Successfully created Hitters haaseer01/2025/MIL.
+2025-03-30 11:26:11,170 - INFO - Successfully created Hitters iglesjo01/2025/SDP.
+2025-03-30 11:26:11,195 - INFO - Successfully updated Hitters lockrbr01/2025/SDP.
+2025-03-30 11:26:11,697 - INFO - Processed 340 hitters so far
+2025-03-30 11:26:11,725 - INFO - Successfully updated Hitters lowejo01/2025/TBR.
+2025-03-30 11:26:11,751 - INFO - Successfully updated Hitters sanojja01/2025/MIA.
+2025-03-30 11:26:11,779 - INFO - Successfully created Hitters schmica01/2025/SFG.
+2025-03-30 11:26:11,805 - INFO - Successfully updated Hitters turneju01/2025/CHC.
+2025-03-30 11:26:11,835 - INFO - Successfully created Hitters workmga01/2025/CHC.
+2025-03-30 11:26:11,873 - INFO - Successfully created Hitters bouchse01/2025/COL.
+2025-03-30 11:26:11,910 - INFO - Successfully updated Hitters cabaljo01/2025/TBR.
+2025-03-30 11:26:11,955 - INFO - Successfully updated Hitters canhama01/2025/KCR.
+2025-03-30 11:26:11,995 - INFO - Successfully created Hitters clemeko01/2025/PHI.
+2025-03-30 11:26:12,032 - INFO - Successfully created Hitters delacbr01/2025/ATL.
+2025-03-30 11:26:12,533 - INFO - Processed 350 hitters so far
+2025-03-30 11:26:12,559 - INFO - Successfully updated Hitters fermifr01/2025/KCR.
+2025-03-30 11:26:12,588 - INFO - Successfully created Hitters gonzaro01/2025/BOS.
+2025-03-30 11:26:12,617 - INFO - Successfully updated Hitters hurtuja01/2025/CIN.
+2025-03-30 11:26:12,653 - INFO - Successfully updated Hitters jankotr01/2025/CHW.
+2025-03-30 11:26:12,689 - INFO - Successfully created Hitters marchra01/2025/PHI.
+2025-03-30 11:26:12,715 - INFO - Successfully updated Hitters mastrmi01/2025/SEA.
+2025-03-30 11:26:12,743 - INFO - Successfully created Hitters perazos02/2025/NYY.
+2025-03-30 11:26:12,774 - INFO - Successfully created Hitters rojasjo03/2025/PHI.
+2025-03-30 11:26:12,805 - INFO - Successfully updated Hitters sengeha01/2025/NYM.
+2025-03-30 11:26:12,847 - INFO - Successfully created Hitters tenajo01/2025/WSN.
+2025-03-30 11:26:13,348 - INFO - Processed 360 hitters so far
+2025-03-30 11:26:13,372 - INFO - Successfully updated Hitters blancda02/2025/KCR.
+2025-03-30 11:26:13,406 - INFO - Successfully updated Hitters brujavi01/2025/CHC.
+2025-03-30 11:26:14,738 - INFO - Successfully updated Hitters dunnbl01/2025/CIN.
+2025-03-30 11:26:14,775 - INFO - Successfully created Hitters hampsga01/2025/ARI.
+2025-03-30 11:26:14,812 - INFO - Successfully updated Hitters keirsda01/2025/MIN.
+2025-03-30 11:26:14,851 - INFO - Successfully created Hitters laurera01/2025/BAL.
+2025-03-30 11:26:14,881 - INFO - Successfully updated Hitters moniami01/2025/COL.
+2025-03-30 11:26:14,918 - INFO - Successfully updated Hitters pagespe02/2025/STL.
+2025-03-30 11:26:14,956 - INFO - Successfully updated Hitters sianimi01/2025/STL.
+2025-03-30 11:26:14,995 - INFO - Successfully created Hitters valdeen01/2025/PIT.
+2025-03-30 11:26:15,496 - INFO - Processed 370 hitters so far
+2025-03-30 11:26:15,525 - INFO - Successfully created Hitters whiteel04/2025/ATL.
+2025-03-30 11:26:15,526 - INFO - Successfully processed 371 hitters
+2025-03-30 11:26:30,494 - INFO - Fetching pitching data from https://www.baseball-reference.com/leagues/majors/2025-standard-pitching.shtml
+2025-03-30 11:26:30,494 - INFO - Attempting to scrape with Selenium...
+2025-03-30 11:26:31,499 - INFO - Navigating to https://www.baseball-reference.com/leagues/majors/2025-standard-pitching.shtml with Selenium...
+2025-03-30 11:26:32,196 - INFO - Waiting for Cloudflare to resolve...
+2025-03-30 11:26:32,389 - INFO - Table element found on page, content appears to be loaded
+2025-03-30 11:26:32,426 - INFO - Saved HTML content to selenium_result.html for debugging
+2025-03-30 11:26:34,480 - INFO - Selenium scraping completed successfully
+2025-03-30 11:26:34,482 - INFO - Saved HTML content to debug_pitching.html for debugging
+2025-03-30 11:26:39,115 - INFO - Found table with id 'players_standard_pitching' directly in HTML
+2025-03-30 11:26:39,115 - INFO - Found pitching table with id: players_standard_pitching
+2025-03-30 11:26:39,120 - INFO - Found 296 pitching rows to process
+2025-03-30 11:26:39,177 - INFO - Successfully updated Pitchers imanash01/2025/CHC.
+2025-03-30 11:26:39,222 - INFO - Successfully updated Pitchers yamamyo01/2025/LAD.
+2025-03-30 11:26:39,246 - INFO - Successfully updated Pitchers steelju01/2025/CHC.
+2025-03-30 11:26:39,271 - INFO - Successfully updated Pitchers gilbelo01/2025/SEA.
+2025-03-30 11:26:39,304 - ERROR - Failed to create Pitchers soriajo02/2025/LAA. Response: 200 - {"bbrefId":"soriajo02","year":2025,"team":"LAA","age":26,"lg":"AL","wl":"1-0","wlPercentage":1,"era":0,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":7,"h":2,"r":0,"er":0,"hr":0,"bb":2,"ibb":0,"so":5,"hbp":0,"bk":0,"wp":0,"bf":23,"eraPlus":0,"fip":2.14,"whip":0.571,"h9":2.6,"hR9":0,"bB9":2.6,"sO9":6.4,"sow":2.5,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:39,329 - INFO - Successfully updated Pitchers valdefr01/2025/HOU.
+2025-03-30 11:26:39,352 - ERROR - Failed to create Pitchers arrigsp01/2025/HOU. Response: 200 - {"bbrefId":"arrigsp01","year":2025,"team":"HOU","age":25,"lg":"AL","wl":"1-0","wlPercentage":1,"era":1.5,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":6,"h":1,"r":1,"er":1,"hr":0,"bb":2,"ibb":0,"so":5,"hbp":0,"bk":0,"wp":0,"bf":21,"eraPlus":268,"fip":2.04,"whip":0.5,"h9":1.5,"hR9":0,"bB9":3,"sO9":7.5,"sow":2.5,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:39,389 - INFO - Successfully updated Pitchers brownhu01/2025/HOU.
+2025-03-30 11:26:39,415 - INFO - Successfully updated Pitchers burkese01/2025/CHW.
+2025-03-30 11:26:39,438 - INFO - Successfully updated Pitchers eflinza01/2025/BAL.
+2025-03-30 11:26:39,939 - INFO - Processed 10 pitchers so far
+2025-03-30 11:26:39,963 - INFO - Successfully updated Pitchers eovalna01/2025/TEX.
+2025-03-30 11:26:39,986 - ERROR - Failed to create Pitchers falteba01/2025/PIT. Response: 200 - {"bbrefId":"falteba01","year":2025,"team":"PIT","age":28,"lg":"NL","wl":"0-0","wlPercentage":0,"era":3,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":6,"h":7,"r":2,"er":2,"hr":0,"bb":0,"ibb":0,"so":4,"hbp":0,"bk":0,"wp":0,"bf":25,"eraPlus":145,"fip":1.38,"whip":1.167,"h9":10.5,"hR9":0,"bB9":0,"sO9":6,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"LHP"}
+2025-03-30 11:26:40,010 - ERROR - Failed to create Pitchers feddeer01/2025/STL. Response: 200 - {"bbrefId":"feddeer01","year":2025,"team":"STL","age":32,"lg":"NL","wl":"1-0","wlPercentage":1,"era":1.5,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":6,"h":2,"r":1,"er":1,"hr":0,"bb":0,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":0,"bf":20,"eraPlus":290,"fip":2.04,"whip":0.333,"h9":3,"hR9":0,"bB9":0,"sO9":3,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:40,032 - INFO - Successfully updated Pitchers freelky01/2025/COL.
+2025-03-30 11:26:40,063 - INFO - Successfully updated Pitchers gausmke01/2025/TOR.
+2025-03-30 11:26:40,086 - INFO - Successfully updated Pitchers gorema01/2025/WSN.
+2025-03-30 11:26:40,111 - INFO - Successfully updated Pitchers kellemi03/2025/PIT.
+2025-03-30 11:26:40,146 - INFO - Successfully updated Pitchers kikucyu01/2025/LAA.
+2025-03-30 11:26:40,182 - ERROR - Failed to create Pitchers litteza01/2025/TBR. Response: 200 - {"bbrefId":"litteza01","year":2025,"team":"TBR","age":29,"lg":"AL","wl":"0-1","wlPercentage":0,"era":1.5,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":6,"h":4,"r":1,"er":1,"hr":0,"bb":0,"ibb":0,"so":7,"hbp":0,"bk":0,"wp":0,"bf":22,"eraPlus":268,"fip":0.38,"whip":0.667,"h9":6,"hR9":0,"bB9":0,"sO9":10.5,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:40,218 - ERROR - Failed to create Pitchers lodolni01/2025/CIN. Response: 200 - {"bbrefId":"lodolni01","year":2025,"team":"CIN","age":27,"lg":"NL","wl":"1-0","wlPercentage":1,"era":3,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":6,"h":5,"r":2,"er":2,"hr":1,"bb":0,"ibb":0,"so":1,"hbp":1,"bk":0,"wp":0,"bf":23,"eraPlus":145,"fip":5.04,"whip":0.833,"h9":7.5,"hR9":1.5,"bB9":0,"sO9":1.5,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"LHP"}
+2025-03-30 11:26:40,719 - INFO - Processed 20 pitchers so far
+2025-03-30 11:26:40,755 - INFO - Successfully updated Pitchers pepiory01/2025/TBR.
+2025-03-30 11:26:40,789 - ERROR - Failed to create Pitchers pfaadbr01/2025/ARI. Response: 200 - {"bbrefId":"pfaadbr01","year":2025,"team":"ARI","age":26,"lg":"NL","wl":"0-1","wlPercentage":0,"era":4.5,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":6,"h":6,"r":3,"er":3,"hr":1,"bb":1,"ibb":0,"so":5,"hbp":0,"bk":0,"wp":0,"bf":25,"eraPlus":97,"fip":3.71,"whip":1.167,"h9":9,"hR9":1.5,"bB9":1.5,"sO9":7.5,"sow":5,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:40,823 - ERROR - Failed to create Pitchers schwesp01/2025/ATL. Response: 200 - {"bbrefId":"schwesp01","year":2025,"team":"ATL","age":25,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":6,"h":1,"r":0,"er":0,"hr":0,"bb":1,"ibb":0,"so":4,"hbp":1,"bk":0,"wp":0,"bf":20,"eraPlus":0,"fip":2.38,"whip":0.333,"h9":1.5,"hR9":0,"bB9":1.5,"sO9":6,"sow":4,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:40,857 - INFO - Successfully updated Pitchers severlu01/2025/ATH.
+2025-03-30 11:26:40,892 - INFO - Successfully updated Pitchers sprinje01/2025/ATH.
+2025-03-30 11:26:40,928 - ERROR - Failed to create Pitchers vasqura02/2025/SDP. Response: 200 - {"bbrefId":"vasqura02","year":2025,"team":"SDP","age":26,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":6,"h":4,"r":0,"er":0,"hr":0,"bb":4,"ibb":0,"so":3,"hbp":0,"bk":0,"wp":0,"bf":23,"eraPlus":0,"fip":3.71,"whip":1.333,"h9":6,"hR9":0,"bB9":6,"sO9":4.5,"sow":0.75,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:40,962 - INFO - Successfully updated Pitchers wheelza01/2025/PHI.
+2025-03-30 11:26:40,997 - ERROR - Failed to create Pitchers cannigr01/2025/NYM. Response: 200 - {"bbrefId":"cannigr01","year":2025,"team":"NYM","age":29,"lg":"NL","wl":"0-1","wlPercentage":0,"era":3.18,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":5.2,"h":4,"r":2,"er":2,"hr":1,"bb":2,"ibb":0,"so":4,"hbp":0,"bk":0,"wp":0,"bf":21,"eraPlus":138,"fip":4.65,"whip":1.059,"h9":6.4,"hR9":1.6,"bB9":3.2,"sO9":6.4,"sow":2,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:41,032 - INFO - Successfully updated Pitchers flaheja01/2025/DET.
+2025-03-30 11:26:41,066 - INFO - Successfully updated Pitchers houckta01/2025/BOS.
+2025-03-30 11:26:41,566 - INFO - Processed 30 pitchers so far
+2025-03-30 11:26:41,592 - ERROR - Failed to create Pitchers millebr04/2025/SEA. Response: 200 - {"bbrefId":"millebr04","year":2025,"team":"SEA","age":26,"lg":"AL","wl":"0-1","wlPercentage":0,"era":4.76,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":5.2,"h":6,"r":3,"er":3,"hr":1,"bb":2,"ibb":0,"so":4,"hbp":0,"bk":0,"wp":1,"bf":24,"eraPlus":85,"fip":4.65,"whip":1.412,"h9":9.5,"hR9":1.6,"bB9":3.2,"sO9":6.4,"sow":2,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:41,621 - INFO - Successfully updated Pitchers kellyme01/2025/ARI.
+2025-03-30 11:26:41,654 - ERROR - Failed to create Pitchers kremede01/2025/BAL. Response: 200 - {"bbrefId":"kremede01","year":2025,"team":"BAL","age":29,"lg":"AL","wl":"1-0","wlPercentage":1,"era":8.44,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":5.1,"h":5,"r":5,"er":5,"hr":1,"bb":2,"ibb":0,"so":6,"hbp":0,"bk":0,"wp":1,"bf":23,"eraPlus":48,"fip":4.02,"whip":1.313,"h9":8.4,"hR9":1.7,"bB9":3.4,"sO9":10.1,"sow":3,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:41,682 - INFO - Successfully updated Pitchers rodonca01/2025/NYY.
+2025-03-30 11:26:41,707 - INFO - Successfully updated Pitchers skenepa01/2025/PIT.
+2025-03-30 11:26:41,744 - INFO - Successfully updated Pitchers berrijo01/2025/TOR.
+2025-03-30 11:26:41,771 - ERROR - Failed to create Pitchers bidoos01/2025/ATH. Response: 200 - {"bbrefId":"bidoos01","year":2025,"team":"ATH","age":29,"lg":"Unknown","wl":"1-0","wlPercentage":1,"era":1.8,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":5,"h":3,"r":2,"er":1,"hr":0,"bb":4,"ibb":0,"so":4,"hbp":2,"bk":0,"wp":0,"bf":22,"eraPlus":226,"fip":4.71,"whip":1.4,"h9":5.4,"hR9":0,"bB9":7.2,"sO9":7.2,"sow":1,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:41,794 - ERROR - Failed to create Pitchers cannojo02/2025/CHW. Response: 200 - {"bbrefId":"cannojo02","year":2025,"team":"CHW","age":24,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":5,"h":4,"r":0,"er":0,"hr":0,"bb":3,"ibb":0,"so":5,"hbp":0,"bk":0,"wp":0,"bf":20,"eraPlus":0,"fip":2.51,"whip":1.4,"h9":7.2,"hR9":0,"bB9":5.4,"sO9":9,"sow":1.67,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:41,824 - INFO - Successfully updated Pitchers castilu02/2025/SEA.
+2025-03-30 11:26:41,847 - INFO - Successfully updated Pitchers crochga01/2025/BOS.
+2025-03-30 11:26:42,348 - INFO - Processed 40 pitchers so far
+2025-03-30 11:26:42,383 - INFO - Successfully updated Pitchers gillico01/2025/MIA.
+2025-03-30 11:26:42,417 - INFO - Successfully updated Pitchers grayso01/2025/STL.
+2025-03-30 11:26:42,443 - INFO - Successfully updated Pitchers greenhu01/2025/CIN.
+2025-03-30 11:26:42,484 - ERROR - Failed to create Pitchers irvinja01/2025/WSN. Response: 200 - {"bbrefId":"irvinja01","year":2025,"team":"WSN","age":28,"lg":"NL","wl":"0-0","wlPercentage":0,"era":3.6,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":5,"h":7,"r":2,"er":2,"hr":1,"bb":2,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":0,"bf":22,"eraPlus":122,"fip":5.71,"whip":1.8,"h9":12.6,"hR9":1.8,"bB9":3.6,"sO9":3.6,"sow":1,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:42,509 - INFO - Successfully updated Pitchers leiteja01/2025/TEX.
+2025-03-30 11:26:42,547 - INFO - Successfully updated Pitchers livelbe01/2025/CLE.
+2025-03-30 11:26:42,585 - INFO - Successfully updated Pitchers lopezpa01/2025/MIN.
+2025-03-30 11:26:42,611 - INFO - Successfully updated Pitchers lopezre01/2025/ATL.
+2025-03-30 11:26:42,644 - ERROR - Failed to create Pitchers lugose01/2025/KCR. Response: 200 - {"bbrefId":"lugose01","year":2025,"team":"KCR","age":35,"lg":"AL","wl":"0-0","wlPercentage":0,"era":5.4,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":5,"h":4,"r":3,"er":3,"hr":1,"bb":3,"ibb":0,"so":4,"hbp":0,"bk":0,"wp":0,"bf":20,"eraPlus":75,"fip":5.51,"whip":1.4,"h9":7.2,"hR9":1.8,"bB9":5.4,"sO9":7.2,"sow":1.33,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:42,680 - ERROR - Failed to create Pitchers luzarje01/2025/PHI. Response: 200 - {"bbrefId":"luzarje01","year":2025,"team":"PHI","age":27,"lg":"NL","wl":"1-0","wlPercentage":1,"era":3.6,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":5,"h":5,"r":2,"er":2,"hr":1,"bb":2,"ibb":0,"so":11,"hbp":0,"bk":0,"wp":0,"bf":22,"eraPlus":122,"fip":2.11,"whip":1.4,"h9":9,"hR9":1.8,"bB9":3.6,"sO9":19.8,"sow":5.5,"dateModified":"2025-03-30T11:25:02.065305","throws":"LHP"}
+2025-03-30 11:26:43,182 - INFO - Processed 50 pitchers so far
+2025-03-30 11:26:43,230 - INFO - Successfully updated Pitchers megilty01/2025/NYM.
+2025-03-30 11:26:43,253 - INFO - Successfully updated Pitchers peralfr01/2025/MIL.
+2025-03-30 11:26:43,304 - INFO - Successfully updated Pitchers raganco01/2025/KCR.
+2025-03-30 11:26:43,328 - ERROR - Failed to create Pitchers ryanjo04/2025/MIN. Response: 200 - {"bbrefId":"ryanjo04","year":2025,"team":"MIN","age":29,"lg":"AL","wl":"0-0","wlPercentage":0,"era":1.8,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":5,"h":5,"r":1,"er":1,"hr":0,"bb":0,"ibb":0,"so":5,"hbp":2,"bk":0,"wp":0,"bf":21,"eraPlus":226,"fip":1.91,"whip":1,"h9":9,"hR9":0,"bB9":0,"sO9":9,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:43,353 - INFO - Successfully updated Pitchers salech01/2025/ATL.
+2025-03-30 11:26:43,387 - INFO - Successfully updated Pitchers skubata01/2025/DET.
+2025-03-30 11:26:43,423 - INFO - Successfully updated Pitchers snellbl01/2025/LAD.
+2025-03-30 11:26:43,457 - ERROR - Failed to create Pitchers verlaju01/2025/SFG. Response: 200 - {"bbrefId":"verlaju01","year":2025,"team":"SFG","age":42,"lg":"NL","wl":"0-0","wlPercentage":0,"era":3.6,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":5,"h":6,"r":2,"er":2,"hr":1,"bb":1,"ibb":0,"so":5,"hbp":0,"bk":0,"wp":0,"bf":22,"eraPlus":122,"fip":3.91,"whip":1.4,"h9":10.8,"hR9":1.8,"bB9":1.8,"sO9":9,"sow":5,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:43,491 - INFO - Successfully updated Pitchers webblo01/2025/SFG.
+2025-03-30 11:26:43,527 - ERROR - Failed to create Pitchers williga01/2025/CLE. Response: 200 - {"bbrefId":"williga01","year":2025,"team":"CLE","age":25,"lg":"AL","wl":"0-0","wlPercentage":0,"era":3.6,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":5,"h":4,"r":2,"er":2,"hr":0,"bb":1,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":1,"bf":19,"eraPlus":113,"fip":2.51,"whip":1,"h9":7.2,"hR9":0,"bB9":1.8,"sO9":3.6,"sow":2,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:44,027 - INFO - Processed 60 pitchers so far
+2025-03-30 11:26:44,050 - INFO - Successfully updated Pitchers alcansa01/2025/MIA.
+2025-03-30 11:26:44,083 - ERROR - Failed to create Pitchers friedma01/2025/NYY. Response: 200 - {"bbrefId":"friedma01","year":2025,"team":"NYY","age":31,"lg":"AL","wl":"0-0","wlPercentage":0,"era":3.86,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":4.2,"h":7,"r":6,"er":2,"hr":0,"bb":2,"ibb":0,"so":4,"hbp":2,"bk":0,"wp":0,"bf":29,"eraPlus":106,"fip":3.57,"whip":1.929,"h9":13.5,"hR9":0,"bB9":3.9,"sO9":7.7,"sow":2,"dateModified":"2025-03-30T11:25:02.065305","throws":"LHP"}
+2025-03-30 11:26:44,122 - INFO - Successfully updated Pitchers holmecl01/2025/NYM.
+2025-03-30 11:26:44,155 - ERROR - Failed to create Pitchers olsonre01/2025/DET. Response: 200 - {"bbrefId":"olsonre01","year":2025,"team":"DET","age":25,"lg":"AL","wl":"0-1","wlPercentage":0,"era":7.71,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":4.2,"h":4,"r":4,"er":4,"hr":1,"bb":2,"ibb":1,"so":5,"hbp":0,"bk":0,"wp":0,"bf":20,"eraPlus":53,"fip":4.64,"whip":1.286,"h9":7.7,"hR9":1.9,"bB9":3.9,"sO9":9.6,"sow":2.5,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:44,189 - INFO - Successfully updated Pitchers sasakro01/2025/LAD.
+2025-03-30 11:26:44,246 - ERROR - Failed to create Pitchers bellova01/2025/MIA. Response: 200 - {"bbrefId":"bellova01","year":2025,"team":"MIA","age":25,"lg":"NL","wl":"0-0","wlPercentage":0,"era":2.08,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":4.1,"h":4,"r":1,"er":1,"hr":0,"bb":2,"ibb":0,"so":4,"hbp":0,"bk":0,"wp":0,"bf":18,"eraPlus":214,"fip":2.25,"whip":1.385,"h9":8.3,"hR9":0,"bB9":4.2,"sO9":8.3,"sow":2,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:44,282 - ERROR - Failed to create Pitchers buehlwa01/2025/BOS. Response: 200 - {"bbrefId":"buehlwa01","year":2025,"team":"BOS","age":30,"lg":"AL","wl":"0-1","wlPercentage":0,"era":8.31,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":4.1,"h":7,"r":4,"er":4,"hr":1,"bb":0,"ibb":0,"so":3,"hbp":1,"bk":0,"wp":0,"bf":21,"eraPlus":50,"fip":5.02,"whip":1.615,"h9":14.5,"hR9":2.1,"bB9":0,"sO9":6.2,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:44,305 - INFO - Successfully updated Pitchers ceasedy01/2025/SDP.
+2025-03-30 11:26:44,343 - ERROR - Failed to create Pitchers senzaan01/2025/COL. Response: 200 - {"bbrefId":"senzaan01","year":2025,"team":"COL","age":30,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":4.1,"h":9,"r":0,"er":0,"hr":0,"bb":2,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":21,"eraPlus":0,"fip":4.1,"whip":2.538,"h9":18.7,"hR9":0,"bB9":4.2,"sO9":0,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:44,384 - INFO - Successfully updated Pitchers taillja01/2025/CHC.
+2025-03-30 11:26:44,885 - INFO - Processed 70 pitchers so far
+2025-03-30 11:26:44,919 - INFO - Successfully updated Pitchers galleza01/2025/ARI.
+2025-03-30 11:26:44,945 - INFO - Successfully updated Pitchers garcilu03/2025/LAD.
+2025-03-30 11:26:44,975 - INFO - Successfully updated Pitchers bachala01/2025/MIA.
+2025-03-30 11:26:45,005 - INFO - Successfully updated Pitchers mortoch02/2025/BAL.
+2025-03-30 11:26:45,039 - INFO - Successfully updated Pitchers bandaan01/2025/LAD.
+2025-03-30 11:26:45,064 - INFO - Successfully updated Pitchers caspabe01/2025/LAD.
+2025-03-30 11:26:45,091 - INFO - Successfully updated Pitchers hodgepo01/2025/CHC.
+2025-03-30 11:26:45,116 - INFO - Successfully updated Pitchers morgael01/2025/CHC.
+2025-03-30 11:26:45,139 - INFO - Successfully updated Pitchers phillty01/2025/MIA.
+2025-03-30 11:26:45,177 - INFO - Successfully updated Pitchers pressry01/2025/CHC.
+2025-03-30 11:26:45,678 - INFO - Processed 80 pitchers so far
+2025-03-30 11:26:45,703 - ERROR - Failed to create Pitchers scherma01/2025/TOR. Response: 200 - {"bbrefId":"scherma01","year":2025,"team":"TOR","age":40,"lg":"AL","wl":"0-0","wlPercentage":0,"era":6,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":3,"h":3,"r":2,"er":2,"hr":2,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":11,"eraPlus":71,"fip":10.71,"whip":1,"h9":9,"hR9":6,"bB9":0,"sO9":3,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:45,728 - INFO - Successfully updated Pitchers scottta01/2025/LAD.
+2025-03-30 11:26:45,762 - INFO - Successfully updated Pitchers soriage01/2025/MIA.
+2025-03-30 11:26:45,793 - INFO - Successfully updated Pitchers treinbl01/2025/LAD.
+2025-03-30 11:26:45,816 - INFO - Successfully updated Pitchers vesiaal01/2025/LAD.
+2025-03-30 11:26:45,845 - INFO - Successfully updated Pitchers webbja01/2025/TEX.
+2025-03-30 11:26:45,872 - INFO - Successfully updated Pitchers yateski01/2025/LAD.
+2025-03-30 11:26:45,895 - INFO - Successfully updated Pitchers beeksja02/2025/ARI.
+2025-03-30 11:26:45,927 - INFO - Successfully updated Pitchers brownbe02/2025/CHC.
+2025-03-30 11:26:45,958 - INFO - Successfully updated Pitchers jarvibr01/2025/ARI.
+2025-03-30 11:26:46,465 - INFO - Processed 90 pitchers so far
+2025-03-30 11:26:46,504 - INFO - Successfully updated Pitchers kingmi01/2025/SDP.
+2025-03-30 11:26:46,538 - INFO - Successfully updated Pitchers morejad01/2025/SDP.
+2025-03-30 11:26:46,569 - INFO - Successfully updated Pitchers suareal01/2025/BAL.
+2025-03-30 11:26:46,593 - INFO - Successfully updated Pitchers barneja01/2025/TOR.
+2025-03-30 11:26:46,617 - INFO - Successfully updated Pitchers bazared01/2025/SEA.
+2025-03-30 11:26:46,654 - INFO - Successfully updated Pitchers brazohu01/2025/NYM.
+2025-03-30 11:26:46,690 - INFO - Successfully updated Pitchers dreyeja01/2025/LAD.
+2025-03-30 11:26:46,722 - INFO - Successfully updated Pitchers estraje01/2025/SDP.
+2025-03-30 11:26:46,757 - INFO - Successfully updated Pitchers martich02/2025/TEX.
+2025-03-30 11:26:46,795 - INFO - Successfully updated Pitchers sandlni01/2025/TOR.
+2025-03-30 11:26:47,296 - INFO - Processed 100 pitchers so far
+2025-03-30 11:26:47,335 - INFO - Successfully updated Pitchers abreubr01/2025/HOU.
+2025-03-30 11:26:47,370 - INFO - Successfully updated Pitchers adamja01/2025/SDP.
+2025-03-30 11:26:47,404 - ERROR - Failed to create Pitchers carraca01/2025/NYY. Response: 200 - {"bbrefId":"carraca01","year":2025,"team":"NYY","age":38,"lg":"AL","wl":"0-0","wlPercentage":0,"era":13.5,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":2,"h":5,"r":3,"er":3,"hr":1,"bb":0,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":0,"bf":11,"eraPlus":34,"fip":7.21,"whip":2.5,"h9":22.5,"hR9":4.5,"bB9":0,"sO9":9,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:47,440 - ERROR - Failed to create Pitchers cortene01/2025/MIL. Response: 200 - {"bbrefId":"cortene01","year":2025,"team":"MIL","age":30,"lg":"NL","wl":"0-1","wlPercentage":0,"era":36,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":2,"h":6,"r":8,"er":8,"hr":5,"bb":5,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":0,"bf":17,"eraPlus":14,"fip":40.71,"whip":5.5,"h9":27,"hR9":22.5,"bB9":22.5,"sO9":9,"sow":0.4,"dateModified":"2025-03-30T11:25:02.065305","throws":"LHP"}
+2025-03-30 11:26:47,478 - INFO - Successfully updated Pitchers estevca01/2025/KCR.
+2025-03-30 11:26:47,516 - INFO - Successfully updated Pitchers ferguca01/2025/PIT.
+2025-03-30 11:26:47,555 - INFO - Successfully updated Pitchers ferguty01/2025/ATH.
+2025-03-30 11:26:47,590 - ERROR - Failed to create Pitchers garabge01/2025/TEX. Response: 200 - {"bbrefId":"garabge01","year":2025,"team":"TEX","age":29,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":2,"h":2,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":0,"bf":8,"eraPlus":0,"fip":0.71,"whip":1,"h9":9,"hR9":0,"bB9":0,"sO9":9,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:47,622 - INFO - Successfully updated Pitchers garciyi01/2025/TOR.
+2025-03-30 11:26:47,646 - INFO - Successfully updated Pitchers greench03/2025/TOR.
+2025-03-30 11:26:48,147 - INFO - Processed 110 pitchers so far
+2025-03-30 11:26:48,186 - INFO - Successfully updated Pitchers haderjo01/2025/HOU.
+2025-03-30 11:26:48,253 - ERROR - Failed to create Pitchers henriro01/2025/MIA. Response: 200 - {"bbrefId":"henriro01","year":2025,"team":"MIA","age":25,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":2,"h":3,"r":1,"er":0,"hr":0,"bb":1,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":10,"eraPlus":0,"fip":3.21,"whip":2,"h9":13.5,"hR9":0,"bB9":4.5,"sO9":4.5,"sow":1,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:48,290 - INFO - Successfully updated Pitchers holdeco01/2025/PIT.
+2025-03-30 11:26:48,314 - INFO - Successfully updated Pitchers kellebr01/2025/CHC.
+2025-03-30 11:26:48,338 - ERROR - Failed to create Pitchers kellyza01/2025/BOS. Response: 200 - {"bbrefId":"kellyza01","year":2025,"team":"BOS","age":30,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":2,"h":1,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":7,"eraPlus":0,"fip":1.71,"whip":0.5,"h9":4.5,"hR9":0,"bB9":0,"sO9":4.5,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:48,362 - INFO - Successfully updated Pitchers knackla01/2025/LAD.
+2025-03-30 11:26:48,393 - INFO - Successfully updated Pitchers leedy01/2025/ATL.
+2025-03-30 11:26:48,428 - ERROR - Failed to create Pitchers lynchda02/2025/KCR. Response: 200 - {"bbrefId":"lynchda02","year":2025,"team":"KCR","age":28,"lg":"AL","wl":"1-0","wlPercentage":1,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":2,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":6,"eraPlus":0,"fip":2.71,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":0,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"LHP"}
+2025-03-30 11:26:48,452 - ERROR - Failed to create Pitchers maedake01/2025/DET. Response: 200 - {"bbrefId":"maedake01","year":2025,"team":"DET","age":37,"lg":"AL","wl":"0-0","wlPercentage":0,"era":9,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":2,"h":2,"r":2,"er":2,"hr":1,"bb":1,"ibb":0,"so":3,"hbp":0,"bk":0,"wp":0,"bf":9,"eraPlus":50,"fip":7.71,"whip":1.5,"h9":9,"hR9":4.5,"bB9":4.5,"sO9":13.5,"sow":3,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:48,478 - INFO - Successfully updated Pitchers matonph01/2025/STL.
+2025-03-30 11:26:48,979 - INFO - Processed 120 pitchers so far
+2025-03-30 11:26:49,005 - INFO - Successfully updated Pitchers millesh01/2025/ARI.
+2025-03-30 11:26:49,034 - INFO - Successfully updated Pitchers milneho01/2025/TEX.
+2025-03-30 11:26:49,073 - INFO - Successfully updated Pitchers murfepe01/2025/CHW.
+2025-03-30 11:26:49,111 - INFO - Successfully updated Pitchers paganem01/2025/CIN.
+2025-03-30 11:26:49,146 - INFO - Successfully updated Pitchers pearsna01/2025/CHC.
+2025-03-30 11:26:49,180 - ERROR - Failed to create Pitchers pegueel01/2025/MIL. Response: 200 - {"bbrefId":"pegueel01","year":2025,"team":"MIL","age":28,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":2,"h":2,"r":2,"er":0,"hr":0,"bb":0,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":9,"eraPlus":0,"fip":2.71,"whip":1,"h9":9,"hR9":0,"bB9":0,"sO9":0,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:49,214 - ERROR - Failed to create Pitchers ribalor01/2025/WSN. Response: 200 - {"bbrefId":"ribalor01","year":2025,"team":"WSN","age":27,"lg":"NL","wl":"0-0","wlPercentage":0,"era":18,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":2,"h":2,"r":4,"er":4,"hr":1,"bb":3,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":0,"bf":11,"eraPlus":27,"fip":11.71,"whip":2.5,"h9":9,"hR9":4.5,"bB9":13.5,"sO9":9,"sow":0.67,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:49,250 - INFO - Successfully updated Pitchers rodrira02/2025/SFG.
+2025-03-30 11:26:49,285 - INFO - Successfully updated Pitchers salazed01/2025/WSN.
+2025-03-30 11:26:49,310 - INFO - Successfully updated Pitchers santito01/2025/CIN.
+2025-03-30 11:26:49,811 - INFO - Processed 130 pitchers so far
+2025-03-30 11:26:49,836 - INFO - Successfully updated Pitchers smithca06/2025/CLE.
+2025-03-30 11:26:49,870 - INFO - Successfully updated Pitchers spencmi01/2025/ATH.
+2025-03-30 11:26:49,895 - INFO - Successfully updated Pitchers suarero01/2025/SDP.
+2025-03-30 11:26:49,928 - INFO - Successfully updated Pitchers thielca01/2025/CHC.
+2025-03-30 11:26:49,963 - ERROR - Failed to create Pitchers thomaco02/2025/MIL. Response: 200 - {"bbrefId":"thomaco02","year":2025,"team":"MIL","age":27,"lg":"NL","wl":"0-0","wlPercentage":0,"era":36,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":2,"h":6,"r":8,"er":8,"hr":3,"bb":1,"ibb":0,"so":2,"hbp":1,"bk":0,"wp":0,"bf":14,"eraPlus":14,"fip":23.21,"whip":3.5,"h9":27,"hR9":13.5,"bB9":4.5,"sO9":9,"sow":2,"dateModified":"2025-03-30T11:25:02.065305","throws":"LHP"}
+2025-03-30 11:26:50,001 - INFO - Successfully updated Pitchers varlalo01/2025/MIN.
+2025-03-30 11:26:50,036 - INFO - Successfully updated Pitchers weissgr01/2025/BOS.
+2025-03-30 11:26:50,072 - ERROR - Failed to create Pitchers wentzjo01/2025/PIT. Response: 200 - {"bbrefId":"wentzjo01","year":2025,"team":"PIT","age":27,"lg":"NL","wl":"0-1","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":2,"h":2,"r":2,"er":0,"hr":0,"bb":2,"ibb":2,"so":1,"hbp":0,"bk":0,"wp":0,"bf":10,"eraPlus":0,"fip":4.71,"whip":2,"h9":9,"hR9":0,"bB9":9,"sO9":4.5,"sow":0.5,"dateModified":"2025-03-30T11:25:02.065305","throws":"LHP"}
+2025-03-30 11:26:50,108 - INFO - Successfully updated Pitchers whitlga01/2025/BOS.
+2025-03-30 11:26:50,144 - INFO - Successfully updated Pitchers akinke01/2025/BAL.
+2025-03-30 11:26:50,645 - INFO - Processed 140 pitchers so far
+2025-03-30 11:26:50,702 - INFO - Successfully updated Pitchers armstsh01/2025/TEX.
+2025-03-30 11:26:50,743 - INFO - Successfully updated Pitchers bummeaa01/2025/ATL.
+2025-03-30 11:26:50,776 - ERROR - Failed to create Pitchers buttojo01/2025/NYM. Response: 200 - {"bbrefId":"buttojo01","year":2025,"team":"NYM","age":27,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1.2,"h":1,"r":0,"er":0,"hr":0,"bb":2,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":0,"bf":8,"eraPlus":0,"fip":3.91,"whip":1.8,"h9":5.4,"hR9":0,"bB9":10.8,"sO9":10.8,"sow":1,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:50,802 - INFO - Successfully updated Pitchers dominse01/2025/BAL.
+2025-03-30 11:26:50,827 - INFO - Successfully updated Pitchers erceglu01/2025/KCR.
+2025-03-30 11:26:50,854 - INFO - Successfully updated Pitchers garciro04/2025/TEX.
+2025-03-30 11:26:50,880 - INFO - Successfully updated Pitchers jacobal01/2025/SDP.
+2025-03-30 11:26:50,904 - INFO - Successfully updated Pitchers johnsry01/2025/LAA.
+2025-03-30 11:26:50,940 - INFO - Successfully updated Pitchers leasujo01/2025/CHW.
+2025-03-30 11:26:50,972 - INFO - Successfully updated Pitchers lovelri01/2025/TOR.
+2025-03-30 11:26:51,473 - INFO - Processed 150 pitchers so far
+2025-03-30 11:26:51,499 - ERROR - Failed to create Pitchers mahlety01/2025/TEX. Response: 200 - {"bbrefId":"mahlety01","year":2025,"team":"TEX","age":30,"lg":"AL","wl":"0-0","wlPercentage":0,"era":5.4,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1.2,"h":2,"r":1,"er":1,"hr":0,"bb":4,"ibb":0,"so":3,"hbp":0,"bk":0,"wp":0,"bf":11,"eraPlus":87,"fip":6.31,"whip":3.6,"h9":10.8,"hR9":0,"bB9":21.6,"sO9":16.2,"sow":0.75,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:51,530 - INFO - Successfully updated Pitchers matsuyu01/2025/SDP.
+2025-03-30 11:26:51,557 - ERROR - Failed to create Pitchers murdono01/2025/ATH. Response: 200 - {"bbrefId":"murdono01","year":2025,"team":"ATH","age":26,"lg":"Unknown","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1.2,"h":0,"r":0,"er":0,"hr":0,"bb":1,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":0,"bf":6,"eraPlus":0,"fip":2.11,"whip":0.6,"h9":0,"hR9":0,"bB9":5.4,"sO9":10.8,"sow":2,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:51,591 - INFO - Successfully updated Pitchers nelsory01/2025/ARI.
+2025-03-30 11:26:51,618 - INFO - Successfully updated Pitchers peralwa01/2025/SDP.
+2025-03-30 11:26:51,645 - INFO - Successfully updated Pitchers sewalpa01/2025/CLE.
+2025-03-30 11:26:51,671 - INFO - Successfully updated Pitchers venezan01/2025/MIA.
+2025-03-30 11:26:51,696 - INFO - Successfully updated Pitchers bernabr01/2025/BOS.
+2025-03-30 11:26:51,732 - INFO - Successfully updated Pitchers borucry01/2025/PIT.
+2025-03-30 11:26:51,773 - INFO - Successfully updated Pitchers briesbe01/2025/DET.
+2025-03-30 11:26:52,274 - INFO - Processed 160 pitchers so far
+2025-03-30 11:26:52,312 - INFO - Successfully updated Pitchers chivian01/2025/COL.
+2025-03-30 11:26:52,349 - INFO - Successfully updated Pitchers clevimi01/2025/CHW.
+2025-03-30 11:26:52,381 - INFO - Successfully updated Pitchers ferrejo01/2025/WSN.
+2025-03-30 11:26:52,407 - INFO - Successfully updated Pitchers gaddihu01/2025/CLE.
+2025-03-30 11:26:52,431 - ERROR - Failed to create Pitchers gomezyo01/2025/NYY. Response: 200 - {"bbrefId":"gomezyo01","year":2025,"team":"NYY","age":25,"lg":"AL","wl":"1-0","wlPercentage":1,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1.1,"h":1,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":5,"eraPlus":0,"fip":1.21,"whip":0.75,"h9":6.8,"hR9":0,"bB9":0,"sO9":6.8,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:52,454 - ERROR - Failed to create Pitchers halvose01/2025/COL. Response: 200 - {"bbrefId":"halvose01","year":2025,"team":"COL","age":25,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":1,"ip":1.1,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":0,"fip":1.21,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":6.8,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:52,478 - INFO - Successfully updated Pitchers hernada03/2025/ATL.
+2025-03-30 11:26:52,504 - INFO - Successfully updated Pitchers holtoty01/2025/DET.
+2025-03-30 11:26:52,539 - ERROR - Failed to create Pitchers hurtebr01/2025/DET. Response: 200 - {"bbrefId":"hurtebr01","year":2025,"team":"DET","age":26,"lg":"AL","wl":"0-0","wlPercentage":0,"era":6.75,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1.1,"h":1,"r":1,"er":1,"hr":1,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":5,"eraPlus":73,"fip":10.96,"whip":0.75,"h9":6.8,"hR9":6.8,"bB9":0,"sO9":6.8,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"LHP"}
+2025-03-30 11:26:52,577 - INFO - Successfully updated Pitchers jackslu01/2025/TEX.
+2025-03-30 11:26:53,078 - INFO - Processed 170 pitchers so far
+2025-03-30 11:26:53,107 - INFO - Successfully updated Pitchers kingbr02/2025/HOU.
+2025-03-30 11:26:53,139 - INFO - Successfully updated Pitchers santade01/2025/PIT.
+2025-03-30 11:26:53,179 - INFO - Successfully updated Pitchers sotogr01/2025/BAL.
+2025-03-30 11:26:53,216 - INFO - Successfully updated Pitchers vargaca01/2025/SEA.
+2025-03-30 11:26:53,249 - INFO - Successfully updated Pitchers zerpaan01/2025/KCR.
+2025-03-30 11:26:53,282 - ERROR - Failed to create Pitchers alexasc02/2025/COL. Response: 200 - {"bbrefId":"alexasc02","year":2025,"team":"COL","age":35,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":1,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":3,"eraPlus":0,"fip":2.71,"whip":1,"h9":9,"hR9":0,"bB9":0,"sO9":0,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"LHP"}
+2025-03-30 11:26:53,317 - INFO - Successfully updated Pitchers alexaty01/2025/MIL.
+2025-03-30 11:26:53,348 - INFO - Successfully updated Pitchers alvarjo03/2025/PHI.
+2025-03-30 11:26:53,372 - ERROR - Failed to create Pitchers ashcrgr01/2025/CIN. Response: 200 - {"bbrefId":"ashcrgr01","year":2025,"team":"CIN","age":27,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":2,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":0,"fip":2.71,"whip":2,"h9":18,"hR9":0,"bB9":0,"sO9":0,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:53,406 - INFO - Successfully updated Pitchers bakerbr01/2025/BAL.
+2025-03-30 11:26:53,907 - INFO - Processed 180 pitchers so far
+2025-03-30 11:26:53,937 - ERROR - Failed to create Pitchers banksta01/2025/PHI. Response: 200 - {"bbrefId":"banksta01","year":2025,"team":"PHI","age":33,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":1,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":0,"fip":-1.29,"whip":1,"h9":9,"hR9":0,"bB9":0,"sO9":18,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"LHP"}
+2025-03-30 11:26:53,961 - INFO - Successfully updated Pitchers barlosc01/2025/CIN.
+2025-03-30 11:26:53,983 - ERROR - Failed to create Pitchers bauerja01/2025/MIL. Response: 200 - {"bbrefId":"bauerja01","year":2025,"team":"MIL","age":29,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":1,"ibb":0,"so":0,"hbp":1,"bk":0,"wp":0,"bf":5,"eraPlus":0,"fip":8.71,"whip":1,"h9":0,"hR9":0,"bB9":9,"sO9":0,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"LHP"}
+2025-03-30 11:26:54,006 - ERROR - Failed to create Pitchers bautife01/2025/BAL. Response: 200 - {"bbrefId":"bautife01","year":2025,"team":"BAL","age":30,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":1,"h":1,"r":0,"er":0,"hr":0,"bb":1,"ibb":0,"so":3,"hbp":0,"bk":0,"wp":0,"bf":5,"eraPlus":0,"fip":-0.29,"whip":2,"h9":9,"hR9":0,"bB9":9,"sO9":27,"sow":3,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:54,029 - INFO - Successfully updated Pitchers bednada01/2025/PIT.
+2025-03-30 11:26:54,053 - ERROR - Failed to create Pitchers bendean01/2025/MIA. Response: 200 - {"bbrefId":"bendean01","year":2025,"team":"MIA","age":30,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":3,"eraPlus":0,"fip":2.71,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":0,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:54,078 - INFO - Successfully updated Pitchers biggehu01/2025/TBR.
+2025-03-30 11:26:54,106 - ERROR - Failed to create Pitchers bivensp01/2025/SFG. Response: 200 - {"bbrefId":"bivensp01","year":2025,"team":"SFG","age":31,"lg":"NL","wl":"0-1","wlPercentage":0,"era":9,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":2,"r":1,"er":1,"hr":1,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":5,"eraPlus":63,"fip":13.71,"whip":2,"h9":18,"hR9":9,"bB9":0,"sO9":9,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:54,141 - INFO - Successfully updated Pitchers booseca01/2025/CHW.
+2025-03-30 11:26:54,173 - INFO - Successfully updated Pitchers brasiry01/2025/CHC.
+2025-03-30 11:26:54,674 - INFO - Processed 190 pitchers so far
+2025-03-30 11:26:54,699 - INFO - Successfully updated Pitchers brebbjo01/2025/DET.
+2025-03-30 11:26:54,726 - ERROR - Failed to create Pitchers canoye01/2025/BAL. Response: 200 - {"bbrefId":"canoye01","year":2025,"team":"BAL","age":31,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":1,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":0,"fip":-1.29,"whip":1,"h9":9,"hR9":0,"bB9":0,"sO9":18,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:54,750 - INFO - Successfully updated Pitchers chapmar01/2025/BOS.
+2025-03-30 11:26:54,774 - INFO - Successfully updated Pitchers claseem01/2025/CLE.
+2025-03-30 11:26:54,796 - ERROR - Failed to create Pitchers cleavga01/2025/TBR. Response: 200 - {"bbrefId":"cleavga01","year":2025,"team":"TBR","age":31,"lg":"AL","wl":"0-0","wlPercentage":0,"era":9,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":2,"r":1,"er":1,"hr":0,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":5,"eraPlus":59,"fip":0.71,"whip":2,"h9":18,"hR9":0,"bB9":0,"sO9":9,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"LHP"}
+2025-03-30 11:26:54,819 - INFO - Successfully updated Pitchers contrlu01/2025/HOU.
+2025-03-30 11:26:54,842 - ERROR - Failed to create Pitchers couloda01/2025/MIN. Response: 200 - {"bbrefId":"couloda01","year":2025,"team":"MIN","age":35,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":1,"r":0,"er":0,"hr":0,"bb":1,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":5,"eraPlus":0,"fip":5.71,"whip":2,"h9":9,"hR9":0,"bB9":9,"sO9":0,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"LHP"}
+2025-03-30 11:26:54,864 - ERROR - Failed to create Pitchers delosen01/2025/ATL. Response: 200 - {"bbrefId":"delosen01","year":2025,"team":"ATL","age":29,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":1,"h":1,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":0,"fip":0.71,"whip":1,"h9":9,"hR9":0,"bB9":0,"sO9":9,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:54,888 - INFO - Successfully updated Pitchers diazed04/2025/NYM.
+2025-03-30 11:26:54,932 - INFO - Successfully updated Pitchers fairbpe01/2025/TBR.
+2025-03-30 11:26:55,433 - INFO - Processed 200 pitchers so far
+2025-03-30 11:26:55,462 - ERROR - Failed to create Pitchers fauchca01/2025/MIA. Response: 200 - {"bbrefId":"fauchca01","year":2025,"team":"MIA","age":29,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":1,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":0,"fip":1.71,"whip":1,"h9":0,"hR9":0,"bB9":9,"sO9":18,"sow":2,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:55,494 - ERROR - Failed to create Pitchers fernary01/2025/STL. Response: 200 - {"bbrefId":"fernary01","year":2025,"team":"STL","age":27,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":3,"eraPlus":0,"fip":2.71,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":0,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:55,523 - INFO - Successfully updated Pitchers finneky01/2025/WSN.
+2025-03-30 11:26:55,546 - INFO - Successfully updated Pitchers garrere01/2025/NYM.
+2025-03-30 11:26:55,570 - INFO - Successfully updated Pitchers hanifbr01/2025/DET.
+2025-03-30 11:26:55,598 - INFO - Successfully updated Pitchers harvehu01/2025/KCR.
+2025-03-30 11:26:55,623 - ERROR - Failed to create Pitchers headrbr01/2025/NYY. Response: 200 - {"bbrefId":"headrbr01","year":2025,"team":"NYY","age":27,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":0,"bf":3,"eraPlus":0,"fip":-1.29,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":18,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"LHP"}
+2025-03-30 11:26:55,647 - INFO - Successfully updated Pitchers helslry01/2025/STL.
+2025-03-30 11:26:55,670 - ERROR - Failed to create Pitchers hergeji01/2025/COL. Response: 200 - {"bbrefId":"hergeji01","year":2025,"team":"COL","age":31,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":1,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":1,"bf":4,"eraPlus":0,"fip":5.71,"whip":1,"h9":0,"hR9":0,"bB9":9,"sO9":0,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:55,694 - ERROR - Failed to create Pitchers hernaca04/2025/PHI. Response: 200 - {"bbrefId":"hernaca04","year":2025,"team":"PHI","age":28,"lg":"NL","wl":"0-0","wlPercentage":0,"era":18,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":3,"r":2,"er":2,"hr":1,"bb":1,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":7,"eraPlus":31,"fip":16.71,"whip":4,"h9":27,"hR9":9,"bB9":9,"sO9":9,"sow":1,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:56,194 - INFO - Processed 210 pitchers so far
+2025-03-30 11:26:56,219 - INFO - Successfully updated Pitchers herriti01/2025/CLE.
+2025-03-30 11:26:56,242 - ERROR - Failed to create Pitchers hoffmje02/2025/TOR. Response: 200 - {"bbrefId":"hoffmje02","year":2025,"team":"TOR","age":32,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":1,"h":1,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":0,"fip":0.71,"whip":1,"h9":9,"hR9":0,"bB9":0,"sO9":9,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:56,276 - INFO - Successfully updated Pitchers holmegr01/2025/ATL.
+2025-03-30 11:26:56,308 - INFO - Successfully updated Pitchers hudsobr01/2025/MIL.
+2025-03-30 11:26:56,341 - ERROR - Failed to create Pitchers janseke01/2025/LAA. Response: 200 - {"bbrefId":"janseke01","year":2025,"team":"LAA","age":37,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":1,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":1,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":0,"fip":1.71,"whip":1,"h9":0,"hR9":0,"bB9":9,"sO9":18,"sow":2,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:56,375 - INFO - Successfully updated Pitchers johnspi01/2025/ATL.
+2025-03-30 11:26:56,406 - ERROR - Failed to create Pitchers joycebe01/2025/LAA. Response: 200 - {"bbrefId":"joycebe01","year":2025,"team":"LAA","age":24,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":1,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":1,"bf":4,"eraPlus":0,"fip":5.71,"whip":1,"h9":0,"hR9":0,"bB9":9,"sO9":0,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:56,431 - ERROR - Failed to create Pitchers junisja01/2025/CLE. Response: 200 - {"bbrefId":"junisja01","year":2025,"team":"CLE","age":32,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":1,"h":1,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":0,"fip":0.71,"whip":1,"h9":9,"hR9":0,"bB9":0,"sO9":9,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:56,455 - INFO - Successfully updated Pitchers kahnlto01/2025/DET.
+2025-03-30 11:26:56,479 - ERROR - Failed to create Pitchers kellyke02/2025/TBR. Response: 200 - {"bbrefId":"kellyke02","year":2025,"team":"TBR","age":27,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":3,"eraPlus":0,"fip":2.71,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":0,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:56,980 - INFO - Processed 220 pitchers so far
+2025-03-30 11:26:57,005 - INFO - Successfully updated Pitchers kerkeor01/2025/PHI.
+2025-03-30 11:26:57,029 - ERROR - Failed to create Pitchers lawreju01/2025/PIT. Response: 200 - {"bbrefId":"lawreju01","year":2025,"team":"PIT","age":30,"lg":"NL","wl":"0-0","wlPercentage":0,"era":9,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":2,"r":1,"er":1,"hr":0,"bb":0,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":0,"bf":5,"eraPlus":63,"fip":-1.29,"whip":2,"h9":18,"hR9":0,"bB9":0,"sO9":18,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:57,055 - INFO - Successfully updated Pitchers leitema02/2025/NYY.
+2025-03-30 11:26:57,099 - INFO - Successfully updated Pitchers longsa01/2025/KCR.
+2025-03-30 11:26:57,131 - INFO - Successfully updated Pitchers mantijo01/2025/ARI.
+2025-03-30 11:26:57,170 - ERROR - Failed to create Pitchers martiju01/2025/ARI. Response: 200 - {"bbrefId":"martiju01","year":2025,"team":"ARI","age":23,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":0,"fip":2.71,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":0,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:57,198 - INFO - Successfully updated Pitchers mcfartj01/2025/ATH.
+2025-03-30 11:26:57,238 - INFO - Successfully updated Pitchers merryju01/2025/CHC.
+2025-03-30 11:26:57,274 - INFO - Successfully updated Pitchers milleer01/2025/SFG.
+2025-03-30 11:26:57,299 - ERROR - Failed to create Pitchers millema03/2025/ATH. Response: 200 - {"bbrefId":"millema03","year":2025,"team":"ATH","age":26,"lg":"Unknown","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":1,"ip":1,"h":1,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":3,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":0,"fip":-3.29,"whip":1,"h9":9,"hR9":0,"bB9":0,"sO9":27,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:57,800 - INFO - Processed 230 pitchers so far
+2025-03-30 11:26:57,827 - INFO - Successfully updated Pitchers minteaj01/2025/NYM.
+2025-03-30 11:26:57,857 - INFO - Successfully updated Pitchers montgma01/2025/TBR.
+2025-03-30 11:26:57,881 - INFO - Successfully updated Pitchers munozan01/2025/SEA.
+2025-03-30 11:26:57,914 - INFO - Successfully updated Pitchers okertst01/2025/HOU.
+2025-03-30 11:26:57,950 - ERROR - Failed to create Pitchers patrich01/2025/MIL. Response: 200 - {"bbrefId":"patrich01","year":2025,"team":"MIL","age":26,"lg":"NL","wl":"0-0","wlPercentage":0,"era":18,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":2,"r":2,"er":2,"hr":1,"bb":1,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":6,"eraPlus":31,"fip":16.71,"whip":3,"h9":18,"hR9":9,"bB9":9,"sO9":9,"sow":1,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:57,982 - INFO - Successfully updated Pitchers perezci01/2025/BAL.
+2025-03-30 11:26:58,011 - INFO - Successfully updated Pitchers pocheco01/2025/WSN.
+2025-03-30 11:26:58,034 - ERROR - Failed to create Pitchers rodrima01/2025/TBR. Response: 200 - {"bbrefId":"rodrima01","year":2025,"team":"TBR","age":28,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":3,"eraPlus":0,"fip":0.71,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":9,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:58,067 - INFO - Successfully updated Pitchers rodriya01/2025/TOR.
+2025-03-30 11:26:58,104 - INFO - Successfully updated Pitchers rogerty01/2025/SFG.
+2025-03-30 11:26:58,605 - INFO - Processed 240 pitchers so far
+2025-03-30 11:26:58,642 - INFO - Successfully updated Pitchers romanjo03/2025/PHI.
+2025-03-30 11:26:58,666 - ERROR - Failed to create Pitchers romerjo01/2025/STL. Response: 200 - {"bbrefId":"romerjo01","year":2025,"team":"STL","age":28,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":1,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":0,"fip":2.71,"whip":1,"h9":9,"hR9":0,"bB9":0,"sO9":0,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"LHP"}
+2025-03-30 11:26:58,696 - ERROR - Failed to create Pitchers rossjo01/2025/PHI. Response: 200 - {"bbrefId":"rossjo01","year":2025,"team":"PHI","age":32,"lg":"NL","wl":"0-0","wlPercentage":0,"era":9,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":1,"h":1,"r":1,"er":1,"hr":0,"bb":1,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":5,"eraPlus":63,"fip":3.71,"whip":2,"h9":9,"hR9":0,"bB9":9,"sO9":9,"sow":1,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:58,719 - INFO - Successfully updated Pitchers roycrch01/2025/STL.
+2025-03-30 11:26:58,754 - ERROR - Failed to create Pitchers ruizjo01/2025/PHI. Response: 200 - {"bbrefId":"ruizjo01","year":2025,"team":"PHI","age":30,"lg":"NL","wl":"0-0","wlPercentage":0,"era":9,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":2,"r":1,"er":1,"hr":1,"bb":0,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":5,"eraPlus":63,"fip":15.71,"whip":2,"h9":18,"hR9":9,"bB9":0,"sO9":0,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:58,781 - INFO - Successfully updated Pitchers sandsco01/2025/MIN.
+2025-03-30 11:26:58,805 - INFO - Successfully updated Pitchers santogr01/2025/SEA.
+2025-03-30 11:26:58,836 - INFO - Successfully updated Pitchers sauceta01/2025/SEA.
+2025-03-30 11:26:58,869 - INFO - Successfully updated Pitchers slateju01/2025/BOS.
+2025-03-30 11:26:58,903 - ERROR - Failed to create Pitchers snideco01/2025/SEA. Response: 200 - {"bbrefId":"snideco01","year":2025,"team":"SEA","age":29,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":1,"r":1,"er":0,"hr":0,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":5,"eraPlus":0,"fip":0.71,"whip":1,"h9":9,"hR9":0,"bB9":0,"sO9":9,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:59,404 - INFO - Processed 250 pitchers so far
+2025-03-30 11:26:59,441 - INFO - Successfully updated Pitchers stanery01/2025/NYM.
+2025-03-30 11:26:59,464 - INFO - Successfully updated Pitchers strahma01/2025/PHI.
+2025-03-30 11:26:59,496 - INFO - Successfully updated Pitchers thorntr01/2025/SEA.
+2025-03-30 11:26:59,530 - INFO - Successfully updated Pitchers tinocje01/2025/MIA.
+2025-03-30 11:26:59,555 - INFO - Successfully updated Pitchers topaju01/2025/MIN.
+2025-03-30 11:26:59,578 - ERROR - Failed to create Pitchers trivilo01/2025/SFG. Response: 200 - {"bbrefId":"trivilo01","year":2025,"team":"SFG","age":33,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":1,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":3,"eraPlus":0,"fip":0.71,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":9,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:26:59,609 - INFO - Successfully updated Pitchers vestwi01/2025/DET.
+2025-03-30 11:26:59,633 - INFO - Successfully updated Pitchers vodnivi01/2025/COL.
+2025-03-30 11:26:59,658 - INFO - Successfully updated Pitchers walkery01/2025/SFG.
+2025-03-30 11:26:59,693 - INFO - Successfully updated Pitchers weavelu01/2025/NYY.
+2025-03-30 11:27:00,194 - INFO - Processed 260 pitchers so far
+2025-03-30 11:27:00,220 - INFO - Successfully updated Pitchers willide03/2025/NYY.
+2025-03-30 11:27:00,244 - ERROR - Failed to create Pitchers wilsobr02/2025/CHW. Response: 200 - {"bbrefId":"wilsobr02","year":2025,"team":"CHW","age":27,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1,"h":2,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":0,"fip":0.71,"whip":2,"h9":18,"hR9":0,"bB9":0,"sO9":9,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:27:00,283 - INFO - Successfully updated Pitchers youngda02/2025/NYM.
+2025-03-30 11:27:00,317 - INFO - Successfully updated Pitchers gibauia01/2025/CIN.
+2025-03-30 11:27:00,340 - INFO - Successfully updated Pitchers hillti01/2025/NYY.
+2025-03-30 11:27:00,363 - INFO - Successfully updated Pitchers jaxgr01/2025/MIN.
+2025-03-30 11:27:00,388 - INFO - Successfully updated Pitchers koenija01/2025/MIL.
+2025-03-30 11:27:00,410 - ERROR - Failed to create Pitchers kranima01/2025/NYM. Response: 200 - {"bbrefId":"kranima01","year":2025,"team":"NYM","age":27,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":0.2,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":2,"eraPlus":0,"fip":2.71,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":0,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:27:00,433 - INFO - Successfully updated Pitchers leahyky01/2025/STL.
+2025-03-30 11:27:00,456 - INFO - Successfully updated Pitchers littlbr02/2025/TOR.
+2025-03-30 11:27:00,956 - INFO - Processed 270 pitchers so far
+2025-03-30 11:27:00,978 - ERROR - Failed to create Pitchers perallu01/2025/COL. Response: 200 - {"bbrefId":"perallu01","year":2025,"team":"COL","age":24,"lg":"NL","wl":"1-0","wlPercentage":1,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":0.2,"h":0,"r":0,"er":0,"hr":0,"bb":1,"ibb":0,"so":1,"hbp":0,"bk":1,"wp":0,"bf":3,"eraPlus":0,"fip":4.21,"whip":1.5,"h9":0,"hR9":0,"bB9":13.5,"sO9":13.5,"sow":1,"dateModified":"2025-03-30T11:25:02.065305","throws":"LHP"}
+2025-03-30 11:27:01,002 - INFO - Successfully updated Pitchers scottta02/2025/HOU.
+2025-03-30 11:27:01,026 - INFO - Successfully updated Pitchers simslu01/2025/WSN.
+2025-03-30 11:27:01,051 - ERROR - Failed to create Pitchers speiega01/2025/SEA. Response: 200 - {"bbrefId":"speiega01","year":2025,"team":"SEA","age":30,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":0.2,"h":1,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":3,"eraPlus":0,"fip":-0.29,"whip":1.5,"h9":13.5,"hR9":0,"bB9":0,"sO9":13.5,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"LHP"}
+2025-03-30 11:27:01,076 - INFO - Successfully updated Pitchers sternju01/2025/ATH.
+2025-03-30 11:27:01,111 - INFO - Successfully updated Pitchers thompry02/2025/ARI.
+2025-03-30 11:27:01,145 - ERROR - Failed to create Pitchers wilsoju10/2025/BOS. Response: 200 - {"bbrefId":"wilsoju10","year":2025,"team":"BOS","age":37,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":0.2,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":1,"eraPlus":0,"fip":2.71,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":0,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"LHP"}
+2025-03-30 11:27:01,174 - INFO - Successfully updated Pitchers churcma01/2025/TEX.
+2025-03-30 11:27:01,208 - ERROR - Failed to create Pitchers duranjh01/2025/MIN. Response: 200 - {"bbrefId":"duranjh01","year":2025,"team":"MIN","age":27,"lg":"AL","wl":"0-0","wlPercentage":0,"era":27,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":0.1,"h":1,"r":1,"er":1,"hr":0,"bb":2,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":4,"eraPlus":31,"fip":14.71,"whip":9,"h9":27,"hR9":0,"bB9":54,"sO9":27,"sow":0.5,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:27:01,243 - ERROR - Failed to create Pitchers harriho03/2025/ATH. Response: 200 - {"bbrefId":"harriho03","year":2025,"team":"ATH","age":28,"lg":"Unknown","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":0.1,"h":1,"r":0,"er":0,"hr":0,"bb":1,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":3,"eraPlus":0,"fip":5.71,"whip":6,"h9":27,"hR9":0,"bB9":27,"sO9":27,"sow":1,"dateModified":"2025-03-30T11:25:02.065305","throws":"LHP"}
+2025-03-30 11:27:01,743 - INFO - Processed 280 pitchers so far
+2025-03-30 11:27:01,769 - INFO - Successfully updated Pitchers kingjo01/2025/STL.
+2025-03-30 11:27:01,792 - INFO - Successfully updated Pitchers kinlety01/2025/COL.
+2025-03-30 11:27:01,815 - INFO - Successfully updated Pitchers leclejo01/2025/ATH.
+2025-03-30 11:27:01,839 - INFO - Successfully updated Pitchers lopezni01/2025/LAA.
+2025-03-30 11:27:01,862 - ERROR - Failed to create Pitchers mayzati01/2025/PIT. Response: 200 - {"bbrefId":"mayzati01","year":2025,"team":"PIT","age":33,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":0.1,"h":1,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":2,"eraPlus":0,"fip":2.71,"whip":3,"h9":27,"hR9":0,"bB9":0,"sO9":0,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"LHP"}
+2025-03-30 11:27:01,889 - INFO - Successfully updated Pitchers mollsa01/2025/CIN.
+2025-03-30 11:27:01,921 - INFO - Successfully updated Pitchers payamjo01/2025/MIL.
+2025-03-30 11:27:01,944 - ERROR - Failed to create Pitchers alcaljo01/2025/MIN. Response: 200 - {"bbrefId":"alcaljo01","year":2025,"team":"MIN","age":29,"lg":"AL","wl":"0-1","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":0,"h":2,"r":3,"er":3,"hr":0,"bb":1,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":3,"eraPlus":6,"fip":0,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":0,"sow":0,"dateModified":"2025-03-30T11:25:02.065305","throws":"RHP"}
+2025-03-30 11:27:01,969 - INFO - Successfully updated Pitchers nerishe01/2025/ATL.
+2025-03-30 11:27:01,970 - INFO - Successfully processed 289 pitchers
+2025-03-30 11:27:01,970 - INFO - Scraping completed in 119.91 seconds

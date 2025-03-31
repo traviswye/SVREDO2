@@ -17,7 +17,7 @@ team_abbreviations = {
     'Cubs': 'CHC', 'White Sox': 'CHW', 'Reds': 'CIN', 'Guardians': 'CLE',
     'Rockies': 'COL', 'Tigers': 'DET', 'Astros': 'HOU', 'Royals': 'KCR', 
     'Angels': 'LAA', 'Dodgers': 'LAD', 'Marlins': 'MIA', 'Brewers': 'MIL',
-    'Twins': 'MIN', 'Mets': 'NYM', 'Yankees': 'NYY', 'Athletics': 'OAK',
+    'Twins': 'MIN', 'Mets': 'NYM', 'Yankees': 'NYY', 'Athletics': 'ATH',
     'Phillies': 'PHI', 'Pirates': 'PIT', 'Padres': 'SDP', 'Mariners': 'SEA',
     'Giants': 'SFG', 'Cardinals': 'STL', 'Rays': 'TBR', 'Rangers': 'TEX',
     'Blue Jays': 'TOR', 'Nationals': 'WSN'
@@ -28,7 +28,7 @@ teamLg = {
     "ARI": "NL", "ATL": "NL", "BAL": "AL", "BOS": "AL", "CHC": "NL", "CHW": "AL",
     "CIN": "NL", "CLE": "AL", "COL": "NL", "DET": "AL", "HOU": "AL", "KCR": "AL",
     "LAA": "AL", "LAD": "NL", "MIA": "NL", "MIL": "NL", "MIN": "AL", "NYM": "NL",
-    "NYY": "AL", "OAK": "AL", "PHI": "NL", "PIT": "NL", "SDP": "NL", "SEA": "AL",
+    "NYY": "AL", "ATH": "AL", "PHI": "NL", "PIT": "NL", "SDP": "NL", "SEA": "AL",
     "SFG": "NL", "STL": "NL", "TBR": "AL", "TEX": "AL", "TOR": "AL", "WSN": "NL"
 }
 

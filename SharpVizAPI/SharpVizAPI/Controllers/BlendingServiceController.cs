@@ -1010,18 +1010,77 @@ namespace SharpVizAPI.Controllers
             }
         }
 
+        //private double GetSafeBlendedStat(dynamic pitcher, string statName, double defaultValue)
+        //{
+        //    try
+        //    {
+        //        if (pitcher == null)
+        //            return defaultValue;
+
+        //        var blendedStats = pitcher.BlendedStats as IDictionary<string, object>;
+        //        if (blendedStats == null || !blendedStats.ContainsKey(statName))
+        //            return defaultValue;
+
+        //        return Convert.ToDouble(blendedStats[statName]);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.LogError(ex, $"Error accessing BlendedStats[{statName}]");
+        //        return defaultValue;
+        //    }
+        //}
+
         private double GetSafeBlendedStat(dynamic pitcher, string statName, double defaultValue)
         {
             try
             {
                 if (pitcher == null)
+                {
+                    _logger.LogWarning($"Pitcher object is null when trying to access {statName}");
                     return defaultValue;
+                }
 
-                var blendedStats = pitcher.BlendedStats as IDictionary<string, object>;
-                if (blendedStats == null || !blendedStats.ContainsKey(statName))
+                // Log the type of the pitcher object
+                _logger.LogInformation($"Pitcher type: {pitcher.GetType().FullName}");
+
+                // Try to access BlendedStats and log its type
+                var blendedStatsObj = pitcher.BlendedStats;
+                if (blendedStatsObj == null)
+                {
+                    _logger.LogWarning($"BlendedStats is null for pitcher {pitcher.PitcherId}");
                     return defaultValue;
+                }
 
-                return Convert.ToDouble(blendedStats[statName]);
+                _logger.LogInformation($"BlendedStats type: {blendedStatsObj.GetType().FullName}");
+
+                var blendedStats = blendedStatsObj as IDictionary<string, object>;
+                if (blendedStats == null)
+                {
+                    _logger.LogWarning($"Failed to cast BlendedStats to IDictionary<string, object> for pitcher {pitcher.PitcherId}");
+
+                    // Try a different approach - maybe it's a different dictionary type or a dynamic object
+                    try
+                    {
+                        var value = blendedStatsObj[statName];
+                        _logger.LogInformation($"Successfully retrieved {statName}={value} directly from BlendedStats");
+                        return Convert.ToDouble(value);
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, $"Failed alternative access method for BlendedStats[{statName}]");
+                        return defaultValue;
+                    }
+                }
+
+                if (!blendedStats.ContainsKey(statName))
+                {
+                    _logger.LogWarning($"BlendedStats does not contain key '{statName}' for pitcher {pitcher.PitcherId}");
+                    return defaultValue;
+                }
+
+                var statValue = blendedStats[statName];
+                _logger.LogInformation($"Successfully retrieved {statName}={statValue} for pitcher {pitcher.PitcherId}");
+                return Convert.ToDouble(statValue);
             }
             catch (Exception ex)
             {

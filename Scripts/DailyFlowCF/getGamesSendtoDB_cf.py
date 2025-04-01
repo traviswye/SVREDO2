@@ -254,7 +254,7 @@ def extract_game_info(game_summary):
         logging.error(f"Error extracting game info: {e}")
         return None
 
-def send_post_request(game_info, date):
+def send_post_request(game_info, date, verify=False):
     """Send POST request to the API with game preview data."""
     url = "https://localhost:44346/api/GamePreviews"
     payload = {
@@ -273,7 +273,7 @@ def send_post_request(game_info, date):
         session.verify = False
         
         # Use the session to make the API call
-        response = session.post(url, json=payload)
+        response = session.post(url, json=payload, verify=False)
         
         if response.status_code == 200 or response.status_code == 201:
             logging.info(f"✓ Successfully posted game preview: {game_info['home_team']} vs {game_info['away_team']}")
@@ -358,7 +358,7 @@ def scrape_previews_page(scraper, parent_url, max_retries=3):
                 game_info = extract_game_info(game_summary)
                 
                 if game_info:
-                    if send_post_request(game_info, date):
+                    if send_post_request(game_info, date, verify=False):
                         success_count += 1
                 
                 # Add a delay between requests to appear more human-like

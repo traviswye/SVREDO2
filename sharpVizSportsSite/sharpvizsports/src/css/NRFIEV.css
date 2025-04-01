@@ -1,0 +1,184 @@
+.nrfi-ev-container {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.nrfi-ev-title {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #ddd;
+    color: #0c2340;
+}
+
+.nrfi-ev-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nrfi-ev-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    background-color: #fff;
+}
+
+.nrfi-ev-table th {
+    position: sticky;
+    top: 0;
+    background-color: #0c2340;
+    color: white;
+    text-align: left;
+    padding: 12px 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.nrfi-ev-table th:hover {
+    background-color: #0a1c33;
+}
+
+.nrfi-ev-table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.nrfi-ev-table tr:last-child td {
+    border-bottom: none;
+}
+
+.nrfi-ev-table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.nrfi-ev-table tr:hover {
+    background-color: #f1f3f5;
+}
+
+.numeric-cell {
+    text-align: right;
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+}
+
+.probability-high {
+    font-weight: 600;
+    color: #1a9641;
+    background-color: #e5f5e0;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.probability-medium {
+    font-weight: 600;
+    color: #a6d96a;
+    background-color: #f6faf4;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.probability-low {
+    font-weight: 600;
+    color: #fdae61;
+    background-color: #fff5eb;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.recommendation-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.recommendation-nrfi {
+    font-weight: 600;
+    background-color: rgba(25, 118, 210, 0.1);
+    color: #1976d2;
+    padding: 3px 6px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.recommendation-yrfi {
+    font-weight: 600;
+    background-color: rgba(211, 47, 47, 0.1);
+    color: #d32f2f;
+    padding: 3px 6px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.ev-value {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.ev-high {
+    color: #1a9641;
+    font-weight: 600;
+}
+
+.ev-medium {
+    color: #a6d96a;
+    font-weight: 600;
+}
+
+.ev-low {
+    color: #666;
+}
+
+.loading-message,
+.error-message,
+.no-data-message {
+    padding: 20px;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin: 20px 0;
+}
+
+.loading-message {
+    background-color: #e8f5e9;
+    color: #388e3c;
+}
+
+.error-message {
+    background-color: #ffebee;
+    color: #d32f2f;
+}
+
+.no-data-message {
+    background-color: #f8f9fa;
+    color: #616161;
+}
+
+.nrfi-ev-table a {
+    color: #1976d2;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.nrfi-ev-table a:hover {
+    color: #0d47a1;
+    text-decoration: underline;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .nrfi-ev-table {
+        font-size: 0.75rem;
+    }
+
+    .nrfi-ev-table th,
+    .nrfi-ev-table td {
+        padding: 8px 6px;
+    }
+
+    .nrfi-ev-title {
+        font-size: 1.2rem;
+    }
+}

@@ -1,0 +1,237 @@
+.model-picks-container {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.model-picks-title {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #ddd;
+    color: #0c2340;
+}
+
+.picks-filter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.picks-filter-tabs button {
+    background-color: #f1f3f5;
+    border: 1px solid #dee2e6;
+    color: #495057;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.picks-filter-tabs button:hover {
+    background-color: #e9ecef;
+    border-color: #ced4da;
+}
+
+.picks-filter-tabs button.active {
+    background-color: #0c2340;
+    border-color: #0c2340;
+    color: white;
+}
+
+.model-picks-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.model-picks-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    background-color: #fff;
+}
+
+.model-picks-table th {
+    position: sticky;
+    top: 0;
+    background-color: #0c2340;
+    color: white;
+    text-align: left;
+    padding: 12px 8px;
+    font-weight: 600;
+}
+
+.model-picks-table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.model-picks-table tr:last-child td {
+    border-bottom: none;
+}
+
+.model-picks-table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.model-picks-table tr:hover {
+    background-color: #f1f3f5;
+}
+
+.numeric-cell {
+    text-align: right;
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+}
+
+.pick-detail {
+    font-weight: 500;
+}
+
+.confidence-high {
+    font-weight: 600;
+    color: #1a9641;
+    background-color: #e5f5e0;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.confidence-medium {
+    font-weight: 600;
+    color: #a6d96a;
+    background-color: #f6faf4;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.confidence-low {
+    font-weight: 600;
+    color: #fdae61;
+    background-color: #fff5eb;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.value-high {
+    font-weight: 600;
+    color: #1a9641;
+    background-color: #e5f5e0;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.value-medium {
+    font-weight: 600;
+    color: #a6d96a;
+    background-color: #f6faf4;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.value-low {
+    font-weight: 600;
+    color: #fdae61;
+    background-color: #fff5eb;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.status-pending {
+    color: #1976d2;
+    font-weight: 500;
+    background-color: rgba(25, 118, 210, 0.1);
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.status-win {
+    color: #1a9641;
+    font-weight: 500;
+    background-color: rgba(26, 150, 65, 0.1);
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.status-loss {
+    color: #d32f2f;
+    font-weight: 500;
+    background-color: rgba(211, 47, 47, 0.1);
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.model-picks-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.loading-message,
+.error-message,
+.no-data-message {
+    padding: 20px;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin: 20px 0;
+}
+
+.loading-message {
+    background-color: #e8f5e9;
+    color: #388e3c;
+}
+
+.error-message {
+    background-color: #ffebee;
+    color: #d32f2f;
+}
+
+.no-data-message {
+    background-color: #f8f9fa;
+    color: #616161;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .model-picks-table {
+        font-size: 0.75rem;
+    }
+
+    .model-picks-table th,
+    .model-picks-table td {
+        padding: 8px 6px;
+    }
+
+    .model-picks-title {
+        font-size: 1.2rem;
+    }
+
+    .picks-filter-tabs {
+        overflow-x: auto;
+        padding-bottom: 8px;
+    }
+
+    .picks-filter-tabs button {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+
+    .model-picks-legend {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

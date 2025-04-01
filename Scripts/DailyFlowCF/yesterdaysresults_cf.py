@@ -17,7 +17,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-date2 = '24-09-04'
+date2 = '25-03-31'
 date = '20'+date2
 # Define APIs to be used
 gameOdds_api = f"https://localhost:44346/api/GameOdds/date/{date}"
@@ -46,6 +46,7 @@ team_name_map = {
     "New York Yankees": "Yankees",
     "New York Mets": "Mets",
     "Oakland Athletics": "Athletics",
+    "Athletics": "Athletics",
     "Philadelphia Phillies": "Phillies",
     "Pittsburgh Pirates": "Pirates",
     "San Diego Padres": "Padres",
@@ -725,8 +726,8 @@ if __name__ == "__main__":
         end_date = sys.argv[2]
     else:
         # Default values
-        start_date = '2025-03-29'
-        end_date = '2025-03-29'
+        start_date = '2025-03-31'
+        end_date = '2025-03-31'
 
     # Call the main function with either command-line arguments or defaults
     main(start_date=start_date, end_date=end_date)

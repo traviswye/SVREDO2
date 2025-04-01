@@ -1,0 +1,205 @@
+.pick-history-container {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.pick-history-title {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #ddd;
+    color: #0c2340;
+}
+
+.picks-filter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.picks-filter-tabs button {
+    background-color: #f1f3f5;
+    border: 1px solid #dee2e6;
+    color: #495057;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.picks-filter-tabs button:hover {
+    background-color: #e9ecef;
+    border-color: #ced4da;
+}
+
+.picks-filter-tabs button.active {
+    background-color: #0c2340;
+    border-color: #0c2340;
+    color: white;
+}
+
+.stats-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    flex: 1;
+    min-width: 150px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+}
+
+.stat-title {
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #0c2340;
+}
+
+.profit-positive {
+    color: #1a9641;
+}
+
+.profit-negative {
+    color: #d32f2f;
+}
+
+.pick-history-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.pick-history-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    background-color: #fff;
+}
+
+.pick-history-table th {
+    position: sticky;
+    top: 0;
+    background-color: #0c2340;
+    color: white;
+    text-align: left;
+    padding: 12px 8px;
+    font-weight: 600;
+}
+
+.pick-history-table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.pick-history-table tr:last-child td {
+    border-bottom: none;
+}
+
+.pick-history-table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.pick-history-table tr:hover {
+    background-color: #f1f3f5;
+}
+
+.numeric-cell {
+    text-align: right;
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+}
+
+.result-win {
+    color: #1a9641;
+    font-weight: 500;
+    background-color: rgba(26, 150, 65, 0.1);
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.result-loss {
+    color: #d32f2f;
+    font-weight: 500;
+    background-color: rgba(211, 47, 47, 0.1);
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.loading-message,
+.error-message,
+.no-data-message {
+    padding: 20px;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin: 20px 0;
+}
+
+.loading-message {
+    background-color: #e8f5e9;
+    color: #388e3c;
+}
+
+.error-message {
+    background-color: #ffebee;
+    color: #d32f2f;
+}
+
+.no-data-message {
+    background-color: #f8f9fa;
+    color: #616161;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .pick-history-table {
+        font-size: 0.75rem;
+    }
+
+    .pick-history-table th,
+    .pick-history-table td {
+        padding: 8px 6px;
+    }
+
+    .pick-history-title {
+        font-size: 1.2rem;
+    }
+
+    .picks-filter-tabs {
+        overflow-x: auto;
+        padding-bottom: 8px;
+    }
+
+    .picks-filter-tabs button {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+
+    .stats-summary {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .stat-card {
+        width: 100%;
+    }
+
+    .stat-value {
+        font-size: 1.2rem;
+    }
+}

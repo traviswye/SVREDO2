@@ -323,43 +323,100 @@ namespace SharpVizAPI.Services
         }
 
 
+        //    public async Task<Dictionary<string, double>> GetBlendingResultsForPitcher(string pitcherId)
+        //    {
+        //        var pitcherTotals = await _context.PitcherPlatoonAndTrackRecord
+        //                                          .FirstOrDefaultAsync(p => p.BbrefID == pitcherId && p.Split == "Totals");
+
+        //        var last7 = await _context.PitcherPlatoonAndTrackRecord
+        //                                  .FirstOrDefaultAsync(p => p.BbrefID == pitcherId && p.Split == "last7");
+
+        //        var last14 = await _context.PitcherPlatoonAndTrackRecord
+        //                                   .FirstOrDefaultAsync(p => p.BbrefID == pitcherId && p.Split == "last14");
+
+        //        var last28 = await _context.PitcherPlatoonAndTrackRecord
+        //                                   .FirstOrDefaultAsync(p => p.BbrefID == pitcherId && p.Split == "last28");
+
+        //        if (pitcherTotals == null || last28 == null)
+        //        {
+        //            _logger.LogWarning($"No season totals found for pitcher {pitcherId}");
+        //            return null;
+        //        }
+
+        //        // Calculate trends
+        //        var trends = new Dictionary<string, double>
+        //{
+        //    { "bA_Trend", CalculateTrend(last28?.BA ?? pitcherTotals.BA, pitcherTotals.BA) },
+        //    { "obP_Trend", CalculateTrend(last28?.OBP ?? pitcherTotals.OBP, pitcherTotals.OBP) },
+        //    { "slG_Trend", CalculateTrend(last28?.SLG ?? pitcherTotals.SLG, pitcherTotals.SLG) },
+        //    { "BAbip_Trend", CalculateTrend(last28?.BAbip ?? pitcherTotals.BAbip, pitcherTotals.BAbip) }
+
+        //    // Add other trend calculations if needed
+
+        //};
+
+        //        var comparison = CompareLast28WithTotals(last28, pitcherTotals);
+
+        //        return trends;
+        //    }
         public async Task<Dictionary<string, double>> GetBlendingResultsForPitcher(string pitcherId)
         {
+            // Get current year stats
+            var currentYear = DateTime.Now.Year;
             var pitcherTotals = await _context.PitcherPlatoonAndTrackRecord
-                                              .FirstOrDefaultAsync(p => p.BbrefID == pitcherId && p.Split == "Totals");
+                                            .FirstOrDefaultAsync(p => p.BbrefID == pitcherId && p.Split == "Totals" && p.Year == currentYear);
 
-            var last7 = await _context.PitcherPlatoonAndTrackRecord
-                                      .FirstOrDefaultAsync(p => p.BbrefID == pitcherId && p.Split == "last7");
+            // Check if current year stats are significant (more than 3 games)
+            bool useCurrentYear = pitcherTotals != null && pitcherTotals.G > 4;
 
-            var last14 = await _context.PitcherPlatoonAndTrackRecord
-                                       .FirstOrDefaultAsync(p => p.BbrefID == pitcherId && p.Split == "last14");
+            // If current year stats aren't significant, get previous year stats
+            if (!useCurrentYear)
+            {
+                pitcherTotals = await _context.PitcherPlatoonAndTrackRecord
+                                            .FirstOrDefaultAsync(p => p.BbrefID == pitcherId && p.Split == "Totals" && p.Year == currentYear - 1);
+            }
 
+            // Get splits for trend analysis
             var last28 = await _context.PitcherPlatoonAndTrackRecord
-                                       .FirstOrDefaultAsync(p => p.BbrefID == pitcherId && p.Split == "last28");
+                                    .FirstOrDefaultAsync(p => p.BbrefID == pitcherId && p.Split == "last28" && p.Year == currentYear);
 
-            if (pitcherTotals == null || last28 == null)
+            if (pitcherTotals == null)
             {
                 _logger.LogWarning($"No season totals found for pitcher {pitcherId}");
                 return null;
             }
 
-            // Calculate trends
+            // Check if recent stats are actually different from season stats (would indicate mid-season)
+            bool hasSignificantRecentData = last28 != null &&
+                                          (last28.G > 0) &&
+                                          (Math.Abs(last28.BA - pitcherTotals.BA) / Math.Max(0.001, pitcherTotals.BA) > 0.05 ||
+                                          Math.Abs(last28.OBP - pitcherTotals.OBP) / Math.Max(0.001, pitcherTotals.OBP) > 0.05 ||
+                                          Math.Abs(last28.SLG - pitcherTotals.SLG) / Math.Max(0.001, pitcherTotals.SLG) > 0.05);
+
+            if (!hasSignificantRecentData)
+            {
+                // In early season with limited data, use constant neutral trend values
+                // that don't affect the ranking significantly
+                return new Dictionary<string, double>
+        {
+            { "bA_Trend", 0.0 },
+            { "obP_Trend", 0.0 },
+            { "slG_Trend", 0.0 },
+            { "BAbip_Trend", 0.0 }
+        };
+            }
+
+            // Calculate trends using the last28 stats compared to season totals
             var trends = new Dictionary<string, double>
     {
-        { "bA_Trend", CalculateTrend(last28?.BA ?? pitcherTotals.BA, pitcherTotals.BA) },
-        { "obP_Trend", CalculateTrend(last28?.OBP ?? pitcherTotals.OBP, pitcherTotals.OBP) },
-        { "slG_Trend", CalculateTrend(last28?.SLG ?? pitcherTotals.SLG, pitcherTotals.SLG) },
-        { "BAbip_Trend", CalculateTrend(last28?.BAbip ?? pitcherTotals.BAbip, pitcherTotals.BAbip) }
-
-        // Add other trend calculations if needed
-
+        { "bA_Trend", CalculateTrend(last28.BA, pitcherTotals.BA) },
+        { "obP_Trend", CalculateTrend(last28.OBP, pitcherTotals.OBP) },
+        { "slG_Trend", CalculateTrend(last28.SLG, pitcherTotals.SLG) },
+        { "BAbip_Trend", CalculateTrend(last28.BAbip, pitcherTotals.BAbip) }
     };
-
-            var comparison = CompareLast28WithTotals(last28, pitcherTotals);
 
             return trends;
         }
-
 
         private object CalculateBlendingResults(PitcherPlatoonAndTrackRecord totals, PitcherPlatoonAndTrackRecord last7, PitcherPlatoonAndTrackRecord last14, PitcherPlatoonAndTrackRecord last28)
         {
@@ -991,64 +1048,163 @@ namespace SharpVizAPI.Services
 
             return results;
         }
-
-
         public async Task<(Dictionary<string, double> BlendedStats, List<string> Warnings)> BlendPitcherStatsAsync(string pitcherId, int year)
         {
             var warnings = new List<string>();
             Dictionary<string, double> blendedStats = null;
 
-            // Retrieve stats for the pitcher
-            var totalStats = await GetTotalStatsForPitcher(pitcherId, year);
-            var last28Stats = await GetLast28StatsForPitcher(pitcherId, year);
-            var last14Stats = await _context.PitcherPlatoonAndTrackRecord
-                                             .FirstOrDefaultAsync(p => p.BbrefID == pitcherId && p.Split == "last14" && p.Year == year);
-            var last7Stats = await _context.PitcherPlatoonAndTrackRecord
-                                            .FirstOrDefaultAsync(p => p.BbrefID == pitcherId && p.Split == "last7" && p.Year == year);
+            // Retrieve current year stats for the pitcher
+            var currentYearTotalStats = await GetTotalStatsForPitcher(pitcherId, year);
+            var currentYearLast28Stats = await GetLast28StatsForPitcher(pitcherId, year);
 
-            // Check for last 28 days stats
-            if (last28Stats != null)
+            // Check if current year stats are significant (more than 4 games)
+            bool currentYearStatsSignificant = currentYearTotalStats != null &&
+                                              currentYearTotalStats.ContainsKey("G") &&
+                                              currentYearTotalStats["G"] > 4;
+
+            // If current year stats aren't significant, get previous year stats
+            var previousYearStats = !currentYearStatsSignificant ?
+                                   await GetTotalStatsForPitcher(pitcherId, year - 1) : null;
+
+            // Determine which total stats to use
+            var totalStats = currentYearStatsSignificant ? currentYearTotalStats : previousYearStats;
+
+            if (totalStats == null)
             {
-                blendedStats = BlendStats(totalStats, last28Stats, pitcherId, 0.6, 0.4).BlendedStats;
-                if (blendedStats == null)
+                warnings.Add($"{pitcherId}: No significant stats found for current or previous year.");
+                return (null, warnings);
+            }
+
+            // Add warning if using previous year stats
+            // If current year stats aren't significant, but we have previous year stats
+            if (!currentYearStatsSignificant && previousYearStats != null)
+            {
+                // Check what current year data we have available for blending
+                if (currentYearLast28Stats != null)
                 {
-                    warnings.Add($"{pitcherId}: Unable to blend last 28-day stats. Using only total stats.");
-                    blendedStats = totalStats;
+                    // Prefer last28 stats for blending with previous year data
+                    blendedStats = BlendStats(previousYearStats, currentYearLast28Stats, pitcherId, 0.7, 0.3).BlendedStats;
+                    warnings.Add($"{pitcherId}: Blending previous year's stats (70%) with current year's last 28-day performance (30%).");
                 }
-            }
-            else if (last14Stats != null) // Check for last 14 days stats
-            {
-                warnings.Add($"{pitcherId}: No last 28-day stats available, using last 14-day stats.");
-                blendedStats = BlendStats(totalStats, MapToDictionary(last14Stats), pitcherId, 0.75, 0.25).BlendedStats;
-            }
-            else if (last7Stats != null) // Check for last 7 days stats
-            {
-                warnings.Add($"{pitcherId}: No last 28-day or last 14-day stats available, using last 7-day stats.");
-                blendedStats = BlendStats(totalStats, MapToDictionary(last7Stats), pitcherId, 0.9, 0.1).BlendedStats;
-            }
-            else if (totalStats != null) // Use only total stats
-            {
-                warnings.Add($"{pitcherId}: No recent stats available, using total stats only.");
-                blendedStats = totalStats;
-            }
-            else // Check for last year's total stats
-            {
-                var lastYearStats = await GetTotalStatsForPitcher(pitcherId, year - 1);
-                if (lastYearStats != null)
+                else if (currentYearTotalStats != null && currentYearTotalStats.GetValueOrDefault("G", 0) > 0)
                 {
-                    warnings.Add($"{pitcherId}: No stats for the current year, using last year's total stats.");
-                    blendedStats = lastYearStats;
+                    // If no last28 data, use whatever current year total data is available
+                    blendedStats = BlendStats(previousYearStats, currentYearTotalStats, pitcherId, 0.7, 0.3).BlendedStats;
+                    warnings.Add($"{pitcherId}: Blending previous year's stats (80%) with limited current year data (20%).");
                 }
                 else
                 {
-                    warnings.Add($"{pitcherId}: Not enough relevant stats to make a comparison.");
+                    // No current year data at all, use previous year only
+                    warnings.Add($"{pitcherId}: No current year data available. Using previous year stats only.");
+                    blendedStats = previousYearStats;
+                }
+            }
+            else
+            {
+                // Handle other fallback cases as before
+                var last14Stats = await _context.PitcherPlatoonAndTrackRecord
+                                               .FirstOrDefaultAsync(p => p.BbrefID == pitcherId && p.Split == "last14" && p.Year == year);
+                var last7Stats = await _context.PitcherPlatoonAndTrackRecord
+                                              .FirstOrDefaultAsync(p => p.BbrefID == pitcherId && p.Split == "last7" && p.Year == year);
+
+                if (last14Stats != null)
+                {
+                    warnings.Add($"{pitcherId}: No last 28-day stats available, using last 14-day stats.");
+                    blendedStats = BlendStats(totalStats, MapToDictionary(last14Stats), pitcherId, 0.75, 0.25).BlendedStats;
+                }
+                else if (last7Stats != null)
+                {
+                    warnings.Add($"{pitcherId}: No last 28-day or last 14-day stats available, using last 7-day stats.");
+                    blendedStats = BlendStats(totalStats, MapToDictionary(last7Stats), pitcherId, 0.9, 0.1).BlendedStats;
+                }
+                else
+                {
+                    warnings.Add($"{pitcherId}: No recent stats available, using total stats only.");
+                    blendedStats = totalStats;
                 }
             }
 
-            return (blendedStats, warnings);        
-
-
+            return (blendedStats, warnings);
         }
+
+        // Helper method to determine if two stat dictionaries are meaningfully different
+        private bool AreStatsDifferent(Dictionary<string, double> stats1, Dictionary<string, double> stats2)
+        {
+            // If one dictionary has more games than the other by more than 1, they're different
+            if (Math.Abs(stats1.GetValueOrDefault("G", 0) - stats2.GetValueOrDefault("G", 0)) > 1)
+                return true;
+
+            // Compare key statistics to see if they're different
+            string[] keyStats = { "BA", "OBP", "SLG", "OPS" };
+            foreach (var stat in keyStats)
+            {
+                double val1 = stats1.GetValueOrDefault(stat, 0);
+                double val2 = stats2.GetValueOrDefault(stat, 0);
+
+                // If the difference is more than 5%, consider them different
+                if (Math.Abs(val1 - val2) / Math.Max(0.001, val1) > 0.05)
+                    return true;
+            }
+
+            return false;
+        }
+
+        //public async Task<(Dictionary<string, double> BlendedStats, List<string> Warnings)> BlendPitcherStatsAsync(string pitcherId, int year)
+        //{
+        //    var warnings = new List<string>();
+        //    Dictionary<string, double> blendedStats = null;
+
+        //    // Retrieve stats for the pitcher
+        //    var totalStats = await GetTotalStatsForPitcher(pitcherId, year);
+        //    var last28Stats = await GetLast28StatsForPitcher(pitcherId, year);
+        //    var last14Stats = await _context.PitcherPlatoonAndTrackRecord
+        //                                     .FirstOrDefaultAsync(p => p.BbrefID == pitcherId && p.Split == "last14" && p.Year == year);
+        //    var last7Stats = await _context.PitcherPlatoonAndTrackRecord
+        //                                    .FirstOrDefaultAsync(p => p.BbrefID == pitcherId && p.Split == "last7" && p.Year == year);
+
+        //    // Check for last 28 days stats
+        //    if (last28Stats != null)
+        //    {
+        //        blendedStats = BlendStats(totalStats, last28Stats, pitcherId, 0.6, 0.4).BlendedStats;
+        //        if (blendedStats == null)
+        //        {
+        //            warnings.Add($"{pitcherId}: Unable to blend last 28-day stats. Using only total stats.");
+        //            blendedStats = totalStats;
+        //        }
+        //    }
+        //    else if (last14Stats != null) // Check for last 14 days stats
+        //    {
+        //        warnings.Add($"{pitcherId}: No last 28-day stats available, using last 14-day stats.");
+        //        blendedStats = BlendStats(totalStats, MapToDictionary(last14Stats), pitcherId, 0.75, 0.25).BlendedStats;
+        //    }
+        //    else if (last7Stats != null) // Check for last 7 days stats
+        //    {
+        //        warnings.Add($"{pitcherId}: No last 28-day or last 14-day stats available, using last 7-day stats.");
+        //        blendedStats = BlendStats(totalStats, MapToDictionary(last7Stats), pitcherId, 0.9, 0.1).BlendedStats;
+        //    }
+        //    else if (totalStats != null) // Use only total stats
+        //    {
+        //        warnings.Add($"{pitcherId}: No recent stats available, using total stats only.");
+        //        blendedStats = totalStats;
+        //    }
+        //    else // Check for last year's total stats
+        //    {
+        //        var lastYearStats = await GetTotalStatsForPitcher(pitcherId, year - 1);
+        //        if (lastYearStats != null)
+        //        {
+        //            warnings.Add($"{pitcherId}: No stats for the current year, using last year's total stats.");
+        //            blendedStats = lastYearStats;
+        //        }
+        //        else
+        //        {
+        //            warnings.Add($"{pitcherId}: Not enough relevant stats to make a comparison.");
+        //        }
+        //    }
+
+        //    return (blendedStats, warnings);        
+
+
+        //}
 
         // Helper method to map a PitcherPlatoonAndTrackRecord to a dictionary of stats
         private Dictionary<string, double> MapToDictionary(PitcherPlatoonAndTrackRecord stats)

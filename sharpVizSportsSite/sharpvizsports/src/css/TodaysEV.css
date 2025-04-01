@@ -1,0 +1,148 @@
+.todays-ev-container {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.todays-ev-title {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #ddd;
+    color: #0c2340;
+}
+
+.todays-ev-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.todays-ev-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    background-color: #fff;
+}
+
+.todays-ev-table th {
+    position: sticky;
+    top: 0;
+    background-color: #0c2340;
+    color: white;
+    text-align: left;
+    padding: 12px 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+}
+
+.todays-ev-table th:hover {
+    background-color: #0a1c33;
+}
+
+.todays-ev-table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #eaeaea;
+    white-space: nowrap;
+}
+
+.todays-ev-table tr:last-child td {
+    border-bottom: none;
+}
+
+.todays-ev-table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.todays-ev-table tr:hover {
+    background-color: #f1f3f5;
+}
+
+.numeric-cell {
+    text-align: right;
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+}
+
+.total-cell {
+    font-weight: 600;
+    color: #0c2340;
+}
+
+.status-hot {
+    font-weight: 600;
+    color: #d32f2f;
+    background-color: #ffebee;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.status-cold {
+    font-weight: 600;
+    color: #1976d2;
+    background-color: #e3f2fd;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.status-consistent {
+    font-weight: 600;
+    color: #388e3c;
+    background-color: #e8f5e9;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.loading-message,
+.error-message,
+.no-data-message {
+    padding: 20px;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin: 20px 0;
+}
+
+.loading-message {
+    background-color: #e8f5e9;
+    color: #388e3c;
+}
+
+.error-message {
+    background-color: #ffebee;
+    color: #d32f2f;
+}
+
+.no-data-message {
+    background-color: #f8f9fa;
+    color: #616161;
+}
+
+.todays-ev-table a {
+    color: #1976d2;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.todays-ev-table a:hover {
+    color: #0d47a1;
+    text-decoration: underline;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .todays-ev-table {
+        font-size: 0.75rem;
+    }
+
+    .todays-ev-table th,
+    .todays-ev-table td {
+        padding: 8px 6px;
+    }
+
+    .todays-ev-title {
+        font-size: 1.2rem;
+    }
+}

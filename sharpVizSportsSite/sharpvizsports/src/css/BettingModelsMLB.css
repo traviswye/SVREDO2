@@ -1,0 +1,116 @@
+.betting-models-mlb {
+    display: flex;
+}
+
+.content {
+    margin-left: 220px;
+    /* Matches sidebar width */
+    padding: 20px;
+    width: calc(100% - 220px);
+    max-width: 1600px;
+}
+
+.content h1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #0c2340;
+    font-size: 1.8rem;
+}
+
+.betting-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 15px;
+}
+
+.betting-tabs button {
+    background-color: #f1f3f5;
+    border: 1px solid #dee2e6;
+    color: #495057;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.betting-tabs button:hover {
+    background-color: #e9ecef;
+    border-color: #ced4da;
+}
+
+.betting-tabs button.active {
+    background-color: #0c2340;
+    border-color: #0c2340;
+    color: white;
+}
+
+.betting-content {
+    margin-bottom: 30px;
+}
+
+.betting-disclaimer {
+    margin-top: 40px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-left: 4px solid #0c2340;
+    border-radius: 4px;
+}
+
+.betting-disclaimer p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+.betting-disclaimer strong {
+    color: #0c2340;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .content {
+        margin-left: 220px;
+        width: calc(100% - 220px);
+        padding: 15px;
+    }
+
+    .betting-tabs button {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .betting-models-mlb {
+        flex-direction: column;
+    }
+
+    .content {
+        margin-left: 0;
+        width: 100%;
+        padding: 15px 10px;
+    }
+
+    .content h1 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .betting-tabs {
+        overflow-x: auto;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+
+    .betting-tabs button {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+    }
+}

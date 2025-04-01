@@ -775,7 +775,7 @@ def main():
         date = sys.argv[1]  # Use the first argument as the date
     else:
         # Fallback to the default date if not provided
-        date = "25-03-27"  # Today's date by default
+        date = "25-03-31"  # Today's date by default
     
     year = 2025  # Current season
     

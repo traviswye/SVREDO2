@@ -43,7 +43,7 @@ TEAM_ABBREV_MAP = {
     "Twins": "MIN",
     "Mets": "NYM",
     "Yankees": "NYY",
-    "Athletics": "OAK",
+    "Athletics": "ATH",
     "Phillies": "PHI",
     "Pirates": "PIT",
     "Padres": "SDP",

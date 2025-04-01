@@ -62,7 +62,7 @@ const GamesDisplay = ({ initialDate }) => {
     Phillies: "PHI",
     "Blue Jays": "TOR",
     Cubs: "CHC",
-    Athletics: "OAK",
+    Athletics: "ATH",
     Rockies: "COL",
     Diamondbacks: "ARI",
     Angels: "LAA",

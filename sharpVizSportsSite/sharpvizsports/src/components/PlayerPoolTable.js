@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../css/PlayerPoolTable.css';
+import GameFilterButtons from './GameFilterButtons';
 
 const PlayerPoolTable = ({
     draftGroupId,
@@ -21,6 +22,8 @@ const PlayerPoolTable = ({
     const [notification, setNotification] = useState(null);
     const [draftedPlayerIds, setDraftedPlayerIds] = useState(new Set());
     const [ignorePlayerStatus, setIgnorePlayerStatus] = useState(false);
+    const [activeGame, setActiveGame] = useState(null);
+    const [games, setGames] = useState([]);
 
     // Initialize with salary as default sort column (descending)
     const [sortConfig, setSortConfig] = useState({
@@ -126,6 +129,8 @@ const PlayerPoolTable = ({
                     onPlayersLoaded(enhancedPlayers);
                 }
 
+                const uniqueGames = [...new Set(enhancedPlayers.map(player => player.game))];
+                setGames(uniqueGames);
                 // Filter the watchList to only include players from the current slate
                 if (watchList.length > 0) {
                     const currentPlayerIds = new Set(enhancedPlayers.map(player => player.playerDkId));
@@ -169,6 +174,9 @@ const PlayerPoolTable = ({
                 onAddToWatchList(player);
             }
         }
+    };
+    const handleGameFilter = (game) => {
+        setActiveGame(game);
     };
 
     const handleAddToDraft = (player) => {
@@ -388,7 +396,7 @@ const PlayerPoolTable = ({
         return null;
     };
 
-    const filterPlayers = (players, position = 'ALL', query = '') => {
+    const filterPlayers = (players, position = 'ALL', query = '', gameFilter = null) => {
         return players.filter(player => {
             const positionMatch = position === 'ALL' || player.positionGroups.includes(position);
             const searchMatch = query === '' ||
@@ -396,13 +404,14 @@ const PlayerPoolTable = ({
                 player.position.toLowerCase().includes(query.toLowerCase()) ||
                 (player.status && player.status.toLowerCase().includes(query.toLowerCase())) ||
                 player.game.toLowerCase().includes(query.toLowerCase());
+            const gameMatch = !gameFilter || player.game === gameFilter;
 
-            return positionMatch && searchMatch;
+            return positionMatch && searchMatch && gameMatch;
         });
     };
 
     const renderPlayerTable = (filterPosition = 'ALL') => {
-        const filteredPlayers = filterPlayers(players, filterPosition, searchQuery);
+        const filteredPlayers = filterPlayers(players, filterPosition, searchQuery, activeGame);
         const sortedPlayers = sortedData(filteredPlayers);
 
         if (loading) {
@@ -613,6 +622,13 @@ const PlayerPoolTable = ({
                         >
                             ×
                         </button>
+                    )}
+                    {activeTab !== 'watchList' && (
+                        <GameFilterButtons
+                            games={games}
+                            activeGame={activeGame}
+                            onGameFilter={handleGameFilter}
+                        />
                     )}
                 </div>
 

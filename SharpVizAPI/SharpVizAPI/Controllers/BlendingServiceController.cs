@@ -866,10 +866,10 @@ namespace SharpVizAPI.Controllers
 
                         // Calculate adjusted runs for last 4 innings (bullpen)
                         double homeLastFour = game.HeadToHead.ExpectedRuns.Team1.ExpectedRuns *
-                            SafeDivide(homeBullpenOOPS, LEAGUE_AVERAGE_OPS) * BULLPEN_INNINGS;
+                            SafeDivide(awayBullpenOOPS, LEAGUE_AVERAGE_OPS) * BULLPEN_INNINGS;
 
                         double awayLastFour = game.HeadToHead.ExpectedRuns.Team2.ExpectedRuns *
-                            SafeDivide(awayBullpenOOPS, LEAGUE_AVERAGE_OPS) * BULLPEN_INNINGS;
+                            SafeDivide(homeBullpenOOPS, LEAGUE_AVERAGE_OPS) * BULLPEN_INNINGS;
 
                         // Combine for full game expectations
                         double homeTotalAdjusted = homeFirstFive + homeLastFour;

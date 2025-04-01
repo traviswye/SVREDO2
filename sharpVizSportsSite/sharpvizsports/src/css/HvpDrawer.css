@@ -1,0 +1,251 @@
+/* HVP Drawer Overlay - covers the whole screen */
+.hvp-drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    display: flex;
+    justify-content: flex-end;
+    align-items: stretch;
+    z-index: 2000;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Drawer container */
+.hvp-drawer {
+    width: 90%;
+    max-width: 1200px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.3s ease;
+    overflow: hidden;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Drawer header */
+.hvp-drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background-color: #0c2340;
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hvp-drawer-header h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.hvp-close-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.hvp-close-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Controls section */
+.hvp-drawer-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.hvp-filter-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hvp-select {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    min-width: 200px;
+}
+
+.hvp-stats-info {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Table container */
+.hvp-table-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0;
+}
+
+.hvp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.hvp-table th {
+    position: sticky;
+    top: 0;
+    background-color: #f1f3f4;
+    padding: 12px 10px;
+    text-align: left;
+    font-weight: 600;
+    color: #5f6368;
+    border-bottom: 2px solid #e0e0e0;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s;
+}
+
+.hvp-table th:hover {
+    background-color: #e8eaed;
+}
+
+.hvp-table td {
+    padding: 10px;
+    border-bottom: 1px solid #eaeaea;
+    text-align: center;
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+}
+
+.hvp-table td:first-child,
+.hvp-table td:nth-child(2) {
+    text-align: left;
+}
+
+.hvp-row:hover {
+    background-color: #f8f9fa;
+}
+
+.hvp-player-link {
+    color: #1a73e8;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.hvp-player-link:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+/* Loading state */
+.hvp-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    flex: 1;
+}
+
+.hvp-spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top: 4px solid #1a73e8;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.hvp-error,
+.hvp-no-data-message {
+    padding: 20px;
+    text-align: center;
+    color: #d32f2f;
+    background-color: #ffebee;
+    border-radius: 4px;
+    margin: 20px;
+}
+
+.hvp-no-data-message {
+    color: #666;
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 1024px) {
+    .hvp-drawer {
+        width: 100%;
+        max-width: none;
+    }
+
+    .hvp-drawer-controls {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .hvp-filter-container {
+        width: 100%;
+    }
+
+    .hvp-select {
+        flex: 1;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .hvp-table th,
+    .hvp-table td {
+        padding: 8px 6px;
+        font-size: 13px;
+    }
+}

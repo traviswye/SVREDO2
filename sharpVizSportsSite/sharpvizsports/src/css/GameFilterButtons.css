@@ -1,0 +1,48 @@
+.game-filters {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 15px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+    gap: 8px;
+    overflow-x: auto;
+}
+
+.game-filters button {
+    background: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #555;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    min-width: 110px;
+    text-align: center;
+}
+
+.game-filters button:hover {
+    background-color: #e6e6e6;
+    border-color: #999;
+}
+
+.game-filters button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #0062cc;
+}
+
+/* On mobile screens, make better use of space */
+@media (max-width: 768px) {
+    .game-filters {
+        padding: 8px;
+        gap: 5px;
+    }
+
+    .game-filters button {
+        padding: 5px 8px;
+        font-size: 12px;
+        min-width: 90px;
+    }
+}

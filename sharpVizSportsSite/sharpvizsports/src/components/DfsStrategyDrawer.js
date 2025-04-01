@@ -176,7 +176,6 @@ const DfsStrategyDrawer = ({ isOpen, onClose, draftGroupId, sport, onSaveStrateg
                     trend: pitcher.trendAnalysis?.performanceStatus || 'CONSISTENT',
                     trendPercent: extractTrendPercentage(pitcher.trendAnalysis?.message || ''),
                     compositeScore: pitcher.compositeScore || 0
-
                 };
             });
         }
@@ -256,6 +255,7 @@ const DfsStrategyDrawer = ({ isOpen, onClose, draftGroupId, sport, onSaveStrateg
                 const homeTeam = {
                     team: game.homeTeam.team,
                     teamAbbrev: convertTeamNameToAbbrev(game.homeTeam.team),
+                    opponent: game.awayTeam.team, // Add opponent field
                     expectedRuns: game.homeTeam.adjustedExpectedRuns || 0,
                     expectedTotal: (game.homeTeam.adjustedExpectedRuns || 0) + (game.awayTeam.adjustedExpectedRuns || 0),
                     lineupTrend: lineupStrengthMap[game.homeTeam.team]?.trend || 0,
@@ -277,6 +277,7 @@ const DfsStrategyDrawer = ({ isOpen, onClose, draftGroupId, sport, onSaveStrateg
                 const awayTeam = {
                     team: game.awayTeam.team,
                     teamAbbrev: convertTeamNameToAbbrev(game.awayTeam.team),
+                    opponent: game.homeTeam.team, // Add opponent field
                     expectedRuns: game.awayTeam.adjustedExpectedRuns || 0,
                     expectedTotal: (game.homeTeam.adjustedExpectedRuns || 0) + (game.awayTeam.adjustedExpectedRuns || 0),
                     lineupTrend: lineupStrengthMap[game.awayTeam.team]?.trend || 0,
@@ -325,7 +326,7 @@ const DfsStrategyDrawer = ({ isOpen, onClose, draftGroupId, sport, onSaveStrateg
         const abbrevMap = {
             'Angels': 'LAA',
             'Astros': 'HOU',
-            'Athletics': 'OAK',
+            'Athletics': 'ATH',
             'Blue Jays': 'TOR',
             'Braves': 'ATL',
             'Brewers': 'MIL',
@@ -562,6 +563,7 @@ const DfsStrategyDrawer = ({ isOpen, onClose, draftGroupId, sport, onSaveStrateg
                                             <th onClick={() => handleSort('expectedRuns')}>Expected Runs {sortConfig.key === 'expectedRuns' && (sortConfig.direction === 'asc' ? '↑' : '↓')}</th>
                                             <th onClick={() => handleSort('expectedTotal')}>Expected Total {sortConfig.key === 'expectedTotal' && (sortConfig.direction === 'asc' ? '↑' : '↓')}</th>
                                             <th onClick={() => handleSort('lineupTrend')}>Lineup Trend {sortConfig.key === 'lineupTrend' && (sortConfig.direction === 'asc' ? '↑' : '↓')}</th>
+                                            <th onClick={() => handleSort('opponent')}>Vs. {sortConfig.key === 'opponent' && (sortConfig.direction === 'asc' ? '↑' : '↓')}</th>
                                             <th onClick={() => handleSort('opposingSP')}>Opposing SP {sortConfig.key === 'opposingSP' && (sortConfig.direction === 'asc' ? '↑' : '↓')}</th>
                                             <th onClick={() => handleSort('opposingSPScore')}>Opposing SP Score {sortConfig.key === 'opposingSPScore' && (sortConfig.direction === 'asc' ? '↑' : '↓')}</th>
                                             <th onClick={() => handleSort('opposingSPTrend')}>Opposing SP Trend {sortConfig.key === 'opposingSPTrend' && (sortConfig.direction === 'asc' ? '↑' : '↓')}</th>
@@ -574,9 +576,11 @@ const DfsStrategyDrawer = ({ isOpen, onClose, draftGroupId, sport, onSaveStrateg
                                         {getSortedTeams().map((team, index) => (
                                             <tr key={index} className={selectedTeams.includes(team.teamAbbrev) ? 'selected-team' : ''}>
                                                 <td>{team.team}</td>
+
                                                 <td>{team.expectedRuns.toFixed(1)}</td>
                                                 <td>{team.expectedTotal.toFixed(1)}</td>
                                                 <td>{renderTrend(team.lineupTrend, 'lineup')}</td>
+                                                <td>{team.opponent || team.matchupMap[team.team]?.opposingTeam || 'N/A'}</td>
                                                 <td>{team.opposingSP}</td>
                                                 <td className={team.opposingSPScore > 2 ? 'score-high' : team.opposingSPScore > 1 ? 'score-medium' : 'score-low'}>
                                                     {team.opposingSPScore.toFixed(2)}

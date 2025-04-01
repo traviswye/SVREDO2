@@ -6,6 +6,8 @@ import LineupBuilder from '../../components/LineupBuilder';
 import DfsStrategyDrawer from '../../components/DfsStrategyDrawer';
 import axios from 'axios';
 import '../../css/DFSOptimizerMLB.css';
+import HvpDrawer from "../../components/HvpDrawer";
+
 
 const DFSOptimizer = () => {
   // State management
@@ -17,6 +19,15 @@ const DFSOptimizer = () => {
   const [selectedPitcherDkIds, setSelectedPitcherDkIds] = useState([]);
   const [allPlayers, setAllPlayers] = useState([]);
   const [dateChanged, setDateChanged] = useState(false);
+  const [isHvpDrawerOpen, setIsHvpDrawerOpen] = useState(false);
+
+  const openHvpDrawer = () => {
+    setIsHvpDrawerOpen(true);
+  };
+
+  const closeHvpDrawer = () => {
+    setIsHvpDrawerOpen(false);
+  };
 
   const handleSlateSelect = (slate) => {
     console.log("Selected slate:", slate);
@@ -203,7 +214,15 @@ const DFSOptimizer = () => {
                     ` - ${savedStrategy.stackStrategy}`}
                 </span>
               )}
+              <button
+                className="hvp-button"
+                onClick={openHvpDrawer}
+              >
+                View Hitter vs Pitcher Matchups
+              </button>
+              <HvpDrawer isOpen={isHvpDrawerOpen} onClose={closeHvpDrawer} />
             </div>
+
 
             <div className="optimizer-grid">
               <div className="player-pool-container">

@@ -184,3 +184,25 @@
         max-height: 600px;
     }
 }
+
+.hvp-button {
+    background-color: #0c2340;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.hvp-button:hover {
+    background-color: #0a1c33;
+}
+
+.hvp-button:active {
+    transform: translateY(1px);
+}

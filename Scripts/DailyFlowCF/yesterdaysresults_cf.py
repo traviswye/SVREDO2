@@ -727,7 +727,7 @@ if __name__ == "__main__":
     else:
         # Default values
         start_date = '2025-03-31'
-        end_date = '2025-03-31'
+        end_date = '2025-04-01'
 
     # Call the main function with either command-line arguments or defaults
     main(start_date=start_date, end_date=end_date)

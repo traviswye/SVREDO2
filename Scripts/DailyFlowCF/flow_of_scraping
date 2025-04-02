@@ -10,7 +10,7 @@ Injuryscrape.py - gets all players on IL from active rosters - sends to table 'I
 
 getteamrecsplitput.py - gets updated team records and splits MLB.com - updates table 'teamrecsplits'
 
-leagueCountingStats_cloud.py - gets team totals for hitting and pitching. Updates 'TeamTotalPitchingTracking' and 'TeamTotalHittingTracking' tables..uses cloudscraper - possible to combine this and getallplayers script
+leagueCountingStats_cloud.py (needs update for PUT)- gets team totals for hitting and pitching. Updates 'TeamTotalPitchingTracking' and 'TeamTotalHittingTracking' tables..uses cloudscraper - possible to combine this and getallplayers script
 
 getGamesSendtoDB_cf.py - gets all games and probable pitchers for the day
 	- scrapes bbref/previews/ sends games to db for 'gamePreviews' table. 

@@ -1,0 +1,14 @@
+2025-04-02 10:18:20,670 - INFO - Logging configured
+2025-04-02 10:18:20,936 - DEBUG - Skipping Selenium Manager; path to chrome driver specified in Service class: C:/buns/tw/SVREDO2/prodScripts/SeleniumVersions/chromedriver.exe
+2025-04-02 10:18:21,043 - DEBUG - Started executable: `C:/buns/tw/SVREDO2/prodScripts/SeleniumVersions/chromedriver.exe` in a child process with pid: 23360 using 0 to output -3
+2025-04-02 10:18:21,567 - DEBUG - POST http://localhost:50436/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'chrome', 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'goog:chromeOptions': {'extensions': [], 'args': ['--headless', '--no-sandbox', '--disable-dev-shm-usage']}}}}
+2025-04-02 10:18:21,576 - DEBUG - Starting new HTTP connection (1): localhost:50436
+2025-04-02 10:18:22,529 - DEBUG - http://localhost:50436 "POST /session HTTP/11" 200 0
+2025-04-02 10:18:22,529 - DEBUG - Remote response: status=200 | data={"value":{"capabilities":{"acceptInsecureCerts":false,"browserName":"chrome","browserVersion":"134.0.6998.178","chrome":{"chromedriverVersion":"134.0.6998.165 (fd886e2cb29dd984c13deec032832dee68d8abe3-refs/branch-heads/6998@{#2122})","userDataDir":"C:\\Users\\travis.wye\\AppData\\Local\\Temp\\scoped_dir23360_1660405655"},"fedcm:accounts":true,"goog:chromeOptions":{"debuggerAddress":"localhost:50442"},"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"windows","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:extension:minPinLength":true,"webauthn:extension:prf":true,"webauthn:virtualAuthenticators":true},"sessionId":"ba5703e9ca5dc92195bd65916cec1d38"}} | headers=HTTPHeaderDict({'Content-Length': '889', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-04-02 10:18:22,530 - DEBUG - Finished Request
+2025-04-02 10:18:22,530 - DEBUG - DELETE http://localhost:50436/session/ba5703e9ca5dc92195bd65916cec1d38 {}
+2025-04-02 10:18:22,686 - DEBUG - http://localhost:50436 "DELETE /session/ba5703e9ca5dc92195bd65916cec1d38 HTTP/11" 200 0
+2025-04-02 10:18:22,686 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2025-04-02 10:18:22,686 - DEBUG - Finished Request
+2025-04-02 10:18:25,167 - INFO - Attempting to scrape with Selenium...
+2025-04-02 10:18:25,168 - ERROR - Error using Selenium: name 'get_random_user_agent' is not defined

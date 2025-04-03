@@ -209,16 +209,16 @@ const TodaysEV = () => {
                             <th onClick={() => requestSort("awayTeam")}>Away Team</th>
                             <th onClick={() => requestSort("homePitcher")}>Home Pitcher</th>
                             <th onClick={() => requestSort("homePitcherCompositeScore")}>SP Score</th>
-                            <th>Home Pitcher Status</th>
+                            <th>Home SP Status</th>
                             <th onClick={() => requestSort("awayPitcher")}>Away Pitcher</th>
                             <th onClick={() => requestSort("awayPitcherCompositeScore")}>SP Score</th>
-                            <th>Away Pitcher Status</th>
+                            <th>Away SP Status</th>
                             <th onClick={() => requestSort("homeTeamAdjustedRunsF5")}>Home F5 Runs</th>
                             <th onClick={() => requestSort("awayTeamAdjustedRunsF5")}>Away F5 Runs</th>
                             <th onClick={() => requestSort("f5Total")}>F5 Total</th>
-                            <th onClick={() => requestSort("homeTeamAdjustedRuns")}>Home Full Runs</th>
-                            <th onClick={() => requestSort("awayTeamAdjustedRuns")}>Away Full Runs</th>
-                            <th onClick={() => requestSort("fullTotal")}>Full Total</th>
+                            <th onClick={() => requestSort("homeTeamAdjustedRuns")}>Home Runs</th>
+                            <th onClick={() => requestSort("awayTeamAdjustedRuns")}>Away Runs</th>
+                            <th onClick={() => requestSort("fullTotal")}>Total</th>
                             <th onClick={() => requestSort("venue")}>Venue</th>
                             <th onClick={() => requestSort("temperature")}>Temp</th>
                             <th onClick={() => requestSort("rainProbability")}>Rain %</th>

@@ -1,4 +1,3 @@
-
 import cloudscraper
 from bs4 import BeautifulSoup, Comment
 import json
@@ -16,7 +15,7 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 from urllib3.exceptions import InsecureRequestWarning
 
-# Optional imports for Selenium (used conditionally in the code)
+# Configure Selenium with direct path to chromedriver
 try:
     from selenium import webdriver
     from selenium.webdriver.chrome.options import Options
@@ -24,17 +23,29 @@ try:
     from selenium.webdriver.support.ui import WebDriverWait
     from selenium.webdriver.support import expected_conditions as EC
     from selenium.webdriver.common.by import By
-    selenium_available = True
+    
+    # =====================================================================
+    # IMPORTANT: Set the direct path to your local chromedriver
+    # Examples:
+    # Windows: "C:/Users/username/path/to/chromedriver.exe"
+    # Mac: "/Users/username/path/to/chromedriver"
+    # Linux: "/home/username/path/to/chromedriver"
+    # =====================================================================
+    # Check if chromedriver path exists
+    CHROMEDRIVER_PATH = "C:/buns/tw/SVREDO2/prodScripts/SeleniumVersions/chromedriver.exe"
+    print(f"Checking chromedriver path: {CHROMEDRIVER_PATH}")
+    if os.path.exists(CHROMEDRIVER_PATH):
+        print(f"Chromedriver exists at: {CHROMEDRIVER_PATH}")
+    else:
+        print(f"ERROR: Chromedriver NOT FOUND at: {CHROMEDRIVER_PATH}")
 except ImportError:
     selenium_available = False
     logging.warning("Selenium not available. Some scraping methods will be disabled.")
 
-# Try to import webdriver_manager for automatic ChromeDriver management
-try:
-    from webdriver_manager.chrome import ChromeDriverManager
-    webdriver_manager_available = True
-except ImportError:
-    webdriver_manager_available = False
+# Remove the webdriver_manager import since we're using direct path
+webdriver_manager_available = False  # We're not using webdriver_manager anymore
+
+# Rest of your imports and configuration remain the same...
 
 # Configure logging
 logging.basicConfig(
@@ -300,12 +311,7 @@ def scrape_with_selenium(url, driver_path=None):
     try:
         logger.info("Attempting to scrape with Selenium...")
         
-        from selenium import webdriver
-        from selenium.webdriver.chrome.options import Options
-        from selenium.webdriver.chrome.service import Service
-        from selenium.webdriver.support.ui import WebDriverWait
-        from selenium.webdriver.support import expected_conditions as EC
-        from selenium.webdriver.common.by import By
+        # Selenium imports should already be available from the top of the script
         
         options = Options()
         options.add_argument("--headless")  # Run in headless mode
@@ -314,27 +320,24 @@ def scrape_with_selenium(url, driver_path=None):
         options.add_argument(f"user-agent={get_random_user_agent()}")
         options.add_argument("--disable-blink-features=AutomationControlled")  # Try to prevent detection
         
-        # Use local chromedriver if available
+        # Always use the direct path specified at the top of the script
         if driver_path:
+            # Use explicitly provided path (from function parameter)
             service = Service(executable_path=driver_path)
-            driver = webdriver.Chrome(service=service, options=options)
+        elif os.path.exists(CHROMEDRIVER_PATH):
+            # Use the path defined at the top of the script
+            service = Service(executable_path=CHROMEDRIVER_PATH)
         elif os.path.exists("./chromedriver.exe"):
-            # Use local chromedriver in the current directory
+            # Fallback to current directory (Windows)
             service = Service(executable_path="./chromedriver.exe")
-            driver = webdriver.Chrome(service=service, options=options)
         elif os.path.exists("./chromedriver"):
-            # For Linux/Mac environments
+            # Fallback to current directory (Linux/Mac)
             service = Service(executable_path="./chromedriver")
-            driver = webdriver.Chrome(service=service, options=options)
         else:
-            # Fall back to automatic installation
-            try:
-                from webdriver_manager.chrome import ChromeDriverManager
-                service = Service(ChromeDriverManager().install())
-                driver = webdriver.Chrome(service=service, options=options)
-            except Exception as e:
-                logger.error(f"Could not set up chromedriver: {e}")
-                return None
+            logger.error("No chromedriver found. Please specify the correct path at the top of the script.")
+            return None
+            
+        driver = webdriver.Chrome(service=service, options=options)
         
         # Set timeout and get the page
         driver.set_page_load_timeout(60)  # Increased timeout for Cloudflare
@@ -842,7 +845,8 @@ def main():
             # Warm up the connection to Baseball Reference
             logger.info("Warming up connection to Baseball Reference...")
             warm_up_url = "https://www.baseball-reference.com/"
-            scrape_with_selenium(warm_up_url)
+            # Pass the explicit path to the chromedriver
+            scrape_with_selenium(warm_up_url, driver_path=CHROMEDRIVER_PATH)
             
             # Add a delay to simulate human browsing
             wait_with_jitter(5)
@@ -863,6 +867,7 @@ def main():
         
     except Exception as e:
         logger.error(f"Error in main execution: {e}")
-        
+
+
 if __name__ == "__main__":
     main()

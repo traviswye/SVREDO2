@@ -38,7 +38,7 @@ pitcherbulksplits_cf.py - this is all of the pitcher data we need for blending..
 
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-grabLast7bbref.py manages 'trailinggamelogsplits' table and replaced hittersLast7.py however it is VERY SLOW. Its very important data though... we are going to try to use it still. If it is too slow we will look at using more efficent but less detailed stats from hitterLast7 script...
+gamelog_grabber.py aka grabLast7bbref.py manages 'trailinggamelogsplits' table and replaced hittersLast7.py however it is VERY SLOW. Its very important data though... we are going to try to use it still. If it is too slow we will look at using more efficent but less detailed stats from hitterLast7 script...
 	- NOW gamelog_grabber.py
 hittersLast7.py
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

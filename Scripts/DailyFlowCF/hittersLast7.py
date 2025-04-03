@@ -6,6 +6,12 @@ import time
 import urllib3
 import argparse
 import sys
+import ssl
+
+
+ssl_context = ssl.create_default_context()
+ssl_context.check_hostname = False
+ssl_context.verify_mode = ssl.CERT_NONE
 
 # Suppress only the insecure request warning for localhost
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -20,6 +26,8 @@ session.headers.update({
     'Connection': 'keep-alive'
 })
 session.verify = False
+adapter = requests.adapters.HTTPAdapter()
+session.mount('https://', adapter)
 
 # Parse command line arguments
 parser = argparse.ArgumentParser(description='Process hitter stats.')

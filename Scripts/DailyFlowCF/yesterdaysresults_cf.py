@@ -726,7 +726,7 @@ if __name__ == "__main__":
         end_date = sys.argv[2]
     else:
         # Default values
-        start_date = '2025-04-01'
+        start_date = '2025-03-31'
         end_date = '2025-04-01'
 
     # Call the main function with either command-line arguments or defaults

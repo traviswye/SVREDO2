@@ -371,7 +371,7 @@ def process_game_data(game_data, missing_pitchers):
         post_bullpen_usage(payload)
         
         # Add a small delay between API calls
-        time.sleep(random.uniform(0.5, 1.5))
+        time.sleep(random.uniform(0.25, 0.5))
 
 def find_latest_game(rows, team, last_processed_game):
     """Find the latest game that hasn't been processed yet."""
@@ -506,7 +506,7 @@ def main(year=2025):
         return
     
     # Add random delay before starting the actual scraping
-    delay = random.uniform(5, 10)
+    delay = random.uniform(2, 5)
     print(f"Waiting for {delay:.2f} seconds before starting data collection...")
     time.sleep(delay)
     
@@ -526,7 +526,7 @@ def main(year=2025):
         
         # Add delay between teams
         if team != teams_playing[-1]:  # Skip delay after the last team
-            delay = random.uniform(15, 25)
+            delay = random.uniform(5, 10)
             print(f"Waiting {delay:.2f} seconds before processing next team...")
             time.sleep(delay)
     

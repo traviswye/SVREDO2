@@ -937,3 +937,1897 @@
 2025-04-02 10:41:08,126 - INFO - Successfully updated Pitchers lopezni01/2025/LAA.
 2025-04-02 10:41:08,128 - INFO - Successfully processed 404 pitchers
 2025-04-02 10:41:08,129 - INFO - Scraping completed in 800.32 seconds
+2025-04-05 09:36:38,235 - INFO - Starting Baseball Reference data scraping with enhanced methods
+2025-04-05 09:36:38,236 - INFO - Warming up connection to Baseball Reference...
+2025-04-05 09:36:38,236 - INFO - Attempting to scrape with Selenium...
+2025-04-05 09:36:38,236 - ERROR - Error using Selenium: Message: Unable to obtain driver for chrome; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
+
+2025-04-05 09:36:44,617 - INFO - Fetching batting data from https://www.baseball-reference.com/leagues/majors/2025-standard-batting.shtml
+2025-04-05 09:36:44,617 - INFO - Attempting to scrape with Selenium...
+2025-04-05 09:36:44,618 - ERROR - No chromedriver found. Please specify the correct path at the top of the script.
+2025-04-05 09:36:44,618 - ERROR - Failed to retrieve batting data
+2025-04-05 09:36:50,171 - INFO - Fetching pitching data from https://www.baseball-reference.com/leagues/majors/2025-standard-pitching.shtml
+2025-04-05 09:36:50,171 - INFO - Attempting to scrape with Selenium...
+2025-04-05 09:36:50,171 - ERROR - No chromedriver found. Please specify the correct path at the top of the script.
+2025-04-05 09:36:50,171 - ERROR - Failed to retrieve pitching data
+2025-04-05 09:36:50,171 - INFO - Scraping completed in 11.94 seconds
+2025-04-05 09:37:59,221 - INFO - Starting Baseball Reference data scraping with enhanced methods
+2025-04-05 09:37:59,221 - INFO - Warming up connection to Baseball Reference...
+2025-04-05 09:37:59,222 - INFO - Attempting to scrape with Selenium...
+2025-04-05 09:38:00,215 - INFO - Navigating to https://www.baseball-reference.com/ with Selenium...
+2025-04-05 09:38:00,959 - INFO - Waiting for Cloudflare to resolve...
+2025-04-05 09:38:01,015 - INFO - Table element found on page, content appears to be loaded
+2025-04-05 09:38:01,028 - INFO - Saved HTML content to selenium_result.html for debugging
+2025-04-05 09:38:03,152 - INFO - Selenium scraping completed successfully
+2025-04-05 09:38:08,343 - INFO - Fetching batting data from https://www.baseball-reference.com/leagues/majors/2025-standard-batting.shtml
+2025-04-05 09:38:08,343 - INFO - Attempting to scrape with Selenium...
+2025-04-05 09:38:09,349 - INFO - Navigating to https://www.baseball-reference.com/leagues/majors/2025-standard-batting.shtml with Selenium...
+2025-04-05 09:38:10,115 - INFO - Waiting for Cloudflare to resolve...
+2025-04-05 09:38:10,381 - INFO - Table element found on page, content appears to be loaded
+2025-04-05 09:38:10,440 - INFO - Saved HTML content to selenium_result.html for debugging
+2025-04-05 09:38:12,536 - INFO - Selenium scraping completed successfully
+2025-04-05 09:38:12,539 - INFO - Saved HTML content to debug_batting.html for debugging
+2025-04-05 09:38:21,334 - INFO - Found table with id 'players_standard_batting' directly in HTML
+2025-04-05 09:38:21,334 - INFO - Found batting table with id: players_standard_batting
+2025-04-05 09:38:21,342 - INFO - Found 417 batting rows to process
+2025-04-05 09:38:21,405 - INFO - Successfully updated Hitters happia01/2025/CHC.
+2025-04-05 09:38:21,439 - INFO - Successfully updated Hitters suzukse01/2025/CHC.
+2025-04-05 09:38:21,480 - INFO - Successfully updated Hitters tuckeky01/2025/CHC.
+2025-04-05 09:38:21,524 - INFO - Successfully updated Hitters crowape01/2025/CHC.
+2025-04-05 09:38:21,551 - INFO - Successfully updated Hitters shawma01/2025/CHC.
+2025-04-05 09:38:21,614 - INFO - Successfully updated Hitters swansda01/2025/CHC.
+2025-04-05 09:38:21,641 - INFO - Successfully updated Hitters ohtansh01/2025/LAD.
+2025-04-05 09:38:21,668 - INFO - Successfully updated Hitters duranja01/2025/BOS.
+2025-04-05 09:38:21,696 - INFO - Successfully updated Hitters reynobr01/2025/PIT.
+2025-04-05 09:38:21,734 - INFO - Successfully updated Hitters bregmal01/2025/BOS.
+2025-04-05 09:38:22,235 - INFO - Processed 10 hitters so far
+2025-04-05 09:38:22,263 - INFO - Successfully updated Hitters carroco02/2025/ARI.
+2025-04-05 09:38:22,290 - INFO - Successfully updated Hitters deverra01/2025/BOS.
+2025-04-05 09:38:22,317 - INFO - Successfully updated Hitters edmanto01/2025/LAD.
+2025-04-05 09:38:22,344 - INFO - Successfully updated Hitters hernate01/2025/LAD.
+2025-04-05 09:38:22,371 - INFO - Successfully updated Hitters roblevi01/2025/SEA.
+2025-04-05 09:38:22,404 - INFO - Successfully updated Hitters bichebo01/2025/TOR.
+2025-04-05 09:38:22,432 - INFO - Successfully updated Hitters chourja01/2025/MIL.
+2025-04-05 09:38:22,459 - INFO - Successfully updated Hitters edwarxa01/2025/MIA.
+2025-04-05 09:38:22,486 - INFO - Successfully updated Hitters lopezot01/2025/MIA.
+2025-04-05 09:38:22,525 - INFO - Successfully updated Hitters rodriju01/2025/SEA.
+2025-04-05 09:38:23,026 - INFO - Processed 20 hitters so far
+2025-04-05 09:38:23,067 - INFO - Successfully updated Hitters rookebr01/2025/ATH.
+2025-04-05 09:38:23,105 - INFO - Successfully updated Hitters guerrvl02/2025/TOR.
+2025-04-05 09:38:23,132 - INFO - Successfully updated Hitters nootbla01/2025/STL.
+2025-04-05 09:38:23,158 - INFO - Successfully updated Hitters rutscad01/2025/BAL.
+2025-04-05 09:38:23,185 - INFO - Successfully updated Hitters tatisfe02/2025/SDP.
+2025-04-05 09:38:23,213 - INFO - Successfully updated Hitters albieoz01/2025/ATL.
+2025-04-05 09:38:23,241 - INFO - Successfully updated Hitters arozara01/2025/SEA.
+2025-04-05 09:38:23,269 - INFO - Successfully updated Hitters arraelu01/2025/SDP.
+2025-04-05 09:38:23,299 - INFO - Successfully updated Hitters bledajj01/2025/ATH.
+2025-04-05 09:38:23,330 - INFO - Successfully updated Hitters butlela01/2025/ATH.
+2025-04-05 09:38:23,831 - INFO - Processed 30 hitters so far
+2025-04-05 09:38:23,859 - INFO - Successfully updated Hitters cruzon01/2025/PIT.
+2025-04-05 09:38:23,887 - INFO - Successfully updated Hitters gimenan01/2025/TOR.
+2025-04-05 09:38:23,914 - INFO - Successfully updated Hitters mullice01/2025/BAL.
+2025-04-05 09:38:23,941 - INFO - Successfully updated Hitters naylojo01/2025/ARI.
+2025-04-05 09:38:23,968 - INFO - Successfully updated Hitters olsonma02/2025/ATL.
+2025-04-05 09:38:24,001 - INFO - Successfully updated Hitters ozunama01/2025/ATL.
+2025-04-05 09:38:24,028 - INFO - Successfully updated Hitters raleica01/2025/SEA.
+2025-04-05 09:38:24,068 - INFO - Successfully updated Hitters rileyau01/2025/ATL.
+2025-04-05 09:38:24,099 - INFO - Successfully updated Hitters santaan02/2025/TOR.
+2025-04-05 09:38:24,137 - INFO - Successfully updated Hitters turanbr02/2025/MIL.
+2025-04-05 09:38:24,638 - INFO - Processed 40 hitters so far
+2025-04-05 09:38:24,666 - INFO - Successfully updated Hitters adamewi01/2025/SFG.
+2025-04-05 09:38:24,693 - INFO - Successfully updated Hitters arenano01/2025/STL.
+2025-04-05 09:38:24,719 - INFO - Successfully updated Hitters buschmi02/2025/CHC.
+2025-04-05 09:38:24,747 - INFO - Successfully updated Hitters campbkr01/2025/BOS.
+2025-04-05 09:38:24,780 - INFO - Successfully updated Hitters contrwi02/2025/MIL.
+2025-04-05 09:38:24,810 - INFO - Successfully updated Hitters delacel01/2025/CIN.
+2025-04-05 09:38:24,837 - INFO - Successfully updated Hitters donovbr01/2025/STL.
+2025-04-05 09:38:25,046 - INFO - Successfully updated Hitters doylebr02/2025/COL.
+2025-04-05 09:38:25,139 - INFO - Successfully updated Hitters frelisa01/2025/MIL.
+2025-04-05 09:38:25,206 - INFO - Successfully updated Hitters judgeaa01/2025/NYY.
+2025-04-05 09:38:25,706 - INFO - Processed 50 hitters so far
+2025-04-05 09:38:25,823 - INFO - Successfully updated Hitters pagesan01/2025/LAD.
+2025-04-05 09:38:25,860 - INFO - Successfully updated Hitters perdoge01/2025/ARI.
+2025-04-05 09:38:25,889 - INFO - Successfully updated Hitters soderty01/2025/ATH.
+2025-04-05 09:38:26,078 - INFO - Successfully updated Hitters suareeu01/2025/ARI.
+2025-04-05 09:38:26,107 - INFO - Successfully updated Hitters wittbo02/2025/KCR.
+2025-04-05 09:38:26,135 - INFO - Successfully updated Hitters bohmal01/2025/PHI.
+2025-04-05 09:38:26,172 - INFO - Successfully updated Hitters casastr01/2025/BOS.
+2025-04-05 09:38:26,200 - INFO - Successfully updated Hitters chishja01/2025/NYY.
+2025-04-05 09:38:26,262 - INFO - Successfully updated Hitters diazya01/2025/TBR.
+2025-04-05 09:38:26,289 - INFO - Successfully updated Hitters greenri03/2025/DET.
+2025-04-05 09:38:26,790 - INFO - Processed 60 hitters so far
+2025-04-05 09:38:26,827 - INFO - Successfully updated Hitters gurrilo01/2025/ARI.
+2025-04-05 09:38:26,857 - INFO - Successfully updated Hitters indiajo01/2025/KCR.
+2025-04-05 09:38:26,886 - INFO - Successfully updated Hitters langfwy01/2025/TEX.
+2025-04-05 09:38:26,926 - INFO - Successfully updated Hitters marteke01/2025/ARI.
+2025-04-05 09:38:26,953 - INFO - Successfully updated Hitters ramoshe02/2025/SFG.
+2025-04-05 09:38:26,980 - INFO - Successfully updated Hitters schwaky01/2025/PHI.
+2025-04-05 09:38:27,006 - INFO - Successfully updated Hitters semiema01/2025/TEX.
+2025-04-05 09:38:27,033 - INFO - Successfully updated Hitters smithwi05/2025/LAD.
+2025-04-05 09:38:27,060 - INFO - Successfully updated Hitters torkesp01/2025/DET.
+2025-04-05 09:38:27,097 - INFO - Successfully updated Hitters bogaexa01/2025/SDP.
+2025-04-05 09:38:27,598 - INFO - Processed 70 hitters so far
+2025-04-05 09:38:27,625 - INFO - Successfully updated Hitters bridejo01/2025/MIA.
+2025-04-05 09:38:27,660 - INFO - Successfully updated Hitters candeje01/2025/CIN.
+2025-04-05 09:38:27,688 - INFO - Successfully updated Hitters chapmma01/2025/SFG.
+2025-04-05 09:38:27,724 - INFO - Successfully updated Hitters friedtj01/2025/CIN.
+2025-04-05 09:38:27,755 - INFO - Successfully updated Hitters harpebr03/2025/PHI.
+2025-04-05 09:38:27,782 - INFO - Successfully updated Hitters hoernni01/2025/CHC.
+2025-04-05 09:38:27,810 - INFO - Successfully updated Hitters kwanst01/2025/CLE.
+2025-04-05 09:38:27,842 - INFO - Successfully updated Hitters machama01/2025/SDP.
+2025-04-05 09:38:27,869 - INFO - Successfully updated Hitters mclaima01/2025/CIN.
+2025-04-05 09:38:27,896 - INFO - Successfully updated Hitters merrija01/2025/SDP.
+2025-04-05 09:38:28,397 - INFO - Processed 80 hitters so far
+2025-04-05 09:38:28,427 - INFO - Successfully updated Hitters ortizjo06/2025/MIL.
+2025-04-05 09:38:28,464 - INFO - Successfully updated Hitters santaca01/2025/CLE.
+2025-04-05 09:38:28,496 - INFO - Successfully updated Hitters sotoju01/2025/NYM.
+2025-04-05 09:38:28,525 - INFO - Successfully updated Hitters troutmi01/2025/LAA.
+2025-04-05 09:38:28,553 - INFO - Successfully updated Hitters volpean01/2025/NYY.
+2025-04-05 09:38:28,584 - INFO - Successfully updated Hitters wardta01/2025/LAA.
+2025-04-05 09:38:28,613 - INFO - Successfully updated Hitters westbjo01/2025/BAL.
+2025-04-05 09:38:28,641 - INFO - Successfully updated Hitters abramcj01/2025/WSN.
+2025-04-05 09:38:28,668 - INFO - Successfully updated Hitters alonspe01/2025/NYM.
+2025-04-05 09:38:28,696 - INFO - Successfully updated Hitters altuvjo01/2025/HOU.
+2025-04-05 09:38:29,197 - INFO - Processed 90 hitters so far
+2025-04-05 09:38:29,224 - INFO - Successfully updated Hitters contrwi01/2025/STL.
+2025-04-05 09:38:29,252 - INFO - Successfully updated Hitters florewi01/2025/SFG.
+2025-04-05 09:38:29,279 - INFO - Successfully updated Hitters harrimi04/2025/ATL.
+2025-04-05 09:38:29,310 - INFO - Successfully updated Hitters keithco01/2025/DET.
+2025-04-05 09:38:29,357 - INFO - Successfully updated Hitters kineris01/2025/PIT.
+2025-04-05 09:38:29,384 - INFO - Successfully updated Hitters lowebr01/2025/TBR.
+2025-04-05 09:38:29,411 - INFO - Successfully updated Hitters perezsa02/2025/KCR.
+2025-04-05 09:38:29,439 - INFO - Successfully updated Hitters schanno01/2025/LAA.
+2025-04-05 09:38:29,466 - INFO - Successfully updated Hitters scottvi01/2025/STL.
+2025-04-05 09:38:29,492 - INFO - Successfully updated Hitters stoweky01/2025/MIA.
+2025-04-05 09:38:29,993 - INFO - Processed 100 hitters so far
+2025-04-05 09:38:30,024 - INFO - Successfully updated Hitters tovarez01/2025/COL.
+2025-04-05 09:38:30,052 - INFO - Successfully updated Hitters yelicch01/2025/MIL.
+2025-04-05 09:38:30,084 - INFO - Successfully updated Hitters abreuwi02/2025/BOS.
+2025-04-05 09:38:30,115 - INFO - Successfully updated Hitters alvaryo01/2025/HOU.
+2025-04-05 09:38:30,143 - INFO - Successfully updated Hitters belljo02/2025/WSN.
+2025-04-05 09:38:30,171 - INFO - Successfully updated Hitters burgeja01/2025/TEX.
+2025-04-05 09:38:30,199 - INFO - Successfully updated Hitters crawfjp01/2025/SEA.
+2025-04-05 09:38:30,226 - INFO - Successfully updated Hitters croneja01/2025/SDP.
+2025-04-05 09:38:30,254 - INFO - Successfully updated Hitters goodmhu01/2025/COL.
+2025-04-05 09:38:30,282 - INFO - Successfully updated Hitters hayeske01/2025/PIT.
+2025-04-05 09:38:30,783 - INFO - Processed 110 hitters so far
+2025-04-05 09:38:30,812 - INFO - Successfully updated Hitters langesh01/2025/ATH.
+2025-04-05 09:38:30,846 - INFO - Successfully updated Hitters lowena01/2025/WSN.
+2025-04-05 09:38:30,889 - INFO - Successfully updated Hitters manzaky01/2025/CLE.
+2025-04-05 09:38:30,916 - INFO - Successfully updated Hitters mckinza01/2025/DET.
+2025-04-05 09:38:30,943 - INFO - Successfully updated Hitters mcmahry01/2025/COL.
+2025-04-05 09:38:30,969 - INFO - Successfully updated Hitters muncyma01/2025/LAD.
+2025-04-05 09:38:31,002 - INFO - Successfully updated Hitters nimmobr01/2025/NYM.
+2025-04-05 09:38:31,037 - INFO - Successfully updated Hitters oneilty01/2025/BAL.
+2025-04-05 09:38:31,065 - INFO - Successfully updated Hitters paredis01/2025/HOU.
+2025-04-05 09:38:31,092 - INFO - Successfully updated Hitters solerjo01/2025/LAA.
+2025-04-05 09:38:31,593 - INFO - Processed 120 hitters so far
+2025-04-05 09:38:31,640 - INFO - Successfully updated Hitters springe01/2025/TOR.
+2025-04-05 09:38:31,668 - INFO - Successfully updated Hitters storytr01/2025/BOS.
+2025-04-05 09:38:31,705 - INFO - Successfully updated Hitters toglimi01/2025/COL.
+2025-04-05 09:38:31,741 - INFO - Successfully updated Hitters vargami01/2025/CHW.
+2025-04-05 09:38:31,770 - INFO - Successfully updated Hitters vientma01/2025/NYM.
+2025-04-05 09:38:31,797 - INFO - Successfully updated Hitters wilsoja05/2025/ATH.
+2025-04-05 09:38:31,827 - INFO - Successfully updated Hitters winnma01/2025/STL.
+2025-04-05 09:38:31,864 - INFO - Successfully updated Hitters woodja03/2025/WSN.
+2025-04-05 09:38:31,903 - INFO - Successfully updated Hitters casteni01/2025/PHI.
+2025-04-05 09:38:31,942 - INFO - Successfully updated Hitters dominja01/2025/NYY.
+2025-04-05 09:38:32,443 - INFO - Processed 130 hitters so far
+2025-04-05 09:38:32,492 - INFO - Successfully updated Hitters francty01/2025/MIN.
+2025-04-05 09:38:32,530 - INFO - Successfully updated Hitters garciad02/2025/TEX.
+2025-04-05 09:38:32,567 - INFO - Successfully updated Hitters goldspa01/2025/NYY.
+2025-04-05 09:38:32,611 - INFO - Successfully updated Hitters massemi02/2025/KCR.
+2025-04-05 09:38:32,638 - INFO - Successfully updated Hitters phamth01/2025/PIT.
+2025-04-05 09:38:32,664 - INFO - Successfully updated Hitters rafaece01/2025/BOS.
+2025-04-05 09:38:32,698 - INFO - Successfully updated Hitters roberlu01/2025/CHW.
+2025-04-05 09:38:32,725 - INFO - Successfully updated Hitters walkech02/2025/HOU.
+2025-04-05 09:38:32,764 - INFO - Successfully updated Hitters bartjo01/2025/PIT.
+2025-04-05 09:38:32,791 - INFO - Successfully updated Hitters bellico01/2025/NYY.
+2025-04-05 09:38:33,292 - INFO - Processed 140 hitters so far
+2025-04-05 09:38:33,319 - INFO - Successfully updated Hitters beninan01/2025/CHW.
+2025-04-05 09:38:33,346 - INFO - Successfully updated Hitters caminju01/2025/TBR.
+2025-04-05 09:38:33,373 - INFO - Successfully updated Hitters confomi01/2025/LAD.
+2025-04-05 09:38:33,401 - INFO - Successfully updated Hitters encarch01/2025/CIN.
+2025-04-05 09:38:33,428 - INFO - Successfully updated Hitters hollija01/2025/BAL.
+2025-04-05 09:38:33,465 - INFO - Successfully updated Hitters leeju01/2025/SFG.
+2025-04-05 09:38:33,496 - INFO - Successfully updated Hitters luxga01/2025/CIN.
+2025-04-05 09:38:33,543 - INFO - Successfully updated Hitters pederjo01/2025/TEX.
+2025-04-05 09:38:33,583 - INFO - Successfully updated Hitters rengilu01/2025/LAA.
+2025-04-05 09:38:33,618 - INFO - Successfully updated Hitters ruizke01/2025/WSN.
+2025-04-05 09:38:34,119 - INFO - Processed 150 hitters so far
+2025-04-05 09:38:34,156 - INFO - Successfully updated Hitters sweentr01/2025/DET.
+2025-04-05 09:38:34,184 - INFO - Successfully updated Hitters thomala02/2025/CLE.
+2025-04-05 09:38:34,212 - INFO - Successfully updated Hitters andujmi01/2025/ATH.
+2025-04-05 09:38:34,239 - INFO - Successfully updated Hitters bettsmo01/2025/LAD.
+2025-04-05 09:38:34,266 - INFO - Successfully updated Hitters buxtoby01/2025/MIN.
+2025-04-05 09:38:34,294 - INFO - Successfully updated Hitters castrwi01/2025/MIN.
+2025-04-05 09:38:34,321 - INFO - Successfully updated Hitters correca01/2025/MIN.
+2025-04-05 09:38:34,368 - INFO - Successfully updated Hitters keplema01/2025/PHI.
+2025-04-05 09:38:34,413 - INFO - Successfully updated Hitters lindofr01/2025/NYM.
+2025-04-05 09:38:34,455 - INFO - Successfully updated Hitters moncayo01/2025/LAA.
+2025-04-05 09:38:34,956 - INFO - Processed 160 hitters so far
+2025-04-05 09:38:34,984 - INFO - Successfully updated Hitters mountry01/2025/BAL.
+2025-04-05 09:38:35,020 - INFO - Successfully updated Hitters muncyma02/2025/ATH.
+2025-04-05 09:38:35,048 - INFO - Successfully updated Hitters pasquvi01/2025/KCR.
+2025-04-05 09:38:35,075 - INFO - Successfully updated Hitters penaje02/2025/HOU.
+2025-04-05 09:38:35,102 - INFO - Successfully updated Hitters wadela01/2025/SFG.
+2025-04-05 09:38:35,141 - INFO - Successfully updated Hitters walkejo02/2025/STL.
+2025-04-05 09:38:35,170 - INFO - Successfully updated Hitters wallnma01/2025/MIN.
+2025-04-05 09:38:35,196 - INFO - Successfully updated Hitters ariasga01/2025/CLE.
+2025-04-05 09:38:35,224 - INFO - Successfully updated Hitters baldwdr01/2025/ATL.
+2025-04-05 09:38:35,252 - INFO - Successfully updated Hitters blissry01/2025/SEA.
+2025-04-05 09:38:35,753 - INFO - Processed 170 hitters so far
+2025-04-05 09:38:35,783 - INFO - Successfully updated Hitters coningr01/2025/MIA.
+2025-04-05 09:38:35,817 - INFO - Successfully updated Hitters hoskirh01/2025/MIL.
+2025-04-05 09:38:35,845 - INFO - Successfully updated Hitters ohearry01/2025/BAL.
+2025-04-05 09:38:35,872 - INFO - Successfully updated Hitters ramirjo01/2025/CLE.
+2025-04-05 09:38:35,899 - INFO - Successfully updated Hitters ricebe01/2025/NYY.
+2025-04-05 09:38:35,927 - INFO - Successfully updated Hitters wellsau01/2025/NYY.
+2025-04-05 09:38:35,966 - INFO - Successfully updated Hitters amayami01/2025/CHC.
+2025-04-05 09:38:36,031 - INFO - Successfully updated Hitters carpeke01/2025/DET.
+2025-04-05 09:38:36,059 - INFO - Successfully updated Hitters fitzgty01/2025/SFG.
+2025-04-05 09:38:36,086 - INFO - Successfully updated Hitters kelenja01/2025/ATL.
+2025-04-05 09:38:36,587 - INFO - Processed 180 hitters so far
+2025-04-05 09:38:36,642 - INFO - Successfully updated Hitters kirkal01/2025/TOR.
+2025-04-05 09:38:36,670 - INFO - Successfully updated Hitters realmjt01/2025/PHI.
+2025-04-05 09:38:36,697 - INFO - Successfully updated Hitters rodrien01/2025/PIT.
+2025-04-05 09:38:36,730 - INFO - Successfully updated Hitters stottbr01/2025/PHI.
+2025-04-05 09:38:36,757 - INFO - Successfully updated Hitters uriasra01/2025/BAL.
+2025-04-05 09:38:36,785 - INFO - Successfully updated Hitters urshegi01/2025/ATH.
+2025-04-05 09:38:36,823 - INFO - Successfully updated Hitters burleal01/2025/STL.
+2025-04-05 09:38:36,849 - INFO - Successfully updated Hitters crewsdy01/2025/WSN.
+2025-04-05 09:38:36,887 - INFO - Successfully updated Hitters fraziad01/2025/PIT.
+2025-04-05 09:38:36,914 - INFO - Successfully updated Hitters garcima01/2025/KCR.
+2025-04-05 09:38:37,415 - INFO - Processed 190 hitters so far
+2025-04-05 09:38:37,446 - INFO - Successfully updated Hitters hernaen02/2025/LAD.
+2025-04-05 09:38:37,474 - INFO - Successfully updated Hitters larnatr01/2025/MIN.
+2025-04-05 09:38:37,501 - INFO - Successfully updated Hitters morenga01/2025/ARI.
+2025-04-05 09:38:37,543 - INFO - Successfully updated Hitters seageco01/2025/TEX.
+2025-04-05 09:38:37,585 - INFO - Successfully updated Hitters taverle01/2025/TEX.
+2025-04-05 09:38:37,625 - INFO - Successfully updated Hitters vaughan01/2025/CHW.
+2025-04-05 09:38:37,653 - INFO - Successfully updated Hitters wagnewi01/2025/TOR.
+2025-04-05 09:38:37,682 - INFO - Successfully updated Hitters yastrmi01/2025/SFG.
+2025-04-05 09:38:37,721 - INFO - Successfully updated Hitters herreiv01/2025/STL.
+2025-04-05 09:38:37,749 - INFO - Successfully updated Hitters hillde01/2025/MIA.
+2025-04-05 09:38:38,250 - INFO - Processed 200 hitters so far
+2025-04-05 09:38:38,284 - INFO - Successfully updated Hitters marshbr02/2025/PHI.
+2025-04-05 09:38:38,318 - INFO - Successfully updated Hitters myersda01/2025/MIA.
+2025-04-05 09:38:38,358 - INFO - Successfully updated Hitters naylobo01/2025/CLE.
+2025-04-05 09:38:38,387 - INFO - Successfully updated Hitters polanjo01/2025/SEA.
+2025-04-05 09:38:38,414 - INFO - Successfully updated Hitters rocchbr01/2025/CLE.
+2025-04-05 09:38:38,442 - INFO - Successfully updated Hitters steersp01/2025/CIN.
+2025-04-05 09:38:38,471 - INFO - Successfully updated Hitters bailepa01/2025/SFG.
+2025-04-05 09:38:38,499 - INFO - Successfully updated Hitters cabreos01/2025/NYY.
+2025-04-05 09:38:38,540 - INFO - Successfully updated Hitters clemeer01/2025/TOR.
+2025-04-05 09:38:38,576 - INFO - Successfully updated Hitters delucjo01/2025/TBR.
+2025-04-05 09:38:39,077 - INFO - Processed 210 hitters so far
+2025-04-05 09:38:39,117 - INFO - Successfully updated Hitters garcilu04/2025/WSN.
+2025-04-05 09:38:39,152 - INFO - Successfully updated Hitters mccarja02/2025/ARI.
+2025-04-05 09:38:39,181 - INFO - Successfully updated Hitters mitchga01/2025/MIL.
+2025-04-05 09:38:39,209 - INFO - Successfully updated Hitters ohopplo01/2025/LAA.
+2025-04-05 09:38:39,254 - INFO - Successfully updated Hitters paulegr01/2025/MIA.
+2025-04-05 09:38:39,315 - INFO - Successfully updated Hitters raleylu01/2025/SEA.
+2025-04-05 09:38:39,344 - INFO - Successfully updated Hitters renfrhu01/2025/KCR.
+2025-04-05 09:38:39,384 - INFO - Successfully updated Hitters rodenal01/2025/TOR.
+2025-04-05 09:38:39,564 - INFO - Successfully updated Hitters sosale01/2025/CHW.
+2025-04-05 09:38:39,594 - INFO - Successfully updated Hitters suwinja01/2025/PIT.
+2025-04-05 09:38:40,095 - INFO - Processed 220 hitters so far
+2025-04-05 09:38:40,136 - INFO - Successfully updated Hitters wagamer01/2025/MIA.
+2025-04-05 09:38:40,174 - INFO - Successfully updated Hitters wallsta01/2025/TBR.
+2025-04-05 09:38:40,212 - INFO - Successfully updated Hitters wongco01/2025/BOS.
+2025-04-05 09:38:40,240 - INFO - Successfully updated Hitters arandjo01/2025/TBR.
+2025-04-05 09:38:40,268 - INFO - Successfully updated Hitters beckjo01/2025/COL.
+2025-04-05 09:38:40,325 - INFO - Successfully updated Hitters capravi01/2025/MIL.
+2025-04-05 09:38:40,364 - INFO - Successfully updated Hitters dejonpa01/2025/WSN.
+2025-04-05 09:38:40,403 - INFO - Successfully updated Hitters farmeky01/2025/COL.
+2025-04-05 09:38:40,450 - INFO - Successfully updated Hitters fraleja01/2025/CIN.
+2025-04-05 09:38:40,504 - INFO - Successfully updated Hitters isbelky01/2025/KCR.
+2025-04-05 09:38:41,005 - INFO - Processed 230 hitters so far
+2025-04-05 09:38:41,042 - INFO - Successfully updated Hitters jeffery01/2025/MIN.
+2025-04-05 09:38:41,071 - INFO - Successfully updated Hitters rojasmi02/2025/LAD.
+2025-04-05 09:38:41,109 - INFO - Successfully updated Hitters sheetga01/2025/SDP.
+2025-04-05 09:38:41,141 - INFO - Successfully updated Hitters smithpa04/2025/ARI.
+2025-04-05 09:38:41,179 - INFO - Successfully updated Hitters torrelu01/2025/NYM.
+2025-04-05 09:38:41,217 - INFO - Successfully updated Hitters youngja03/2025/WSN.
+2025-04-05 09:38:41,255 - INFO - Successfully updated Hitters baderha01/2025/MIN.
+2025-04-05 09:38:41,292 - INFO - Successfully updated Hitters baldwbr01/2025/CHW.
+2025-04-05 09:38:41,320 - INFO - Successfully updated Hitters diazya02/2025/HOU.
+2025-04-05 09:38:41,347 - INFO - Successfully updated Hitters janseda01/2025/TBR.
+2025-04-05 09:38:41,848 - INFO - Processed 240 hitters so far
+2025-04-05 09:38:41,877 - INFO - Successfully updated Hitters jonesno01/2025/CLE.
+2025-04-05 09:38:41,915 - INFO - Successfully updated Hitters melenmj01/2025/KCR.
+2025-04-05 09:38:41,950 - INFO - Successfully updated Hitters miranjo01/2025/MIN.
+2025-04-05 09:38:41,977 - INFO - Successfully updated Hitters misneka01/2025/TBR.
+2025-04-05 09:38:42,005 - INFO - Successfully updated Hitters turnetr01/2025/PHI.
+2025-04-05 09:38:42,033 - INFO - Successfully updated Hitters adelljo01/2025/LAA.
+2025-04-05 09:38:42,060 - INFO - Successfully updated Hitters cowseco01/2025/BAL.
+2025-04-05 09:38:42,087 - INFO - Successfully updated Hitters espinsa01/2025/CIN.
+2025-04-05 09:38:42,114 - INFO - Successfully updated Hitters kellyca02/2025/CHC.
+2025-04-05 09:38:42,141 - INFO - Successfully updated Hitters martini02/2025/COL.
+2025-04-05 09:38:42,642 - INFO - Processed 250 hitters so far
+2025-04-05 09:38:42,673 - INFO - Successfully updated Hitters matonni01/2025/CHW.
+2025-04-05 09:38:42,710 - INFO - Successfully updated Hitters mccutan01/2025/PIT.
+2025-04-05 09:38:42,748 - INFO - Successfully updated Hitters rodgebr02/2025/HOU.
+2025-04-05 09:38:42,780 - INFO - Successfully updated Hitters thaisma01/2025/CHW.
+2025-04-05 09:38:42,810 - INFO - Successfully updated Hitters grishtr01/2025/NYY.
+2025-04-05 09:38:42,847 - INFO - Successfully updated Hitters mervima01/2025/MIA.
+2025-04-05 09:38:42,886 - INFO - Successfully updated Hitters smithca07/2025/HOU.
+2025-04-05 09:38:42,918 - INFO - Successfully updated Hitters smithjo11/2025/TEX.
+2025-04-05 09:38:42,945 - INFO - Successfully updated Hitters triolja01/2025/PIT.
+2025-04-05 09:38:42,972 - INFO - Successfully updated Hitters allenni02/2025/ATL.
+2025-04-05 09:38:43,473 - INFO - Processed 260 hitters so far
+2025-04-05 09:38:43,504 - INFO - Successfully updated Hitters biggica01/2025/KCR.
+2025-04-05 09:38:43,541 - INFO - Successfully updated Hitters bryankr01/2025/COL.
+2025-04-05 09:38:43,568 - INFO - Successfully updated Hitters delacbr01/2025/ATL.
+2025-04-05 09:38:43,603 - INFO - Successfully updated Hitters diazel01/2025/SDP.
+2025-04-05 09:38:43,640 - INFO - Successfully updated Hitters dingldi01/2025/DET.
+2025-04-05 09:38:43,670 - INFO - Successfully updated Hitters heywaja01/2025/SDP.
+2025-04-05 09:38:43,732 - INFO - Successfully updated Hitters hicksli01/2025/MIA.
+2025-04-05 09:38:43,761 - INFO - Successfully updated Hitters kreidry01/2025/DET.
+2025-04-05 09:38:43,792 - INFO - Successfully updated Hitters manguja01/2025/TBR.
+2025-04-05 09:38:43,829 - INFO - Successfully updated Hitters morelch01/2025/TBR.
+2025-04-05 09:38:44,330 - INFO - Processed 270 hitters so far
+2025-04-05 09:38:44,358 - INFO - Successfully updated Hitters profaju01/2025/ATL.
+2025-04-05 09:38:44,386 - INFO - Successfully updated Hitters sosaed01/2025/PHI.
+2025-04-05 09:38:44,422 - INFO - Successfully updated Hitters winkeje01/2025/NYM.
+2025-04-05 09:38:44,459 - INFO - Successfully updated Hitters acunajo01/2025/NYM.
+2025-04-05 09:38:44,486 - INFO - Successfully updated Hitters amayaja01/2025/CHW.
+2025-04-05 09:38:44,521 - INFO - Successfully updated Hitters forteni01/2025/MIA.
+2025-04-05 09:38:44,548 - INFO - Successfully updated Hitters grichra01/2025/ARI.
+2025-04-05 09:38:44,595 - INFO - Successfully updated Hitters jankotr01/2025/CHW.
+2025-04-05 09:38:44,623 - INFO - Successfully updated Hitters malloju02/2025/DET.
+2025-04-05 09:38:44,653 - INFO - Successfully updated Hitters rogerja03/2025/DET.
+2025-04-05 09:38:45,154 - INFO - Processed 280 hitters so far
+2025-04-05 09:38:45,184 - INFO - Successfully updated Hitters tellero01/2025/SEA.
+2025-04-05 09:38:45,223 - INFO - Successfully updated Hitters thomaal01/2025/ARI.
+2025-04-05 09:38:45,260 - INFO - Successfully updated Hitters trevijo01/2025/CIN.
+2025-04-05 09:38:45,287 - INFO - Successfully updated Hitters baezja01/2025/DET.
+2025-04-05 09:38:45,315 - INFO - Successfully updated Hitters batybr01/2025/NYM.
+2025-04-05 09:38:45,344 - INFO - Successfully updated Hitters higasky01/2025/TEX.
+2025-04-05 09:38:45,372 - INFO - Successfully updated Hitters kjershe01/2025/BAL.
+2025-04-05 09:38:45,400 - INFO - Successfully updated Hitters margoma01/2025/DET.
+2025-04-05 09:38:45,432 - INFO - Successfully updated Hitters mooredy01/2025/SEA.
+2025-04-05 09:38:45,475 - INFO - Successfully updated Hitters newmake01/2025/LAA.
+2025-04-05 09:38:45,976 - INFO - Processed 290 hitters so far
+2025-04-05 09:38:46,005 - INFO - Successfully updated Hitters parisky01/2025/LAA.
+2025-04-05 09:38:46,032 - INFO - Successfully updated Hitters sanojja01/2025/MIA.
+2025-04-05 09:38:46,059 - INFO - Successfully updated Hitters tayloty01/2025/NYM.
+2025-04-05 09:38:46,110 - INFO - Successfully updated Hitters turneju01/2025/CHC.
+2025-04-05 09:38:46,151 - INFO - Successfully updated Hitters arciaor01/2025/ATL.
+2025-04-05 09:38:46,190 - INFO - Successfully updated Hitters bertijo01/2025/CHC.
+2025-04-05 09:38:46,228 - INFO - Successfully updated Hitters brownse01/2025/ATH.
+2025-04-05 09:38:46,263 - INFO - Successfully updated Hitters garvemi01/2025/SEA.
+2025-04-05 09:38:46,300 - INFO - Successfully updated Hitters heimjo01/2025/TEX.
+2025-04-05 09:38:46,339 - INFO - Successfully updated Hitters maldoma01/2025/SDP.
+2025-04-05 09:38:46,839 - INFO - Processed 300 hitters so far
+2025-04-05 09:38:46,867 - INFO - Successfully updated Hitters martest01/2025/NYM.
+2025-04-05 09:38:46,896 - INFO - Successfully updated Hitters narvaca01/2025/BOS.
+2025-04-05 09:38:46,923 - INFO - Successfully updated Hitters noeljh01/2025/CLE.
+2025-04-05 09:38:46,951 - INFO - Successfully updated Hitters sirijo01/2025/NYM.
+2025-04-05 09:38:46,986 - INFO - Successfully updated Hitters taylomi02/2025/CHW.
+2025-04-05 09:38:47,013 - INFO - Successfully updated Hitters anderti01/2025/LAA.
+2025-04-05 09:38:47,039 - INFO - Successfully updated Hitters cabaljo01/2025/TBR.
+2025-04-05 09:38:47,079 - INFO - Successfully updated Hitters colliis01/2025/MIL.
+2025-04-05 09:38:47,105 - INFO - Successfully updated Hitters freemfr01/2025/LAD.
+2025-04-05 09:38:47,133 - INFO - Successfully updated Hitters gourryu01/2025/SDP.
+2025-04-05 09:38:47,634 - INFO - Processed 310 hitters so far
+2025-04-05 09:38:47,661 - INFO - Successfully updated Hitters julieed01/2025/MIN.
+2025-04-05 09:38:47,699 - INFO - Successfully updated Hitters moniami01/2025/COL.
+2025-04-05 09:38:47,727 - INFO - Successfully updated Hitters stallja01/2025/COL.
+2025-04-05 09:38:47,754 - INFO - Successfully updated Hitters canhama01/2025/KCR.
+2025-04-05 09:38:47,791 - INFO - Successfully updated Hitters dunnbl01/2025/CIN.
+2025-04-05 09:38:47,819 - INFO - Successfully updated Hitters duranez01/2025/TEX.
+2025-04-05 09:38:47,847 - INFO - Successfully updated Hitters matoslu02/2025/SFG.
+2025-04-05 09:38:47,884 - INFO - Successfully updated Hitters mccorch01/2025/HOU.
+2025-04-05 09:38:47,915 - INFO - Successfully updated Hitters meadcu01/2025/TBR.
+2025-04-05 09:38:47,943 - INFO - Successfully updated Hitters schneda04/2025/CLE.
+2025-04-05 09:38:48,443 - INFO - Processed 320 hitters so far
+2025-04-05 09:38:48,472 - INFO - Successfully updated Hitters schneda03/2025/TOR.
+2025-04-05 09:38:48,514 - INFO - Successfully updated Hitters slateau01/2025/CHW.
+2025-04-05 09:38:48,542 - INFO - Successfully updated Hitters bakerlu01/2025/STL.
+2025-04-05 09:38:48,578 - INFO - Successfully updated Hitters darnatr01/2025/LAA.
+2025-04-05 09:38:48,618 - INFO - Successfully updated Hitters dubonma01/2025/HOU.
+2025-04-05 09:38:48,646 - INFO - Successfully updated Hitters dunnol01/2025/MIL.
+2025-04-05 09:38:48,673 - INFO - Successfully updated Hitters fermifr01/2025/KCR.
+2025-04-05 09:38:48,700 - INFO - Successfully updated Hitters ibanean01/2025/DET.
+2025-04-05 09:38:48,728 - INFO - Successfully updated Hitters leeko01/2025/CHW.
+2025-04-05 09:38:48,756 - INFO - Successfully updated Hitters lukesna01/2025/TOR.
+2025-04-05 09:38:49,257 - INFO - Processed 330 hitters so far
+2025-04-05 09:38:49,291 - INFO - Successfully updated Hitters meyerja02/2025/HOU.
+2025-04-05 09:38:49,319 - INFO - Successfully updated Hitters pagespe02/2025/STL.
+2025-04-05 09:38:49,347 - INFO - Successfully updated Hitters solando01/2025/SEA.
+2025-04-05 09:38:49,374 - INFO - Successfully updated Hitters vazquch01/2025/MIN.
+2025-04-05 09:38:49,404 - INFO - Successfully updated Hitters gormano01/2025/STL.
+2025-04-05 09:38:49,431 - INFO - Successfully updated Hitters hampsga01/2025/ARI.
+2025-04-05 09:38:49,472 - INFO - Successfully updated Hitters herrejo04/2025/ARI.
+2025-04-05 09:38:49,499 - INFO - Successfully updated Hitters lockrbr01/2025/SDP.
+2025-04-05 09:38:49,528 - INFO - Successfully updated Hitters mateojo01/2025/BAL.
+2025-04-05 09:38:49,555 - INFO - Successfully updated Hitters bauerja01/2025/MIL.
+2025-04-05 09:38:50,056 - INFO - Processed 340 hitters so far
+2025-04-05 09:38:50,096 - INFO - Successfully updated Hitters caratvi01/2025/HOU.
+2025-04-05 09:38:50,131 - INFO - Successfully updated Hitters gaspemi01/2025/MIN.
+2025-04-05 09:38:50,159 - INFO - Successfully updated Hitters huffsa01/2025/SFG.
+2025-04-05 09:38:50,186 - INFO - Successfully updated Hitters iglesjo01/2025/SDP.
+2025-04-05 09:38:50,213 - INFO - Successfully updated Hitters rojasjo03/2025/PHI.
+2025-04-05 09:38:50,241 - INFO - Successfully updated Hitters rosaram01/2025/WSN.
+2025-04-05 09:38:50,278 - INFO - Successfully updated Hitters sanchga02/2025/BAL.
+2025-04-05 09:38:50,315 - INFO - Successfully updated Hitters torregl01/2025/DET.
+2025-04-05 09:38:50,354 - INFO - Successfully updated Hitters uriaslu01/2025/ATH.
+2025-04-05 09:38:50,381 - INFO - Successfully updated Hitters callal02/2025/WSN.
+2025-04-05 09:38:50,882 - INFO - Processed 350 hitters so far
+2025-04-05 09:38:50,919 - INFO - Successfully updated Hitters dezenza01/2025/HOU.
+2025-04-05 09:38:50,955 - INFO - Successfully updated Hitters freemty01/2025/COL.
+2025-04-05 09:38:50,993 - INFO - Successfully updated Hitters hamilda03/2025/BOS.
+2025-04-05 09:38:51,020 - INFO - Successfully updated Hitters heinety01/2025/TOR.
+2025-04-05 09:38:51,056 - INFO - Successfully updated Hitters jungjo01/2025/TEX.
+2025-04-05 09:38:51,083 - INFO - Successfully updated Hitters reyespa01/2025/NYY.
+2025-04-05 09:38:51,121 - INFO - Successfully updated Hitters rortvbe01/2025/TBR.
+2025-04-05 09:38:51,164 - INFO - Successfully updated Hitters schmica01/2025/SFG.
+2025-04-05 09:38:51,201 - INFO - Successfully updated Hitters strawmy01/2025/TOR.
+2025-04-05 09:38:51,238 - INFO - Successfully updated Hitters valdeen01/2025/PIT.
+2025-04-05 09:38:51,739 - INFO - Processed 360 hitters so far
+2025-04-05 09:38:51,782 - INFO - Successfully updated Hitters wynnsau01/2025/CIN.
+2025-04-05 09:38:51,818 - INFO - Successfully updated Hitters carlsdy01/2025/BAL.
+2025-04-05 09:38:51,852 - INFO - Successfully updated Hitters escarjc01/2025/NYY.
+2025-04-05 09:38:51,886 - INFO - Successfully updated Hitters laurera01/2025/BAL.
+2025-04-05 09:38:51,913 - INFO - Successfully updated Hitters mastrmi01/2025/SEA.
+2025-04-05 09:38:51,942 - INFO - Successfully updated Hitters pillake01/2025/TEX.
+2025-04-05 09:38:51,978 - INFO - Successfully updated Hitters trompch01/2025/ATL.
+2025-04-05 09:38:52,015 - INFO - Successfully updated Hitters bouchse01/2025/COL.
+2025-04-05 09:38:52,043 - INFO - Successfully updated Hitters gonzaro01/2025/BOS.
+2025-04-05 09:38:52,081 - INFO - Successfully updated Hitters haaseer01/2025/MIL.
+2025-04-05 09:38:52,582 - INFO - Processed 370 hitters so far
+2025-04-05 09:38:52,635 - INFO - Successfully updated Hitters marchra01/2025/PHI.
+2025-04-05 09:38:52,672 - INFO - Successfully updated Hitters schuema01/2025/ATH.
+2025-04-05 09:38:52,699 - INFO - Successfully updated Hitters tenajo01/2025/WSN.
+2025-04-05 09:38:52,725 - INFO - Successfully updated Hitters whiteel04/2025/ATL.
+2025-04-05 09:38:52,752 - INFO - Successfully updated Hitters baeji01/2025/PIT.
+2025-04-05 09:38:52,799 - INFO - Successfully created Hitters faircst01/2025/ATL.
+2025-04-05 09:38:52,828 - INFO - Successfully updated Hitters hedgeau01/2025/CLE.
+2025-04-05 09:38:52,857 - INFO - Successfully created Hitters hendegu01/2025/BAL.
+2025-04-05 09:38:52,886 - INFO - Successfully updated Hitters hurtuja01/2025/CIN.
+2025-04-05 09:38:52,913 - INFO - Successfully updated Hitters kossch01/2025/SFG.
+2025-04-05 09:38:53,414 - INFO - Processed 380 hitters so far
+2025-04-05 09:38:53,456 - INFO - Successfully created Hitters lopezni01/2025/LAA.
+2025-04-05 09:38:53,483 - INFO - Successfully updated Hitters orneljo01/2025/TEX.
+2025-04-05 09:38:53,518 - INFO - Successfully updated Hitters barneau01/2025/LAD.
+2025-04-05 09:38:53,554 - INFO - Successfully created Hitters canaral01/2025/PIT.
+2025-04-05 09:38:53,611 - INFO - Successfully updated Hitters gonzani01/2025/PIT.
+2025-04-05 09:38:53,652 - INFO - Successfully updated Hitters keirsda01/2025/MIN.
+2025-04-05 09:38:53,692 - INFO - Successfully updated Hitters peredjh01/2025/ATH.
+2025-04-05 09:38:53,732 - INFO - Successfully updated Hitters refsnro01/2025/BOS.
+2025-04-05 09:38:53,773 - INFO - Successfully updated Hitters rodrijo10/2025/CLE.
+2025-04-05 09:38:53,814 - INFO - Successfully updated Hitters sengeha01/2025/NYM.
+2025-04-05 09:38:54,316 - INFO - Processed 390 hitters so far
+2025-04-05 09:38:54,348 - INFO - Successfully updated Hitters tayloch03/2025/LAD.
+2025-04-05 09:38:54,376 - INFO - Successfully updated Hitters workmga01/2025/CHC.
+2025-04-05 09:38:54,404 - INFO - Successfully updated Hitters adamsri03/2025/WSN.
+2025-04-05 09:38:54,431 - INFO - Successfully updated Hitters clemeko01/2025/PHI.
+2025-04-05 09:38:54,458 - INFO - Successfully updated Hitters lowejo01/2025/TBR.
+2025-04-05 09:38:54,485 - INFO - Successfully updated Hitters perazos02/2025/NYY.
+2025-04-05 09:38:54,512 - INFO - Successfully updated Hitters tolbety01/2025/KCR.
+2025-04-05 09:38:54,544 - INFO - Successfully updated Hitters blancda02/2025/KCR.
+2025-04-05 09:38:54,582 - INFO - Successfully updated Hitters nelsory01/2025/ARI.
+2025-04-05 09:38:54,615 - INFO - Successfully updated Hitters reaco01/2025/CHC.
+2025-04-05 09:38:55,115 - INFO - Processed 400 hitters so far
+2025-04-05 09:38:55,147 - INFO - Successfully created Hitters birdja01/2025/COL.
+2025-04-05 09:38:55,177 - INFO - Successfully updated Hitters brujavi01/2025/CHC.
+2025-04-05 09:38:55,209 - INFO - Successfully created Hitters chivian01/2025/COL.
+2025-04-05 09:38:55,236 - INFO - Successfully updated Hitters mantijo01/2025/ARI.
+2025-04-05 09:38:55,266 - INFO - Successfully updated Hitters martiju01/2025/ARI.
+2025-04-05 09:38:55,293 - INFO - Successfully updated Hitters pukaj01/2025/ARI.
+2025-04-05 09:38:55,330 - INFO - Successfully updated Hitters sianimi01/2025/STL.
+2025-04-05 09:38:55,357 - INFO - Successfully updated Hitters thompry02/2025/ARI.
+2025-04-05 09:38:55,358 - INFO - Successfully processed 408 hitters
+2025-04-05 09:39:01,684 - INFO - Fetching pitching data from https://www.baseball-reference.com/leagues/majors/2025-standard-pitching.shtml
+2025-04-05 09:39:01,684 - INFO - Attempting to scrape with Selenium...
+2025-04-05 09:39:02,675 - INFO - Navigating to https://www.baseball-reference.com/leagues/majors/2025-standard-pitching.shtml with Selenium...
+2025-04-05 09:39:03,465 - INFO - Waiting for Cloudflare to resolve...
+2025-04-05 09:39:03,724 - INFO - Table element found on page, content appears to be loaded
+2025-04-05 09:39:03,797 - INFO - Saved HTML content to selenium_result.html for debugging
+2025-04-05 09:39:05,925 - INFO - Selenium scraping completed successfully
+2025-04-05 09:39:05,928 - INFO - Saved HTML content to debug_pitching.html for debugging
+2025-04-05 09:39:10,725 - INFO - Found table with id 'players_standard_pitching' directly in HTML
+2025-04-05 09:39:10,725 - INFO - Found pitching table with id: players_standard_pitching
+2025-04-05 09:39:10,728 - INFO - Found 423 pitching rows to process
+2025-04-05 09:39:10,783 - INFO - Successfully updated Pitchers imanash01/2025/CHC.
+2025-04-05 09:39:10,810 - INFO - Successfully updated Pitchers yamamyo01/2025/LAD.
+2025-04-05 09:39:10,836 - INFO - Successfully updated Pitchers steelju01/2025/CHC.
+2025-04-05 09:39:10,860 - INFO - Successfully updated Pitchers eovalna01/2025/TEX.
+2025-04-05 09:39:10,897 - INFO - Successfully updated Pitchers schwesp01/2025/ATL.
+2025-04-05 09:39:10,931 - INFO - Successfully updated Pitchers crochga01/2025/BOS.
+2025-04-05 09:39:10,963 - INFO - Successfully updated Pitchers litteza01/2025/TBR.
+2025-04-05 09:39:10,989 - INFO - Successfully updated Pitchers peralfr01/2025/MIL.
+2025-04-05 09:39:11,016 - INFO - Successfully updated Pitchers wheelza01/2025/PHI.
+2025-04-05 09:39:11,043 - INFO - Successfully updated Pitchers freelky01/2025/COL.
+2025-04-05 09:39:11,544 - INFO - Processed 10 pitchers so far
+2025-04-05 09:39:11,583 - INFO - Successfully updated Pitchers lodolni01/2025/CIN.
+2025-04-05 09:39:11,629 - INFO - Successfully updated Pitchers skenepa01/2025/PIT.
+2025-04-05 09:39:11,668 - INFO - Successfully updated Pitchers soriajo02/2025/LAA.
+2025-04-05 09:39:11,704 - INFO - Successfully updated Pitchers brownhu01/2025/HOU.
+2025-04-05 09:39:11,734 - INFO - Successfully updated Pitchers castilu02/2025/SEA.
+2025-04-05 09:39:11,759 - INFO - Successfully updated Pitchers eflinza01/2025/BAL.
+2025-04-05 09:39:11,803 - INFO - Successfully updated Pitchers gilbelo01/2025/SEA.
+2025-04-05 09:39:11,848 - INFO - Successfully updated Pitchers greenhu01/2025/CIN.
+2025-04-05 09:39:11,894 - INFO - Successfully updated Pitchers kikucyu01/2025/LAA.
+2025-04-05 09:39:11,928 - INFO - Successfully updated Pitchers lopezpa01/2025/MIN.
+2025-04-05 09:39:12,429 - INFO - Processed 20 pitchers so far
+2025-04-05 09:39:12,459 - INFO - Successfully updated Pitchers luzarje01/2025/PHI.
+2025-04-05 09:39:12,496 - INFO - Successfully updated Pitchers pfaadbr01/2025/ARI.
+2025-04-05 09:39:12,533 - INFO - Successfully updated Pitchers severlu01/2025/ATH.
+2025-04-05 09:39:12,567 - INFO - Successfully updated Pitchers valdefr01/2025/HOU.
+2025-04-05 09:39:12,608 - INFO - Successfully updated Pitchers webblo01/2025/SFG.
+2025-04-05 09:39:12,643 - INFO - Successfully updated Pitchers meyerma01/2025/MIA.
+2025-04-05 09:39:12,669 - INFO - Successfully updated Pitchers flaheja01/2025/DET.
+2025-04-05 09:39:12,693 - INFO - Successfully updated Pitchers gausmke01/2025/TOR.
+2025-04-05 09:39:12,718 - INFO - Successfully updated Pitchers rodonca01/2025/NYY.
+2025-04-05 09:39:12,756 - INFO - Successfully updated Pitchers gorema01/2025/WSN.
+2025-04-05 09:39:13,257 - INFO - Processed 30 pitchers so far
+2025-04-05 09:39:13,293 - INFO - Successfully updated Pitchers grayso01/2025/STL.
+2025-04-05 09:39:13,319 - INFO - Successfully updated Pitchers lugose01/2025/KCR.
+2025-04-05 09:39:13,347 - INFO - Successfully updated Pitchers pepiory01/2025/TBR.
+2025-04-05 09:39:13,381 - INFO - Successfully updated Pitchers berrijo01/2025/TOR.
+2025-04-05 09:39:13,406 - INFO - Successfully updated Pitchers ceasedy01/2025/SDP.
+2025-04-05 09:39:13,432 - INFO - Successfully updated Pitchers galleza01/2025/ARI.
+2025-04-05 09:39:13,457 - INFO - Successfully updated Pitchers martini01/2025/CIN.
+2025-04-05 09:39:13,482 - INFO - Successfully updated Pitchers skubata01/2025/DET.
+2025-04-05 09:39:13,513 - INFO - Successfully updated Pitchers vasqura02/2025/SDP.
+2025-04-05 09:39:13,550 - INFO - Successfully updated Pitchers burkese01/2025/CHW.
+2025-04-05 09:39:14,058 - INFO - Processed 40 pitchers so far
+2025-04-05 09:39:14,094 - INFO - Successfully updated Pitchers friedma01/2025/NYY.
+2025-04-05 09:39:14,130 - INFO - Successfully updated Pitchers megilty01/2025/NYM.
+2025-04-05 09:39:14,166 - INFO - Successfully updated Pitchers taillja01/2025/CHC.
+2025-04-05 09:39:14,192 - INFO - Successfully updated Pitchers bidoos01/2025/ATH.
+2025-04-05 09:39:14,218 - INFO - Successfully updated Pitchers feltnry01/2025/COL.
+2025-04-05 09:39:14,245 - INFO - Successfully updated Pitchers gillico01/2025/MIA.
+2025-04-05 09:39:14,273 - INFO - Successfully updated Pitchers irvinja01/2025/WSN.
+2025-04-05 09:39:14,304 - INFO - Successfully updated Pitchers leiteja01/2025/TEX.
+2025-04-05 09:39:14,340 - INFO - Successfully updated Pitchers raganco01/2025/KCR.
+2025-04-05 09:39:14,471 - INFO - Successfully updated Pitchers ryanjo04/2025/MIN.
+2025-04-05 09:39:14,972 - INFO - Processed 50 pitchers so far
+2025-04-05 09:39:15,014 - INFO - Successfully updated Pitchers salech01/2025/ATL.
+2025-04-05 09:39:15,052 - INFO - Successfully updated Pitchers alcansa01/2025/MIA.
+2025-04-05 09:39:15,089 - INFO - Successfully updated Pitchers houckta01/2025/BOS.
+2025-04-05 09:39:15,134 - INFO - Successfully updated Pitchers kellemi03/2025/PIT.
+2025-04-05 09:39:15,181 - INFO - Successfully updated Pitchers kremede01/2025/BAL.
+2025-04-05 09:39:15,222 - INFO - Successfully updated Pitchers senzaan01/2025/COL.
+2025-04-05 09:39:15,264 - INFO - Successfully updated Pitchers buehlwa01/2025/BOS.
+2025-04-05 09:39:15,302 - INFO - Successfully updated Pitchers holmecl01/2025/NYM.
+2025-04-05 09:39:15,340 - INFO - Successfully updated Pitchers livelbe01/2025/CLE.
+2025-04-05 09:39:15,375 - INFO - Successfully updated Pitchers alexaty01/2025/MIL.
+2025-04-05 09:39:15,876 - INFO - Processed 60 pitchers so far
+2025-04-05 09:39:15,917 - INFO - Successfully updated Pitchers feddeer01/2025/STL.
+2025-04-05 09:39:15,953 - INFO - Successfully updated Pitchers kellyme01/2025/ARI.
+2025-04-05 09:39:15,990 - INFO - Successfully updated Pitchers snellbl01/2025/LAD.
+2025-04-05 09:39:16,026 - INFO - Successfully updated Pitchers sprinje01/2025/ATH.
+2025-04-05 09:39:16,066 - INFO - Successfully updated Pitchers cannojo02/2025/CHW.
+2025-04-05 09:39:16,103 - INFO - Successfully updated Pitchers mortoch02/2025/BAL.
+2025-04-05 09:39:16,175 - INFO - Successfully updated Pitchers cortene01/2025/MIL.
+2025-04-05 09:39:16,203 - INFO - Successfully updated Pitchers williga01/2025/CLE.
+2025-04-05 09:39:16,228 - INFO - Successfully updated Pitchers brownbe02/2025/CHC.
+2025-04-05 09:39:16,258 - INFO - Successfully updated Pitchers kingmi01/2025/SDP.
+2025-04-05 09:39:16,759 - INFO - Processed 70 pitchers so far
+2025-04-05 09:39:16,798 - INFO - Successfully updated Pitchers carraca01/2025/NYY.
+2025-04-05 09:39:16,834 - INFO - Successfully updated Pitchers verlaju01/2025/SFG.
+2025-04-05 09:39:16,862 - INFO - Successfully updated Pitchers matzst01/2025/STL.
+2025-04-05 09:39:16,887 - INFO - Successfully updated Pitchers pivetni01/2025/SDP.
+2025-04-05 09:39:16,910 - INFO - Successfully updated Pitchers singebr01/2025/CIN.
+2025-04-05 09:39:16,937 - INFO - Successfully updated Pitchers mahlety01/2025/TEX.
+2025-04-05 09:39:16,975 - INFO - Successfully updated Pitchers searsjp01/2025/ATH.
+2025-04-05 09:39:17,012 - INFO - Successfully updated Pitchers garcilu03/2025/LAD.
+2025-04-05 09:39:17,036 - INFO - Successfully updated Pitchers parkemi01/2025/WSN.
+2025-04-05 09:39:17,069 - INFO - Successfully updated Pitchers wentzjo01/2025/PIT.
+2025-04-05 09:39:17,570 - INFO - Processed 80 pitchers so far
+2025-04-05 09:39:17,611 - INFO - Successfully updated Pitchers arrigsp01/2025/HOU.
+2025-04-05 09:39:17,636 - INFO - Successfully updated Pitchers bassich01/2025/TOR.
+2025-04-05 09:39:17,671 - INFO - Successfully updated Pitchers bazsh01/2025/TBR.
+2025-04-05 09:39:17,709 - INFO - Successfully updated Pitchers bradlta01/2025/TBR.
+2025-04-05 09:39:17,746 - INFO - Successfully updated Pitchers bubickr01/2025/KCR.
+2025-04-05 09:39:17,785 - INFO - Successfully updated Pitchers falteba01/2025/PIT.
+2025-04-05 09:39:17,821 - INFO - Successfully updated Pitchers fittsri01/2025/BOS.
+2025-04-05 09:39:17,858 - INFO - Successfully updated Pitchers francbo01/2025/TOR.
+2025-04-05 09:39:17,892 - INFO - Successfully updated Pitchers hendrky01/2025/LAA.
+2025-04-05 09:39:17,931 - INFO - Successfully updated Pitchers hicksjo03/2025/SFG.
+2025-04-05 09:39:18,432 - INFO - Processed 90 pitchers so far
+2025-04-05 09:39:18,477 - INFO - Successfully updated Pitchers kochaja01/2025/LAA.
+2025-04-05 09:39:18,515 - INFO - Successfully updated Pitchers liberma01/2025/STL.
+2025-04-05 09:39:18,553 - INFO - Successfully updated Pitchers marquge01/2025/COL.
+2025-04-05 09:39:18,589 - INFO - Successfully updated Pitchers martida03/2025/CHW.
+2025-04-05 09:39:18,626 - INFO - Successfully updated Pitchers perezma02/2025/CHW.
+2025-04-05 09:39:18,661 - INFO - Successfully updated Pitchers peterda01/2025/NYM.
+2025-04-05 09:39:18,707 - INFO - Successfully updated Pitchers soriage01/2025/MIA.
+2025-04-05 09:39:18,744 - INFO - Successfully updated Pitchers spierca01/2025/CIN.
+2025-04-05 09:39:18,784 - ERROR - Failed to create Pitchers walketa01/2025/PHI. Response: 200 - {"bbrefId":"walketa01","year":2025,"team":"PHI","age":32,"lg":"NL","wl":"1-0","wlPercentage":1,"era":0,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":6,"h":3,"r":0,"er":0,"hr":0,"bb":1,"ibb":0,"so":4,"hbp":1,"bk":0,"wp":0,"bf":22,"eraPlus":0,"fip":2.59,"whip":0.667,"h9":4.5,"hR9":0,"bB9":1.5,"sO9":6,"sow":4,"dateModified":"2025-04-05T09:37:59.221655","throws":"RHP"}
+2025-04-05 09:39:18,823 - INFO - Successfully updated Pitchers whitlga01/2025/BOS.
+2025-04-05 09:39:19,324 - INFO - Processed 100 pitchers so far
+2025-04-05 09:39:19,365 - INFO - Successfully updated Pitchers woobr01/2025/SEA.
+2025-04-05 09:39:19,390 - INFO - Successfully updated Pitchers bazared01/2025/SEA.
+2025-04-05 09:39:19,415 - INFO - Successfully updated Pitchers bibeeta01/2025/CLE.
+2025-04-05 09:39:19,439 - INFO - Successfully updated Pitchers cannigr01/2025/NYM.
+2025-04-05 09:39:19,465 - INFO - Successfully updated Pitchers kranima01/2025/NYM.
+2025-04-05 09:39:19,492 - INFO - Successfully updated Pitchers millebr04/2025/SEA.
+2025-04-05 09:39:19,520 - INFO - Successfully updated Pitchers mizeca01/2025/DET.
+2025-04-05 09:39:19,558 - INFO - Successfully updated Pitchers patrich01/2025/MIL.
+2025-04-05 09:39:19,598 - INFO - Successfully updated Pitchers smithsh02/2025/CHW.
+2025-04-05 09:39:19,639 - INFO - Successfully updated Pitchers vargaca01/2025/SEA.
+2025-04-05 09:39:20,140 - INFO - Processed 110 pitchers so far
+2025-04-05 09:39:20,176 - INFO - Successfully updated Pitchers allenlo02/2025/CLE.
+2025-04-05 09:39:20,206 - INFO - Successfully updated Pitchers bachala01/2025/MIA.
+2025-04-05 09:39:20,231 - INFO - Successfully updated Pitchers beeksja02/2025/ARI.
+2025-04-05 09:39:20,255 - INFO - Successfully updated Pitchers dobnara01/2025/MIN.
+2025-04-05 09:39:20,281 - INFO - Successfully updated Pitchers dreyeja01/2025/LAD.
+2025-04-05 09:39:20,344 - INFO - Successfully updated Pitchers ferguty01/2025/ATH.
+2025-04-05 09:39:20,368 - INFO - Successfully updated Pitchers lorenmi01/2025/KCR.
+2025-04-05 09:39:20,392 - INFO - Successfully updated Pitchers mikolmi01/2025/STL.
+2025-04-05 09:39:20,422 - INFO - Successfully updated Pitchers nolaaa01/2025/PHI.
+2025-04-05 09:39:20,446 - INFO - Successfully updated Pitchers rayro02/2025/SFG.
+2025-04-05 09:39:20,947 - INFO - Processed 120 pitchers so far
+2025-04-05 09:39:20,972 - INFO - Successfully updated Pitchers rodried05/2025/ARI.
+2025-04-05 09:39:20,996 - INFO - Successfully updated Pitchers sanchcr01/2025/PHI.
+2025-04-05 09:39:21,034 - INFO - Successfully updated Pitchers wilsobr02/2025/CHW.
+2025-04-05 09:39:21,059 - INFO - Successfully updated Pitchers anderty01/2025/LAA.
+2025-04-05 09:39:21,093 - INFO - Successfully updated Pitchers blancro01/2025/HOU.
+2025-04-05 09:39:21,122 - INFO - Successfully updated Pitchers boydma01/2025/CHC.
+2025-04-05 09:39:21,150 - INFO - Successfully updated Pitchers brazohu01/2025/NYM.
+2025-04-05 09:39:21,177 - INFO - Successfully updated Pitchers caspabe01/2025/LAD.
+2025-04-05 09:39:21,215 - INFO - Successfully updated Pitchers degroja01/2025/TEX.
+2025-04-05 09:39:21,251 - INFO - Successfully updated Pitchers glasnty01/2025/LAD.
+2025-04-05 09:39:21,752 - INFO - Processed 130 pitchers so far
+2025-04-05 09:39:21,779 - INFO - Successfully updated Pitchers hartky01/2025/SDP.
+2025-04-05 09:39:21,803 - INFO - Successfully updated Pitchers heanean01/2025/PIT.
+2025-04-05 09:39:21,839 - INFO - Successfully updated Pitchers holmegr01/2025/ATL.
+2025-04-05 09:39:21,872 - INFO - Successfully updated Pitchers lopezre01/2025/ATL.
+2025-04-05 09:39:21,908 - ERROR - Failed to create Pitchers lucasea01/2025/TOR. Response: 200 - {"bbrefId":"lucasea01","year":2025,"team":"TOR","age":28,"lg":"AL","wl":"1-0","wlPercentage":1,"era":0,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":5,"h":1,"r":0,"er":0,"hr":0,"bb":2,"ibb":0,"so":3,"hbp":0,"bk":0,"wp":0,"bf":18,"eraPlus":0,"fip":2.92,"whip":0.6,"h9":1.8,"hR9":0,"bB9":3.6,"sO9":5.4,"sow":1.5,"dateModified":"2025-04-05T09:37:59.221655","throws":"LHP"}
+2025-04-05 09:39:21,945 - INFO - Successfully updated Pitchers lynchda02/2025/KCR.
+2025-04-05 09:39:21,972 - INFO - Successfully updated Pitchers martich02/2025/TEX.
+2025-04-05 09:39:22,000 - INFO - Successfully updated Pitchers maydu01/2025/LAD.
+2025-04-05 09:39:22,036 - INFO - Successfully updated Pitchers millesh01/2025/ARI.
+2025-04-05 09:39:22,059 - INFO - Successfully updated Pitchers pallaan01/2025/STL.
+2025-04-05 09:39:22,560 - INFO - Processed 140 pitchers so far
+2025-04-05 09:39:22,609 - INFO - Successfully updated Pitchers phillty01/2025/MIA.
+2025-04-05 09:39:22,635 - INFO - Successfully updated Pitchers pressry01/2025/CHC.
+2025-04-05 09:39:22,659 - INFO - Successfully updated Pitchers rasmudr01/2025/TBR.
+2025-04-05 09:39:22,693 - INFO - Successfully updated Pitchers rogerty01/2025/SFG.
+2025-04-05 09:39:22,718 - INFO - Successfully updated Pitchers scottta01/2025/LAD.
+2025-04-05 09:39:22,742 - INFO - Successfully updated Pitchers sengako01/2025/NYM.
+2025-04-05 09:39:22,767 - INFO - Successfully updated Pitchers sorokmi01/2025/WSN.
+2025-04-05 09:39:22,801 - INFO - Successfully updated Pitchers vesiaal01/2025/LAD.
+2025-04-05 09:39:22,826 - INFO - Successfully updated Pitchers warrewi01/2025/NYY.
+2025-04-05 09:39:22,855 - INFO - Successfully updated Pitchers wesneha01/2025/HOU.
+2025-04-05 09:39:23,356 - INFO - Processed 150 pitchers so far
+2025-04-05 09:39:23,381 - INFO - Successfully updated Pitchers willitr01/2025/WSN.
+2025-04-05 09:39:23,416 - INFO - Successfully updated Pitchers bakerbr01/2025/BAL.
+2025-04-05 09:39:23,491 - INFO - Successfully updated Pitchers ferrejo01/2025/WSN.
+2025-04-05 09:39:23,516 - INFO - Successfully updated Pitchers garabge01/2025/TEX.
+2025-04-05 09:39:23,545 - INFO - Successfully updated Pitchers garciro04/2025/TEX.
+2025-04-05 09:39:23,575 - INFO - Successfully updated Pitchers hodgepo01/2025/CHC.
+2025-04-05 09:39:23,610 - INFO - Successfully updated Pitchers mccauda01/2025/MIN.
+2025-04-05 09:39:23,647 - INFO - Successfully updated Pitchers morejad01/2025/SDP.
+2025-04-05 09:39:23,685 - INFO - Successfully updated Pitchers morgael01/2025/CHC.
+2025-04-05 09:39:23,712 - INFO - Successfully updated Pitchers murdono01/2025/ATH.
+2025-04-05 09:39:24,212 - INFO - Processed 160 pitchers so far
+2025-04-05 09:39:24,248 - INFO - Successfully updated Pitchers olsonre01/2025/DET.
+2025-04-05 09:39:24,273 - INFO - Successfully updated Pitchers ortizlu03/2025/CLE.
+2025-04-05 09:39:24,299 - INFO - Successfully updated Pitchers ribalor01/2025/WSN.
+2025-04-05 09:39:24,325 - INFO - Successfully updated Pitchers rodrira02/2025/SFG.
+2025-04-05 09:39:24,359 - INFO - Successfully updated Pitchers sasakro01/2025/LAD.
+2025-04-05 09:39:24,385 - INFO - Successfully updated Pitchers spencmi01/2025/ATH.
+2025-04-05 09:39:24,411 - INFO - Successfully updated Pitchers stromma01/2025/NYY.
+2025-04-05 09:39:24,437 - INFO - Successfully updated Pitchers yateski01/2025/LAD.
+2025-04-05 09:39:24,462 - INFO - Successfully updated Pitchers adamja01/2025/SDP.
+2025-04-05 09:39:24,489 - INFO - Successfully updated Pitchers bellova01/2025/MIA.
+2025-04-05 09:39:24,990 - INFO - Processed 170 pitchers so far
+2025-04-05 09:39:25,019 - INFO - Successfully updated Pitchers bowmama01/2025/BAL.
+2025-04-05 09:39:25,052 - INFO - Successfully updated Pitchers burneco01/2025/ARI.
+2025-04-05 09:39:25,076 - INFO - Successfully updated Pitchers estraje01/2025/SDP.
+2025-04-05 09:39:25,106 - INFO - Successfully updated Pitchers gomezyo01/2025/NYY.
+2025-04-05 09:39:25,131 - INFO - Successfully updated Pitchers hurtebr01/2025/DET.
+2025-04-05 09:39:25,166 - INFO - Successfully updated Pitchers jackslu01/2025/TEX.
+2025-04-05 09:39:25,192 - INFO - Successfully updated Pitchers jacobal01/2025/SDP.
+2025-04-05 09:39:25,229 - INFO - Successfully updated Pitchers pearsna01/2025/CHC.
+2025-04-05 09:39:25,266 - INFO - Successfully updated Pitchers pegueel01/2025/MIL.
+2025-04-05 09:39:25,303 - INFO - Successfully updated Pitchers peralwa01/2025/SDP.
+2025-04-05 09:39:25,804 - INFO - Processed 180 pitchers so far
+2025-04-05 09:39:25,829 - INFO - Successfully updated Pitchers povicca01/2025/BAL.
+2025-04-05 09:39:25,854 - INFO - Successfully updated Pitchers sternju01/2025/ATH.
+2025-04-05 09:39:25,882 - INFO - Successfully updated Pitchers alvarjo03/2025/PHI.
+2025-04-05 09:39:25,923 - INFO - Successfully updated Pitchers armstsh01/2025/TEX.
+2025-04-05 09:39:25,970 - INFO - Successfully updated Pitchers bandaan01/2025/LAD.
+2025-04-05 09:39:25,995 - INFO - Successfully updated Pitchers barneja01/2025/TOR.
+2025-04-05 09:39:26,022 - INFO - Successfully updated Pitchers biggehu01/2025/TBR.
+2025-04-05 09:39:26,048 - INFO - Successfully updated Pitchers claseem01/2025/CLE.
+2025-04-05 09:39:26,072 - INFO - Successfully updated Pitchers dovalca01/2025/SFG.
+2025-04-05 09:39:26,096 - ERROR - Failed to create Pitchers elderbr01/2025/ATL. Response: 200 - {"bbrefId":"elderbr01","year":2025,"team":"ATL","age":26,"lg":"NL","wl":"0-0","wlPercentage":0,"era":6.75,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":4,"h":3,"r":3,"er":3,"hr":2,"bb":2,"ibb":0,"so":3,"hbp":0,"bk":0,"wp":0,"bf":17,"eraPlus":63,"fip":9.42,"whip":1.25,"h9":6.8,"hR9":4.5,"bB9":4.5,"sO9":6.8,"sow":1.5,"dateModified":"2025-04-05T09:37:59.221655","throws":"RHP"}
+2025-04-05 09:39:26,597 - INFO - Processed 190 pitchers so far
+2025-04-05 09:39:26,648 - INFO - Successfully updated Pitchers estesjo01/2025/ATH.
+2025-04-05 09:39:26,672 - INFO - Successfully updated Pitchers ferguca01/2025/PIT.
+2025-04-05 09:39:26,699 - INFO - Successfully updated Pitchers garciyi01/2025/TOR.
+2025-04-05 09:39:26,726 - INFO - Successfully updated Pitchers gustory01/2025/HOU.
+2025-04-05 09:39:26,753 - INFO - Successfully updated Pitchers halvose01/2025/COL.
+2025-04-05 09:39:26,783 - INFO - Successfully updated Pitchers harrito03/2025/PIT.
+2025-04-05 09:39:26,818 - INFO - Successfully updated Pitchers harvehu01/2025/KCR.
+2025-04-05 09:39:26,864 - INFO - Successfully updated Pitchers henriro01/2025/MIA.
+2025-04-05 09:39:26,917 - INFO - Successfully updated Pitchers hoffmje02/2025/TOR.
+2025-04-05 09:39:26,961 - INFO - Successfully updated Pitchers jobeja01/2025/DET.
+2025-04-05 09:39:27,462 - INFO - Processed 200 pitchers so far
+2025-04-05 09:39:27,489 - INFO - Successfully updated Pitchers junisja01/2025/CLE.
+2025-04-05 09:39:27,533 - INFO - Successfully updated Pitchers kellyza01/2025/BOS.
+2025-04-05 09:39:27,573 - INFO - Successfully updated Pitchers lawreju01/2025/PIT.
+2025-04-05 09:39:27,615 - INFO - Successfully updated Pitchers leedy01/2025/ATL.
+2025-04-05 09:39:27,676 - INFO - Successfully updated Pitchers littlbr02/2025/TOR.
+2025-04-05 09:39:27,702 - INFO - Successfully updated Pitchers longsa01/2025/KCR.
+2025-04-05 09:39:27,727 - INFO - Successfully updated Pitchers matonph01/2025/STL.
+2025-04-05 09:39:27,751 - INFO - Successfully updated Pitchers matsuyu01/2025/SDP.
+2025-04-05 09:39:27,777 - INFO - Successfully updated Pitchers mayzati01/2025/PIT.
+2025-04-05 09:39:27,807 - INFO - Successfully updated Pitchers munozan01/2025/SEA.
+2025-04-05 09:39:28,308 - INFO - Processed 210 pitchers so far
+2025-04-05 09:39:28,335 - INFO - Successfully updated Pitchers nelsory01/2025/ARI.
+2025-04-05 09:39:28,371 - INFO - Successfully updated Pitchers newcose01/2025/BOS.
+2025-04-05 09:39:28,408 - INFO - Successfully updated Pitchers pukaj01/2025/ARI.
+2025-04-05 09:39:28,433 - INFO - Successfully updated Pitchers quantca01/2025/MIA.
+2025-04-05 09:39:28,460 - INFO - Successfully updated Pitchers rodriel02/2025/MIL.
+2025-04-05 09:39:28,500 - INFO - Successfully updated Pitchers rodriya01/2025/TOR.
+2025-04-05 09:39:28,530 - INFO - Successfully updated Pitchers romanjo03/2025/PHI.
+2025-04-05 09:39:28,561 - ERROR - Failed to create Pitchers rouppla01/2025/SFG. Response: 200 - {"bbrefId":"rouppla01","year":2025,"team":"SFG","age":26,"lg":"NL","wl":"0-0","wlPercentage":0,"era":6.75,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":4,"h":4,"r":3,"er":3,"hr":0,"bb":4,"ibb":0,"so":8,"hbp":0,"bk":0,"wp":0,"bf":20,"eraPlus":61,"fip":1.92,"whip":2,"h9":9,"hR9":0,"bB9":9,"sO9":18,"sow":2,"dateModified":"2025-04-05T09:37:59.221655","throws":"RHP"}
+2025-04-05 09:39:28,608 - INFO - Successfully updated Pitchers salazed01/2025/WSN.
+2025-04-05 09:39:28,648 - INFO - Successfully updated Pitchers santito01/2025/CIN.
+2025-04-05 09:39:29,149 - INFO - Processed 220 pitchers so far
+2025-04-05 09:39:29,187 - INFO - Successfully updated Pitchers santogr01/2025/SEA.
+2025-04-05 09:39:29,212 - INFO - Successfully updated Pitchers smithca06/2025/CLE.
+2025-04-05 09:39:29,237 - INFO - Successfully updated Pitchers smithaj01/2025/ATL.
+2025-04-05 09:39:29,262 - INFO - Successfully updated Pitchers sotogr01/2025/BAL.
+2025-04-05 09:39:29,287 - INFO - Successfully updated Pitchers suganto01/2025/BAL.
+2025-04-05 09:39:29,312 - INFO - Successfully updated Pitchers treinbl01/2025/LAD.
+2025-04-05 09:39:29,339 - INFO - Successfully updated Pitchers varlalo01/2025/MIN.
+2025-04-05 09:39:29,367 - INFO - Successfully updated Pitchers vasilmi01/2025/CHW.
+2025-04-05 09:39:29,392 - INFO - Successfully updated Pitchers wachami01/2025/KCR.
+2025-04-05 09:39:29,418 - INFO - Successfully updated Pitchers walkery01/2025/SFG.
+2025-04-05 09:39:29,919 - INFO - Processed 230 pitchers so far
+2025-04-05 09:39:29,953 - INFO - Successfully updated Pitchers webbja01/2025/TEX.
+2025-04-05 09:39:29,979 - INFO - Successfully updated Pitchers weissgr01/2025/BOS.
+2025-04-05 09:39:30,006 - INFO - Successfully updated Pitchers woodssi01/2025/MIN.
+2025-04-05 09:39:30,042 - INFO - Successfully updated Pitchers akinke01/2025/BAL.
+2025-04-05 09:39:30,079 - INFO - Successfully updated Pitchers bivensp01/2025/SFG.
+2025-04-05 09:39:30,106 - INFO - Successfully updated Pitchers booseca01/2025/CHW.
+2025-04-05 09:39:30,133 - INFO - Successfully updated Pitchers buttojo01/2025/NYM.
+2025-04-05 09:39:30,158 - INFO - Successfully updated Pitchers cruzfe01/2025/NYY.
+2025-04-05 09:39:30,197 - INFO - Successfully updated Pitchers dominse01/2025/BAL.
+2025-04-05 09:39:30,228 - INFO - Successfully updated Pitchers fernary01/2025/STL.
+2025-04-05 09:39:30,729 - INFO - Processed 240 pitchers so far
+2025-04-05 09:39:30,768 - INFO - Successfully updated Pitchers holdeco01/2025/PIT.
+2025-04-05 09:39:30,805 - INFO - Successfully updated Pitchers holtoty01/2025/DET.
+2025-04-05 09:39:30,829 - INFO - Successfully updated Pitchers johnsry01/2025/LAA.
+2025-04-05 09:39:30,854 - INFO - Successfully updated Pitchers martiju01/2025/ARI.
+2025-04-05 09:39:30,879 - INFO - Successfully updated Pitchers mlodzca01/2025/PIT.
+2025-04-05 09:39:30,910 - INFO - Successfully updated Pitchers payamjo01/2025/MIL.
+2025-04-05 09:39:30,937 - INFO - Successfully updated Pitchers perezci01/2025/BAL.
+2025-04-05 09:39:30,971 - INFO - Successfully updated Pitchers snideco01/2025/SEA.
+2025-04-05 09:39:31,013 - INFO - Successfully updated Pitchers speiega01/2025/SEA.
+2025-04-05 09:39:31,058 - INFO - Successfully updated Pitchers strahma01/2025/PHI.
+2025-04-05 09:39:31,559 - INFO - Processed 250 pitchers so far
+2025-04-05 09:39:31,598 - INFO - Successfully updated Pitchers thorntr01/2025/SEA.
+2025-04-05 09:39:31,640 - INFO - Successfully updated Pitchers uribeab01/2025/MIL.
+2025-04-05 09:39:31,664 - INFO - Successfully updated Pitchers ariaslu01/2025/MIA.
+2025-04-05 09:39:31,699 - INFO - Successfully updated Pitchers borucry01/2025/PIT.
+2025-04-05 09:39:31,725 - INFO - Successfully updated Pitchers erceglu01/2025/KCR.
+2025-04-05 09:39:31,750 - INFO - Successfully updated Pitchers gaddihu01/2025/CLE.
+2025-04-05 09:39:31,776 - INFO - Successfully updated Pitchers headrbr01/2025/NYY.
+2025-04-05 09:39:31,804 - INFO - Successfully updated Pitchers herriti01/2025/CLE.
+2025-04-05 09:39:31,834 - INFO - Successfully updated Pitchers hudsobr01/2025/MIL.
+2025-04-05 09:39:31,871 - INFO - Successfully updated Pitchers kingbr02/2025/HOU.
+2025-04-05 09:39:32,372 - INFO - Processed 260 pitchers so far
+2025-04-05 09:39:32,402 - INFO - Successfully updated Pitchers koenija01/2025/MIL.
+2025-04-05 09:39:32,434 - INFO - Successfully updated Pitchers leahyky01/2025/STL.
+2025-04-05 09:39:32,466 - INFO - Successfully updated Pitchers leclejo01/2025/ATH.
+2025-04-05 09:39:32,496 - INFO - Successfully updated Pitchers leitema02/2025/NYY.
+2025-04-05 09:39:32,523 - INFO - Successfully updated Pitchers megiltr01/2025/MIL.
+2025-04-05 09:39:32,548 - INFO - Successfully updated Pitchers paddach01/2025/MIN.
+2025-04-05 09:39:32,575 - INFO - Successfully updated Pitchers reaco01/2025/CHC.
+2025-04-05 09:39:32,608 - INFO - Successfully updated Pitchers romerjo01/2025/STL.
+2025-04-05 09:39:32,640 - INFO - Successfully updated Pitchers sandlni01/2025/TOR.
+2025-04-05 09:39:32,666 - INFO - Successfully updated Pitchers santade01/2025/PIT.
+2025-04-05 09:39:33,167 - INFO - Processed 270 pitchers so far
+2025-04-05 09:39:33,194 - INFO - Successfully updated Pitchers schrejo01/2025/KCR.
+2025-04-05 09:39:33,220 - INFO - Successfully updated Pitchers sewalpa01/2025/CLE.
+2025-04-05 09:39:33,246 - INFO - Successfully updated Pitchers vestwi01/2025/DET.
+2025-04-05 09:39:33,270 - INFO - Successfully updated Pitchers abreubr01/2025/HOU.
+2025-04-05 09:39:33,295 - INFO - Successfully updated Pitchers cantijo01/2025/CLE.
+2025-04-05 09:39:33,319 - ERROR - Failed to create Pitchers castilu03/2025/SEA. Response: 200 - {"bbrefId":"castilu03","year":2025,"team":"SEA","age":30,"lg":"AL","wl":"0-0","wlPercentage":0,"era":9,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":3,"h":6,"r":3,"er":3,"hr":0,"bb":2,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":0,"bf":18,"eraPlus":48,"fip":3.59,"whip":2.667,"h9":18,"hR9":0,"bB9":6,"sO9":6,"sow":1,"dateModified":"2025-04-05T09:37:59.221655","throws":"RHP"}
+2025-04-05 09:39:33,346 - INFO - Successfully updated Pitchers civalaa01/2025/MIL.
+2025-04-05 09:39:33,372 - INFO - Successfully updated Pitchers contrlu01/2025/HOU.
+2025-04-05 09:39:33,400 - INFO - Successfully updated Pitchers couloda01/2025/MIN.
+2025-04-05 09:39:33,430 - ERROR - Failed to create Pitchers danaca01/2025/LAA. Response: 200 - {"bbrefId":"danaca01","year":2025,"team":"LAA","age":21,"lg":"AL","wl":"0-0","wlPercentage":0,"era":6,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":3,"h":4,"r":2,"er":2,"hr":1,"bb":1,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":0,"bf":14,"eraPlus":81,"fip":6.92,"whip":1.667,"h9":12,"hR9":3,"bB9":3,"sO9":6,"sow":2,"dateModified":"2025-04-05T09:37:59.221655","throws":"RHP"}
+2025-04-05 09:39:33,931 - INFO - Processed 280 pitchers so far
+2025-04-05 09:39:33,956 - INFO - Successfully updated Pitchers delosen01/2025/ATL.
+2025-04-05 09:39:33,985 - INFO - Successfully updated Pitchers eiserbr01/2025/CHW.
+2025-04-05 09:39:34,009 - INFO - Successfully updated Pitchers englema01/2025/TBR.
+2025-04-05 09:39:34,035 - INFO - Successfully updated Pitchers estevca01/2025/KCR.
+2025-04-05 09:39:34,060 - INFO - Successfully updated Pitchers fauchca01/2025/MIA.
+2025-04-05 09:39:34,086 - INFO - Successfully updated Pitchers garrere01/2025/NYM.
+2025-04-05 09:39:34,111 - INFO - Successfully updated Pitchers gibauia01/2025/CIN.
+2025-04-05 09:39:34,137 - INFO - Successfully updated Pitchers greench03/2025/TOR.
+2025-04-05 09:39:34,172 - INFO - Successfully updated Pitchers haderjo01/2025/HOU.
+2025-04-05 09:39:34,207 - INFO - Successfully updated Pitchers hanifbr01/2025/DET.
+2025-04-05 09:39:34,708 - INFO - Processed 290 pitchers so far
+2025-04-05 09:39:34,742 - INFO - Successfully updated Pitchers helslry01/2025/STL.
+2025-04-05 09:39:34,768 - INFO - Successfully updated Pitchers hernada03/2025/ATL.
+2025-04-05 09:39:34,797 - INFO - Successfully updated Pitchers janseke01/2025/LAA.
+2025-04-05 09:39:34,823 - INFO - Successfully updated Pitchers kellebr01/2025/CHC.
+2025-04-05 09:39:34,849 - INFO - Successfully updated Pitchers kellyke02/2025/TBR.
+2025-04-05 09:39:34,877 - INFO - Successfully updated Pitchers maedake01/2025/DET.
+2025-04-05 09:39:34,904 - INFO - Successfully updated Pitchers milleer01/2025/SFG.
+2025-04-05 09:39:34,959 - INFO - Successfully updated Pitchers millema03/2025/ATH.
+2025-04-05 09:39:34,987 - INFO - Successfully updated Pitchers paganem01/2025/CIN.
+2025-04-05 09:39:35,011 - INFO - Successfully updated Pitchers rockeku01/2025/TEX.
+2025-04-05 09:39:35,511 - INFO - Processed 300 pitchers so far
+2025-04-05 09:39:35,547 - INFO - Successfully updated Pitchers rodrima01/2025/TBR.
+2025-04-05 09:39:35,589 - INFO - Successfully updated Pitchers roycrch01/2025/STL.
+2025-04-05 09:39:35,626 - INFO - Successfully updated Pitchers scherma01/2025/TOR.
+2025-04-05 09:39:35,650 - INFO - Successfully updated Pitchers slateju01/2025/BOS.
+2025-04-05 09:39:35,673 - INFO - Successfully updated Pitchers suarejo01/2025/ATL.
+2025-04-05 09:39:35,699 - INFO - Successfully updated Pitchers suarero01/2025/SDP.
+2025-04-05 09:39:35,734 - INFO - Successfully updated Pitchers suterbr01/2025/CIN.
+2025-04-05 09:39:35,770 - INFO - Successfully updated Pitchers trivilo01/2025/SFG.
+2025-04-05 09:39:35,809 - INFO - Successfully updated Pitchers venezan01/2025/MIA.
+2025-04-05 09:39:35,833 - INFO - Successfully updated Pitchers alexasc02/2025/COL.
+2025-04-05 09:39:36,334 - INFO - Processed 310 pitchers so far
+2025-04-05 09:39:36,364 - INFO - Successfully updated Pitchers andergr01/2025/MIL.
+2025-04-05 09:39:36,401 - INFO - Successfully updated Pitchers barlosc01/2025/CIN.
+2025-04-05 09:39:36,437 - INFO - Successfully updated Pitchers bendean01/2025/MIA.
+2025-04-05 09:39:36,466 - INFO - Successfully updated Pitchers birdja01/2025/COL.
+2025-04-05 09:39:36,500 - INFO - Successfully updated Pitchers briesbe01/2025/DET.
+2025-04-05 09:39:36,530 - INFO - Successfully updated Pitchers bummeaa01/2025/ATL.
+2025-04-05 09:39:36,555 - INFO - Successfully updated Pitchers burkebr01/2025/LAA.
+2025-04-05 09:39:36,592 - INFO - Successfully updated Pitchers chapmar01/2025/BOS.
+2025-04-05 09:39:36,630 - INFO - Successfully updated Pitchers chivian01/2025/COL.
+2025-04-05 09:39:36,664 - INFO - Successfully updated Pitchers jarvibr01/2025/ARI.
+2025-04-05 09:39:37,165 - INFO - Processed 320 pitchers so far
+2025-04-05 09:39:37,193 - INFO - Successfully updated Pitchers johnspi01/2025/ATL.
+2025-04-05 09:39:37,227 - INFO - Successfully updated Pitchers joycebe01/2025/LAA.
+2025-04-05 09:39:37,260 - INFO - Successfully updated Pitchers kerkeor01/2025/PHI.
+2025-04-05 09:39:37,286 - INFO - Successfully updated Pitchers leasujo01/2025/CHW.
+2025-04-05 09:39:37,312 - INFO - Successfully updated Pitchers minteaj01/2025/NYM.
+2025-04-05 09:39:37,335 - INFO - Successfully updated Pitchers oberba01/2025/MIN.
+2025-04-05 09:39:37,360 - INFO - Successfully updated Pitchers okertst01/2025/HOU.
+2025-04-05 09:39:37,384 - INFO - Successfully updated Pitchers sauceta01/2025/SEA.
+2025-04-05 09:39:37,420 - INFO - Successfully updated Pitchers simslu01/2025/WSN.
+2025-04-05 09:39:37,445 - INFO - Successfully updated Pitchers stratch01/2025/KCR.
+2025-04-05 09:39:37,945 - INFO - Processed 330 pitchers so far
+2025-04-05 09:39:37,971 - INFO - Successfully updated Pitchers suareal01/2025/BAL.
+2025-04-05 09:39:37,995 - INFO - Successfully updated Pitchers thielca01/2025/CHC.
+2025-04-05 09:39:38,020 - INFO - Successfully updated Pitchers thompry02/2025/ARI.
+2025-04-05 09:39:38,044 - INFO - Successfully updated Pitchers vodnivi01/2025/COL.
+2025-04-05 09:39:38,104 - INFO - Successfully updated Pitchers wilsoju10/2025/BOS.
+2025-04-05 09:39:38,130 - INFO - Successfully updated Pitchers zerpaan01/2025/KCR.
+2025-04-05 09:39:38,154 - INFO - Successfully updated Pitchers ashcrgr01/2025/CIN.
+2025-04-05 09:39:38,185 - INFO - Successfully updated Pitchers bernabr01/2025/BOS.
+2025-04-05 09:39:38,213 - INFO - Successfully updated Pitchers clevimi01/2025/CHW.
+2025-04-05 09:39:38,239 - INFO - Successfully updated Pitchers curryxz01/2025/MIA.
+2025-04-05 09:39:38,739 - INFO - Processed 340 pitchers so far
+2025-04-05 09:39:38,773 - INFO - Successfully updated Pitchers detmere01/2025/LAA.
+2025-04-05 09:39:38,798 - INFO - Successfully updated Pitchers ellarfr01/2025/CHW.
+2025-04-05 09:39:38,824 - INFO - Successfully updated Pitchers hillti01/2025/NYY.
+2025-04-05 09:39:38,848 - INFO - Successfully updated Pitchers mantijo01/2025/ARI.
+2025-04-05 09:39:38,872 - INFO - Successfully updated Pitchers mcfartj01/2025/ATH.
+2025-04-05 09:39:38,904 - INFO - Successfully updated Pitchers merryju01/2025/CHC.
+2025-04-05 09:39:38,929 - INFO - Successfully updated Pitchers perallu01/2025/COL.
+2025-04-05 09:39:38,957 - INFO - Successfully updated Pitchers rogerta01/2025/CIN.
+2025-04-05 09:39:38,986 - INFO - Successfully updated Pitchers weavelu01/2025/NYY.
+2025-04-05 09:39:39,023 - INFO - Successfully updated Pitchers youngda02/2025/NYM.
+2025-04-05 09:39:39,524 - INFO - Processed 350 pitchers so far
+2025-04-05 09:39:39,551 - INFO - Successfully updated Pitchers alcaljo01/2025/MIN.
+2025-04-05 09:39:39,588 - INFO - Successfully updated Pitchers anderia01/2025/LAA.
+2025-04-05 09:39:39,624 - INFO - Successfully updated Pitchers banksta01/2025/PHI.
+2025-04-05 09:39:39,649 - INFO - Successfully updated Pitchers bauerja01/2025/MIL.
+2025-04-05 09:39:39,673 - INFO - Successfully updated Pitchers bautife01/2025/BAL.
+2025-04-05 09:39:39,704 - ERROR - Failed to create Pitchers birdsha01/2025/SFG. Response: 200 - {"bbrefId":"birdsha01","year":2025,"team":"SFG","age":23,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":2,"h":2,"r":0,"er":0,"hr":0,"bb":1,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":0,"bf":9,"eraPlus":0,"fip":2.42,"whip":1.5,"h9":9,"hR9":0,"bB9":4.5,"sO9":9,"sow":2,"dateModified":"2025-04-05T09:37:59.221655","throws":"RHP"}
+2025-04-05 09:39:39,729 - INFO - Successfully updated Pitchers brebbjo01/2025/DET.
+2025-04-05 09:39:39,761 - INFO - Successfully updated Pitchers canoye01/2025/BAL.
+2025-04-05 09:39:39,797 - INFO - Successfully updated Pitchers chaveje01/2025/ATL.
+2025-04-05 09:39:39,835 - INFO - Successfully updated Pitchers cleavga01/2025/TBR.
+2025-04-05 09:39:40,336 - INFO - Processed 360 pitchers so far
+2025-04-05 09:39:40,363 - INFO - Successfully updated Pitchers diazed04/2025/NYM.
+2025-04-05 09:39:40,399 - INFO - Successfully updated Pitchers fairbpe01/2025/TBR.
+2025-04-05 09:39:40,425 - INFO - Successfully updated Pitchers finneky01/2025/WSN.
+2025-04-05 09:39:40,450 - INFO - Successfully updated Pitchers hergeji01/2025/COL.
+2025-04-05 09:39:40,490 - INFO - Successfully updated Pitchers iglesra01/2025/ATL.
+2025-04-05 09:39:40,524 - INFO - Successfully updated Pitchers kahnlto01/2025/DET.
+2025-04-05 09:39:40,560 - INFO - Successfully updated Pitchers knackla01/2025/LAD.
+2025-04-05 09:39:40,599 - INFO - Successfully updated Pitchers lopezjo02/2025/WSN.
+2025-04-05 09:39:40,636 - INFO - Successfully updated Pitchers lordbr02/2025/WSN.
+2025-04-05 09:39:40,667 - INFO - Successfully updated Pitchers mckentr01/2025/CLE.
+2025-04-05 09:39:41,168 - INFO - Processed 370 pitchers so far
+2025-04-05 09:39:41,203 - INFO - Successfully updated Pitchers milneho01/2025/TEX.
+2025-04-05 09:39:41,229 - INFO - Successfully updated Pitchers montera01/2025/HOU.
+2025-04-05 09:39:41,254 - INFO - Successfully updated Pitchers montgma01/2025/TBR.
+2025-04-05 09:39:41,278 - INFO - Successfully updated Pitchers murfepe01/2025/CHW.
+2025-04-05 09:39:41,302 - INFO - Successfully updated Pitchers rossjo01/2025/PHI.
+2025-04-05 09:39:41,328 - INFO - Successfully updated Pitchers ruizjo01/2025/PHI.
+2025-04-05 09:39:41,355 - INFO - Successfully updated Pitchers sandsco01/2025/MIN.
+2025-04-05 09:39:41,388 - INFO - Successfully updated Pitchers scottta02/2025/HOU.
+2025-04-05 09:39:41,412 - INFO - Successfully updated Pitchers thomaco02/2025/MIL.
+2025-04-05 09:39:41,437 - INFO - Successfully updated Pitchers topaju01/2025/MIN.
+2025-04-05 09:39:41,938 - INFO - Processed 380 pitchers so far
+2025-04-05 09:39:41,966 - INFO - Successfully updated Pitchers ucetaed01/2025/TBR.
+2025-04-05 09:39:41,996 - INFO - Successfully updated Pitchers willide03/2025/NYY.
+2025-04-05 09:39:42,021 - INFO - Successfully updated Pitchers churcma01/2025/TEX.
+2025-04-05 09:39:42,046 - INFO - Successfully updated Pitchers jaxgr01/2025/MIN.
+2025-04-05 09:39:42,072 - INFO - Successfully updated Pitchers kinlety01/2025/COL.
+2025-04-05 09:39:42,096 - INFO - Successfully updated Pitchers lovelri01/2025/TOR.
+2025-04-05 09:39:42,124 - INFO - Successfully updated Pitchers pocheco01/2025/WSN.
+2025-04-05 09:39:42,149 - INFO - Successfully updated Pitchers yarbrry01/2025/NYY.
+2025-04-05 09:39:42,176 - INFO - Successfully updated Pitchers zeferry01/2025/LAA.
+2025-04-05 09:39:42,204 - INFO - Successfully updated Pitchers criswco01/2025/BOS.
+2025-04-05 09:39:42,705 - INFO - Processed 390 pitchers so far
+2025-04-05 09:39:42,729 - INFO - Successfully updated Pitchers diazjh01/2025/SEA.
+2025-04-05 09:39:42,753 - INFO - Successfully updated Pitchers duranjh01/2025/MIN.
+2025-04-05 09:39:42,777 - INFO - Successfully updated Pitchers kingjo01/2025/STL.
+2025-04-05 09:39:42,804 - INFO - Successfully updated Pitchers mcdanga01/2025/LAA.
+2025-04-05 09:39:42,828 - INFO - Successfully updated Pitchers mollsa01/2025/CIN.
+2025-04-05 09:39:42,857 - INFO - Successfully updated Pitchers ottavad01/2025/NYY.
+2025-04-05 09:39:42,881 - ERROR - Failed to create Pitchers perdoan01/2025/ATH. Response: 200 - {"bbrefId":"perdoan01","year":2025,"team":"ATH","age":31,"lg":"Unknown","wl":"0-0","wlPercentage":0,"era":13.5,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":1.1,"h":1,"r":2,"er":2,"hr":0,"bb":1,"ibb":0,"so":1,"hbp":1,"bk":0,"wp":0,"bf":7,"eraPlus":39,"fip":5.92,"whip":1.5,"h9":6.8,"hR9":0,"bB9":6.8,"sO9":6.8,"sow":1,"dateModified":"2025-04-05T09:37:59.221655","throws":"LHP"}
+2025-04-05 09:39:42,913 - INFO - Successfully updated Pitchers stanery01/2025/NYM.
+2025-04-05 09:39:42,946 - INFO - Successfully updated Pitchers bednada01/2025/PIT.
+2025-04-05 09:39:42,986 - INFO - Successfully updated Pitchers blalobr01/2025/COL.
+2025-04-05 09:39:43,487 - INFO - Processed 400 pitchers so far
+2025-04-05 09:39:43,528 - INFO - Successfully updated Pitchers brasiry01/2025/CHC.
+2025-04-05 09:39:43,552 - INFO - Successfully updated Pitchers castrwi01/2025/MIN.
+2025-04-05 09:39:43,578 - INFO - Successfully updated Pitchers cruzom01/2025/SDP.
+2025-04-05 09:39:43,624 - INFO - Successfully updated Pitchers duranez01/2025/TEX.
+2025-04-05 09:39:43,661 - INFO - Successfully updated Pitchers fluhama01/2025/TOR.
+2025-04-05 09:39:43,693 - INFO - Successfully updated Pitchers hernaca04/2025/PHI.
+2025-04-05 09:39:43,729 - INFO - Successfully updated Pitchers nerishe01/2025/ATL.
+2025-04-05 09:39:43,752 - INFO - Successfully updated Pitchers peredjh01/2025/ATH.
+2025-04-05 09:39:43,785 - INFO - Successfully updated Pitchers tinocje01/2025/MIA.
+2025-04-05 09:39:43,810 - INFO - Successfully updated Pitchers hancoem01/2025/SEA.
+2025-04-05 09:39:44,311 - INFO - Processed 410 pitchers so far
+2025-04-05 09:39:44,337 - ERROR - Failed to create Pitchers sanojja01/2025/MIA. Response: 200 - {"bbrefId":"sanojja01","year":2025,"team":"MIA","age":22,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":0.2,"h":1,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":3,"eraPlus":0,"fip":2.92,"whip":1.5,"h9":13.5,"hR9":0,"bB9":0,"sO9":0,"sow":0,"dateModified":"2025-04-05T09:37:59.221655","throws":"RHP"}
+2025-04-05 09:39:44,364 - INFO - Successfully updated Pitchers harriho03/2025/ATH.
+2025-04-05 09:39:44,388 - INFO - Successfully updated Pitchers lopezni01/2025/LAA.
+2025-04-05 09:39:44,389 - INFO - Successfully processed 413 pitchers
+2025-04-05 09:39:44,389 - INFO - Scraping completed in 105.17 seconds
+2025-04-07 07:43:23,867 - INFO - Starting Baseball Reference data scraping with enhanced methods
+2025-04-07 07:43:23,867 - INFO - Warming up connection to Baseball Reference...
+2025-04-07 07:43:23,867 - INFO - Attempting to scrape with Selenium...
+2025-04-07 07:43:24,900 - INFO - Navigating to https://www.baseball-reference.com/ with Selenium...
+2025-04-07 07:43:25,643 - INFO - Waiting for Cloudflare to resolve...
+2025-04-07 07:43:25,682 - INFO - Table element found on page, content appears to be loaded
+2025-04-07 07:43:25,696 - INFO - Saved HTML content to selenium_result.html for debugging
+2025-04-07 07:43:27,817 - INFO - Selenium scraping completed successfully
+2025-04-07 07:43:32,806 - INFO - Fetching batting data from https://www.baseball-reference.com/leagues/majors/2025-standard-batting.shtml
+2025-04-07 07:43:32,807 - INFO - Attempting to scrape with Selenium...
+2025-04-07 07:43:33,802 - INFO - Navigating to https://www.baseball-reference.com/leagues/majors/2025-standard-batting.shtml with Selenium...
+2025-04-07 07:43:34,509 - INFO - Waiting for Cloudflare to resolve...
+2025-04-07 07:43:34,744 - INFO - Table element found on page, content appears to be loaded
+2025-04-07 07:43:34,803 - INFO - Saved HTML content to selenium_result.html for debugging
+2025-04-07 07:43:36,890 - INFO - Selenium scraping completed successfully
+2025-04-07 07:43:36,893 - INFO - Saved HTML content to debug_batting.html for debugging
+2025-04-07 07:43:45,549 - INFO - Found table with id 'players_standard_batting' directly in HTML
+2025-04-07 07:43:45,549 - INFO - Found batting table with id: players_standard_batting
+2025-04-07 07:43:45,556 - INFO - Found 421 batting rows to process
+2025-04-07 07:43:45,592 - INFO - Successfully updated Hitters happia01/2025/CHC.
+2025-04-07 07:43:45,628 - INFO - Successfully updated Hitters suzukse01/2025/CHC.
+2025-04-07 07:43:45,655 - INFO - Successfully updated Hitters tuckeky01/2025/CHC.
+2025-04-07 07:43:45,681 - INFO - Successfully updated Hitters crowape01/2025/CHC.
+2025-04-07 07:43:45,706 - INFO - Successfully updated Hitters swansda01/2025/CHC.
+2025-04-07 07:43:45,747 - INFO - Successfully updated Hitters shawma01/2025/CHC.
+2025-04-07 07:43:45,786 - INFO - Successfully updated Hitters ohtansh01/2025/LAD.
+2025-04-07 07:43:45,812 - INFO - Successfully updated Hitters duranja01/2025/BOS.
+2025-04-07 07:43:45,846 - INFO - Successfully updated Hitters bregmal01/2025/BOS.
+2025-04-07 07:43:45,886 - INFO - Successfully updated Hitters deverra01/2025/BOS.
+2025-04-07 07:43:46,387 - INFO - Processed 10 hitters so far
+2025-04-07 07:43:46,437 - INFO - Successfully updated Hitters reynobr01/2025/PIT.
+2025-04-07 07:43:46,464 - INFO - Successfully updated Hitters bichebo01/2025/TOR.
+2025-04-07 07:43:46,497 - INFO - Successfully updated Hitters carroco02/2025/ARI.
+2025-04-07 07:43:46,522 - INFO - Successfully updated Hitters edmanto01/2025/LAD.
+2025-04-07 07:43:46,548 - INFO - Successfully updated Hitters nootbla01/2025/STL.
+2025-04-07 07:43:46,576 - INFO - Successfully updated Hitters roblevi01/2025/SEA.
+2025-04-07 07:43:46,602 - INFO - Successfully updated Hitters rookebr01/2025/ATH.
+2025-04-07 07:43:46,629 - INFO - Successfully updated Hitters chourja01/2025/MIL.
+2025-04-07 07:43:46,659 - INFO - Successfully updated Hitters guerrvl02/2025/TOR.
+2025-04-07 07:43:46,701 - INFO - Successfully updated Hitters hernate01/2025/LAD.
+2025-04-07 07:43:47,202 - INFO - Processed 20 hitters so far
+2025-04-07 07:43:47,232 - INFO - Successfully updated Hitters rodriju01/2025/SEA.
+2025-04-07 07:43:47,260 - INFO - Successfully updated Hitters tatisfe02/2025/SDP.
+2025-04-07 07:43:47,298 - INFO - Successfully updated Hitters arraelu01/2025/SDP.
+2025-04-07 07:43:47,325 - INFO - Successfully updated Hitters butlela01/2025/ATH.
+2025-04-07 07:43:47,352 - INFO - Successfully updated Hitters arozara01/2025/SEA.
+2025-04-07 07:43:47,391 - INFO - Successfully updated Hitters bledajj01/2025/ATH.
+2025-04-07 07:43:47,432 - INFO - Successfully updated Hitters cruzon01/2025/PIT.
+2025-04-07 07:43:47,459 - INFO - Successfully updated Hitters doylebr02/2025/COL.
+2025-04-07 07:43:47,520 - INFO - Successfully updated Hitters gimenan01/2025/TOR.
+2025-04-07 07:43:47,548 - INFO - Successfully updated Hitters judgeaa01/2025/NYY.
+2025-04-07 07:43:48,048 - INFO - Processed 30 hitters so far
+2025-04-07 07:43:48,074 - INFO - Successfully updated Hitters raleica01/2025/SEA.
+2025-04-07 07:43:48,104 - INFO - Successfully updated Hitters santaan02/2025/TOR.
+2025-04-07 07:43:48,133 - INFO - Successfully updated Hitters turanbr02/2025/MIL.
+2025-04-07 07:43:48,160 - INFO - Successfully updated Hitters campbkr01/2025/BOS.
+2025-04-07 07:43:48,186 - INFO - Successfully updated Hitters chishja01/2025/NYY.
+2025-04-07 07:43:48,212 - INFO - Successfully updated Hitters delacel01/2025/CIN.
+2025-04-07 07:43:48,237 - INFO - Successfully updated Hitters frelisa01/2025/MIL.
+2025-04-07 07:43:48,263 - INFO - Successfully updated Hitters naylojo01/2025/ARI.
+2025-04-07 07:43:48,289 - INFO - Successfully updated Hitters perdoge01/2025/ARI.
+2025-04-07 07:43:48,315 - INFO - Successfully updated Hitters soderty01/2025/ATH.
+2025-04-07 07:43:48,815 - INFO - Processed 40 hitters so far
+2025-04-07 07:43:48,841 - INFO - Successfully updated Hitters adamewi01/2025/SFG.
+2025-04-07 07:43:48,871 - INFO - Successfully updated Hitters altuvjo01/2025/HOU.
+2025-04-07 07:43:48,909 - INFO - Successfully updated Hitters arenano01/2025/STL.
+2025-04-07 07:43:48,940 - INFO - Successfully updated Hitters edwarxa01/2025/MIA.
+2025-04-07 07:43:48,973 - INFO - Successfully updated Hitters lopezot01/2025/MIA.
+2025-04-07 07:43:49,007 - INFO - Successfully updated Hitters machama01/2025/SDP.
+2025-04-07 07:43:49,032 - INFO - Successfully updated Hitters merrija01/2025/SDP.
+2025-04-07 07:43:49,058 - INFO - Successfully updated Hitters pagesan01/2025/LAD.
+2025-04-07 07:43:49,096 - INFO - Successfully updated Hitters schwaky01/2025/PHI.
+2025-04-07 07:43:49,133 - INFO - Successfully updated Hitters suareeu01/2025/ARI.
+2025-04-07 07:43:49,634 - INFO - Processed 50 hitters so far
+2025-04-07 07:43:49,674 - INFO - Successfully updated Hitters torkesp01/2025/DET.
+2025-04-07 07:43:49,699 - INFO - Successfully updated Hitters volpean01/2025/NYY.
+2025-04-07 07:43:49,723 - INFO - Successfully updated Hitters wittbo02/2025/KCR.
+2025-04-07 07:43:49,751 - INFO - Successfully updated Hitters bogaexa01/2025/SDP.
+2025-04-07 07:43:49,776 - INFO - Successfully updated Hitters candeje01/2025/CIN.
+2025-04-07 07:43:49,805 - INFO - Successfully updated Hitters diazya01/2025/TBR.
+2025-04-07 07:43:49,830 - INFO - Successfully updated Hitters donovbr01/2025/STL.
+2025-04-07 07:43:49,863 - INFO - Successfully updated Hitters friedtj01/2025/CIN.
+2025-04-07 07:43:49,903 - INFO - Successfully updated Hitters gurrilo01/2025/ARI.
+2025-04-07 07:43:49,936 - INFO - Successfully updated Hitters harpebr03/2025/PHI.
+2025-04-07 07:43:50,437 - INFO - Processed 60 hitters so far
+2025-04-07 07:43:50,515 - INFO - Successfully updated Hitters hoernni01/2025/CHC.
+2025-04-07 07:43:50,542 - INFO - Successfully updated Hitters indiajo01/2025/KCR.
+2025-04-07 07:43:50,568 - INFO - Successfully updated Hitters langfwy01/2025/TEX.
+2025-04-07 07:43:50,593 - INFO - Successfully updated Hitters paredis01/2025/HOU.
+2025-04-07 07:43:50,619 - INFO - Successfully updated Hitters ramoshe02/2025/SFG.
+2025-04-07 07:43:50,653 - INFO - Successfully updated Hitters semiema01/2025/TEX.
+2025-04-07 07:43:50,679 - INFO - Successfully updated Hitters tovarez01/2025/COL.
+2025-04-07 07:43:50,703 - INFO - Successfully updated Hitters troutmi01/2025/LAA.
+2025-04-07 07:43:50,732 - INFO - Successfully updated Hitters wardta01/2025/LAA.
+2025-04-07 07:43:50,757 - INFO - Successfully updated Hitters westbjo01/2025/BAL.
+2025-04-07 07:43:51,258 - INFO - Processed 70 hitters so far
+2025-04-07 07:43:51,297 - INFO - Successfully updated Hitters abramcj01/2025/WSN.
+2025-04-07 07:43:51,334 - INFO - Successfully updated Hitters alvaryo01/2025/HOU.
+2025-04-07 07:43:51,370 - INFO - Successfully updated Hitters buschmi02/2025/CHC.
+2025-04-07 07:43:51,400 - INFO - Successfully updated Hitters chapmma01/2025/SFG.
+2025-04-07 07:43:51,431 - INFO - Successfully updated Hitters contrwi01/2025/STL.
+2025-04-07 07:43:51,458 - INFO - Successfully updated Hitters mullice01/2025/BAL.
+2025-04-07 07:43:51,485 - INFO - Successfully updated Hitters ortizjo06/2025/MIL.
+2025-04-07 07:43:51,511 - INFO - Successfully updated Hitters rutscad01/2025/BAL.
+2025-04-07 07:43:51,538 - INFO - Successfully updated Hitters santaca01/2025/CLE.
+2025-04-07 07:43:51,583 - INFO - Successfully updated Hitters sotoju01/2025/NYM.
+2025-04-07 07:43:52,084 - INFO - Processed 80 hitters so far
+2025-04-07 07:43:52,115 - INFO - Successfully updated Hitters yelicch01/2025/MIL.
+2025-04-07 07:43:52,150 - INFO - Successfully updated Hitters albieoz01/2025/ATL.
+2025-04-07 07:43:52,186 - INFO - Successfully updated Hitters alonspe01/2025/NYM.
+2025-04-07 07:43:52,213 - INFO - Successfully updated Hitters casastr01/2025/BOS.
+2025-04-07 07:43:52,240 - INFO - Successfully updated Hitters contrwi02/2025/MIL.
+2025-04-07 07:43:52,265 - INFO - Successfully updated Hitters croneja01/2025/SDP.
+2025-04-07 07:43:52,291 - INFO - Successfully updated Hitters dominja01/2025/NYY.
+2025-04-07 07:43:52,317 - INFO - Successfully updated Hitters goldspa01/2025/NYY.
+2025-04-07 07:43:52,342 - INFO - Successfully updated Hitters goodmhu01/2025/COL.
+2025-04-07 07:43:52,368 - INFO - Successfully updated Hitters greenri03/2025/DET.
+2025-04-07 07:43:52,869 - INFO - Processed 90 hitters so far
+2025-04-07 07:43:52,902 - INFO - Successfully updated Hitters hayeske01/2025/PIT.
+2025-04-07 07:43:52,939 - INFO - Successfully updated Hitters kwanst01/2025/CLE.
+2025-04-07 07:43:52,976 - INFO - Successfully updated Hitters lowebr01/2025/TBR.
+2025-04-07 07:43:53,013 - INFO - Successfully updated Hitters mcmahry01/2025/COL.
+2025-04-07 07:43:53,045 - INFO - Successfully updated Hitters olsonma02/2025/ATL.
+2025-04-07 07:43:53,071 - INFO - Successfully updated Hitters ozunama01/2025/ATL.
+2025-04-07 07:43:53,096 - INFO - Successfully updated Hitters perezsa02/2025/KCR.
+2025-04-07 07:43:53,121 - INFO - Successfully updated Hitters rileyau01/2025/ATL.
+2025-04-07 07:43:53,147 - INFO - Successfully updated Hitters schanno01/2025/LAA.
+2025-04-07 07:43:53,172 - INFO - Successfully updated Hitters scottvi01/2025/STL.
+2025-04-07 07:43:53,673 - INFO - Processed 100 hitters so far
+2025-04-07 07:43:53,699 - INFO - Successfully updated Hitters solerjo01/2025/LAA.
+2025-04-07 07:43:53,727 - INFO - Successfully updated Hitters storytr01/2025/BOS.
+2025-04-07 07:43:53,754 - INFO - Successfully updated Hitters toglimi01/2025/COL.
+2025-04-07 07:43:53,779 - INFO - Successfully updated Hitters winnma01/2025/STL.
+2025-04-07 07:43:53,808 - INFO - Successfully updated Hitters abreuwi02/2025/BOS.
+2025-04-07 07:43:53,834 - INFO - Successfully updated Hitters burgeja01/2025/TEX.
+2025-04-07 07:43:53,870 - INFO - Successfully updated Hitters crawfjp01/2025/SEA.
+2025-04-07 07:43:53,898 - INFO - Successfully updated Hitters kineris01/2025/PIT.
+2025-04-07 07:43:53,935 - INFO - Successfully updated Hitters lowena01/2025/WSN.
+2025-04-07 07:43:53,971 - INFO - Successfully updated Hitters manzaky01/2025/CLE.
+2025-04-07 07:43:54,472 - INFO - Processed 110 hitters so far
+2025-04-07 07:43:54,498 - INFO - Successfully updated Hitters muncyma01/2025/LAD.
+2025-04-07 07:43:54,535 - INFO - Successfully updated Hitters nimmobr01/2025/NYM.
+2025-04-07 07:43:54,571 - INFO - Successfully updated Hitters oneilty01/2025/BAL.
+2025-04-07 07:43:54,607 - INFO - Successfully updated Hitters vargami01/2025/CHW.
+2025-04-07 07:43:54,638 - INFO - Successfully updated Hitters vientma01/2025/NYM.
+2025-04-07 07:43:54,663 - INFO - Successfully updated Hitters walkech02/2025/HOU.
+2025-04-07 07:43:54,689 - INFO - Successfully updated Hitters wilsoja05/2025/ATH.
+2025-04-07 07:43:54,714 - INFO - Successfully updated Hitters belljo02/2025/WSN.
+2025-04-07 07:43:54,739 - INFO - Successfully updated Hitters bohmal01/2025/PHI.
+2025-04-07 07:43:54,764 - INFO - Successfully updated Hitters encarch01/2025/CIN.
+2025-04-07 07:43:55,265 - INFO - Processed 120 hitters so far
+2025-04-07 07:43:55,289 - INFO - Successfully updated Hitters garciad02/2025/TEX.
+2025-04-07 07:43:55,316 - INFO - Successfully updated Hitters luxga01/2025/CIN.
+2025-04-07 07:43:55,352 - INFO - Successfully updated Hitters massemi02/2025/KCR.
+2025-04-07 07:43:55,377 - INFO - Successfully updated Hitters rengilu01/2025/LAA.
+2025-04-07 07:43:55,417 - INFO - Successfully updated Hitters roberlu01/2025/CHW.
+2025-04-07 07:43:55,444 - INFO - Successfully updated Hitters smithwi05/2025/LAD.
+2025-04-07 07:43:55,471 - INFO - Successfully updated Hitters walkejo02/2025/STL.
+2025-04-07 07:43:55,498 - INFO - Successfully updated Hitters woodja03/2025/WSN.
+2025-04-07 07:43:55,524 - INFO - Successfully updated Hitters bettsmo01/2025/LAD.
+2025-04-07 07:43:55,549 - INFO - Successfully updated Hitters buxtoby01/2025/MIN.
+2025-04-07 07:43:56,050 - INFO - Processed 130 hitters so far
+2025-04-07 07:43:56,076 - INFO - Successfully updated Hitters casteni01/2025/PHI.
+2025-04-07 07:43:56,102 - INFO - Successfully updated Hitters castrwi01/2025/MIN.
+2025-04-07 07:43:56,137 - INFO - Successfully updated Hitters confomi01/2025/LAD.
+2025-04-07 07:43:56,245 - INFO - Successfully updated Hitters correca01/2025/MIN.
+2025-04-07 07:43:56,272 - INFO - Successfully updated Hitters florewi01/2025/SFG.
+2025-04-07 07:43:56,300 - INFO - Successfully updated Hitters keithco01/2025/DET.
+2025-04-07 07:43:56,337 - INFO - Successfully updated Hitters keplema01/2025/PHI.
+2025-04-07 07:43:56,380 - INFO - Successfully updated Hitters leeju01/2025/SFG.
+2025-04-07 07:43:56,419 - INFO - Successfully updated Hitters lindofr01/2025/NYM.
+2025-04-07 07:43:56,458 - INFO - Successfully updated Hitters mountry01/2025/BAL.
+2025-04-07 07:43:56,958 - INFO - Processed 140 hitters so far
+2025-04-07 07:43:56,984 - INFO - Successfully updated Hitters penaje02/2025/HOU.
+2025-04-07 07:43:57,013 - INFO - Successfully updated Hitters phamth01/2025/PIT.
+2025-04-07 07:43:57,050 - INFO - Successfully updated Hitters stoweky01/2025/MIA.
+2025-04-07 07:43:57,077 - INFO - Successfully updated Hitters wallnma01/2025/MIN.
+2025-04-07 07:43:57,103 - INFO - Successfully updated Hitters wellsau01/2025/NYY.
+2025-04-07 07:43:57,128 - INFO - Successfully updated Hitters francty01/2025/MIN.
+2025-04-07 07:43:57,154 - INFO - Successfully updated Hitters harrimi04/2025/ATL.
+2025-04-07 07:43:57,184 - INFO - Successfully updated Hitters langesh01/2025/ATH.
+2025-04-07 07:43:57,224 - INFO - Successfully updated Hitters pasquvi01/2025/KCR.
+2025-04-07 07:43:57,250 - INFO - Successfully updated Hitters pederjo01/2025/TEX.
+2025-04-07 07:43:57,751 - INFO - Processed 150 hitters so far
+2025-04-07 07:43:57,783 - INFO - Successfully updated Hitters wadela01/2025/SFG.
+2025-04-07 07:43:57,816 - INFO - Successfully updated Hitters ariasga01/2025/CLE.
+2025-04-07 07:43:57,842 - INFO - Successfully updated Hitters bartjo01/2025/PIT.
+2025-04-07 07:43:57,872 - INFO - Successfully updated Hitters beninan01/2025/CHW.
+2025-04-07 07:43:57,900 - INFO - Successfully updated Hitters carpeke01/2025/DET.
+2025-04-07 07:43:57,929 - INFO - Successfully updated Hitters mckinza01/2025/DET.
+2025-04-07 07:43:57,956 - INFO - Successfully updated Hitters rafaece01/2025/BOS.
+2025-04-07 07:43:57,982 - INFO - Successfully updated Hitters springe01/2025/TOR.
+2025-04-07 07:43:58,017 - INFO - Successfully updated Hitters sweentr01/2025/DET.
+2025-04-07 07:43:58,053 - INFO - Successfully updated Hitters bellico01/2025/NYY.
+2025-04-07 07:43:58,557 - INFO - Processed 160 hitters so far
+2025-04-07 07:43:58,601 - INFO - Successfully updated Hitters blissry01/2025/SEA.
+2025-04-07 07:43:58,639 - INFO - Successfully updated Hitters kirkal01/2025/TOR.
+2025-04-07 07:43:58,671 - INFO - Successfully updated Hitters larnatr01/2025/MIN.
+2025-04-07 07:43:58,725 - INFO - Successfully updated Hitters marteke01/2025/ARI.
+2025-04-07 07:43:58,761 - INFO - Successfully updated Hitters ramirjo01/2025/CLE.
+2025-04-07 07:43:58,795 - INFO - Successfully updated Hitters bridejo01/2025/MIA.
+2025-04-07 07:43:58,833 - INFO - Successfully updated Hitters caminju01/2025/TBR.
+2025-04-07 07:43:58,870 - INFO - Successfully updated Hitters garcima01/2025/KCR.
+2025-04-07 07:43:58,909 - INFO - Successfully updated Hitters hernaen02/2025/LAD.
+2025-04-07 07:43:58,947 - INFO - Successfully updated Hitters hollija01/2025/BAL.
+2025-04-07 07:43:59,449 - INFO - Processed 170 hitters so far
+2025-04-07 07:43:59,487 - INFO - Successfully updated Hitters mclaima01/2025/CIN.
+2025-04-07 07:43:59,520 - INFO - Successfully updated Hitters ruizke01/2025/WSN.
+2025-04-07 07:43:59,546 - INFO - Successfully updated Hitters seageco01/2025/TEX.
+2025-04-07 07:43:59,575 - INFO - Successfully updated Hitters stottbr01/2025/PHI.
+2025-04-07 07:43:59,611 - INFO - Successfully updated Hitters thomala02/2025/CLE.
+2025-04-07 07:43:59,648 - INFO - Successfully updated Hitters uriasra01/2025/BAL.
+2025-04-07 07:43:59,680 - INFO - Successfully updated Hitters vaughan01/2025/CHW.
+2025-04-07 07:43:59,706 - INFO - Successfully updated Hitters yastrmi01/2025/SFG.
+2025-04-07 07:43:59,732 - INFO - Successfully updated Hitters andujmi01/2025/ATH.
+2025-04-07 07:43:59,759 - INFO - Successfully updated Hitters burleal01/2025/STL.
+2025-04-07 07:44:00,260 - INFO - Processed 180 hitters so far
+2025-04-07 07:44:00,287 - INFO - Successfully updated Hitters crewsdy01/2025/WSN.
+2025-04-07 07:44:00,313 - INFO - Successfully updated Hitters fraziad01/2025/PIT.
+2025-04-07 07:44:00,362 - INFO - Successfully updated Hitters muncyma02/2025/ATH.
+2025-04-07 07:44:00,389 - INFO - Successfully updated Hitters ohopplo01/2025/LAA.
+2025-04-07 07:44:00,415 - INFO - Successfully updated Hitters ricebe01/2025/NYY.
+2025-04-07 07:44:00,446 - INFO - Successfully updated Hitters baldwdr01/2025/ATL.
+2025-04-07 07:44:00,473 - INFO - Successfully updated Hitters coningr01/2025/MIA.
+2025-04-07 07:44:00,501 - INFO - Successfully updated Hitters rocchbr01/2025/CLE.
+2025-04-07 07:44:00,528 - INFO - Successfully updated Hitters arandjo01/2025/TBR.
+2025-04-07 07:44:00,553 - INFO - Successfully updated Hitters diazya02/2025/HOU.
+2025-04-07 07:44:01,054 - INFO - Processed 190 hitters so far
+2025-04-07 07:44:01,081 - INFO - Successfully updated Hitters hoskirh01/2025/MIL.
+2025-04-07 07:44:01,108 - INFO - Successfully updated Hitters marshbr02/2025/PHI.
+2025-04-07 07:44:01,134 - INFO - Successfully updated Hitters renfrhu01/2025/KCR.
+2025-04-07 07:44:01,159 - INFO - Successfully updated Hitters taverle01/2025/TEX.
+2025-04-07 07:44:01,196 - INFO - Successfully updated Hitters turnetr01/2025/PHI.
+2025-04-07 07:44:01,232 - INFO - Successfully updated Hitters urshegi01/2025/ATH.
+2025-04-07 07:44:01,269 - INFO - Successfully updated Hitters bailepa01/2025/SFG.
+2025-04-07 07:44:01,295 - INFO - Successfully updated Hitters baldwbr01/2025/CHW.
+2025-04-07 07:44:01,321 - INFO - Successfully updated Hitters dejonpa01/2025/WSN.
+2025-04-07 07:44:01,347 - INFO - Successfully updated Hitters espinsa01/2025/CIN.
+2025-04-07 07:44:01,848 - INFO - Processed 200 hitters so far
+2025-04-07 07:44:01,884 - INFO - Successfully updated Hitters fitzgty01/2025/SFG.
+2025-04-07 07:44:01,912 - INFO - Successfully updated Hitters fraleja01/2025/CIN.
+2025-04-07 07:44:01,939 - INFO - Successfully updated Hitters mitchga01/2025/MIL.
+2025-04-07 07:44:01,967 - INFO - Successfully updated Hitters morenga01/2025/ARI.
+2025-04-07 07:44:01,993 - INFO - Successfully updated Hitters realmjt01/2025/PHI.
+2025-04-07 07:44:02,019 - INFO - Successfully updated Hitters rodenal01/2025/TOR.
+2025-04-07 07:44:02,045 - INFO - Successfully updated Hitters rodgebr02/2025/HOU.
+2025-04-07 07:44:02,082 - INFO - Successfully updated Hitters rodrien01/2025/PIT.
+2025-04-07 07:44:02,112 - INFO - Successfully updated Hitters sheetga01/2025/SDP.
+2025-04-07 07:44:02,138 - INFO - Successfully updated Hitters wagnewi01/2025/TOR.
+2025-04-07 07:44:02,639 - INFO - Processed 210 hitters so far
+2025-04-07 07:44:02,676 - INFO - Successfully updated Hitters adelljo01/2025/LAA.
+2025-04-07 07:44:02,702 - INFO - Successfully updated Hitters garcilu04/2025/WSN.
+2025-04-07 07:44:02,728 - INFO - Successfully updated Hitters grishtr01/2025/NYY.
+2025-04-07 07:44:02,754 - INFO - Successfully updated Hitters hillde01/2025/MIA.
+2025-04-07 07:44:02,779 - INFO - Successfully updated Hitters kelenja01/2025/ATL.
+2025-04-07 07:44:02,806 - INFO - Successfully updated Hitters kellyca02/2025/CHC.
+2025-04-07 07:44:02,832 - INFO - Successfully updated Hitters moncayo01/2025/LAA.
+2025-04-07 07:44:02,858 - INFO - Successfully updated Hitters naylobo01/2025/CLE.
+2025-04-07 07:44:02,885 - INFO - Successfully updated Hitters steersp01/2025/CIN.
+2025-04-07 07:44:02,912 - INFO - Successfully updated Hitters wallsta01/2025/TBR.
+2025-04-07 07:44:03,413 - INFO - Processed 220 hitters so far
+2025-04-07 07:44:03,455 - INFO - Successfully updated Hitters wongco01/2025/BOS.
+2025-04-07 07:44:03,491 - INFO - Successfully updated Hitters bryankr01/2025/COL.
+2025-04-07 07:44:03,528 - INFO - Successfully updated Hitters clemeer01/2025/TOR.
+2025-04-07 07:44:03,562 - INFO - Successfully updated Hitters delucjo01/2025/TBR.
+2025-04-07 07:44:03,591 - INFO - Successfully updated Hitters jeffery01/2025/MIN.
+2025-04-07 07:44:03,617 - INFO - Successfully updated Hitters miranjo01/2025/MIN.
+2025-04-07 07:44:03,642 - INFO - Successfully updated Hitters misneka01/2025/TBR.
+2025-04-07 07:44:03,667 - INFO - Successfully updated Hitters ohearry01/2025/BAL.
+2025-04-07 07:44:03,693 - INFO - Successfully updated Hitters paulegr01/2025/MIA.
+2025-04-07 07:44:03,730 - INFO - Successfully updated Hitters raleylu01/2025/SEA.
+2025-04-07 07:44:04,230 - INFO - Processed 230 hitters so far
+2025-04-07 07:44:04,259 - INFO - Successfully updated Hitters smithjo11/2025/TEX.
+2025-04-07 07:44:04,286 - INFO - Successfully updated Hitters sosale01/2025/CHW.
+2025-04-07 07:44:04,313 - INFO - Successfully updated Hitters wagamer01/2025/MIA.
+2025-04-07 07:44:04,338 - INFO - Successfully updated Hitters amayami01/2025/CHC.
+2025-04-07 07:44:04,363 - INFO - Successfully updated Hitters baderha01/2025/MIN.
+2025-04-07 07:44:04,406 - INFO - Successfully updated Hitters diazel01/2025/SDP.
+2025-04-07 07:44:04,442 - INFO - Successfully updated Hitters farmeky01/2025/COL.
+2025-04-07 07:44:04,471 - INFO - Successfully updated Hitters herreiv01/2025/STL.
+2025-04-07 07:44:04,538 - INFO - Successfully updated Hitters jonesno01/2025/CLE.
+2025-04-07 07:44:04,565 - INFO - Successfully updated Hitters manguja01/2025/TBR.
+2025-04-07 07:44:05,065 - INFO - Processed 240 hitters so far
+2025-04-07 07:44:05,094 - INFO - Successfully updated Hitters matonni01/2025/CHW.
+2025-04-07 07:44:05,131 - INFO - Successfully updated Hitters melenmj01/2025/KCR.
+2025-04-07 07:44:05,158 - INFO - Successfully updated Hitters smithpa04/2025/ARI.
+2025-04-07 07:44:05,189 - INFO - Successfully updated Hitters suwinja01/2025/PIT.
+2025-04-07 07:44:05,224 - INFO - Successfully updated Hitters beckjo01/2025/COL.
+2025-04-07 07:44:05,251 - INFO - Successfully updated Hitters janseda01/2025/TBR.
+2025-04-07 07:44:05,289 - INFO - Successfully updated Hitters malloju02/2025/DET.
+2025-04-07 07:44:05,315 - INFO - Successfully updated Hitters martini02/2025/COL.
+2025-04-07 07:44:05,340 - INFO - Successfully updated Hitters thomaal01/2025/ARI.
+2025-04-07 07:44:05,366 - INFO - Successfully updated Hitters winkeje01/2025/NYM.
+2025-04-07 07:44:05,867 - INFO - Processed 250 hitters so far
+2025-04-07 07:44:05,897 - INFO - Successfully updated Hitters isbelky01/2025/KCR.
+2025-04-07 07:44:05,924 - INFO - Successfully updated Hitters kreidry01/2025/DET.
+2025-04-07 07:44:05,956 - INFO - Successfully updated Hitters mccarja02/2025/ARI.
+2025-04-07 07:44:05,994 - INFO - Successfully updated Hitters mccutan01/2025/PIT.
+2025-04-07 07:44:06,026 - INFO - Successfully updated Hitters mervima01/2025/MIA.
+2025-04-07 07:44:06,053 - INFO - Successfully updated Hitters mooredy01/2025/SEA.
+2025-04-07 07:44:06,081 - INFO - Successfully updated Hitters myersda01/2025/MIA.
+2025-04-07 07:44:06,119 - INFO - Successfully updated Hitters parisky01/2025/LAA.
+2025-04-07 07:44:06,163 - INFO - Successfully updated Hitters polanjo01/2025/SEA.
+2025-04-07 07:44:06,206 - INFO - Successfully updated Hitters thaisma01/2025/CHW.
+2025-04-07 07:44:06,707 - INFO - Processed 260 hitters so far
+2025-04-07 07:44:06,735 - INFO - Successfully updated Hitters amayaja01/2025/CHW.
+2025-04-07 07:44:06,766 - INFO - Successfully updated Hitters batybr01/2025/NYM.
+2025-04-07 07:44:06,792 - INFO - Successfully updated Hitters cabreos01/2025/NYY.
+2025-04-07 07:44:06,818 - INFO - Successfully updated Hitters heywaja01/2025/SDP.
+2025-04-07 07:44:06,844 - INFO - Successfully updated Hitters morelch01/2025/TBR.
+2025-04-07 07:44:06,878 - INFO - Successfully updated Hitters smithca07/2025/HOU.
+2025-04-07 07:44:06,905 - INFO - Successfully updated Hitters sosaed01/2025/PHI.
+2025-04-07 07:44:06,937 - INFO - Successfully updated Hitters torrelu01/2025/NYM.
+2025-04-07 07:44:06,971 - INFO - Successfully updated Hitters anderti01/2025/LAA.
+2025-04-07 07:44:06,996 - INFO - Successfully updated Hitters capravi01/2025/MIL.
+2025-04-07 07:44:07,497 - INFO - Processed 270 hitters so far
+2025-04-07 07:44:07,525 - INFO - Successfully updated Hitters delacbr01/2025/ATL.
+2025-04-07 07:44:07,556 - INFO - Successfully updated Hitters dingldi01/2025/DET.
+2025-04-07 07:44:07,593 - INFO - Successfully updated Hitters grichra01/2025/ARI.
+2025-04-07 07:44:07,618 - INFO - Successfully updated Hitters hicksli01/2025/MIA.
+2025-04-07 07:44:07,656 - INFO - Successfully updated Hitters kjershe01/2025/BAL.
+2025-04-07 07:44:07,693 - INFO - Successfully updated Hitters rojasmi02/2025/LAD.
+2025-04-07 07:44:07,720 - INFO - Successfully updated Hitters sirijo01/2025/NYM.
+2025-04-07 07:44:07,745 - INFO - Successfully updated Hitters youngja03/2025/WSN.
+2025-04-07 07:44:07,772 - INFO - Successfully updated Hitters allenni02/2025/ATL.
+2025-04-07 07:44:07,809 - INFO - Successfully updated Hitters dunnol01/2025/MIL.
+2025-04-07 07:44:08,310 - INFO - Processed 280 hitters so far
+2025-04-07 07:44:08,339 - INFO - Successfully updated Hitters garvemi01/2025/SEA.
+2025-04-07 07:44:08,380 - INFO - Successfully updated Hitters ibanean01/2025/DET.
+2025-04-07 07:44:08,411 - INFO - Successfully updated Hitters meyerja02/2025/HOU.
+2025-04-07 07:44:08,438 - INFO - Successfully updated Hitters pagespe02/2025/STL.
+2025-04-07 07:44:08,468 - INFO - Successfully updated Hitters rogerja03/2025/DET.
+2025-04-07 07:44:08,495 - INFO - Successfully updated Hitters trevijo01/2025/CIN.
+2025-04-07 07:44:08,521 - INFO - Successfully updated Hitters turneju01/2025/CHC.
+2025-04-07 07:44:08,557 - INFO - Successfully updated Hitters baezja01/2025/DET.
+2025-04-07 07:44:08,596 - INFO - Successfully updated Hitters cowseco01/2025/BAL.
+2025-04-07 07:44:08,634 - INFO - Successfully updated Hitters heimjo01/2025/TEX.
+2025-04-07 07:44:09,136 - INFO - Processed 290 hitters so far
+2025-04-07 07:44:09,163 - INFO - Successfully updated Hitters higasky01/2025/TEX.
+2025-04-07 07:44:09,189 - INFO - Successfully updated Hitters julieed01/2025/MIN.
+2025-04-07 07:44:09,215 - INFO - Successfully updated Hitters narvaca01/2025/BOS.
+2025-04-07 07:44:09,241 - INFO - Successfully updated Hitters noeljh01/2025/CLE.
+2025-04-07 07:44:09,268 - INFO - Successfully updated Hitters tellero01/2025/SEA.
+2025-04-07 07:44:09,295 - INFO - Successfully updated Hitters triolja01/2025/PIT.
+2025-04-07 07:44:09,329 - INFO - Successfully updated Hitters brownse01/2025/ATH.
+2025-04-07 07:44:09,355 - INFO - Successfully updated Hitters cabaljo01/2025/TBR.
+2025-04-07 07:44:09,384 - INFO - Successfully updated Hitters margoma01/2025/DET.
+2025-04-07 07:44:09,417 - INFO - Successfully updated Hitters biggica01/2025/KCR.
+2025-04-07 07:44:09,918 - INFO - Processed 300 hitters so far
+2025-04-07 07:44:09,953 - INFO - Successfully updated Hitters profaju01/2025/ATL.
+2025-04-07 07:44:09,980 - INFO - Successfully updated Hitters taylomi02/2025/CHW.
+2025-04-07 07:44:10,006 - INFO - Successfully updated Hitters acunajo01/2025/NYM.
+2025-04-07 07:44:10,031 - INFO - Successfully updated Hitters canhama01/2025/KCR.
+2025-04-07 07:44:10,068 - INFO - Successfully updated Hitters dunnbl01/2025/CIN.
+2025-04-07 07:44:10,093 - INFO - Successfully updated Hitters forteni01/2025/MIA.
+2025-04-07 07:44:10,118 - INFO - Successfully updated Hitters jankotr01/2025/CHW.
+2025-04-07 07:44:10,150 - INFO - Successfully updated Hitters martest01/2025/NYM.
+2025-04-07 07:44:10,184 - INFO - Successfully updated Hitters matoslu02/2025/SFG.
+2025-04-07 07:44:10,220 - INFO - Successfully updated Hitters moniami01/2025/COL.
+2025-04-07 07:44:10,721 - INFO - Processed 310 hitters so far
+2025-04-07 07:44:10,749 - INFO - Successfully updated Hitters sanchga02/2025/BAL.
+2025-04-07 07:44:10,774 - INFO - Successfully updated Hitters schneda04/2025/CLE.
+2025-04-07 07:44:10,802 - INFO - Successfully updated Hitters valdeen01/2025/PIT.
+2025-04-07 07:44:10,842 - INFO - Successfully updated Hitters bakerlu01/2025/STL.
+2025-04-07 07:44:10,869 - INFO - Successfully updated Hitters bauerja01/2025/MIL.
+2025-04-07 07:44:10,895 - INFO - Successfully updated Hitters callal02/2025/WSN.
+2025-04-07 07:44:10,921 - INFO - Successfully updated Hitters colliis01/2025/MIL.
+2025-04-07 07:44:10,947 - INFO - Successfully updated Hitters gourryu01/2025/SDP.
+2025-04-07 07:44:10,987 - INFO - Successfully updated Hitters leeko01/2025/CHW.
+2025-04-07 07:44:11,022 - INFO - Successfully updated Hitters meadcu01/2025/TBR.
+2025-04-07 07:44:11,523 - INFO - Processed 320 hitters so far
+2025-04-07 07:44:11,549 - INFO - Successfully updated Hitters newmake01/2025/LAA.
+2025-04-07 07:44:11,575 - INFO - Successfully updated Hitters sanojja01/2025/MIA.
+2025-04-07 07:44:11,601 - INFO - Successfully updated Hitters solando01/2025/SEA.
+2025-04-07 07:44:11,626 - INFO - Successfully updated Hitters strawmy01/2025/TOR.
+2025-04-07 07:44:11,661 - INFO - Successfully updated Hitters tayloty01/2025/NYM.
+2025-04-07 07:44:11,699 - INFO - Successfully updated Hitters vazquch01/2025/MIN.
+2025-04-07 07:44:11,726 - INFO - Successfully updated Hitters arciaor01/2025/ATL.
+2025-04-07 07:44:11,751 - INFO - Successfully updated Hitters bertijo01/2025/CHC.
+2025-04-07 07:44:11,777 - INFO - Successfully updated Hitters fermifr01/2025/KCR.
+2025-04-07 07:44:11,811 - INFO - Successfully updated Hitters hendegu01/2025/BAL.
+2025-04-07 07:44:12,311 - INFO - Processed 330 hitters so far
+2025-04-07 07:44:12,339 - INFO - Successfully updated Hitters lockrbr01/2025/SDP.
+2025-04-07 07:44:12,364 - INFO - Successfully updated Hitters maldoma01/2025/SDP.
+2025-04-07 07:44:12,390 - INFO - Successfully updated Hitters schneda03/2025/TOR.
+2025-04-07 07:44:12,417 - INFO - Successfully updated Hitters freemfr01/2025/LAD.
+2025-04-07 07:44:12,456 - INFO - Successfully updated Hitters gaspemi01/2025/MIN.
+2025-04-07 07:44:12,515 - INFO - Successfully updated Hitters gonzaro01/2025/BOS.
+2025-04-07 07:44:12,542 - INFO - Successfully updated Hitters hampsga01/2025/ARI.
+2025-04-07 07:44:12,578 - INFO - Successfully updated Hitters herrejo04/2025/ARI.
+2025-04-07 07:44:12,603 - INFO - Successfully updated Hitters mccorch01/2025/HOU.
+2025-04-07 07:44:12,629 - INFO - Successfully updated Hitters rosaram01/2025/WSN.
+2025-04-07 07:44:13,130 - INFO - Processed 340 hitters so far
+2025-04-07 07:44:13,157 - INFO - Successfully updated Hitters stallja01/2025/COL.
+2025-04-07 07:44:13,183 - INFO - Successfully updated Hitters uriaslu01/2025/ATH.
+2025-04-07 07:44:13,220 - INFO - Successfully updated Hitters duranez01/2025/TEX.
+2025-04-07 07:44:13,245 - INFO - Successfully updated Hitters freemty01/2025/COL.
+2025-04-07 07:44:13,281 - INFO - Successfully updated Hitters hamilda03/2025/BOS.
+2025-04-07 07:44:13,307 - INFO - Successfully updated Hitters heinety01/2025/TOR.
+2025-04-07 07:44:13,333 - INFO - Successfully updated Hitters lukesna01/2025/TOR.
+2025-04-07 07:44:13,366 - INFO - Successfully updated Hitters mateojo01/2025/BAL.
+2025-04-07 07:44:13,404 - INFO - Successfully updated Hitters perazos02/2025/NYY.
+2025-04-07 07:44:13,440 - INFO - Successfully updated Hitters slateau01/2025/CHW.
+2025-04-07 07:44:13,941 - INFO - Processed 350 hitters so far
+2025-04-07 07:44:13,967 - INFO - Successfully updated Hitters bouchse01/2025/COL.
+2025-04-07 07:44:13,992 - INFO - Successfully updated Hitters darnatr01/2025/LAA.
+2025-04-07 07:44:14,019 - INFO - Successfully updated Hitters dezenza01/2025/HOU.
+2025-04-07 07:44:14,049 - INFO - Successfully updated Hitters dubonma01/2025/HOU.
+2025-04-07 07:44:14,075 - INFO - Successfully updated Hitters huffsa01/2025/SFG.
+2025-04-07 07:44:14,101 - INFO - Successfully updated Hitters laurera01/2025/BAL.
+2025-04-07 07:44:14,130 - INFO - Successfully updated Hitters rortvbe01/2025/TBR.
+2025-04-07 07:44:14,156 - INFO - Successfully updated Hitters caratvi01/2025/HOU.
+2025-04-07 07:44:14,194 - INFO - Successfully updated Hitters gormano01/2025/STL.
+2025-04-07 07:44:14,227 - INFO - Successfully updated Hitters marchra01/2025/PHI.
+2025-04-07 07:44:14,728 - INFO - Processed 360 hitters so far
+2025-04-07 07:44:14,755 - INFO - Successfully updated Hitters schuema01/2025/ATH.
+2025-04-07 07:44:14,781 - INFO - Successfully updated Hitters wynnsau01/2025/CIN.
+2025-04-07 07:44:14,811 - INFO - Successfully updated Hitters haaseer01/2025/MIL.
+2025-04-07 07:44:14,836 - INFO - Successfully updated Hitters iglesjo01/2025/SDP.
+2025-04-07 07:44:14,861 - INFO - Successfully updated Hitters mastrmi01/2025/SEA.
+2025-04-07 07:44:14,889 - INFO - Successfully updated Hitters rojasjo03/2025/PHI.
+2025-04-07 07:44:14,916 - INFO - Successfully updated Hitters sengeha01/2025/NYM.
+2025-04-07 07:44:14,941 - INFO - Successfully updated Hitters torregl01/2025/DET.
+2025-04-07 07:44:14,998 - INFO - Successfully updated Hitters canaral01/2025/PIT.
+2025-04-07 07:44:15,028 - INFO - Successfully updated Hitters hedgeau01/2025/CLE.
+2025-04-07 07:44:15,529 - INFO - Processed 370 hitters so far
+2025-04-07 07:44:15,556 - INFO - Successfully updated Hitters jungjo01/2025/TEX.
+2025-04-07 07:44:15,582 - INFO - Successfully updated Hitters kossch01/2025/SFG.
+2025-04-07 07:44:15,608 - INFO - Successfully updated Hitters peredjh01/2025/ATH.
+2025-04-07 07:44:15,634 - INFO - Successfully updated Hitters pillake01/2025/TEX.
+2025-04-07 07:44:15,660 - INFO - Successfully updated Hitters refsnro01/2025/BOS.
+2025-04-07 07:44:15,685 - INFO - Successfully updated Hitters reyespa01/2025/NYY.
+2025-04-07 07:44:15,717 - INFO - Successfully updated Hitters schmica01/2025/SFG.
+2025-04-07 07:44:15,755 - INFO - Successfully updated Hitters barneau01/2025/LAD.
+2025-04-07 07:44:15,791 - INFO - Successfully updated Hitters carlsdy01/2025/BAL.
+2025-04-07 07:44:15,816 - INFO - Successfully updated Hitters escarjc01/2025/NYY.
+2025-04-07 07:44:16,316 - INFO - Processed 380 hitters so far
+2025-04-07 07:44:16,344 - INFO - Successfully updated Hitters trompch01/2025/ATL.
+2025-04-07 07:44:16,369 - INFO - Successfully updated Hitters adamsri03/2025/WSN.
+2025-04-07 07:44:16,397 - INFO - Successfully updated Hitters faircst01/2025/ATL.
+2025-04-07 07:44:16,424 - INFO - Successfully updated Hitters hurtuja01/2025/CIN.
+2025-04-07 07:44:16,450 - INFO - Successfully updated Hitters rodrijo10/2025/CLE.
+2025-04-07 07:44:16,480 - INFO - Successfully created Hitters saggeth01/2025/STL.
+2025-04-07 07:44:16,513 - INFO - Successfully created Hitters tawati01/2025/ARI.
+2025-04-07 07:44:16,552 - INFO - Successfully updated Hitters tenajo01/2025/WSN.
+2025-04-07 07:44:16,590 - INFO - Successfully updated Hitters whiteel04/2025/ATL.
+2025-04-07 07:44:16,629 - INFO - Successfully updated Hitters baeji01/2025/PIT.
+2025-04-07 07:44:17,130 - INFO - Processed 390 hitters so far
+2025-04-07 07:44:17,158 - INFO - Successfully updated Hitters lopezni01/2025/LAA.
+2025-04-07 07:44:17,186 - INFO - Successfully updated Hitters orneljo01/2025/TEX.
+2025-04-07 07:44:17,215 - INFO - Successfully created Hitters tauchmi01/2025/CHW.
+2025-04-07 07:44:17,248 - INFO - Successfully updated Hitters gonzani01/2025/PIT.
+2025-04-07 07:44:17,285 - INFO - Successfully updated Hitters keirsda01/2025/MIN.
+2025-04-07 07:44:17,312 - INFO - Successfully updated Hitters tayloch03/2025/LAD.
+2025-04-07 07:44:17,339 - INFO - Successfully updated Hitters tolbety01/2025/KCR.
+2025-04-07 07:44:17,366 - INFO - Successfully updated Hitters workmga01/2025/CHC.
+2025-04-07 07:44:17,394 - INFO - Successfully updated Hitters clemeko01/2025/PHI.
+2025-04-07 07:44:17,434 - INFO - Successfully updated Hitters lowejo01/2025/TBR.
+2025-04-07 07:44:17,935 - INFO - Processed 400 hitters so far
+2025-04-07 07:44:17,966 - INFO - Successfully updated Hitters blancda02/2025/KCR.
+2025-04-07 07:44:17,993 - INFO - Successfully updated Hitters nelsory01/2025/ARI.
+2025-04-07 07:44:18,022 - INFO - Successfully updated Hitters reaco01/2025/CHC.
+2025-04-07 07:44:18,049 - INFO - Successfully updated Hitters sianimi01/2025/STL.
+2025-04-07 07:44:18,078 - INFO - Successfully updated Hitters birdja01/2025/COL.
+2025-04-07 07:44:18,115 - INFO - Successfully updated Hitters brujavi01/2025/CHC.
+2025-04-07 07:44:18,152 - INFO - Successfully updated Hitters chivian01/2025/COL.
+2025-04-07 07:44:18,190 - INFO - Successfully updated Hitters mantijo01/2025/ARI.
+2025-04-07 07:44:18,228 - INFO - Successfully updated Hitters martiju01/2025/ARI.
+2025-04-07 07:44:18,265 - INFO - Successfully updated Hitters pukaj01/2025/ARI.
+2025-04-07 07:44:18,766 - INFO - Processed 410 hitters so far
+2025-04-07 07:44:18,794 - INFO - Successfully updated Hitters thompry02/2025/ARI.
+2025-04-07 07:44:18,795 - INFO - Successfully processed 411 hitters
+2025-04-07 07:44:31,186 - INFO - Fetching pitching data from https://www.baseball-reference.com/leagues/majors/2025-standard-pitching.shtml
+2025-04-07 07:44:31,186 - INFO - Attempting to scrape with Selenium...
+2025-04-07 07:44:32,194 - INFO - Navigating to https://www.baseball-reference.com/leagues/majors/2025-standard-pitching.shtml with Selenium...
+2025-04-07 07:44:32,981 - INFO - Waiting for Cloudflare to resolve...
+2025-04-07 07:44:33,240 - INFO - Table element found on page, content appears to be loaded
+2025-04-07 07:44:33,304 - INFO - Saved HTML content to selenium_result.html for debugging
+2025-04-07 07:44:35,389 - INFO - Selenium scraping completed successfully
+2025-04-07 07:44:35,392 - INFO - Saved HTML content to debug_pitching.html for debugging
+2025-04-07 07:44:40,166 - INFO - Found table with id 'players_standard_pitching' directly in HTML
+2025-04-07 07:44:40,166 - INFO - Found pitching table with id: players_standard_pitching
+2025-04-07 07:44:40,170 - INFO - Found 429 pitching rows to process
+2025-04-07 07:44:40,200 - INFO - Successfully updated Pitchers imanash01/2025/CHC.
+2025-04-07 07:44:40,231 - INFO - Successfully updated Pitchers yamamyo01/2025/LAD.
+2025-04-07 07:44:40,256 - INFO - Successfully updated Pitchers steelju01/2025/CHC.
+2025-04-07 07:44:40,283 - INFO - Successfully updated Pitchers eovalna01/2025/TEX.
+2025-04-07 07:44:40,309 - INFO - Successfully updated Pitchers schwesp01/2025/ATL.
+2025-04-07 07:44:40,337 - INFO - Successfully updated Pitchers crochga01/2025/BOS.
+2025-04-07 07:44:40,363 - INFO - Successfully updated Pitchers litteza01/2025/TBR.
+2025-04-07 07:44:40,392 - INFO - Successfully updated Pitchers peralfr01/2025/MIL.
+2025-04-07 07:44:40,428 - INFO - Successfully updated Pitchers searsjp01/2025/ATH.
+2025-04-07 07:44:40,454 - INFO - Successfully updated Pitchers wheelza01/2025/PHI.
+2025-04-07 07:44:40,955 - INFO - Processed 10 pitchers so far
+2025-04-07 07:44:40,984 - INFO - Successfully updated Pitchers bassich01/2025/TOR.
+2025-04-07 07:44:41,020 - INFO - Successfully updated Pitchers bubickr01/2025/KCR.
+2025-04-07 07:44:41,043 - INFO - Successfully updated Pitchers freelky01/2025/COL.
+2025-04-07 07:44:41,067 - INFO - Successfully updated Pitchers lodolni01/2025/CIN.
+2025-04-07 07:44:41,093 - INFO - Successfully updated Pitchers parkemi01/2025/WSN.
+2025-04-07 07:44:41,127 - INFO - Successfully updated Pitchers perezma02/2025/CHW.
+2025-04-07 07:44:41,152 - INFO - Successfully updated Pitchers skenepa01/2025/PIT.
+2025-04-07 07:44:41,176 - INFO - Successfully updated Pitchers soriajo02/2025/LAA.
+2025-04-07 07:44:41,200 - INFO - Successfully updated Pitchers brownhu01/2025/HOU.
+2025-04-07 07:44:41,224 - INFO - Successfully updated Pitchers castilu02/2025/SEA.
+2025-04-07 07:44:41,725 - INFO - Processed 20 pitchers so far
+2025-04-07 07:44:41,750 - INFO - Successfully updated Pitchers eflinza01/2025/BAL.
+2025-04-07 07:44:41,784 - INFO - Successfully updated Pitchers gilbelo01/2025/SEA.
+2025-04-07 07:44:41,807 - INFO - Successfully updated Pitchers greenhu01/2025/CIN.
+2025-04-07 07:44:41,830 - INFO - Successfully updated Pitchers heanean01/2025/PIT.
+2025-04-07 07:44:41,853 - INFO - Successfully updated Pitchers kikucyu01/2025/LAA.
+2025-04-07 07:44:41,876 - INFO - Successfully updated Pitchers lopezpa01/2025/MIN.
+2025-04-07 07:44:41,903 - INFO - Successfully updated Pitchers luzarje01/2025/PHI.
+2025-04-07 07:44:41,928 - INFO - Successfully updated Pitchers pfaadbr01/2025/ARI.
+2025-04-07 07:44:41,957 - INFO - Successfully updated Pitchers severlu01/2025/ATH.
+2025-04-07 07:44:41,990 - INFO - Successfully updated Pitchers singebr01/2025/CIN.
+2025-04-07 07:44:42,491 - INFO - Processed 30 pitchers so far
+2025-04-07 07:44:42,542 - INFO - Successfully updated Pitchers valdefr01/2025/HOU.
+2025-04-07 07:44:42,583 - INFO - Successfully updated Pitchers webblo01/2025/SFG.
+2025-04-07 07:44:42,619 - INFO - Successfully updated Pitchers woobr01/2025/SEA.
+2025-04-07 07:44:42,652 - INFO - Successfully updated Pitchers brownbe02/2025/CHC.
+2025-04-07 07:44:42,675 - INFO - Successfully updated Pitchers meyerma01/2025/MIA.
+2025-04-07 07:44:42,699 - INFO - Successfully updated Pitchers flaheja01/2025/DET.
+2025-04-07 07:44:42,724 - INFO - Successfully updated Pitchers francbo01/2025/TOR.
+2025-04-07 07:44:42,747 - INFO - Successfully updated Pitchers gausmke01/2025/TOR.
+2025-04-07 07:44:42,775 - INFO - Successfully updated Pitchers hicksjo03/2025/SFG.
+2025-04-07 07:44:42,811 - INFO - Successfully updated Pitchers nolaaa01/2025/PHI.
+2025-04-07 07:44:43,312 - INFO - Processed 40 pitchers so far
+2025-04-07 07:44:43,340 - INFO - Successfully updated Pitchers rayro02/2025/SFG.
+2025-04-07 07:44:43,363 - INFO - Successfully updated Pitchers rodonca01/2025/NYY.
+2025-04-07 07:44:43,402 - INFO - Successfully updated Pitchers boydma01/2025/CHC.
+2025-04-07 07:44:43,427 - INFO - Successfully updated Pitchers bradlta01/2025/TBR.
+2025-04-07 07:44:43,451 - INFO - Successfully updated Pitchers gorema01/2025/WSN.
+2025-04-07 07:44:43,480 - INFO - Successfully updated Pitchers grayso01/2025/STL.
+2025-04-07 07:44:43,506 - INFO - Successfully updated Pitchers kochaja01/2025/LAA.
+2025-04-07 07:44:43,553 - INFO - Successfully updated Pitchers lugose01/2025/KCR.
+2025-04-07 07:44:43,588 - INFO - Successfully updated Pitchers marquge01/2025/COL.
+2025-04-07 07:44:43,624 - INFO - Successfully updated Pitchers martida03/2025/CHW.
+2025-04-07 07:44:44,125 - INFO - Processed 50 pitchers so far
+2025-04-07 07:44:44,161 - INFO - Successfully updated Pitchers millebr04/2025/SEA.
+2025-04-07 07:44:44,195 - INFO - Successfully updated Pitchers patrich01/2025/MIL.
+2025-04-07 07:44:44,238 - INFO - Successfully updated Pitchers pepiory01/2025/TBR.
+2025-04-07 07:44:44,280 - INFO - Successfully updated Pitchers sanchcr01/2025/PHI.
+2025-04-07 07:44:44,306 - INFO - Successfully updated Pitchers berrijo01/2025/TOR.
+2025-04-07 07:44:44,331 - INFO - Successfully updated Pitchers ceasedy01/2025/SDP.
+2025-04-07 07:44:44,368 - INFO - Successfully updated Pitchers degroja01/2025/TEX.
+2025-04-07 07:44:44,407 - INFO - Successfully updated Pitchers galleza01/2025/ARI.
+2025-04-07 07:44:44,443 - INFO - Successfully updated Pitchers martini01/2025/CIN.
+2025-04-07 07:44:44,477 - INFO - Successfully updated Pitchers olsonre01/2025/DET.
+2025-04-07 07:44:44,978 - INFO - Processed 60 pitchers so far
+2025-04-07 07:44:45,004 - INFO - Successfully updated Pitchers ortizlu03/2025/CLE.
+2025-04-07 07:44:45,029 - INFO - Successfully updated Pitchers peterda01/2025/NYM.
+2025-04-07 07:44:45,052 - INFO - Successfully updated Pitchers skubata01/2025/DET.
+2025-04-07 07:44:45,075 - INFO - Successfully updated Pitchers vasqura02/2025/SDP.
+2025-04-07 07:44:45,098 - INFO - Successfully updated Pitchers burkese01/2025/CHW.
+2025-04-07 07:44:45,122 - INFO - Successfully updated Pitchers friedma01/2025/NYY.
+2025-04-07 07:44:45,145 - INFO - Successfully updated Pitchers megilty01/2025/NYM.
+2025-04-07 07:44:45,176 - INFO - Successfully updated Pitchers povicca01/2025/BAL.
+2025-04-07 07:44:45,208 - INFO - Successfully updated Pitchers rodried05/2025/ARI.
+2025-04-07 07:44:45,232 - INFO - Successfully updated Pitchers taillja01/2025/CHC.
+2025-04-07 07:44:45,733 - INFO - Processed 70 pitchers so far
+2025-04-07 07:44:45,758 - INFO - Successfully updated Pitchers anderty01/2025/LAA.
+2025-04-07 07:44:45,781 - INFO - Successfully updated Pitchers bidoos01/2025/ATH.
+2025-04-07 07:44:45,806 - INFO - Successfully updated Pitchers falteba01/2025/PIT.
+2025-04-07 07:44:45,829 - INFO - Successfully updated Pitchers feltnry01/2025/COL.
+2025-04-07 07:44:45,863 - INFO - Successfully updated Pitchers gillico01/2025/MIA.
+2025-04-07 07:44:45,885 - INFO - Successfully updated Pitchers irvinja01/2025/WSN.
+2025-04-07 07:44:45,927 - INFO - Successfully updated Pitchers leiteja01/2025/TEX.
+2025-04-07 07:44:45,952 - INFO - Successfully updated Pitchers pivetni01/2025/SDP.
+2025-04-07 07:44:45,975 - INFO - Successfully updated Pitchers raganco01/2025/KCR.
+2025-04-07 07:44:46,000 - INFO - Successfully updated Pitchers rasmudr01/2025/TBR.
+2025-04-07 07:44:46,500 - INFO - Processed 80 pitchers so far
+2025-04-07 07:44:46,538 - INFO - Successfully updated Pitchers ryanjo04/2025/MIN.
+2025-04-07 07:44:46,574 - INFO - Successfully updated Pitchers salech01/2025/ATL.
+2025-04-07 07:44:46,610 - INFO - Successfully updated Pitchers willitr01/2025/WSN.
+2025-04-07 07:44:46,641 - INFO - Successfully updated Pitchers alcansa01/2025/MIA.
+2025-04-07 07:44:46,677 - INFO - Successfully updated Pitchers arrigsp01/2025/HOU.
+2025-04-07 07:44:46,710 - INFO - Successfully updated Pitchers bibeeta01/2025/CLE.
+2025-04-07 07:44:46,749 - INFO - Successfully updated Pitchers cannigr01/2025/NYM.
+2025-04-07 07:44:46,784 - INFO - Successfully updated Pitchers houckta01/2025/BOS.
+2025-04-07 07:44:46,821 - INFO - Successfully updated Pitchers kellemi03/2025/PIT.
+2025-04-07 07:44:46,856 - INFO - Successfully updated Pitchers kremede01/2025/BAL.
+2025-04-07 07:44:47,356 - INFO - Processed 90 pitchers so far
+2025-04-07 07:44:47,424 - INFO - Successfully updated Pitchers senzaan01/2025/COL.
+2025-04-07 07:44:47,447 - INFO - Successfully updated Pitchers wachami01/2025/KCR.
+2025-04-07 07:44:47,473 - INFO - Successfully updated Pitchers buehlwa01/2025/BOS.
+2025-04-07 07:44:47,500 - INFO - Successfully updated Pitchers burneco01/2025/ARI.
+2025-04-07 07:44:47,523 - INFO - Successfully updated Pitchers holmecl01/2025/NYM.
+2025-04-07 07:44:47,557 - INFO - Successfully updated Pitchers livelbe01/2025/CLE.
+2025-04-07 07:44:47,580 - INFO - Successfully updated Pitchers pallaan01/2025/STL.
+2025-04-07 07:44:47,604 - INFO - Successfully updated Pitchers spierca01/2025/CIN.
+2025-04-07 07:44:47,628 - INFO - Successfully updated Pitchers suganto01/2025/BAL.
+2025-04-07 07:44:47,654 - INFO - Successfully updated Pitchers alexaty01/2025/MIL.
+2025-04-07 07:44:48,155 - INFO - Processed 100 pitchers so far
+2025-04-07 07:44:48,178 - INFO - Successfully updated Pitchers feddeer01/2025/STL.
+2025-04-07 07:44:48,212 - INFO - Successfully updated Pitchers jobeja01/2025/DET.
+2025-04-07 07:44:48,235 - INFO - Successfully updated Pitchers kellyme01/2025/ARI.
+2025-04-07 07:44:48,258 - INFO - Successfully updated Pitchers quantca01/2025/MIA.
+2025-04-07 07:44:48,281 - INFO - Successfully updated Pitchers rodriel02/2025/MIL.
+2025-04-07 07:44:48,304 - INFO - Successfully updated Pitchers snellbl01/2025/LAD.
+2025-04-07 07:44:48,341 - INFO - Successfully updated Pitchers spencmi01/2025/ATH.
+2025-04-07 07:44:48,378 - INFO - Successfully updated Pitchers sprinje01/2025/ATH.
+2025-04-07 07:44:48,416 - INFO - Successfully updated Pitchers warrewi01/2025/NYY.
+2025-04-07 07:44:48,475 - INFO - Successfully updated Pitchers cannojo02/2025/CHW.
+2025-04-07 07:44:48,976 - INFO - Processed 110 pitchers so far
+2025-04-07 07:44:49,015 - INFO - Successfully updated Pitchers newcose01/2025/BOS.
+2025-04-07 07:44:49,050 - INFO - Successfully updated Pitchers sasakro01/2025/LAD.
+2025-04-07 07:44:49,087 - INFO - Successfully updated Pitchers smithaj01/2025/ATL.
+2025-04-07 07:44:49,117 - INFO - Successfully updated Pitchers stromma01/2025/NYY.
+2025-04-07 07:44:49,141 - INFO - Successfully updated Pitchers mortoch02/2025/BAL.
+2025-04-07 07:44:49,165 - INFO - Successfully updated Pitchers cortene01/2025/MIL.
+2025-04-07 07:44:49,189 - INFO - Successfully updated Pitchers mikolmi01/2025/STL.
+2025-04-07 07:44:49,212 - INFO - Successfully updated Pitchers rockeku01/2025/TEX.
+2025-04-07 07:44:49,247 - INFO - Successfully updated Pitchers whitlga01/2025/BOS.
+2025-04-07 07:44:49,271 - INFO - Successfully updated Pitchers williga01/2025/CLE.
+2025-04-07 07:44:49,772 - INFO - Processed 120 pitchers so far
+2025-04-07 07:44:49,808 - INFO - Successfully updated Pitchers dreyeja01/2025/LAD.
+2025-04-07 07:44:49,831 - INFO - Successfully updated Pitchers kingmi01/2025/SDP.
+2025-04-07 07:44:49,855 - INFO - Successfully updated Pitchers beeksja02/2025/ARI.
+2025-04-07 07:44:49,880 - INFO - Successfully updated Pitchers brazohu01/2025/NYM.
+2025-04-07 07:44:49,904 - INFO - Successfully updated Pitchers carraca01/2025/NYY.
+2025-04-07 07:44:49,943 - INFO - Successfully updated Pitchers garcilu03/2025/LAD.
+2025-04-07 07:44:49,976 - INFO - Successfully updated Pitchers paddach01/2025/MIN.
+2025-04-07 07:44:50,011 - INFO - Successfully updated Pitchers verlaju01/2025/SFG.
+2025-04-07 07:44:50,046 - INFO - Successfully updated Pitchers wentzjo01/2025/PIT.
+2025-04-07 07:44:50,082 - INFO - Successfully updated Pitchers caspabe01/2025/LAD.
+2025-04-07 07:44:50,583 - INFO - Processed 130 pitchers so far
+2025-04-07 07:44:50,607 - INFO - Successfully updated Pitchers estesjo01/2025/ATH.
+2025-04-07 07:44:50,633 - INFO - Successfully updated Pitchers glasnty01/2025/LAD.
+2025-04-07 07:44:50,658 - INFO - Successfully updated Pitchers gustory01/2025/HOU.
+2025-04-07 07:44:50,684 - INFO - Successfully updated Pitchers kranima01/2025/NYM.
+2025-04-07 07:44:50,708 - INFO - Successfully updated Pitchers matzst01/2025/STL.
+2025-04-07 07:44:50,743 - INFO - Successfully updated Pitchers vesiaal01/2025/LAD.
+2025-04-07 07:44:50,771 - INFO - Successfully updated Pitchers bazared01/2025/SEA.
+2025-04-07 07:44:50,796 - INFO - Successfully updated Pitchers blancro01/2025/HOU.
+2025-04-07 07:44:50,820 - INFO - Successfully updated Pitchers mahlety01/2025/TEX.
+2025-04-07 07:44:50,843 - INFO - Successfully updated Pitchers oberba01/2025/MIN.
+2025-04-07 07:44:51,344 - INFO - Processed 140 pitchers so far
+2025-04-07 07:44:51,381 - INFO - Successfully updated Pitchers vargaca01/2025/SEA.
+2025-04-07 07:44:51,423 - INFO - Successfully updated Pitchers ferguty01/2025/ATH.
+2025-04-07 07:44:51,467 - INFO - Successfully updated Pitchers gomezyo01/2025/NYY.
+2025-04-07 07:44:51,510 - INFO - Successfully updated Pitchers suarejo01/2025/ATL.
+2025-04-07 07:44:51,547 - INFO - Successfully updated Pitchers bazsh01/2025/TBR.
+2025-04-07 07:44:51,582 - INFO - Successfully updated Pitchers ferguca01/2025/PIT.
+2025-04-07 07:44:51,618 - INFO - Successfully updated Pitchers fittsri01/2025/BOS.
+2025-04-07 07:44:51,652 - INFO - Successfully updated Pitchers hendrky01/2025/LAA.
+2025-04-07 07:44:51,681 - INFO - Successfully updated Pitchers liberma01/2025/STL.
+2025-04-07 07:44:51,716 - INFO - Successfully updated Pitchers lynchda02/2025/KCR.
+2025-04-07 07:44:52,216 - INFO - Processed 150 pitchers so far
+2025-04-07 07:44:52,242 - INFO - Successfully updated Pitchers martich02/2025/TEX.
+2025-04-07 07:44:52,268 - INFO - Successfully updated Pitchers morejad01/2025/SDP.
+2025-04-07 07:44:52,301 - INFO - Successfully updated Pitchers pressry01/2025/CHC.
+2025-04-07 07:44:52,339 - INFO - Successfully updated Pitchers rogerty01/2025/SFG.
+2025-04-07 07:44:52,365 - INFO - Successfully updated Pitchers scottta01/2025/LAD.
+2025-04-07 07:44:52,406 - INFO - Successfully updated Pitchers soriage01/2025/MIA.
+2025-04-07 07:44:52,445 - INFO - Successfully updated Pitchers varlalo01/2025/MIN.
+2025-04-07 07:44:52,472 - INFO - Successfully updated Pitchers walketa01/2025/PHI.
+2025-04-07 07:44:52,499 - INFO - Successfully updated Pitchers webbja01/2025/TEX.
+2025-04-07 07:44:52,523 - INFO - Successfully updated Pitchers akinke01/2025/BAL.
+2025-04-07 07:44:53,023 - INFO - Processed 160 pitchers so far
+2025-04-07 07:44:53,049 - INFO - Successfully updated Pitchers ferrejo01/2025/WSN.
+2025-04-07 07:44:53,076 - INFO - Successfully updated Pitchers hartky01/2025/SDP.
+2025-04-07 07:44:53,102 - INFO - Successfully updated Pitchers henriro01/2025/MIA.
+2025-04-07 07:44:53,139 - INFO - Successfully updated Pitchers hodgepo01/2025/CHC.
+2025-04-07 07:44:53,168 - INFO - Successfully updated Pitchers jacobal01/2025/SDP.
+2025-04-07 07:44:53,194 - INFO - Successfully updated Pitchers littlbr02/2025/TOR.
+2025-04-07 07:44:53,217 - INFO - Successfully updated Pitchers mizeca01/2025/DET.
+2025-04-07 07:44:53,241 - INFO - Successfully updated Pitchers smithsh02/2025/CHW.
+2025-04-07 07:44:53,266 - INFO - Successfully updated Pitchers adamja01/2025/SDP.
+2025-04-07 07:44:53,289 - INFO - Successfully updated Pitchers allenlo02/2025/CLE.
+2025-04-07 07:44:53,790 - INFO - Processed 170 pitchers so far
+2025-04-07 07:44:53,814 - INFO - Successfully updated Pitchers bachala01/2025/MIA.
+2025-04-07 07:44:53,839 - INFO - Successfully updated Pitchers bakerbr01/2025/BAL.
+2025-04-07 07:44:53,865 - INFO - Successfully updated Pitchers bowmama01/2025/BAL.
+2025-04-07 07:44:53,899 - INFO - Successfully updated Pitchers buttojo01/2025/NYM.
+2025-04-07 07:44:53,938 - INFO - Successfully updated Pitchers cantijo01/2025/CLE.
+2025-04-07 07:44:53,966 - INFO - Successfully updated Pitchers contrlu01/2025/HOU.
+2025-04-07 07:44:53,989 - INFO - Successfully updated Pitchers dobnara01/2025/MIN.
+2025-04-07 07:44:54,012 - INFO - Successfully updated Pitchers estraje01/2025/SDP.
+2025-04-07 07:44:54,036 - INFO - Successfully updated Pitchers headrbr01/2025/NYY.
+2025-04-07 07:44:54,067 - INFO - Successfully updated Pitchers jackslu01/2025/TEX.
+2025-04-07 07:44:54,568 - INFO - Processed 180 pitchers so far
+2025-04-07 07:44:54,594 - INFO - Successfully updated Pitchers lorenmi01/2025/KCR.
+2025-04-07 07:44:54,618 - INFO - Successfully updated Pitchers mccauda01/2025/MIN.
+2025-04-07 07:44:54,643 - INFO - Successfully updated Pitchers pearsna01/2025/CHC.
+2025-04-07 07:44:54,669 - INFO - Successfully updated Pitchers peralwa01/2025/SDP.
+2025-04-07 07:44:54,696 - INFO - Successfully updated Pitchers rodrira02/2025/SFG.
+2025-04-07 07:44:54,777 - INFO - Successfully updated Pitchers santade01/2025/PIT.
+2025-04-07 07:44:54,802 - INFO - Successfully updated Pitchers santito01/2025/CIN.
+2025-04-07 07:44:54,825 - INFO - Successfully updated Pitchers thomaco02/2025/MIL.
+2025-04-07 07:44:54,860 - INFO - Successfully updated Pitchers wilsobr02/2025/CHW.
+2025-04-07 07:44:54,897 - INFO - Successfully updated Pitchers yateski01/2025/LAD.
+2025-04-07 07:44:55,398 - INFO - Processed 190 pitchers so far
+2025-04-07 07:44:55,437 - INFO - Successfully updated Pitchers alvarjo03/2025/PHI.
+2025-04-07 07:44:55,477 - INFO - Successfully updated Pitchers bandaan01/2025/LAD.
+2025-04-07 07:44:55,513 - INFO - Successfully updated Pitchers birdja01/2025/COL.
+2025-04-07 07:44:55,545 - INFO - Successfully updated Pitchers booseca01/2025/CHW.
+2025-04-07 07:44:55,572 - INFO - Successfully updated Pitchers borucry01/2025/PIT.
+2025-04-07 07:44:55,597 - INFO - Successfully updated Pitchers brebbjo01/2025/DET.
+2025-04-07 07:44:55,620 - ERROR - Failed to create Pitchers dobbihu01/2025/BOS. Response: 200 - {"bbrefId":"dobbihu01","year":2025,"team":"BOS","age":25,"lg":"AL","wl":"1-0","wlPercentage":1,"era":3.6,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":5,"h":8,"r":2,"er":2,"hr":0,"bb":2,"ibb":0,"so":5,"hbp":1,"bk":0,"wp":0,"bf":24,"eraPlus":124,"fip":2.89,"whip":2,"h9":14.4,"hR9":0,"bB9":3.6,"sO9":9,"sow":2.5,"dateModified":"2025-04-07T07:43:23.867174","throws":"RHP"}
+2025-04-07 07:44:55,644 - ERROR - Failed to create Pitchers dollach01/2025/COL. Response: 200 - {"bbrefId":"dollach01","year":2025,"team":"COL","age":23,"lg":"NL","wl":"1-0","wlPercentage":1,"era":7.2,"g":1,"gs":1,"gf":0,"cg":0,"sho":0,"sv":0,"ip":5,"h":7,"r":4,"er":4,"hr":2,"bb":1,"ibb":0,"so":6,"hbp":0,"bk":0,"wp":0,"bf":22,"eraPlus":59,"fip":6.49,"whip":1.6,"h9":12.6,"hR9":3.6,"bB9":1.8,"sO9":10.8,"sow":6,"dateModified":"2025-04-07T07:43:23.867174","throws":"RHP"}
+2025-04-07 07:44:55,669 - INFO - Successfully updated Pitchers dovalca01/2025/SFG.
+2025-04-07 07:44:55,694 - INFO - Successfully updated Pitchers garciro04/2025/TEX.
+2025-04-07 07:44:56,195 - INFO - Processed 200 pitchers so far
+2025-04-07 07:44:56,232 - INFO - Successfully updated Pitchers haderjo01/2025/HOU.
+2025-04-07 07:44:56,272 - INFO - Successfully updated Pitchers hanifbr01/2025/DET.
+2025-04-07 07:44:56,308 - INFO - Successfully updated Pitchers holmegr01/2025/ATL.
+2025-04-07 07:44:56,348 - INFO - Successfully updated Pitchers kellebr01/2025/CHC.
+2025-04-07 07:44:56,389 - INFO - Successfully updated Pitchers lawreju01/2025/PIT.
+2025-04-07 07:44:56,431 - INFO - Successfully updated Pitchers leahyky01/2025/STL.
+2025-04-07 07:44:56,470 - INFO - Successfully updated Pitchers lopezre01/2025/ATL.
+2025-04-07 07:44:56,508 - INFO - Successfully updated Pitchers lucasea01/2025/TOR.
+2025-04-07 07:44:56,547 - INFO - Successfully updated Pitchers maydu01/2025/LAD.
+2025-04-07 07:44:56,587 - INFO - Successfully updated Pitchers millesh01/2025/ARI.
+2025-04-07 07:44:57,088 - INFO - Processed 210 pitchers so far
+2025-04-07 07:44:57,115 - INFO - Successfully updated Pitchers pegueel01/2025/MIL.
+2025-04-07 07:44:57,142 - INFO - Successfully updated Pitchers phillty01/2025/MIA.
+2025-04-07 07:44:57,168 - INFO - Successfully updated Pitchers salazed01/2025/WSN.
+2025-04-07 07:44:57,213 - INFO - Successfully updated Pitchers sengako01/2025/NYM.
+2025-04-07 07:44:57,247 - INFO - Successfully updated Pitchers sorokmi01/2025/WSN.
+2025-04-07 07:44:57,281 - INFO - Successfully updated Pitchers sternju01/2025/ATH.
+2025-04-07 07:44:57,319 - INFO - Successfully updated Pitchers suterbr01/2025/CIN.
+2025-04-07 07:44:57,358 - INFO - Successfully updated Pitchers treinbl01/2025/LAD.
+2025-04-07 07:44:57,398 - INFO - Successfully updated Pitchers walkery01/2025/SFG.
+2025-04-07 07:44:57,432 - INFO - Successfully updated Pitchers wesneha01/2025/HOU.
+2025-04-07 07:44:57,933 - INFO - Processed 220 pitchers so far
+2025-04-07 07:44:57,969 - INFO - Successfully updated Pitchers andergr01/2025/MIL.
+2025-04-07 07:44:58,008 - INFO - Successfully updated Pitchers cruzfe01/2025/NYY.
+2025-04-07 07:44:58,041 - INFO - Successfully updated Pitchers dominse01/2025/BAL.
+2025-04-07 07:44:58,076 - INFO - Successfully updated Pitchers garabge01/2025/TEX.
+2025-04-07 07:44:58,111 - INFO - Successfully updated Pitchers greench03/2025/TOR.
+2025-04-07 07:44:58,136 - INFO - Successfully updated Pitchers holdeco01/2025/PIT.
+2025-04-07 07:44:58,166 - INFO - Successfully updated Pitchers jarvibr01/2025/ARI.
+2025-04-07 07:44:58,200 - INFO - Successfully updated Pitchers matonph01/2025/STL.
+2025-04-07 07:44:58,237 - INFO - Successfully updated Pitchers morgael01/2025/CHC.
+2025-04-07 07:44:58,262 - INFO - Successfully updated Pitchers murdono01/2025/ATH.
+2025-04-07 07:44:58,762 - INFO - Processed 230 pitchers so far
+2025-04-07 07:44:58,789 - INFO - Successfully updated Pitchers ribalor01/2025/WSN.
+2025-04-07 07:44:58,814 - INFO - Successfully updated Pitchers romerjo01/2025/STL.
+2025-04-07 07:44:58,839 - INFO - Successfully updated Pitchers roycrch01/2025/STL.
+2025-04-07 07:44:58,867 - INFO - Successfully updated Pitchers santogr01/2025/SEA.
+2025-04-07 07:44:58,894 - INFO - Successfully updated Pitchers smithca06/2025/CLE.
+2025-04-07 07:44:58,936 - INFO - Successfully updated Pitchers strahma01/2025/PHI.
+2025-04-07 07:44:58,976 - INFO - Successfully updated Pitchers stratch01/2025/KCR.
+2025-04-07 07:44:59,013 - INFO - Successfully updated Pitchers uribeab01/2025/MIL.
+2025-04-07 07:44:59,038 - INFO - Successfully updated Pitchers bellova01/2025/MIA.
+2025-04-07 07:44:59,073 - INFO - Successfully updated Pitchers criswco01/2025/BOS.
+2025-04-07 07:44:59,574 - INFO - Processed 240 pitchers so far
+2025-04-07 07:44:59,600 - INFO - Successfully updated Pitchers erceglu01/2025/KCR.
+2025-04-07 07:44:59,628 - INFO - Successfully updated Pitchers garciyi01/2025/TOR.
+2025-04-07 07:44:59,654 - INFO - Successfully updated Pitchers harvehu01/2025/KCR.
+2025-04-07 07:44:59,678 - INFO - Successfully updated Pitchers hoffmje02/2025/TOR.
+2025-04-07 07:44:59,701 - INFO - Successfully updated Pitchers hurtebr01/2025/DET.
+2025-04-07 07:44:59,724 - INFO - Successfully updated Pitchers junisja01/2025/CLE.
+2025-04-07 07:44:59,752 - INFO - Successfully updated Pitchers kingbr02/2025/HOU.
+2025-04-07 07:44:59,776 - INFO - Successfully updated Pitchers leitema02/2025/NYY.
+2025-04-07 07:44:59,800 - INFO - Successfully updated Pitchers longsa01/2025/KCR.
+2025-04-07 07:44:59,824 - INFO - Successfully updated Pitchers mantijo01/2025/ARI.
+2025-04-07 07:45:00,325 - INFO - Processed 250 pitchers so far
+2025-04-07 07:45:00,351 - INFO - Successfully updated Pitchers rodrima01/2025/TBR.
+2025-04-07 07:45:00,377 - INFO - Successfully updated Pitchers sewalpa01/2025/CLE.
+2025-04-07 07:45:00,404 - INFO - Successfully updated Pitchers thielca01/2025/CHC.
+2025-04-07 07:45:00,429 - INFO - Successfully updated Pitchers thorntr01/2025/SEA.
+2025-04-07 07:45:00,456 - INFO - Successfully updated Pitchers vodnivi01/2025/COL.
+2025-04-07 07:45:00,482 - INFO - Successfully updated Pitchers weavelu01/2025/NYY.
+2025-04-07 07:45:00,506 - INFO - Successfully updated Pitchers weissgr01/2025/BOS.
+2025-04-07 07:45:00,529 - INFO - Successfully updated Pitchers abreubr01/2025/HOU.
+2025-04-07 07:45:00,559 - INFO - Successfully updated Pitchers anderia01/2025/LAA.
+2025-04-07 07:45:00,586 - INFO - Successfully updated Pitchers armstsh01/2025/TEX.
+2025-04-07 07:45:01,087 - INFO - Processed 260 pitchers so far
+2025-04-07 07:45:01,127 - INFO - Successfully updated Pitchers barneja01/2025/TOR.
+2025-04-07 07:45:01,152 - INFO - Successfully updated Pitchers biggehu01/2025/TBR.
+2025-04-07 07:45:01,177 - INFO - Successfully updated Pitchers birdsha01/2025/SFG.
+2025-04-07 07:45:01,202 - INFO - Successfully updated Pitchers claseem01/2025/CLE.
+2025-04-07 07:45:01,236 - INFO - Successfully updated Pitchers delosen01/2025/ATL.
+2025-04-07 07:45:01,263 - INFO - Successfully updated Pitchers diazed04/2025/NYM.
+2025-04-07 07:45:01,288 - INFO - Successfully updated Pitchers elderbr01/2025/ATL.
+2025-04-07 07:45:01,314 - INFO - Successfully updated Pitchers ellarfr01/2025/CHW.
+2025-04-07 07:45:01,351 - INFO - Successfully updated Pitchers estevca01/2025/KCR.
+2025-04-07 07:45:01,377 - INFO - Successfully updated Pitchers fernary01/2025/STL.
+2025-04-07 07:45:01,878 - INFO - Processed 270 pitchers so far
+2025-04-07 07:45:01,909 - INFO - Successfully updated Pitchers finneky01/2025/WSN.
+2025-04-07 07:45:01,935 - INFO - Successfully updated Pitchers garrere01/2025/NYM.
+2025-04-07 07:45:01,960 - INFO - Successfully updated Pitchers gibauia01/2025/CIN.
+2025-04-07 07:45:01,984 - ERROR - Failed to create Pitchers gillalo01/2025/SDP. Response: 200 - {"bbrefId":"gillalo01","year":2025,"team":"SDP","age":28,"lg":"NL","wl":"0-0","wlPercentage":0,"era":4.5,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":4,"h":3,"r":2,"er":2,"hr":1,"bb":2,"ibb":0,"so":1,"hbp":0,"bk":2,"wp":0,"bf":16,"eraPlus":98,"fip":7.34,"whip":1.25,"h9":6.8,"hR9":2.3,"bB9":4.5,"sO9":2.3,"sow":0.5,"dateModified":"2025-04-07T07:43:23.867174","throws":"RHP"}
+2025-04-07 07:45:02,008 - INFO - Successfully updated Pitchers halvose01/2025/COL.
+2025-04-07 07:45:02,032 - INFO - Successfully updated Pitchers harrito03/2025/PIT.
+2025-04-07 07:45:02,058 - INFO - Successfully updated Pitchers helslry01/2025/STL.
+2025-04-07 07:45:02,084 - INFO - Successfully updated Pitchers janseke01/2025/LAA.
+2025-04-07 07:45:02,108 - INFO - Successfully updated Pitchers joycebe01/2025/LAA.
+2025-04-07 07:45:02,135 - INFO - Successfully updated Pitchers kellyke02/2025/TBR.
+2025-04-07 07:45:02,636 - INFO - Processed 280 pitchers so far
+2025-04-07 07:45:02,668 - INFO - Successfully updated Pitchers kellyza01/2025/BOS.
+2025-04-07 07:45:02,692 - INFO - Successfully updated Pitchers koenija01/2025/MIL.
+2025-04-07 07:45:02,716 - INFO - Successfully updated Pitchers leedy01/2025/ATL.
+2025-04-07 07:45:02,741 - INFO - Successfully updated Pitchers matsuyu01/2025/SDP.
+2025-04-07 07:45:02,768 - INFO - Successfully updated Pitchers mayzati01/2025/PIT.
+2025-04-07 07:45:02,793 - INFO - Successfully updated Pitchers milleer01/2025/SFG.
+2025-04-07 07:45:02,819 - INFO - Successfully updated Pitchers millema03/2025/ATH.
+2025-04-07 07:45:02,845 - INFO - Successfully updated Pitchers milneho01/2025/TEX.
+2025-04-07 07:45:02,877 - INFO - Successfully updated Pitchers montera01/2025/HOU.
+2025-04-07 07:45:02,906 - INFO - Successfully updated Pitchers munozan01/2025/SEA.
+2025-04-07 07:45:03,406 - INFO - Processed 290 pitchers so far
+2025-04-07 07:45:03,443 - INFO - Successfully updated Pitchers nelsory01/2025/ARI.
+2025-04-07 07:45:03,481 - INFO - Successfully updated Pitchers paganem01/2025/CIN.
+2025-04-07 07:45:03,517 - INFO - Successfully updated Pitchers pukaj01/2025/ARI.
+2025-04-07 07:45:03,551 - INFO - Successfully updated Pitchers rodriya01/2025/TOR.
+2025-04-07 07:45:03,589 - INFO - Successfully updated Pitchers romanjo03/2025/PHI.
+2025-04-07 07:45:03,623 - INFO - Successfully updated Pitchers rossjo01/2025/PHI.
+2025-04-07 07:45:03,658 - INFO - Successfully updated Pitchers rouppla01/2025/SFG.
+2025-04-07 07:45:03,684 - INFO - Successfully updated Pitchers sandlni01/2025/TOR.
+2025-04-07 07:45:03,718 - INFO - Successfully updated Pitchers sandsco01/2025/MIN.
+2025-04-07 07:45:03,750 - INFO - Successfully updated Pitchers simslu01/2025/WSN.
+2025-04-07 07:45:04,251 - INFO - Processed 300 pitchers so far
+2025-04-07 07:45:04,281 - INFO - Successfully updated Pitchers slateju01/2025/BOS.
+2025-04-07 07:45:04,304 - INFO - Successfully updated Pitchers sotogr01/2025/BAL.
+2025-04-07 07:45:04,329 - INFO - Successfully updated Pitchers suarero01/2025/SDP.
+2025-04-07 07:45:04,353 - INFO - Successfully updated Pitchers topaju01/2025/MIN.
+2025-04-07 07:45:04,377 - INFO - Successfully updated Pitchers vasilmi01/2025/CHW.
+2025-04-07 07:45:04,403 - INFO - Successfully updated Pitchers woodssi01/2025/MIN.
+2025-04-07 07:45:04,428 - INFO - Successfully updated Pitchers bendean01/2025/MIA.
+2025-04-07 07:45:04,466 - INFO - Successfully updated Pitchers bivensp01/2025/SFG.
+2025-04-07 07:45:04,491 - INFO - Successfully updated Pitchers briesbe01/2025/DET.
+2025-04-07 07:45:04,529 - INFO - Successfully updated Pitchers chapmar01/2025/BOS.
+2025-04-07 07:45:05,030 - INFO - Processed 310 pitchers so far
+2025-04-07 07:45:05,063 - INFO - Successfully updated Pitchers cruzom01/2025/SDP.
+2025-04-07 07:45:05,098 - INFO - Successfully updated Pitchers fauchca01/2025/MIA.
+2025-04-07 07:45:05,134 - INFO - Successfully updated Pitchers holtoty01/2025/DET.
+2025-04-07 07:45:05,166 - INFO - Successfully updated Pitchers johnsry01/2025/LAA.
+2025-04-07 07:45:05,194 - INFO - Successfully updated Pitchers kerkeor01/2025/PHI.
+2025-04-07 07:45:05,221 - INFO - Successfully updated Pitchers leasujo01/2025/CHW.
+2025-04-07 07:45:05,255 - INFO - Successfully updated Pitchers lopezjo02/2025/WSN.
+2025-04-07 07:45:05,301 - INFO - Successfully updated Pitchers martiju01/2025/ARI.
+2025-04-07 07:45:05,341 - INFO - Successfully updated Pitchers mckentr01/2025/CLE.
+2025-04-07 07:45:05,374 - INFO - Successfully updated Pitchers merryju01/2025/CHC.
+2025-04-07 07:45:05,875 - INFO - Processed 320 pitchers so far
+2025-04-07 07:45:05,913 - INFO - Successfully updated Pitchers minteaj01/2025/NYM.
+2025-04-07 07:45:05,950 - INFO - Successfully updated Pitchers mlodzca01/2025/PIT.
+2025-04-07 07:45:05,985 - INFO - Successfully updated Pitchers okertst01/2025/HOU.
+2025-04-07 07:45:06,019 - INFO - Successfully updated Pitchers payamjo01/2025/MIL.
+2025-04-07 07:45:06,056 - INFO - Successfully updated Pitchers perezci01/2025/BAL.
+2025-04-07 07:45:06,089 - INFO - Successfully updated Pitchers snideco01/2025/SEA.
+2025-04-07 07:45:06,126 - INFO - Successfully updated Pitchers speiega01/2025/SEA.
+2025-04-07 07:45:06,163 - INFO - Successfully updated Pitchers ucetaed01/2025/TBR.
+2025-04-07 07:45:06,201 - INFO - Successfully updated Pitchers venezan01/2025/MIA.
+2025-04-07 07:45:06,238 - INFO - Successfully updated Pitchers wilsoju10/2025/BOS.
+2025-04-07 07:45:06,739 - INFO - Processed 330 pitchers so far
+2025-04-07 07:45:06,764 - INFO - Successfully updated Pitchers yarbrry01/2025/NYY.
+2025-04-07 07:45:06,790 - INFO - Successfully updated Pitchers alexasc02/2025/COL.
+2025-04-07 07:45:06,820 - INFO - Successfully updated Pitchers ariaslu01/2025/MIA.
+2025-04-07 07:45:06,849 - INFO - Successfully updated Pitchers ashcrgr01/2025/CIN.
+2025-04-07 07:45:06,874 - INFO - Successfully updated Pitchers barlosc01/2025/CIN.
+2025-04-07 07:45:06,903 - INFO - Successfully updated Pitchers bernabr01/2025/BOS.
+2025-04-07 07:45:06,937 - INFO - Successfully updated Pitchers burkebr01/2025/LAA.
+2025-04-07 07:45:06,972 - INFO - Successfully updated Pitchers couloda01/2025/MIN.
+2025-04-07 07:45:06,998 - INFO - Successfully updated Pitchers duranjh01/2025/MIN.
+2025-04-07 07:45:07,023 - INFO - Successfully updated Pitchers gaddihu01/2025/CLE.
+2025-04-07 07:45:07,524 - INFO - Processed 340 pitchers so far
+2025-04-07 07:45:07,554 - INFO - Successfully updated Pitchers herriti01/2025/CLE.
+2025-04-07 07:45:07,578 - INFO - Successfully updated Pitchers hillti01/2025/NYY.
+2025-04-07 07:45:07,604 - INFO - Successfully updated Pitchers hudsobr01/2025/MIL.
+2025-04-07 07:45:07,635 - INFO - Successfully updated Pitchers leclejo01/2025/ATH.
+2025-04-07 07:45:07,660 - INFO - Successfully updated Pitchers mcdanga01/2025/LAA.
+2025-04-07 07:45:07,685 - INFO - Successfully updated Pitchers megiltr01/2025/MIL.
+2025-04-07 07:45:07,717 - INFO - Successfully updated Pitchers reaco01/2025/CHC.
+2025-04-07 07:45:07,750 - INFO - Successfully updated Pitchers rogerta01/2025/CIN.
+2025-04-07 07:45:07,778 - INFO - Successfully updated Pitchers schrejo01/2025/KCR.
+2025-04-07 07:45:07,809 - INFO - Successfully updated Pitchers vestwi01/2025/DET.
+2025-04-07 07:45:08,310 - INFO - Processed 350 pitchers so far
+2025-04-07 07:45:08,338 - INFO - Successfully updated Pitchers alcaljo01/2025/MIN.
+2025-04-07 07:45:08,364 - INFO - Successfully updated Pitchers banksta01/2025/PHI.
+2025-04-07 07:45:08,434 - INFO - Successfully updated Pitchers blalobr01/2025/COL.
+2025-04-07 07:45:08,460 - INFO - Successfully updated Pitchers canoye01/2025/BAL.
+2025-04-07 07:45:08,484 - INFO - Successfully updated Pitchers castilu03/2025/SEA.
+2025-04-07 07:45:08,510 - INFO - Successfully updated Pitchers civalaa01/2025/MIL.
+2025-04-07 07:45:08,543 - INFO - Successfully updated Pitchers danaca01/2025/LAA.
+2025-04-07 07:45:08,584 - INFO - Successfully updated Pitchers eiserbr01/2025/CHW.
+2025-04-07 07:45:08,618 - INFO - Successfully updated Pitchers englema01/2025/TBR.
+2025-04-07 07:45:08,648 - INFO - Successfully updated Pitchers fairbpe01/2025/TBR.
+2025-04-07 07:45:09,148 - INFO - Processed 360 pitchers so far
+2025-04-07 07:45:09,176 - ERROR - Failed to create Pitchers gracego01/2025/STL. Response: 200 - {"bbrefId":"gracego01","year":2025,"team":"STL","age":25,"lg":"NL","wl":"0-0","wlPercentage":0,"era":21,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":3,"h":9,"r":7,"er":7,"hr":1,"bb":1,"ibb":0,"so":2,"hbp":0,"bk":0,"wp":1,"bf":19,"eraPlus":22,"fip":7.09,"whip":3.333,"h9":27,"hR9":3,"bB9":3,"sO9":6,"sow":2,"dateModified":"2025-04-07T07:43:23.867174","throws":"RHP"}
+2025-04-07 07:45:09,213 - INFO - Successfully updated Pitchers hergeji01/2025/COL.
+2025-04-07 07:45:09,238 - INFO - Successfully updated Pitchers hernada03/2025/ATL.
+2025-04-07 07:45:09,263 - INFO - Successfully updated Pitchers kahnlto01/2025/DET.
+2025-04-07 07:45:09,288 - INFO - Successfully updated Pitchers maedake01/2025/DET.
+2025-04-07 07:45:09,320 - INFO - Successfully updated Pitchers mcfartj01/2025/ATH.
+2025-04-07 07:45:09,347 - INFO - Successfully updated Pitchers montgma01/2025/TBR.
+2025-04-07 07:45:09,374 - INFO - Successfully updated Pitchers scherma01/2025/TOR.
+2025-04-07 07:45:09,398 - INFO - Successfully updated Pitchers trivilo01/2025/SFG.
+2025-04-07 07:45:09,435 - INFO - Successfully updated Pitchers bummeaa01/2025/ATL.
+2025-04-07 07:45:09,936 - INFO - Processed 370 pitchers so far
+2025-04-07 07:45:09,961 - INFO - Successfully updated Pitchers chivian01/2025/COL.
+2025-04-07 07:45:09,986 - INFO - Successfully updated Pitchers churcma01/2025/TEX.
+2025-04-07 07:45:10,011 - INFO - Successfully updated Pitchers cleavga01/2025/TBR.
+2025-04-07 07:45:10,037 - INFO - Successfully updated Pitchers clevimi01/2025/CHW.
+2025-04-07 07:45:10,064 - INFO - Successfully updated Pitchers jaxgr01/2025/MIN.
+2025-04-07 07:45:10,091 - INFO - Successfully updated Pitchers johnspi01/2025/ATL.
+2025-04-07 07:45:10,119 - INFO - Successfully updated Pitchers murfepe01/2025/CHW.
+2025-04-07 07:45:10,156 - INFO - Successfully updated Pitchers perallu01/2025/COL.
+2025-04-07 07:45:10,193 - INFO - Successfully updated Pitchers sauceta01/2025/SEA.
+2025-04-07 07:45:10,218 - INFO - Successfully updated Pitchers suareal01/2025/BAL.
+2025-04-07 07:45:10,719 - INFO - Processed 380 pitchers so far
+2025-04-07 07:45:10,745 - INFO - Successfully updated Pitchers thompry02/2025/ARI.
+2025-04-07 07:45:10,772 - INFO - Successfully updated Pitchers zeferry01/2025/LAA.
+2025-04-07 07:45:10,797 - INFO - Successfully updated Pitchers zerpaan01/2025/KCR.
+2025-04-07 07:45:10,822 - INFO - Successfully updated Pitchers curryxz01/2025/MIA.
+2025-04-07 07:45:10,847 - INFO - Successfully updated Pitchers detmere01/2025/LAA.
+2025-04-07 07:45:10,872 - INFO - Successfully updated Pitchers ruizjo01/2025/PHI.
+2025-04-07 07:45:10,898 - INFO - Successfully updated Pitchers scottta02/2025/HOU.
+2025-04-07 07:45:10,924 - INFO - Successfully updated Pitchers willide03/2025/NYY.
+2025-04-07 07:45:10,948 - INFO - Successfully updated Pitchers youngda02/2025/NYM.
+2025-04-07 07:45:10,973 - INFO - Successfully updated Pitchers bauerja01/2025/MIL.
+2025-04-07 07:45:11,474 - INFO - Processed 390 pitchers so far
+2025-04-07 07:45:11,500 - INFO - Successfully updated Pitchers bautife01/2025/BAL.
+2025-04-07 07:45:11,539 - INFO - Successfully updated Pitchers chaveje01/2025/ATL.
+2025-04-07 07:45:11,574 - ERROR - Failed to create Pitchers hahnje01/2025/SEA. Response: 200 - {"bbrefId":"hahnje01","year":2025,"team":"SEA","age":35,"lg":"AL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":1,"cg":0,"sho":0,"sv":0,"ip":2,"h":2,"r":0,"er":0,"hr":0,"bb":1,"ibb":0,"so":1,"hbp":0,"bk":0,"wp":0,"bf":8,"eraPlus":0,"fip":3.59,"whip":1.5,"h9":9,"hR9":0,"bB9":4.5,"sO9":4.5,"sow":1,"dateModified":"2025-04-07T07:43:23.867174","throws":"RHP"}
+2025-04-07 07:45:11,603 - INFO - Successfully updated Pitchers iglesra01/2025/ATL.
+2025-04-07 07:45:11,628 - INFO - Successfully updated Pitchers kingjo01/2025/STL.
+2025-04-07 07:45:11,653 - INFO - Successfully updated Pitchers knackla01/2025/LAD.
+2025-04-07 07:45:11,678 - INFO - Successfully updated Pitchers lordbr02/2025/WSN.
+2025-04-07 07:45:11,715 - INFO - Successfully updated Pitchers mollsa01/2025/CIN.
+2025-04-07 07:45:11,748 - INFO - Successfully updated Pitchers kinlety01/2025/COL.
+2025-04-07 07:45:11,786 - INFO - Successfully updated Pitchers lovelri01/2025/TOR.
+2025-04-07 07:45:12,287 - INFO - Processed 400 pitchers so far
+2025-04-07 07:45:12,314 - INFO - Successfully updated Pitchers pocheco01/2025/WSN.
+2025-04-07 07:45:12,339 - INFO - Successfully updated Pitchers diazjh01/2025/SEA.
+2025-04-07 07:45:12,363 - INFO - Successfully updated Pitchers ottavad01/2025/NYY.
+2025-04-07 07:45:12,388 - INFO - Successfully updated Pitchers perdoan01/2025/ATH.
+2025-04-07 07:45:12,424 - INFO - Successfully updated Pitchers stanery01/2025/NYM.
+2025-04-07 07:45:12,449 - INFO - Successfully updated Pitchers bednada01/2025/PIT.
+2025-04-07 07:45:12,476 - INFO - Successfully updated Pitchers brasiry01/2025/CHC.
+2025-04-07 07:45:12,513 - INFO - Successfully updated Pitchers castrwi01/2025/MIN.
+2025-04-07 07:45:12,537 - INFO - Successfully updated Pitchers duranez01/2025/TEX.
+2025-04-07 07:45:12,562 - INFO - Successfully updated Pitchers fluhama01/2025/TOR.
+2025-04-07 07:45:13,063 - INFO - Processed 410 pitchers so far
+2025-04-07 07:45:13,091 - INFO - Successfully updated Pitchers hernaca04/2025/PHI.
+2025-04-07 07:45:13,116 - INFO - Successfully updated Pitchers nerishe01/2025/ATL.
+2025-04-07 07:45:13,141 - INFO - Successfully updated Pitchers peredjh01/2025/ATH.
+2025-04-07 07:45:13,166 - INFO - Successfully updated Pitchers tinocje01/2025/MIA.
+2025-04-07 07:45:13,190 - INFO - Successfully updated Pitchers hancoem01/2025/SEA.
+2025-04-07 07:45:13,215 - INFO - Successfully updated Pitchers sanojja01/2025/MIA.
+2025-04-07 07:45:13,241 - INFO - Successfully updated Pitchers harriho03/2025/ATH.
+2025-04-07 07:45:13,266 - INFO - Successfully updated Pitchers lopezni01/2025/LAA.
+2025-04-07 07:45:13,300 - ERROR - Failed to create Pitchers shugach01/2025/PIT. Response: 200 - {"bbrefId":"shugach01","year":2025,"team":"PIT","age":28,"lg":"NL","wl":"0-0","wlPercentage":0,"era":0,"g":1,"gs":0,"gf":0,"cg":0,"sho":0,"sv":0,"ip":0.1,"h":0,"r":0,"er":0,"hr":0,"bb":0,"ibb":0,"so":0,"hbp":0,"bk":0,"wp":0,"bf":1,"eraPlus":0,"fip":3.09,"whip":0,"h9":0,"hR9":0,"bB9":0,"sO9":0,"sow":0,"dateModified":"2025-04-07T07:43:23.867174","throws":"RHP"}
+2025-04-07 07:45:13,300 - INFO - Successfully processed 419 pitchers
+2025-04-07 07:45:13,300 - INFO - Scraping completed in 109.43 seconds

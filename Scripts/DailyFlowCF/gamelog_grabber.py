@@ -164,7 +164,17 @@ def scrape_player_data(scraper, bbrefid, year):
             return None
             
         # Get all individual game rows from tbody
-        game_rows = tbody.find_all('tr')
+        all_rows = tbody.find_all('tr')
+        
+        # Filter out header rows - these are the rows that have "Rk" in them
+        # We'll check if the first cell is trying to be a rank index (numeric) or a header ("Rk")
+        game_rows = []
+        for row in all_rows:
+            # Check if this is a header row by looking for the "Rk" text or data-stat="header_games"
+            first_cell = row.find(['th', 'td'])
+            if first_cell and first_cell.get_text(strip=True) != "Rk" and not row.get('class') == ['thead']:
+                # This isn't a header row, add it to our game_rows
+                game_rows.append(row)
         
         # Get the season total row from tfoot
         season_total_row = tfoot.find('tr')
@@ -182,8 +192,11 @@ def scrape_player_data(scraper, bbrefid, year):
         second_game = None
         if len(game_rows) >= 2:
             # Check date columns to see if they're the same date (indicating doubleheader)
-            recent_date = most_recent_game.find('td', {'data-stat': 'date'}).get_text(strip=True) if most_recent_game else ""
-            prev_date = game_rows[-2].find('td', {'data-stat': 'date'}).get_text(strip=True)
+            recent_date_elem = most_recent_game.find('td', {'data-stat': 'date'}) if most_recent_game else None
+            prev_date_elem = game_rows[-2].find('td', {'data-stat': 'date'}) if len(game_rows) >= 2 else None
+            
+            recent_date = recent_date_elem.get_text(strip=True) if recent_date_elem else ""
+            prev_date = prev_date_elem.get_text(strip=True) if prev_date_elem else ""
             
             if recent_date and recent_date == prev_date:
                 second_game = game_rows[-2]
@@ -1115,7 +1128,7 @@ def process_and_post_trailing_gamelogs(scraper, api_session, bbrefid, year):
         trailing_gamelog_api_url = "https://localhost:44346/api/TrailingGameLogSplits"
 
         # Add small delay before API call
-        time.sleep(random.uniform(0.5, 1.5))
+        time.sleep(random.uniform(0.5, 1.0))
         
         # Make API calls with error handling
         try:
@@ -1125,13 +1138,13 @@ def process_and_post_trailing_gamelogs(scraper, api_session, bbrefid, year):
             api_response_season = response_season.json()
             
             # Last 7 games normalization
-            time.sleep(random.uniform(0.5, 1))
+            time.sleep(random.uniform(0.25, 0.5))
             response_last7 = api_session.post(normalize_api_url, json=payload_last7, verify=False)
             response_last7.raise_for_status()
             api_response_last7 = response_last7.json()
             
             # Single game normalization
-            time.sleep(random.uniform(0.5, 1))
+            time.sleep(random.uniform(0.25, 0.5))
             response_single = api_session.post(normalize_api_url, json=payload_single, verify=False)
             response_single.raise_for_status()
             api_response_single = response_single.json()
@@ -1195,7 +1208,7 @@ def process_and_post_trailing_gamelogs(scraper, api_session, bbrefid, year):
         
         # Post data to TrailingGameLogSplits API
         # Add small delay between API calls
-        time.sleep(random.uniform(0.5, 1.5))
+        time.sleep(random.uniform(0.25, 0.5))
         
         # Post Last7G data
         try:
@@ -1208,7 +1221,7 @@ def process_and_post_trailing_gamelogs(scraper, api_session, bbrefid, year):
             return False
 
         # Post Season data
-        time.sleep(random.uniform(0.5, 1))
+        time.sleep(random.uniform(0.25, 0.5))
         try:
             response_season = api_session.post(trailing_gamelog_api_url, json=json_payload_season, verify=False)
             response_season.raise_for_status()
@@ -1219,7 +1232,7 @@ def process_and_post_trailing_gamelogs(scraper, api_session, bbrefid, year):
             return False
 
         # Post SingleGame data
-        time.sleep(random.uniform(0.5, 1))
+        time.sleep(random.uniform(0.25, 0.5))
         try:
             response_sg = api_session.post(trailing_gamelog_api_url, json=json_payload_single, verify=False)
             response_sg.raise_for_status()
@@ -1227,7 +1240,7 @@ def process_and_post_trailing_gamelogs(scraper, api_session, bbrefid, year):
             
             # If doubleheader second game exists, post it too
             if json_payload_single2:
-                time.sleep(random.uniform(0.5, 1))
+                time.sleep(random.uniform(0.25, 0.5))
                 response_sg2 = api_session.post(trailing_gamelog_api_url, json=json_payload_single2, verify=False)
                 response_sg2.raise_for_status()
                 print(f"Successfully posted SingleGame2 data for {bbrefid}: {response_sg2.status_code}")
@@ -1627,7 +1640,7 @@ def main():
                 
             # Add a longer delay between players to avoid detection
             if idx < len(bbrefids) - 1:  # Don't delay after the last player
-                delay = random.uniform(5, 10)
+                delay = random.uniform(3, 6)
                 print(f"Waiting {delay:.2f} seconds before processing next player...")
                 time.sleep(delay)
                 

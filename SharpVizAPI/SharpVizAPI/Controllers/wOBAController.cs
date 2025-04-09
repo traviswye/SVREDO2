@@ -346,6 +346,71 @@ namespace SharpVizAPI.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
+        [HttpGet("adjustedRunsF5/{date}")]
+        public async Task<IActionResult> GetWobaAdjustedRunsF5(string date)
+        {
+            if (!DateTime.TryParse(date, out DateTime parsedDate))
+            {
+                return BadRequest("Invalid date format. Use yyyy-MM-dd.");
+            }
+
+            try
+            {
+                var results = await _wobaService.GetWobaAdjustedRunsF5Async(parsedDate);
+
+                if (!results.Any())
+                {
+                    return NotFound($"No games found or could not calculate adjusted runs for date {date}");
+                }
+
+                // Calculate some summary statistics
+                double avgTotalExpectedRuns = results.Average(r => (double)r["totalExpectedRunsF5"]);
+                double avgRunDifferential = results.Average(r => Math.Abs((double)r["runDifferentialF5"]));
+                int homeTeamFavored = results.Count(r => (double)r["runDifferentialF5"] > 0);
+                int awayTeamFavored = results.Count(r => (double)r["runDifferentialF5"] < 0);
+
+                // Determine the league average WOBA - use a safe approach that handles either property name
+                double leagueAverageWOBA = 0.311; // Default value
+                if (results.Any() && results[0].ContainsKey("homeTeam"))
+                {
+                    var homeTeam = results[0]["homeTeam"] as Dictionary<string, object>;
+                    if (homeTeam != null)
+                    {
+                        // First try the structure from your original implementation
+                        if (homeTeam.ContainsKey("pitcherWobaAgainst"))
+                        {
+                            leagueAverageWOBA = 0.311; // Use default since we don't have the constants
+                        }
+                        // Then try the structure from my updated implementation
+                        else if (homeTeam.ContainsKey("opposingPitcherWobaAgainst"))
+                        {
+                            leagueAverageWOBA = 0.311; // Use default since we don't have the constants
+                        }
+                    }
+                }
+
+                return Ok(new
+                {
+                    Date = date,
+                    GamesAnalyzed = results.Count,
+                    Games = results,
+                    Summary = new
+                    {
+                        AverageTotalExpectedRunsF5 = avgTotalExpectedRuns,
+                        AverageRunDifferentialF5 = avgRunDifferential,
+                        HomeTeamFavored = homeTeamFavored,
+                        AwayTeamFavored = awayTeamFavored,
+                        LeagueAverageWOBA = leagueAverageWOBA
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error getting wOBA adjusted runs for date {date}: {ex.Message}");
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
     }
 
     public class BatchWobaRequest

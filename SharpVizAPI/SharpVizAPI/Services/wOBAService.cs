@@ -898,5 +898,133 @@ namespace SharpVizAPI.Services
 
             return result;
         }
+
+        public async Task<List<Dictionary<string, object>>> GetWobaAdjustedRunsF5Async(DateTime date)
+        {
+            _logger.LogInformation($"Calculating wOBA adjusted runs for games on {date:yyyy-MM-dd}");
+            var results = new List<Dictionary<string, object>>();
+            int year = date.Year;
+
+            // Get all games for the specified date
+            var games = await _context.GamePreviews
+                .Where(g => g.Date.Date == date.Date)
+                .ToListAsync();
+
+            if (!games.Any())
+            {
+                _logger.LogWarning($"No games found for date {date:yyyy-MM-dd}");
+                return results;
+            }
+
+            // Constants
+            var wobaConstants = GetWobaConstants(year);
+            const double FIVE_INNING_SCALAR = 5.0 / 9.0;
+
+            // Process each game
+            foreach (var game in games)
+            {
+                try
+                {
+                    // Get home and away team names
+                    string homeTeam = game.HomeTeam;
+                    string awayTeam = game.AwayTeam;
+
+                    // Get starting pitchers
+                    string homePitcher = game.HomePitcher;
+                    string awayPitcher = game.AwayPitcher;
+
+                    if (string.IsNullOrEmpty(homePitcher) || string.IsNullOrEmpty(awayPitcher))
+                    {
+                        _logger.LogWarning($"Missing pitcher for game {game.Id} on {date:yyyy-MM-dd}");
+                        continue;
+                    }
+
+                    // Get raw lineup strength for home team
+                    var homeLineupStrength = await GetRawLineupStrengthAsync(homeTeam, date);
+
+                    // Get raw lineup strength for away team
+                    var awayLineupStrength = await GetRawLineupStrengthAsync(awayTeam, date);
+
+                    if (homeLineupStrength.ContainsKey("error") || awayLineupStrength.ContainsKey("error"))
+                    {
+                        _logger.LogWarning($"Missing lineup data for game between {homeTeam} and {awayTeam}");
+                        continue;
+                    }
+
+                    // Get pitcher wOBA against stats
+                    var homePitcherStats = await GetPitcherWobaStatsAsync(homePitcher, year, true);
+                    var awayPitcherStats = await GetPitcherWobaStatsAsync(awayPitcher, year, false);
+
+                    if (homePitcherStats.ContainsKey("error") || awayPitcherStats.ContainsKey("error"))
+                    {
+                        _logger.LogWarning($"Missing pitcher stats for {homePitcher} or {awayPitcher}");
+                        continue;
+                    }
+
+                    // Extract raw expected runs and pitcher wOBA against
+                    double homeRawExpectedRuns = (double)homeLineupStrength["RAWexpectedRunsPer9"];
+                    double awayRawExpectedRuns = (double)awayLineupStrength["RAWexpectedRunsPer9"];
+
+                    double homePitcherWobaAgainst = (double)homePitcherStats["wobaAgainst"];
+                    double awayPitcherWobaAgainst = (double)awayPitcherStats["wobaAgainst"];
+
+                    // Calculate adjustment factors based on pitcher quality
+                    // If pitcher is league average, factor is 1.0
+                    // If pitcher is better than average, factor is < 1.0
+                    // If pitcher is worse than average, factor is > 1.0
+                    double homePitcherAdjustmentFactor = homePitcherWobaAgainst / wobaConstants.LeagueAverage;
+                    double awayPitcherAdjustmentFactor = awayPitcherWobaAgainst / wobaConstants.LeagueAverage;
+
+                    // Apply adjustment to expected runs
+                    // Home team faces the away pitcher, so use away pitcher's adjustment factor
+                    // Away team faces the home pitcher, so use home pitcher's adjustment factor
+                    double homeAdjustedExpectedRunsF9 = homeRawExpectedRuns * awayPitcherAdjustmentFactor;
+                    double awayAdjustedExpectedRunsF9 = awayRawExpectedRuns * homePitcherAdjustmentFactor;
+
+                    // Scale to 5 innings
+                    double homeAdjustedExpectedRunsF5 = homeAdjustedExpectedRunsF9 * FIVE_INNING_SCALAR;
+                    double awayAdjustedExpectedRunsF5 = awayAdjustedExpectedRunsF9 * FIVE_INNING_SCALAR;
+
+                    // Calculate run differential (positive means home team advantage)
+                    double runDifferentialF5 = homeAdjustedExpectedRunsF5 - awayAdjustedExpectedRunsF5;
+
+                    // Add results - keeping the original property names for backward compatibility
+                    results.Add(new Dictionary<string, object>
+                    {
+                        ["gameId"] = game.Id,
+                        ["date"] = date.ToString("yyyy-MM-dd"),
+                        ["homeTeam"] = new Dictionary<string, object>
+                        {
+                            ["team"] = homeTeam,
+                            ["pitcher"] = homePitcher,
+                            ["rawExpectedRunsF9"] = homeRawExpectedRuns,
+                            ["rawExpectedRunsF5"] = homeRawExpectedRuns * FIVE_INNING_SCALAR,
+                            ["adjustedExpectedRunsF5"] = homeAdjustedExpectedRunsF5,
+                            ["pitcherWobaAgainst"] = awayPitcherWobaAgainst,  // This is the AWAY pitcher's wOBA (who the home team faces)
+                            ["pitcherAdjustmentFactor"] = awayPitcherAdjustmentFactor  // This is the AWAY pitcher's adjustment factor
+                        },
+                        ["awayTeam"] = new Dictionary<string, object>
+                        {
+                            ["team"] = awayTeam,
+                            ["pitcher"] = awayPitcher,
+                            ["rawExpectedRunsF9"] = awayRawExpectedRuns,
+                            ["rawExpectedRunsF5"] = awayRawExpectedRuns * FIVE_INNING_SCALAR,
+                            ["adjustedExpectedRunsF5"] = awayAdjustedExpectedRunsF5,
+                            ["pitcherWobaAgainst"] = homePitcherWobaAgainst,  // This is the HOME pitcher's wOBA (who the away team faces)
+                            ["pitcherAdjustmentFactor"] = homePitcherAdjustmentFactor  // This is the HOME pitcher's adjustment factor
+                        },
+                        ["runDifferentialF5"] = runDifferentialF5,
+                        ["favoredTeam"] = runDifferentialF5 > 0 ? homeTeam : awayTeam,
+                        ["totalExpectedRunsF5"] = homeAdjustedExpectedRunsF5 + awayAdjustedExpectedRunsF5
+                    });
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, $"Error processing game {game.Id} on {date:yyyy-MM-dd}");
+                }
+            }
+
+            return results;
+        }
     }
 }

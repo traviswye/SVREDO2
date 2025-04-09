@@ -775,7 +775,7 @@ def main():
         date = sys.argv[1]  # Use the first argument as the date
     else:
         # Fallback to the default date if not provided
-        date = "25-03-31"  # Today's date by default
+        date = "25-04-07"  # Today's date by default
     
     year = 2025  # Current season
     
@@ -818,7 +818,7 @@ def main():
         
         # Add a longer delay between pitchers to avoid detection
         if idx < len(pitchers) - 1:  # Don't delay after the last pitcher
-            delay = random.uniform(12, 20)
+            delay = random.uniform(5, 11)
             print(f"Waiting {delay:.2f} seconds before processing the next pitcher...")
             time.sleep(delay)
     

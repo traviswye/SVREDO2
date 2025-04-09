@@ -11,8 +11,8 @@ import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # Path to your ChromeDriver
-chrome_driver_path = "C:/buns/tw/SVREDO2/prodScripts/SeleniumVersions/chromedriver.exe"
-# chrome_driver_path = "C:/Users/travi/source/repos/SVREDO2/prodScripts/SeleniumVersions/chromedriver.exe"
+# chrome_driver_path = "C:/buns/tw/SVREDO2/prodScripts/SeleniumVersions/chromedriver.exe"
+chrome_driver_path = "C:/Users/travi/source/repos/SVREDO2/prodScripts/SeleniumVersions/chromedriver.exe"
 
 
 # Set Chrome options to run headless

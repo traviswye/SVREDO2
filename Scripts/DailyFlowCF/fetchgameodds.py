@@ -12,7 +12,7 @@ if len(sys.argv) > 1:
     date = sys.argv[1]  # Use the first argument as the date
 else:
     # Fallback to the default date - opening day
-    date = '25-03-27'
+    date = '25-04-07'
 
 # API URLs
 odds_url = "https://api.the-odds-api.com/v4/sports/baseball_mlb/odds/?apiKey=cae244ec5ed018e4316521fb277d6800&regions=us&oddsFormat=american"

@@ -32,7 +32,9 @@ try:
     # Linux: "/home/username/path/to/chromedriver"
     # =====================================================================
     # Check if chromedriver path exists
-    CHROMEDRIVER_PATH = "C:/buns/tw/SVREDO2/prodScripts/SeleniumVersions/chromedriver.exe"
+    # CHROMEDRIVER_PATH = "C:/buns/tw/SVREDO2/prodScripts/SeleniumVersions/chromedriver.exe"
+    CHROMEDRIVER_PATH = "C:/Users/travi/source/repos/SVREDO2/prodScripts/SeleniumVersions/chromedriver.exe"
+
     print(f"Checking chromedriver path: {CHROMEDRIVER_PATH}")
     if os.path.exists(CHROMEDRIVER_PATH):
         print(f"Chromedriver exists at: {CHROMEDRIVER_PATH}")

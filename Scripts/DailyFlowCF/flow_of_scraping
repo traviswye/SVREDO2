@@ -25,7 +25,7 @@ scrapeteams.py - attempts to visit every team's bbref page to scrape hitters and
 	- this needs to be evaluated if its worth continuing to do due to CF protections and how many times we have to hit these urls...
 	- the pros on this is that when transactions happen and players are on new teams we wont have to manage splits vs totals
 
-scrapeallplayer_sel.py - this is a replacement but it caused us to change the db schema for hitters and pitchers tables.... only 3 requests to bbref rather than up to 30.
+scrapeallplayers_sel.py - this is a replacement but it caused us to change the db schema for hitters and pitchers tables.... only 3 requests to bbref rather than up to 30.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 

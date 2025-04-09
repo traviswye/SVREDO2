@@ -363,6 +363,13 @@ namespace SharpVizAPI.Services
             var last28Record = await _context.PitcherPlatoonAndTrackRecord
                 .FirstOrDefaultAsync(p => p.BbrefID == pitcherId && p.Year == year && p.Split == "last28");
 
+            // Get the vsRHB and vsLHB platoon splits
+            var vsRHBRecord = await _context.PitcherPlatoonAndTrackRecord
+                .FirstOrDefaultAsync(p => p.BbrefID == pitcherId && p.Year == year && p.Split == "vsRHB");
+
+            var vsLHBRecord = await _context.PitcherPlatoonAndTrackRecord
+                .FirstOrDefaultAsync(p => p.BbrefID == pitcherId && p.Year == year && p.Split == "vsLHB");
+
             if (homeAwaySplit == null && totalsRecord == null)
             {
                 return new Dictionary<string, object>
@@ -397,6 +404,19 @@ namespace SharpVizAPI.Services
             {
                 double wobaAgainstLast28 = CalculateWobaAgainstFromPlatoon(last28Record, year);
                 stats["aWOBALast28"] = wobaAgainstLast28;
+            }
+
+            // Calculate wOBA for handedness splits if available
+            if (vsRHBRecord != null)
+            {
+                double wobaAgainstRHB = CalculateWobaAgainstFromPlatoon(vsRHBRecord, year);
+                stats["wobaVSRHB"] = wobaAgainstRHB;
+            }
+
+            if (vsLHBRecord != null)
+            {
+                double wobaAgainstLHB = CalculateWobaAgainstFromPlatoon(vsLHBRecord, year);
+                stats["wobaVSLHB"] = wobaAgainstLHB;
             }
 
             // Calculate the blended wOBA against (prioritizing more specific data)
@@ -505,6 +525,47 @@ namespace SharpVizAPI.Services
                     HBP = last28Record.HBP,
                     SH = last28Record.SH,
                     SF = last28Record.SF
+                };
+            }
+
+            // Add vsRHB and vsLHB detailed stats
+            if (vsRHBRecord != null)
+            {
+                stats["vsRHB"] = new
+                {
+                    BA = vsRHBRecord.BA,
+                    OBP = vsRHBRecord.OBP,
+                    SLG = vsRHBRecord.SLG,
+                    OPS = vsRHBRecord.OPS,
+                    PA = vsRHBRecord.PA,
+                    H = vsRHBRecord.H,
+                    Doubles = vsRHBRecord.TwoB,
+                    Triples = vsRHBRecord.ThreeB,
+                    HR = vsRHBRecord.HR,
+                    BB = vsRHBRecord.BB,
+                    HBP = vsRHBRecord.HBP,
+                    SH = vsRHBRecord.SH,
+                    SF = vsRHBRecord.SF
+                };
+            }
+
+            if (vsLHBRecord != null)
+            {
+                stats["vsLHB"] = new
+                {
+                    BA = vsLHBRecord.BA,
+                    OBP = vsLHBRecord.OBP,
+                    SLG = vsLHBRecord.SLG,
+                    OPS = vsLHBRecord.OPS,
+                    PA = vsLHBRecord.PA,
+                    H = vsLHBRecord.H,
+                    Doubles = vsLHBRecord.TwoB,
+                    Triples = vsLHBRecord.ThreeB,
+                    HR = vsLHBRecord.HR,
+                    BB = vsLHBRecord.BB,
+                    HBP = vsLHBRecord.HBP,
+                    SH = vsLHBRecord.SH,
+                    SF = vsLHBRecord.SF
                 };
             }
 

@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using SharpVizAPI.Data;
 using SharpVizAPI.Services;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,7 @@ namespace SharpVizAPI.Controllers
     {
         private readonly wOBAService _wobaService;
         private readonly ILogger<wOBAController> _logger;
+        private readonly NrfidbContext _context;
 
         public wOBAController(wOBAService wobaService, ILogger<wOBAController> logger)
         {
@@ -235,6 +238,111 @@ namespace SharpVizAPI.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Error getting detailed wOBA constants for year {year}: {ex.Message}");
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        // Add this method to the wOBAController class
+
+        // GET: api/wOBA/lineup/RawStrength/{teamName}/{date}
+        [HttpGet("lineup/RawStrength/{teamName}/{date}")]
+        public async Task<IActionResult> GetRawLineupStrength(string teamName, string date)
+        {
+            if (!DateTime.TryParse(date, out DateTime parsedDate))
+            {
+                return BadRequest("Invalid date format. Use yyyy-MM-dd.");
+            }
+
+            try
+            {
+                var result = await _wobaService.GetRawLineupStrengthAsync(teamName, parsedDate);
+
+                if (result.ContainsKey("error"))
+                {
+                    return NotFound(result);
+                }
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error getting lineup strength for {teamName} on {date}: {ex.Message}");
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        // GET: api/wOBA/lineup/strength/today/{teamName}
+        [HttpGet("lineup/strength/today/{teamName}")]
+        public async Task<IActionResult> GetTodayRawLineupStrength(string teamName)
+        {
+            try
+            {
+                var result = await _wobaService.GetRawLineupStrengthAsync(teamName, DateTime.Today);
+
+                if (result.ContainsKey("error"))
+                {
+                    return NotFound(result);
+                }
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error getting today's lineup strength for {teamName}: {ex.Message}");
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        // GET: api/wOBA/lineup/strength/date/{date}
+        [HttpGet("lineup/strength/date/{date}")]
+        public async Task<IActionResult> GetAllTeamsLineupStrength(string date)
+        {
+            if (!DateTime.TryParse(date, out DateTime parsedDate))
+            {
+                return BadRequest("Invalid date format. Use yyyy-MM-dd.");
+            }
+
+            try
+            {
+                // First get all teams playing on this date from GamePreviews
+                var gamePreviews = await _context.GamePreviews
+                    .Where(g => g.Date.Date == parsedDate.Date)
+                    .ToListAsync();
+
+                if (!gamePreviews.Any())
+                {
+                    return NotFound($"No games found for date {date}");
+                }
+
+                // Get unique team names from the game previews
+                var teams = gamePreviews.SelectMany(g => new[] { g.HomeTeam, g.AwayTeam }).Distinct().ToList();
+
+                // Get lineup strength for each team
+                var results = new List<object>();
+                foreach (var team in teams)
+                {
+                    var lineupStrength = await _wobaService.GetRawLineupStrengthAsync(team, parsedDate);
+                    results.Add(lineupStrength);
+                }
+
+                // Calculate league average for context
+                double leagueAvgWoba = results
+                    .Where(r => !((Dictionary<string, object>)r).ContainsKey("error"))
+                    .Select(r => (double)((Dictionary<string, object>)r)["lineupBlendedWoba"])
+                    .DefaultIfEmpty(0)
+                    .Average();
+
+                return Ok(new
+                {
+                    Date = date,
+                    Teams = teams.Count,
+                    LeagueAverageWoba = leagueAvgWoba,
+                    Results = results
+                });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error getting lineup strength for all teams on {date}: {ex.Message}");
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }

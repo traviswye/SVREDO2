@@ -587,5 +587,255 @@ namespace SharpVizAPI.Services
 
             return 0.0;
         }
+
+        private string GetLineupStrengthRating(double woba, double leagueAverage)
+        {
+            double percentDiff = (woba - leagueAverage) / leagueAverage * 100;
+
+            if (percentDiff >= 15) return "Elite";
+            if (percentDiff >= 10) return "Great";
+            if (percentDiff >= 5) return "Above Average";
+            if (percentDiff >= -5) return "Average";
+            if (percentDiff >= -10) return "Below Average";
+            if (percentDiff >= -15) return "Weak";
+            return "Very Weak";
+        }
+
+        // Get lineup strength based on wOBA for a team on a specific date
+        public async Task<Dictionary<string, object>> GetRawLineupStrengthAsync(string teamName, DateTime date)
+        {
+            _logger.LogInformation($"Getting raw lineup strength for {teamName} on {date:yyyy-MM-dd}");
+            int year = date.Year;
+
+            // First try to get the actual lineup
+            var actualLineup = await _context.ActualLineups
+                .FirstOrDefaultAsync(l => l.Team == teamName && l.Date.Date == date.Date);
+
+            // If we don't have an actual lineup, try to get a predicted lineup
+            var predictedLineup = actualLineup == null ?
+                await _context.LineupPredictions
+                    .FirstOrDefaultAsync(l => l.Team == teamName && l.Date.Date == date.Date) : null;
+
+            // Check if we found a lineup
+            if (actualLineup == null && predictedLineup == null)
+            {
+                return new Dictionary<string, object>
+                {
+                    ["teamName"] = teamName,
+                    ["date"] = date.ToString("yyyy-MM-dd"),
+                    ["error"] = "No lineup found for the specified team and date"
+                };
+            }
+
+            // Extract BBRef IDs from the lineup
+            List<string> lineupIds = new List<string>();
+
+            if (actualLineup != null)
+            {
+                lineupIds.Add(actualLineup.Batting1st);
+                lineupIds.Add(actualLineup.Batting2nd);
+                lineupIds.Add(actualLineup.Batting3rd);
+                lineupIds.Add(actualLineup.Batting4th);
+                lineupIds.Add(actualLineup.Batting5th);
+                lineupIds.Add(actualLineup.Batting6th);
+                lineupIds.Add(actualLineup.Batting7th);
+                lineupIds.Add(actualLineup.Batting8th);
+                lineupIds.Add(actualLineup.Batting9th);
+            }
+            else
+            {
+                lineupIds.Add(predictedLineup.Batting1st);
+                lineupIds.Add(predictedLineup.Batting2nd);
+                lineupIds.Add(predictedLineup.Batting3rd);
+                lineupIds.Add(predictedLineup.Batting4th);
+                lineupIds.Add(predictedLineup.Batting5th);
+                lineupIds.Add(predictedLineup.Batting6th);
+                lineupIds.Add(predictedLineup.Batting7th);
+                lineupIds.Add(predictedLineup.Batting8th);
+                lineupIds.Add(predictedLineup.Batting9th);
+            }
+
+            // Remove any null or empty player IDs
+            lineupIds = lineupIds.Where(id => !string.IsNullOrEmpty(id)).ToList();
+
+            if (!lineupIds.Any())
+            {
+                return new Dictionary<string, object>
+                {
+                    ["teamName"] = teamName,
+                    ["date"] = date.ToString("yyyy-MM-dd"),
+                    ["error"] = "Lineup contains no valid player IDs"
+                };
+            }
+
+            // Get wOBA for all players in the lineup
+            var playerWobaResults = await GetMultiplePlayersWobaAsync(lineupIds, year);
+
+            // Calculate aggregate statistics for the entire lineup
+            int seasonPA = 0;
+            int seasonSingles = 0;
+            int seasonDoubles = 0;
+            int seasonTriples = 0;
+            int seasonHR = 0;
+            int seasonBB = 0;
+            int seasonHBP = 0;
+            int seasonSF = 0;
+
+            int last7PA = 0;
+            int last7Singles = 0;
+            int last7Doubles = 0;
+            int last7Triples = 0;
+            int last7HR = 0;
+            int last7BB = 0;
+            int last7HBP = 0;
+            int last7SF = 0;
+
+            // Players with valid stats
+            int validPlayers = 0;
+            int playersWithLast7 = 0;
+
+            // Collect all player stats
+            foreach (var playerResult in playerWobaResults)
+            {
+                // Skip players with errors
+                if (playerResult.ContainsKey("error"))
+                    continue;
+
+                validPlayers++;
+
+                // Get season stats from the player
+                var seasonStats = playerResult["seasonStats"] as dynamic;
+                if (seasonStats != null)
+                {
+                    seasonPA += (int)seasonStats.PA;
+                    seasonSingles += (int)seasonStats.Singles;
+                    seasonDoubles += (int)seasonStats.Doubles;
+                    seasonTriples += (int)seasonStats.Triples;
+                    seasonHR += (int)seasonStats.HR;
+                    seasonBB += (int)seasonStats.BB;
+                    seasonHBP += (int)seasonStats.HBP;
+                    seasonSF += (int)seasonStats.SF;
+                }
+
+                // Get last7 stats from the player if available
+                var last7Stats = playerResult["last7Stats"] as dynamic;
+                if (last7Stats != null)
+                {
+                    playersWithLast7++;
+                    last7PA += (int)last7Stats.PA;
+                    last7Singles += (int)last7Stats.Singles;
+                    last7Doubles += (int)last7Stats.Doubles;
+                    last7Triples += (int)last7Stats.Triples;
+                    last7HR += (int)last7Stats.HR;
+                    last7BB += (int)last7Stats.BB;
+                    last7HBP += (int)last7Stats.HBP;
+                    last7SF += (int)last7Stats.SF;
+                }
+            }
+
+            // Get the wOBA constants for the year
+            var wobaConstants = GetWobaConstants(year);
+
+            // Calculate lineup season wOBA
+            double lineupSeasonWoba = 0;
+            if (seasonPA > 0)
+            {
+                double weightedEvents =
+                    (seasonBB * wobaConstants.BB) +
+                    (seasonHBP * wobaConstants.HBP) +
+                    (seasonSingles * wobaConstants.Single) +
+                    (seasonDoubles * wobaConstants.Double) +
+                    (seasonTriples * wobaConstants.Triple) +
+                    (seasonHR * wobaConstants.HR);
+
+                int adjustedPA = seasonPA;
+
+                lineupSeasonWoba = weightedEvents / adjustedPA;
+            }
+
+            // Calculate lineup last7 wOBA if data is available
+            double? lineupLast7Woba = null;
+            if (last7PA > 0)
+            {
+                double weightedEvents =
+                    (last7BB * wobaConstants.BB) +
+                    (last7HBP * wobaConstants.HBP) +
+                    (last7Singles * wobaConstants.Single) +
+                    (last7Doubles * wobaConstants.Double) +
+                    (last7Triples * wobaConstants.Triple) +
+                    (last7HR * wobaConstants.HR);
+
+                int adjustedPA = last7PA;
+
+                lineupLast7Woba = weightedEvents / adjustedPA;
+            }
+
+            // Calculate blended wOBA if we have both season and recent stats (70/30 weight)
+            double lineupBlendedWoba = lineupLast7Woba.HasValue
+                ? (lineupSeasonWoba * 0.6) + (lineupLast7Woba.Value * 0.4)
+                : lineupSeasonWoba;
+
+            // Calculate expected runs based on wOBA
+            //double expectedRunsPer9 = (lineupBlendedWoba * 10 - 3.11) * 1.6 + 4.35;//simplified
+            //double expectedRunsPer9 = (lineupBlendedWoba - wobaConstants.LeagueAverage)/ 0.0016 + 4.5;//low end
+            //double expectedRunsPer9 = (lineupBlendedWoba * wobaConstants.WobaScale) * 9;//universal
+            //double expectedRunsPer9 = ((lineupBlendedWoba - wobaConstants.LeagueAverage)  /0.0143) + 4.35;//one for all
+            //double expectedRunsPer9 = 18.0 * lineupBlendedWoba * lineupBlendedWoba - 5.0 * lineupBlendedWoba + 2.7;
+            //quadratic exRS = a * wOba^2 + b * wOba + c
+            double expectedRunsPer9 = 175.3873 * lineupBlendedWoba * lineupBlendedWoba - 74.1545 * lineupBlendedWoba + 10.4484;
+
+
+            // Calculate comparison to league average
+            double comparisonToLeague = ((lineupBlendedWoba - wobaConstants.LeagueAverage) / wobaConstants.LeagueAverage) * 100;
+
+            // Create the final result
+            var result = new Dictionary<string, object>
+            {
+                ["teamName"] = teamName,
+                ["date"] = date.ToString("yyyy-MM-dd"),
+                ["lineupSource"] = actualLineup != null ? "ActualLineup" : "PredictedLineup",
+                ["playersInLineup"] = lineupIds.Count,
+                ["validPlayersWithStats"] = validPlayers,
+                ["playersWithLast7Stats"] = playersWithLast7,
+                ["lineupSeasonWoba"] = lineupSeasonWoba,
+                ["lineupLast7Woba"] = lineupLast7Woba,
+                ["lineupBlendedWoba"] = lineupBlendedWoba,
+                ["comparisonToLeagueAverage"] = comparisonToLeague,
+                ["RAWexpectedRunsPer9"] = expectedRunsPer9,
+                ["lineupStrengthRating"] = GetLineupStrengthRating(lineupBlendedWoba, wobaConstants.LeagueAverage),
+                ["wobaConstants"] = new
+                {
+                    LeagueAverage = wobaConstants.LeagueAverage,
+                    Scale = wobaConstants.WobaScale,
+                    Year = year
+                },
+                ["aggregateSeasonStats"] = new
+                {
+                    PA = seasonPA,
+                    Singles = seasonSingles,
+                    Doubles = seasonDoubles,
+                    Triples = seasonTriples,
+                    HR = seasonHR,
+                    BB = seasonBB,
+                    HBP = seasonHBP,
+                    SF = seasonSF
+                },
+                ["aggregateLast7Stats"] = lineupLast7Woba.HasValue ? new
+                {
+                    PA = last7PA,
+                    Singles = last7Singles,
+                    Doubles = last7Doubles,
+                    Triples = last7Triples,
+                    HR = last7HR,
+                    BB = last7BB,
+                    HBP = last7HBP,
+                    SF = last7SF
+                } : null,
+                ["individualPlayerStats"] = playerWobaResults,
+                ["lineup"] = lineupIds
+            };
+
+            return result;
+        }
     }
 }

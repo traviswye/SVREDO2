@@ -1,16 +1,20 @@
-2025-04-07 07:39:08,796 - root - INFO - Starting preview scraper
-2025-04-07 07:39:08,816 - root - INFO - Simulating human browsing pattern...
-2025-04-07 07:39:19,740 - root - INFO - Human browsing simulation completed
-2025-04-07 07:39:39,892 - root - INFO - \u2713 Successfully posted game preview: Tigers vs Yankees
-2025-04-07 07:39:54,472 - root - INFO - \u2713 Successfully posted game preview: Pirates vs Cardinals
-2025-04-07 07:40:08,014 - root - INFO - \u2713 Successfully posted game preview: Red Sox vs Blue Jays
-2025-04-07 07:40:21,793 - root - INFO - \u2713 Successfully posted game preview: Nationals vs Dodgers
-2025-04-07 07:40:35,688 - root - INFO - \u2713 Successfully posted game preview: Mets vs Marlins
-2025-04-07 07:40:49,774 - root - INFO - \u2713 Successfully posted game preview: Cubs vs Rangers
-2025-04-07 07:41:03,005 - root - INFO - \u2713 Successfully posted game preview: Royals vs Twins
-2025-04-07 07:41:16,235 - root - INFO - \u2713 Successfully posted game preview: Diamondbacks vs Orioles
-2025-04-07 07:41:30,744 - root - INFO - \u2713 Successfully posted game preview: Mariners vs Astros
-2025-04-07 07:41:43,499 - root - INFO - \u2713 Successfully posted game preview: Giants vs Reds
-2025-04-07 07:41:56,403 - root - INFO - \u2713 Successfully posted game preview: Athletics vs Padres
-2025-04-07 07:41:56,403 - root - INFO - Successfully processed 11/11 game previews for 2025-04-07
-2025-04-07 07:41:56,403 - root - INFO - Preview scraper completed
+2025-04-09 12:55:28,018 - root - INFO - Starting preview scraper
+2025-04-09 12:55:28,501 - root - INFO - Simulating human browsing pattern...
+2025-04-09 12:55:35,588 - root - INFO - Human browsing simulation completed
+2025-04-09 12:56:02,552 - root - INFO - \u2713 Successfully posted game preview: Pirates vs Cardinals
+2025-04-09 12:56:18,166 - root - INFO - \u2713 Successfully posted game preview: Tigers vs Yankees
+2025-04-09 12:56:34,192 - root - INFO - \u2713 Successfully posted game preview: Mets vs Marlins
+2025-04-09 12:56:50,458 - root - INFO - \u2713 Successfully posted game preview: Cubs vs Rangers
+2025-04-09 12:57:06,430 - root - INFO - \u2713 Successfully posted game preview: Athletics vs Padres
+2025-04-09 12:57:22,352 - root - INFO - \u2713 Successfully posted game preview: Diamondbacks vs Orioles
+2025-04-09 12:57:37,705 - root - INFO - \u2713 Successfully posted game preview: Giants vs Reds
+2025-04-09 12:57:53,712 - root - INFO - \u2713 Successfully posted game preview: Nationals vs Dodgers
+2025-04-09 12:58:10,083 - root - INFO - \u2713 Successfully posted game preview: Mariners vs Astros
+2025-04-09 12:58:27,496 - root - INFO - \u2713 Successfully posted game preview: Guardians vs White Sox
+2025-04-09 12:58:42,691 - root - INFO - \u2713 Successfully posted game preview: Red Sox vs Blue Jays
+2025-04-09 12:59:00,756 - root - INFO - \u2713 Successfully posted game preview: Rays vs Angels
+2025-04-09 12:59:16,562 - root - INFO - \u2713 Successfully posted game preview: Braves vs Phillies
+2025-04-09 12:59:31,131 - root - INFO - \u2713 Successfully posted game preview: Royals vs Twins
+2025-04-09 12:59:46,777 - root - INFO - \u2713 Successfully posted game preview: Rockies vs Brewers
+2025-04-09 12:59:46,778 - root - INFO - Successfully processed 15/15 game previews for 2025-04-09
+2025-04-09 12:59:46,779 - root - INFO - Preview scraper completed

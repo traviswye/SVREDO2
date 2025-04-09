@@ -242,6 +242,28 @@ public class PitchersController : ControllerBase
 
         return Ok(existingPitcher);
     }
+    // GET: api/Pitchers/year/{year}
+    [HttpGet("year/{year}")]
+    public async Task<IActionResult> GetPitchersByYear(int year)
+    {
+        try
+        {
+            var pitchers = await _context.Pitchers
+                .Where(p => p.Year == year)
+                .ToListAsync();
+
+            if (pitchers == null || !pitchers.Any())
+            {
+                return NotFound($"No pitchers found for year {year}.");
+            }
+
+            return Ok(pitchers);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
+    }
 
 
     // DELETE: api/Pitchers/{bbrefID}

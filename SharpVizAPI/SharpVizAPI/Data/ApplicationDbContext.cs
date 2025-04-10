@@ -74,7 +74,8 @@ namespace SharpVizAPI.Data
         public DbSet<ProjectedPitcherStats> ProjectedPitcherStats { get; set; }
         public DbSet<OpeningDayProjectedRotationModel> OpeningDayProjectedRotation { get; set; }
         public DbSet<OpeningDayProjectedLineupModel> OpeningDayProjectedLineup { get; set; }
-        
+        public DbSet<StatcastPitcherData> StatcastPitcherData { get; set; }
+
 
         public NrfidbContext(DbContextOptions<NrfidbContext> options)
             : base(options)
@@ -288,6 +289,9 @@ namespace SharpVizAPI.Data
 
             modelBuilder.Entity<BullpenUsage>()
                 .HasKey(b => new { b.Bbrefid, b.TeamGameNumber });
+
+            modelBuilder.Entity<StatcastPitcherData>()
+    .HasKey(s => new { s.bsID, s.Split, s.Year });
         }
     }
 }

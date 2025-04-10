@@ -40,7 +40,7 @@
         //{ "Min", "Twins" },
         { "MIN", "Twins" },
         { "NYM", "Mets" },
-        //{ "Oak", "Athletics" },
+        { "ATH", "Athletics" },
         { "OAK", "Athletics" },
         //{ "Phi", "Phillies" },
         { "PHI", "Phillies" },

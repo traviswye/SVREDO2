@@ -39,6 +39,7 @@ namespace SharpVizAPI.Services
         { "NYM", "Mets" },
         { "BAL", "Orioles" },
         { "OAK", "Athletics" },
+        { "ATH", "Athletics" },
         { "KCR", "Royals" },
         { "BOS", "Red Sox" },
         { "DET", "Tigers" },

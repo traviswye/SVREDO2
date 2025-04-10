@@ -44,7 +44,8 @@ builder.Services.AddScoped<WeatherService>();
 builder.Services.AddScoped<LineupService>();
 builder.Services.AddScoped<EvaluationService>();
 builder.Services.AddScoped<NormalizationService>();
-builder.Services.AddScoped<PlayerIDMappingService>();
+builder.Services.AddScoped<PlayerIDMappingService>(); 
+builder.Services.AddScoped<wOBAService>(); 
 
 
 

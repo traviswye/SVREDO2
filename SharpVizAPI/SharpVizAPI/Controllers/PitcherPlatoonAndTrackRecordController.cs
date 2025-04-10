@@ -39,6 +39,21 @@ namespace SharpVizAPI.Controllers
 
             return record;
         }
+        // GET: api/PitcherPlatoonAndTrackRecord/year/{year}/{split}
+        [HttpGet("year/{year}/{split}")]
+        public async Task<ActionResult<IEnumerable<PitcherPlatoonAndTrackRecord>>> GetPitcherPlatoonAndTrackRecordsByYearAndSplit(int year, string split)
+        {
+            var records = await _context.PitcherPlatoonAndTrackRecord
+                .Where(r => r.Year == year && r.Split == split)
+                .ToListAsync();
+
+            if (!records.Any())
+            {
+                return NotFound($"No records found for year {year} and split '{split}'.");
+            }
+
+            return records;
+        }
 
         // GET: api/PitcherPlatoonAndTrackRecord/bbrefID/year
         [HttpGet("{bbrefID}/{year}")]
